@@ -35,7 +35,6 @@ html {
     height: 100%;
     overflow: auto;
     /* overflow: hidden; */
-    cursor: crosshair !important;
   }
 
   

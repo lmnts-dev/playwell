@@ -22,8 +22,6 @@ export const NavigationStyle = styled.nav`
   top: 0px;
   left: 0px;
   right: 0px;
-  background: pink;
-  color: black;
   z-index: 50;
   display: flex;
   justify-content: center;
@@ -33,7 +31,6 @@ NavigationStyle.Inner = styled.div`
   max-width: ${Root.Site.Width};
   width: 100%;
   margin: 0 auto;
-  background: green;
   display: flex;
   align-items: center;
   justify-content: stretch;
@@ -47,7 +44,44 @@ NavigationStyle.Primary = styled.div`
   display: flex;
   align-items: center;
   flex: 1.5;
-  background: blue;
+
+  /* The Linklist */
+  ul {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-left: calc(${Root.Size} / 2);
+
+    /* The links themselves */
+    a,
+    button {
+      height: calc(${Root.Nav.Size} * 1.5);
+      text-decoration: none;
+      font-weight: 700;
+      color: ${Theme.Color.Text};
+      display: inline-flex;
+      align-items: center;
+      padding: 0 calc(${Root.Size} / 4);
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+      }
+    }
+
+    li {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    /* This is the button used to queue linklist overlays. */
+    /* The <button> tag is used for accessibility purposes. */
+    button {
+      outline: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  }
 `;
 
 NavigationStyle.Secondary = styled.div`
@@ -56,7 +90,6 @@ NavigationStyle.Secondary = styled.div`
   align-items: center;
   justify-content: flex-end;
   flex: 1;
-  background: red;
 `;
 
 // The top padding on the <body> tag for fixed navigation.
