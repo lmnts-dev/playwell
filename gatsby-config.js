@@ -22,6 +22,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-webpack-size`,
+    `transformer-playwell`,
     {
       resolve: `gatsby-plugin-react-svg`,
       options: {
