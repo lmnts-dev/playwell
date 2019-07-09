@@ -1,4 +1,5 @@
-// Transformer for the PlayWell Coursefinder API.
+// GraphQL Transformer for the PlayWell Coursefinder API.
+// By Peter Laxalt
 
 const axios = require('axios');
 const crypto = require('crypto');
