@@ -25,8 +25,8 @@ class Navigation extends PureComponent {
       <nav
         style={{
           width: '100%',
-          background: 'black',
-          color: 'pink',
+          background: Theme.Color.Primary,
+          color: Theme.Color.White,
           height: Root.Nav.Size,
           display: 'flex',
           justifyContent: 'center',
