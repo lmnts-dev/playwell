@@ -11,7 +11,7 @@
 PlayWell Web Platform
 </h1>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8b417ab1-6345-4465-98e3-f478de7a947d/deploy-status)](https://app.netlify.com/sites/reverent-noyce-352111/deploys) [![Gatsby](https://img.shields.io/badge/-gatsby-FC6376.svg)](gatsbyjs.org) [![View Staging](https://img.shields.io/badge/-staging-2984FD.svg)](https://reverent-noyce-352111.netlify.com/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/808f6071-c3ee-414a-bc18-cf74024bbc64/deploy-status)](https://app.netlify.com/sites/modest-noether-8f137a/deploys) [![Gatsby](https://img.shields.io/badge/-gatsby-FC6376.svg)](gatsbyjs.org) [![View Staging](https://img.shields.io/badge/-staging-2984FD.svg)](https://modest-noether-8f137a.netlify.com)
 
 The PlayWell web platform. Based off of the LMNTS-Gatsby v2 starter using the <code>lmnts</code> methodology of building websites. Includes React Context, styled-components, page transitions, scroll events with <code>IntersectionObserver</code> and a focus on accessibility and SEO. Made for state-of-the-art marketing sites. 
 

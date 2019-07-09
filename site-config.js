@@ -8,22 +8,22 @@
 const path = require('path');
 
 module.exports = {
-  siteTitle: `Be. | A new kind of Cannabis Store.`,
-  siteTitleShort: `Be.`,
-  siteDescription: `Dedicated to making medical and recreational marijuana approachable. Our dispensary locations in Northern Nevada provide exceptional service and quality medicinal cannabis to the Reno, Sparks, and Carson City areas.`,
-  siteBaseKeywords: `medical, cannabis, marijuana, dispensary, reno, sparks, carson city, gardnerville, tahoe, service, quality, recreational, pot, weed`,
-  siteUrl: `https://reverent-noyce-352111.netlify.com`,
+  siteTitle: `Play-Well | LEGO®-inspired engineering classes for kids K-8.`,
+  siteTitleShort: `Play-Well`,
+  siteDescription: `Kids are natural engineers. We help them realize it.`,
+  siteBaseKeywords: `lego, engineering, engineering, classes, summer, camps, spring, learning, learn, play, education, knowledge`,
+  siteUrl: `https://modest-noether-8f137a.netlify.com/`,
   themeColor: `#ed652b`,
   secondaryColor: `#FFFFFF`,
-  backgroundColor: `#FFFFFF`,
+  backgroundColor: `#520589`,
   pathPrefix: '/',
   logo: path.resolve(__dirname, 'src/assets/images/icon.png'),
   logoLight: path.resolve(__dirname, 'src/assets/images/icon.png'),
   logoDark: path.resolve(__dirname, 'src/assets/images/icon.png'),
   social: {
-    twitter: `laxaltandmciver`,
-    facebook: `laxaltandmciver`,
-    instagram: `laxaltandmciver`,
-    fbAppId: `966242223397117`,
+    twitter: `PlayWell_TEK`,
+    facebook: `PlayWellTEK`,
+    instagram: `playwellteknologies`,
+    fbAppId: `566393390202813`,
   },
 };
