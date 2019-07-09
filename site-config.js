@@ -8,7 +8,7 @@
 const path = require('path');
 
 module.exports = {
-  siteTitle: `Play-Well | LEGO®-inspired engineering classes for kids K-8.`,
+  siteTitle: `Play-Well TEKnologies | LEGO®-inspired engineering classes for kids & adults.`,
   siteTitleShort: `Play-Well`,
   siteDescription: `Kids are natural engineers. We help them realize it.`,
   siteBaseKeywords: `lego, engineering, engineering, classes, summer, camps, spring, learning, learn, play, education, knowledge`,
