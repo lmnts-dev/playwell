@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm run develop",
     "clean": "rimraf .cache public",
-    "develop": "bash castle.sh && npm run clean && gatsby develop -o -S",
+    "develop": "bash castle.sh && npm run clean && gatsby develop -S",
     "push": "npm run build && git add . && gitmoji -c && git push",
     "serve": "gatsby serve",
     "ssr": "npm run build && npm run serve",

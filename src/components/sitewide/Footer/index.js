@@ -31,7 +31,7 @@ class Footer extends PureComponent {
           height: Root.Nav.Size,
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
         }}
       >
         <strong>footer</strong>

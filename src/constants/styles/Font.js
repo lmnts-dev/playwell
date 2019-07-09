@@ -1,17 +1,38 @@
 /* eslint-disable */
-import { createGlobalStyle } from 'styled-components';
-import { Root } from './../Theme';
-import { Base } from './Base';
 
 // Font.js:
 // This is the sitewide font reference.
 
+import { createGlobalStyle } from 'styled-components';
+import { Root } from './../Theme';
+import { Base } from './Base';
+
+// Our Local Fonts: Brown
+import BrownBoldOTF from './fonts/brown/Brown-Bold.otf';
+import BrownBoldEOT from './fonts/brown/Brown-Bold.eot';
+import BrownBoldTTF from './fonts/brown/Brown-Bold.ttf';
+import BrownBoldWOFF_Two from './fonts/brown/Brown-Bold.woff2';
+import BrownSemiboldOTF from './fonts/brown/Brown-Semibold.otf';
+import BrownSemiboldEOT from './fonts/brown/Brown-Semibold.eot';
+import BrownSemiboldTTF from './fonts/brown/Brown-Semibold.ttf';
+import BrownSemiboldWOFF_Two from './fonts/brown/Brown-Semibold.woff2';
+import BrownRegularOTF from './fonts/brown/Brown-Regular.otf';
+import BrownRegularEOT from './fonts/brown/Brown-Regular.eot';
+import BrownRegularTTF from './fonts/brown/Brown-Regular.ttf';
+import BrownRegularWOFF_Two from './fonts/brown/Brown-Regular.woff2';
+
+// Our Local Fonts: Cera Pro Bol
+import CeraProBoldOTF from './fonts/cera/CeraPro-Bold.otf';
+import CeraProBoldEOT from './fonts/cera/CeraPro-Bold.eot';
+import CeraProBoldTTF from './fonts/cera/CeraPro-Bold.ttf';
+import CeraProBoldWOFF from './fonts/cera/CeraPro-Bold.woff';
+import CeraProBoldWOFF_Two from './fonts/cera/CeraPro-Bold.woff2';
+
 export const Font = {
-  // Header: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   // Body: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   // Code: `"SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace`,
-  Header: `"SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace`,
-  Body: `"SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace`,
+  Header: `"Cera Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
+  Body: `"Brown", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"`,
   Code: `"SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace`,
   Size: {
     Sm: '1rem',
@@ -39,6 +60,43 @@ export const Font = {
 
 // Global Type Styles
 export const Typography = createGlobalStyle`
+
+  /* Font Face Declaration */
+  @font-face {
+    font-family: "Cera Pro";
+    src: url(${CeraProBoldWOFF_Two}) format("woff2"),
+         url(${CeraProBoldWOFF}) format("woff"),
+         url(${CeraProBoldTTF}) format("ttf"),
+         url(${CeraProBoldEOT}) format("eot"),
+         url(${CeraProBoldOTF}) format("otf");
+  }
+
+  @font-face {
+    font-family: "Brown";
+    src: url(${BrownRegularWOFF_Two}) format("woff2"),
+         url(${BrownRegularTTF}) format("ttf"),
+         url(${BrownRegularEOT}) format("eot"),
+         url(${BrownRegularOTF}) format("otf");
+    font-weight: normal;
+  }
+
+  @font-face {
+    font-family: "Brown";
+    src: url(${BrownBoldWOFF_Two}) format("woff2"),
+         url(${BrownBoldTTF}) format("ttf"),
+         url(${BrownBoldEOT}) format("eot"),
+         url(${BrownBoldOTF}) format("otf");
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: "Brown";
+    src: url(${BrownSemiboldWOFF_Two}) format("woff2"),
+         url(${BrownSemiboldTTF}) format("ttf"),
+         url(${BrownSemiboldEOT}) format("eot"),
+         url(${BrownSemiboldOTF}) format("otf");
+    font-weight: 500;
+  }
 
   /* Base Text Styles */
   body {

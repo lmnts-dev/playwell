@@ -11,30 +11,35 @@ import { createGlobalStyle } from 'styled-components';
 
 export const Color = {
   // Core Colors
-  Primary: '#ed652b',
+  Primary: '#520589',
   Secondary: '#5D6376',
   Background: '#FFFFFF',
 
   // Grayscale Palette
   Black: '#000000',
   Nightsky: '#151313',
-  Warmsky: '#7A7070',
-  Gunmetal: '#5D6376',
-  Slate: '#AEB9C4',
-  Gray: '#CCD0D6',
-  Snow: '#F2F3F3',
+  Warmsky: '#34281D',
+  Gravel: '#4E4135',
+  Slate: '#928070',
+  Gray: '#DAC9BA',
+  Blush: '#F6E7D9',
+  Cream: '#FFF6EE',
   White: '#ffffff',
 
-  // Main Palette
-  Leaf: '#ed652b',
-  Mint: '#9DF096',
-  Tahoe: '#2984FD',
-  Sky: '#A5D3FF',
-  Sunset: '#FC6376',
-  Dank: '#F8E71C',
-  Flower: '#E17E00',
-  Indigo: '#351868',
-  PurpleHaze: '#0D1632',
+  // Warm Palette
+  Clay: '#A33609',
+  Nova: '#E24809',
+  Sunlight: '#E9A200',
+  Sunset: '#ED9158',
+
+  // Cool Palette
+  Galaxy: '#09004B',
+  Deepsea: '#002F9E',
+  Ocean: '#269FE2',
+  Sky: '#7AC0E6',
+  Dino: '#23023B',
+  Eggplant: '#520589',
+  Lilac: '#874BB4',
 
   // Feedback Palette
   Warning: '#FC6376',
