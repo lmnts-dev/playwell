@@ -50,7 +50,9 @@ html {
   body {
     height: 100%;
     margin: 0;
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
     /* overflow: hidden; */
   }
   

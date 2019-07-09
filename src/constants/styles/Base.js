@@ -35,7 +35,7 @@ export const Base = {
 
   // Site Grid
   Grid: {
-    SiteWidth: 1280, // px
+    SiteWidth: 1640, // px
     Nav: {
       Orientation: `top`,
       Fixed: true,
@@ -62,7 +62,7 @@ export const Base = {
         Top: 20, // px
         Bottom: 20, // px
         Right: 20, // px
-        Left: 150, // px
+        Left: 20, // px
       },
       Md: {
         Top: 20, // px

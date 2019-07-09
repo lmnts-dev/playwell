@@ -9,9 +9,15 @@ import React, { PureComponent } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Device from './../../core/DeviceQuery';
 
+// Styles
+import { NavigationStyle, NavigationBodyPadding } from './styles.scss';
+
 // Constants
 import { Base } from 'constants/styles/Base';
 import { Theme, Root } from 'constants/Theme';
+
+// Components
+import Brandmark from 'components/core/Branding/Brandmark';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -22,19 +28,18 @@ class Navigation extends PureComponent {
     return (
       // Query our Navigation data so we can adjust our Navigation styles
       // based on Top Level Pages vs Sub Level Pages
-      <nav
-        style={{
-          width: '100%',
-          background: Theme.Color.Primary,
-          color: Theme.Color.White,
-          height: Root.Nav.Size,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <strong>navigation</strong>
-      </nav>
+      <NavigationStyle>
+        <NavigationBodyPadding />
+        <NavigationStyle.Inner>
+          <NavigationStyle.Primary>
+            <Brandmark />
+            <strong>Primary Navigation</strong>
+          </NavigationStyle.Primary>
+          <NavigationStyle.Secondary>
+            Secondary Navigation
+          </NavigationStyle.Secondary>
+        </NavigationStyle.Inner>
+      </NavigationStyle>
     );
   }
 }
