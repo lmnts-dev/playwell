@@ -128,11 +128,8 @@ const CourseSample = props => (
       <br />
       <br />
       <Link to="/dir-sample">
-        <h2>
-        Back to Directory
-        </h2>
+        <h2>Back to Directory</h2>
       </Link>
-      {console.log(props)}
     </main>
   </Layout>
 );
