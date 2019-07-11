@@ -5,7 +5,7 @@ const axios = require('axios');
 const crypto = require('crypto');
 
 const API_URI =
-  'https://course-finder.play-well.org/webservice/search-bounds?southwest_lat=47.52238165054658&southwest_lng=-122.79864642255859&northeast_lat=47.689970088583664&northeast_lng=-121.8654951774414';
+  'https://course-finder.play-well.org/webservice/courses';
 
 exports.sourceNodes = async ({ boundActionCreators }) => {
   const { createNode } = boundActionCreators;
