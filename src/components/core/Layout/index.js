@@ -35,8 +35,6 @@ const Layout = ({
 }) => (
   <SiteGrid>
     <GlobalStyle />
-    <div id="content-overlay" />
-    <div id="hamburger-overlay" />
     <PageTheme
       BgColor={BgColor}
       PrimaryColor={PrimaryColor}

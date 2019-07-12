@@ -6,6 +6,7 @@
 
 // Core
 import React, { PureComponent } from 'react';
+import ReactDOM from 'react-dom';
 import { StaticQuery, graphql, Link } from 'gatsby';
 import Device from './../../core/DeviceQuery';
 
@@ -97,7 +98,7 @@ const Linklist = ({ links }) => {
 };
 
 // Navigation Component
-class Navigation extends PureComponent {
+class NavigationBar extends PureComponent {
   render() {
     return (
       // Query our Navigation data so we can adjust our Navigation styles
@@ -140,6 +141,16 @@ class Navigation extends PureComponent {
     );
   }
 }
+
+// We use this with ReactDOM.createPortal.
+const NavigationOverlay = () => <div id="navigation-overlay" />;
+
+const Navigation = () => (
+  <>
+    <NavigationOverlay />
+    <NavigationBar />
+  </>
+);
 
 export default Navigation;
 

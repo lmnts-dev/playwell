@@ -76,11 +76,10 @@ const HomePage = props => (
         `}
         render={data => (
           <div>
-            {console.log(data)}
             {data.allPlayWellClient.edges.map((client, idx) => {
               return (
                 <div key={idx}>
-                  <h4 style={{ marginTop: "30px" }}>
+                  <h4 style={{ marginTop: '30px' }}>
                     {client.node.client_location_name}
                   </h4>
                   {client.node.courses.map((course, idx) => {
@@ -94,7 +93,8 @@ const HomePage = props => (
                             course.course_id
                           }
                         >
-                          {client.node.client_location_name} - {course.course_type_name}
+                          {client.node.client_location_name} -{' '}
+                          {course.course_type_name}
                         </Link>
                       </div>
                     );

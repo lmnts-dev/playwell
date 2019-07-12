@@ -16,13 +16,13 @@ import { Theme } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const transitionDelay = 350;
+export const transitionDelay = 0;
 
 const RoutesContainer = posed.div({
   enter: {
     opacity: 1,
     transition: {
-      opacity: { ease: 'easeIn', delay: transitionDelay, duration: 250 },
+      opacity: { ease: 'easeIn', delay: transitionDelay, duration: 0 },
     },
   },
   exit: {
@@ -43,16 +43,17 @@ class Transition extends PureComponent {
     // To enable page transitions on mount / initial load,
     // use the prop `animateOnMount={true}` on `PoseGroup`.
     return (
-      <PoseGroup>
-        <RoutesContainer
-          // For our .wrapper's flex behavior.
-          style={{ flex: 1 }}
-          className="transition-wrapper"
-          key={location.pathname}
-        >
-          {children}
-        </RoutesContainer>
-      </PoseGroup>
+      // <PoseGroup>
+      //   <RoutesContainer
+      //     // For our .wrapper's flex behavior.
+      //     style={{ flex: 1 }}
+      //     className="transition-wrapper"
+      //     key={location.pathname}
+      //   >
+      //     {children}
+      //   </RoutesContainer>
+      // </PoseGroup>
+      <>{children}</>
     );
   }
 }
