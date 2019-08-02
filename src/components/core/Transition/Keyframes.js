@@ -89,7 +89,6 @@ function Cascade(Keyframes, Duration, DelayBase, Increment) {
     perspective: 1000; */
   `;
 }
-
 export const FadeIn = css`
   opacity: 0;
   ${Cascade(FadeInKeyFrames, 1, 0.25, 1)}

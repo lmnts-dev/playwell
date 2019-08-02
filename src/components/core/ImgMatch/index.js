@@ -23,11 +23,6 @@ const Image = ({ AltText, src, ...props }) => {
     }
   `);
 
-  const match = useMemo(
-    () => data.allFile.edges.find(({ node }) => src === node.relativePath),
-    [data, src]
-  );
-
   return (
     <Img
       className="img"
@@ -41,3 +36,4 @@ const Image = ({ AltText, src, ...props }) => {
 };
 
 export default Image;
+

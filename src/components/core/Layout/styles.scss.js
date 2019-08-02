@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import { Theme, Root } from 'constants/Theme';
 
 // Blocks
-import InnerStyle from 'elements/Inner/styles.scss';
+import InnerStyle from 'components/library/Inner/styles.scss';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////

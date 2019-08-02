@@ -7,15 +7,15 @@ export const Base = {
   // Core Base Measurement
   Size: {
     Lg: 60,
-    Md: 25,
+    Md: 45,
     Sm: 25,
   },
 
   // Root Element Measurement
   Rem: {
     Lg: 14, // px
-    Md: 14, // px
-    Sm: 14, // px
+    Md: 16, // px
+    Sm: 18, // px
   },
 
   // Responsive Breakpoints
@@ -29,7 +29,6 @@ export const Base = {
       Lg: 828, // px
       Md: 640, // px
       Sm: 568, // px
-      Slide: 'calc(100vh - (${Root.Nav.Size} * 2 + ${Root.Footer.Size}))', // Slide Height
     },
   },
 
@@ -37,9 +36,6 @@ export const Base = {
   Grid: {
     SiteWidth: 1640, // px
     Nav: {
-      Orientation: `top`,
-      Fixed: true,
-      LogoPosition: null,
       Size: {
         Lg: 81, // px
         Md: 55, // px
@@ -65,10 +61,10 @@ export const Base = {
         Left: 20, // px
       },
       Md: {
-        Top: 20, // px
-        Bottom: 20, // px
-        Right: 25, // px
-        Left: 25, // px
+        Top: 45, // px
+        Bottom: 45, // px
+        Right: 45, // px
+        Left: 45, // px
       },
       Sm: {
         Top: 20, // px
