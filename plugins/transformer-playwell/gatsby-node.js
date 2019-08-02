@@ -4,11 +4,10 @@
 const axios = require('axios');
 const crypto = require('crypto');
 
-const API_URI =
-  'https://course-finder.play-well.org/webservice/courses';
+const API_URI = 'https://course-finder.play-well.org/webservice/courses';
 
-exports.sourceNodes = async ({ boundActionCreators }) => {
-  const { createNode } = boundActionCreators;
+exports.sourceNodes = async ({ actions }) => {
+  const { createNode } = actions;
   const result = await axios.get(API_URI);
   for (const client of result.data) {
     await createNode({
