@@ -140,9 +140,13 @@ class NavigationBar extends PureComponent {
       // based on Top Level Pages vs Sub Level Pages
       <NavigationStyle>
         <NavigationBodyPadding />
-        <NavigationStyle.Inner className={'nav-top ' + this.state.scrollClass}>
-          <NavigationStyle.Primary>
-            <Brandmark />
+        <NavigationStyle.Inner
+          className={'nav-inner ' + this.state.scrollClass}
+        >
+          <NavigationStyle.Primary className="nav-primary">
+            <Link to="/">
+              <Brandmark />
+            </Link>
             <Linklist
               links={[
                 {
@@ -168,7 +172,7 @@ class NavigationBar extends PureComponent {
               ]}
             />
           </NavigationStyle.Primary>
-          <NavigationStyle.Secondary>
+          <NavigationStyle.Secondary className="nav-secondary">
             <Btn
               Label="Contact"
               IconClass="question-circle"

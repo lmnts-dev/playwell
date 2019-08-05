@@ -125,6 +125,7 @@ export const Theme = {
 
     // Transitions
     Transition: {
+      String: Base.Transition.String, // seconds
       Duration: Base.Transition.Duration + 's', // seconds
       Ease: Base.Transition.Ease, // Cubic Bezier Ease
       CssEase:

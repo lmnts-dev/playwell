@@ -36,4 +36,3 @@ const Image = ({ AltText, src, ...props }) => {
 };
 
 export default Image;
-
