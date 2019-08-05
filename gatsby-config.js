@@ -32,6 +32,19 @@ module.exports = {
       },
     },
 
+    // Set up Prismic.io
+    {
+      resolve: `gatsby-source-prismic`,
+      options: {
+        repositoryName: `playwell`,
+        accessToken: `MC5YVWlSMUJFQUFDRUFzS0tR.77-9ESnvv70eBu-_ve-_vXPvv70vBirvv704Mgfvv73vv73vv73vv73vv73vv73vv73vv73vv70wHO-_vRAtQQ`,
+        linkResolver: ({ node, key, value }) => post => `/${post.uid}`,
+        schemas: {
+          dashboard: require('./src/schemas/content.json'),
+        },
+      },
+    },
+
     // For v1 Site Launch to transform .json data into
     // GraphQL nodes so we can run createPages() in
     // gatsby-node.js
