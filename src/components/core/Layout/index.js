@@ -10,6 +10,7 @@ import { createGlobalStyle } from 'styled-components';
 
 // Vendor
 import { StaticQuery, graphql } from 'gatsby';
+import { ThemeProvider } from 'styled-components';
 
 //  Components
 import Head from 'components/core/Head';
@@ -33,17 +34,19 @@ const Layout = ({
   SecondaryColor,
   TertiaryColor,
 }) => (
-  <SiteGrid>
-    <GlobalStyle />
-    <PageTheme
-      BgColor={BgColor}
-      PrimaryColor={PrimaryColor}
-      SecondaryColor={SecondaryColor}
-      TertiaryColor={TertiaryColor}
-    />
-    <Head />
-    <SiteGrid.Inner>{children}</SiteGrid.Inner>
-  </SiteGrid>
+  <ThemeProvider theme={Theme}>
+    <SiteGrid>
+      <GlobalStyle />
+      <PageTheme
+        BgColor={BgColor}
+        PrimaryColor={PrimaryColor}
+        SecondaryColor={SecondaryColor}
+        TertiaryColor={TertiaryColor}
+      />
+      <Head />
+      <SiteGrid.Inner>{children}</SiteGrid.Inner>
+    </SiteGrid>
+  </ThemeProvider>
 );
 
 const LayoutWithQuery = props => (

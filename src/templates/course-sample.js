@@ -12,7 +12,6 @@ import { Link, StaticQuery, graphql } from 'gatsby';
 import Layout from 'components/core/Layout';
 
 // Constants
-import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -23,9 +22,9 @@ const CourseSample = props => (
     <main
       style={{
         padding: '20px',
-        backgroundColor: Theme.Color.Background,
+        backgroundColor: props => props.Theme.Color.Background,
         flex: '1',
-        color: Theme.Color.Text,
+        color: props => props.Theme.Color.Text,
       }}
     >
       <span>action_type: </span>
