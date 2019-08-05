@@ -8,7 +8,7 @@
 import React from 'react';
 
 // Components
-import Icon from 'elements/Icons';
+import Icon from '../Icons';
 
 // Styles
 import BtnStyle, { BtnStyleExternal, BtnStylePseudo } from './styles.scss';
@@ -24,6 +24,9 @@ const BtnInner = ({
   Label,
   IconFas,
   IconClass,
+  BorderColor,
+  BorderWidth,
+  BorderStyle,
 }) => (
   <BtnStyle.Inner
     className="btn-inner"
@@ -31,6 +34,9 @@ const BtnInner = ({
     TextColor={TextColor}
     Size={Size}
     IconPosition={IconPosition ? IconPosition : null}
+    BorderColor={BorderColor}
+    BorderWidth={BorderWidth}
+    BorderStyle={BorderStyle}
   >
     <span>{Label}</span>
     {IconClass ? <Icon fas={IconFas} Name={IconClass} /> : null}
@@ -45,6 +51,9 @@ const Btn = ({
   IconFas,
   BgColor,
   TextColor,
+  BorderColor,
+  BorderWidth,
+  BorderStyle,
   Size,
   AddClass,
   External,
@@ -66,6 +75,9 @@ const Btn = ({
           Label={Label}
           IconFas={IconFas}
           IconClass={IconClass}
+          BorderColor={BorderColor}
+          BorderWidth={BorderWidth}
+          BorderStyle={BorderStyle}
         />
       </BtnStyleExternal>
     );
@@ -81,6 +93,9 @@ const Btn = ({
             Label={Label}
             IconFas={IconFas}
             IconClass={IconClass}
+            BorderColor={BorderColor}
+            BorderWidth={BorderWidth}
+            BorderStyle={BorderStyle}
           />
         </BtnStylePseudo>
       );
@@ -98,6 +113,9 @@ const Btn = ({
             Label={Label}
             IconFas={IconFas}
             IconClass={IconClass}
+            BorderColor={BorderColor}
+            BorderWidth={BorderWidth}
+            BorderStyle={BorderStyle}
           />
         </BtnStyle>
       );

@@ -44,14 +44,14 @@ BtnStyle.Inner = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0 ${Theme.Base.Size.Md};
+  padding: 0 ${Theme.Base.Size.Sm};
   ${props =>
     props.IconPosition == 'left'
-      ? 'padding-left: calc(' + Theme.Base.Size.Md + '* 1.5);'
+      ? 'padding-left: calc(' + Theme.Base.Size.Sm + '* 2.1);'
       : null}
   ${props =>
     props.IconPosition == 'right'
-      ? 'padding-right: calc(' + Theme.Base.Size.Md + '* 1.5);'
+      ? 'padding-right: calc(' + Theme.Base.Size.Sm + '* 2.1);'
       : null}
   border-radius: 999px;
   cursor: pointer;
@@ -62,7 +62,9 @@ BtnStyle.Inner = styled.span`
   box-shadow: 0px 0px 0px 0px rgba(${Theme.Color.Nightysky}, 0);
   transition: all 0s ease;
   line-height: 0;
-  border: 0;
+  border: ${props => (props.BorderWidth ? props.BorderWidth : '0px')}
+    ${props => (props.BorderStyle ? props.BorderStyle : '')}
+    ${props => (props.BorderColor ? props.BorderColor : '')};
   outline: 0;
   position: relative;
   text-transform: capitalize;
@@ -87,7 +89,7 @@ BtnStyle.Inner = styled.span`
     width: calc(${Root.Size} / 4);
     display: flex;
     position: absolute;
-    top: 50%;
+    top: 48%;
     transform: translateY(-50%);
     ${props =>
       props.IconPosition == 'left'
@@ -118,6 +120,11 @@ BtnStyle.Inner = styled.span`
         transform-origin: center center;
       }
     }
+  }
+
+  span {
+    position: relative;
+    bottom: -2px;
   }
 `;
 

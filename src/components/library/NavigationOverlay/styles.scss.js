@@ -90,10 +90,6 @@ NavigationStyle.Secondary = styled.div`
   align-items: center;
   justify-content: flex-end;
   flex: 1;
-
-  .btn {
-    margin-left: calc(${Root.Size} / 4);
-  }
 `;
 
 // The top padding on the <body> tag for fixed navigation.

@@ -19,7 +19,6 @@ import { Theme, Root } from 'constants/Theme';
 
 // Components
 import Brandmark from 'components/core/Branding/Brandmark';
-import Btn from 'components/library/Btn/';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -135,28 +134,7 @@ class NavigationBar extends PureComponent {
             />
           </NavigationStyle.Primary>
           <NavigationStyle.Secondary>
-            <Btn
-              Label="Contact"
-              IconClass="question-circle"
-              IconPosition="left"
-              Destination="/"
-              TextColor={Theme.Color.Primary}
-              IconFas
-            />
-            <Btn
-              Label="Arizona"
-              Destination="/"
-              BorderStyle="solid"
-              BorderWidth="1px"
-              BorderColor={Theme.Color.Primary}
-              TextColor={Theme.Color.Primary}
-            />
-            <Btn
-              Label="Let's Play"
-              Destination="/"
-              BgColor={Theme.Color.Nova}
-              TextColor={Theme.Color.White}
-            />
+            Secondary Navigation
           </NavigationStyle.Secondary>
         </NavigationStyle.Inner>
       </NavigationStyle>
