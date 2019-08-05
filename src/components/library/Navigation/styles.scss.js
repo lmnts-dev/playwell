@@ -22,7 +22,6 @@ export const NavigationStyle = styled.nav`
   top: 0px;
   left: 0px;
   right: 0px;
-  background: pink;
   z-index: 50;
   display: flex;
   justify-content: center;
@@ -34,7 +33,6 @@ NavigationStyle.Inner = styled.div`
   margin: 0 auto;
   display: flex;
   align-items: center;
-  background: blue;
   justify-content: stretch;
   flex-wrap: nowrap;
   padding-left: ${Root.Grid.Gutter.Left};

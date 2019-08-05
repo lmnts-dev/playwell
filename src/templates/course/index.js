@@ -17,7 +17,7 @@ import Layout from 'components/core/Layout';
 //////////////////////////////////////////////////////////////////////
 
 // Render Page
-const CourseSample = props => (
+const Course = props => (
   <Layout>
     <main
       style={{
@@ -133,7 +133,7 @@ const CourseSample = props => (
   </Layout>
 );
 
-export default CourseSample;
+export default Course;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
