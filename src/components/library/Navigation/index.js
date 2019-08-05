@@ -47,7 +47,7 @@ class OverlayButton extends React.Component {
         overlayVisible: true,
       });
 
-      console.log(this.props.overlayMenuId + ': overlay open');
+      // console.log(this.props.overlayMenuId + ': overlay open');
     }
 
     // If currently visible...
@@ -56,7 +56,7 @@ class OverlayButton extends React.Component {
         overlayVisible: false,
       });
 
-      console.log(this.props.overlayMenuId + ': overlay closed');
+      // console.log(this.props.overlayMenuId + ': overlay closed');
     }
   }
 
@@ -100,11 +100,45 @@ const Linklist = ({ links }) => {
 
 // Navigation Component
 class NavigationBar extends PureComponent {
+  constructor(props) {
+    // Make our props accessible through this.props
+    super(props);
+    // Base styles to change transition state for
+    // collapsing menu hero.
+    this.state = {
+      scrollClass: 'top',
+    };
+
+    // Bind base functions to change transition state for
+    // collapsing menu hero.
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  // Make sure we are listening for scroll once mounted.
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  // Remove listener when not mounted.
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  // Base functions to change transition state for
+  // navigation on scroll
+  handleScroll(event) {
+    if (window.scrollY === 0 && this.state.scrollClass === 'scroll') {
+      this.setState({ scrollClass: 'top' });
+    } else if (window.scrollY !== 0 && this.state.scrollClass !== 'scroll') {
+      this.setState({ scrollClass: 'scroll' });
+    }
+  }
+
   render() {
     return (
       // Query our Navigation data so we can adjust our Navigation styles
       // based on Top Level Pages vs Sub Level Pages
-      <NavigationStyle>
+      <NavigationStyle className={'nav-top ' + this.state.scrollClass}>
         <NavigationBodyPadding />
         <NavigationStyle.Inner>
           <NavigationStyle.Primary>

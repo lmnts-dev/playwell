@@ -24,4 +24,4 @@ const wrapPageElement = ({ element, props }) => {
 export default wrapPageElement;
 
 //////////////////////////////////////////////////////////////////////
-// End Helper 
+// End Helper
