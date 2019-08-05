@@ -138,9 +138,9 @@ class NavigationBar extends PureComponent {
     return (
       // Query our Navigation data so we can adjust our Navigation styles
       // based on Top Level Pages vs Sub Level Pages
-      <NavigationStyle className={'nav-top ' + this.state.scrollClass}>
+      <NavigationStyle>
         <NavigationBodyPadding />
-        <NavigationStyle.Inner>
+        <NavigationStyle.Inner className={'nav-top ' + this.state.scrollClass}>
           <NavigationStyle.Primary>
             <Brandmark />
             <Linklist

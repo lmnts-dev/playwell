@@ -12,6 +12,9 @@ import { Theme, Root } from 'constants/Theme';
 // Keyframe
 import { FadeIn } from 'components/core/Transition/Keyframes';
 
+// Helpers
+import hexToRGB from 'helpers/hexToRGB';
+
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
@@ -37,6 +40,30 @@ NavigationStyle.Inner = styled.div`
   flex-wrap: nowrap;
   padding-left: ${Root.Grid.Gutter.Left};
   padding-right: ${Root.Grid.Gutter.Right};
+  position: relative;
+
+  &:before {
+    content: '';
+    background: ${hexToRGB(Theme.Color.White, 1)};
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: calc(${Root.Nav.Size} * 1.5);
+    z-index: -1;
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: all 0.25s ease;
+  }
+
+  &.scroll {
+    &:before {
+      box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12);
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
 `;
 
 NavigationStyle.Primary = styled.div`
