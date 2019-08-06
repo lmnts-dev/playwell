@@ -1,4 +1,4 @@
-// WrapPageeElement.js:
+WrapPageeElement.js:
 // This helper is to wrap a full page transition around the site,
 // so we can do page transitions in / out. It also aids with SSR.
 
@@ -16,7 +16,7 @@ const wrapPageElement = ({ element, props }) => {
     <ScrollWrapper>
       <Navigation {...props} />
       <Transition {...props}>{element}</Transition>
-      {/* <Footer {...props} /> */}
+      <Footer {...props} />
     </ScrollWrapper>
   );
 };
