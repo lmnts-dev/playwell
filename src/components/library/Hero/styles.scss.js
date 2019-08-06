@@ -16,7 +16,8 @@ import { Base } from 'constants/styles/Base';
 
 export const HeroInnerStyle = styled.div`
   width: 100%;
-  margin: 0;
+  max-width: ${Root.Site.Width};
+  margin: 0 auto;
   position: relative;
   overflow: hidden;
 

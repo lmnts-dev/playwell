@@ -12,7 +12,7 @@ import { graphql } from 'gatsby';
 import Layout from 'components/core/Layout';
 
 // Constants
-import { Theme, Root } from 'constants/Theme';
+import { Box, Flex } from '../components/library/Elements';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -23,9 +23,9 @@ const HomePage = props => (
     <main
       style={{
         padding: '20px',
-        backgroundColor: Theme.Color.Background,
+        backgroundColor: props => props.Theme.Color.Background,
         flex: '1',
-        color: Theme.Color.Text,
+        color: props => props.Theme.Color.Text,
       }}
     >
       <h1 style={{ textAlign: 'center' }}>lmnts.dev</h1>
