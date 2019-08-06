@@ -4,13 +4,13 @@
 //////////////////////////////////////////////////////////////////////
 
 // Core
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
 
 // Keyframe
-import { FadeIn } from 'components/core/Transition/Keyframes';
+import { FadeIn, SlideUp } from 'components/core/Transition/Keyframes';
 
 // Helpers
 import hexToRGB from 'helpers/hexToRGB';
@@ -206,6 +206,37 @@ NavigationOverlayStyle.Sub = styled.div`
   }
 `;
 
+//// The main, larger link navigation
+
+// The loop to iteratively create cascading animation keyframes
+function cascadeSlide(n) {
+  // Define the aniimation
+  const SlideUpAnimation = i => css`
+    animation: ${SlideUp} ${i + 1}s ease 0s 1 normal forwards;
+  `;
+
+  // Create our empty array.
+  let anim = [];
+
+  // Run the loop.
+  for (let i = 0; i < n; i += 1) {
+    anim[i] = css`
+      &:nth-child(${i + 1}) {
+        .nav-item {
+          .label {
+            display: inline-block;
+            ${SlideUpAnimation(i / 2)}
+          }
+        }
+      }
+    `;
+  }
+
+  // Return the array.
+  return anim;
+}
+
+// The styles
 NavigationOverlayStyle.Main = styled.div`
   position: relative;
   flex: 1;
@@ -236,10 +267,15 @@ NavigationOverlayStyle.Main = styled.div`
         text-align: right;
         cursor: pointer;
         margin-bottom: calc(${Root.Size} / 4);
-        ${FadeIn};
         position: relative;
         transform: translateX(0);
         transition: ${Theme.Base.Transition.String};
+        ${cascadeSlide(10)};
+
+        .nav-item {
+          display: block;
+          overflow: hidden;
+        }
 
         svg {
           transform: scale(1.4) translateY(-5px);

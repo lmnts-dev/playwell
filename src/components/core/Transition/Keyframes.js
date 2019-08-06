@@ -27,7 +27,7 @@ export const SlideToRightKeyframes = keyframes`
 `;
 
 // Slide Up
-export const SlideUpKeyframes = keyframes`
+export const SlideUp = keyframes`
   0% {
     transform: translateY(100%);
   }

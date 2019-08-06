@@ -10,7 +10,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { Theme, Root } from 'constants/Theme';
 
 // Keyframe
-import { FadeIn } from 'components/core/Transition/Keyframes';
+import { FadeIn, SlideUp } from 'components/core/Transition/Keyframes';
 
 // Helpers
 import hexToRGB from 'helpers/hexToRGB';
@@ -73,7 +73,6 @@ NavigationStyle.Inner = styled.div`
           height: calc(${Root.Nav.Size} * 1);
         }
       }
-      
     }
 
     .nav-secondary {

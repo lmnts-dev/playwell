@@ -113,19 +113,29 @@ class NavigationOverlay extends PureComponent {
               <div class="bottom">
                 <ul>
                   <li>
-                    <span>Programs</span>
+                    <span className="nav-item">
+                      <span className="label">Programs</span>
+                    </span>
                   </li>
                   <li>
-                    <span>Locations</span>
+                    <span className="nav-item">
+                      <span className="label">Locations</span>
+                    </span>
                   </li>
                   <li>
-                    <span>Who We Are</span>
+                    <span className="nav-item">
+                      <span className="label">Who We Are</span>
+                    </span>
                   </li>
                   <li>
-                    <span>Parties</span>
+                    <span className="nav-item">
+                      <span className="label">Parties</span>
+                    </span>
                   </li>
                   <li>
-                    <span>Community</span>
+                    <span className="nav-item">
+                      <span className="label">Community</span>
+                    </span>
                   </li>
                 </ul>
               </div>
