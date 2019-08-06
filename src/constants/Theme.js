@@ -154,6 +154,7 @@ export const Theme = {
     Base.Media.Width.Sm + 'px',
     Base.Media.Width.Md + 'px',
     Base.Media.Width.Lg + 'px',
+    '1200px',
   ],
   colors: Color,
   space: [
@@ -163,7 +164,9 @@ export const Theme = {
     'calc(var(--GutterLeft) * 3)',
     'calc(var(--GutterLeft) * 4)',
     'calc(var(--GutterLeft) * 5)',
-    'calc(var(--GutterLeft) * 6)'
+    'calc(var(--GutterLeft) * 6)',
+    'calc(var(--GutterLeft) * 7)',
+    'calc(var(--GutterLeft) * 8)'
   ],
 };
 

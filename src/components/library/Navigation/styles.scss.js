@@ -95,7 +95,7 @@ NavigationStyle.Secondary = styled.div`
 // The top padding on the <body> tag for fixed navigation.
 export const NavigationBodyPadding = createGlobalStyle`
   body {
-    padding-top: calc(${Root.Nav.Size} * 1.5);
+    /* padding-top: calc(${Root.Nav.Size} * 1.5); */
   }
 `;
 

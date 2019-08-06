@@ -10,11 +10,10 @@ import { graphql } from 'gatsby';
 
 // Components
 import Layout from 'components/core/Layout';
-import SimpleHero from 'components/library/Hero/SimpleHero';
+import ProgramHero from 'components/library/Hero/ProgramHero';
 import Btn from 'components/library/Btn';
 
 // Styles
-import { ProgramHero } from './styles.scss';
 
 // Constants
 import { Box, Flex } from 'components/library/Elements';
@@ -35,22 +34,15 @@ const HeroProps = {
 // Render Page
 const HomePage = props => (
   <Layout>
-    <Box as="section" bg="Sky" px={1} color="white">
-      <ProgramHero>
-        <Flex width={1} flexWrap="wrap">
-          <Box width={[1, 1, 1 / 2, 1 / 2]} pl={[0, 0, 2, 6]}>
-            <h2>Join a team of creative problem solvers &amp; creators</h2>
-            <h6>We are passionate specialists in STEM Education.</h6>
-            <Btn
-              Label="View Listings"
-              BgColor={Theme.Color.Galaxy}
-              TextColor="white"
-            />
-          </Box>
-          <Box width={[1, 1, 1 / 2, 1 / 2]} pl={[0, 0, 2, 5]} />
-        </Flex>
-      </ProgramHero>
-    </Box>
+    <ProgramHero>
+      <h2>Join a team of creative problem solvers &amp; creators</h2>
+      <h6>We are passionate specialists in STEM Education.</h6>
+      <Btn
+        Label="View Listings"
+        BgColor={Theme.Color.Galaxy}
+        TextColor="white"
+      />
+    </ProgramHero>
   </Layout>
 );
 
