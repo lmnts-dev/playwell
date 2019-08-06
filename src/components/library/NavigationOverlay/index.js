@@ -63,32 +63,42 @@ class NavigationOverlay extends PureComponent {
                   <ul class="focus-links">
                     <li class="focus">
                       <Link to="/">
-                        <span class="label">Large Link</span>
-                        <Icon Name="carat" />
+                        <span class="nav-item">
+                          <span class="label">Large Link</span>
+                          <Icon Name="carat" />
+                        </span>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <span class="label">Large Link</span>
-                        <Icon Name="carat" />
+                        <span class="nav-item">
+                          <span class="label">Large Link</span>
+                          <Icon Name="carat" />
+                        </span>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <span class="label">Large Link</span>
-                        <Icon Name="carat" />
+                        <span class="nav-item">
+                          <span class="label">Large Link</span>
+                          <Icon Name="carat" />
+                        </span>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <span class="label">Large Link</span>
-                        <Icon Name="carat" />
+                        <span class="nav-item">
+                          <span class="label">Large Link</span>
+                          <Icon Name="carat" />
+                        </span>
                       </Link>
                     </li>
                     <li>
                       <Link to="/">
-                        <span class="label">Large Link</span>
-                        <Icon Name="carat" />
+                        <span class="nav-item">
+                          <span class="label">Large Link</span>
+                          <Icon Name="carat" />
+                        </span>
                       </Link>
                     </li>
                   </ul>

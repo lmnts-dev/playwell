@@ -10,7 +10,12 @@ import styled, { css } from 'styled-components';
 import { Theme, Root } from 'constants/Theme';
 
 // Keyframe
-import { FadeIn, SlideUp } from 'components/core/Transition/Keyframes';
+import {
+  FadeIn,
+  SlideUp,
+  SlideToRight,
+  SlideToLeft,
+} from 'components/core/Transition/Keyframes';
 
 // Helpers
 import hexToRGB from 'helpers/hexToRGB';
@@ -19,6 +24,7 @@ import hexToRGB from 'helpers/hexToRGB';
 //////////////////////////////////////////////////////////////////////
 
 // The Navigation Container
+
 export const NavigationOverlayStyle = styled.nav`
   position: fixed;
   width: 100vw;
@@ -48,6 +54,7 @@ NavigationOverlayStyle.Sub = styled.div`
   min-width: 380px;
   display: flex;
   flex-direction: column;
+  animation: ${SlideToRight} 1s ease 0s 1 normal forwards;
   background: ${Theme.Color.White};
   padding: calc(${Root.Size} / 2) calc(${Root.Size} / 6) calc(${Root.Size} / 2)
     calc(${Root.Size} / 2);
@@ -134,24 +141,34 @@ NavigationOverlayStyle.Sub = styled.div`
             align-items: stretch;
             justify-content: space-between;
             overflow: hidden;
+            ${cascadeSlideToLeft(10)}
 
             a {
               flex: 1;
               display: flex;
-              align-items: center;
+              align-items: stretch;
               justify-content: space-between;
-              padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
               font-weight: bold;
               font-size: calc(${Root.Size} / 2);
               line-height: 0;
               text-decoration: none;
               border-radius: 99px 8px 8px 99px;
               background: rgba(0, 0, 0, 0);
+              overflow: hidden;
 
-              /* Stupid font repositioning to center it */
-              .label {
-                position: relative;
-                top: 3px;
+              .nav-item {
+                display: flex;
+                line-height: 0;
+                flex: 1;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
+
+                /* Stupid font repositioning to center it */
+                .label {
+                  position: relative;
+                  top: 3px;
+                }
               }
 
               svg {
@@ -208,34 +225,6 @@ NavigationOverlayStyle.Sub = styled.div`
 
 //// The main, larger link navigation
 
-// The loop to iteratively create cascading animation keyframes
-function cascadeSlide(n) {
-  // Define the aniimation
-  const SlideUpAnimation = i => css`
-    animation: ${SlideUp} ${i + 1}s ease 0s 1 normal forwards;
-  `;
-
-  // Create our empty array.
-  let anim = [];
-
-  // Run the loop.
-  for (let i = 0; i < n; i += 1) {
-    anim[i] = css`
-      &:nth-child(${i + 1}) {
-        .nav-item {
-          .label {
-            display: inline-block;
-            ${SlideUpAnimation(i / 2)}
-          }
-        }
-      }
-    `;
-  }
-
-  // Return the array.
-  return anim;
-}
-
 // The styles
 NavigationOverlayStyle.Main = styled.div`
   position: relative;
@@ -270,7 +259,7 @@ NavigationOverlayStyle.Main = styled.div`
         position: relative;
         transform: translateX(0);
         transition: ${Theme.Base.Transition.String};
-        ${cascadeSlide(10)};
+        ${cascadeSlideUp(10)};
 
         .nav-item {
           display: block;
@@ -302,6 +291,62 @@ NavigationOverlayStyle.Main = styled.div`
     }
   }
 `;
+
+// Keyframes
+//////////////////////////////////////////////////////////////////////
+
+// The loop to iteratively create cascading animation keyframes
+function cascadeSlideUp(n) {
+  // Define the aniimation
+  const SlideUpAnimation = i => css`
+    animation: ${SlideUp} ${i + 1}s ease 0s 1 normal forwards;
+  `;
+
+  // Create our empty array.
+  let anim = [];
+
+  // Run the loop.
+  for (let i = 0; i < n; i += 1) {
+    anim[i] = css`
+      &:nth-child(${i + 1}) {
+        .nav-item {
+          .label {
+            display: inline-block;
+            ${SlideUpAnimation(i / 2)}
+          }
+        }
+      }
+    `;
+  }
+
+  // Return the array.
+  return anim;
+}
+
+// The loop to iteratively create cascading animation keyframes
+function cascadeSlideToLeft(n) {
+  // Define the aniimation
+  const SlideToLeftAnimation = i => css`
+    animation: ${SlideToLeft} ${i + 1}s ease 0s 1 normal forwards;
+  `;
+
+  // Create our empty array.
+  let anim = [];
+
+  // Run the loop.
+  for (let i = 0; i < n; i += 1) {
+    anim[i] = css`
+      &:nth-child(${i + 1}) {
+        .nav-item {
+          ${SlideToLeftAnimation(i / 2)}
+        }
+      }
+    `;
+  }
+
+  // Return the array.
+  return anim;
+}
 
 //////////////////////////////////////////////////////////////////////
 // End Component

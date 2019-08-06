@@ -205,7 +205,7 @@ class NavigationBar extends PureComponent {
 
 const Navigation = () => (
   <>
-    <NavigationOverlay />
+    {/* <NavigationOverlay /> */}
     <NavigationBar />
   </>
 );
