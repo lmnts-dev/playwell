@@ -10,7 +10,7 @@ import { graphql } from 'gatsby';
 
 // Components
 import Layout from 'components/core/Layout';
-import ProgramHero from 'components/library/Hero/ProgramHero';
+import SplitHero from 'components/library/Hero/SplitHero';
 import Btn from 'components/library/Btn';
 
 // Styles
@@ -19,22 +19,23 @@ import Btn from 'components/library/Btn';
 import { Box, Flex } from 'components/library/Elements';
 import { Theme, Root } from 'constants/Theme';
 
+// Data
+import BgImage from './assets/dev-image.jpeg';
+
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-import BgImage from './assets/dev-image.jpeg';
-
+// Props
 const HeroProps = {
-  Background: Theme.Color.Secondary,
-  TextColor: 'white',
-  Padding: [6, 0, 3, 1],
-  ImgMatch: BgImage,
+  bg: 'Sky',
+  color: 'White',
+  flexDirection: 'row',
 };
 
 // Render Page
 const HomePage = props => (
   <Layout>
-    <ProgramHero>
+    <SplitHero {...HeroProps}>
       <h2>Join a team of creative problem solvers &amp; creators</h2>
       <h6>We are passionate specialists in STEM Education.</h6>
       <Btn
@@ -42,7 +43,7 @@ const HomePage = props => (
         BgColor={Theme.Color.Galaxy}
         TextColor="white"
       />
-    </ProgramHero>
+    </SplitHero>
   </Layout>
 );
 

@@ -49,7 +49,7 @@ export const SlideUp = keyframes`
 `;
 
 // Fade In
-export const FadeInKeyFrames = keyframes`
+export const FadeIn = keyframes`
   0% {
     opacity: 0;
   }

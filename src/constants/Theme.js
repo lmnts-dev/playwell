@@ -167,7 +167,9 @@ export const Theme = {
     'calc(var(--GutterLeft) * 5)',
     'calc(var(--GutterLeft) * 6)',
     'calc(var(--GutterLeft) * 7)',
-    'calc(var(--GutterLeft) * 8)'
+    'calc(var(--GutterLeft) * 8)',
+    'calc(var(--GutterLeft) * 9)',
+    'calc(var(--GutterLeft) * 10)',
   ],
 };
 
