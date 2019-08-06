@@ -26,7 +26,7 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const SimpleHero = ({
+const ProgramHero = ({
   Background,
   imgRight,
   imgLeft,
@@ -79,7 +79,7 @@ const SimpleHero = ({
   </SimpleHeroStyle>
 );
 
-export default SimpleHero;
+export default ProgramHero;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

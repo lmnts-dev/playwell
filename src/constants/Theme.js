@@ -148,6 +148,23 @@ export const Theme = {
 
   // Core Palette & Colors
   Color: Color,
+
+  // Styled System Settings
+  breakpoints: [
+    Base.Media.Width.Sm + 'px',
+    Base.Media.Width.Md + 'px',
+    Base.Media.Width.Lg + 'px',
+  ],
+  colors: Color,
+  space: [
+    '0',
+    'var(--GutterLeft)',
+    'calc(var(--GutterLeft) * 2)',
+    'calc(var(--GutterLeft) * 3)',
+    'calc(var(--GutterLeft) * 4)',
+    'calc(var(--GutterLeft) * 5)',
+    'calc(var(--GutterLeft) * 6)'
+  ],
 };
 
 // Assign CSS Variables for automatic Media Queries.

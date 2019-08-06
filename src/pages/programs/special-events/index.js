@@ -10,26 +10,47 @@ import { graphql } from 'gatsby';
 
 // Components
 import Layout from 'components/core/Layout';
+import SimpleHero from 'components/library/Hero/SimpleHero';
+import Btn from 'components/library/Btn';
+
+// Styles
+import { ProgramHero } from './styles.scss';
 
 // Constants
+import { Box, Flex } from 'components/library/Elements';
+import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+import BgImage from './assets/dev-image.jpeg';
+
+const HeroProps = {
+  Background: Theme.Color.Secondary,
+  TextColor: 'white',
+  Padding: [6, 0, 3, 1],
+  ImgMatch: BgImage,
+};
+
 // Render Page
 const HomePage = props => (
   <Layout>
-    <main
-      style={{
-        padding: '20px',
-        backgroundColor: props => props.Theme.Color.Background,
-        flex: '1',
-        color: props => props.Theme.Color.Text,
-      }}
-    >
-      <h1 style={{ textAlign: 'center' }}>Helping kids and adults understand through play</h1>
-      <p style={{ textAlign: 'center', width: '100%' }}>react.js starter v0</p>
-    </main>
+    <Box as="section" bg="Sky" px={1} color="white">
+      <ProgramHero>
+        <Flex width={1} flexWrap="wrap">
+          <Box width={[1, 1, 1 / 2, 1 / 2]} pl={[0, 0, 2, 6]}>
+            <h2>Join a team of creative problem solvers &amp; creators</h2>
+            <h6>We are passionate specialists in STEM Education.</h6>
+            <Btn
+              Label="View Listings"
+              BgColor={Theme.Color.Galaxy}
+              TextColor="white"
+            />
+          </Box>
+          <Box width={[1, 1, 1 / 2, 1 / 2]} pl={[0, 0, 2, 5]} />
+        </Flex>
+      </ProgramHero>
+    </Box>
   </Layout>
 );
 

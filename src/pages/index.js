@@ -12,7 +12,7 @@ import { graphql } from 'gatsby';
 import Layout from 'components/core/Layout';
 
 // Constants
-import { Box } from '../components/elements';
+import { Box, Flex } from '../components/library/Elements';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -30,9 +30,6 @@ const HomePage = props => (
     >
       <h1 style={{ textAlign: 'center' }}>lmnts.dev</h1>
       <p style={{ textAlign: 'center', width: '100%' }}>react.js starter v0</p>
-      <Box bg="black" width={['100%', '50%']} py={80} color="white">
-        Hello
-      </Box>
     </main>
   </Layout>
 );

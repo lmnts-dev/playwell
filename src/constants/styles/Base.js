@@ -86,7 +86,7 @@ export const Base = {
 
   // Buttons
   Button: {
-    Lg: 44, // px
+    Lg: 35, // px
     Md: 35, // px
     Sm: 35, // px
   },
