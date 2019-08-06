@@ -10,7 +10,10 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { Theme, Root } from 'constants/Theme';
 
 // Keyframe
-import { FadeIn } from 'components/core/Transition/Keyframes';
+import { FadeIn, SlideUp } from 'components/core/Transition/Keyframes';
+
+// Helpers
+import hexToRGB from 'helpers/hexToRGB';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -37,13 +40,64 @@ NavigationStyle.Inner = styled.div`
   flex-wrap: nowrap;
   padding-left: ${Root.Grid.Gutter.Left};
   padding-right: ${Root.Grid.Gutter.Right};
+  position: relative;
+
+  &:before {
+    content: '';
+    background: ${hexToRGB(Theme.Color.White, 1)};
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: calc(${Root.Nav.Size} * 1);
+    z-index: -1;
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: ${Theme.Base.Transition.String};
+  }
+
+  &.scroll {
+    &:before {
+      box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.12);
+      opacity: 1;
+      transform: translateY(0%);
+    }
+
+    .nav-primary {
+      height: calc(${Root.Nav.Size} * 1);
+
+      li {
+        a,
+        button {
+          height: calc(${Root.Nav.Size} * 1);
+        }
+      }
+    }
+
+    .nav-secondary {
+      height: calc(${Root.Nav.Size} * 1);
+    }
+
+    .brandmark {
+      transform: scale(0.6);
+    }
+  }
 `;
 
 NavigationStyle.Primary = styled.div`
   height: calc(${Root.Nav.Size} * 1.5);
+  transition: ${Theme.Base.Transition.String};
   display: flex;
   align-items: center;
   flex: 1.5;
+
+  /* The Branding */
+  .brandmark {
+    transform: scale(1);
+    transform-origin: center center;
+    transition: ${Theme.Base.Transition.String};
+  }
 
   /* The Linklist */
   ul {
@@ -53,24 +107,24 @@ NavigationStyle.Primary = styled.div`
     padding-left: calc(${Root.Size} / 2);
 
     /* The links themselves */
-    a,
-    button {
-      height: calc(${Root.Nav.Size} * 1.5);
-      text-decoration: none;
-      font-weight: 700;
-      color: ${Theme.Color.Text};
-      display: inline-flex;
-      align-items: center;
-      padding: 0 calc(${Root.Size} / 4);
-
-      &:hover {
-        background-color: rgba(0, 0, 0, 0.02);
-      }
-    }
-
     li {
       display: inline-flex;
       align-items: center;
+      a,
+      button {
+        height: calc(${Root.Nav.Size} * 1.5);
+        transition: ${Theme.Base.Transition.String};
+        text-decoration: none;
+        font-weight: 700;
+        color: ${Theme.Color.Text};
+        display: inline-flex;
+        align-items: center;
+        padding: 0 calc(${Root.Size} / 4);
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.02);
+        }
+      }
     }
 
     /* This is the button used to queue linklist overlays. */
@@ -86,10 +140,15 @@ NavigationStyle.Primary = styled.div`
 
 NavigationStyle.Secondary = styled.div`
   height: calc(${Root.Nav.Size} * 1.5);
+  transition: ${Theme.Base.Transition.String};
   display: flex;
   align-items: center;
   justify-content: flex-end;
   flex: 1;
+
+  .btn {
+    margin-left: calc(${Root.Size} / 4);
+  }
 `;
 
 // The top padding on the <body> tag for fixed navigation.

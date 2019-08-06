@@ -13,15 +13,15 @@ import Footer from 'components/library/Footer';
 
 const wrapPageElement = ({ element, props }) => {
   return (
-    <ScrollWrapper>
+    <>
       <Navigation {...props} />
       <Transition {...props}>{element}</Transition>
       <Footer {...props} />
-    </ScrollWrapper>
+    </>
   );
 };
 
 export default wrapPageElement;
 
 //////////////////////////////////////////////////////////////////////
-// End Helper 
+// End Helper

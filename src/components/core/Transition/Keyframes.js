@@ -16,7 +16,7 @@ import { Base } from 'constants/styles/Base';
 //////////////////////////////////////////////////////////////////////
 
 // Slide to Right
-export const SlideToRightKeyframes = keyframes`
+export const SlideToRight = keyframes`
   0% {
     transform: translateX(-100%);
   }
@@ -26,8 +26,19 @@ export const SlideToRightKeyframes = keyframes`
   }
 `;
 
+// Slide to Right
+export const SlideToLeft = keyframes`
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+`;
+
 // Slide Up
-export const SlideUpKeyframes = keyframes`
+export const SlideUp = keyframes`
   0% {
     transform: translateY(100%);
   }
@@ -67,62 +78,6 @@ export const FadeIn75KeyFrames = keyframes`
 
   100% {
     opacity: .75;
-  }
-`;
-
-function Cascade(Keyframes, Duration, DelayBase, Increment) {
-  const DelayScale = DelayBase * Increment;
-
-  return css`
-    animation: ${Keyframes} ${Duration}s ${Theme.Base.Transition.CssEase} 1;
-    animation-delay: ${DelayScale}s;
-    animation-fill-mode: forwards;
-
-    /* -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    backface-visibility: hidden; */
-
-    /* -webkit-perspective: 1000;
-    -moz-perspective: 1000;
-    -ms-perspective: 1000;
-    perspective: 1000; */
-  `;
-}
-export const FadeIn = css`
-  opacity: 0;
-  ${Cascade(FadeInKeyFrames, 1, 0.25, 1)}
-  &:first-child {
-    opacity: 0;
-    ${Cascade(FadeInKeyFrames, 1, 0.25, 1.3)}
-  }
-  &:nth-child(2) {
-    opacity: 0;
-    ${Cascade(FadeInKeyFrames, 1, 0.25, 1.4)}
-  }
-  &:nth-child(3) {
-    opacity: 0;
-    ${Cascade(FadeInKeyFrames, 1, 0.25, 1.5)}
-  }
-  &:nth-child(4) {
-    opacity: 0;
-    ${Cascade(FadeInKeyFrames, 1, 0.25, 1.6)}
-  }
-  &:nth-child(5) {
-    opacity: 0;
-    ${Cascade(FadeInKeyFrames, 1, 0.25, 1.7)}
-  }
-  &:nth-child(6) {
-    opacity: 0;
-    ${Cascade(FadeInKeyFrames, 1, 0.25, 1.8)}
-  }
-  &:nth-child(7) {
-    opacity: 0;
-    ${Cascade(FadeInKeyFrames, 1, 0.25, 1.9)}
-  }
-  &:nth-child(8) {
-    opacity: 0;
-    ${Cascade(FadeInKeyFrames, 1, 0.25, 2)}
   }
 `;
 

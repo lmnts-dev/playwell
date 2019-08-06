@@ -34,11 +34,11 @@ export const Base = {
 
   // Site Grid
   Grid: {
-    SiteWidth: 1640, // px
+    SiteWidth: 1620, // px
     Nav: {
       Size: {
         Lg: 81, // px
-        Md: 55, // px
+        Md: 60, // px
         Sm: 55, // px
       },
     },
@@ -100,6 +100,7 @@ export const Base = {
 
   // Transitions
   Transition: {
+    String: 'all 0.25s ease',
     Duration: 0.25, // seconds
     Ease: [0.29, 0.77, 0.57, 0.85], // Cubic Bezier Ease
     Page: 2000, // milliseconds. Try to not go lower than 350ms or it gets buggy. TODO.

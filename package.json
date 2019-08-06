@@ -5,7 +5,7 @@
   "scripts": {
     "start": "npm run develop",
     "clean": "rimraf .cache public",
-    "develop": "bash castle.sh && npm run clean && gatsby develop -S",
+    "dev": "bash castle.sh && npm run clean && gatsby develop -S",
     "push": "npm run build && git add . && gitmoji -c && git push",
     "serve": "gatsby serve",
     "ssr": "npm run build && npm run serve",
@@ -68,6 +68,7 @@
     "gatsby-plugin-sass": "^2.0.11",
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-json": "^2.1.11",
+    "gatsby-source-prismic": "^3.0.0-alpha.3",
     "jquery": "^3.4.1",
     "lighthouse": "^4.0.0",
     "lodash.get": "^4.4.2",

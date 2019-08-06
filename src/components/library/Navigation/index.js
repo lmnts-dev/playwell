@@ -19,6 +19,8 @@ import { Theme, Root } from 'constants/Theme';
 
 // Components
 import Brandmark from 'components/core/Branding/Brandmark';
+import Btn from 'components/library/Btn/';
+import NavigationOverlay from 'components/library/NavigationOverlay/';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -46,7 +48,7 @@ class OverlayButton extends React.Component {
         overlayVisible: true,
       });
 
-      console.log(this.props.overlayMenuId + ': overlay open');
+      // console.log(this.props.overlayMenuId + ': overlay open');
     }
 
     // If currently visible...
@@ -55,7 +57,7 @@ class OverlayButton extends React.Component {
         overlayVisible: false,
       });
 
-      console.log(this.props.overlayMenuId + ': overlay closed');
+      // console.log(this.props.overlayMenuId + ': overlay closed');
     }
   }
 
@@ -99,15 +101,53 @@ const Linklist = ({ links }) => {
 
 // Navigation Component
 class NavigationBar extends PureComponent {
+  constructor(props) {
+    // Make our props accessible through this.props
+    super(props);
+    // Base styles to change transition state for
+    // collapsing menu hero.
+    this.state = {
+      scrollClass: 'top',
+    };
+
+    // Bind base functions to change transition state for
+    // collapsing menu hero.
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  // Make sure we are listening for scroll once mounted.
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  // Remove listener when not mounted.
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  // Base functions to change transition state for
+  // navigation on scroll
+  handleScroll(event) {
+    if (window.scrollY === 0 && this.state.scrollClass === 'scroll') {
+      this.setState({ scrollClass: 'top' });
+    } else if (window.scrollY !== 0 && this.state.scrollClass !== 'scroll') {
+      this.setState({ scrollClass: 'scroll' });
+    }
+  }
+
   render() {
     return (
       // Query our Navigation data so we can adjust our Navigation styles
       // based on Top Level Pages vs Sub Level Pages
       <NavigationStyle>
         <NavigationBodyPadding />
-        <NavigationStyle.Inner>
-          <NavigationStyle.Primary>
-            <Brandmark />
+        <NavigationStyle.Inner
+          className={'nav-inner ' + this.state.scrollClass}
+        >
+          <NavigationStyle.Primary className="nav-primary">
+            <Link to="/">
+              <Brandmark />
+            </Link>
             <Linklist
               links={[
                 {
@@ -133,8 +173,29 @@ class NavigationBar extends PureComponent {
               ]}
             />
           </NavigationStyle.Primary>
-          <NavigationStyle.Secondary>
-            Secondary Navigation
+          <NavigationStyle.Secondary className="nav-secondary">
+            <Btn
+              Label="Contact"
+              IconClass="question-circle"
+              IconPosition="left"
+              Destination="/"
+              TextColor={Theme.Color.Primary}
+              IconFas
+            />
+            <Btn
+              Label="Arizona"
+              Destination="/"
+              BorderStyle="solid"
+              BorderWidth="1px"
+              BorderColor={Theme.Color.Primary}
+              TextColor={Theme.Color.Primary}
+            />
+            <Btn
+              Label="Let's Play"
+              Destination="/"
+              BgColor={Theme.Color.Nova}
+              TextColor={Theme.Color.White}
+            />
           </NavigationStyle.Secondary>
         </NavigationStyle.Inner>
       </NavigationStyle>
@@ -142,12 +203,9 @@ class NavigationBar extends PureComponent {
   }
 }
 
-// We use this with ReactDOM.createPortal.
-const NavigationOverlay = () => <div id="navigation-overlay" />;
-
 const Navigation = () => (
   <>
-    <NavigationOverlay />
+    {/* <NavigationOverlay /> */}
     <NavigationBar />
   </>
 );
