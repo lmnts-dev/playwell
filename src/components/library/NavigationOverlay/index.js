@@ -6,9 +6,7 @@
 
 // Core
 import React, { PureComponent } from 'react';
-import ReactDOM from 'react-dom';
 import { StaticQuery, graphql, Link } from 'gatsby';
-import Device from './../../core/DeviceQuery';
 
 // Styles
 import { NavigationOverlayStyle } from './styles.scss';
@@ -36,23 +34,27 @@ class NavigationOverlay extends PureComponent {
           <NavigationOverlayStyle.Sub className="nav-sub">
             <div class="inner">
               <div class="top">
-                <div class="overlay-close">
-                  <Icon Name="carat" />
+                <div class="top-main">
+                  <div class="overlay-close">
+                    <Icon Name="carat" />
+                  </div>
+                  <div class="overlay-branding">
+                    <Link to="/">
+                      <Brandmark />
+                    </Link>
+                  </div>
                 </div>
-                <div class="overlay-branding">
-                  <Link to="/">
-                    <Brandmark />
-                  </Link>
-                </div>
-                <div class="overlay-contact">
-                  <Btn
-                    Label="Contact"
-                    IconClass="question-circle"
-                    IconPosition="left"
-                    Destination="/"
-                    TextColor={Theme.Color.Primary}
-                    IconFas
-                  />
+                <div class="top-tools">
+                  <div class="overlay-contact">
+                    <Btn
+                      Label="Contact"
+                      IconClass="question-circle"
+                      IconPosition="left"
+                      Destination="/"
+                      TextColor={Theme.Color.Primary}
+                      IconFas
+                    />
+                  </div>
                 </div>
               </div>
               <div class="bottom">
@@ -121,6 +123,9 @@ class NavigationOverlay extends PureComponent {
               </div>
 
               <div class="bottom">
+                <div class="overlay-icon">
+                  <Icon Name="gear" />
+                </div>
                 <ul>
                   <li>
                     <span className="nav-item">

@@ -49,40 +49,18 @@ export const SlideUp = keyframes`
 `;
 
 // Fade In
-export const FadeInKeyFrames = keyframes`
+export const FadeIn = keyframes`
   0% {
     opacity: 0;
   }
 
   100% {
     opacity: 1;
-  }
-`;
-
-// Fade In to 60% Opacity
-export const FadeIn60KeyFrames = keyframes`
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: .6;
-  }
-`;
-
-// Fade In to 60% Opacity
-export const FadeIn75KeyFrames = keyframes`
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: .75;
   }
 `;
 
 // Fade Out
-export const FadeOutKeyFrames = keyframes`
+export const FadeOut = keyframes`
   0% {
     opacity: 1;
   }
@@ -92,10 +70,15 @@ export const FadeOutKeyFrames = keyframes`
   }
 `;
 
-export const FadeOut = css`
-  animation: ${FadeOutKeyFrames} ${Theme.Base.Transition.Duration}
-    ${Theme.Base.Transition.CssEase} 1;
-`;
+// Rotate
+export const Rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+`
 
 //////////////////////////////////////////////////////////////////////
 // End Component

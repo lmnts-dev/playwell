@@ -4,11 +4,11 @@
 const axios = require('axios');
 const crypto = require('crypto');
 
-const API_URI = 'https://course-finder.play-well.org/webservice/courses';
+const CLIENT_API_URI = 'https://course-finder.play-well.org/webservice/courses';
 
 exports.sourceNodes = async ({ actions }) => {
   const { createNode } = actions;
-  const result = await axios.get(API_URI);
+  const result = await axios.get(CLIENT_API_URI);
   for (const client of result.data) {
     await createNode({
       children: [],
@@ -18,6 +18,8 @@ exports.sourceNodes = async ({ actions }) => {
       public_note: client.public_note,
       location_lng: client.location_lng,
       location_lat: client.location_lat,
+      state_id: client.state_id,
+      county_id: client.county_id,
       client_location_name: client.client_location_name,
       courses: client.courses,
       parent: null,

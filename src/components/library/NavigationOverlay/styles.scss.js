@@ -15,6 +15,7 @@ import {
   SlideUp,
   SlideToRight,
   SlideToLeft,
+  Rotate,
 } from 'components/core/Transition/Keyframes';
 
 // Helpers
@@ -69,7 +70,16 @@ NavigationOverlayStyle.Sub = styled.div`
       flex-wrap: nowrap;
       align-items: center;
       justify-content: space-between;
-      ${FadeIn};
+
+      .top-main {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .brandmark {
+          margin-left: calc(${Root.Size} / 2);
+        }
+      }
 
       .overlay-close {
         background: rgba(0, 0, 0, 0);
@@ -87,11 +97,11 @@ NavigationOverlayStyle.Sub = styled.div`
         }
 
         &:hover {
-          background: rgba(0, 0, 0, 0.02);
+          background: ${Theme.Color.Cream};
         }
 
         &:active {
-          background: rgba(0, 0, 0, 0.04);
+          background: ${Theme.Color.Blush};
         }
       }
     }
@@ -177,7 +187,7 @@ NavigationOverlayStyle.Sub = styled.div`
               }
 
               &:hover {
-                background: rgba(0, 0, 0, 0.02);
+                background: ${Theme.Color.Cream};
 
                 svg {
                   transform: translateX(35%);
@@ -185,7 +195,7 @@ NavigationOverlayStyle.Sub = styled.div`
               }
 
               &:active {
-                background: rgba(0, 0, 0, 0.04);
+                background: ${Theme.Color.Blush};
               }
             }
 
@@ -231,7 +241,7 @@ NavigationOverlayStyle.Main = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: calc(${Root.Size} * 1.5);
+  padding: calc(${Root.Size} / 1.25) calc(${Root.Size} * 1.5);
 
   .inner {
     flex: 1;
@@ -288,6 +298,41 @@ NavigationOverlayStyle.Main = styled.div`
           transform: translateX(calc((${Root.Size} / 2) * -1));
         }
       }
+    }
+
+    .bottom {
+      flex-direction: column;
+      align-items: flex-end;
+
+      .overlay-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .ico {
+          width: 17vh;
+          height: 17vh;
+          animation: ${Rotate} 20s infinite linear;
+
+          svg {
+            fill: none;
+            stroke: ${Theme.Color.White};
+            stroke-width: 1px;
+            stroke-dashoffset: 5px;
+            stroke-dasharray: 5px;
+            transition: ${Theme.Base.Transition.String};
+
+            &:hover {
+              stroke-dashoffset: 0px;
+              stroke-dasharray: 100px;
+            }
+          }
+        }
+      }
+    }
+
+    .top {
+      padding-bottom: ${Root.Size};
     }
   }
 `;
