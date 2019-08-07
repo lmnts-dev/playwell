@@ -10,7 +10,7 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const CoggWheel = () => (
+export const CoggWheel = () => (
   <svg width="120%" viewBox="0 0 334 334" version="1.1" className="coggwheel">
     <g id="coggmark">
       <path

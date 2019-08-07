@@ -8,13 +8,14 @@
 import React from 'react';
 
 // Helpers
-import HeroContainer from '../Hero';
+import HeroContainer from '../HeroContainer';
 
 // Styles
 import { SplitHeroStyle } from './styles.scss';
 
 // Components
 import CoggRotator from 'components/library/CoggRotator';
+import PlayButton from 'components/library/Hero/PlayButton';
 import ImgMatch from 'components/core/ImgMatch';
 import ImgQuery from 'components/core/ImgQuery';
 import { Box, Flex } from 'components/library/Elements';
@@ -75,32 +76,8 @@ const SplitHero = ({
             </div>
           ) : null}
         </Box>
-        <Box
-          className="coggbox"
-          css={css`
-            position: absolute;
-            top: calc(${Theme.Root.Size} * -1.2);
-            left: calc(${Theme.Root.Size} * -1.2);
-            z-index: 0;
-          `}
-        >
-          <CoggWheel />
-        </Box>
-        <Box
-          className="coggbox"
-          bg="magenta"
-          p={[2]}
-          css={css`
-            position: absolute;
-            z-index: 2;
-            border-radius: 999em;
-            font-size: 4rem;
-            top: calc(${Theme.Root.Size} * -1.2);
-            transform: translateX(-50%) translateY(170%);
-          `}
-        >
-          &#x25BA;
-        </Box>
+        <CoggRotator />
+        <PlayButton />
       </Box>
     </Flex>
   </HeroContainer>

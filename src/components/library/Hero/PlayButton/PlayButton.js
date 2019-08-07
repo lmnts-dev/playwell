@@ -1,43 +1,45 @@
-// CoggRotator Component:
-// Cogg backgorund image and rotator animation
+// PlayButton Component:
+// 
 
 // Imports
 //////////////////////////////////////////////////////////////////////
 
 // Core
 import React from 'react';
-import { Link } from 'gatsby';
 
 // Styles
-import { Container } from './styles.scss';
+import { PlayButtonStyle } from './styles.scss';
 
 // Components
 import { Box, Flex } from 'components/library/Elements';
-import CoggWheel from './CoggWheel';
 
-// Constants
+import CoggWheel from 'components/library/CoggRotator/CoggWheel';
+
 import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const CoggRotator = ({ bg, color, px, children }) => (
+const PlayButton = () => (
   <Box
-    className="coggbox"
+    bg="Nova"
+    p={[2]}
     css={css`
       position: absolute;
+      z-index: 2;
+      border-radius: 999em;
+      font-size: 4rem;
       top: calc(${Theme.Root.Size} * -1.2);
-      left: calc(${Theme.Root.Size} * -1.2);
-      z-index: 0;
+      transform: translateX(-50%) translateY(170%);
     `}
   >
-    <CoggWheel />
+    &#x25BA;
   </Box>
 );
 
-CoggRotator.defaultProps = {};
+PlayButton.defaultProps = {};
 
-export default CoggRotator;
+export default PlayButton;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
