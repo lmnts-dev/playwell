@@ -19,9 +19,9 @@ export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
   position: relative;
-  overflow: hidden;
-  padding-top: calc(${Root.Nav.Size} + ${Root.Size} * 3);
-  padding-bottom: calc(${Root.Nav.Size} + ${Root.Size} * 2);
+  /* overflow: hidden; */
+  padding-top: calc(${Root.Nav.Size} + ${Root.Size} * 2);
+  padding-bottom: calc(${Root.Size} * 2);
 `;
 
 //////////////////////////////////////////////////////////////////////

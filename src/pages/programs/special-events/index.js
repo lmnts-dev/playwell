@@ -20,7 +20,7 @@ import { Box, Flex } from 'components/library/Elements';
 import { Theme, Root } from 'constants/Theme';
 
 // Data
-import BgImage from './assets/dev-image.jpeg';
+// import ImgPlaceholder from './assets/placeholder.jpg';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -30,6 +30,7 @@ const HeroProps = {
   bg: 'Sky',
   color: 'White',
   flexDirection: 'row',
+  BgAlt: 'Placeholder Image Alt',
 };
 
 // Render Page
