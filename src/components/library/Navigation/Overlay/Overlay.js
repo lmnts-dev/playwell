@@ -21,10 +21,37 @@ import Btn from 'components/library/Btn/';
 import Icon from 'components/library/Icons';
 
 // Begin Component
-//////////////////////////////////////////////////////////////////////s
+//////////////////////////////////////////////////////////////////////
+
+// Focus Link List for Sub Navigation
+const FocusLinkList = ({ linkList }) => {
+  return (
+    <ul class="focus-link-list">
+      {linkList.map((link, idx) => {
+        if (link.route != undefined) {
+          return (
+            <li key={idx} className={link.focus != false ? 'focus' : null}>
+              <Link to={link.route}>
+                <span class="nav-item">
+                  <span class="label">{link.label}</span>
+                  <Icon Name="carat" />
+                </span>
+              </Link>
+            </li>
+          );
+        }
+      })}
+    </ul>
+  );
+};
 
 // Navigation Component
-class NavigationOverlay extends PureComponent {
+export class NavigationOverlay extends PureComponent {
+  constructor(props) {
+    // Make our props accessible through this.props
+    super(props);
+  }
+
   render() {
     return (
       // Query our Navigation data so we can adjust our Navigation styles
@@ -63,50 +90,30 @@ class NavigationOverlay extends PureComponent {
                 </div>
 
                 <div class="col-list">
-                  {/* Focus Link List */}
-                  {/* TODO: Componentize */}
-                  <ul class="focus-link-list">
-                    <li class="focus">
-                      <Link to="/">
-                        <span class="nav-item">
-                          <span class="label">Large Link</span>
-                          <Icon Name="carat" />
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <span class="nav-item">
-                          <span class="label">Large Link</span>
-                          <Icon Name="carat" />
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <span class="nav-item">
-                          <span class="label">Large Link</span>
-                          <Icon Name="carat" />
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <span class="nav-item">
-                          <span class="label">Large Link</span>
-                          <Icon Name="carat" />
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <span class="nav-item">
-                          <span class="label">Large Link</span>
-                          <Icon Name="carat" />
-                        </span>
-                      </Link>
-                    </li>
-                  </ul>
+                  <FocusLinkList
+                    linkList={[
+                      {
+                        route: '/',
+                        label: 'Link',
+                        focus: false,
+                      },
+                      {
+                        route: '/',
+                        label: 'Link',
+                        focus: false,
+                      },
+                      {
+                        route: '/',
+                        label: 'Link',
+                        focus: false,
+                      },
+                      {
+                        route: '/',
+                        label: 'Link',
+                        focus: false,
+                      },
+                    ]}
+                  />
 
                   {/* Line Break */}
                   {/* TODO: Componentize */}
@@ -149,7 +156,6 @@ class NavigationOverlay extends PureComponent {
                       </Link>
                     </li>
                   </ul>
-                  
                 </div>
               </div>
             </div>

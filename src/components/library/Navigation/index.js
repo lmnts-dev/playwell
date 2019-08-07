@@ -8,7 +8,6 @@
 import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import { StaticQuery, graphql, Link } from 'gatsby';
-import Device from './../../core/DeviceQuery';
 
 // Styles
 import { NavigationStyle, NavigationBodyPadding } from './styles.scss';
@@ -20,7 +19,7 @@ import { Theme, Root } from 'constants/Theme';
 // Components
 import Brandmark from 'components/core/Branding/Brandmark';
 import Btn from 'components/library/Btn/';
-import NavigationOverlay from 'components/library/NavigationOverlay/';
+import { NavigationOverlay } from 'components/library/Navigation/Overlay/';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
