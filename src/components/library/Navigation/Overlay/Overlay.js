@@ -112,6 +112,11 @@ export class NavigationOverlay extends PureComponent {
                         label: 'Link',
                         focus: false,
                       },
+                      {
+                        route: '/',
+                        label: 'Link',
+                        focus: false,
+                      },
                     ]}
                   />
 
