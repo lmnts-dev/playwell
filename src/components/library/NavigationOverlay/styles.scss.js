@@ -4,7 +4,7 @@
 //////////////////////////////////////////////////////////////////////
 
 // Core
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -17,6 +17,17 @@ import {
   SlideToLeft,
   Rotate,
 } from 'components/core/Transition/Keyframes';
+
+// Create our weird keyframes for the active indicator.
+const IndicatorSlideIn = keyframes`
+  0% {
+    transform: translateX(calc(100% + (${Root.Size} * 2.5)));
+  }
+
+  100% {
+    transform: translateX(calc(100% + (${Root.Size} * 1.5)));
+  }
+`;
 
 // Helpers
 import hexToRGB from 'helpers/hexToRGB';
@@ -59,6 +70,8 @@ NavigationOverlayStyle.Sub = styled.div`
   background: ${Theme.Color.White};
   padding: calc(${Root.Size} / 2) calc(${Root.Size} / 6) calc(${Root.Size} / 2)
     calc(${Root.Size} / 2);
+  max-height: 100vh;
+  overflow-y: auto;
 
   .inner {
     flex: 1;
@@ -93,11 +106,16 @@ NavigationOverlayStyle.Sub = styled.div`
         cursor: pointer;
 
         svg {
-          transform: rotate(-180deg);
+          transition: ${Theme.Base.Transition.String};
+          transform: rotate(-180deg) translateX(0);
+          fill: ${Theme.Color.Primary};
         }
 
         &:hover {
           background: ${Theme.Color.Cream};
+          svg {
+            transform: rotate(-180deg) translateX(20%);
+          }
         }
 
         &:active {
@@ -137,9 +155,9 @@ NavigationOverlayStyle.Sub = styled.div`
         padding: calc(${Root.Size} / 2) 0 0 0;
         ${FadeIn};
 
-        /* Large Focus Links */
+        /* Large Focus Link List */
 
-        .focus-links {
+        .focus-link-list {
           display: flex;
           flex-direction: column;
 
@@ -223,10 +241,83 @@ NavigationOverlayStyle.Sub = styled.div`
         /* Line Separator */
         .line-break {
           padding: 0;
-          margin: calc(${Root.Size} / 3) 0;
+          margin: calc(${Root.Size} / 3) 0 calc(${Root.Size} / 2) 0;
           height: 1px;
           width: 100%;
           background: rgba(0, 0, 0, 0.04);
+        }
+
+        /* Minor Link Lists */
+
+        .minor-link-list {
+          display: flex;
+          flex-direction: column;
+
+          li {
+            margin-bottom: calc(${Root.Size} / 8);
+            display: flex;
+            align-items: stretch;
+            justify-content: space-between;
+            overflow: hidden;
+            ${cascadeSlideToLeft(10)}
+
+            .nav-item {
+              display: flex;
+              flex: 1;
+              align-items: center;
+              justify-content: space-between;
+              padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
+
+              /* Stupid font repositioning to center it */
+              .label {
+                position: relative;
+                top: 3px;
+              }
+            }
+
+            &.minor-link-subhead {
+              font-size: calc(${Root.Size} / 4);
+              color: ${Theme.Color.Lilac};
+              font-weight: bold;
+              pointer-events: none;
+            }
+
+            a {
+              flex: 1;
+              display: flex;
+              align-items: stretch;
+              justify-content: space-between;
+              font-weight: bold;
+              font-size: calc(${Root.Size} / 3);
+              text-decoration: none;
+              background: ${Theme.Color.White};
+              padding: calc(${Root.Size} / 6) 0;
+              border-radius: 999px 8px 8px 999px;
+
+              svg {
+                transition: ${Theme.Base.Transition.String};
+                transform: translateX(0%);
+              }
+
+              &:hover {
+                background: ${Theme.Color.Cream};
+
+                svg {
+                  transform: translateX(35%);
+                }
+              }
+
+              &:active {
+                background: ${Theme.Color.Blush};
+              }
+            }
+
+            a,
+            svg {
+              color: ${Theme.Color.Galaxy};
+              fill: ${Theme.Color.Galaxy};
+            }
+          }
         }
       }
     }
@@ -257,11 +348,6 @@ NavigationOverlayStyle.Main = styled.div`
       font-weight: bold;
       color: ${Theme.Color.White};
 
-      a {
-        text-decoration: none;
-        color: ${Theme.Color.White};
-      }
-
       li {
         text-align: right;
         cursor: pointer;
@@ -270,6 +356,11 @@ NavigationOverlayStyle.Main = styled.div`
         transform: translateX(0);
         transition: ${Theme.Base.Transition.String};
         ${cascadeSlideUp(10)};
+
+        a {
+          text-decoration: none;
+          color: ${Theme.Color.White};
+        }
 
         .nav-item {
           display: block;
@@ -297,6 +388,29 @@ NavigationOverlayStyle.Main = styled.div`
         &:hover {
           transform: translateX(calc((${Root.Size} / 2) * -1));
         }
+
+        &.active {
+          transform: translateX(calc((${Root.Size} / 2) * -1));
+          color: ${Theme.Color.Nova};
+
+          a {
+            text-decoration: none;
+            color: ${Theme.Color.Nova};
+          }
+
+          &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            background: ${Theme.Color.Nova};
+            transform: translateX(calc(100% + (${Root.Size} * 1.5)));
+            transition: ${Theme.Base.Transition.String};
+            animation: ${IndicatorSlideIn} 2s ease 0s 1 normal forwards;
+          }
+        }
       }
     }
 
@@ -320,11 +434,11 @@ NavigationOverlayStyle.Main = styled.div`
             stroke-width: 1px;
             stroke-dashoffset: 5px;
             stroke-dasharray: 5px;
-            transition: ${Theme.Base.Transition.String};
+            transition: all 20s ease;
 
             &:hover {
               stroke-dashoffset: 0px;
-              stroke-dasharray: 100px;
+              stroke-dasharray: 300px;
             }
           }
         }
@@ -340,7 +454,7 @@ NavigationOverlayStyle.Main = styled.div`
 // Keyframes
 //////////////////////////////////////////////////////////////////////
 
-// The loop to iteratively create cascading animation keyframes
+// The loop to iteratively create cascading animation keyframes for SlideUp
 function cascadeSlideUp(n) {
   // Define the aniimation
   const SlideUpAnimation = i => css`
@@ -368,7 +482,7 @@ function cascadeSlideUp(n) {
   return anim;
 }
 
-// The loop to iteratively create cascading animation keyframes
+// The loop to iteratively create cascading animation keyframes for SlideToLeft
 function cascadeSlideToLeft(n) {
   // Define the aniimation
   const SlideToLeftAnimation = i => css`

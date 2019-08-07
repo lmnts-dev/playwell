@@ -61,8 +61,11 @@ class NavigationOverlay extends PureComponent {
                 <div class="col-heading">
                   <span>Community</span>
                 </div>
+
                 <div class="col-list">
-                  <ul class="focus-links">
+                  {/* Focus Link List */}
+                  {/* TODO: Componentize */}
+                  <ul class="focus-link-list">
                     <li class="focus">
                       <Link to="/">
                         <span class="nav-item">
@@ -105,7 +108,48 @@ class NavigationOverlay extends PureComponent {
                     </li>
                   </ul>
 
+                  {/* Line Break */}
+                  {/* TODO: Componentize */}
                   <figure class="line-break" />
+
+                  {/* Minor Link List */}
+                  {/* TODO: Componentize */}
+                  <ul class="minor-link-list">
+                    <li class="minor-link-subhead">
+                      <span class="nav-item">
+                        <span class="label">Minor Subheader</span>
+                      </span>
+                    </li>
+                    <li>
+                      <Link to="/">
+                        <span class="nav-item">
+                          <span class="label">Minor Link</span>
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/">
+                        <span class="nav-item">
+                          <span class="label">Minor Link</span>
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/">
+                        <span class="nav-item">
+                          <span class="label">Minor Link</span>
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/">
+                        <span class="nav-item">
+                          <span class="label">Minor Link</span>
+                        </span>
+                      </Link>
+                    </li>
+                  </ul>
+                  
                 </div>
               </div>
             </div>
@@ -115,9 +159,13 @@ class NavigationOverlay extends PureComponent {
               <div class="top">
                 <ul>
                   <li>
-                    <Link to="/">
-                      <span>Let's Play</span> <Icon Name="carat" />
-                    </Link>
+                    <span className="nav-item">
+                      <span className="label">
+                        <Link to="/">
+                          <span>Let's Play</span> <Icon Name="carat" />
+                        </Link>
+                      </span>
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -147,7 +195,7 @@ class NavigationOverlay extends PureComponent {
                       <span className="label">Parties</span>
                     </span>
                   </li>
-                  <li>
+                  <li className="active">
                     <span className="nav-item">
                       <span className="label">Community</span>
                     </span>
