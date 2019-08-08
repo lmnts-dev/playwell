@@ -41,6 +41,7 @@ export const NavigationOverlayStyle = styled.nav`
   position: fixed;
   width: 100vw;
   height: 100vh;
+  transition: ${Theme.Base.Transition.String};
   background: ${props =>
     props.theme.primaryColor
       ? hexToRGB(props.theme.primaryColor, 0.8)

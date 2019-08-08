@@ -28,6 +28,7 @@ const data = {
   // f.e. 'Lets Play!'
   focusNav: {
     route: '/play',
+    // eslint-disable-next-line
     label: "Let's Play",
   },
   // Primary Nav
@@ -38,7 +39,7 @@ const data = {
         label: 'Programs',
         active: false,
         theme: {
-          primaryColor: Theme.Color.Galaxy,
+          primaryColor: Theme.Color.Deepsea,
           activeColor: Theme.Color.Nova,
         },
         // Sidebar
@@ -47,27 +48,27 @@ const data = {
           focusLinkList: [
             {
               route: '/',
-              label: 'Link',
+              label: 'Programs Link',
               focus: true,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Programs Link',
               focus: false,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Programs Link',
               focus: false,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Programs Link',
               focus: false,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Programs Link',
               focus: false,
             },
           ],
@@ -81,22 +82,17 @@ const data = {
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Programs Link',
               subhead: false,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Programs Link',
               subhead: false,
             },
             {
               route: '/',
-              label: 'Link',
-              subhead: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
+              label: 'Programs Link',
               subhead: false,
             },
           ],
@@ -107,7 +103,7 @@ const data = {
         label: 'Locations',
         active: false,
         theme: {
-          primaryColor: Theme.Color.Galaxy,
+          primaryColor: Theme.Color.Eggplant,
           activeColor: Theme.Color.Nova,
         },
         // Sidebar
@@ -116,27 +112,22 @@ const data = {
           focusLinkList: [
             {
               route: '/',
-              label: 'Link',
+              label: 'Locations Link',
               focus: true,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Locations Link',
               focus: false,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Locations Link',
               focus: false,
             },
             {
               route: '/',
-              label: 'Link',
-              focus: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
+              label: 'Locations Link',
               focus: false,
             },
           ],
@@ -150,22 +141,12 @@ const data = {
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Locations Link',
               subhead: false,
             },
             {
               route: '/',
-              label: 'Link',
-              subhead: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
-              subhead: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
+              label: 'Locations Link',
               subhead: false,
             },
           ],
@@ -185,27 +166,22 @@ const data = {
           focusLinkList: [
             {
               route: '/',
-              label: 'Link',
+              label: 'About Link',
               focus: true,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'About Link',
               focus: false,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'About Link',
               focus: false,
             },
             {
               route: '/',
-              label: 'Link',
-              focus: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
+              label: 'About Link',
               focus: false,
             },
           ],
@@ -219,22 +195,17 @@ const data = {
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'About Link',
               subhead: false,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'About Link',
               subhead: false,
             },
             {
               route: '/',
-              label: 'Link',
-              subhead: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
+              label: 'About Link',
               subhead: false,
             },
           ],
@@ -254,27 +225,12 @@ const data = {
           focusLinkList: [
             {
               route: '/',
-              label: 'Link',
+              label: 'Parties Link',
               focus: true,
             },
             {
               route: '/',
-              label: 'Link',
-              focus: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
-              focus: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
-              focus: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
+              label: 'Parties Link',
               focus: false,
             },
           ],
@@ -288,22 +244,12 @@ const data = {
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Parties Link',
               subhead: false,
             },
             {
               route: '/',
-              label: 'Link',
-              subhead: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
-              subhead: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
+              label: 'Parties Link',
               subhead: false,
             },
           ],
@@ -323,27 +269,17 @@ const data = {
           focusLinkList: [
             {
               route: '/',
-              label: 'Link',
+              label: 'Community Link',
               focus: true,
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Community Link',
               focus: false,
             },
             {
               route: '/',
-              label: 'Link',
-              focus: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
-              focus: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
+              label: 'Community Link',
               focus: false,
             },
           ],
@@ -357,22 +293,12 @@ const data = {
             },
             {
               route: '/',
-              label: 'Link',
+              label: 'Community Link',
               subhead: false,
             },
             {
               route: '/',
-              label: 'Link',
-              subhead: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
-              subhead: false,
-            },
-            {
-              route: '/',
-              label: 'Link',
+              label: 'Community Link',
               subhead: false,
             },
           ],
@@ -470,18 +396,26 @@ class NavigationOverlayWithData extends PureComponent {
     // Set navContext list as state
     this.state = {
       navContext: this.props.navContext,
+      navData: this.props.navData,
     };
+
+    // Bind our navContextUpdate function.
+    this.navContextUpdate = this.navContextUpdate.bind(this);
+  }
+
+  // Assign our props a prettier name.
+
+  navContextUpdate(idx) {
+    console.log('The link ' + idx + ' was clicked.');
+
+    this.setState({
+      navContext: this.state.navData.primaryNav.linkList[idx],
+    })
   }
 
   render() {
-    // Assign our props a prettier name.
+    let navData = this.state.navData;
     let navContext = this.state.navContext;
-    let navigationList = this.props.navigationList;
-
-    function handleClick(e) {
-      e.preventDefault();
-      console.log('The link was clicked.');
-    }
 
     return (
       // Query our Navigation data so we can adjust our Navigation styles
@@ -555,9 +489,34 @@ class NavigationOverlayWithData extends PureComponent {
                 <div className="overlay-icon">
                   <Icon Name="gear" />
                 </div>
-                <MainNavigationList
-                  linkList={navigationList.primaryNav.linkList}
-                />
+
+                {/* Our Main Navigation List */}
+                <ul>
+                  {/* Map our linkList prop */}
+                  {navData.primaryNav.linkList.map((link, idx) => {
+                    // If the route is specified...
+                    if (link.route != undefined) {
+                      return (
+                        <li
+                          className={link.active == true ? 'active' : null}
+                          key={idx}
+                        >
+                          {/* Pass our index to our click handler.
+                          Read more: https://reactjs.org/docs/faq-functions.html#how-do-i-pass-a-parameter-to-an-event-handler-or-callback */}
+                          <span
+                            className="nav-item"
+                            onClick={() => this.navContextUpdate(idx)}
+                            onKeyDown={() => this.navContextUpdate(idx)}
+                            role="button"
+                            tabIndex="0"
+                          >
+                            <span className="label">{link.label}</span>
+                          </span>
+                        </li>
+                      );
+                    }
+                  })}
+                </ul>
               </div>
             </div>
           </NavigationOverlayStyle.Main>
@@ -581,7 +540,7 @@ export class NavigationOverlay extends PureComponent {
   render() {
     return (
       <NavigationOverlayWithData
-        navigationList={data}
+        navData={data}
         navContext={this.state.navContext}
       />
     );
