@@ -23,11 +23,372 @@ import Icon from 'components/library/Icons';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+const data = {
+  // Focus Nav
+  // f.e. 'Lets Play!'
+  focusNav: {
+    route: '/play',
+    label: "Let's Play",
+  },
+  // Primary Nav
+  primaryNav: {
+    linkList: [
+      {
+        route: '/programs',
+        label: 'Programs',
+        active: false,
+        theme: {
+          background: Theme.Color.Galaxy,
+          active: Theme.Color.Nova,
+        },
+        // Sidebar
+        subNav: {
+          // Focus Link List
+          focusLinkList: [
+            {
+              route: '/',
+              label: 'Link',
+              focus: true,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+          ],
+
+          // Minor Link List
+          minorLinkList: [
+            {
+              route: false,
+              label: 'Subhead',
+              subhead: true,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+          ],
+        },
+      },
+      {
+        route: '/locations',
+        label: 'Locations',
+        active: false,
+        theme: {
+          background: Theme.Color.Galaxy,
+          active: Theme.Color.Nova,
+        },
+        // Sidebar
+        subNav: {
+          // Focus Link List
+          focusLinkList: [
+            {
+              route: '/',
+              label: 'Link',
+              focus: true,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+          ],
+
+          // Minor Link List
+          minorLinkList: [
+            {
+              route: false,
+              label: 'Subhead',
+              subhead: true,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+          ],
+        },
+      },
+      {
+        route: '/who-we-are',
+        label: 'Who We Are',
+        active: false,
+        theme: {
+          background: Theme.Color.Sunset,
+          active: Theme.Color.Nightsky,
+        },
+        // Sidebar
+        subNav: {
+          // Focus Link List
+          focusLinkList: [
+            {
+              route: '/',
+              label: 'Link',
+              focus: true,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+          ],
+
+          // Minor Link List
+          minorLinkList: [
+            {
+              route: false,
+              label: 'Subhead',
+              subhead: true,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+          ],
+        },
+      },
+      {
+        route: '/parties',
+        label: 'Parties',
+        active: false,
+        theme: {
+          background: Theme.Color.Sunlight,
+          active: Theme.Color.Nightsky,
+        },
+        // Sidebar
+        subNav: {
+          // Focus Link List
+          focusLinkList: [
+            {
+              route: '/',
+              label: 'Link',
+              focus: true,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+          ],
+
+          // Minor Link List
+          minorLinkList: [
+            {
+              route: false,
+              label: 'Subhead',
+              subhead: true,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+          ],
+        },
+      },
+      {
+        route: '/community',
+        label: 'Community',
+        active: true,
+        theme: {
+          background: Theme.Color.Sky,
+          active: Theme.Color.Nightsky,
+        },
+        // Sidebar
+        subNav: {
+          // Focus Link List
+          focusLinkList: [
+            {
+              route: '/',
+              label: 'Link',
+              focus: true,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              focus: false,
+            },
+          ],
+
+          // Minor Link List
+          minorLinkList: [
+            {
+              route: false,
+              label: 'Subhead',
+              subhead: true,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+            {
+              route: '/',
+              label: 'Link',
+              subhead: false,
+            },
+          ],
+        },
+      },
+    ],
+  },
+};
+
 // Focus Link List for Sub Navigation
 const FocusLinkList = ({ linkList }) => {
   return (
     <ul class="focus-link-list">
+      {/* Map our linkList prop */}
       {linkList.map((link, idx) => {
+        // If the route is specified...
         if (link.route != undefined) {
           return (
             <li key={idx} className={link.focus != false ? 'focus' : null}>
@@ -45,18 +406,76 @@ const FocusLinkList = ({ linkList }) => {
   );
 };
 
+const MinorLinkList = ({ linkList }) => {
+  return (
+    <ul class="minor-link-list">
+      {/* Map our linkList prop */}
+      {linkList.map((link, idx) => {
+        // If the route is specified...
+        if (link.route != undefined) {
+          // If it isn't a subhead...
+          if (link.subhead == true) {
+            return (
+              <li key={idx} class="minor-link-subhead">
+                <span class="nav-item">
+                  <span class="label">{link.label}</span>
+                </span>
+              </li>
+            );
+          }
+          // If it is a subhead...
+          else {
+            return (
+              <li key={idx}>
+                <Link to={link.route}>
+                  <span class="nav-item">
+                    <span class="label">{link.label}</span>
+                  </span>
+                </Link>
+              </li>
+            );
+          }
+        }
+      })}
+    </ul>
+  );
+};
+
+const MainNavigationList = ({ linkList }) => {
+  return (
+    <ul>
+      {/* Map our linkList prop */}
+      {linkList.map((link, idx) => {
+        // If the route is specified...
+        if (link.route != undefined) {
+          return (
+            <li className={link.active == true ? 'active' : null} key={idx}>
+              <span className="nav-item">
+                <span className="label">{link.label}</span>
+              </span>
+            </li>
+          );
+        }
+      })}
+    </ul>
+  );
+};
+
 // Navigation Component
-export class NavigationOverlay extends PureComponent {
+class NavigationOverlayWithData extends PureComponent {
   constructor(props) {
     // Make our props accessible through this.props
     super(props);
   }
 
   render() {
+    // Assign our navContext a prettier name.
+    let navContext = this.props.navContext;
+
     return (
       // Query our Navigation data so we can adjust our Navigation styles
       // based on Top Level Pages vs Sub Level Pages
-      <NavigationOverlayStyle>
+      <NavigationOverlayStyle bgColor={navContext.theme.background}>
         <NavigationOverlayStyle.Inner>
           <NavigationOverlayStyle.Sub className="nav-sub">
             <div class="inner">
@@ -90,77 +509,13 @@ export class NavigationOverlay extends PureComponent {
                 </div>
 
                 <div class="col-list">
-                  <FocusLinkList
-                    linkList={[
-                      {
-                        route: '/',
-                        label: 'Link',
-                        focus: false,
-                      },
-                      {
-                        route: '/',
-                        label: 'Link',
-                        focus: false,
-                      },
-                      {
-                        route: '/',
-                        label: 'Link',
-                        focus: false,
-                      },
-                      {
-                        route: '/',
-                        label: 'Link',
-                        focus: false,
-                      },
-                      {
-                        route: '/',
-                        label: 'Link',
-                        focus: false,
-                      },
-                    ]}
-                  />
+                  <FocusLinkList linkList={navContext.subNav.focusLinkList} />
 
                   {/* Line Break */}
                   {/* TODO: Componentize */}
                   <figure class="line-break" />
 
-                  {/* Minor Link List */}
-                  {/* TODO: Componentize */}
-                  <ul class="minor-link-list">
-                    <li class="minor-link-subhead">
-                      <span class="nav-item">
-                        <span class="label">Minor Subheader</span>
-                      </span>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <span class="nav-item">
-                          <span class="label">Minor Link</span>
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <span class="nav-item">
-                          <span class="label">Minor Link</span>
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <span class="nav-item">
-                          <span class="label">Minor Link</span>
-                        </span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/">
-                        <span class="nav-item">
-                          <span class="label">Minor Link</span>
-                        </span>
-                      </Link>
-                    </li>
-                  </ul>
+                  <MinorLinkList linkList={navContext.subNav.minorLinkList} />
                 </div>
               </div>
             </div>
@@ -172,8 +527,9 @@ export class NavigationOverlay extends PureComponent {
                   <li>
                     <span className="nav-item">
                       <span className="label">
-                        <Link to="/">
-                          <span>Let's Play</span> <Icon Name="carat" />
+                        <Link to={data.focusNav.route}>
+                          <span>{data.focusNav.label}</span>
+                          <Icon Name="carat" />
                         </Link>
                       </span>
                     </span>
@@ -185,33 +541,7 @@ export class NavigationOverlay extends PureComponent {
                 <div class="overlay-icon">
                   <Icon Name="gear" />
                 </div>
-                <ul>
-                  <li>
-                    <span className="nav-item">
-                      <span className="label">Programs</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span className="nav-item">
-                      <span className="label">Locations</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span className="nav-item">
-                      <span className="label">Who We Are</span>
-                    </span>
-                  </li>
-                  <li>
-                    <span className="nav-item">
-                      <span className="label">Parties</span>
-                    </span>
-                  </li>
-                  <li className="active">
-                    <span className="nav-item">
-                      <span className="label">Community</span>
-                    </span>
-                  </li>
-                </ul>
+                <MainNavigationList linkList={data.primaryNav.linkList} />
               </div>
             </div>
           </NavigationOverlayStyle.Main>
@@ -221,7 +551,9 @@ export class NavigationOverlay extends PureComponent {
   }
 }
 
-export default NavigationOverlay;
+export const NavigationOverlay = ({ navContext }) => {
+  return <NavigationOverlayWithData navContext={data.primaryNav.linkList[4]} />;
+};
 
 //////////////////////////////////////////////////////////////////////
 // End Component

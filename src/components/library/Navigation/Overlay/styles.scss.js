@@ -41,7 +41,10 @@ export const NavigationOverlayStyle = styled.nav`
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background: ${hexToRGB(Theme.Color.Galaxy, 0.8)};
+  background: ${props =>
+    props.bgColor
+      ? hexToRGB(props.bgColor, 0.8)
+      : hexToRGB(Theme.Color.Ocean, 0.8)} };
   top: 0px;
   bottom: 0px;
   left: 0px;
@@ -143,7 +146,10 @@ NavigationOverlayStyle.Sub = styled.div`
           left: 80%;
           white-space: nowrap;
           pointer-events: none;
-          color: ${Theme.Color.Deepsea};
+          color: ${props =>
+            props.bgColor
+              ? hexToRGB(props.bgColor, 0.8)
+              : hexToRGB(Theme.Color.Ocean, 0.8)} };
         }
       }
 
@@ -227,7 +233,7 @@ NavigationOverlayStyle.Sub = styled.div`
 
             &.focus {
               a {
-                background: ${Theme.Color.Ocean};
+                background: ${Theme.Color.Galaxy};
                 color: ${Theme.Color.White};
               }
 
@@ -391,11 +397,11 @@ NavigationOverlayStyle.Main = styled.div`
 
         &.active {
           transform: translateX(calc((${Root.Size} / 2) * -1));
-          color: ${Theme.Color.Nova};
+          color: ${Theme.Color.Galaxy};
 
           a {
             text-decoration: none;
-            color: ${Theme.Color.Nova};
+            color: ${Theme.Color.Galaxy};
           }
 
           &:before {
@@ -405,7 +411,7 @@ NavigationOverlayStyle.Main = styled.div`
             bottom: 0;
             right: 0;
             width: 100%;
-            background: ${Theme.Color.Nova};
+            background: ${Theme.Color.Galaxy};
             transform: translateX(calc(100% + (${Root.Size} * 1.5)));
             transition: ${Theme.Base.Transition.String};
             animation: ${IndicatorSlideIn} 2s ease 0s 1 normal forwards;
