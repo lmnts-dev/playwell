@@ -38,8 +38,8 @@ const data = {
         label: 'Programs',
         active: false,
         theme: {
-          background: Theme.Color.Galaxy,
-          active: Theme.Color.Nova,
+          primaryColor: Theme.Color.Galaxy,
+          activeColor: Theme.Color.Nova,
         },
         // Sidebar
         subNav: {
@@ -107,8 +107,8 @@ const data = {
         label: 'Locations',
         active: false,
         theme: {
-          background: Theme.Color.Galaxy,
-          active: Theme.Color.Nova,
+          primaryColor: Theme.Color.Galaxy,
+          activeColor: Theme.Color.Nova,
         },
         // Sidebar
         subNav: {
@@ -176,8 +176,8 @@ const data = {
         label: 'Who We Are',
         active: false,
         theme: {
-          background: Theme.Color.Sunset,
-          active: Theme.Color.Nightsky,
+          primaryColor: Theme.Color.Sunset,
+          activeColor: Theme.Color.Nightsky,
         },
         // Sidebar
         subNav: {
@@ -245,8 +245,8 @@ const data = {
         label: 'Parties',
         active: false,
         theme: {
-          background: Theme.Color.Sunlight,
-          active: Theme.Color.Nightsky,
+          primaryColor: Theme.Color.Sunlight,
+          activeColor: Theme.Color.Nightsky,
         },
         // Sidebar
         subNav: {
@@ -314,8 +314,8 @@ const data = {
         label: 'Community',
         active: true,
         theme: {
-          background: Theme.Color.Sky,
-          active: Theme.Color.Nightsky,
+          primaryColor: Theme.Color.Sky,
+          activeColor: Theme.Color.Nightsky,
         },
         // Sidebar
         subNav: {
@@ -385,7 +385,7 @@ const data = {
 // Focus Link List for Sub Navigation
 const FocusLinkList = ({ linkList }) => {
   return (
-    <ul class="focus-link-list">
+    <ul className="focus-link-list">
       {/* Map our linkList prop */}
       {linkList.map((link, idx) => {
         // If the route is specified...
@@ -393,8 +393,8 @@ const FocusLinkList = ({ linkList }) => {
           return (
             <li key={idx} className={link.focus != false ? 'focus' : null}>
               <Link to={link.route}>
-                <span class="nav-item">
-                  <span class="label">{link.label}</span>
+                <span className="nav-item">
+                  <span className="label">{link.label}</span>
                   <Icon Name="carat" />
                 </span>
               </Link>
@@ -408,7 +408,7 @@ const FocusLinkList = ({ linkList }) => {
 
 const MinorLinkList = ({ linkList }) => {
   return (
-    <ul class="minor-link-list">
+    <ul className="minor-link-list">
       {/* Map our linkList prop */}
       {linkList.map((link, idx) => {
         // If the route is specified...
@@ -416,9 +416,9 @@ const MinorLinkList = ({ linkList }) => {
           // If it isn't a subhead...
           if (link.subhead == true) {
             return (
-              <li key={idx} class="minor-link-subhead">
-                <span class="nav-item">
-                  <span class="label">{link.label}</span>
+              <li key={idx} className="minor-link-subhead">
+                <span className="nav-item">
+                  <span className="label">{link.label}</span>
                 </span>
               </li>
             );
@@ -428,8 +428,8 @@ const MinorLinkList = ({ linkList }) => {
             return (
               <li key={idx}>
                 <Link to={link.route}>
-                  <span class="nav-item">
-                    <span class="label">{link.label}</span>
+                  <span className="nav-item">
+                    <span className="label">{link.label}</span>
                   </span>
                 </Link>
               </li>
@@ -466,35 +466,49 @@ class NavigationOverlayWithData extends PureComponent {
   constructor(props) {
     // Make our props accessible through this.props
     super(props);
+
+    // Set navContext list as state
+    this.state = {
+      navContext: this.props.navContext,
+    };
   }
 
   render() {
-    // Assign our navContext a prettier name.
-    let navContext = this.props.navContext;
+    // Assign our props a prettier name.
+    let navContext = this.state.navContext;
+    let navigationList = this.props.navigationList;
+
+    function handleClick(e) {
+      e.preventDefault();
+      console.log('The link was clicked.');
+    }
 
     return (
       // Query our Navigation data so we can adjust our Navigation styles
       // based on Top Level Pages vs Sub Level Pages
-      <NavigationOverlayStyle bgColor={navContext.theme.background}>
+      <NavigationOverlayStyle theme={navContext.theme}>
         <NavigationOverlayStyle.Inner>
-          <NavigationOverlayStyle.Sub className="nav-sub">
-            <div class="inner">
-              <div class="top">
-                <div class="top-main">
-                  <div class="overlay-close">
+          <NavigationOverlayStyle.Sub
+            className="nav-sub"
+            theme={navContext.theme}
+          >
+            <div className="inner">
+              <div className="top">
+                <div className="top-main">
+                  <div className="overlay-close">
                     <Icon Name="carat" />
                   </div>
-                  <div class="overlay-branding">
+                  <div className="overlay-branding">
                     <Link to="/">
                       <Brandmark />
                     </Link>
                   </div>
                 </div>
-                <div class="top-tools">
-                  <div class="overlay-contact">
+                <div className="top-tools">
+                  <div className="overlay-contact">
                     <Btn
                       Label="Contact"
-                      IconClass="question-circle"
+                      IconClassName="question-circle"
                       IconPosition="left"
                       Destination="/"
                       TextColor={Theme.Color.Primary}
@@ -503,26 +517,26 @@ class NavigationOverlayWithData extends PureComponent {
                   </div>
                 </div>
               </div>
-              <div class="bottom">
-                <div class="col-heading">
-                  <span>Community</span>
+              <div className="bottom">
+                <div className="col-heading">
+                  <span>{navContext.label}</span>
                 </div>
 
-                <div class="col-list">
+                <div className="col-list">
                   <FocusLinkList linkList={navContext.subNav.focusLinkList} />
 
                   {/* Line Break */}
                   {/* TODO: Componentize */}
-                  <figure class="line-break" />
+                  <figure className="line-break" />
 
                   <MinorLinkList linkList={navContext.subNav.minorLinkList} />
                 </div>
               </div>
             </div>
           </NavigationOverlayStyle.Sub>
-          <NavigationOverlayStyle.Main>
-            <div class="inner">
-              <div class="top">
+          <NavigationOverlayStyle.Main theme={navContext.theme}>
+            <div className="inner">
+              <div className="top">
                 <ul>
                   <li>
                     <span className="nav-item">
@@ -537,11 +551,13 @@ class NavigationOverlayWithData extends PureComponent {
                 </ul>
               </div>
 
-              <div class="bottom">
-                <div class="overlay-icon">
+              <div className="bottom">
+                <div className="overlay-icon">
                   <Icon Name="gear" />
                 </div>
-                <MainNavigationList linkList={data.primaryNav.linkList} />
+                <MainNavigationList
+                  linkList={navigationList.primaryNav.linkList}
+                />
               </div>
             </div>
           </NavigationOverlayStyle.Main>
@@ -551,9 +567,26 @@ class NavigationOverlayWithData extends PureComponent {
   }
 }
 
-export const NavigationOverlay = ({ navContext }) => {
-  return <NavigationOverlayWithData navContext={data.primaryNav.linkList[4]} />;
-};
+export class NavigationOverlay extends PureComponent {
+  constructor(props) {
+    // Make our props accessible through this.props
+    super(props);
+
+    // Set navContext list as state
+    this.state = {
+      navContext: data.primaryNav.linkList[1],
+    };
+  }
+
+  render() {
+    return (
+      <NavigationOverlayWithData
+        navigationList={data}
+        navContext={this.state.navContext}
+      />
+    );
+  }
+}
 
 //////////////////////////////////////////////////////////////////////
 // End Component

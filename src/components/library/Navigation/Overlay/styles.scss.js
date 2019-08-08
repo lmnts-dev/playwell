@@ -42,8 +42,8 @@ export const NavigationOverlayStyle = styled.nav`
   width: 100vw;
   height: 100vh;
   background: ${props =>
-    props.bgColor
-      ? hexToRGB(props.bgColor, 0.8)
+    props.theme.primaryColor
+      ? hexToRGB(props.theme.primaryColor, 0.8)
       : hexToRGB(Theme.Color.Ocean, 0.8)} };
   top: 0px;
   bottom: 0px;
@@ -147,8 +147,8 @@ NavigationOverlayStyle.Sub = styled.div`
           white-space: nowrap;
           pointer-events: none;
           color: ${props =>
-            props.bgColor
-              ? hexToRGB(props.bgColor, 0.8)
+            props.theme.primaryColor
+              ? hexToRGB(props.theme.primaryColor, 0.8)
               : hexToRGB(Theme.Color.Ocean, 0.8)} };
         }
       }
@@ -233,7 +233,10 @@ NavigationOverlayStyle.Sub = styled.div`
 
             &.focus {
               a {
-                background: ${Theme.Color.Galaxy};
+                background: ${props =>
+                  props.theme.activeColor
+                    ? props.theme.activeColor
+                    : Theme.Color.Galaxy};
                 color: ${Theme.Color.White};
               }
 
@@ -397,11 +400,17 @@ NavigationOverlayStyle.Main = styled.div`
 
         &.active {
           transform: translateX(calc((${Root.Size} / 2) * -1));
-          color: ${Theme.Color.Galaxy};
+          color: ${props =>
+            props.theme.activeColor
+              ? props.theme.activeColor
+              : Theme.Color.Galaxy};
 
           a {
             text-decoration: none;
-            color: ${Theme.Color.Galaxy};
+            color: ${props =>
+              props.theme.activeColor
+                ? props.theme.activeColor
+                : Theme.Color.Galaxy};
           }
 
           &:before {
@@ -411,7 +420,10 @@ NavigationOverlayStyle.Main = styled.div`
             bottom: 0;
             right: 0;
             width: 100%;
-            background: ${Theme.Color.Galaxy};
+            background: ${props =>
+              props.theme.activeColor
+                ? props.theme.activeColor
+                : Theme.Color.Galaxy};
             transform: translateX(calc(100% + (${Root.Size} * 1.5)));
             transition: ${Theme.Base.Transition.String};
             animation: ${IndicatorSlideIn} 2s ease 0s 1 normal forwards;
