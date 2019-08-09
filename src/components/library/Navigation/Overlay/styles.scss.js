@@ -41,6 +41,7 @@ export const NavigationOverlayStyle = styled.nav`
   position: fixed;
   width: 100vw;
   height: 100vh;
+  animation: ${FadeIn} 1s ease 0s 1 normal forwards;
   transition: ${Theme.Base.Transition.String};
   background: ${props =>
     props.theme.primaryColor
@@ -433,7 +434,7 @@ NavigationOverlayStyle.Main = styled.div`
       }
     }
 
-    .bottom {
+    .top {
       flex-direction: column;
       align-items: flex-end;
 

@@ -21,6 +21,9 @@ import Brandmark from 'components/core/Branding/Brandmark';
 import Btn from 'components/library/Btn/';
 import { NavigationOverlay } from 'components/library/Navigation/Overlay/';
 
+// Data
+import { data } from './Data/';
+
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
@@ -47,7 +50,7 @@ class OverlayButton extends React.Component {
         overlayVisible: true,
       });
 
-      // console.log(this.props.overlayMenuId + ': overlay open');
+      console.log(this.props.overlayMenuId + ': overlay open');
     }
 
     // If currently visible...
@@ -56,47 +59,14 @@ class OverlayButton extends React.Component {
         overlayVisible: false,
       });
 
-      // console.log(this.props.overlayMenuId + ': overlay closed');
+      console.log(this.props.overlayMenuId + ': overlay closed');
     }
   }
 
   render() {
-    return (
-      <button
-        onClick={this.toggleOverlay.bind(this)}
-        onKeyPress={this.toggleOverlay.bind(this)}
-      >
-        {this.props.label}
-      </button>
-    );
+    return <button>{this.props.label}</button>;
   }
 }
-
-// Linklist Component
-const Linklist = ({ links }) => {
-  return (
-    <ul>
-      {links.map((link, idx) => {
-        if (link.overlayMenuId != undefined) {
-          return (
-            <li key={link.idx}>
-              <OverlayButton
-                overlayMenuId={link.overlayMenuId}
-                label={link.label}
-              />
-            </li>
-          );
-        } else {
-          return (
-            <li key={link.idx}>
-              <Link to={link.linkTo}>{link.label}</Link>
-            </li>
-          );
-        }
-      })}
-    </ul>
-  );
-};
 
 // Navigation Component
 class NavigationBar extends PureComponent {
@@ -106,98 +76,136 @@ class NavigationBar extends PureComponent {
     // Base styles to change transition state for
     // collapsing menu hero.
     this.state = {
-      scrollClass: 'top',
+      navContext: data.primaryNav.linkList[0],
+      navScrollClass: 'top',
+      navOverlayVisible: false,
     };
 
     // Bind base functions to change transition state for
-    // collapsing menu hero.
+    // collapsing menu hero on scroll.
     this.handleScroll = this.handleScroll.bind(this);
+
+    // Bind our click event to open up Navigation Overlays.
+    this.navOverlayToggle = this.navOverlayToggle.bind(this);
   }
 
   // Make sure we are listening for scroll once mounted.
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
+
+    // Initial state for navOverlayVisible
+    this.state = {
+      navOverlayVisible: false,
+    };
   }
 
   // Remove listener when not mounted.
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+
+    // Initial state for navOverlayVisible
+    this.state = {
+      navOverlayVisible: false,
+    };
   }
 
   // Base functions to change transition state for
   // navigation on scroll
   handleScroll(event) {
-    if (window.scrollY === 0 && this.state.scrollClass === 'scroll') {
-      this.setState({ scrollClass: 'top' });
-    } else if (window.scrollY !== 0 && this.state.scrollClass !== 'scroll') {
-      this.setState({ scrollClass: 'scroll' });
+    if (window.scrollY === 0 && this.state.navScrollClass === 'scroll') {
+      this.setState({ navScrollClass: 'top' });
+    } else if (window.scrollY !== 0 && this.state.navScrollClass !== 'scroll') {
+      this.setState({ navScrollClass: 'scroll' });
+    }
+  }
+
+  // Function to toggle NavigationOverlay.
+  navOverlayToggle(idx) {
+    console.log('navOverlayVisible: true');
+
+    // If currently hidden...
+    if (this.state.navOverlayVisible == false) {
+      this.setState({
+        navOverlayVisible: true,
+      });
+    } else {
+      this.setState({
+        navOverlayVisible: false,
+      });
     }
   }
 
   render() {
     return (
-      // Query our Navigation data so we can adjust our Navigation styles
-      // based on Top Level Pages vs Sub Level Pages
-      <NavigationStyle>
-        <NavigationBodyPadding />
-        <NavigationStyle.Inner
-          className={'nav-inner ' + this.state.scrollClass}
-        >
-          <NavigationStyle.Primary className="nav-primary">
-            <Link to="/">
-              <Brandmark />
-            </Link>
-            <Linklist
-              links={[
-                {
-                  label: 'Programs',
-                  overlayMenuId: 'programs',
-                },
-                {
-                  label: 'Locations',
-                  overlayMenuId: 'locations',
-                },
-                {
-                  label: 'Who We Are',
-                  overlayMenuId: 'who-we-are',
-                },
-                {
-                  label: 'Parties',
-                  overlayMenuId: 'parties',
-                },
-                {
-                  label: 'Community',
-                  overlayMenuId: 'community',
-                },
-              ]}
-            />
-          </NavigationStyle.Primary>
-          <NavigationStyle.Secondary className="nav-secondary">
-            <Btn
-              Label="Contact"
-              IconClass="question-circle"
-              IconPosition="left"
-              Destination="/"
-              TextColor={Theme.Color.Primary}
-              IconFas
-            />
-            <Btn
-              Label="Arizona"
-              Destination="/"
-              BorderStyle="solid"
-              BorderWidth="1px"
-              BorderColor={Theme.Color.Primary}
-              TextColor={Theme.Color.Primary}
-            />
-            <Btn
-              Label="Let's Play"
-              Destination="/"
-              BgColor={Theme.Color.Nova}
-              TextColor={Theme.Color.White}
-            />
-          </NavigationStyle.Secondary>
-        </NavigationStyle.Inner>
-      </NavigationStyle>
+      <>
+        <NavigationStyle>
+          <NavigationBodyPadding />
+          <NavigationStyle.Inner
+            className={'nav-inner ' + this.state.navScrollClass}
+          >
+            <NavigationStyle.Primary className="nav-primary">
+              <Link to="/">
+                <Brandmark />
+              </Link>
+
+              <ul>
+                {data.primaryNav.linkList.map((link, idx) => {
+                  if (link.subNav.length != false) {
+                    return (
+                      <li key={link.idx}>
+                        <button
+                          onClick={() => this.navOverlayToggle(idx)}
+                          onKeyDown={() => this.navOverlayToggle(idx)}
+                        >
+                          {link.label}
+                        </button>
+                      </li>
+                    );
+                  } else {
+                    return (
+                      <li key={link.idx}>
+                        <Link to={link.route}>{link.label}</Link>
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+            </NavigationStyle.Primary>
+            <NavigationStyle.Secondary className="nav-secondary">
+              <Btn
+                Label="Contact"
+                IconClass="question-circle"
+                IconPosition="left"
+                Destination="/"
+                TextColor={Theme.Color.Primary}
+                IconFas
+              />
+              <Btn
+                Label="Arizona"
+                Destination="/"
+                BorderStyle="solid"
+                BorderWidth="1px"
+                BorderColor={Theme.Color.Primary}
+                TextColor={Theme.Color.Primary}
+              />
+              <Btn
+                Label="Let's Play"
+                Destination="/"
+                BgColor={Theme.Color.Nova}
+                TextColor={Theme.Color.White}
+              />
+            </NavigationStyle.Secondary>
+          </NavigationStyle.Inner>
+        </NavigationStyle>
+
+        {/* Our Navigation Overlay */}
+        <NavigationOverlay
+          navData={data}
+          navContext={this.state.navContext}
+          navOverlayVisible={this.state.navOverlayVisible}
+          navOverlayToggle={this.navOverlayToggle.bind(this)}
+        />
+      </>
     );
   }
 }
@@ -205,7 +213,6 @@ class NavigationBar extends PureComponent {
 // Export our Navigation Component
 export const Navigation = () => (
   <>
-    <NavigationOverlay />
     <NavigationBar />
   </>
 );
