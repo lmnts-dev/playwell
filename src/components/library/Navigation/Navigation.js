@@ -87,6 +87,9 @@ class NavigationBar extends PureComponent {
 
     // Bind our click event to open up Navigation Overlays.
     this.navOverlayToggle = this.navOverlayToggle.bind(this);
+
+    // Bind our navContextUpdate function.
+    this.navContextUpdate = this.navContextUpdate.bind(this);
   }
 
   // Make sure we are listening for scroll once mounted.
@@ -126,13 +129,22 @@ class NavigationBar extends PureComponent {
     // If currently hidden...
     if (this.state.navOverlayVisible == false) {
       this.setState({
+        navContext: data.primaryNav.linkList[idx],
         navOverlayVisible: true,
       });
     } else {
       this.setState({
+        navContext: data.primaryNav.linkList[idx],
         navOverlayVisible: false,
       });
     }
+  }
+
+  // Change our navContext state based on the selected item.
+  navContextUpdate(idx) {
+    this.setState({
+      navContext: data.primaryNav.linkList[idx],
+    });
   }
 
   render() {
@@ -204,6 +216,7 @@ class NavigationBar extends PureComponent {
           navContext={this.state.navContext}
           navOverlayVisible={this.state.navOverlayVisible}
           navOverlayToggle={this.navOverlayToggle.bind(this)}
+          navContextUpdate={this.navContextUpdate.bind(this)}
         />
       </>
     );

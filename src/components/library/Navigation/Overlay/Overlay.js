@@ -50,6 +50,7 @@ const FocusLinkList = ({ linkList }) => {
   );
 };
 
+// Minor Link List for Sub Navigation
 const MinorLinkList = ({ linkList }) => {
   return (
     <ul className="minor-link-list">
@@ -91,46 +92,29 @@ export class NavigationOverlay extends React.Component {
     // Make our props accessible through this.props
     super(props);
 
-    // Set navContext list as state
     this.state = {
       navContext: this.props.navContext,
       navData: this.props.navData,
     };
-
-    // Bind our navContextUpdate function.
-    this.navContextUpdate = this.navContextUpdate.bind(this);
-
-    // Bind our navOverlayToggle function.
-    // this.navOverlayToggle = this.navOverlayToggle.bind(this);
   }
 
-  // Change our navContext state based on the selected item.
-  navContextUpdate(idx) {
-    this.setState({
-      navContext: this.state.navData.primaryNav.linkList[idx],
-    });
+  componentDidMount() {
+    this.state = {
+      navContext: this.props.navContext,
+      navData: this.props.navData,
+    };
   }
-
-  // // Show / Hide the Navigation Overlay based on state.
-  // navOverlayToggle() {
-  //   if (this.props.navOverlayVisible == true) {
-  //     console.log('navOverlayVisible: ' + this.state.navOverlayVisible);
-  //     this.setState({
-  //       navOverlayVisible: false,
-  //     });
-  //   } else {
-  //     console.log('navOverlayVisible: ' + this.state.navOverlayVisible);
-  //     this.setState({
-  //       navOverlayVisible: this.props.navOverlayVisible,
-  //     });
-  //   }
-  // }
 
   render() {
     // Assign our props a prettier name.
     let navData = data;
-    let navContext = this.state.navContext;
     let navOverlayVisible = this.props.navOverlayVisible;
+    let navContext = this.props.navContext;
+
+    console.log('this.props.navContext:');
+    console.log(this.props.navContext);
+    console.log('this.state.navContext:');
+    console.log(this.state.navContext);
 
     // If the overlay is hidden...
     if (navOverlayVisible == false) {
@@ -214,8 +198,8 @@ export class NavigationOverlay extends React.Component {
                             Read more: https://reactjs.org/docs/faq-functions.html#how-do-i-pass-a-parameter-to-an-event-handler-or-callback */}
                             <span
                               className="nav-item"
-                              onClick={() => this.navContextUpdate(idx)}
-                              onKeyDown={() => this.navContextUpdate(idx)}
+                              onClick={() => this.props.navContextUpdate(idx)}
+                              onKeyDown={() => this.props.navContextUpdate(idx)}
                               role="button"
                               tabIndex="0"
                             >
@@ -224,7 +208,7 @@ export class NavigationOverlay extends React.Component {
                           </li>
                         );
                       }
-                    })}
+                    }, this)}
                   </ul>
                   <div className="overlay-icon">
                     <Icon Name="gear" />
@@ -253,28 +237,6 @@ export class NavigationOverlay extends React.Component {
     }
   }
 }
-
-// export class NavigationOverlay extends PureComponent {
-//   constructor(props) {
-//     // Make our props accessible through this.props
-//     super(props);
-
-//     // Set navContext list as state
-//     this.state = {
-//       navContext: this.props.navContext,
-//     };
-//   }
-
-//   render() {
-//     return (
-//       <NavigationOverlayWithData
-//         navData={data}
-//         navContext={this.props.navContext}
-//         navOverlayVisible={this.props.navOverlayVisible}
-//       />
-//     );
-//   }
-// }
 
 //////////////////////////////////////////////////////////////////////
 // End Component
