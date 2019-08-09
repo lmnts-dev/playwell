@@ -191,7 +191,7 @@ export class NavigationOverlay extends React.Component {
                       if (link.route != undefined) {
                         return (
                           <li
-                            className={link.active == true ? 'active' : null}
+                            className={link.label == navContext.label ? 'active' : false}
                             key={idx}
                           >
                             {/* Pass our index to our click handler.

@@ -402,6 +402,7 @@ NavigationOverlayStyle.Main = styled.div`
 
         &.active {
           transform: translateX(calc((${Root.Size} / 2) * -1));
+          transition: all 0s ease;
           color: ${props =>
             props.theme.activeColor
               ? props.theme.activeColor
@@ -409,13 +410,14 @@ NavigationOverlayStyle.Main = styled.div`
 
           a {
             text-decoration: none;
+            transition: all 0s ease;
             color: ${props =>
               props.theme.activeColor
                 ? props.theme.activeColor
                 : Theme.Color.Galaxy};
           }
 
-          &:before {
+          &:after {
             content: '';
             position: absolute;
             top: 0;
@@ -427,8 +429,7 @@ NavigationOverlayStyle.Main = styled.div`
                 ? props.theme.activeColor
                 : Theme.Color.Galaxy};
             transform: translateX(calc(100% + (${Root.Size} * 1.5)));
-            transition: ${Theme.Base.Transition.String};
-            animation: ${IndicatorSlideIn} 2s ease 0s 1 normal forwards;
+            transition: all 0s ease;
           }
         }
       }

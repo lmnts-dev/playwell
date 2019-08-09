@@ -24,7 +24,6 @@ export const data = {
       {
         route: '/programs',
         label: 'Programs',
-        active: false,
         theme: {
           primaryColor: Theme.Color.Deepsea,
           activeColor: Theme.Color.Nova,
@@ -88,7 +87,6 @@ export const data = {
       {
         route: '/locations',
         label: 'Locations',
-        active: false,
         theme: {
           primaryColor: Theme.Color.Eggplant,
           activeColor: Theme.Color.Nova,
@@ -142,7 +140,6 @@ export const data = {
       {
         route: '/who-we-are',
         label: 'Who We Are',
-        active: false,
         theme: {
           primaryColor: Theme.Color.Sunset,
           activeColor: Theme.Color.Nightsky,
@@ -201,7 +198,6 @@ export const data = {
       {
         route: '/parties',
         label: 'Parties',
-        active: false,
         theme: {
           primaryColor: Theme.Color.Sunlight,
           activeColor: Theme.Color.Nightsky,
@@ -245,7 +241,6 @@ export const data = {
       {
         route: '/community',
         label: 'Community',
-        active: true,
         theme: {
           primaryColor: Theme.Color.Sky,
           activeColor: Theme.Color.Nightsky,
