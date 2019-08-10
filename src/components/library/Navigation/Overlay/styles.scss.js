@@ -1,3 +1,4 @@
+/* eslint-disable */
 // NavigationOverlay Component Styles:
 
 // Imports
@@ -17,17 +18,6 @@ import {
   SlideToLeft,
   Rotate,
 } from 'components/core/Transition/Keyframes';
-
-// Create our weird keyframes for the active indicator.
-const IndicatorSlideIn = keyframes`
-  0% {
-    transform: translateX(calc(100% + (${Root.Size} * 2.5)));
-  }
-
-  100% {
-    transform: translateX(calc(100% + (${Root.Size} * 1.5)));
-  }
-`;
 
 // Helpers
 import hexToRGB from 'helpers/hexToRGB';
@@ -55,6 +45,18 @@ export const NavigationOverlayStyle = styled.nav`
   display: flex;
   flex-direction: column;
   ${FadeIn};
+
+  &.nav-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &.nav-visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+  }
 `;
 
 NavigationOverlayStyle.Inner = styled.div`

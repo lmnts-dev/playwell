@@ -49,8 +49,6 @@ class OverlayButton extends React.Component {
       this.setState({
         overlayVisible: true,
       });
-
-      console.log(this.props.overlayMenuId + ': overlay open');
     }
 
     // If currently visible...
@@ -58,8 +56,6 @@ class OverlayButton extends React.Component {
       this.setState({
         overlayVisible: false,
       });
-
-      console.log(this.props.overlayMenuId + ': overlay closed');
     }
   }
 
@@ -124,8 +120,6 @@ class NavigationBar extends PureComponent {
 
   // Function to toggle NavigationOverlay.
   navOverlayToggle(idx) {
-    console.log('navOverlayVisible: true');
-
     // If currently hidden...
     if (this.state.navOverlayVisible == false) {
       this.setState({

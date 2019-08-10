@@ -27,7 +27,7 @@ import { data } from '../Data/';
 //////////////////////////////////////////////////////////////////////
 
 // Focus Link List for Sub Navigation
-const FocusLinkList = ({ linkList }) => {
+const FocusLinkList = ({ linkList, navOverlayToggle }) => {
   return (
     <ul className="focus-link-list">
       {/* Map our linkList prop */}
@@ -37,7 +37,13 @@ const FocusLinkList = ({ linkList }) => {
           return (
             <li key={idx} className={link.focus != false ? 'focus' : null}>
               <Link to={link.route}>
-                <span className="nav-item">
+                <span
+                  onClick={navOverlayToggle}
+                  onKeyDown={navOverlayToggle}
+                  role="button"
+                  tabIndex="0"
+                  className="nav-item"
+                >
                   <span className="label">{link.label}</span>
                   <Icon Name="carat" />
                 </span>
@@ -45,13 +51,13 @@ const FocusLinkList = ({ linkList }) => {
             </li>
           );
         }
-      })}
+      }, this)}
     </ul>
   );
 };
 
 // Minor Link List for Sub Navigation
-const MinorLinkList = ({ linkList }) => {
+const MinorLinkList = ({ linkList, navOverlayToggle }) => {
   return (
     <ul className="minor-link-list">
       {/* Map our linkList prop */}
@@ -62,7 +68,13 @@ const MinorLinkList = ({ linkList }) => {
           if (link.subhead == true) {
             return (
               <li key={idx} className="minor-link-subhead">
-                <span className="nav-item">
+                <span
+                  onClick={navOverlayToggle}
+                  onKeyDown={navOverlayToggle}
+                  role="button"
+                  tabIndex="0"
+                  className="nav-item"
+                >
                   <span className="label">{link.label}</span>
                 </span>
               </li>
@@ -73,7 +85,13 @@ const MinorLinkList = ({ linkList }) => {
             return (
               <li key={idx}>
                 <Link to={link.route}>
-                  <span className="nav-item">
+                  <span
+                    onClick={navOverlayToggle}
+                    onKeyDown={navOverlayToggle}
+                    role="button"
+                    tabIndex="0"
+                    className="nav-item"
+                  >
                     <span className="label">{link.label}</span>
                   </span>
                 </Link>
@@ -81,13 +99,13 @@ const MinorLinkList = ({ linkList }) => {
             );
           }
         }
-      })}
+      }, this)}
     </ul>
   );
 };
 
 // Navigation Component
-export class NavigationOverlay extends React.Component {
+export class NavigationOverlay extends PureComponent {
   constructor(props) {
     // Make our props accessible through this.props
     super(props);
@@ -111,11 +129,6 @@ export class NavigationOverlay extends React.Component {
     let navOverlayVisible = this.props.navOverlayVisible;
     let navContext = this.props.navContext;
 
-    console.log('this.props.navContext:');
-    console.log(this.props.navContext);
-    console.log('this.state.navContext:');
-    console.log(this.state.navContext);
-
     // If the overlay is hidden...
     if (navOverlayVisible == false) {
       return null;
@@ -126,7 +139,10 @@ export class NavigationOverlay extends React.Component {
       return (
         // Query our Navigation data so we can adjust our Navigation styles
         // based on Top Level Pages vs Sub Level Pages
-        <NavigationOverlayStyle theme={navContext.theme}>
+        <NavigationOverlayStyle
+          theme={navContext.theme}
+          className={navOverlayVisible == true ? 'nav-visible' : 'nav-hidden'}
+        >
           <NavigationOverlayStyle.Inner>
             <NavigationOverlayStyle.Sub
               className="nav-sub"
@@ -144,14 +160,26 @@ export class NavigationOverlay extends React.Component {
                     >
                       <Icon Name="carat" />
                     </div>
-                    <div className="overlay-branding">
+                    <div
+                      className="overlay-branding"
+                      onClick={this.props.navOverlayToggle}
+                      onKeyDown={this.props.navOverlayToggle}
+                      role="button"
+                      tabIndex="0"
+                    >
                       <Link to="/">
                         <Brandmark />
                       </Link>
                     </div>
                   </div>
                   <div className="top-tools">
-                    <div className="overlay-contact">
+                    <div
+                      className="overlay-contact"
+                      onClick={this.props.navOverlayToggle}
+                      onKeyDown={this.props.navOverlayToggle}
+                      role="button"
+                      tabIndex="0"
+                    >
                       <Btn
                         Label="Contact"
                         IconClassName="question-circle"
@@ -169,13 +197,19 @@ export class NavigationOverlay extends React.Component {
                   </div>
 
                   <div className="col-list">
-                    <FocusLinkList linkList={navContext.subNav.focusLinkList} />
+                    <FocusLinkList
+                      navOverlayToggle={this.props.navOverlayToggle}
+                      linkList={navContext.subNav.focusLinkList}
+                    />
 
                     {/* Line Break */}
                     {/* TODO: Componentize */}
                     <figure className="line-break" />
 
-                    <MinorLinkList linkList={navContext.subNav.minorLinkList} />
+                    <MinorLinkList
+                      navOverlayToggle={this.props.navOverlayToggle}
+                      linkList={navContext.subNav.minorLinkList}
+                    />
                   </div>
                 </div>
               </div>
@@ -191,7 +225,9 @@ export class NavigationOverlay extends React.Component {
                       if (link.route != undefined) {
                         return (
                           <li
-                            className={link.label == navContext.label ? 'active' : false}
+                            className={
+                              link.label == navContext.label ? 'active' : false
+                            }
                             key={idx}
                           >
                             {/* Pass our index to our click handler.

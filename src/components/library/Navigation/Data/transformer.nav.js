@@ -33,8 +33,8 @@ export const data = {
           // Focus Link List
           focusLinkList: [
             {
-              route: '/',
-              label: 'Programs Link',
+              route: '/dir-sample',
+              label: 'View All Programs',
               focus: true,
             },
             {

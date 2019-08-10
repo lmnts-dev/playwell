@@ -78,7 +78,7 @@ export const Rotate = keyframes`
   to {
     transform: rotate(359deg);
   }
-`
+`;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
