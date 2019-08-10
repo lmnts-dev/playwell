@@ -19,6 +19,8 @@ import { Theme, Root } from 'constants/Theme';
 import Brandmark from 'components/core/Branding/Brandmark';
 import Btn from 'components/library/Btn/';
 import Icon from 'components/library/Icons';
+import { FocusLinkList } from './FocusLinkList';
+import { MinorLinkList } from './MinorLinkList';
 
 // Data
 import { data } from '../Data/';
@@ -26,96 +28,19 @@ import { data } from '../Data/';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-// Focus Link List for Sub Navigation
-const FocusLinkList = ({ linkList, navOverlayToggle }) => {
-  return (
-    <ul className="focus-link-list">
-      {/* Map our linkList prop */}
-      {linkList.map((link, idx) => {
-        // If the route is specified...
-        if (link.route != undefined) {
-          return (
-            <li key={idx} className={link.focus != false ? 'focus' : null}>
-              <Link to={link.route}>
-                <span
-                  onClick={navOverlayToggle}
-                  onKeyDown={navOverlayToggle}
-                  role="button"
-                  tabIndex="0"
-                  className="nav-item"
-                >
-                  <span className="label">{link.label}</span>
-                  <Icon Name="carat" />
-                </span>
-              </Link>
-            </li>
-          );
-        }
-      }, this)}
-    </ul>
-  );
-};
-
-// Minor Link List for Sub Navigation
-const MinorLinkList = ({ linkList, navOverlayToggle }) => {
-  return (
-    <ul className="minor-link-list">
-      {/* Map our linkList prop */}
-      {linkList.map((link, idx) => {
-        // If the route is specified...
-        if (link.route != undefined) {
-          // If it isn't a subhead...
-          if (link.subhead == true) {
-            return (
-              <li key={idx} className="minor-link-subhead">
-                <span
-                  onClick={navOverlayToggle}
-                  onKeyDown={navOverlayToggle}
-                  role="button"
-                  tabIndex="0"
-                  className="nav-item"
-                >
-                  <span className="label">{link.label}</span>
-                </span>
-              </li>
-            );
-          }
-          // If it is a subhead...
-          else {
-            return (
-              <li key={idx}>
-                <Link to={link.route}>
-                  <span
-                    onClick={navOverlayToggle}
-                    onKeyDown={navOverlayToggle}
-                    role="button"
-                    tabIndex="0"
-                    className="nav-item"
-                  >
-                    <span className="label">{link.label}</span>
-                  </span>
-                </Link>
-              </li>
-            );
-          }
-        }
-      }, this)}
-    </ul>
-  );
-};
-
-// Navigation Component
 export class NavigationOverlay extends PureComponent {
   constructor(props) {
     // Make our props accessible through this.props
     super(props);
 
+    // Set our initial state.
     this.state = {
       navContext: this.props.navContext,
       navData: this.props.navData,
     };
   }
 
+  // Set our mounted state.
   componentDidMount() {
     this.state = {
       navContext: this.props.navContext,
