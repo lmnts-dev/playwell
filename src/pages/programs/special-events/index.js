@@ -31,6 +31,7 @@ const HeroProps = {
   color: 'White',
   flexDirection: 'row',
   BgAlt: 'Placeholder Image Alt',
+  playButtonBg: 'Nova',
 };
 
 // Render Page

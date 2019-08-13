@@ -20,8 +20,6 @@ import ImgMatch from 'components/core/ImgMatch';
 import ImgQuery from 'components/core/ImgQuery';
 import { Box, Flex } from 'components/library/Elements';
 
-import CoggWheel from 'components/library/CoggRotator/CoggWheel';
-
 import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
@@ -29,13 +27,14 @@ import { Theme, Root } from 'constants/Theme';
 
 const SplitHero = ({
   bg,
-  color,
-  flexDirection,
-  px,
-  children,
   BgMatch,
   BgQuery,
   BgAlt,
+  children,
+  color,
+  flexDirection,
+  playButtonBg,
+  px,
 }) => (
   <HeroContainer bg={bg} px={px} color={color}>
     <Flex
@@ -80,7 +79,7 @@ const SplitHero = ({
           ) : null}
         </Box>
         <CogRotator />
-        <PlayButton bg="Nova" />
+        <PlayButton bg={playButtonBg} />
       </Box>
     </Flex>
   </HeroContainer>
@@ -88,6 +87,7 @@ const SplitHero = ({
 
 SplitHero.defaultProps = {
   flexDirection: 'row',
+  playButtonBg: 'Nova',
 };
 
 export default SplitHero;
