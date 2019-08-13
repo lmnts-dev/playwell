@@ -7,22 +7,22 @@
 // Core
 import React from 'react';
 
-// Library
-import Tilt from 'react-tilt';
-
 // Styles
-import { Container, Inner } from './styles.scss';
+import { Container, Inner, Tilter } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
 const PlayButton = ({ bg }) => (
   <Container>
-    <Tilt className="Tilt" options={{ max: 23 }}>
+    <Tilter
+      className="Tilt"
+      options={{ max: 23, scale: 1.1, speed: 400, perspective: 300 }}
+    >
       <Inner bg={bg} p={[2, 2, 3, 3]}>
         &#x25BA;
       </Inner>
-    </Tilt>
+    </Tilter>
   </Container>
 );
 
