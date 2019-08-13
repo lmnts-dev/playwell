@@ -6,7 +6,7 @@
 
 // Core
 import React from 'react';
-import { graphql } from 'gatsby';
+import { Link } from 'gatsby';
 
 // Components
 import Layout from 'components/core/Layout';
