@@ -9,19 +9,13 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 // Styles
-import { Container } from './styles.scss';
-
-// Components
-import { Box, Flex } from 'components/library/Elements';
-
-// Constants
-import { Theme, Root } from 'constants/Theme';
+import { Container, Inner } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
 const HeroContainer = ({ bg, color, px, children }) => (
-  <Flex
+  <Container
     as="section"
     flexWrap="wrap"
     justifyContent="center"
@@ -29,12 +23,9 @@ const HeroContainer = ({ bg, color, px, children }) => (
     bg={bg}
     px={px}
     color={color}
-    css={{
-      minHeight: '70vh',
-    }}
   >
-    <Container>{children}</Container>
-  </Flex>
+    <Inner>{children}</Inner>
+  </Container>
 );
 
 HeroContainer.defaultProps = {

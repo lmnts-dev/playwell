@@ -17,7 +17,6 @@ import Btn from 'components/library/Btn';
 
 // Constants
 import { Box, Flex } from 'components/library/Elements';
-import { Theme, Root } from 'constants/Theme';
 
 // Data
 // import ImgPlaceholder from './assets/placeholder.jpg';
@@ -42,7 +41,7 @@ const HomePage = props => (
       <h6>We are passionate specialists in STEM Education.</h6>
       <Btn
         Label="View Listings"
-        BgColor={Theme.Color.Galaxy}
+        BgColor={props => props.theme.Color.Galaxy}
         TextColor="white"
       />
     </SplitHero>

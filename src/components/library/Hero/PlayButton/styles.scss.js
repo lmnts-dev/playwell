@@ -10,10 +10,6 @@ import styled from 'styled-components';
 // Library
 import Tilt from 'react-tilt';
 
-// Constants
-import { Theme, Root } from 'constants/Theme';
-import { Base } from 'constants/styles/Base';
-
 // Components
 import { Box, Flex } from 'components/library/Elements';
 
@@ -25,7 +21,7 @@ import { Box, Flex } from 'components/library/Elements';
 export const Container = styled(Box)`
   position: absolute;
   z-index: 2;
-  top: calc(${Theme.Root.Size} * -1.8);
+  top: calc(${props => props.theme.Root.Size} * -1.8);
   transform: translateX(-50%) translateY(170%);
 `;
 

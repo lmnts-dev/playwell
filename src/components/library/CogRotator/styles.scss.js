@@ -1,5 +1,6 @@
 // CogRotator Styles:
 // Container and animations for cog rotation
+// TODO: rotation is not perfectly centered
 
 // Imports
 //////////////////////////////////////////////////////////////////////

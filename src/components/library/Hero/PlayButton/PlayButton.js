@@ -18,7 +18,12 @@ const PlayButton = ({ bg }) => (
   <Container>
     <Tilter
       className="Tilt"
-      options={{ max: 23, scale: 1.1, speed: 400, perspective: 300 }}
+      options={{
+        max: 23,
+        scale: 1.05,
+        speed: 400,
+        perspective: 300,
+      }}
     >
       <Inner bg={bg} p={[2, 2, 3, 3]}>
         &#x25BA;

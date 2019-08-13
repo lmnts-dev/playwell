@@ -1,5 +1,5 @@
-// MenuHero Styles:
-// These are nearly identical to the Section base styles.
+// HeroContainer Styles:
+// Outer container styles for Hero variations
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -8,20 +8,28 @@
 import styled from 'styled-components';
 
 // Constants
-import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
+
+// Components
+import { Box, Flex } from 'components/library/Elements';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Container = styled.div`
-  max-width: ${Root.Site.Width};
+export const Container = styled(Flex)`
+  min-height: 70vh;
+`;
+
+export const Inner = styled.div`
+  max-width: ${props => props.theme.Root.Site.Width};
   width: 100%;
   margin: 0 auto;
   position: relative;
-  /* overflow: hidden; */
-  padding-top: calc(${Root.Nav.Size} + ${Root.Size} * 2);
-  padding-bottom: calc(${Root.Size} * 2);
+  padding-top: calc(
+    ${props => props.theme.Root.Nav.Size} + ${props => props.theme.Root.Size} *
+      2
+  );
+  padding-bottom: calc(${props => props.theme.Root.Size} * 2);
 `;
 
 //////////////////////////////////////////////////////////////////////
