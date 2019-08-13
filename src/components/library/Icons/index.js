@@ -13,6 +13,7 @@ import IconStyle from './styles.scss';
 
 // Icon Files
 import Carat from './SVG/Carat';
+import Gear from './SVG/Gear';
 import Intercom from './SVG/Intercom';
 
 // Begin Styles
@@ -24,6 +25,12 @@ const Icon = props => {
       return (
         <IconStyle className="ico">
           <Carat />
+        </IconStyle>
+      );
+    case 'gear':
+      return (
+        <IconStyle className="ico">
+          <Gear />
         </IconStyle>
       );
     case 'intercom':
