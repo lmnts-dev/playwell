@@ -22,7 +22,6 @@ import { Box, Flex } from 'components/library/Elements';
 
 import CoggWheel from 'components/library/CoggRotator/CoggWheel';
 
-
 import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
@@ -47,14 +46,18 @@ const SplitHero = ({
       alignItems="center"
     >
       <Box
-        width={[1, 1, 6 / 10, 6 / 10]}
-        pr={[0, 0, 2, 4, 5]}
-        pl={[0, 0, 2, 6, 10]}
+        width={[1, 1, 1, 6 / 10]}
+        pr={[0, 0, 2, 4, 10]}
+        pl={[0, 0, 2, 6, 9]}
         pb={[2, 2, 0, 0]}
       >
         {children}
       </Box>
-      <Box width={[1, 1, 4 / 10, 4 / 10]} css={{ position: 'relative' }}>
+      <Box
+        width={[1, 1, 1, 4 / 10]}
+        px={[0, 1, 4, 0]}
+        css={{ position: 'relative' }}
+      >
         <Box
           width={1}
           py={300}

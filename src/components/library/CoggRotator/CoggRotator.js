@@ -31,7 +31,9 @@ const CoggRotator = ({ bg, color, px, children }) => (
       z-index: 0;
     `}
   >
+    <Container>
     <CoggWheel />
+    </Container>
   </Box>
 );
 

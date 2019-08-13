@@ -1,5 +1,5 @@
 // PlayButton Component:
-// 
+//
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -7,37 +7,34 @@
 // Core
 import React from 'react';
 
+import Tilt from 'react-tilt';
+
 // Styles
-import { PlayButtonStyle } from './styles.scss';
+import { Container, Inner } from './styles.scss';
+
+// Constants
+import { Theme, Root } from 'constants/Theme';
 
 // Components
 import { Box, Flex } from 'components/library/Elements';
-
 import CoggWheel from 'components/library/CoggRotator/CoggWheel';
-
-import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const PlayButton = () => (
-  <Box
-    bg="Nova"
-    p={[2]}
-    css={css`
-      position: absolute;
-      z-index: 2;
-      border-radius: 999em;
-      font-size: 4rem;
-      top: calc(${Theme.Root.Size} * -1.2);
-      transform: translateX(-50%) translateY(170%);
-    `}
-  >
-    &#x25BA;
-  </Box>
+const PlayButton = ({ bg }) => (
+  <Container>
+    <Tilt className="Tilt" options={{ max: 23 }}>
+      <Inner bg={bg} p={[2, 2, 3, 3]}>
+        &#x25BA;
+      </Inner>
+    </Tilt>
+  </Container>
 );
 
-PlayButton.defaultProps = {};
+PlayButton.defaultProps = {
+  bg: 'Nova',
+};
 
 export default PlayButton;
 
