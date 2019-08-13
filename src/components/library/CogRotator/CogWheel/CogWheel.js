@@ -11,8 +11,8 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 export const CoggWheel = () => (
-  <svg width="120%" viewBox="0 0 334 334" version="1.1" className="coggwheel">
-    <g id="coggmark">
+  <svg width="120%" viewBox="0 0 334 334" version="1.1" className="cogwheel">
+    <g id="cogmark">
       <path
         id="path-1"
         opacity="1"

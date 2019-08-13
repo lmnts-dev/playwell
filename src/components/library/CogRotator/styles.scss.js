@@ -1,5 +1,5 @@
-// MenuHero Styles:
-// These are nearly identical to the Section base styles.
+// CogRotator Styles:
+// Container and animations for cog rotation
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -15,6 +15,13 @@ import { Base } from 'constants/styles/Base';
 //////////////////////////////////////////////////////////////////////
 
 export const Container = styled.div`
+  position: absolute;
+  top: calc(${Theme.Root.Size} * -1.2);
+  left: calc(${Theme.Root.Size} * -1.2);
+  z-index: 0;
+`;
+
+export const Rotator = styled.div`
   animation-name: spin;
   animation-duration: 40000ms;
   animation-iteration-count: infinite;

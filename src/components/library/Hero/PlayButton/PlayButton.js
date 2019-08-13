@@ -1,5 +1,5 @@
 // PlayButton Component:
-//
+// Play button with Tilt.js interaction
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -7,17 +7,11 @@
 // Core
 import React from 'react';
 
+// Library
 import Tilt from 'react-tilt';
 
 // Styles
 import { Container, Inner } from './styles.scss';
-
-// Constants
-import { Theme, Root } from 'constants/Theme';
-
-// Components
-import { Box, Flex } from 'components/library/Elements';
-import CoggWheel from 'components/library/CoggRotator/CoggWheel';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////

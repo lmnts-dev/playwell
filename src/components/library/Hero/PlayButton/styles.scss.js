@@ -1,5 +1,5 @@
-// MenuHero Styles:
-// These are nearly identical to the Section base styles.
+// PlayButton Styles:
+// Container and layout styles
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -17,6 +17,8 @@ import { Box, Flex } from 'components/library/Elements';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
+// Might want to move this out to where it is used so the button can
+// be re-used without specific positioning.
 export const Container = styled(Box)`
   position: absolute;
   z-index: 2;
@@ -27,6 +29,7 @@ export const Container = styled(Box)`
 export const Inner = styled(Box)`
   border-radius: 999em;
   font-size: 4rem;
+  cursor: pointer;
 `;
 
 //////////////////////////////////////////////////////////////////////

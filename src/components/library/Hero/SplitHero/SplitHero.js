@@ -14,7 +14,7 @@ import HeroContainer from '../HeroContainer';
 import { SplitHeroStyle } from './styles.scss';
 
 // Components
-import CoggRotator from 'components/library/CoggRotator';
+import CogRotator from 'components/library/CogRotator';
 import PlayButton from 'components/library/Hero/PlayButton';
 import ImgMatch from 'components/core/ImgMatch';
 import ImgQuery from 'components/core/ImgQuery';
@@ -79,8 +79,8 @@ const SplitHero = ({
             </div>
           ) : null}
         </Box>
-        <CoggRotator />
-        <PlayButton />
+        <CogRotator />
+        <PlayButton bg="Nova" />
       </Box>
     </Flex>
   </HeroContainer>
