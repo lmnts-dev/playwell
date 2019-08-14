@@ -12,6 +12,7 @@ import { Link } from 'gatsby';
 import Layout from 'components/core/Layout';
 import SplitHero from 'components/library/Hero/SplitHero';
 import Btn from 'components/library/Btn';
+import SubNav from 'components/library/SubNav';
 
 // Styles
 
@@ -34,19 +35,22 @@ const HeroProps = {
 };
 
 // Render Page
-const HomePage = props => (
-  <Layout>
-    <SplitHero {...HeroProps}>
-      <h2>Join a team of creative problem solvers &amp; creators</h2>
-      <h6>We are passionate specialists in STEM Education.</h6>
-      <Btn
-        Label="View Listings"
-        BgColor={props => props.theme.Color.Galaxy}
-        TextColor="white"
-      />
-    </SplitHero>
-  </Layout>
-);
+const HomePage = props => {
+  return (
+    <Layout>
+      <SplitHero {...HeroProps}>
+        <h2>Join a team of creative problem solvers &amp; creators</h2>
+        <h6>We are passionate specialists in STEM Education.</h6>
+        <Btn
+          Label="View Listings"
+          BgColor={props => props.theme.Color.Galaxy}
+          TextColor="white"
+        />
+      </SplitHero>
+      <SubNav />
+    </Layout>
+  );
+};
 
 export default HomePage;
 
