@@ -29,7 +29,7 @@ export const Inner = styled.div`
     ${props => props.theme.Root.Nav.Size} + ${props => props.theme.Root.Size} *
       2
   );
-  padding-bottom: calc(${props => props.theme.Root.Size} * 2);
+  padding-bottom: calc(${props => props.theme.Root.Size} * 1);
 `;
 
 //////////////////////////////////////////////////////////////////////

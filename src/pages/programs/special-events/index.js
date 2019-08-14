@@ -47,7 +47,9 @@ const HomePage = props => {
           TextColor="white"
         />
       </SplitHero>
-      <SubNav />
+      <Box css={{ position: 'relative', height: 0 }}>
+        <SubNav />
+      </Box>
     </Layout>
   );
 };

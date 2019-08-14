@@ -17,9 +17,27 @@ import { Box, Flex } from 'components/library/Elements';
 export const Container = styled(Box)`
   margin: 0 auto;
   max-width: ${props => props.theme.Root.Site.Width};
+  position: absolute;
+  top: calc(${props => props.theme.Root.Size} * -1.5);
 `;
 
-export const Nav = styled(Flex)``;
+export const Nav = styled(Flex)`
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+Nav.Link = styled.a`
+  color: ${props => props.theme.Color.Nova};
+  font-family: ${props => props.theme.Font.Header};
+  cursor: pointer;
+  transition: ${props => props.theme.Base.Transition.String};
+  font-size: 1.5rem;
+
+  &:hover {
+    opacity: 0.7;
+    text-decoration: none;
+  }
+`;
 
 //////////////////////////////////////////////////////////////////////
 // End Styles
