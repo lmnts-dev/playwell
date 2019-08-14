@@ -21,7 +21,7 @@ import { Box, Flex } from 'components/library/Elements';
 export const Container = styled(Box)`
   position: absolute;
   z-index: 2;
-  top: calc(${props => props.theme.Root.Size} * -1.8);
+  top: calc(${props => props.theme.Root.Size} * -1.4);
   transform: translateX(-50%) translateY(170%);
 `;
 

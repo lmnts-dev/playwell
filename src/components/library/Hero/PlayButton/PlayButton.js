@@ -25,7 +25,7 @@ const PlayButton = ({ bg }) => (
         perspective: 300,
       }}
     >
-      <Inner bg={bg} p={[2, 2, 3, 3]}>
+      <Inner bg={bg} p={2}>
         &#x25BA;
       </Inner>
     </Tilter>
