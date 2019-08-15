@@ -9,7 +9,7 @@ import React from 'react';
 import Transition from 'components/core/Transition';
 import ScrollWrapper from 'components/core/ScrollWrapper';
 import { Navigation } from 'components/library/Navigation/';
-import Footer from 'components/library/Footer';
+import { Footer } from 'components/library/Footer';
 
 const wrapPageElement = ({ element, props }) => {
   return (
