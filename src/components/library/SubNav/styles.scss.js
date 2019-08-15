@@ -28,10 +28,10 @@ export const Nav = styled(Flex)`
 
 Nav.Link = styled.a`
   color: ${props => props.theme.Color.Nova};
-  font-family: ${props => props.theme.Font.Header};
   cursor: pointer;
-  transition: ${props => props.theme.Base.Transition.String};
+  font-family: ${props => props.theme.Font.Header};
   font-size: 1.5rem;
+  transition: ${props => props.theme.Base.Transition.String};
 
   &:hover {
     opacity: 0.7;

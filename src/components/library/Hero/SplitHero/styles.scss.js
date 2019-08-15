@@ -14,7 +14,12 @@ import { Base } from 'constants/styles/Base';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const SplitHeroStyle = styled.div``;
+export const GearContainer = styled.div`
+  position: absolute;
+  top: calc(${props => props.theme.Root.Size} * -1.5);
+  left: calc(${props => props.theme.Root.Size} * -1.5);
+  z-index: 0;
+`;
 
 //////////////////////////////////////////////////////////////////////
 // End Styles

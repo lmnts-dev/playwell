@@ -32,10 +32,11 @@ const HeroProps = {
   flexDirection: 'row',
   BgAlt: 'Placeholder Image Alt',
   playButtonBg: 'Nova',
+  gear: true,
 };
 
 // Render Page
-const HomePage = props => {
+const ProgramPage = () => {
   return (
     <Layout>
       <SplitHero {...HeroProps}>
@@ -54,7 +55,7 @@ const HomePage = props => {
   );
 };
 
-export default HomePage;
+export default ProgramPage;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
