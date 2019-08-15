@@ -27,43 +27,6 @@ import { data } from './Data/';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-// OverlayButton Component
-class OverlayButton extends React.Component {
-  constructor(props) {
-    // Make our props accessible through this.props
-    super(props);
-
-    // Initial state.
-    this.state = {
-      overlayVisible: false,
-    };
-
-    // Bind overlay state.
-    this.toggleOverlay = this.toggleOverlay.bind(this);
-  }
-
-  // Base functions to change transition state for the Overlay.
-  toggleOverlay() {
-    // If currently hidden...
-    if (this.state.overlayVisible == false) {
-      this.setState({
-        overlayVisible: true,
-      });
-    }
-
-    // If currently visible...
-    else {
-      this.setState({
-        overlayVisible: false,
-      });
-    }
-  }
-
-  render() {
-    return <button>{this.props.label}</button>;
-  }
-}
-
 // Navigation Component
 class NavigationBar extends PureComponent {
   constructor(props) {
@@ -144,7 +107,9 @@ class NavigationBar extends PureComponent {
   render() {
     return (
       <>
-        <NavigationStyle>
+        <NavigationStyle
+          className={this.state.navOverlayVisible == true ? 'hidden' : null}
+        >
           <NavigationBodyPadding />
           <NavigationStyle.Inner
             className={'nav-inner ' + this.state.navScrollClass}

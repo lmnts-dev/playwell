@@ -10,21 +10,18 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const FooterAngleSlice = ({ bgColor }) => (
-  <svg
-    version="1.1"
-    x="0px"
-    y="0px"
-    width="1440px"
-    height="654.7px"
-    viewBox="0 0 1440 654.7"
-  >
+export const FooterAngleSlice = ({ bgColor }) => (
+  <svg version="1.1" viewBox="0 0 1440 654.7" preserveAspectRatio="none">
     <path
       class="st0"
       d="M1035.4,491.9c-17.1,7.8-36.8,7.5-53.6-0.9L0,0v654.7h1440V306.1L1035.4,491.9z"
-      fill={bgColor ? bgColor : Theme.Color.White}
+      fill={bgColor}
     />
   </svg>
 );
 
-export default FooterAngleSlice;
+// Defult Props
+
+FooterAngleSlice.defaultProps = {
+  bgColor: Theme.Color.White,
+};

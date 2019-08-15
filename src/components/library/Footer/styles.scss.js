@@ -14,9 +14,25 @@ import { FadeIn, FadeOut } from 'components/core/Transition/Keyframes';
 
 // Begin Styles
 
-const FooterStyle = styled.footer`
+let footerHeight = '100vh';
+
+export const FooterStyle = styled.footer`
   width: 100%;
+  position: relative;
+  height: ${footerHeight};
+
+  svg {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: ${footerHeight};
+
+    &.footer-curve-slice {
+      opacity: 0.05;
+    }
+  }
 `;
 
-export default FooterStyle;
 //////////////////////////////////////////////////////////////////////

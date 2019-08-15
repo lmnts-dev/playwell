@@ -114,6 +114,7 @@ BtnStyle.Inner = styled.span`
       fill: ${props => (props.TextColor ? props.TextColor : Theme.Color.Black)};
       border: ${props =>
         props.TextColor ? props.TextColor : Theme.Color.Black};
+      pointer-events: none;
 
       @media (max-width: ${Theme.Base.Media.Width.Sm}) {
         transform: scale(0.5);

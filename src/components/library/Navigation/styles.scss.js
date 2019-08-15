@@ -28,6 +28,12 @@ export const NavigationStyle = styled.nav`
   z-index: 50;
   display: flex;
   justify-content: center;
+  transform: translateY(0%);
+  transition: transform 1.5s ease;
+
+  &.hidden {
+    transform: translateY(-100%);
+  }
 `;
 
 NavigationStyle.Inner = styled.div`

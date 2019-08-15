@@ -38,8 +38,8 @@ export const data = {
               focus: true,
             },
             {
-              route: '/',
-              label: 'Programs Link',
+              route: '/programs/special-events',
+              label: 'Special Events',
               focus: false,
             },
             {
@@ -295,8 +295,8 @@ export const data = {
         route: '/programs',
       },
       {
-        label: 'Locations',
-        route: '/locations',
+        label: 'Special Events',
+        route: '/programs/special-events',
       },
       {
         label: 'Who We Are',
