@@ -288,4 +288,44 @@ export const data = {
       },
     ],
   },
+  footerNav: {
+    linkList: [
+      {
+        label: 'Programs',
+        route: '/programs',
+      },
+      {
+        label: 'Locations',
+        route: '/locations',
+      },
+      {
+        label: 'Who We Are',
+        route: '/who-we-are',
+      },
+      {
+        label: 'Parties',
+        route: '/parties',
+      },
+      {
+        label: 'Community',
+        route: '/community',
+      },
+      {
+        label: 'Contact',
+        route: '/contact',
+      },
+      {
+        label: 'Careers',
+        route: '/careers',
+      },
+      {
+        label: 'Partnerships',
+        route: '/partnerships',
+      },
+      {
+        label: 'Play Zone',
+        route: '/play',
+      },
+    ],
+  },
 };
