@@ -1,14 +1,10 @@
-// PlayButton Styles:
-// Container and layout styles
+// SubNav Styles:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
 
 // Core
 import styled from 'styled-components';
-
-// Library
-import Tilt from 'react-tilt';
 
 // Components
 import { Box, Flex } from 'components/library/Elements';
@@ -19,21 +15,28 @@ import { Box, Flex } from 'components/library/Elements';
 // Might want to move this out to where it is used so the button can
 // be re-used without specific positioning.
 export const Container = styled(Box)`
+  margin: 0 auto;
+  max-width: ${props => props.theme.Root.Site.Width};
   position: absolute;
-  z-index: 2;
-  top: calc(${props => props.theme.Root.Size} * -1.4);
-  transform: translateX(-50%) translateY(170%);
+  top: calc(${props => props.theme.Root.Size} * -1.5);
 `;
 
-export const Inner = styled(Box)`
-  border-radius: 999em;
-  font-size: 4rem;
+export const Nav = styled(Flex)`
+  flex-wrap: wrap;
+  justify-content: space-between;
+`;
+
+Nav.Link = styled.a`
+  color: ${props => props.theme.Color.Nova};
   cursor: pointer;
-  transform: translateZ(20px);
-`;
+  font-family: ${props => props.theme.Font.Header};
+  font-size: 1.5rem;
+  transition: ${props => props.theme.Base.Transition.String};
 
-export const Tilter = styled(Tilt)`
-  transform-style: preserve-3d;
+  &:hover {
+    opacity: 0.7;
+    text-decoration: none;
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

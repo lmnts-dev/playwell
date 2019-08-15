@@ -11,16 +11,14 @@ import React from 'react';
 import HeroContainer from '../HeroContainer';
 
 // Styles
-import { SplitHeroStyle } from './styles.scss';
+import { GearContainer } from './styles.scss';
 
 // Components
-import CogRotator from 'components/library/CogRotator';
+import GearRotator from 'components/library/GearRotator';
 import PlayButton from 'components/library/Hero/PlayButton';
 import ImgMatch from 'components/core/ImgMatch';
 import ImgQuery from 'components/core/ImgQuery';
 import { Box, Flex } from 'components/library/Elements';
-
-import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -33,6 +31,7 @@ const SplitHero = ({
   children,
   color,
   flexDirection,
+  gear,
   playButtonBg,
   px,
 }) => (
@@ -78,7 +77,11 @@ const SplitHero = ({
             </div>
           ) : null}
         </Box>
-        <CogRotator />
+        {gear ? (
+          <GearContainer>
+            <GearRotator strokeColor={props => props.theme.Color.White} />
+          </GearContainer>
+        ) : null}
         <PlayButton bg={playButtonBg} />
       </Box>
     </Flex>
