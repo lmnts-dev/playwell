@@ -20,8 +20,6 @@ import ImgMatch from 'components/core/ImgMatch';
 import ImgQuery from 'components/core/ImgQuery';
 import { Box, Flex } from 'components/library/Elements';
 
-import { Theme, Root } from 'constants/Theme';
-
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 

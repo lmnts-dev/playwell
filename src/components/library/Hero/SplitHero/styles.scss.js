@@ -1,5 +1,4 @@
-// MenuHero Styles:
-// These are nearly identical to the Section base styles.
+// SplitHero Styles:
 
 // Imports
 //////////////////////////////////////////////////////////////////////

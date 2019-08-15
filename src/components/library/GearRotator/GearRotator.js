@@ -1,12 +1,11 @@
 // GearRotator Component:
-// Gear rotator animation
+// Gear rotation animation
 
 // Imports
 //////////////////////////////////////////////////////////////////////
 
 // Core
 import React from 'react';
-import { Link } from 'gatsby';
 
 // Styles
 import { Container, Rotator } from './styles.scss';
