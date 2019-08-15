@@ -22,7 +22,7 @@ export const Base = {
   Media: {
     Width: {
       Lg: 992, // px
-      Md: 768, // px
+      Md: 769, // px
       Sm: 376, // px
     },
     Height: {

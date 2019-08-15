@@ -14,14 +14,7 @@ import { Base } from 'constants/styles/Base';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const ProgramHeroStyle = styled.div`
-  max-width: ${Root.Site.Width};
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-  padding-top: calc(${Root.Nav.Size} + ${Root.Size} * 3);
-  padding-bottom: calc(${Root.Nav.Size} + ${Root.Size} * 2);
-`;
+
 
 //////////////////////////////////////////////////////////////////////
 // End Styles
