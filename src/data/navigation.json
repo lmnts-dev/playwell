@@ -1,0 +1,297 @@
+{
+  "nav": {
+    "focusNav": {
+      "route": "/play",
+      "label": "Let's Play"
+    },
+    "primaryNav": {
+      "linkList": [
+        {
+          "route": "/programs",
+          "label": "Programs",
+          "theme": {
+            "primaryColor": "Deepsea",
+            "activeColor": "Nova"
+          },
+          "subNav": {
+            "focusLinkList": [
+              {
+                "route": "/dir-sample",
+                "label": "View All Programs",
+                "focus": true
+              },
+              {
+                "route": "/programs/special-events",
+                "label": "Special Events",
+                "focus": false
+              },
+              {
+                "route": "/",
+                "label": "Programs Link",
+                "focus": false
+              },
+              {
+                "route": "/",
+                "label": "Programs Link",
+                "focus": false
+              },
+              {
+                "route": "/",
+                "label": "Programs Link",
+                "focus": false
+              }
+            ],
+            "minorLinkList": [
+              {
+                "route": false,
+                "label": "Subhead",
+                "subhead": true
+              },
+              {
+                "route": "/",
+                "label": "Programs Link",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "Programs Link",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "Programs Link",
+                "subhead": false
+              }
+            ]
+          }
+        },
+        {
+          "route": "/locations",
+          "label": "Locations",
+          "theme": {
+            "primaryColor": "Eggplant",
+            "activeColor": "Nova"
+          },
+          "subNav": {
+            "focusLinkList": [
+              {
+                "route": "/",
+                "label": "Locations Link",
+                "focus": true
+              },
+              {
+                "route": "/",
+                "label": "Locations Link",
+                "focus": false
+              },
+              {
+                "route": "/",
+                "label": "Locations Link",
+                "focus": false
+              },
+              {
+                "route": "/",
+                "label": "Locations Link",
+                "focus": false
+              }
+            ],
+            "minorLinkList": [
+              {
+                "route": false,
+                "label": "Subhead",
+                "subhead": true
+              },
+              {
+                "route": "/",
+                "label": "Locations Link",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "Locations Link",
+                "subhead": false
+              }
+            ]
+          }
+        },
+        {
+          "route": "/who-we-are",
+          "label": "Who We Are",
+          "theme": {
+            "primaryColor": "Sunset",
+            "activeColor": "Nightsky"
+          },
+          "subNav": {
+            "focusLinkList": [
+              {
+                "route": "/",
+                "label": "About Link",
+                "focus": true
+              },
+              {
+                "route": "/",
+                "label": "About Link",
+                "focus": false
+              },
+              {
+                "route": "/",
+                "label": "About Link",
+                "focus": false
+              },
+              {
+                "route": "/",
+                "label": "About Link",
+                "focus": false
+              }
+            ],
+            "minorLinkList": [
+              {
+                "route": false,
+                "label": "Subhead",
+                "subhead": true
+              },
+              {
+                "route": "/",
+                "label": "About Link",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "About Link",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "About Link",
+                "subhead": false
+              }
+            ]
+          }
+        },
+        {
+          "route": "/parties",
+          "label": "Parties",
+          "theme": {
+            "primaryColor": "Sunlight",
+            "activeColor": "Nightsky"
+          },
+          "subNav": {
+            "focusLinkList": [
+              {
+                "route": "/",
+                "label": "Parties Link",
+                "focus": true
+              },
+              {
+                "route": "/",
+                "label": "Parties Link",
+                "focus": false
+              }
+            ],
+            "minorLinkList": [
+              {
+                "route": false,
+                "label": "Subhead",
+                "subhead": true
+              },
+              {
+                "route": "/",
+                "label": "Parties Link",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "Parties Link",
+                "subhead": false
+              }
+            ]
+          }
+        },
+        {
+          "route": "/community",
+          "label": "Community",
+          "theme": {
+            "primaryColor": "Sky",
+            "activeColor": "Nightsky"
+          },
+          "subNav": {
+            "focusLinkList": [
+              {
+                "route": "/",
+                "label": "Community Link",
+                "focus": true
+              },
+              {
+                "route": "/",
+                "label": "Community Link",
+                "focus": false
+              },
+              {
+                "route": "/",
+                "label": "Community Link",
+                "focus": false
+              }
+            ],
+            "minorLinkList": [
+              {
+                "route": false,
+                "label": "Subhead",
+                "subhead": true
+              },
+              {
+                "route": "/",
+                "label": "Community Link",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "Community Link",
+                "subhead": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "footerNav": {
+      "linkList": [
+        {
+          "label": "Programs",
+          "route": "/programs"
+        },
+        {
+          "label": "Special Events",
+          "route": "/programs/special-events"
+        },
+        {
+          "label": "Who We Are",
+          "route": "/who-we-are"
+        },
+        {
+          "label": "Parties",
+          "route": "/parties"
+        },
+        {
+          "label": "Community",
+          "route": "/community"
+        },
+        {
+          "label": "Contact",
+          "route": "/contact"
+        },
+        {
+          "label": "Careers",
+          "route": "/careers"
+        },
+        {
+          "label": "Partnerships",
+          "route": "/partnerships"
+        },
+        {
+          "label": "Play Zone",
+          "route": "/play"
+        }
+      ]
+    }
+  }
+}

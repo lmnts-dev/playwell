@@ -57,5 +57,75 @@ export const Palette = createGlobalStyle`
   ::selection { background: ${Color.Primary}; color: ${Color.White} }
 `;
 
+export const ColorMatch = color => {
+  switch (color) {
+    // Core Colors
+    case 'Primary':
+      return '#520589';
+    case 'Secondary':
+      return '#5D6376';
+    case 'Background':
+      return '#FFF6EE';
+    case 'Text':
+      return '#520589';
+
+    // Grayscale Palette
+    case 'Black':
+      return '#000000';
+    case 'Nightsky':
+      return '#151313';
+    case 'Warmsky':
+      return '#34281D';
+    case 'Gravel':
+      return '#4E4135';
+    case 'Slate':
+      return '#928070';
+    case 'Gray':
+      return '#DAC9BA';
+    case 'Blush':
+      return '#F6E7D9';
+    case 'Cream':
+      return '#FFF6EE';
+    case 'White':
+      return '#FFFFFF';
+
+    // Warm Palette
+    case 'Clay':
+      return '#A33609';
+    case 'Nova':
+      return '#E24809';
+    case 'Sunlight':
+      return '#E9A200';
+    case 'Sunset':
+      return '#ED9158';
+
+    // Cool Palette
+    case 'Galaxy':
+      return '#09004B';
+    case 'Deepsea':
+      return '#002F9E';
+    case 'Ocean':
+      return '#269FE2';
+    case 'Sky':
+      return '#7AC0E6';
+    case 'Dino':
+      return '#23023B';
+    case 'Eggplant':
+      return '#520589';
+    case 'Lilac':
+      return '#874BB4';
+
+    // Feedback Palette
+    case 'Warning':
+      return '#FC6376';
+    case 'Success':
+      return '#40DA33';
+
+    // Fallback
+    default:
+      return '#520589';
+  }
+};
+
 //////////////////////////////////////////////////////////////////////
 // End Component

@@ -11,6 +11,7 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 
 // Styles
 import { NavigationStyle, NavigationBodyPadding } from './styles.scss';
+import { navFadeOutDuration } from './Overlay/styles.scss';
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -22,7 +23,7 @@ import Btn from 'components/library/Btn/';
 import { NavigationOverlay } from 'components/library/Navigation/Overlay/';
 
 // Data
-import { data } from './Data/';
+import { navDataTransformer } from './Data/';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -32,12 +33,14 @@ class NavigationBar extends PureComponent {
   constructor(props) {
     // Make our props accessible through this.props
     super(props);
+
     // Base styles to change transition state for
     // collapsing menu hero.
     this.state = {
-      navContext: data.primaryNav.linkList[0],
+      navContext: this.props.navQuery.primaryNav.linkList[0],
       navScrollClass: 'top',
       navOverlayVisible: false,
+      navFadingOut: false,
     };
 
     // Bind base functions to change transition state for
@@ -58,6 +61,7 @@ class NavigationBar extends PureComponent {
     // Initial state for navOverlayVisible
     this.state = {
       navOverlayVisible: false,
+      navFadingOut: false,
     };
   }
 
@@ -68,6 +72,7 @@ class NavigationBar extends PureComponent {
     // Initial state for navOverlayVisible
     this.state = {
       navOverlayVisible: false,
+      navFadingOut: false,
     };
   }
 
@@ -86,21 +91,30 @@ class NavigationBar extends PureComponent {
     // If currently hidden...
     if (this.state.navOverlayVisible == false) {
       this.setState({
-        navContext: data.primaryNav.linkList[idx],
+        navContext: this.props.navQuery.primaryNav.linkList[idx],
         navOverlayVisible: true,
       });
     } else {
+      // Set state for NavigationOverlay to fade out.
       this.setState({
-        navContext: data.primaryNav.linkList[idx],
-        navOverlayVisible: false,
+        navFadingOut: true,
       });
+
+      // Timer to remove NavigationOverlay from the DOM.
+      setTimeout(() => {
+        this.setState({
+          navContext: this.props.navQuery.primaryNav.linkList[idx],
+          navOverlayVisible: false,
+          navFadingOut: false,
+        });
+      }, navFadeOutDuration);
     }
   }
 
   // Change our navContext state based on the selected item.
   navContextUpdate(idx) {
     this.setState({
-      navContext: data.primaryNav.linkList[idx],
+      navContext: this.props.navQuery.primaryNav.linkList[idx],
     });
   }
 
@@ -108,7 +122,9 @@ class NavigationBar extends PureComponent {
     return (
       <>
         <NavigationStyle
-          className={this.state.navOverlayVisible == true ? 'hidden' : null}
+          className={
+            this.state.navOverlayVisible == true ? 'hidden' : undefined
+          }
         >
           <NavigationBodyPadding />
           <NavigationStyle.Inner
@@ -120,10 +136,10 @@ class NavigationBar extends PureComponent {
               </Link>
 
               <ul>
-                {data.primaryNav.linkList.map((link, idx) => {
+                {this.props.navQuery.primaryNav.linkList.map((link, idx) => {
                   if (link.subNav.length != false) {
                     return (
-                      <li key={link.idx}>
+                      <li key={idx}>
                         <button
                           onClick={() => this.navOverlayToggle(idx)}
                           onKeyDown={() => this.navOverlayToggle(idx)}
@@ -134,7 +150,7 @@ class NavigationBar extends PureComponent {
                     );
                   } else {
                     return (
-                      <li key={link.idx}>
+                      <li key={idx}>
                         <Link to={link.route}>{link.label}</Link>
                       </li>
                     );
@@ -171,11 +187,12 @@ class NavigationBar extends PureComponent {
 
         {/* Our Navigation Overlay */}
         <NavigationOverlay
-          navData={data}
+          navData={this.props.navQuery}
           navContext={this.state.navContext}
           navOverlayVisible={this.state.navOverlayVisible}
           navOverlayToggle={this.navOverlayToggle.bind(this)}
           navContextUpdate={this.navContextUpdate.bind(this)}
+          navFadingOut={this.state.navFadingOut}
         />
       </>
     );
@@ -183,11 +200,60 @@ class NavigationBar extends PureComponent {
 }
 
 // Export our Navigation Component
-export const Navigation = () => (
-  <>
-    <NavigationBar />
-  </>
-);
+export const Navigation = () => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query navDataQuery {
+          allDataJson {
+            edges {
+              node {
+                nav {
+                  focusNav {
+                    label
+                    route
+                  }
+                  footerNav {
+                    linkList {
+                      label
+                      route
+                    }
+                  }
+                  primaryNav {
+                    linkList {
+                      label
+                      route
+                      subNav {
+                        focusLinkList {
+                          focus
+                          label
+                          route
+                        }
+                        minorLinkList {
+                          label
+                          subhead
+                        }
+                      }
+                      theme {
+                        activeColor
+                        primaryColor
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `}
+      render={data => (
+        <header>
+          <NavigationBar navQuery={navDataTransformer(data)} />
+        </header>
+      )}
+    />
+  );
+};
 
 //////////////////////////////////////////////////////////////////////
 // End Component

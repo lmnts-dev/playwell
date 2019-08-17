@@ -13,6 +13,7 @@ import { Theme, Root } from 'constants/Theme';
 // Keyframe
 import {
   FadeIn,
+  FadeOut,
   SlideUp,
   SlideToRight,
   SlideToLeft,
@@ -26,6 +27,9 @@ import hexToRGB from 'helpers/hexToRGB';
 //////////////////////////////////////////////////////////////////////
 
 // The Navigation Container
+
+export const navFadeOutDuration = 1000; // milliseconds
+export const navFadeOutDurationString = navFadeOutDuration / 1000 + 's'; // for use in css animations
 
 export const NavigationOverlayStyle = styled.nav`
   position: fixed;
@@ -44,7 +48,6 @@ export const NavigationOverlayStyle = styled.nav`
   z-index: 600;
   display: flex;
   flex-direction: column;
-  ${FadeIn};
 
   &.nav-hidden {
     visibility: hidden;
@@ -56,6 +59,10 @@ export const NavigationOverlayStyle = styled.nav`
     visibility: visible;
     opacity: 1;
     pointer-events: all;
+  }
+
+  &.nav-fadeout {
+    animation: ${FadeOut} ${navFadeOutDurationString} ease 0s 1 normal forwards;
   }
 `;
 

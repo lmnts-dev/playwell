@@ -11,9 +11,13 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 export const FooterAngleSlice = ({ bgColor }) => (
-  <svg version="1.1" viewBox="0 0 1440 654.7" preserveAspectRatio="none">
+  <svg
+    version="1.1"
+    viewBox="0 0 1440 654.7"
+    preserveAspectRatio="none"
+    className="footer-angle-slice"
+  >
     <path
-      class="st0"
       d="M1035.4,491.9c-17.1,7.8-36.8,7.5-53.6-0.9L0,0v654.7h1440V306.1L1035.4,491.9z"
       fill={bgColor}
     />

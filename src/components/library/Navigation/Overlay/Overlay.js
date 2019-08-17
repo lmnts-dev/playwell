@@ -22,12 +22,10 @@ import Icon from 'components/library/Icons';
 import { FocusLinkList } from './FocusLinkList';
 import { MinorLinkList } from './MinorLinkList';
 
-// Data
-import { data } from '../Data/';
-
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+// Navigation Overlay Class
 export class NavigationOverlay extends PureComponent {
   constructor(props) {
     // Make our props accessible through this.props
@@ -50,9 +48,10 @@ export class NavigationOverlay extends PureComponent {
 
   render() {
     // Assign our props a prettier name.
-    let navData = data;
+    let navData = this.props.navData;
     let navOverlayVisible = this.props.navOverlayVisible;
     let navContext = this.props.navContext;
+    let navFadingOut = this.props.navFadingOut;
 
     // If the overlay is hidden...
     if (navOverlayVisible == false) {
@@ -66,7 +65,7 @@ export class NavigationOverlay extends PureComponent {
         // based on Top Level Pages vs Sub Level Pages
         <NavigationOverlayStyle
           theme={navContext.theme}
-          className={navOverlayVisible == true ? 'nav-visible' : 'nav-hidden'}
+          className={navFadingOut == true ? 'nav-fadeout' : undefined}
         >
           <NavigationOverlayStyle.Inner>
             <NavigationOverlayStyle.Sub
@@ -151,7 +150,9 @@ export class NavigationOverlay extends PureComponent {
                         return (
                           <li
                             className={
-                              link.label == navContext.label ? 'active' : false
+                              link.label == navContext.label
+                                ? 'active'
+                                : undefined
                             }
                             key={idx}
                           >

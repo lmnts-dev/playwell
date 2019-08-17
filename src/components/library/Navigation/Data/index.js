@@ -1,1 +1,1 @@
-export * from './transformer.nav';
+export * from './adaptor.nav';

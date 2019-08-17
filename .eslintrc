@@ -11,10 +11,12 @@
       "warn",
       "single"
     ],
-    "prettier/prettier": "warn"
+    "prettier/prettier": "warn",
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
   },
   "extends": [
     "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["prettier", "jsx-a11y"]
+  "plugins": ["prettier", "jsx-a11y", "react-hooks"]
 }

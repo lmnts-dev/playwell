@@ -83,7 +83,7 @@ const HomePage = props => (
                   </h4>
                   {client.node.courses.map((course, idx) => {
                     return (
-                      <div>
+                      <div key={idx}>
                         <Link
                           to={
                             '/courses/' +

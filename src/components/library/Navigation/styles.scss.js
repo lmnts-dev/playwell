@@ -29,7 +29,7 @@ export const NavigationStyle = styled.nav`
   display: flex;
   justify-content: center;
   transform: translateY(0%);
-  transition: transform 1.5s ease;
+  transition: transform 0.5s ease;
 
   &.hidden {
     transform: translateY(-100%);
