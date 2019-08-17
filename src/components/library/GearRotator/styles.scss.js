@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { Rotate } from 'components/core/Transition/Keyframes';
 
 // Components
-import { Box, Flex } from 'components/library/elements';
+import { Box, Flex } from 'components/library/Elements';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////

@@ -39,6 +39,7 @@
     "gatsby-plugin-webpack-size": "^0.0.3",
     "gatsby-transformer-remark": "^2.2.5",
     "gatsby-transformer-sharp": "^2.1.13",
+    "gitmoji-cli": "^1.9.4",
     "intersection-observer": "^0.5.1",
     "react-helmet": "^5.2.0",
     "react-pose": "^4.0.5",
