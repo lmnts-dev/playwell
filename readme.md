@@ -62,7 +62,7 @@ Do you have suggestions or feedback? [Open an issue](https://github.com/lmnts-de
 
 ## Usage
 
-We're building this on Gatsby and utilizing Sanity.io for the CMS. Therefor, there is two structures in this repository -- meaning we have two separate node packages going on, requiring the usage of (Lerna)[https://lerna.js.org/]
+We're building this on Gatsby and utilizing (Sanity.io)[sanity.io] for the CMS. Therefor, there is two structures in this repository -- meaning we have two separate node packages going on, requiring the usage of (Lerna)[https://lerna.js.org/]
 
 ```bash
 # Clone the repo
