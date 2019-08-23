@@ -62,37 +62,21 @@ Do you have suggestions or feedback? [Open an issue](https://github.com/lmnts-de
 
 ## Usage
 
+We're building this on Gatsby and utilizing Sanity.io for the CMS. Therefor, there is two structures in this repository -- meaning we have two separate node packages going on, requiring the usage of (Lerna)[https://lerna.js.org/]
+
 ```bash
-# Installation with `gatsby-cli`
-gatsby new client-site https://github.com/lmnts-dev/lmnts-gatsby-starter
+# Clone the repo
+npm i
 
-# Installation with `git clone`
-git clone client-site git@github.com:lmnts-dev/lmnts-gatsby-starter.git
-cd client-site
-yarn install
+# Option 1: Run Lerna to run both Sanity Studio and the Gatsby site at the same time.
+# Caveats: No eslint errors in your terminal.
+lerna run dev
 
-# To develop
-npm run develop
-
-# To build
-npm run build
-
-# To test SSR (for Lighthouse etc.)
-npm run ssr
-npm install -g lighthouse
-lighthouse localhost:9000 --view
-
-# To format JS (precommit)
-npm run format
-
-# To generate favicons (included in `build`)
-npm run build:favicons
-
-# To do all of the above and commit to both repositories and reboot your server:
-npm run build && git add . && gitmoji -c && git push origin master && git push public master && npm run develop 
+# Option 2: Open /web/ and /studio/ in two separate tabs on your terminal and run your node scripts.
+npm run dev
 ```
 
-## Configuration
+## Configuration in `/web/`
 
 Find the site-wide configuration in `Theme.js`.
 
@@ -106,7 +90,7 @@ Find the site-wide configuration in `Theme.js`.
 
 > 🚨 Don't forget to update your `robots.txt` inside `static/`!
 
-## Folder structure
+## Folder structure in `/web/`
 For further reading on methodolgy, keep sscrolling.
 
 ```bash
@@ -131,7 +115,7 @@ For further reading on methodolgy, keep sscrolling.
     └── favicons.js # Generates favicons and manifest using one png only.
 ```
 
-## Methodology
+## Methodology in `/web/`
 ### Elements
 Elements are static, logic-less building blocks.
 ```bash
@@ -142,7 +126,7 @@ Elements are static, logic-less building blocks.
 │   │   └── Section
 ```
 
-### Components
+### Components in `/web/`
 Components are collections of Elements and often contain logic.
 ```bash
 ├── src
@@ -152,7 +136,7 @@ Components are collections of Elements and often contain logic.
 │   │   └── sitewide # Visible sitewide components: Navigation, footer, etc.
 ```
 
-### Building with these
+### Building with these in `/web/`
 We follow the guidelines below for typical generation and nesting of Elements:
 ```bash
 <Section>
@@ -168,7 +152,7 @@ We follow the guidelines below for typical generation and nesting of Elements:
 - `<Inner>` : The inner part of the section. Only one of these exist at all times. Always `relative`, and also can be various widths if needed.
 - `<Block>` : Various, repeatable elements. This is the core content container.
 
-### Componentizing collections of Elements
+### Componentizing collections of Elements in `/web/`
 
 <i>TODO: Pete will write this...</i>
 

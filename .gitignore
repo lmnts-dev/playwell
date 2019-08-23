@@ -1,5 +1,15 @@
+# Mac files
 .DS_Store
-node_modules/
+
+# Dependency directories
+/node_modules
+/web/node_modules
+/studio/node_modules
+
+# Lerna files
+/lerna-debug.log
+
+## Environment tokens
 .env
 
 # Logs
