@@ -10,7 +10,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 // Components
-import Icon from 'components/library/Icons';
+import { Icon } from 'components/library/Icons';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////

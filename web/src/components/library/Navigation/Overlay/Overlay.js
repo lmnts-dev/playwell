@@ -16,9 +16,9 @@ import { Base } from 'constants/styles/Base';
 import { Theme, Root } from 'constants/Theme';
 
 // Components
-import Brandmark from 'components/core/Branding/Brandmark';
+import { Brandmark } from 'components/core/Branding/Brandmark';
 import Btn from 'components/library/Btn/';
-import Icon from 'components/library/Icons';
+import { Icon } from 'components/library/Icons';
 import { FocusLinkList } from './FocusLinkList';
 import { MinorLinkList } from './MinorLinkList';
 

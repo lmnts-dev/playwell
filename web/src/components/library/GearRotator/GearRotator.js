@@ -11,7 +11,7 @@ import React from 'react';
 import { Container, Rotator } from './styles.scss';
 
 // Components
-import Icon from 'components/library/Icons';
+import { Icon } from 'components/library/Icons';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////

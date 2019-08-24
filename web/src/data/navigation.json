@@ -260,6 +260,10 @@
           "route": "/programs"
         },
         {
+          "label": "Locations",
+          "route": "/locations"
+        },
+        {
           "label": "Special Events",
           "route": "/programs/special-events"
         },

@@ -18,12 +18,9 @@ import { Base } from 'constants/styles/Base';
 import { Theme, Root } from 'constants/Theme';
 
 // Components
-import Brandmark from 'components/core/Branding/Brandmark';
+import { Brandmark } from 'components/core/Branding/Brandmark';
 import Btn from 'components/library/Btn/';
 import { NavigationOverlay } from 'components/library/Navigation/Overlay/';
-
-// Data
-import { navDataTransformer } from './Data/';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -200,59 +197,8 @@ class NavigationBar extends PureComponent {
 }
 
 // Export our Navigation Component
-export const Navigation = () => {
-  return (
-    <StaticQuery
-      query={graphql`
-        query navDataQuery {
-          allDataJson {
-            edges {
-              node {
-                nav {
-                  focusNav {
-                    label
-                    route
-                  }
-                  footerNav {
-                    linkList {
-                      label
-                      route
-                    }
-                  }
-                  primaryNav {
-                    linkList {
-                      label
-                      route
-                      subNav {
-                        focusLinkList {
-                          focus
-                          label
-                          route
-                        }
-                        minorLinkList {
-                          label
-                          subhead
-                        }
-                      }
-                      theme {
-                        activeColor
-                        primaryColor
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      `}
-      render={data => (
-        <header>
-          <NavigationBar navQuery={navDataTransformer(data)} />
-        </header>
-      )}
-    />
-  );
+export const Navigation = ({ navQuery }) => {
+  return <NavigationBar navQuery={navQuery} />;
 };
 
 //////////////////////////////////////////////////////////////////////

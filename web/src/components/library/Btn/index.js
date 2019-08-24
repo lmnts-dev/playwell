@@ -8,7 +8,7 @@
 import React from 'react';
 
 // Components
-import Icon from 'components/library/Icons';
+import { Icon } from 'components/library/Icons';
 
 // Styles
 import BtnStyle, { BtnStyleExternal, BtnStylePseudo } from './styles.scss';

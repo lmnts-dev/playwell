@@ -40,13 +40,13 @@ NavigationStyle.Inner = styled.div`
   max-width: ${Root.Site.Width};
   width: 100%;
   margin: 0 auto;
+  padding-left: ${Root.Grid.Gutter.Left};
+  padding-right: ${Root.Grid.Gutter.Right};
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: stretch;
   flex-wrap: nowrap;
-  padding-left: ${Root.Grid.Gutter.Left};
-  padding-right: ${Root.Grid.Gutter.Right};
-  position: relative;
 
   &:before {
     content: '';
