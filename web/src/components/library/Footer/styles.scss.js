@@ -27,6 +27,7 @@ export const FooterStyle = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  z-index: 20;
 
   .footer-curve-slice,
   .footer-angle-slice {
@@ -122,7 +123,7 @@ export const FooterStyle = styled.footer`
                 }
 
                 &:hover {
-                  background-color: ${hexToRGB(Theme.Color.Black, 0.05)};
+                  background: ${Theme.Color.Cream};
                   transform: scale(1.2);
                 }
               }

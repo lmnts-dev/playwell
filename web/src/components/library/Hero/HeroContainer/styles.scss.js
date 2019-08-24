@@ -27,7 +27,7 @@ export const Inner = styled.div`
   position: relative;
   padding-top: calc(
     ${props => props.theme.Root.Nav.Size} + ${props => props.theme.Root.Size} *
-      2
+      1
   );
   padding-bottom: calc(${props => props.theme.Root.Size} * 1);
 `;

@@ -16,7 +16,7 @@
           "subNav": {
             "focusLinkList": [
               {
-                "route": "/dir-sample",
+                "route": "/programs",
                 "label": "View All Programs",
                 "focus": true
               },
