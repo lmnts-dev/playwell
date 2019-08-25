@@ -126,7 +126,7 @@ const Course = props => (
       <br />
       <br />
       <br />
-      <Link to="/dir-sample">
+      <Link to="/programs">
         <h2>Back to Directory</h2>
       </Link>
     </main>

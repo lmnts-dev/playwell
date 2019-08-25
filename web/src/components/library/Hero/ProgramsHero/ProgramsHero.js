@@ -40,10 +40,10 @@ const ProgramsHeroContent = ({ mapWidth, mapZedIndex }) => {
   return (
     <ProgramsHeroContentStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
       <h1>
-        <span class="h1">
+        <span class="h2">
           <span class="inline">Explore LEGO® STEM Programs near</span>
         </span>
-        <span class="location">
+        <span class="location h2">
           <span class="inline">
             <Icon Name="map-marker-alt" fas />
             <span>Brooklyn, NYC</span>

@@ -19,7 +19,7 @@ import { Theme, Root } from 'constants/Theme';
 
 // Components
 import { Brandmark } from 'components/core/Branding/Brandmark';
-import Btn from 'components/library/Btn/';
+import { Btn } from 'components/library/Btn/';
 import { NavigationOverlay } from 'components/library/Navigation/Overlay/';
 
 // Begin Component

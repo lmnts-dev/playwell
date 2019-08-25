@@ -19,6 +19,7 @@ import hexToRGB from 'helpers/hexToRGB';
 //////////////////////////////////////////////////////////////////////
 
 let footerHeight = '80vh';
+let footerMinHeight = '800px';
 
 export const FooterStyle = styled.footer`
   width: 100%;
@@ -37,6 +38,7 @@ export const FooterStyle = styled.footer`
     right: 0;
     bottom: 0;
     height: ${footerHeight};
+    min-height: ${footerMinHeight};
     z-index: -1;
   }
 
