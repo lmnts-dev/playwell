@@ -1,4 +1,4 @@
-// Index.js:
+// Course.js:
 // This is the home page of the website.
 
 // Imports
@@ -10,15 +10,49 @@ import { Link, StaticQuery, graphql } from 'gatsby';
 
 // Components
 import Layout from 'components/core/Layout';
+import HeroContainer from 'components/library/Hero/HeroContainer';
+import Btn from 'components/library/Btn';
+import SubNav from 'components/library/SubNav';
+
+// Styles
+import { Hero } from './styles.scss';
 
 // Constants
+import { Box, Flex } from 'components/library/Elements';
+
+// Data
+// import ImgPlaceholder from './assets/placeholder.jpg';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+// Props
+const HeroProps = {
+  bg: 'Sky',
+  textAlign: 'center',
+};
+
 // Render Page
 const Course = props => (
   <Layout>
+    <HeroContainer {...HeroProps}>
+      <Flex
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+        css={{ maxWidth: '1600px', margin: '0 auto' }}
+      >
+        <Hero.Avatar />
+        <Hero.Tags as="ul">
+          <li>workshops</li>
+          <li>enrichment</li>
+          <li>ages 5-12</li>
+          <li>astronauts</li>
+        </Hero.Tags>
+        <Hero.Headline>{props.pageContext.course_type_name}</Hero.Headline>
+        <p>{props.pageContext.date_time_display}</p>
+      </Flex>
+    </HeroContainer>
     <main
       style={{
         padding: '20px',

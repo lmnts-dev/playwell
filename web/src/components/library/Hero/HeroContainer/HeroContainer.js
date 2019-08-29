@@ -14,7 +14,7 @@ import { Container, Inner } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const HeroContainer = ({ bg, color, px, children }) => (
+const HeroContainer = ({ bg, color, px, children, textAlign }) => (
   <Container
     as="section"
     flexWrap="wrap"
@@ -23,6 +23,7 @@ const HeroContainer = ({ bg, color, px, children }) => (
     bg={bg}
     px={px}
     color={color}
+    textAlign={textAlign}
   >
     <Inner>{children}</Inner>
   </Container>
