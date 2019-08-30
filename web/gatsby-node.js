@@ -115,7 +115,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     ////////////////////////////////////////////////////////////////////////////////////
 
-    const courseSample = path.resolve(`src/templates/course/index.js`);
+    const courseSample = path.resolve(`src/templates/Course/index.js`);
 
     // Create Client Pages
     _.each(result.data.allPlayWellClient.edges, client => {

@@ -18,6 +18,7 @@ import { Box, Flex } from 'components/library/Elements';
 
 export const Container = styled(Flex)`
   min-height: 70vh;
+  text-align: ${props => props.textAlign};
 `;
 
 export const Inner = styled.div`
