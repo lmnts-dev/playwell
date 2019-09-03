@@ -11,7 +11,7 @@ import { Link } from 'gatsby';
 // Components
 import Layout from 'components/core/Layout';
 import SplitHero from 'components/library/Hero/SplitHero';
-import Btn from 'components/library/Btn';
+import { Btn } from 'components/library/Btn';
 import SubNav from 'components/library/SubNav';
 
 // Styles

@@ -22,6 +22,7 @@ export const Color = {
   Warmsky: '#34281D',
   Gravel: '#4E4135',
   Slate: '#928070',
+  Tan: '#C4AC97',
   Gray: '#DAC9BA',
   Blush: '#F6E7D9',
   Cream: '#FFF6EE',

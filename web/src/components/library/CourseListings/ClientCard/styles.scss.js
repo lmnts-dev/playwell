@@ -21,26 +21,26 @@ import { BtnStyle } from 'components/library/Btn/styles.scss';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const CourseListingsStyle = styled.section`
-  background: ${Theme.Color.White};
-  padding-left: ${Root.Grid.Gutter.Left};
-  padding-right: ${Root.Grid.Gutter.Right};
+let bgGradient =
+  'linear-gradient(180deg, ' +
+  Theme.Color.Cream +
+  ' 0%, rgba(255,255,255,0.00) 50%, rgba(255,255,255,0.00) 100%)';
 
-  .listings-inner {
-    width: ${props =>
-      props.mapWidth ? 'calc(100% - ' + props.mapWidth + ')' : '100%'};
-  }
-
-  .listings {
-    position: relative;
-    z-index: ${props => (props.mapZedIndex ? props.mapZedIndex + 1 : 5)};
-  }
+export const ClientCardStyle = styled.div`
+  background: ${props =>
+    props.expanded == true ? bgGradient : Theme.Color.Cream};
+  border-radius: 35.5px;
+  padding: 0 calc(${Root.Size} / 2) calc(${Root.Size} / 2)
+    calc(${Root.Size} / 2);
+  margin: 0 0 calc(${Root.Size} / 4) 0;
+  border-radius: calc(${Root.Size} / 2);
 `;
 
-// Results
-
-export const ListingsResultsStyle = styled.div`
-  position: relative;
+ClientCardStyle.ClientName = styled.span`
+  display: block;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: calc(${Root.Size} / 2) 0;
 `;
 
 //////////////////////////////////////////////////////////////////////
