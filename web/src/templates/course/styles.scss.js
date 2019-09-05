@@ -17,8 +17,8 @@ import { Box, Flex, Text } from 'components/library/Elements';
 export const Hero = styled.div``;
 
 Hero.Avatar = styled.div`
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   background: white;
   border-radius: 99rem;
   box-shadow: 0 9px 27px rgba(0, 0, 0, 0.1);
@@ -62,6 +62,9 @@ export const Section = styled(Flex)`
   background-image: url('${props => props.bgImage}');
   background-size: cover;
   background-position: center center;
+  text-align: center;
+  flex-wrap: wrap;
+  flex-direction: column;
 `;
 
 Section.Overlay = styled(Box)`
@@ -101,6 +104,17 @@ export const QuestionsNav = styled(Flex)`
     margin-bottom: 1rem;
     padding: 0 calc(${props => props.theme.Root.Rem} * 0.8);
   }
+`;
+
+export const Collapse = styled(Box)`
+  background: ${p => p.theme.Color.White};
+  border-top: 1px solid #eaeaea;
+  cursor: pointer;
+  text-align: center;
+
+  /* &:hover {
+    background: ${p => p.theme.Color.Cream};
+  } */
 `;
 
 //////////////////////////////////////////////////////////////////////
