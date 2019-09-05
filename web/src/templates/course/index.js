@@ -47,6 +47,7 @@ const Course = ({ pageContext }) => {
     <Layout>
       <HeroContainer {...HeroProps}>
         <Flex
+          as="article"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
@@ -249,6 +250,7 @@ const Course = ({ pageContext }) => {
 
       <HeroContainer {...HeroProps}>
         <Flex
+          as="article"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
