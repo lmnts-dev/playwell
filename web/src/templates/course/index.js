@@ -51,7 +51,7 @@ const Course = ({ pageContext }) => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          maxWidth="1600px"
+          maxWidth={props => props.theme.Base.Grid.SiteWidth}
           m="0 auto"
           pb={[4, 3]}
           px={[1, 1, 0]}
