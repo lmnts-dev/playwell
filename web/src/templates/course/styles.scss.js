@@ -71,9 +71,7 @@ Section.Overlay = styled(Box)`
   background: ${p => p.bgOverlay};
 `;
 
-Section.Inner = styled(Flex)`
-  flex-wrap: wrap;
-`;
+Section.Inner = styled(Flex)``;
 
 export const Lead = styled(Text)`
   text-align: center;
