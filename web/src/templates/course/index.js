@@ -1,18 +1,17 @@
 // Course.js:
-// This is the home page of the website.
+// This is the course detail page data template.
 
 // Imports
 //////////////////////////////////////////////////////////////////////
 
 // Core
 import React, { useState } from 'react';
-import { Link, StaticQuery, graphql } from 'gatsby';
+import { Link } from 'gatsby';
 
 // Components
 import Layout from 'components/core/Layout';
 import HeroContainer from 'components/library/Hero/HeroContainer';
 import Btn from 'components/library/Btn';
-import SubNav from 'components/library/SubNav';
 
 // Styles
 import {
@@ -28,8 +27,6 @@ import {
 import { Box, Flex, Text } from 'components/library/Elements';
 
 // Data
-// import ImgPlaceholder from './assets/placeholder.jpg';
-
 import CalloutBg from './assets/cta__courses.jpeg';
 
 // Begin Component
@@ -44,7 +41,7 @@ const HeroProps = {
 
 // Render Page
 const Course = ({ pageContext }) => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <Layout>
@@ -91,14 +88,10 @@ const Course = ({ pageContext }) => {
           </Hero.Tags>
         </Flex>
       </HeroContainer>
-      <Flex
-        css={css`
-          position: relative;
-          justify-content: center;
-        `}
-      >
-        <Spacer />
-      </Flex>
+
+      <Spacer>
+        <Spacer.Line />
+      </Spacer>
 
       <Section
         as="section"
@@ -106,26 +99,25 @@ const Course = ({ pageContext }) => {
         px={[2, 1, 2, 6, 15]}
         pt={[7, 7, 9, 9, 11]}
         pb={[6, 6, 8, 8, 10]}
-        siteWidth={props => props.theme.Base.Grid.SiteWidth}
       >
-        <Section.Inner as="article" flexDirection="column">
+        <Flex
+          as="article"
+          flexDirection="column"
+          flexWrap="wrap"
+          maxWidth={props => props.theme.Base.Grid.SiteWidth}
+        >
           <Lead as="p" color="Nova" fontSize={[1, 1, 2, 2]}>
             {pageContext.date_time_display}
           </Lead>
           <Lead as="p" color="Galaxy" fontSize={[1, 1, 2, 2]}>
             {pageContext.course_type_long_description}
           </Lead>
-        </Section.Inner>
+        </Flex>
       </Section>
 
-      <Flex
-        justifyContent="center"
-        css={css`
-          position: relative;
-        `}
-      >
-        <Spacer />
-      </Flex>
+      <Spacer>
+        <Spacer.Line />
+      </Spacer>
 
       <Section
         as="section"
@@ -133,14 +125,15 @@ const Course = ({ pageContext }) => {
         px={[1, 1, 2, 2]}
         pt={[6, 6, 8, 8]}
         pb={[2, 2, 3, 3]}
-        siteWidth={props => props.theme.Base.Grid.SiteWidth}
       >
-        <Section.Inner
+        <Flex
           as="article"
           px={[1, 1, 2, 6]}
           width={1}
+          maxWidth={props => props.theme.Base.Grid.SiteWidth}
           alignItems="flex-start"
           justifyContent="space-between"
+          flexWrap="wrap"
         >
           <Box width={[1, 1, 1 / 3, 1 / 3]} mb={[1, 1, 0]}>
             <Text as="p" color="Galaxy">
@@ -169,15 +162,16 @@ const Course = ({ pageContext }) => {
               </Text>
             </Text>
           </Box>
-        </Section.Inner>
+        </Flex>
         {isExpanded && (
-          <Section.Inner
+          <Flex
             as="article"
             px={[1, 1, 2, 6]}
             mt={3}
             width={1}
             alignItems="flex-start"
             justifyContent="space-between"
+            flexWrap="wrap"
           >
             <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[1, 1, 0]}>
               <Text as="p" color="Galaxy">
@@ -197,7 +191,7 @@ const Course = ({ pageContext }) => {
                 </Text>
               </Text>
             </Box>
-          </Section.Inner>
+          </Flex>
         )}
       </Section>
 
@@ -219,12 +213,14 @@ const Course = ({ pageContext }) => {
           pb={1}
           width={1}
         >
-          <Section.Inner
+          <Flex
             as="article"
             width={1}
+            maxWidth={props => props.theme.Base.Grid.SiteWidth}
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
+            flexWrap="wrap"
           >
             <Box width={1}>
               <Text as="span" fontSize={4} mt={1}>
@@ -234,7 +230,7 @@ const Course = ({ pageContext }) => {
                 Learn more about our workshops.
               </Text>
               <Btn
-                Label="Enroll Now"
+                Label="Get in touch"
                 Destination="/"
                 BgColor={props => props.theme.Color.Nova}
                 TextColor={props => props.theme.Color.White}
@@ -247,7 +243,7 @@ const Course = ({ pageContext }) => {
                 <li>Engineering Themes</li>
               </QuestionsNav>
             </Box>
-          </Section.Inner>
+          </Flex>
         </Section.Overlay>
       </Section>
 
@@ -256,8 +252,8 @@ const Course = ({ pageContext }) => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          maxWidth="1600px"
           m="0 auto"
+          maxWidth={props => props.theme.Base.Grid.SiteWidth}
         >
           <Text as="span" fontSize={4} mt={1}>
             Let's play!

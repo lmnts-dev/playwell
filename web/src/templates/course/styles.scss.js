@@ -80,7 +80,12 @@ export const Lead = styled(Text)`
   font-weight: 400;
 `;
 
-export const Spacer = styled.div`
+export const Spacer = styled(Flex)`
+  position: relative;
+  justify-content: center;
+`;
+
+Spacer.Line = styled.span`
   width: 1px;
   height: 100px;
   background-color: black;
