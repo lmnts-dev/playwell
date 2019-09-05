@@ -28,9 +28,16 @@ export const Inner = styled.div`
   position: relative;
   padding-top: calc(
     ${props => props.theme.Root.Nav.Size} + ${props => props.theme.Root.Size} *
-      1
+      4
   );
   padding-bottom: calc(${props => props.theme.Root.Size} * 1);
+
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+    padding-top: calc(
+      ${props => props.theme.Root.Nav.Size} + ${props => props.theme.Root.Size} *
+        1
+    );
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

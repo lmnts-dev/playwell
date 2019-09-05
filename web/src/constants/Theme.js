@@ -155,21 +155,29 @@ export const Theme = {
     Base.Media.Width.Sm + 'px',
     Base.Media.Width.Md + 'px',
     Base.Media.Width.Lg + 'px',
-    '1200px',
+    '1200px',3
   ],
   colors: Color,
+  fontSizes: [
+    "1rem", "1.2rem", "1.5rem", "1.8rem", "2rem", "2.5rem", "3rem",
+  ],
   space: [
     '0',
-    'var(--GutterLeft)',
-    'calc(var(--GutterLeft) * 2)',
-    'calc(var(--GutterLeft) * 3)',
-    'calc(var(--GutterLeft) * 4)',
-    'calc(var(--GutterLeft) * 5)',
-    'calc(var(--GutterLeft) * 6)',
-    'calc(var(--GutterLeft) * 7)',
-    'calc(var(--GutterLeft) * 8)',
-    'calc(var(--GutterLeft) * 9)',
-    'calc(var(--GutterLeft) * 10)',
+    'var(--REM)',
+    'calc(var(--REM) * 2)',
+    'calc(var(--REM) * 3)',
+    'calc(var(--REM) * 4)',
+    'calc(var(--REM) * 5)',
+    'calc(var(--REM) * 6)',
+    'calc(var(--REM) * 7)',
+    'calc(var(--REM) * 8)',
+    'calc(var(--REM) * 9)',
+    'calc(var(--REM) * 10)',
+    'calc(var(--REM) * 11)',
+    'calc(var(--REM) * 12)',
+    'calc(var(--REM) * 13)',
+    'calc(var(--REM) * 14)',
+    'calc(var(--REM) * 15)',
   ],
 };
 
@@ -185,7 +193,7 @@ export const Root = {
   IconSize: 'var(--IconSize)',
 
   // Root Element Measurement
-  Rem: 'var(--Rem)',
+  Rem: 'var(--REM)',
 
   // View Width (vw) Based Measurements
   ViewWidthPadding: 'var(--ViewWidthPadding)',
