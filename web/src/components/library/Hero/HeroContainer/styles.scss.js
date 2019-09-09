@@ -21,7 +21,7 @@ export const Container = styled(Flex)`
   text-align: ${props => props.textAlign};
 `;
 
-export const Inner = styled.div`
+Container.Inner = styled.div`
   max-width: ${props => props.theme.Root.Site.Width};
   width: 100%;
   margin: 0 auto;
@@ -35,7 +35,7 @@ export const Inner = styled.div`
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     padding-top: calc(
       ${props => props.theme.Root.Nav.Size} + ${props => props.theme.Root.Size} *
-        1
+        2
     );
   }
 `;

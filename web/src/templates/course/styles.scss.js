@@ -11,6 +11,16 @@ import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
 import { Box, Flex, Text } from 'components/library/Elements';
 
+// Keyframe
+import {
+  FadeIn,
+  FadeOut,
+  SlideUp,
+  SlideToRight,
+  SlideToLeft,
+  Rotate,
+} from 'components/core/Transition/Keyframes';
+
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
@@ -43,11 +53,11 @@ Hero.Tags = styled(Flex)`
     letter-spacing: calc(${props => props.theme.Root.Size} * 0.05);
     font-weight: 500;
     font-size: 0.8rem;
-    padding: 0 calc(${props => props.theme.Root.Rem} * 0.4);
+    padding: 0 calc(${props => props.theme.Root.Rem} * 1);
     margin-bottom: calc(${props => props.theme.Root.Rem} * 0.8);
-
-    @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+    text-align: @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
       font-size: 0.9rem;
+      padding: 0 calc(${props => props.theme.Root.Rem} * 0);
     }
   }
 `;
@@ -84,11 +94,11 @@ export const Spacer = styled(Flex)`
 `;
 
 Spacer.Line = styled.span`
-  width: 1px;
+  width: 0;
   height: 100px;
-  background-color: black;
   position: absolute;
   bottom: -50px;
+  border-left: 1px dashed ${p => p.theme.Color.Primary};
 `;
 
 export const QuestionsNav = styled(Flex)`
@@ -118,6 +128,17 @@ export const Collapse = styled(Box)`
   /* &:hover {
     background: ${p => p.theme.Color.Cream};
   } */
+`;
+
+export const Drawer = styled(Flex)`
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  height: auto;
+  max-height: 600px;
+
+  &.collapsed {
+    max-height: 0;
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////
