@@ -9,7 +9,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 // Styles
-import { Container, Inner } from './styles.scss';
+import { Container } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -25,7 +25,7 @@ const HeroContainer = ({ bg, color, px, children, textAlign }) => (
     color={color}
     textAlign={textAlign}
   >
-    <Inner>{children}</Inner>
+    <Container.Inner>{children}</Container.Inner>
   </Container>
 );
 
