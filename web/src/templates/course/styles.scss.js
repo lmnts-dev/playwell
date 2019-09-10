@@ -162,7 +162,7 @@ CourseFooter.Course = styled(Flex)`
 
 CourseFooter.Explore = styled(Flex)`
   text-align: left;
-  max-width: ${props => props.theme.Base.Grid.SiteWidth};
+  max-width: calc(${props => props.theme.Base.Grid.SiteWidth} / 1.1);
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;

@@ -217,8 +217,8 @@ const Course = ({ pageContext }) => {
         color="white"
         width={1}
       >
-        <Section.Overlay
-          bgOverlay={'rgba(82, 5, 137, 0.8)'}
+        <Box
+          bg={'rgba(82, 5, 137, 0.8)'}
           px={[1, 1, 2, 2, 2]}
           pt={[6, 6, 8, 8]}
           pb={1}
@@ -255,7 +255,7 @@ const Course = ({ pageContext }) => {
               </QuestionsNav>
             </Box>
           </Flex>
-        </Section.Overlay>
+        </Box>
       </Section>
 
       <CourseFooter as="section" bg="Sky" px={1} pt={8} pb={1}>
