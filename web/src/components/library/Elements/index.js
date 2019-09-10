@@ -18,6 +18,10 @@ import {
   alignItems,
   justifyContent,
   textAlign,
+  fontSize,
+  fontWeight,
+  lineHeight,
+  maxWidth
 } from 'styled-system';
 
 import { Theme, Root } from 'constants/Theme';
@@ -34,6 +38,8 @@ export const Box = styled('div')`
   ${flex}
   ${alignSelf}
   ${textAlign}
+  ${maxWidth}
+  ${fontSize}
 `;
 
 Box.displayName = 'Box';
@@ -46,6 +52,9 @@ export const Flex = styled('div')`
   ${flexDirection}
   ${alignItems}
   ${justifyContent}
+  ${maxWidth}
+  ${width}
+  ${fontSize}
 `;
 
 Flex.displayName = 'Flex';
@@ -61,6 +70,19 @@ export const Button = styled('button')`
 `;
 
 Button.displayName = 'Button';
+
+export const Text = styled('div')`
+  box-sizing: border-box;
+  transition: all ${Theme.Base.Transition.Duration};
+  ${space}
+  ${color}
+  ${textAlign}
+  ${fontSize}
+  ${fontWeight}
+  ${lineHeight}
+`;
+
+Box.displayName = 'Text';
 
 //////////////////////////////////////////////////////////////////////
 // End Component
