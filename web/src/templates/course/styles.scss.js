@@ -135,10 +135,118 @@ export const Drawer = styled(Flex)`
   transition: max-height 0.4s ease-out;
   height: auto;
   max-height: 600px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
   &.collapsed {
     max-height: 0;
   }
+`;
+
+export const CourseFooter = styled(Flex)`
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: left;
+`;
+
+CourseFooter.Course = styled(Flex)`
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: ${props => props.theme.Base.Grid.SiteWidth};
+  text-align: center;
+`;
+
+CourseFooter.Explore = styled(Flex)`
+  text-align: left;
+  max-width: ${props => props.theme.Base.Grid.SiteWidth};
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
+CourseFooter.Explore.Link = styled(Flex)`
+  align-items: center;
+  border-right: none;
+  border-bottom: 1px dashed ${p => p.theme.Color.White};
+  cursor: pointer;
+  flex-direction: row;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+    border-right: 1px dashed ${p => p.theme.Color.White};
+    border-bottom: none;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  svg {
+    transition: ${Theme.Base.Transition.String};
+    transform: rotate(180deg) translateX(0);
+    fill: ${Theme.Color.Primary};
+  }
+
+  &:hover {
+    svg {
+      transform: rotate(180deg) translateX(-40%);
+    }
+  }
+
+  &:active {
+  }
+
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+    svg {
+      transition: ${Theme.Base.Transition.String};
+      transform: rotate(0deg) translateX(0);
+      fill: ${Theme.Color.Primary};
+    }
+
+    &:hover {
+      svg {
+        transform: rotate(0deg) translateX(-40%);
+      }
+    }
+  }
+
+  &:last-child {
+    border-right: none;
+    border-bottom: none;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+      justify-content: flex-start;
+    }
+
+    svg {
+      transition: ${Theme.Base.Transition.String};
+      transform: rotate(180deg) translateX(0);
+      fill: ${Theme.Color.Primary};
+    }
+
+    &:hover {
+      svg {
+        transform: rotate(180deg) translateX(-40%);
+      }
+    }
+  }
+`;
+
+CourseFooter.Explore.Arrow = styled(Box)`
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  transform: scale(1.5);
+  width: calc(${Root.Size} * 2);
+  height: calc(${Root.Size} * 2);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 //////////////////////////////////////////////////////////////////////

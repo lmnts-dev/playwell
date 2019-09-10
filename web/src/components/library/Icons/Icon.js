@@ -15,6 +15,7 @@ import IconStyle from './styles.scss';
 import Carat from './SVG/Carat';
 import Gear from './SVG/Gear';
 import Intercom from './SVG/Intercom';
+import Next from './SVG/Next';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -37,6 +38,12 @@ export const Icon = props => {
       return (
         <IconStyle className="ico ico-intercom">
           <Intercom />
+        </IconStyle>
+      );
+    case 'next':
+      return (
+        <IconStyle className="ico">
+          <Next />
         </IconStyle>
       );
     default:

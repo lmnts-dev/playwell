@@ -12,7 +12,7 @@ import { Link } from 'gatsby';
 import Layout from 'components/core/Layout';
 import HeroContainer from 'components/library/Hero/HeroContainer';
 import Btn from 'components/library/Btn';
-
+import { Icon } from 'components/library/Icons';
 import ImgQuery from 'components/core/ImgQuery';
 
 // Styles
@@ -24,6 +24,8 @@ import {
   QuestionsNav,
   Collapse,
   Drawer,
+  CourseFooter,
+  Explore,
 } from './styles.scss';
 
 // Constants
@@ -31,6 +33,7 @@ import { Box, Flex, Text } from 'components/library/Elements';
 
 // Data
 import CalloutBg from './assets/cta__courses.jpg';
+import Carat from './assets/arrow--left.svg';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -54,7 +57,7 @@ const Course = ({ pageContext }) => {
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          maxWidth={props => props.theme.Base.Grid.SiteWidth}
+          maxWidth={props => props.theme.Grid.SiteWidth}
           m="0 auto"
           pb={[4, 3]}
           px={[1, 1, 0]}
@@ -140,7 +143,7 @@ const Course = ({ pageContext }) => {
           as="article"
           px={[1, 1, 2, 6]}
           width={1}
-          maxWidth={props => props.theme.Base.Grid.SiteWidth}
+          maxWidth={props => props.theme.Grid.SiteWidth}
           alignItems="flex-start"
           justifyContent="space-between"
           flexWrap="wrap"
@@ -180,9 +183,6 @@ const Course = ({ pageContext }) => {
           as="article"
           px={[1, 1, 2, 6]}
           width={1}
-          alignItems="flex-start"
-          justifyContent="space-between"
-          flexWrap="wrap"
           className={isExpanded ? 'expanded' : 'collapsed'}
         >
           <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[1, 1, 0]}>
@@ -227,7 +227,7 @@ const Course = ({ pageContext }) => {
           <Flex
             as="article"
             width={1}
-            maxWidth={props => props.theme.Base.Grid.SiteWidth}
+            maxWidth={props => props.theme.Grid.SiteWidth}
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
@@ -258,15 +258,8 @@ const Course = ({ pageContext }) => {
         </Section.Overlay>
       </Section>
 
-      <HeroContainer {...HeroProps}>
-        <Flex
-          as="article"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          m="0 auto"
-          maxWidth={props => props.theme.Base.Grid.SiteWidth}
-        >
+      <CourseFooter as="section" bg="Sky" px={1} pt={8} pb={1}>
+        <CourseFooter.Course as="article" m="0 auto">
           <Text as="span" fontSize={4}>
             Let's play!
           </Text>
@@ -282,44 +275,44 @@ const Course = ({ pageContext }) => {
             BgColor={props => props.theme.Color.Nova}
             TextColor={props => props.theme.Color.White}
           />
-        </Flex>
-
-        <Flex
-          as="article"
-          width={1}
-          mt={8}
-          maxWidth={props => props.theme.Base.Grid.SiteWidth}
-          alignItems="center"
-          justifyContent="center"
-          flexWrap="wrap"
-          css={css`
-            text-align: left;
-          `}
-        >
-          <Box
-            width={1 / 2}
-            px={10}
-            css={css`
-              border-right: 1px dashed white;
-            `}
+        </CourseFooter.Course>
+        <CourseFooter.Explore as="article" width={1} mt={8}>
+          <CourseFooter.Explore.Link
+            width={[1, 1, 1 / 2]}
+            px={[1, 1, 3, 8]}
+            pb={[2, 2, 0]}
           >
-            <Text as="span" fontSize={2} mt={1} color="Deepsea">
-              Keep exploring
-            </Text>
-            <Text as="h4" mt={1} mb={1}>
-              Keep exploring our programs.
-            </Text>
-          </Box>
-          <Box width={1 / 2} px={10}>
-            <Text as="span" fontSize={2} mt={1} color="Deepsea">
-              What's new?
-            </Text>
-            <Text as="h4" mt={1} mb={1}>
-              See what else is happening in Arizona.
-            </Text>
-          </Box>
-        </Flex>
-      </HeroContainer>
+            <CourseFooter.Explore.Arrow>
+              <Icon Name="next" />
+            </CourseFooter.Explore.Arrow>
+            <Box>
+              <Text as="span" fontSize={2} mt={1} color="Deepsea">
+                Keep exploring
+              </Text>
+              <Text as="h4" mt={1}>
+                Keep exploring our programs.
+              </Text>
+            </Box>
+          </CourseFooter.Explore.Link>
+          <CourseFooter.Explore.Link
+            width={[1, 1, 1 / 2]}
+            px={[1, 1, 3, 8]}
+            pt={[2, 2, 0]}
+          >
+            <Box>
+              <Text as="span" fontSize={2} mt={1} color="Deepsea">
+                What's new?
+              </Text>
+              <Text as="h4" mt={1}>
+                See what else is happening in Arizona.
+              </Text>
+            </Box>
+            <CourseFooter.Explore.Arrow>
+              <Icon Name="next" />
+            </CourseFooter.Explore.Arrow>
+          </CourseFooter.Explore.Link>
+        </CourseFooter.Explore>
+      </CourseFooter>
     </Layout>
   );
 };
