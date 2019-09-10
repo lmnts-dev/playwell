@@ -135,13 +135,32 @@ export const Drawer = styled(Flex)`
   transition: max-height 0.4s ease-out;
   height: auto;
   max-height: 600px;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
   &.collapsed {
     max-height: 0;
   }
 `;
 
-export const Explore = styled(Flex)`
+export const CourseFooter = styled(Flex)`
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: left;
+`;
+
+CourseFooter.Course = styled(Flex)`
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: ${props => props.theme.Base.Grid.SiteWidth};
+  text-align: center;
+`;
+
+CourseFooter.Explore = styled(Flex)`
   text-align: left;
   max-width: ${props => props.theme.Base.Grid.SiteWidth};
   align-items: center;
@@ -149,7 +168,7 @@ export const Explore = styled(Flex)`
   flex-wrap: wrap;
 `;
 
-Explore.Link = styled(Flex)`
+CourseFooter.Explore.Link = styled(Flex)`
   align-items: center;
   border-right: none;
   border-bottom: 1px dashed ${p => p.theme.Color.White};
@@ -218,7 +237,7 @@ Explore.Link = styled(Flex)`
   }
 `;
 
-Explore.Arrow = styled(Box)`
+CourseFooter.Explore.Arrow = styled(Box)`
   background: rgba(0, 0, 0, 0);
   cursor: pointer;
   transform: scale(1.5);

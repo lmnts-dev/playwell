@@ -24,6 +24,7 @@ import {
   QuestionsNav,
   Collapse,
   Drawer,
+  CourseFooter,
   Explore,
 } from './styles.scss';
 
@@ -182,9 +183,6 @@ const Course = ({ pageContext }) => {
           as="article"
           px={[1, 1, 2, 6]}
           width={1}
-          alignItems="flex-start"
-          justifyContent="space-between"
-          flexWrap="wrap"
           className={isExpanded ? 'expanded' : 'collapsed'}
         >
           <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[1, 1, 0]}>
@@ -260,26 +258,8 @@ const Course = ({ pageContext }) => {
         </Section.Overlay>
       </Section>
 
-      <Flex
-        as="section"
-        flexWrap="wrap"
-        justifyContent="center"
-        alignItems="center"
-        bg="Sky"
-        px={1}
-        pt={8}
-        pb={1}
-        color="white"
-        textAlign="left"
-      >
-        <Flex
-          as="article"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          m="0 auto"
-          maxWidth={props => props.theme.Grid.SiteWidth}
-        >
+      <CourseFooter as="section" bg="Sky" px={1} pt={8} pb={1}>
+        <CourseFooter.Course as="article" m="0 auto">
           <Text as="span" fontSize={4}>
             Let's play!
           </Text>
@@ -295,12 +275,16 @@ const Course = ({ pageContext }) => {
             BgColor={props => props.theme.Color.Nova}
             TextColor={props => props.theme.Color.White}
           />
-        </Flex>
-        <Explore as="article" width={1} mt={8}>
-          <Explore.Link width={[1, 1, 1 / 2]} px={[1, 1, 3, 8]} pb={[2, 2, 0]}>
-            <Explore.Arrow>
+        </CourseFooter.Course>
+        <CourseFooter.Explore as="article" width={1} mt={8}>
+          <CourseFooter.Explore.Link
+            width={[1, 1, 1 / 2]}
+            px={[1, 1, 3, 8]}
+            pb={[2, 2, 0]}
+          >
+            <CourseFooter.Explore.Arrow>
               <Icon Name="next" />
-            </Explore.Arrow>
+            </CourseFooter.Explore.Arrow>
             <Box>
               <Text as="span" fontSize={2} mt={1} color="Deepsea">
                 Keep exploring
@@ -309,8 +293,12 @@ const Course = ({ pageContext }) => {
                 Keep exploring our programs.
               </Text>
             </Box>
-          </Explore.Link>
-          <Explore.Link width={[1, 1, 1 / 2]} px={[1, 1, 3, 8]} pt={[2, 2, 0]}>
+          </CourseFooter.Explore.Link>
+          <CourseFooter.Explore.Link
+            width={[1, 1, 1 / 2]}
+            px={[1, 1, 3, 8]}
+            pt={[2, 2, 0]}
+          >
             <Box>
               <Text as="span" fontSize={2} mt={1} color="Deepsea">
                 What's new?
@@ -319,12 +307,12 @@ const Course = ({ pageContext }) => {
                 See what else is happening in Arizona.
               </Text>
             </Box>
-            <Explore.Arrow>
+            <CourseFooter.Explore.Arrow>
               <Icon Name="next" />
-            </Explore.Arrow>
-          </Explore.Link>
-        </Explore>
-      </Flex>
+            </CourseFooter.Explore.Arrow>
+          </CourseFooter.Explore.Link>
+        </CourseFooter.Explore>
+      </CourseFooter>
     </Layout>
   );
 };
