@@ -12,7 +12,7 @@
     "format": "prettier --config ./.prettierrc --write src/**/*.js",
     "build:dir": "mkdirp ./public/icons/",
     "build:favicons": "node scripts/favicons",
-    "build": "bash bam.sh && npm run clean && npm run build:dir && npm run build:favicons && gatsby build",
+    "build": "npm run clean && npm run build:dir && npm run build:favicons && gatsby build",
     "test": "ava **/*.test.js --verbose"
   },
   "greenkeeper": {
