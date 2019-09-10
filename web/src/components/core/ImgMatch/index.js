@@ -5,7 +5,7 @@ import React, { useMemo } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image/withIEPolyfill';
 
-const Image = ({ AltText, src, ...props }) => {
+const Image = ({ AltText, objectFit, objectPosition, src, ...props }) => {
   const data = useStaticQuery(graphql`
     query {
       allFile(filter: { internal: { mediaType: { regex: "images/" } } }) {
@@ -23,11 +23,16 @@ const Image = ({ AltText, src, ...props }) => {
     }
   `);
 
+  const match = useMemo(
+    () => data.allFile.edges.find(({ node }) => src === node.relativePath),
+    [data, src]
+  );
+
   return (
     <Img
       className="img"
-      objectFit="cover"
-      objectPosition="50% 50%"
+      objectFit={objectFit ? objectFit : 'cover'}
+      objectPosition={objectPosition ? objectPosition : '50% 50%'}
       alt={AltText ? AltText : null}
       fluid={match.node.childImageSharp.fluid}
       {...props}

@@ -12,7 +12,8 @@ import { graphql } from 'gatsby';
 import Layout from 'components/core/Layout';
 
 // Constants
-import { Box, Flex } from '../components/library/Elements';
+// import { Box, Flex } from '../components/library/Elements';
+import ImgMatch from '../components/core/ImgMatch';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -28,7 +29,7 @@ const HomePage = props => (
         color: props => props.Theme.Color.Text,
       }}
     >
-      <h1>test</h1>
+      <ImgMatch src="brandmark.png" AltText="brandmark" />
     </main>
   </Layout>
 );
