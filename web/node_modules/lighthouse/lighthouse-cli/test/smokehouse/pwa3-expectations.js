@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const pwaDetailsExpectations = require('./pwa-expectations').PWA_DETAILS_EXPECTATIONS;
+const pwaDetailsExpectations = require('./pwa-expectations.js').PWA_DETAILS_EXPECTATIONS;
 
 const pwaRocksExpectations = {...pwaDetailsExpectations, hasIconsAtLeast512px: false};
 
@@ -15,61 +15,66 @@ const pwaRocksExpectations = {...pwaDetailsExpectations, hasIconsAtLeast512px: f
  */
 module.exports = [
   {
-    requestedUrl: 'https://pwa.rocks',
-    finalUrl: 'https://pwa.rocks/',
-    audits: {
-      'is-on-https': {
-        score: 1,
-      },
-      'redirects-http': {
-        score: 1,
-      },
-      'service-worker': {
-        score: 1,
-      },
-      'works-offline': {
-        score: 1,
-      },
-      'offline-start-url': {
-        score: 1,
-      },
-      'viewport': {
-        score: 1,
-      },
-      'without-javascript': {
-        score: 1,
-      },
-      'load-fast-enough-for-pwa': {
+    lhr: {
+      requestedUrl: 'https://pwa.rocks',
+      finalUrl: 'https://pwa.rocks/',
+      audits: {
+        'is-on-https': {
+          score: 1,
+        },
+        'redirects-http': {
+          score: 1,
+        },
+        'service-worker': {
+          score: 1,
+        },
+        'works-offline': {
+          score: 1,
+        },
+        'offline-start-url': {
+          score: 1,
+        },
+        'viewport': {
+          score: 1,
+        },
+        'without-javascript': {
+          score: 1,
+        },
+        'load-fast-enough-for-pwa': {
         // Ignore speed test; just verify that it ran .
-      },
-      'installable-manifest': {
-        score: 1,
-        details: {items: [pwaRocksExpectations]},
-      },
-      'splash-screen': {
-        score: 0,
-        details: {items: [pwaRocksExpectations]},
-      },
-      'themed-omnibox': {
-        score: 0,
-        details: {items: [pwaRocksExpectations]},
-      },
-      'content-width': {
-        score: 1,
-      },
+        },
+        'installable-manifest': {
+          score: 1,
+          details: {items: [pwaRocksExpectations]},
+        },
+        'splash-screen': {
+          score: 0,
+          details: {items: [pwaRocksExpectations]},
+        },
+        'themed-omnibox': {
+          score: 0,
+          details: {items: [pwaRocksExpectations]},
+        },
+        'content-width': {
+          score: 1,
+        },
+        'apple-touch-icon': {
+          score: 1,
+        },
 
-      // "manual" audits. Just verify in the results.
-      'pwa-cross-browser': {
-        score: null,
-        scoreDisplayMode: 'manual',
-      },
-      'pwa-page-transitions': {
-        score: null,
-        scoreDisplayMode: 'manual',
-      },
-      'pwa-each-page-has-url': {
-        score: null,
-        scoreDisplayMode: 'manual',
+        // "manual" audits. Just verify in the results.
+        'pwa-cross-browser': {
+          score: null,
+          scoreDisplayMode: 'manual',
+        },
+        'pwa-page-transitions': {
+          score: null,
+          scoreDisplayMode: 'manual',
+        },
+        'pwa-each-page-has-url': {
+          score: null,
+          scoreDisplayMode: 'manual',
+        },
       },
     },
   },

@@ -5,8 +5,8 @@
  */
 'use strict';
 
-const Gatherer = require('./gatherer');
-const URL = require('../../lib/url-shim');
+const Gatherer = require('./gatherer.js');
+const URL = require('../../lib/url-shim.js');
 
 class Offline extends Gatherer {
   /**

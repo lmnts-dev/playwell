@@ -447,10 +447,10 @@
     "message": "Waarde"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Browser-engineers bevelen aan dat pagina's minder dan ~1500 DOM-knooppunten bevatten. De perfecte balans is een structuurdiepte van minder dan 32 elementen en minder dan 60 onderliggende/bovenliggende elementen. Een grote DOM kan ervoor zorgen dat het geheugengebruik toeneemt. Dit leidt tot langere [stijlberekeningen](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) en produceert dure [dynamische lay-outaanpassingen](https://developers.google.com/speed/articles/reflow). [Meer informatie](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Browser-engineers bevelen aan dat pagina's minder dan ~1500 DOM-elementen bevatten. De perfecte balans is een structuurdiepte van minder dan 32 elementen en minder dan 60 onderliggende/bovenliggende elementen. Een grote DOM kan ervoor zorgen dat het geheugengebruik toeneemt. Dit leidt tot langere [stijlberekeningen](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) en dure [dynamische lay-outaanpassingen](https://developers.google.com/speed/articles/reflow). [Meer informatie](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 knooppunt}other{# knooppunten}}"
+    "message": "{itemCount,plural, =1{1 element}other{# elementen}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Vermijd een overmatig grote DOM"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Maximum DOM-diepte"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Totaal aantal DOM-knooppunten"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Totaal aantal DOM-elementen"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Maximum aantal onderliggende elementen"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Maak je html zo op dat crawlers de content van je app beter begrijpen."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Praktische tips voor content"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Crawlers hebben toegang nodig tot je app om je website in zoekresultaten weer te geven."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Crawlen en indexeren"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Zorg ervoor dat je pagina's geschikt zijn voor mobiele apparaten zodat gebruikers hun vingers niet hoeven samen te knijpen of hoeven te zoomen om de contentpagina's te lezen. [Meer informatie](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Geschikt voor mobiele apparaten"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Cache-TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Er is een fout opgetreden bij het opnemen van het netwerkspoor voor het laden van je pagina. Voer Lighthouse opnieuw uit. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Time-out tijdens wachten op eerste verbinding met Debugger-protocol."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome heeft geen screenshots verzameld tijdens het laden van de pagina. Zorg ervoor dat er content zichtbaar is op de pagina en probeer daarna Lighthouse opnieuw uit te voeren. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Geslaagde controles"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Scoreschaal:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Fragment samenvouwen"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Waarschuwingen: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Overweeg je gif te uploaden naar een service waarmee het mogelijk is de gif in te sluiten als html5-video."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Installeer een [WordPress-plug-in voor lazy loading](https://wordpress.org/plugins/search/lazy+load/) waarmee afbeeldingen die niet in beeld zijn, kunnen worden uitgesteld, of schakel over naar een thema met deze functionaliteit. Je kunt ook overwegen [de AMP-plug-in](https://wordpress.org/plugins/amp/) te gebruiken."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Er zijn enkele WordPress-plug-ins om [kritieke items inline te plaatsen](https://wordpress.org/plugins/search/critical+css/) of [minder belangrijke bronnen uit te stellen](https://wordpress.org/plugins/search/defer+css+javascript/). Bedenk wel dat de optimalisatie die deze plug-ins bieden, bepaalde functies van je thema of plug-ins kunnen verstoren. Het is daarom goed mogelijk dat je de code moet wijzigen."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Thema's, plug-ins en serverspecificaties zijn allemaal van invloed op de reactietijd van de server. Overweeg een thema te gebruiken dat beter is geoptimaliseerd, kies met zorg een optimalisatieplug-in en/of upgrade je server."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Overweeg fragmenten te tonen in je postlijsten (bijvoorbeeld via de tag 'more'), zodat er per pagina minder posts worden weergegeven. Ook kun je lange posts verdelen over meerdere pagina's of een plug-in voor lazy loading van reacties gebruiken."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Er zijn enkele [WordPress-plug-ins](https://wordpress.org/plugins/search/minify+css/) die je site sneller kunnen maken door je stijlen in te korten, te verkleinen of te comprimeren. Indien mogelijk is het bovendien handig zulke verkleining al mee te nemen in het ontwerpproces."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Er zijn enkele [WordPress-plug-ins](https://wordpress.org/plugins/search/minify+javascript/) die je site sneller kunnen maken door je scripts in te korten, te verkleinen of te comprimeren. Indien mogelijk is het bovendien handig zulke verkleining al mee te nemen in het ontwerpproces."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Overweeg gebruik te maken van minder of andere [WordPress-plug-ins](https://wordpress.org/plugins/) die ongebruikte css laden op je pagina. Probeer [codedekking](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) uit te voeren in Chrome DevTools als je plug-ins wilt identificeren die extra css toevoegen. Via de URL van de stylesheet kun je identificeren welk thema/welke plug-in verantwoordelijk is. Ga in de lijst op zoek naar plug-ins met veel stylesheets en veel rood in de codedekking. Een plug-in zou een stylesheet alleen in de wachtrij moeten plaatsen als deze daadwerkelijk wordt gebruikt op de pagina."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Overweeg gebruik te maken van minder of andere [WordPress-plug-ins](https://wordpress.org/plugins/) die ongebruikte JavaScript laden op je pagina. Probeer [codedekking](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) uit te voeren in Chrome DevTools als je plug-ins wilt identificeren die extra JS toevoegen. Via de URL van het script kun je identificeren welk thema/welke plug-in verantwoordelijk is. Ga in de lijst op zoek naar plug-ins met veel scripts en veel rood in de codedekking. Een plug-in zou een script alleen in de wachtrij moeten plaatsen als het daadwerkelijk wordt gebruikt op de pagina."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Lees meer over [browsercaching in WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Overweeg een [beeldoptimalisatieplug-in voor WordPress](https://wordpress.org/plugins/search/optimize+images/) te gebruiken om je afbeeldingen te comprimeren terwijl de beeldkwaliteit behouden blijft."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Upload afbeeldingen rechtstreeks via de [mediabibliotheek](https://codex.wordpress.org/Media_Library_Screen) om er zeker van te zijn dat de vereiste afbeeldingsformaten beschikbaar zijn. Voeg de afbeeldingen vervolgens in vanuit de mediabibliotheek. Ook kun je de afbeeldingswidget gebruiken om ervoor te zorgen dat de optimale afbeeldingsformaten worden gebruikt (inclusief voor responsieve breakpoints). Vermijd afbeeldingen op volledig formaat, tenzij de afmetingen geschikt zijn voor waar ze worden geplaatst. [Meer informatie](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Je kunt tekstcompressie inschakelen bij je webserverinstellingen."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Overweeg een [plug-in](https://wordpress.org/plugins/search/convert+webp/) of service te gebruiken die je geüploade afbeeldingen automatisch converteert naar de optimale formaten."
   }
 }

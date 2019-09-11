@@ -7,11 +7,10 @@
 
 const makeComputedArtifact = require('../computed-artifact.js');
 const LanternMetric = require('./lantern-metric.js');
-const BaseNode = require('../../lib/dependency-graph/base-node.js');
 const LHError = require('../../lib/lh-error.js');
 const LanternFirstContentfulPaint = require('./lantern-first-contentful-paint.js');
 
-/** @typedef {BaseNode.Node} Node */
+/** @typedef {import('../../lib/dependency-graph/base-node.js').Node} Node */
 
 class LanternFirstMeaningfulPaint extends LanternMetric {
   /**
@@ -36,22 +35,13 @@ class LanternFirstMeaningfulPaint extends LanternMetric {
       throw new LHError(LHError.errors.NO_FMP);
     }
 
-    const blockingScriptUrls = LanternMetric.getScriptUrls(dependencyGraph, node => {
-      return (
-        node.endTime <= fmp && node.hasRenderBlockingPriority() && node.initiatorType !== 'script'
-      );
-    });
-
-    return dependencyGraph.cloneWithRelationships(node => {
-      if (node.endTime > fmp && !node.isMainDocument()) return false;
-      // Include EvaluateScript tasks for blocking scripts
-      if (node.type === BaseNode.TYPES.CPU) {
-        return node.isEvaluateScriptFor(blockingScriptUrls);
-      }
-
-      // Include non-script-initiated network requests with a render-blocking priority
-      return node.hasRenderBlockingPriority() && node.initiatorType !== 'script';
-    });
+    return LanternFirstContentfulPaint.getFirstPaintBasedGraph(
+      dependencyGraph,
+      fmp,
+      // See LanterFirstContentfulPaint's getOptimisticGraph implementation for a longer description
+      // of why we exclude script initiated resources here.
+      node => node.hasRenderBlockingPriority() && node.initiatorType !== 'script'
+    );
   }
 
   /**
@@ -65,21 +55,13 @@ class LanternFirstMeaningfulPaint extends LanternMetric {
       throw new LHError(LHError.errors.NO_FMP);
     }
 
-    const requiredScriptUrls = LanternMetric.getScriptUrls(dependencyGraph, node => {
-      return node.endTime <= fmp && node.hasRenderBlockingPriority();
-    });
-
-    return dependencyGraph.cloneWithRelationships(node => {
-      if (node.endTime > fmp && !node.isMainDocument()) return false;
-
-      // Include CPU tasks that performed a layout or were evaluations of required scripts
-      if (node.type === BaseNode.TYPES.CPU) {
-        return node.didPerformLayout() || node.isEvaluateScriptFor(requiredScriptUrls);
-      }
-
-      // Include all network requests that had render-blocking priority (even script-initiated)
-      return node.hasRenderBlockingPriority();
-    });
+    return LanternFirstContentfulPaint.getFirstPaintBasedGraph(
+      dependencyGraph,
+      fmp,
+      node => node.hasRenderBlockingPriority(),
+      // For pessimistic FMP we'll include *all* layout nodes
+      node => node.didPerformLayout()
+    );
   }
 
   /**

@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const Audit = require('../audit');
+const Audit = require('../audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
 const ComputedFcp = require('../../computed/metrics/first-contentful-paint.js');
 
@@ -63,7 +63,7 @@ class FirstContentfulPaint extends Audit {
         context.options.scorePODR,
         context.options.scoreMedian
       ),
-      rawValue: metricResult.timing,
+      numericValue: metricResult.timing,
       displayValue: str_(i18n.UIStrings.seconds, {timeInMs: metricResult.timing}),
     };
   }

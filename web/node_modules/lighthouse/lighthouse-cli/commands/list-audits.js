@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const lighthouse = require('../../lighthouse-core');
+const lighthouse = require('../../lighthouse-core/index.js');
 
 function listAudits() {
   const audits = lighthouse.getAuditList().map((i) => i.replace(/\.js$/, ''));

@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const Gatherer = require('./gatherer');
+const Gatherer = require('./gatherer.js');
 
 /**
  * This gatherer changes the options.url so that its pass loads the http page.

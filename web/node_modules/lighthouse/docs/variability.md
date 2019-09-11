@@ -30,7 +30,7 @@ Local networks have inherent variability from packet loss, variable traffic prio
 
 ### Tier-1 Network Variability
 
-Network interconnects are generally very stable and have minimal impact but cross-geo requests, i.e. measuring performance of a Chinese site from the US, can start to experience a high degree of latency introduced from tier-1 network hops. _Applied_ throttling partially mask these effects with network throttling. _Simulated_ throttling mitigates these effects by replaying network activity on its own.
+Network interconnects are generally very stable and have minimal impact but cross-geo requests, i.e. measuring performance of a Chinese site from the US, can start to experience a high degree of latency introduced from tier-1 network hops. _Applied_ throttling partially masks these effects with network throttling. _Simulated_ throttling mitigates these effects by replaying network activity on its own.
 
 ### Web Server Variability
 

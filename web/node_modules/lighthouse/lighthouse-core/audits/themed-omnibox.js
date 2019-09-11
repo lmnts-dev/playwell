@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const MultiCheckAudit = require('./multi-check-audit');
+const MultiCheckAudit = require('./multi-check-audit.js');
 const ManifestValues = require('../computed/manifest-values.js');
 const cssParsers = require('cssstyle/lib/parsers');
 

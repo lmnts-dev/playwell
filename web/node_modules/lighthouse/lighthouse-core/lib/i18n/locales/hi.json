@@ -447,10 +447,10 @@
     "message": "मान"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "ब्राउज़र इंजीनियर सुझाव देते हैं कि पेज में ~1,500 से कम DOM नोड होने चाहिए. सबसे सही आंकड़ा है < 32 एलीमेंट वाली ट्री गहराई और 60 से कम चिल्ड्रन/पेरेंट एलीमेंट. ज़्यादा बड़े DOM से मेमोरी का इस्तेमाल बढ़ सकता है, जिससे ज़्यादा लंबे [स्टाइल कैल्युलेशन](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) हो सकते हैं और इनसे महंगे [लेआउट रीफ़्लो](https://developers.google.com/speed/articles/reflow) बन सकते हैं. [ज़्यादा जानें](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "ब्राउज़र इंजीनियर सुझाव देते हैं कि पेज में ~1,500 से कम DOM ऐलिमेंट होने चाहिए. सबसे सही आंकड़ा है 32 से कम ऐलिमेंट वाली ट्री डेप्थ और 60 से कम चिल्ड्रन/पेरेंट ऐलिमेंट. ज़्यादा बड़े DOM से मेमोरी का इस्तेमाल बढ़ सकता है, जिससे ज़्यादा लंबे [स्टाइल कैल्युलेशन](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) हो सकते हैं और इनसे महंगे [लेआउट रीफ़्लो](https://developers.google.com/speed/articles/reflow) बन सकते हैं. [ज़्यादा जानें](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 नोड}one{# नोड}other{# नोड}}"
+    "message": "{itemCount,plural, =1{1 ऐलिमेंट}one{# ऐलिमेंट}other{# ऐलिमेंट}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "बहुत ज़्यादा बड़े DOM आकार से बचें"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "सबसे ज़्यादा DOM गहराई"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "कुल DOM नोड"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "कुल डीओएम ऐलिमेंट"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "ज़्यादातर बच्चों की चीजें"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "अपने एचटीएमएल को इस तरह फ़ॉर्मैट करें जिससे क्रॉलर आपके ऐप्लिकेशन की सामग्री को बेहतर ढंग से समझ सकें."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "सामग्री से जुड़े सबसे अच्छे तरीके"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "खोज नतीजों में दिखाई देने के लिए, क्रॉलर को आपके ऐप्लिकेशन का एक्सेस चाहिए."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "क्रॉल करना और इंडेक्स करना"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "यह पक्का करें कि आपके पेज मोबाइल फ़्रेंडली हों. इससे सामग्री वाले पेज पढ़ने के लिए उपयोगकर्ताओं को पिंच या ज़ूम नहीं करना पड़ेगा. [ज़्यादा जानें](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "मोबाइल फ़्रेंडली"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "कैश TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "आपके पेज लोड में ट्रेस की रिकॉर्डिंग करते समय कुछ गलत हुआ. कृपया Lighthouse को फिर से चलाएं. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "शुरुआती डीबगर प्रोटोकॉल कनेक्शन का इंतज़ार करते हुए समय खत्म हो गया."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome पेज लोड के दौरान कोई भी स्क्रीन शॉट इकट्ठा नहीं करता है. कृपया पक्का करें कि पेज पर सामग्री दिखाई दे रही है और तब Lighthouse को फिर से चलाकर देखें. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "पास हुए ऑडिट"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "स्कोर स्केल:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "स्निपेट को छोटा करें"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "चेतावनियां: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "किसी ऐसी सेवा में अपनी GIF अपलोड करने पर विचार करें जो उसे HTML5 वीडियो में एम्बेड करने के लिए उपलब्ध कराएगी."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "ऐसा [धीमे लोड होने वाले WordPress प्लगइन](https://wordpress.org/plugins/search/lazy+load/) इंस्टॉल करें जिससे किसी भी ऑफ़स्क्रीन इमेज को अलग करने की सुविधा हो. अगर नहीं, तो किसी ऐसी थीम पर जाएं जो यह फ़ंक्शन मुहैया कराती हो. साथ ही, [एएमपी प्लगइन](https://wordpress.org/plugins/amp/) का इस्तेमाल करने पर विचार करें."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "ऐसे कई WordPress प्लगइन हैं जो [इनलाइन क्रिटिकल एसेट](https://wordpress.org/plugins/search/critical+css/) या [defer less important resources](https://wordpress.org/plugins/search/defer+css+javascript/) में आपकी मदद कर सकते हैं. ध्यान रखें कि इन प्लगइन से मिलने वाला ऑप्टिमाइज़ेशन आपकी थीम या प्लगइन की सुविधाएं बिगाड़ सकता है, इसलिए आपको कोड में बदलाव करने पड़ सकते हैं."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "थीम, प्लगइन, और सर्वर की खास बातें सर्वर से जवाब मिलने के समय में योगदान करती हैं. ज़्यादा ऑप्टिमाइज़ की हुई थीम ढूंढने, एक ऑप्टिमाइज़ेशन प्लगइन को सावधानी से चुनने, और/या अपना सर्वर अपग्रेड करने पर विचार करें."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "अपनी पोस्ट सूचियों में खास हिस्से दिखाने पर विचार करें (जैसे 'ज़्यादा' टैग से), किसी पेज पर दिखाई गई पोस्ट की संख्या घटाने, अपनी लंबी पोस्ट को कई पेज में बाँटने या फिर टिप्पणियों को धीरे-धीरे लोड करने वाले प्लगइन का इस्तेमाल करने पर विचार करें."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "कई [WordPress plugins](https://wordpress.org/plugins/search/minify+css/) आपकी शैलियों की शृंखला बनाकर, उनमें काट-छांट करके, और कंप्रेस करके आपकी साइट की गति बढ़ा सकते हैं. हो सकता है कि आप काट-छांट करने की इस प्रक्रिया के लिए एक बिल्ड प्रोसेस का इस्तेमाल भी करना चाहें, अगर ऐसा करना मुमकिन हो."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "कई [WordPress प्लगइन](https://wordpress.org/plugins/search/minify+javascript/) आपकी स्क्रिप्ट की शृंखला बनाकर, उनमें काट-छांट करके, और कंप्रेस करके आपकी साइट की गति बढ़ा सकते हैं. हो सकता है कि आप काट-छांट करने की इस प्रक्रिया के लिए एक बिल्ड प्रोसेस का इस्तेमाल भी करना चाहें, अगर ऐसा करना मुमकिन हो."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "अपने पेज में इस्तेमाल नहीं किए गए सीएसएस लोड करके [WordPress प्लगइन](https://wordpress.org/plugins/) की संख्या घटाने या बदलने पर विचार करें. ऐसे प्लगइन की पहचान करने के लिए जो असंगत सीएसएस जोड़ रहे हैं, Chrome DevTools में [कोड कवरेज](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) चलाकर देखें. आप स्टाइल शीट के यूआरएल से थीम/प्लगइन की पहचान कर सकते हैं. ऐसे प्लगइन खोजें जिनके पास उस सूची की कई स्टाइल शीट हैं जिसमें कोड कवरेज में बहुत से लाल निशान हैं. प्लगइन को स्टाइल शीट तभी एन्क्यू करनी चाहिए अगर पेज पर उसका वाकई इस्तेमाल किया गया हो."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "अपने पेज में इस्तेमाल नहीं किए गए JavaScript को लोड करने के लिए [WordPress प्लगइन] (https://wordpress.org/plugins/) की संख्या घटाने या बदलने पर विचार करें. ऐसे प्लगइन की पहचान करने के लिए, जो असंगत JS जोड़ रहे हैं, Chrome DevTools में [कोड कवरेज] (https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) चलाकर देखें. आप स्क्रिप्ट के यूआरएल से ज़िम्मेदार थीम/प्लगइन की पहचान कर सकते हैं. ऐसे प्लगइन खोजें जिनके पास उस सूची में कई स्क्रिप्ट हैं जिसमें कोड कवरेज में बहुत से लाल निशान हैं. प्लगइन को स्क्रिप्ट तभी एन्क्यू करना चाहिए अगर पेज पर उसका वाकई इस्तेमाल किया गया हो."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "[WordPress में ब्राउज़र कैशिंग](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching) के बारे में पढ़ें."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "ऐसे [इमेज ऑप्टिमाइज़ेशन WordPress प्लगइन](https://wordpress.org/plugins/search/optimize+images/) का इस्तेमाल करने पर विचार करें, जो आपकी क्वालिटी बरकरार रखते हुए आपकी इमेज कंप्रेस करता है."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "सीधे [मीडिया लाइब्रेरी](https://codex.wordpress.org/Media_Library_Screen) के ज़रिए इमेज अपलोड करें ताकि यह पक्का हो जाए कि ज़रूरी इमेज आकार उपलब्ध हैं. इसके बाद उन्हें मीडिया गैलरी से शामिल करें या इमेज विजेट का इस्तेमाल करके यह पक्का करें कि सबसे सही इमेज आकार का इस्तेमाल किया गया है (इनमें जवाबदेह ब्रेकपॉइंट के लिए इमेज आकार भी शामिल हैं). `पूरे आकार` वाली इमेज तब तक इस्तेमाल न करें जब तक कि उनके इस्तेमाल के लिए डाइमेंशन सही न हों. [ज़्यादा जानें](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "आप अपने वेब सर्वर कॉन्फ़िगरेशन में टेक्स्ट कंप्रेस करने की सुविधा चालू कर सकते हैं."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "ऐसे [प्लगइन](https://wordpress.org/plugins/search/convert+webp/) या सेवा का इस्तेमाल करने पर विचार करें जो आपकी अपलोड की गई इमेज को अपने आप ही सबसे सही फ़ॉर्मैट में बदल देगी."
   }
 }

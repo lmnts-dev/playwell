@@ -13,6 +13,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _pageRenderer = _interopRequireDefault(require("./page-renderer"));
 
+var _normalizePagePath = _interopRequireDefault(require("./normalize-page-path"));
+
 var _gatsby = require("gatsby");
 
 var _socketIo = require("./socketIo");
@@ -21,7 +23,7 @@ if (process.env.NODE_ENV === `production`) {
   throw new Error(`It appears like Gatsby is misconfigured. JSONStore is Gatsby internal ` + `development-only component and should never be used in production.\n\n` + `Unless your site has a complex or custom webpack/Gatsby ` + `configuration this is likely a bug in Gatsby. ` + `Please report this at https://github.com/gatsbyjs/gatsby/issues ` + `with steps to reproduce this error.`);
 }
 
-const getPathFromProps = props => props.pageResources && props.pageResources.page ? props.pageResources.page.path : undefined;
+const getPathFromProps = props => props.pageResources && props.pageResources.page ? (0, _normalizePagePath.default)(props.pageResources.page.path) : undefined;
 
 class JSONStore extends _react.default.Component {
   constructor(props) {
@@ -70,7 +72,7 @@ class JSONStore extends _react.default.Component {
     // - location changed
     // - page data for path changed
     // - static query results changed
-    return this.props.location !== nextProps.location || this.state.path !== nextState.path || this.state.pageQueryData[nextState.path] !== nextState.pageQueryData[nextState.path] || this.state.staticQueryData !== nextState.staticQueryData;
+    return this.props.location !== nextProps.location || this.state.path !== nextState.path || this.state.pageQueryData[(0, _normalizePagePath.default)(nextState.path)] !== nextState.pageQueryData[(0, _normalizePagePath.default)(nextState.path)] || this.state.staticQueryData !== nextState.staticQueryData;
   }
 
   render() {

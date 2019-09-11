@@ -447,10 +447,10 @@
     "message": "[Våļûé one]"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "[Бŕöŵšéŕ éñĝîñééŕš ŕéçömméñð þåĝéš çöñţåîñ ƒéŵéŕ ţĥåñ ~1,500 ÐÖM ñöðéš. Ţĥé šŵééţ šþöţ îš å ţŕéé ðéþţĥ < 32 éļéméñţš åñð ƒéŵéŕ ţĥåñ 60 çĥîļðŕéñ/þåŕéñţ éļéméñţ. Å ļåŕĝé ÐÖM çåñ îñçŕéåšé mémöŕý ûšåĝé, çåûšé ļöñĝéŕ [šţýļé çåļçûļåţîöñš](ĥţţþš://ðévéļöþéŕš.ĝööĝļé.çöm/ŵéб/ƒûñðåméñţåļš/þéŕƒöŕmåñçé/ŕéñðéŕîñĝ/ŕéðûçé-ţĥé-šçöþé-åñð-çömþļéxîţý-öƒ-šţýļé-çåļçûļåţîöñš), åñð þŕöðûçé çöšţļý [ļåýöûţ ŕéƒļöŵš](ĥţţþš://ðévéļöþéŕš.ĝööĝļé.çöm/šþééð/åŕţîçļéš/ŕéƒļöŵ). [Ļéåŕñ möŕé](ĥţţþš://ðévéļöþéŕš.ĝööĝļé.çöm/ŵéб/ţööļš/ļîĝĥţĥöûšé/åûðîţš/ðöm-šîžé). one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine thirty thirtyone thirtytwo thirtythree thirtyfour thirtyfive thirtysix thirtyseven thirtyeight thirtynine forty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive]"
+    "message": "[Бŕöŵšéŕ éñĝîñééŕš ŕéçömméñð þåĝéš çöñţåîñ ƒéŵéŕ ţĥåñ ~1,500 ÐÖM éļéméñţš. Ţĥé šŵééţ šþöţ îš å ţŕéé ðéþţĥ < 32 éļéméñţš åñð ƒéŵéŕ ţĥåñ 60 çĥîļðŕéñ/þåŕéñţ éļéméñţ. Å ļåŕĝé ÐÖM çåñ îñçŕéåšé mémöŕý ûšåĝé, çåûšé ļöñĝéŕ [šţýļé çåļçûļåţîöñš](ĥţţþš://ðévéļöþéŕš.ĝööĝļé.çöm/ŵéб/ƒûñðåméñţåļš/þéŕƒöŕmåñçé/ŕéñðéŕîñĝ/ŕéðûçé-ţĥé-šçöþé-åñð-çömþļéxîţý-öƒ-šţýļé-çåļçûļåţîöñš), åñð þŕöðûçé çöšţļý [ļåýöûţ ŕéƒļöŵš](ĥţţþš://ðévéļöþéŕš.ĝööĝļé.çöm/šþééð/åŕţîçļéš/ŕéƒļöŵ). [Ļéåŕñ möŕé](ĥţţþš://ðévéļöþéŕš.ĝööĝļé.çöm/ŵéб/ţööļš/ļîĝĥţĥöûšé/åûðîţš/ðöm-šîžé). one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine thirty thirtyone thirtytwo thirtythree thirtyfour thirtyfive thirtysix thirtyseven thirtyeight thirtynine forty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix]"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{[1 ñöðé one]}other{[# ñöðéš one]}}"
+    "message": "{itemCount,plural, =1{[1 éļéméñţ one two]}other{[# éļéméñţš one two]}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "[Åvöîð åñ éxçéššîvé ÐÖM šîžé one two three four five six]"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "[Måxîmûm ÐÖM Ðéþţĥ one two three]"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "[Ţöţåļ ÐÖM Ñöðéš one two]"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "[Ţöţåļ ÐÖM Éļéméñţš one two three]"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "[Måxîmûm Çĥîļð Éļéméñţš one two three]"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "[ŠÉÖ one]"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "[Föŕmåţ ýöûŕ ĤŢMĻ îñ å ŵåý ţĥåţ éñåбļéš çŕåŵļéŕš ţö бéţţéŕ ûñðéŕšţåñð ýöûŕ åþþ’š çöñţéñţ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen]"
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "[Çöñţéñţ Бéšţ Þŕåçţîçéš one two three]"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "[Ţö åþþéåŕ îñ šéåŕçĥ ŕéšûļţš, çŕåŵļéŕš ñééð åççéšš ţö ýöûŕ åþþ. one two three four five six seven eight nine ten eleven twelve]"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "[Çŕåŵļîñĝ åñð Îñðéxîñĝ one two three]"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "[Måķé šûŕé ýöûŕ þåĝéš åŕé möбîļé ƒŕîéñðļý šö ûšéŕš ðöñ’ţ ĥåvé ţö þîñçĥ öŕ žööm îñ öŕðéŕ ţö ŕéåð ţĥé çöñţéñţ þåĝéš. [Ļéåŕñ möŕé](ĥţţþš://ðévéļöþéŕš.ĝööĝļé.çöm/šéåŕçĥ/möбîļé-šîţéš/). one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive]"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "[Möбîļé Fŕîéñðļý one two]"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "[Çåçĥé ŢŢĻ one two]"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "[Šöméţĥîñĝ ŵéñţ ŵŕöñĝ ŵîţĥ ŕéçöŕðîñĝ ţĥé ţŕåçé övéŕ ýöûŕ þåĝé ļöåð. Þļéåšé ŕûñ Ļîĝĥţĥöûšé åĝåîñ. ({éŕŕöŕÇöðé}) one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen]"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "[Ţîméöûţ ŵåîţîñĝ ƒöŕ îñîţîåļ Ðéбûĝĝéŕ Þŕöţöçöļ çöññéçţîöñ. one two three four five six seven eight nine ten eleven twelve]"
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "[Çĥŕömé ðîðñ'ţ çöļļéçţ åñý šçŕééñšĥöţš ðûŕîñĝ ţĥé þåĝé ļöåð. Þļéåšé måķé šûŕé ţĥéŕé îš çöñţéñţ vîšîбļé öñ ţĥé þåĝé, åñð ţĥéñ ţŕý ŕé-ŕûññîñĝ Ļîĝĥţĥöûšé. ({éŕŕöŕÇöðé}) one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree]"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "[Þåššéð åûðîţš one two]"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "[Šçöŕé šçåļé: one two]"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "[Çöļļåþšé šñîþþéţ one two]"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "[Ŵåŕñîñĝš:  one two]"
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "[Çöñšîðéŕ ûþļöåðîñĝ ýöûŕ ĜÎF ţö å šéŕvîçé ŵĥîçĥ ŵîļļ måķé îţ åvåîļåбļé ţö émбéð åš åñ ĤŢMĻ5 vîðéö. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen]"
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "[Îñšţåļļ å [ļåžý-ļöåð ŴöŕðÞŕéšš þļûĝîñ](ĥţţþš://ŵöŕðþŕéšš.öŕĝ/þļûĝîñš/šéåŕçĥ/ļåžý+ļöåð/) ţĥåţ þŕövîðéš ţĥé åбîļîţý ţö ðéƒéŕ åñý öƒƒšçŕééñ îmåĝéš, öŕ šŵîţçĥ ţö å ţĥémé ţĥåţ þŕövîðéš ţĥåţ ƒûñçţîöñåļîţý. Åļšö çöñšîðéŕ ûšîñĝ [ţĥé ÅMÞ þļûĝîñ](ĥţţþš://ŵöŕðþŕéšš.öŕĝ/þļûĝîñš/åmþ/). one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine thirty thirtyone thirtytwo thirtythree thirtyfour]"
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "[Ţĥéŕé åŕé å ñûmбéŕ öƒ ŴöŕðÞŕéšš þļûĝîñš ţĥåţ çåñ ĥéļþ ýöû [îñļîñé çŕîţîçåļ åššéţš](ĥţţþš://ŵöŕðþŕéšš.öŕĝ/þļûĝîñš/šéåŕçĥ/çŕîţîçåļ+çšš/) öŕ [ðéƒéŕ ļéšš îmþöŕţåñţ ŕéšöûŕçéš](ĥţţþš://ŵöŕðþŕéšš.öŕĝ/þļûĝîñš/šéåŕçĥ/ðéƒéŕ+çšš+ĵåvåšçŕîþţ/). Бéŵåŕé ţĥåţ öþţîmîžåţîöñš þŕövîðéð бý ţĥéšé þļûĝîñš måý бŕéåķ ƒéåţûŕéš öƒ ýöûŕ ţĥémé öŕ þļûĝîñš, šö ýöû ŵîļļ ļîķéļý ñééð ţö måķé çöðé çĥåñĝéš. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine thirty thirtyone thirtytwo thirtythree thirtyfour thirtyfive thirtysix thirtyseven thirtyeight thirtynine forty one two three four five six seven]"
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "[Ţĥéméš, þļûĝîñš, åñð šéŕvéŕ šþéçîƒîçåţîöñš åļļ çöñţŕîбûţé ţö šéŕvéŕ ŕéšþöñšé ţîmé. Çöñšîðéŕ ƒîñðîñĝ å möŕé öþţîmîžéð ţĥémé, çåŕéƒûļļý šéļéçţîñĝ åñ öþţîmîžåţîöñ þļûĝîñ, åñð/öŕ ûþĝŕåðîñĝ ýöûŕ šéŕvéŕ. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven]"
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "[Çöñšîðéŕ šĥöŵîñĝ éxçéŕþţš îñ ýöûŕ þöšţ ļîšţš (é.ĝ. vîå ţĥé möŕé ţåĝ), ŕéðûçîñĝ ţĥé ñûmбéŕ öƒ þöšţš šĥöŵñ öñ å ĝîvéñ þåĝé, бŕéåķîñĝ ýöûŕ ļöñĝ þöšţš îñţö mûļţîþļé þåĝéš, öŕ ûšîñĝ å þļûĝîñ ţö ļåžý-ļöåð çömméñţš. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven]"
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "[Å ñûmбéŕ öƒ [ŴöŕðÞŕéšš þļûĝîñš](ĥţţþš://ŵöŕðþŕéšš.öŕĝ/þļûĝîñš/šéåŕçĥ/mîñîƒý+çšš/) çåñ šþééð ûþ ýöûŕ šîţé бý çöñçåţéñåţîñĝ, mîñîƒýîñĝ, åñð çömþŕéššîñĝ ýöûŕ šţýļéš. Ýöû måý åļšö ŵåñţ ţö ûšé å бûîļð þŕöçéšš ţö ðö ţĥîš mîñîƒîçåţîöñ ûþ-ƒŕöñţ îƒ þöššîбļé. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine thirty thirtyone thirtytwo]"
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "[Å ñûmбéŕ öƒ [ŴöŕðÞŕéšš þļûĝîñš](ĥţţþš://ŵöŕðþŕéšš.öŕĝ/þļûĝîñš/šéåŕçĥ/mîñîƒý+ĵåvåšçŕîþţ/) çåñ šþééð ûþ ýöûŕ šîţé бý çöñçåţéñåţîñĝ, mîñîƒýîñĝ, åñð çömþŕéššîñĝ ýöûŕ šçŕîþţš. Ýöû måý åļšö ŵåñţ ţö ûšé å бûîļð þŕöçéšš ţö ðö ţĥîš mîñîƒîçåţîöñ ûþ ƒŕöñţ îƒ þöššîбļé. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine thirty thirtyone thirtytwo]"
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "[Çöñšîðéŕ ŕéðûçîñĝ, öŕ šŵîţçĥîñĝ, ţĥé ñûmбéŕ öƒ [ŴöŕðÞŕéšš þļûĝîñš](ĥţţþš://ŵöŕðþŕéšš.öŕĝ/þļûĝîñš/) ļöåðîñĝ ûñûšéð ÇŠŠ îñ ýöûŕ þåĝé. Ţö îðéñţîƒý þļûĝîñš ţĥåţ åŕé åððîñĝ éxţŕåñéöûš ÇŠŠ, ţŕý ŕûññîñĝ [çöðé çövéŕåĝé](ĥţţþš://ðévéļöþéŕš.ĝööĝļé.çöm/ŵéб/ûþðåţéš/2017/04/ðévţööļš-ŕéļéåšé-ñöţéš#çövéŕåĝé) îñ Çĥŕömé ÐévŢööļš. Ýöû çåñ îðéñţîƒý ţĥé ţĥémé/þļûĝîñ ŕéšþöñšîбļé ƒŕöm ţĥé ÛŔĻ öƒ ţĥé šţýļéšĥééţ. Ļööķ öûţ ƒöŕ þļûĝîñš ţĥåţ ĥåvé måñý šţýļéšĥééţš îñ ţĥé ļîšţ ŵĥîçĥ ĥåvé å ļöţ öƒ ŕéð îñ çöðé çövéŕåĝé. Å þļûĝîñ šĥöûļð öñļý éñqûéûé å šţýļéšĥééţ îƒ îţ îš åçţûåļļý ûšéð öñ ţĥé þåĝé. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine thirty thirtyone thirtytwo thirtythree thirtyfour thirtyfive thirtysix thirtyseven thirtyeight thirtynine forty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine]"
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "[Çöñšîðéŕ ŕéðûçîñĝ, öŕ šŵîţçĥîñĝ, ţĥé ñûmбéŕ öƒ [ŴöŕðÞŕéšš þļûĝîñš](ĥţţþš://ŵöŕðþŕéšš.öŕĝ/þļûĝîñš/) ļöåðîñĝ ûñûšéð ĴåvåŠçŕîþţ îñ ýöûŕ þåĝé. Ţö îðéñţîƒý þļûĝîñš ţĥåţ åŕé åððîñĝ éxţŕåñéöûš ĴŠ, ţŕý ŕûññîñĝ [çöðé çövéŕåĝé](ĥţţþš://ðévéļöþéŕš.ĝööĝļé.çöm/ŵéб/ûþðåţéš/2017/04/ðévţööļš-ŕéļéåšé-ñöţéš#çövéŕåĝé) îñ Çĥŕömé ÐévŢööļš. Ýöû çåñ îðéñţîƒý ţĥé ţĥémé/þļûĝîñ ŕéšþöñšîбļé ƒŕöm ţĥé ÛŔĻ öƒ ţĥé šçŕîþţ. Ļööķ öûţ ƒöŕ þļûĝîñš ţĥåţ ĥåvé måñý šçŕîþţš îñ ţĥé ļîšţ ŵĥîçĥ ĥåvé å ļöţ öƒ ŕéð îñ çöðé çövéŕåĝé. Å þļûĝîñ šĥöûļð öñļý éñqûéûé å šçŕîþţ îƒ îţ îš åçţûåļļý ûšéð öñ ţĥé þåĝé. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine thirty thirtyone thirtytwo thirtythree thirtyfour thirtyfive thirtysix thirtyseven thirtyeight thirtynine forty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine]"
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "[Ŕéåð åбöûţ [Бŕöŵšéŕ Çåçĥîñĝ îñ ŴöŕðÞŕéšš](ĥţţþš://çöðéx.ŵöŕðþŕéšš.öŕĝ/ŴöŕðÞŕéšš_Öþţîmîžåţîöñ#Бŕöŵšéŕ_Çåçĥîñĝ). one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen]"
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "[Çöñšîðéŕ ûšîñĝ åñ [îmåĝé öþţîmîžåţîöñ ŴöŕðÞŕéšš þļûĝîñ](ĥţţþš://ŵöŕðþŕéšš.öŕĝ/þļûĝîñš/šéåŕçĥ/öþţîmîžé+îmåĝéš/) ţĥåţ çömþŕéššéš ýöûŕ îmåĝéš ŵĥîļé ŕéţåîñîñĝ qûåļîţý. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree]"
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "[Ûþļöåð îmåĝéš ðîŕéçţļý ţĥŕöûĝĥ ţĥé [méðîå ļîбŕåŕý](ĥţţþš://çöðéx.ŵöŕðþŕéšš.öŕĝ/Méðîå_Ļîбŕåŕý_Šçŕééñ) ţö éñšûŕé ţĥåţ ţĥé ŕéqûîŕéð îmåĝé šîžéš åŕé åvåîļåбļé, åñð ţĥéñ îñšéŕţ ţĥém ƒŕöm ţĥé méðîå ļîбŕåŕý öŕ ûšé ţĥé îmåĝé ŵîðĝéţ ţö éñšûŕé ţĥé öþţîmåļ îmåĝé šîžéš åŕé ûšéð (îñçļûðîñĝ ţĥöšé ƒöŕ ţĥé ŕéšþöñšîvé бŕéåķþöîñţš). Åvöîð ûšîñĝ `Fûļļ Šîžé` îmåĝéš ûñļéšš ţĥé ðîméñšîöñš åŕé åðéqûåţé ƒöŕ ţĥéîŕ ûšåĝé. [Ļéåŕñ Möŕé](ĥţţþš://çöðéx.ŵöŕðþŕéšš.öŕĝ/Îñšéŕţîñĝ_Îmåĝéš_îñţö_Þöšţš_åñð_Þåĝéš#Îmåĝé_Šîžé). one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour twentyfive twentysix twentyseven twentyeight twentynine thirty thirtyone thirtytwo thirtythree thirtyfour thirtyfive thirtysix thirtyseven thirtyeight thirtynine forty one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo]"
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "[Ýöû çåñ éñåбļé ţéxţ çömþŕéššîöñ îñ ýöûŕ ŵéб šéŕvéŕ çöñƒîĝûŕåţîöñ. one two three four five six seven eight nine ten eleven twelve thirteen]"
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "[Çöñšîðéŕ ûšîñĝ å [þļûĝîñ](ĥţţþš://ŵöŕðþŕéšš.öŕĝ/þļûĝîñš/šéåŕçĥ/çöñvéŕţ+ŵéбþ/) öŕ šéŕvîçé ţĥåţ ŵîļļ åûţömåţîçåļļý çöñvéŕţ ýöûŕ ûþļöåðéð îmåĝéš ţö ţĥé öþţîmåļ ƒöŕmåţš. one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen twenty twentyone twentytwo twentythree twentyfour]"
   }
 }

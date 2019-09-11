@@ -49,7 +49,7 @@ function findType(type) {
  *
  * @param {string|Array<string>} typeOrTypes
  * @param {Array<string>} keys
- * @returns {Array<string>}
+ * @returns {Array<Pick<LH.StructuredData.ValidationError, "message" | "validTypes"> & {key?: string}>}
  */
 function validateObjectKeys(typeOrTypes, keys) {
   /** @type {Array<string>} */
@@ -60,9 +60,11 @@ function validateObjectKeys(typeOrTypes, keys) {
   } else if (Array.isArray(typeOrTypes)) {
     types = typeOrTypes;
     const invalidIndex = typeOrTypes.findIndex(s => typeof s !== 'string');
-    if (invalidIndex >= 0) return [`Unknown value type at index ${invalidIndex}`];
+    if (invalidIndex >= 0) {
+      return [{message: `Unknown value type at index ${invalidIndex}`}];
+    }
   } else {
-    return ['Unknown value type'];
+    return [{message: 'Unknown value type'}];
   }
 
   const unknownTypes = types.filter(t => !findType(t));
@@ -70,7 +72,10 @@ function validateObjectKeys(typeOrTypes, keys) {
   if (unknownTypes.length) {
     return unknownTypes
       .filter(type => SCHEMA_ORG_URL_REGEX.test(type))
-      .map(type => `Unrecognized schema.org type ${type}`);
+      .map(type => ({
+        message: `Unrecognized schema.org type: ${type}`,
+        key: '@type',
+      }));
   }
 
   /** @type {Set<string>} */
@@ -91,15 +96,19 @@ function validateObjectKeys(typeOrTypes, keys) {
     // remove Schema.org input/output constraints http://schema.org/docs/actions.html#part-4
     .map(key => key.replace(/-(input|output)$/, ''))
     .filter(key => !allKnownProps.has(key))
-    .map(key => `Unexpected property "${key}"`);
+    .map(key => ({
+      message: `Unexpected property "${key}"`,
+      key,
+      validTypes: types,
+    }));
 }
 
 /**
  * @param {LH.StructuredData.ExpandedSchemaRepresentation|null} expandedObj Valid JSON-LD object in expanded form
- * @return {Array<{path: string, message: string}>}
+ * @return {Array<Pick<LH.StructuredData.ValidationError, "message" | "validTypes" | "path">>}
  */
 module.exports = function validateSchemaOrg(expandedObj) {
-  /** @type {Array<{path: string, message: string}>} */
+  /** @type {Array<Pick<LH.StructuredData.ValidationError, "message" | "validTypes" | "path">>} */
   const errors = [];
 
   if (expandedObj === null) {
@@ -114,20 +123,22 @@ module.exports = function validateSchemaOrg(expandedObj) {
 
   walkObject(expandedObj, (name, value, path, obj) => {
     if (name === TYPE_KEYWORD) {
-      const keyErrorMessages = validateObjectKeys(value, Object.keys(obj));
+      const keyErrors = validateObjectKeys(value, Object.keys(obj));
 
-      keyErrorMessages.forEach(message =>
+      keyErrors.forEach(error => {
         errors.push({
-          // get rid of the first chunk (/@type) as it's the same for all errors
+          validTypes: error.validTypes,
+          message: error.message,
+          // get rid of the last chunk (/@type) as it's the same for all errors
           path:
             '/' +
             path
               .slice(0, -1)
+              .concat(error.key || [])
               .map(cleanName)
               .join('/'),
-          message,
-        })
-      );
+        });
+      });
     }
   });
 

@@ -6,15 +6,15 @@
 // @ts-nocheck
 /**
  * @fileoverview Gathers stats about the max height and width of the DOM tree
- * and total number of nodes used on the page.
+ * and total number of elements used on the page.
  */
 
 /* global ShadowRoot, getOuterHTMLSnippet */
 
 'use strict';
 
-const Gatherer = require('../gatherer');
-const pageFunctions = require('../../../lib/page-functions');
+const Gatherer = require('../gatherer.js');
+const pageFunctions = require('../../../lib/page-functions.js');
 
 /**
  * Constructs a pretty label from element's selectors. For example, given
@@ -85,9 +85,10 @@ function elementPathInDOM(element) {
  */
 /* istanbul ignore next */
 function getDOMStats(element, deep = true) {
-  let deepestNode = null;
-  let maxDepth = 0;
-  let maxWidth = 0;
+  let deepestElement = null;
+  let maxDepth = -1;
+  let maxWidth = -1;
+  let numElements = 0;
   let parentWithMostChildren = null;
 
   /**
@@ -96,7 +97,7 @@ function getDOMStats(element, deep = true) {
    */
   const _calcDOMWidthAndHeight = function(element, depth = 1) {
     if (depth > maxDepth) {
-      deepestNode = element;
+      deepestElement = element;
       maxDepth = depth;
     }
     if (element.children.length > maxWidth) {
@@ -107,14 +108,15 @@ function getDOMStats(element, deep = true) {
     let child = element.firstElementChild;
     while (child) {
       _calcDOMWidthAndHeight(child, depth + 1);
-      // If node has shadow dom, traverse into that tree.
+      // If element has shadow dom, traverse into that tree.
       if (deep && child.shadowRoot) {
         _calcDOMWidthAndHeight(child.shadowRoot, depth + 1);
       }
       child = child.nextElementSibling;
+      numElements++;
     }
 
-    return {maxDepth, maxWidth};
+    return {maxDepth, maxWidth, numElements};
   };
 
   const result = _calcDOMWidthAndHeight(element);
@@ -122,15 +124,16 @@ function getDOMStats(element, deep = true) {
   return {
     depth: {
       max: result.maxDepth,
-      pathToElement: elementPathInDOM(deepestNode),
+      pathToElement: elementPathInDOM(deepestElement),
       // ignore style since it will provide no additional context, and is often long
-      snippet: getOuterHTMLSnippet(deepestNode, ['style']),
+      snippet: getOuterHTMLSnippet(deepestElement, ['style']),
     },
     width: {
       max: result.maxWidth,
       pathToElement: elementPathInDOM(parentWithMostChildren),
       snippet: getOuterHTMLSnippet(parentWithMostChildren, ['style']),
     },
+    totalBodyElements: result.numElements,
   };
 }
 
@@ -139,19 +142,19 @@ class DOMStats extends Gatherer {
    * @param {LH.Gatherer.PassContext} passContext
    * @return {Promise<LH.Artifacts['DOMStats']>}
    */
-  afterPass(passContext) {
+  async afterPass(passContext) {
+    const driver = passContext.driver;
+
     const expression = `(function() {
       ${pageFunctions.getOuterHTMLSnippetString};
       ${createSelectorsLabel.toString()};
       ${elementPathInDOM.toString()};
-      return (${getDOMStats.toString()}(document.documentElement));
+      return (${getDOMStats.toString()}(document.body));
     })()`;
-    return passContext.driver.sendCommand('DOM.enable')
-      .then(() => passContext.driver.evaluateAsync(expression, {useIsolation: true}))
-      .then(results => passContext.driver.getElementsInDocument().then(allNodes => {
-        results.totalDOMNodes = allNodes.length;
-        return passContext.driver.sendCommand('DOM.disable').then(() => results);
-      }));
+    await driver.sendCommand('DOM.enable');
+    const results = await driver.evaluateAsync(expression, {useIsolation: true});
+    await driver.sendCommand('DOM.disable');
+    return results;
   }
 }
 

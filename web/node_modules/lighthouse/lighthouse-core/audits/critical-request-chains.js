@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const Audit = require('./audit');
+const Audit = require('./audit.js');
 const i18n = require('../lib/i18n/i18n.js');
 const ComputedChains = require('../computed/critical-request-chains.js');
 
@@ -201,7 +201,7 @@ class CriticalRequestChains extends Audit {
       const longestChain = CriticalRequestChains._getLongestChain(flattenedChains);
 
       return {
-        rawValue: chainCount === 0,
+        score: Number(chainCount === 0),
         notApplicable: chainCount === 0,
         displayValue: chainCount ? str_(UIStrings.displayValue, {itemCount: chainCount}) : '',
         extendedInfo: {

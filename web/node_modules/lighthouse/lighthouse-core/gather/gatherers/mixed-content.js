@@ -5,8 +5,8 @@
  */
 'use strict';
 
-const Gatherer = require('./gatherer');
-const URL = require('../../lib/url-shim');
+const Gatherer = require('./gatherer.js');
+const URL = require('../../lib/url-shim.js');
 
 const Driver = require('../driver.js'); // eslint-disable-line no-unused-vars
 

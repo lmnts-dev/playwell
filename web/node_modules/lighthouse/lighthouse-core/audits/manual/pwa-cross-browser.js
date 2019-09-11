@@ -6,7 +6,7 @@
  */
 'use strict';
 
-const ManualAudit = require('./manual-audit');
+const ManualAudit = require('./manual-audit.js');
 
 /**
  * @fileoverview Manual PWA audit for cross browser support.

@@ -11,7 +11,7 @@
  * @see https://cs.chromium.org/chromium/src/third_party/blink/renderer/devtools/front_end/sdk/NetworkManager.js
  */
 
-const URL = require('./url-shim');
+const URL = require('./url-shim.js');
 
 const SECURE_SCHEMES = ['data', 'https', 'wss', 'blob', 'chrome', 'chrome-extension', 'about'];
 

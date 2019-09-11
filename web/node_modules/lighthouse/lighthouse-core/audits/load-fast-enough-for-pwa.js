@@ -12,8 +12,8 @@
  */
 
 const isDeepEqual = require('lodash.isequal');
-const Audit = require('./audit');
-const mobileThrottling = require('../config/constants').throttling.mobileSlow4G;
+const Audit = require('./audit.js');
+const mobileThrottling = require('../config/constants.js').throttling.mobileSlow4G;
 const Interactive = require('../computed/metrics/interactive.js');
 const i18n = require('../lib/i18n/i18n.js');
 
@@ -95,7 +95,7 @@ class LoadFastEnough4Pwa extends Audit {
       score,
       displayValue,
       explanation,
-      rawValue: tti.timing,
+      numericValue: tti.timing,
     };
   }
 }

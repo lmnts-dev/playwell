@@ -2,7 +2,7 @@
 
 The Lighthouse config object is the primary method of customizing Lighthouse to suit your use case. Using a custom config, you can limit the audits to run, add additional loads of the page under special conditions, add your own custom checks, tweak the scoring, and more.
 
-Read more about the [architecture of Lighthouse](https://github.com/GoogleChrome/lighthouse/blob/master/docs/architecture.md).
+Read more about the [architecture of Lighthouse](./architecture.md).
 
 ## Usage
 

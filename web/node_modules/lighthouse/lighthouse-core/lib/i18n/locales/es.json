@@ -447,10 +447,10 @@
     "message": "Valor"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Los ingenieros que desarrollan navegadores recomiendan que las páginas contengan menos de ~1500 nodos de DOM. Lo ideal es conseguir una profundidad de árbol de < 32 elementos y menos de 60 elementos secundarios por cada nodo principal. Los DOM de gran tamaño aumentan el uso de la memoria, hacen que los [cálculos de estilo](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) sean más largos y producen [reinicios de flujo](https://developers.google.com/speed/articles/reflow) más caros. [Más información](https://developers.google.com/web/tools/lighthouse/audits/dom-size)"
+    "message": "Los desarrolladores de navegadores recomiendan que las páginas contengan menos de 1500 elementos de DOM. Lo ideal es conseguir una profundidad de árbol inferior a 32 elementos y a 60 elementos secundarios por cada elemento principal. Los DOM de gran tamaño aumentan el uso de la memoria, hacen que los [cálculos de estilo](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) duren más y generan costosos [reinicios del flujo del diseño](https://developers.google.com/speed/articles/reflow). [Más información](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 nodo}other{# nodos}}"
+    "message": "{itemCount,plural, =1{1 elemento}other{# elementos}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Evita un tamaño excesivo de DOM"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Profundidad máxima de DOM"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Nodos totales de DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Total de elementos DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Número máximo de elementos secundarios"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Edita el código HTML de tu página web de forma que los rastreadores puedan entender mejor el contenido de tu aplicación."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Prácticas recomendadas de contenido"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Para aparecer en los resultados de búsqueda, los rastreadores necesitan acceder a tu aplicación."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Rastrear e indexar"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Asegúrate de que tus páginas están optimizadas para móviles de forma que los usuarios no tengan que pellizcar la pantalla o ampliarla para poder leer su contenido. [Más información](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Optimización para móviles"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Tiempo de vida en caché"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Se ha producido un error al registrar el rastro durante la carga de la página. Ejecuta Lighthouse de nuevo. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Se ha agotado el tiempo de espera de la conexión inicial del protocolo del depurador."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome no ha recopilado ninguna captura de pantalla al cargar la página. Comprueba que haya contenido visible en la página e intenta ejecutar Lighthouse de nuevo. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Auditorías aprobadas"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Escala de puntuación:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Ocultar fragmento"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Advertencias: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Puedes subir tu GIF a un servicio que permita insertarlo como un vídeo HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Instala un [complemento de carga diferida de WordPress](https://wordpress.org/plugins/search/lazy+load/) con la capacidad de posponer imágenes que no aparecen en la pantalla, o cambia a un tema con esa función. También puedes usar [el complemento AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Existen varios complementos de WordPress que pueden ayudarte a [insertar recursos fundamentales](https://wordpress.org/plugins/search/critical+css/) o a [posponer recursos menos importantes](https://wordpress.org/plugins/search/defer+css+javascript/). Ten en cuenta que las optimizaciones que ofrecen estos complementos pueden bloquear funciones de tu tema o tus complementos, así que seguramente tengas que hacer cambios en el código."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Los temas, los complementos y las especificaciones del servidor afectan al tiempo de respuesta. Puedes buscar un tema más optimizado, seleccionar un complemento de optimización o actualizar tu servidor."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Puedes mostrar fragmentos en tus listas de entradas (por ejemplo, mediante la etiqueta \"more\"), reducir la cantidad de entradas que se muestran en cada página, dividir tus entradas más largas en múltiples páginas o usar un complemento para posponer la carga de los comentarios."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Hay varios [complementos de WordPress](https://wordpress.org/plugins/search/minify+css/) que pueden concatenar, minificar y comprimir tus estilos para acelerar tu sitio web. Te recomendamos que, si es posible, uses un proceso de creación para realizar la minificación de forma anticipada."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Hay varios [complementos de WordPress](https://wordpress.org/plugins/search/minify+javascript/) que pueden concatenar, minificar y comprimir tus secuencias de comandos para acelerar tu sitio web. Te recomendamos que, si es posible, uses un proceso de creación para realizar la minificación de forma anticipada."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Puedes reducir o cambiar la cantidad de [complementos de WordPress](https://wordpress.org/plugins/) que cargan archivos CSS sin usar en tu página. Para identificar los complementos que añaden archivos CSS externos, ejecuta [cobertura de código](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) en DevTools de Chrome. Puedes identificar el tema o complemento en la URL de la hoja de estilo. Presta atención a los complementos con varias hojas de estilo en la lista y con muchos elementos en rojo en la cobertura de código. Un complemento solo debería poner en cola una hoja de estilo (si esta se usa en la página)."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Puedes reducir o cambiar la cantidad de [complementos de WordPress](https://wordpress.org/plugins/) que cargan JavaScript sin usar en tu página. Para identificar los complementos que añaden JavaScript externo, ejecuta [cobertura de código](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) en DevTools de Chrome. Puedes identificar el tema o complemento concreto en la URL de la secuencia de comandos. Presta atención a los complementos con varias secuencias de comandos en la lista y con muchos elementos en rojo en la cobertura de código. Un complemento solo debería poner en cola una secuencia de comandos (si esta se usa en la página)."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Consulta información sobre el [almacenamiento en la memoria caché del navegador en WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Puedes utilizar un [complemento de optimización de imágenes de WordPress](https://wordpress.org/plugins/search/optimize+images/) que comprima tus imágenes conservando la calidad."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Sube imágenes directamente a la [biblioteca multimedia](https://codex.wordpress.org/Media_Library_Screen) para asegurarte de que estén disponibles los tamaños de imagen necesarios y, después, insértalas desde esa biblioteca multimedia o utiliza el widget de imagen para usar los tamaños de imagen óptimos (incluidos los tamaños de los breakpoints adaptables). Evita utilizar imágenes a tamaño completo, a no ser que las dimensiones sean las adecuadas para su uso. [Más información](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Puedes habilitar la compresión de texto en la configuración de tu servidor web."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Puedes utilizar un [complemento](https://wordpress.org/plugins/search/convert+webp/) o un servicio que convierta automáticamente las imágenes que subas en los formatos óptimos."
   }
 }

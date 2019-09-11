@@ -5,16 +5,16 @@
  */
 'use strict';
 
-const Audit = require('../audit');
+const Audit = require('../audit.js');
 const ComputedFid = require('../../computed/metrics/max-potential-fid.js');
-const i18n = require('../../lib/i18n/i18n');
+const i18n = require('../../lib/i18n/i18n.js');
 
 const UIStrings = {
   /** The name of the metric "Maximum Potential First Input Delay" that marks the maximum estimated time between the page receiving input (a user clicking, tapping, or typing) and the page responding. Shown to users as the label for the numeric metric value. Ideally fits within a ~40 character limit. */
-  title: 'Max Potential FID',
+  title: 'Max Potential First Input Delay',
   /** Description of the Maximum Potential First Input Delay metric that marks the maximum estimated time between the page receiving input (a user clicking, tapping, or typing) and the page responding. This description is displayed within a tooltip when the user hovers on the metric name to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
-  description: 'The potential First Input Delay that your users could experience is the ' +
-      'duration, in milliseconds, of the longest task.',
+  description: 'The maximum potential First Input Delay that your users could experience is the ' +
+      'duration, in milliseconds, of the longest task. [Learn more](https://developers.google.com/web/updates/2018/05/first-input-delay).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -34,7 +34,7 @@ class MaxPotentialFID extends Audit {
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['traces'],
+      requiredArtifacts: ['traces', 'devtoolsLogs'],
     };
   }
 
@@ -66,7 +66,7 @@ class MaxPotentialFID extends Audit {
         context.options.scorePODR,
         context.options.scoreMedian
       ),
-      rawValue: metricResult.timing,
+      numericValue: metricResult.timing,
       displayValue: str_(i18n.UIStrings.ms, {timeInMs: metricResult.timing}),
     };
   }

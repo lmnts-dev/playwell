@@ -5,8 +5,8 @@
  */
 'use strict';
 
-const Audit = require('./audit');
-const UnusedBytes = require('./byte-efficiency/byte-efficiency-audit');
+const Audit = require('./audit.js');
+const UnusedBytes = require('./byte-efficiency/byte-efficiency-audit.js');
 const i18n = require('../lib/i18n/i18n.js');
 const TraceOfTab = require('../computed/trace-of-tab.js');
 const NetworkRecords = require('../computed/network-records.js');
@@ -108,7 +108,7 @@ class Redirects extends Audit {
     return {
       // We award a passing grade if you only have 1 redirect
       score: redirectRequests.length <= 2 ? 1 : UnusedBytes.scoreForWastedMs(totalWastedMs),
-      rawValue: totalWastedMs,
+      numericValue: totalWastedMs,
       displayValue: totalWastedMs ?
         str_(i18n.UIStrings.displayValueMsSavings, {wastedMs: totalWastedMs}) :
         '',

@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const Audit = require('../audit');
+const Audit = require('../audit.js');
 const MainResource = require('../../computed/main-resource.js');
 const HTTP_UNSUCCESSFUL_CODE_LOW = 400;
 const HTTP_UNSUCCESSFUL_CODE_HIGH = 599;
@@ -54,13 +54,13 @@ class HTTPStatusCode extends Audit {
         if (statusCode >= HTTP_UNSUCCESSFUL_CODE_LOW &&
           statusCode <= HTTP_UNSUCCESSFUL_CODE_HIGH) {
           return {
-            rawValue: false,
+            score: 0,
             displayValue: `${statusCode}`,
           };
         }
 
         return {
-          rawValue: true,
+          score: 1,
         };
       });
   }

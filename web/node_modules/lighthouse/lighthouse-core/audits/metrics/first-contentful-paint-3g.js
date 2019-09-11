@@ -55,7 +55,7 @@ class FirstContentfulPaint3G extends Audit {
         context.options.scorePODR,
         context.options.scoreMedian
       ),
-      rawValue: metricResult.timing,
+      numericValue: metricResult.timing,
       displayValue: `${metricResult.timing}\xa0ms`,
     };
   }

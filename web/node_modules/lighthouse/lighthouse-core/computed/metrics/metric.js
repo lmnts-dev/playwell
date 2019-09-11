@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const TracingProcessor = require('../../lib/traces/tracing-processor.js');
+const TracingProcessor = require('../../lib/tracehouse/trace-processor.js');
 const TraceOfTab = require('../trace-of-tab.js');
 const NetworkRecords = require('../network-records.js');
 

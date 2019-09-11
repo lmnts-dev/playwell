@@ -10,7 +10,7 @@ const ComputedMetric = require('./metric.js');
 const LanternInteractive = require('./lantern-interactive.js');
 
 const NetworkRecorder = require('../../lib/network-recorder.js');
-const TracingProcessor = require('../../lib/traces/tracing-processor.js');
+const TracingProcessor = require('../../lib/tracehouse/trace-processor.js');
 const LHError = require('../../lib/lh-error.js');
 
 const REQUIRED_QUIET_WINDOW = 5000;

@@ -5,8 +5,8 @@
  */
 'use strict';
 
-const Audit = require('./audit');
-const LHError = require('../lib/lh-error');
+const Audit = require('./audit.js');
+const LHError = require('../lib/lh-error.js');
 const jpeg = require('jpeg-js');
 const Speedline = require('../computed/speedline.js');
 const Interactive = require('../computed/metrics/interactive.js');
@@ -116,6 +116,7 @@ class ScreenshotThumbnails extends Audit {
           }
         });
       }
+
       let base64Data;
       const cachedThumbnail = cachedThumbnails.get(frameForTimestamp);
       if (cachedThumbnail) {
@@ -129,13 +130,12 @@ class ScreenshotThumbnails extends Audit {
       thumbnails.push({
         timing: Math.round(targetTimestamp - speedline.beginning),
         timestamp: targetTimestamp * 1000,
-        data: base64Data,
+        data: `data:image/jpeg;base64,${base64Data}`,
       });
     }
 
     return {
       score: 1,
-      rawValue: thumbnails.length > 0,
       details: {
         type: 'filmstrip',
         scale: timelineEnd,

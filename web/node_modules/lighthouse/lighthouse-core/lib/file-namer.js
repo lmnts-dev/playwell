@@ -20,7 +20,7 @@
  * @return {string}
  */
 function getFilenamePrefix(lhr) {
-  const hostname = new (getUrlConstructor())(lhr.finalUrl).hostname;
+  const hostname = new URL(lhr.finalUrl).hostname;
   const date = (lhr.fetchTime && new Date(lhr.fetchTime)) || new Date();
 
   const timeStr = date.toLocaleTimeString('en-US', {hour12: false});
@@ -33,15 +33,7 @@ function getFilenamePrefix(lhr) {
 
   const filenamePrefix = `${hostname}_${dateStr}_${timeStr}`;
   // replace characters that are unfriendly to filenames
-  return filenamePrefix.replace(/[/?<>\\:*|":]/g, '-');
-}
-
-function getUrlConstructor() {
-  if (typeof module !== 'undefined' && module.exports) {
-    return require('./url-shim');
-  } else {
-    return URL;
-  }
+  return filenamePrefix.replace(/[/?<>\\:*|"]/g, '-');
 }
 
 // don't attempt to export in the browser.

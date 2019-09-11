@@ -12,30 +12,34 @@ const cacheBuster = Number(new Date());
 
 module.exports = [
   {
-    requestedUrl: `http://localhost:10200/online-only.html?delay=500&redirect=%2Foffline-only.html%3Fcb=${cacheBuster}%26delay=500%26redirect%3D%2Fredirects-final.html`,
-    finalUrl: 'http://localhost:10200/redirects-final.html',
-    audits: {
-      'redirects': {
-        score: '<1',
-        rawValue: '>=500',
-        details: {
-          items: {
-            length: 3,
+    lhr: {
+      requestedUrl: `http://localhost:10200/online-only.html?delay=500&redirect=%2Foffline-only.html%3Fcb=${cacheBuster}%26delay=500%26redirect%3D%2Fredirects-final.html`,
+      finalUrl: 'http://localhost:10200/redirects-final.html',
+      audits: {
+        'redirects': {
+          score: '<1',
+          numericValue: '>=500',
+          details: {
+            items: {
+              length: 3,
+            },
           },
         },
       },
     },
   },
   {
-    requestedUrl: `http://localhost:10200/online-only.html?delay=300&redirect=%2Fredirects-final.html`,
-    finalUrl: 'http://localhost:10200/redirects-final.html',
-    audits: {
-      'redirects': {
-        score: 1,
-        rawValue: '>=250',
-        details: {
-          items: {
-            length: 2,
+    lhr: {
+      requestedUrl: `http://localhost:10200/online-only.html?delay=300&redirect=%2Fredirects-final.html`,
+      finalUrl: 'http://localhost:10200/redirects-final.html',
+      audits: {
+        'redirects': {
+          score: 1,
+          numericValue: '>=250',
+          details: {
+            items: {
+              length: 2,
+            },
           },
         },
       },

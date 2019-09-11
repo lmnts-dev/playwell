@@ -447,10 +447,10 @@
     "message": "Τιμή"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Οι μηχανικοί προγραμμάτων περιήγησης συνιστούν να περιέχουν οι σελίδες λιγότερους από ~1.500 κόμβους DOM. Το ιδανικό είναι ένα βάθος δέντρου με < 32 στοιχεία και λιγότερα από 60 θυγατρικά/γονικά στοιχεία. Ένα μεγάλο DOM μπορεί να αυξήσει τη χρήση της μνήμης, να προκαλέσει [υπολογισμούς στυλ] μεγαλύτερης διάρκειας (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) και να δημιουργήσει [επαναληπτικές ροές διάταξης] υψηλού κόστους (https://developers.google.com/speed/articles/reflow). [Μάθετε περισσότερα](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Οι μηχανικοί προγραμμάτων περιήγησης συνιστούν να περιέχουν οι σελίδες λιγότερα από ~1.500 στοιχεία DOM. Το ιδανικό είναι ένα βάθος δέντρου με < 32 στοιχεία και λιγότερα από 60 θυγατρικά/γονικά στοιχεία. Ένα μεγάλο DOM μπορεί να αυξήσει τη χρήση της μνήμης, να προκαλέσει μεγαλύτερης διάρκειας [υπολογισμούς στιλ](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) και να δημιουργήσει υψηλού κόστους [επαναλήψεις ροής διάταξης](https://developers.google.com/speed/articles/reflow). [Μάθετε περισσότερα](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 κόμβος}other{# κόμβοι}}"
+    "message": "{itemCount,plural, =1{1 στοιχείο}other{# στοιχεία}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Αποφύγετε τα υπερβολικά μεγάλα μεγέθη DOM"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Μέγιστο βάθος DOM"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Σύνολο κόμβων DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Σύνολο στοιχείων DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Μέγιστος αριθμός θυγατρικών στοιχείων"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Μορφοποιήστε το HTML με τρόπο που να επιτρέπει στους ανιχνευτές να κατανοούν καλύτερα το περιεχόμενο της εφαρμογής σας."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Βέλτιστες πρακτικές περιεχομένου"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Για να εμφανίζεται στα αποτελέσματα αναζήτησης, οι ανιχνευτές χρειάζονται πρόσβαση στην εφαρμογή σας."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Ανίχνευση και δημιουργία ευρετηρίου"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Βεβαιωθείτε ότι οι σελίδες σας είναι φιλικές προς κινητά, ώστε οι χρήστες να μην χρειάζεται να πλησιάζουν τα δάχτυλά τους ή να κάνουν μεγέθυνση, για να διαβάζουν τις σελίδες περιεχομένου. [Μάθετε περισσότερα](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Φιλική προς κινητά"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "TTL κρυφής μνήμης"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Παρουσιάστηκε κάποιο πρόβλημα με την εγγραφή του ίχνους κατά τη φόρτωση της σελίδας σας. Εκτελέστε ξανά το Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Λήξη χρονικού ορίου κατά την αναμονή για αρχική σύνδεση του πρωτοκόλλου εργαλείου εντοπισμού σφαλμάτων."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Το Chrome δεν συγκέντρωσε στιγμιότυπα οθόνης κατά τη διάρκεια της φόρτωσης σελίδας. Βεβαιωθείτε ότι υπάρχει ορατό περιεχόμενο στη σελίδα και έπειτα δοκιμάστε να εκτελέσετε ξανά το Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Έλεγχοι που ολοκληρώθηκαν επιτυχώς"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Κλίμακα βαθμολογίας:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Σύμπτυξη αποσπάσματος"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Προειδοποιήσεις: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Εξετάστε το ενδεχόμενο μεταφόρτωσης του GIF σε μια υπηρεσία η οποία θα το διαθέσει για ενσωμάτωση ως βίντεο HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Εγκαταστήστε μια [προσθήκη φόρτωσης με καθυστέρηση WordPress](https://wordpress.org/plugins/search/lazy+load/), η οποία παρέχει τη δυνατότητα αναβολής τυχόν εικόνων εκτός οθόνης ή κάντε εναλλαγή σε ένα θέμα που παρέχει αυτήν τη δυνατότητα. Εξετάστε επίσης το ενδεχόμενο χρήσης της [προσθήκης AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Υπάρχουν διάφορες προσθήκες WordPress που μπορούν να σας βοηθήσουν να [ενσωματώσετε σημαντικά στοιχεία](https://wordpress.org/plugins/search/critical+css/) ή να [αναβάλετε λιγότερο σημαντικούς πόρους](https://wordpress.org/plugins/search/defer+css+javascript/). Λάβετε υπόψη ότι οι βελτιστοποιήσεις που παρέχονται από αυτές τις προσθήκες ενδέχεται να προκαλέσουν προβλήματα σε λειτουργίες των θεμάτων ή των προσθηκών σας. Συνεπώς, πιθανώς να χρειαστεί να κάνετε αλλαγές κώδικα."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Τα θέματα, οι προσθήκες και οι προδιαγραφές διακομιστή συμβάλλουν στον χρόνο απόκρισης του διακομιστή. Αν θέλετε, μπορείτε να ψάξετε για ένα περισσότερο βελτιστοποιημένο θέμα, να επιλέξετε προσεκτικά μια προσθήκη βελτιστοποίησης ή/και να αναβαθμίσετε τον διακομιστή σας."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Εξετάστε το ενδεχόμενο εμφάνισης αποσπασμάτων στις λίστες αναρτήσεών σας (π.χ. μέσω της ετικέτας \"περισσότερες\"), μειώνοντας τον αριθμό των αναρτήσεων που εμφανίζονται σε μια συγκεκριμένη σελίδα, χωρίζοντας τις μεγάλες αναρτήσεις σε πολλές σελίδες ή χρησιμοποιώντας μια προσθήκη για φόρτωση με καθυστέρηση των σχολίων."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Ορισμένες [προσθήκες WordPress](https://wordpress.org/plugins/search/minify+css/) μπορούν να επιταχύνουν τον ιστότοπό σας συνενώνοντας, ελαχιστοποιώντας και συμπιέζοντας τα στιλ σας. Μπορείτε επίσης να χρησιμοποιήσετε μια διεργασία δόμησης για να πραγματοποιήσετε αυτήν την ελαχιστοποίηση εκ των προτέρων, αν υπάρχει αυτή η δυνατότητα."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Ορισμένες [προσθήκες WordPress](https://wordpress.org/plugins/search/minify+javascript/) μπορούν να επιταχύνουν τον ιστότοπό σας συνενώνοντας, ελαχιστοποιώντας και συμπιέζοντας τα σενάριά σας. Μπορείτε επίσης να χρησιμοποιήσετε μια διεργασία δόμησης για να πραγματοποιήσετε αυτήν την ελαχιστοποίηση εκ των προτέρων, αν υπάρχει αυτή η δυνατότητα."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Εξετάστε το ενδεχόμενο μείωσης ή εναλλαγής του αριθμού [προσθηκών WordPress](https://wordpress.org/plugins/) που φορτώνουν στη σελίδα σας CSS που δεν χρησιμοποιείται. Για να προσδιορίσετε τις προσθήκες που προσθέτουν περιττή CSS, δοκιμάστε να εκτελέσετε [κάλυψη κώδικα](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) στο Chrome DevTools. Μπορείτε να προσδιορίσετε το θέμα ή την προσθήκη που ευθύνεται για το παραπάνω ζήτημα μέσω του URL του φύλλου στιλ. Αναζητήστε προσθήκες που διαθέτουν πολλά φύλλα στιλ στη λίστα, στα οποία ένα μεγάλο μέρος της κάλυψης κώδικα έχει κόκκινο χρώμα. Μια προσθήκη θα πρέπει να τοποθετεί στην ουρά ένα φύλλο στιλ, μόνο αν χρησιμοποιείται στη σελίδα."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Εξετάστε το ενδεχόμενο μείωσης ή εναλλαγής του αριθμού [προσθηκών WordPress](https://wordpress.org/plugins/) που φορτώνουν στη σελίδα σας JavaScript που δεν χρησιμοποιείται. Για να προσδιορίσετε τις προσθήκες που προσθέτουν περιττή JS, δοκιμάστε να εκτελέσετε [κάλυψη κώδικα](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) στο Chrome DevTools. Μπορείτε να προσδιορίσετε το θέμα ή την προσθήκη που ευθύνεται για το παραπάνω ζήτημα μέσω του URL του σεναρίου. Αναζητήστε προσθήκες που διαθέτουν πολλά σενάρια στη λίστα, στα οποία ένα μεγάλο μέρος της κάλυψης κώδικα έχει κόκκινο χρώμα. Μια προσθήκη θα πρέπει να τοποθετεί στην ουρά ένα σενάριο μόνο αν χρησιμοποιείται στη σελίδα."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Διαβάστε σχετικά με τη [Λειτουργία κρυφής μνήμης προγράμματος περιήγησης στο WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Εξετάστε το ενδεχόμενο να χρησιμοποιήσετε μια [προσθήκη βελτιστοποίησης εικόνας WordPress](https://wordpress.org/plugins/search/optimize+images/) που συμπιέζει τις εικόνες σας διατηρώντας, παράλληλα, την ποιότητά τους."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Ανεβάστε εικόνες απευθείας μέσω της [βιβλιοθήκης μέσων](https://codex.wordpress.org/Media_Library_Screen) για να διασφαλίσετε ότι τα απαιτούμενα μεγέθη εικόνας είναι διαθέσιμα και έπειτα εισαγάγετέ τα από τη βιβλιοθήκη μέσων ή χρησιμοποιήστε το γραφικό στοιχείο εικόνας για να διασφαλίσετε ότι χρησιμοποιούνται τα βέλτιστα μεγέθη εικόνας (συμπεριλαμβανομένων αυτών για τα αποκριτικά σημεία διακοπής). Αποφύγετε τη χρήση εικόνων Πλήρους μεγέθους εκτός αν οι διαστάσεις είναι κατάλληλες για τη χρήση τους. [Μάθετε περισσότερα](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Μπορείτε να ενεργοποιήσετε τη συμπίεση κειμένου στη διαμόρφωση του διακομιστή ιστού σας."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Εξετάστε το ενδεχόμενο χρήσης μιας [προσθήκης](https://wordpress.org/plugins/search/convert+webp/) ή υπηρεσίας που θα μετατρέπει αυτόματα τις εικόνες που έχετε ανεβάσει στις βέλτιστες μορφές."
   }
 }

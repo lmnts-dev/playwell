@@ -12,13 +12,14 @@ import Driver = require('../lighthouse-core/gather/driver');
 declare global {
   module LH.Gatherer {
     export interface PassContext {
+      /** The url of the currently loaded page. If the main document redirects, this will be updated to keep track. */
       url: string;
       driver: Driver;
       disableJavaScript?: boolean;
       passConfig: Config.Pass
       settings: Config.Settings;
       options?: object;
-      /** Push to this array to add top-level warnings to the LHR. */
+      /** Gatherers can push to this array to add top-level warnings to the LHR. */
       LighthouseRunWarnings: Array<string>;
       baseArtifacts: BaseArtifacts;
     }

@@ -12,6 +12,7 @@ module.exports = {
   extends: 'lighthouse:full',
   settings: {
     onlyAudits: [
+      'accesskeys', // run axe on the page since we've had problems with interactions
       'network-requests',
       'offscreen-images',
       'uses-webp-images',

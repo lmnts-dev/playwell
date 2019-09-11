@@ -39,7 +39,7 @@ class OfflineStartUrl extends Audit {
     const hasOfflineStartUrl = artifacts.StartUrl.statusCode === 200;
 
     return {
-      rawValue: hasOfflineStartUrl,
+      score: Number(hasOfflineStartUrl),
       explanation: artifacts.StartUrl.explanation,
       warnings,
     };

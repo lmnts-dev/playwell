@@ -5,8 +5,8 @@
  */
 'use strict';
 
-const Audit = require('../audit');
-const linearInterpolation = require('../../lib/statistics').linearInterpolation;
+const Audit = require('../audit.js');
+const linearInterpolation = require('../../lib/statistics.js').linearInterpolation;
 const Interactive = require('../../computed/metrics/lantern-interactive.js');
 const i18n = require('../../lib/i18n/i18n.js');
 const NetworkRecords = require('../../computed/network-records.js');
@@ -208,7 +208,7 @@ class UnusedBytes extends Audit {
       explanation: result.explanation,
       warnings: result.warnings,
       displayValue,
-      rawValue: wastedMs,
+      numericValue: wastedMs,
       score: UnusedBytes.scoreForWastedMs(wastedMs),
       extendedInfo: {
         value: {

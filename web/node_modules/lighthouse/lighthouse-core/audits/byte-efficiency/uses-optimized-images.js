@@ -9,8 +9,8 @@
  */
 'use strict';
 
-const ByteEfficiencyAudit = require('./byte-efficiency-audit');
-const URL = require('../../lib/url-shim');
+const ByteEfficiencyAudit = require('./byte-efficiency-audit.js');
+const URL = require('../../lib/url-shim.js');
 const i18n = require('../../lib/i18n/i18n.js');
 
 const UIStrings = {
@@ -35,7 +35,7 @@ class UsesOptimizedImages extends ByteEfficiencyAudit {
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
       scoreDisplayMode: ByteEfficiencyAudit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['OptimizedImages', 'ImageElements', 'devtoolsLogs', 'traces'],
+      requiredArtifacts: ['OptimizedImages', 'ImageElements', 'devtoolsLogs', 'traces', 'URL'],
     };
   }
 

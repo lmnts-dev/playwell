@@ -10,7 +10,7 @@
 
 'use strict';
 
-const Gatherer = require('./gatherer');
+const Gatherer = require('./gatherer.js');
 
 class RuntimeExceptions extends Gatherer {
   constructor() {

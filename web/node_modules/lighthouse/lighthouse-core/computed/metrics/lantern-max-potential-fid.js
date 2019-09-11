@@ -6,8 +6,8 @@
 'use strict';
 
 const makeComputedArtifact = require('../computed-artifact.js');
-const LanternMetricArtifact = require('./lantern-metric');
-const BaseNode = require('../../lib/dependency-graph/base-node');
+const LanternMetricArtifact = require('./lantern-metric.js');
+const BaseNode = require('../../lib/dependency-graph/base-node.js');
 const LanternFirstContentfulPaint = require('./lantern-first-contentful-paint.js');
 
 /** @typedef {BaseNode.Node} Node */

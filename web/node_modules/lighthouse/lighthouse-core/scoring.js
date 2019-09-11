@@ -6,7 +6,7 @@
 
 'use strict';
 
-const Audit = require('./audits/audit');
+const Audit = require('./audits/audit.js');
 
 /**
  * Clamp figure to 2 decimal places

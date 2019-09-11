@@ -28,6 +28,14 @@ class CriticalRequestChains {
       return false;
     }
 
+    // Whenever a request is a redirect, we don't know if it's critical until we resolve the final
+    // destination. At that point we can assign all the properties (priority, resourceType) of the
+    // final request back to the redirect(s) that led to it.
+    // See https://github.com/GoogleChrome/lighthouse/pull/6704
+    while (request.redirectDestination) {
+      request = request.redirectDestination;
+    }
+
     // Iframes are considered High Priority but they are not render blocking
     const isIframe = request.resourceType === NetworkRequest.TYPES.Document
       && request.frameId !== mainResource.frameId;

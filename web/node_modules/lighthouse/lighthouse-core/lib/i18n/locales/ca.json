@@ -447,10 +447,10 @@
     "message": "Valor"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Els enginyers de navegadors recomanen que les pàgines continguin menys d'uns 1.500 nodes de DOM. La situació ideal és una profunditat d'arbre inferior a 32 elements i menys de 60 elements superiors o secundaris. Un DOM gran pot augmentar l'ús de la memòria, provocar [càlculs d'estil] més llargs (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) i produir costosos [reinicis de reflux del disseny] (https://developers.google.com/speed/articles/reflow). [Més informació] (https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Els enginyers de navegadors recomanen que les pàgines continguin menys d'uns 1.500 elements de DOM. La situació ideal és una profunditat d'arbre inferior a 32 elements i menys de 60 elements superiors o secundaris. Un DOM gran pot augmentar l'ús de la memòria, provocar [càlculs d'estil] més llargs (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) i produir [reinicis de reflux del disseny] costosos (https://developers.google.com/speed/articles/reflow). [Més informació](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 node}other{# nodes}}"
+    "message": "{itemCount,plural, =1{Un element}other{# elements}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Evita una mida de DOM excessiva"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Profunditat màxima de DOM"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Total de nodes de DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Total d'elements de DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Nombre màxim d'elements secundaris"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Dona a l'HTML un format que permeti als rastrejadors entendre millor el contingut de l'aplicació."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Pràctiques recomanades pel que fa al contingut"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Perquè l'aplicació es mostri als resultats de cerca, els rastrejadors necessiten tenir-hi accés."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Rastreig i indexació"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Comprova que les pàgines estiguin adaptades per a mòbils, de manera que els usuaris no hagin de pinçar o ampliar les pàgines de contingut per poder-les llegir. [Obtén més informació](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Adaptació per a mòbils"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "TTL de la memòria cau"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "S'ha produït un problema en gravar la traça sobre la càrrega de la pàgina. Torna a executar Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "S'ha esgotat el temps d'espera de la connexió inicial del protocol de depuració."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome no ha recollit cap captura de pantalla mentre es carregava la pàgina. Comprova que hi hagi contingut visible a la pàgina i, tot seguit, prova d'executar Lighthouse de nou. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Auditories aprovades"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Escala de puntuació:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Replega el fragment"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Advertiments: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Pots pujar el GIF en un servei que permeti inserir-lo en un vídeo HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Instal·la un [connector de WordPress de càrrega diferida](https://wordpress.org/plugins/search/lazy+load/) que t'ofereixi la possibilitat d'ajornar les imatges fora de pantalla o canviar a un tema que t'ofereixi aquesta funció. També pots fer servir [el connector AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Hi ha diversos connectors de WordPress que et poden ajudar a [inserir recursos crítics](https://wordpress.org/plugins/search/critical+css/) o [ajornar els recursos menys importants](https://wordpress.org/plugins/search/defer+css+javascript/). Tingues en compte que les optimitzacions que proporcionen aquests connectors poden afectar les funcions del tema o dels connectors, de manera que és possible que hagis de fer canvis al codi."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Els temes, els connectors i les especificacions del servidor contribueixen al temps de resposta del servidor. Pots buscar un tema més optimitzat, seleccionar amb cura un connector d'optimització o actualitzar el servidor."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Pots mostrar extractes a les llistes de publicacions (per exemple, amb l'etiqueta més), reduir el nombre de publicacions que es mostren en una pàgina concreta, tallar les publicacions llargues en diverses pàgines o fer servir un connector per als comentaris de càrrega diferida."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Hi ha diversos [connectors de WordPress](https://wordpress.org/plugins/search/minify+css/) que poden accelerar el teu lloc web. Per fer-ho, concatenen, redueixen i comprimeixen els estils. També et recomanem que utilitzis un procés de compilació per fer aquesta minimització de manera anticipada, si és possible."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Hi ha diversos [connectors de WordPress](https://wordpress.org/plugins/search/minify+javascript/) que poden accelerar el teu lloc web. Per fer-ho, concatenen, redueixen i comprimeixen els scripts. També et recomanem que utilitzis un procés de compilació per fer aquesta minimització de manera anticipada, si és possible."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Pots reduir o canviar el nombre de [connectors de WordPress](https://wordpress.org/plugins/) que carreguen CSS no utilitzats a la pàgina. Per identificar els connectors que afegeixen CSS externs, intenta executar la [cobertura de codi](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) a Chrome DevTools. Pots identificar el tema o el connector responsable a partir de l'URL del full d'estil. Busca connectors que tinguin molts fulls d'estil a la llista amb molt vermell a la cobertura de codi. Un connector només hauria de tenir un full d'estil a la cua si es fa servir a la pàgina."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Pots reduir o canviar el nombre de [connectors de WordPress](https://wordpress.org/plugins/) que carreguen JavaScript que no es fa servir a la pàgina. Per identificar els connectors que afegeixen JS externs, intenta executar la [cobertura de codi](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) a Chrome DevTools. Pots identificar el tema o el connector responsable a partir de l'URL de l'script. Busca connectors que tinguin molts scripts a la llista amb molt vermell a la cobertura de codi. Un connector només hauria de tenir un script a la cua si es fa servir a la pàgina."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Obtén informació sobre la [memòria cau del navegador a WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Pots utilitzar un [connector de WordPress d'optimització d'imatges](https://wordpress.org/plugins/search/optimize+images/) per comprimir les imatges sense perdre qualitat."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Penja imatges directament mitjançant la [biblioteca multimèdia](https://codex.wordpress.org/Media_Library_Screen) per garantir que les mides de la imatge necessàries estiguin disponibles i, tot seguit, insereix-les des de la biblioteca multimèdia o fes servir el widget per garantir que es fan servir les mides de la imatge òptimes (incloses les dels punts de ruptura responsius). Evita fer servir imatges de \"mida completa\", tret que les dimensions siguin les adequades per a l'ús que se'n farà. [Més informació](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Pots activar la compressió de text a la configuració del servidor web."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Pots fer servir un [connector](https://wordpress.org/plugins/search/convert+webp/) o un servei que converteixi automàticament les imatges penjades als formats òptims."
   }
 }

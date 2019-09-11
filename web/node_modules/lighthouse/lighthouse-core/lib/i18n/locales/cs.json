@@ -447,10 +447,10 @@
     "message": "Hodnota"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Vývojáři prohlížečů doporučují, aby stránky obsahovaly méně než cca. 1 500 uzlů modelu DOM. Ideálně by hloubka stromu měla být menší než 32 prvků a každý nadřazený prvek by měl mít méně než 60 podřízených prvků. Velký model DOM může vést k většímu využití paměti, delším [výpočtům stylů](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) a náročným [přeformátováváním rozvržení](https://developers.google.com/speed/articles/reflow). [Další informace](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Vývojáři prohlížečů doporučují, aby stránky obsahovaly méně než cca. 1 500 prvků modelu DOM. Ideálně by hloubka stromu měla být menší než 32 prvků a každý nadřazený prvek by měl mít méně než 60 podřízených prvků. Velký model DOM může vést k většímu využití paměti, delším [výpočtům stylů](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) a náročným [přeformátováváním rozvržení](https://developers.google.com/speed/articles/reflow). [Další informace](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 uzel}few{# uzly}many{# uzlu}other{# uzlů}}"
+    "message": "{itemCount,plural, =1{1 prvek}few{# prvky}many{# prvku}other{# prvků}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Nepoužívejte příliš velký model DOM"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Maximální hloubka modelu DOM"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Celkový počet uzlů v modelu DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Celkový počet prvků DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Maximální počet podřízených prvků"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Naformátujte soubor HTML způsobem, který umožní prohledávačům lépe porozumět obsahu vaší aplikace."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Doporučené postupy pro obsah"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Aby se vaše aplikace mohla zobrazovat ve výsledcích vyhledávání, prohledávače k ní musí mít přístup."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Procházení a indexování"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Zajistěte, aby stránky byly optimalizovány pro mobily a aby uživatelé nemuseli obsah stránky zvětšovat. [Další informace](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Optimalizováno pro mobily"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Hodnota TTL (Time to Live) mezipaměti"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Při pořizování záznamu trasování během načítání stránky se něco pokazilo. Spusťte nástroj Lighthouse znovu. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Při čekání na počáteční připojení pomocí ladicího protokolu vypršel časový limit."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome při načítání stránky nezískal žádné snímky obrazovky. Zkontrolujte, zda je na stránce vidět nějaký obsah, a poté nástroj Lighthouse zkuste spustit znovu. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Úspěšné audity"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Škála skóre:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Sbalit úryvek"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Upozornění: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Zvažte nahrání souboru GIF do služby, pomocí které ho bude možné vložit jako video HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Nainstalujte [plugin služby WordPress pro líné načítání](https://wordpress.org/plugins/search/lazy+load/), který umožňuje odložit načítání obrázků mimo obrazovku, nebo přejděte na motiv, který tuto funkci poskytuje. Zvažte také použití [pluginu AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "K dispozici je celá řada pluginů služby WordPress, které vám pomohou [vložit kritické podklady přímo do kódu](https://wordpress.org/plugins/search/critical+css/) nebo [odložit načítání méně důležitých zdrojů](https://wordpress.org/plugins/search/defer+css+javascript/). Upozorňujeme, že optimalizace pomocí těchto pluginů může narušit funkčnost vašeho motivu nebo pluginů. V kódu proto pravděpodobně budete muset provést změny."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Na reakční dobu serveru mají vliv motivy, pluginy a specifikace serverů. Zvažte vyhledání optimalizovaného motivu, pečlivý výběr optimalizačního pluginu či upgradování serveru."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Zvažte zobrazování ukázek v seznamech příspěvků (např. prostřednictvím značky k načtení dalšího obsahu), snížení počtu příspěvků zobrazených na jedné stránce, rozdělení dlouhých příspěvků na několik stránek nebo použití pluginu k línému načítání komentářů."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "K dispozici je celá řada [pluginů služby WordPress](https://wordpress.org/plugins/search/minify+css/), které web mohou zrychlit zřetězením, minifikací a komprimací stylů. Pokud je to možné, můžete minifikaci provést také předem pomocí procesu sestavení."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "K dispozici je celá řada [pluginů služby WordPress](https://wordpress.org/plugins/search/minify+javascript/), které váš web mohou zrychlit zřetězením, minifikací a zkomprimováním skriptů. Pokud je to možné, můžete minifikaci provést také předem pomocí procesu sestavení."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Zvažte snížení počtu [pluginů služby WordPress](https://wordpress.org/plugins/), které na stránce načítají nevyužité styly CSS. Pluginy, které přidávají nadbytečné styly CSS, můžete vyhledat pomocí funkce [Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) v nástrojích pro vývojáře v Chromu. Odpovědný motiv či plugin můžete identifikovat podle adresy URL šablony stylů. Hledejte pluginy, které v seznamu mají mnoho šablon stylů, u nichž je při použití funkce Coverage velké množství kódu označeno červeně. Plugin by měl šablonu stylů do fronty zařadit jen v případě, že je na stránce opravdu použita."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Zvažte snížení počtu [pluginů služby WordPress](https://wordpress.org/plugins/), které na stránce načítají nepoužívaný kód JavaScript. Pluginy, které přidávají nadbytečný kód JS, můžete vyhledat pomocí funkce [Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) v nástrojích pro vývojáře v Chromu. Odpovědný motiv či plugin poznáte podle adresy URL skriptu. Hledejte pluginy, které v seznamu mají mnoho skriptů, u nichž je při použití funkce Coverage velké množství kódu označeno červeně. Plugin by měl skript do fronty zařadit jen v případě, že se na stránce opravdu používá."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Přečtěte si o [ukládání do mezipaměti prohlížeče ve službě WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Zvažte použití [pluginu služby WordPress na optimalizaci obrázků](https://wordpress.org/plugins/search/optimize+images/), který obrázky komprimuje, přičemž zachová jejich kvalitu."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Nahrajte obrázky přímo prostřednictvím [mediální knihovny](https://codex.wordpress.org/Media_Library_Screen), abyste zajistili dostupnost potřebných velikostí obrázků, a poté je vložte z mediální knihovny, případně použití optimálních velikostí obrázků zajistěte pomocí widgetu pro obrázky (včetně obrázků pro responzivní dělicí body). Obrázek v plné velikosti používejte pouze v případě, že jsou jejich rozměry adekvátní k použití. [Další informace](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Můžete v konfiguraci webového serveru zapnout kompresi textu."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Zvažte použití [pluginu](https://wordpress.org/plugins/search/convert+webp/) nebo služby, která nahrané obrázky automaticky převede na optimální formáty."
   }
 }

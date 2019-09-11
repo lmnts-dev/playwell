@@ -51,7 +51,7 @@ class MainThreadTasks extends Audit {
 
     return {
       score: 1,
-      rawValue: results.length,
+      numericValue: results.length,
       details: tableDetails,
     };
   }

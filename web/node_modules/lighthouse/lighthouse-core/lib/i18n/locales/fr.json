@@ -447,10 +447,10 @@
     "message": "Valeur"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Les ingénieurs en navigation recommandent que les pages contiennent moins de 1 500 nœuds de DOM environ. La zone d'écoute idéale est une profondeur d'arborescence inférieure à 32 éléments et contenant moins de 60 éléments enfant/parent. Un grand DOM peut accroître l'utilisation de la mémoire, entraîner de plus longs [calculs de style](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) et des [redispositions] coûteuses (https://developers.google.com/speed/articles/reflow). [En savoir plus](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Les ingénieurs en navigation recommandent que les pages contiennent moins de 1 500 éléments DOM environ. La zone d'écoute idéale est une profondeur d'arborescence inférieure à 32 éléments et contenant moins de 60 éléments enfant/parent. Un grand DOM peut accroître l'utilisation de la mémoire, entraîner de plus longs [calculs de style](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) et des [redispositions](https://developers.google.com/speed/articles/reflow) coûteuses. [En savoir plus](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 nœud}one{# nœud}other{# nœuds}}"
+    "message": "{itemCount,plural, =1{1 élément}one{# élément}other{# éléments}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Évitez une taille excessive de DOM"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Profondeur maximum de DOM"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Total des nœuds de DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Nombre total d'éléments DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Nombre maximal d'éléments enfants"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Rédigez votre code HTML de sorte à autoriser les robots d'exploration à analyser le contenu de votre application."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Bonnes pratiques relatives au contenu"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Pour que votre contenu apparaisse dans les résultats de recherche, les robots d'exploration doivent accéder à votre application."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Exploration et indexation"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Assurez-vous que vos pages sont adaptées aux mobiles, afin que les utilisateurs n'aient pas besoin de pincer l'écran ni de zoomer pour lire votre contenu. [En savoir plus](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Adapté aux mobiles"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Cache de la valeur TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Un problème est survenu lors de l'enregistrement de la trace du chargement de votre page. Veuillez relancer Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Expiration du délai pendant la tentative de connexion initiale du protocole du débogueur."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome n'a collecté aucune capture d'écran pendant le chargement de la page. Veuillez vous assurer que du contenu soit visible sur la page, puis essayez de relancer Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Audits réussis"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Échelle de score :"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Réduire l'extrait"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Avertissements : "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Vous pouvez envisager d'importer votre GIF dans un service qui permettra de l'intégrer dans une vidéo HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Installez un [plug-in WordPress de chargement différé](https://wordpress.org/plugins/search/lazy+load/) pour différer le chargement des images qui ne sont pas à l'écran, ou remplacez le thème par un autre qui offre cette fonctionnalité. Vous pouvez aussi envisager d'utiliser [le plug-in AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Divers plug-ins WordPress peuvent vous aider à [aligner des éléments critiques](https://wordpress.org/plugins/search/critical+css/) ou à [différer le chargement des ressources moins importantes](https://wordpress.org/plugins/search/defer+css+javascript/). Gardez en tête qu'à cause des optimisations fournies par ces plug-ins, certaines fonctionnalités de votre thème ou de vos plug-ins peuvent cesser de fonctionner. Vous devrez donc probablement modifier le code."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Les thèmes, les plug-ins et les spécifications du serveur sont autant d'éléments qui influent sur le temps de réponse du serveur. Vous pouvez envisager d'utiliser un thème plus optimisé ou un plug-in d'optimisation plus performant, ou bien de mettre à niveau votre serveur."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Vous pouvez envisager d'afficher des extraits dans vos listes d'articles (par exemple en utilisant la balise \"more\"), de réduire le nombre d'articles affichés dans une page donnée, de répartir vos articles longs sur plusieurs pages ou d'utiliser un plug-in qui charge de façon différée les commentaires."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Un certain nombre de [plug-ins WordPress](https://wordpress.org/plugins/search/minify+css/) peuvent accélérer l'affichage de votre site en concaténant, en minimisant et en compressant vos styles. Si possible, utilisez un processus de build pour réaliser cette minimisation en amont."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Un certain nombre de [plug-ins WordPress](https://wordpress.org/plugins/search/minify+javascript/) peuvent accélérer l'affichage de votre site en concaténant, en minimisant et en compressant vos scripts. Si possible, utilisez un processus de build pour réaliser cette minimisation en amont."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Vous pouvez envisager de réduire le nombre de [plug-ins WordPress](https://wordpress.org/plugins/) qui chargent des feuilles de style CSS inutilisées dans votre page, ou désactiver certains de ces plug-ins. Pour déterminer les plug-ins qui ajoutent des feuilles de style CSS superflues, exécutez une [couverture de code](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) dans Chrome DevTools. Vous pouvez identifier le thème ou le plug-in responsable à partir de l'URL de la feuille de style. Recherchez les plug-ins pour lesquels un grand nombre de feuilles de style présentent beaucoup d'éléments en rouge dans la couverture de code. Un plug-in ne doit mettre une feuille de style en file d'attente que si elle est effectivement utilisée dans la page."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Vous pouvez envisager de réduire le nombre de [plug-ins WordPress](https://wordpress.org/plugins/) qui chargent des scripts JavaScript inutilisés dans votre page, ou désactiver certains de ces plug-ins. Pour déterminer les plug-ins qui ajoutent des scripts JavaScript superflus, exécutez une [couverture de code](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) dans Chrome DevTools. Vous pouvez identifier le thème ou le plug-in responsable à partir de l'URL du script. Recherchez les plug-ins pour lesquels un grand nombre de scripts présentent beaucoup d'éléments en rouge dans la couverture de code. Un plug-in ne doit mettre un script en file d'attente que s'il est effectivement utilisé dans la page."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "En savoir plus sur la [mise en cache dans le navigateur dans WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Vous pouvez envisager d'utiliser un [plug-in WordPress d'optimisation d'image](https://wordpress.org/plugins/search/optimize+images/) pour compresser vos images sans dégrader leur qualité."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Importez des images directement via la [bibliothèque multimédia](https://codex.wordpress.org/Media_Library_Screen) pour vous assurer que les tailles d'images requises sont disponibles. Ensuite, insérez-les depuis la bibliothèque multimédia ou utilisez le widget d'image pour vous assurer que les tailles d'images optimales sont utilisées (y compris celles pour les points d'arrêt réactifs). Évitez d'utiliser les images en taille réelle, sauf si les dimensions sont adéquates pour l'utilisation prévue. [En savoir plus](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Vous pouvez activer la compression du texte dans la configuration de votre serveur Web."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Vous pouvez envisager d'utiliser un [plug-in](https://wordpress.org/plugins/search/convert+webp/) ou un service qui convertit automatiquement les images que vous importez dans un format optimal."
   }
 }

@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const Audit = require('../audit');
+const Audit = require('../audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
 const ComputedFmp = require('../../computed/metrics/first-meaningful-paint.js');
 
@@ -29,7 +29,7 @@ class FirstMeaningfulPaint extends Audit {
       title: str_(UIStrings.title),
       description: str_(UIStrings.description),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
-      requiredArtifacts: ['traces'],
+      requiredArtifacts: ['traces', 'devtoolsLogs'],
     };
   }
 
@@ -66,7 +66,7 @@ class FirstMeaningfulPaint extends Audit {
         context.options.scorePODR,
         context.options.scoreMedian
       ),
-      rawValue: metricResult.timing,
+      numericValue: metricResult.timing,
       displayValue: str_(i18n.UIStrings.seconds, {timeInMs: metricResult.timing}),
     };
   }

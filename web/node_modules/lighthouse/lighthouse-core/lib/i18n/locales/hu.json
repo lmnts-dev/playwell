@@ -447,10 +447,10 @@
     "message": "Érték"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "A böngészőket fejlesztő mérnökök azt javasolják, hogy az oldalakon ~1500 DOM-csomópontnál kevesebb legyen. A legkedvezőbb a 32 elemnél kisebb és a 60 alárendelt/fölérendelt elemnél kisebb famélység. A nagy DOM növelheti a memóriahasználatot, és hosszabb [stílusszámítást](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations), valamint költséges [elrendezés-újraszámítást](https://developers.google.com/speed/articles/reflow) eredményezhet. [További információ](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "A böngészőket fejlesztő mérnökök azt javasolják, hogy az oldalakon ~1500 DOM-elemnél kevesebb legyen. A legkedvezőbb a 32 elemnél kisebb és a 60 alárendelt/fölérendelt elemnél kisebb famélység. A nagy DOM növelheti a memóriahasználatot, és hosszabb [stílusszámítást](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations), valamint költséges [elrendezés-újraszámítást](https://developers.google.com/speed/articles/reflow) eredményezhet. [További információ](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 csomópont}other{# csomópont}}"
+    "message": "{itemCount,plural, =1{1 elem}other{# elem}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Kerülje a túl nagy DOM-méretet"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Maximális DOM-mélység"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Összes DOM-csomópont"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "DOM-elemek száma"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Alárendelt elemek maximális száma"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "Keresőoptimalizálás"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Formázza úgy a HTML-kódot, hogy a feltérképező robotok jobban megérthessék az alkalmazás tartalmait."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Tartalommal kapcsolatos bevált módszerek"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "A feltérképező robotoknak hozzáférésre van szükségük az alkalmazáshoz annak érdekében, hogy a webhely megjelenhessen a keresési találatok között."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Feltérképezés és indexelés"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Gondoskodjon oldalai mobilbaráttá tételéről, hogy a felhasználóknak ne kelljen ráközelíteniük a tartalmak elolvasásához. [További információ](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Mobilbarát"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Gyorsítótár-TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Valami hiba történt a nyom rögzítésekor az oldal betöltése során. Futtassa újra a Lighthouse szolgáltatást. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Időtúllépés a hibaelhárító protokoll kezdeti kapcsolatára való várakozás során."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "A Chrome nem gyűjtött képernyőképeket az oldal betöltése során. Ellenőrizze, hogy van-e látható tartalom az oldalon, majd próbálja újra futtatni a Lighthouse szolgáltatást. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Sikeresen teljesített ellenőrzések"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Pontozási skála:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Kódrészlet összecsukása"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Figyelmeztetések: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Fontolja meg a GIF-fájlok olyan szolgáltatóhoz való feltöltését, amely lehetővé teszi a fájlok HTML5-videóként történő beágyazását."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Telepítsen [lusta betöltést biztosító WordPress-bővítményt](https://wordpress.org/plugins/search/lazy+load/), amely lehetőséget ad a képernyőn kívül eső képek késleltetett betöltésére – vagy váltson olyan témára, amely rendelkezik ezzel a funkcióval. Fontolja meg az [AMP-bővítmény](https://wordpress.org/plugins/amp/) használatát is."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Számos WordPress-bővítmény segíthet a [kritikus elemek beágyazásában](https://wordpress.org/plugins/search/critical+css/) vagy a [kevésbé fontos források késleltetésében](https://wordpress.org/plugins/search/defer+css+javascript/). Fontos, hogy az ilyen jellegű bővítmények által nyújtott optimalizációk működésképtelenné tehetik a témák vagy más bővítmények funkcióit, ezért valószínűleg módosítania kell majd a meglévő kódot."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "A témák, a bővítmények és a szerver specifikációi mind befolyásolják a szerver válaszidejét. Érdemes lehet jobban optimalizált témát keresnie, megfelelő optimalizáló bővítményt választania és/vagy nagyobb teljesítményű szerverre váltania."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Fontolja meg kivonatok megjelenítését a bejegyzéslistákban (pl. a more címkével), az oldalanként megjelenített bejegyzések számának csökkentését, a hosszabb bejegyzések több oldalra tördelését, valamint a hozzászólások lusta betöltését bővítmény segítségével."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Számos [WordPress-bővítmény](https://wordpress.org/plugins/search/minify+css/) gyorsíthat webhelyén a stíluslapok egyesítésével, minimalizálásával és tömörítésével. Ha lehetséges, a minimalizálást érdemes lehet buildfolyamat használatával előre elvégezni."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Számos [WordPress-bővítmény](https://wordpress.org/plugins/search/minify+javascript/) gyorsíthat webhelyén a szkriptek egyesítésével, minimalizálásával és tömörítésével. Ha lehetséges, a minimalizálást érdemes lehet buildfolyamat használatával előre elvégezni."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Fontolja meg az oldalán a nem használt CSS-t betöltő [WordPress-bővítmények](https://wordpress.org/plugins/) lecserélését, illetve számuk csökkentését. A felesleges CSS-t elhelyező bővítmények azonosításában a Chrome DevTools [kódlefedettség](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) funkciója is segíthet. A felelős téma vagy bővítmény a stíluslap URL-je alapján azonosítható. Keressen olyan bővítményeket, amelyeknek több stíluslapjában is sok piros szín szerepel a kódlefedettségi listán. Ideális esetben a bővítmények csak az oldalon ténylegesen használt stíluslapokat állítják sorba."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Fontolja meg az oldalán a nem használt JavaScriptet betöltő [WordPress-bővítmények](https://wordpress.org/plugins/) lecserélését, illetve számuk csökkentését. A felesleges JS-t elhelyező bővítmények azonosításában a Chrome DevTools [kódlefedettség](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) funkciója is segíthet. A felelős téma vagy bővítmény a szkript URL-je alapján azonosítható. Keressen olyan bővítményeket, amelyeknek több szkriptjében is sok piros szín szerepel a kódlefedettségi listán. Ideális esetben a bővítmények csak az oldalon ténylegesen használt szkripteket állítják sorba."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "További információ: [Böngészős gyorsítótárazás a WordPress rendszerében](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Fontolja meg [képoptimalizáló WordPress-bővítmény használatát](https://wordpress.org/plugins/search/optimize+images/), mellyel minőségromlás nélkül tömöríthetők a képek."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "A képeket közvetlenül a [Media Library](https://codex.wordpress.org/Media_Library_Screen) oldalán keresztül töltse fel, hogy biztosan rendelkezésre álljanak a szükséges képméretek. Ezt követően pedig a Media Library oldaláról vagy az Image Widget bővítménnyel illessze be őket, hogy az optimális képméreteket alkalmazhassa (a reszponzív töréspontok esetében is). Teljes méretű képeket csak akkor használjon, ha méretük megfelel a felhasználás módjának. [További információ](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "A szövegtömörítést a webszerver konfigurációjában engedélyezheti."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Fontolja meg olyan [bővítmény](https://wordpress.org/plugins/search/convert+webp/) vagy szolgáltatás használatát, amely automatikusan optimális formátumba konvertálja a feltöltött képeket."
   }
 }

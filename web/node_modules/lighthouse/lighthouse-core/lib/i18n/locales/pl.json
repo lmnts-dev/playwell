@@ -447,10 +447,10 @@
     "message": "Wartość"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Twórcy przeglądarek zalecają, by strony zawierały mniej niż około 1500 węzłów DOM. Optymalne jest drzewo o głębokości mniejszej niż 32 elementy i zawierające mniej niż 60 elementów podrzędnych/nadrzędnych. Duży DOM może zwiększyć wykorzystanie pamięci, wydłużyć [obliczanie stylów](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) i powodować kosztowne [przeformatowanie układu](https://developers.google.com/speed/articles/reflow). [Więcej informacji](https://developers.google.com/web/tools/lighthouse/audits/dom-size)"
+    "message": "Twórcy przeglądarek zalecają, by strony zawierały mniej niż około 1500 elementów DOM. Optymalne jest drzewo o głębokości mniejszej niż 32 elementy i zawierające mniej niż 60 elementów podrzędnych/nadrzędnych. Duży DOM może zwiększyć wykorzystanie pamięci, wydłużyć [obliczanie stylów](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) i powodować kosztowne [przeformatowanie układu](https://developers.google.com/speed/articles/reflow). [Więcej informacji](https://developers.google.com/web/tools/lighthouse/audits/dom-size)"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 węzeł}few{# węzły}many{# węzłów}other{# węzła}}"
+    "message": "{itemCount,plural, =1{1 element}few{# elementy}many{# elementów}other{# elementu}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Unikaj zbyt dużego DOM"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Maksymalna głębokość DOM"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Łączna liczba węzłów DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Łączna liczba elementów DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Maksymalna liczba elementów podrzędnych"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Dostosuj kod HTML w taki sposób, by roboty lepiej rozumiały zawartość aplikacji."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Sprawdzone metody publikowania treści"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Jeśli Twoja aplikacja ma pojawiać się w wynikach wyszukiwania, muszą mieć do niej dostęp roboty."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Skanowanie i indeksowanie"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Dostosuj strony do komórek, by użytkownicy nie musieli ich pomniejszać ani powiększać, gdy będą chcieli je przeczytać. [Więcej informacji](https://developers.google.com/search/mobile-sites/)"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Na komórki"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Czas przechowywania danych w pamięci podręcznej"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Podczas rejestrowania śladu wczytywania strony wystąpił błąd. Uruchom Lighthouse ponownie. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Upłynął czas oczekiwania na wstępne połączenie z Protokołem debugującym."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Podczas wczytywania strony w Chrome nie zostały utworzone zrzuty ekranu. Zapewnij widoczność treści na stronie, a następnie ponownie uruchom Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Zaliczone audyty"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Skala wyników:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Zwiń fragment"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Ostrzeżenia "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Możesz przesłać plik GIF do usługi, która umożliwi umieszczanie go jako pliku wideo HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Zainstaluj [wtyczkę WordPress opóźniającą ładowanie](https://wordpress.org/plugins/search/lazy+load/), która umożliwia odłożenie ładowania obrazów niewyświetlanych na ekranie, albo wybierz motyw, który ma tę funkcję. Warto też skorzystać z [wtyczki AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Jest wiele wtyczek WordPress, które mogą pomóc Ci [umieścić w tekście najważniejsze zasoby](https://wordpress.org/plugins/search/critical+css/) lub [opóźnić wczytywanie mniej ważnych zasobów](https://wordpress.org/plugins/search/defer+css+javascript/). Pamiętaj, że optymalizacje dostarczane przez te wtyczki mogą uszkodzić funkcje Twojego motywu lub innych wtyczek i konieczne może być wprowadzenie zmian w kodzie."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Motywy, wtyczki i specyfikacje serwera są nie bez znaczenia dla jego czasu reakcji. Być może warto znaleźć lepiej zoptymalizowany motyw, starannie wybierając wtyczkę optymalizującą, i przejść na nowszą wersję serwera."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Korzystne może być wyświetlanie fragmentów na liście postów (np. przy użyciu tagu more), zmniejszenie liczby postów wyświetlanych na danej stronie, podział długich postów na kilka stron lub użycie wtyczki umożliwiającej opóźnione wczytywanie komentarzy."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Kilka [wtyczek WordPress](https://wordpress.org/plugins/search/minify+css/) może przyspieszyć działanie strony dzięki konkatenacji, minifikacji i kompresji stylów. Jeśli masz taką możliwość, warto też użyć procesu tworzenia, by od razu przeprowadzić minifikację."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Kilka [wtyczek WordPress](https://wordpress.org/plugins/search/minify+javascript/) może przyspieszyć działanie strony dzięki konkatenacji, minifikacji i kompresji skryptów. Jeśli masz taką możliwość, warto też użyć procesu tworzenia, by od razu przeprowadzić minifikację."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Dobrym rozwiązaniem może być ograniczenie liczby [wtyczek WordPress](https://wordpress.org/plugins/) wczytujących na stronie nieużywany kod CSS albo zmiana tych wtyczek na inne. Aby zidentyfikować wtyczki, które dodają nieistotny kod CSS, uruchom [zasięg kodu](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) w Chrome DevTools. Możesz zidentyfikować taki motyw/wtyczkę w adresie URL arkusza stylów. Szukaj wtyczek, które mają na liście wiele arkuszy stylów z dużą ilością czerwonego koloru w zasięgu kodu. Wtyczka powinna umieszczać arkusz stylów w kolejce, tylko jeśli rzeczywiście jest on używany na stronie."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Dobrym rozwiązaniem może być ograniczenie liczby [wtyczek WordPress](https://wordpress.org/plugins/) wczytujących na stronie nieużywany kod JacaScript albo zmiana tych wtyczek na inne. Aby zidentyfikować wtyczki, które dodają nieistotny kod JS, uruchom [zasięg kodu](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) w Chrome DevTools. Możesz zidentyfikować taki motyw/wtyczkę w adresie URL skryptu. Szukaj wtyczek, które mają na liście wiele skryptów z dużą ilością czerwonego koloru w zasięgu kodu. Wtyczka powinna umieszczać skrypt w kolejce, tylko jeśli rzeczywiście jest on używany na stronie."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Dowiedz się więcej o [pamięci podręcznej przeglądarki w WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Pomocna może być [wtyczka WordPress do optymalizacji obrazów](https://wordpress.org/plugins/search/optimize+images/), która kompresuje obrazy, zachowując ich jakość."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Przesyłaj obrazy bezpośrednio przez [bibliotekę multimediów](https://codex.wordpress.org/Media_Library_Screen), by mieć pewność, że wymagane rozmiary obrazów są dostępne, a następnie wstawiaj je z biblioteki multimediów lub używaj widżetu obrazów, by zapewnić użycie optymalnych rozmiarów obrazów (także w dynamicznych punktach przerwania). Unikaj używania obrazów w „pełnym rozmiarze”, chyba że wymiary są adekwatne do danego zastosowania. [Dowiedz się więcej](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Możesz włączyć kompresję tekstu w konfiguracji swojego serwera WWW."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Możesz skorzystać z [wtyczki](https://wordpress.org/plugins/search/convert+webp/) lub usługi, która będzie automatycznie konwertować przesłane obrazy do optymalnych formatów."
   }
 }

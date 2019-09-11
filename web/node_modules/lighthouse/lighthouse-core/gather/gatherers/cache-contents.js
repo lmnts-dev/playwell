@@ -7,7 +7,7 @@
 
 /* global caches */
 
-const Gatherer = require('./gatherer');
+const Gatherer = require('./gatherer.js');
 
 /**
  * This is run in the page, not Lighthouse itself.

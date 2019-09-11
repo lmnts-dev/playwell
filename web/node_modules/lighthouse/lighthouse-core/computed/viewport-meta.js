@@ -11,10 +11,10 @@ const makeComputedArtifact = require('./computed-artifact.js');
 
 class ViewportMeta {
   /**
-   * @param {{MetaElements: LH.GathererArtifacts['MetaElements']}} artifacts
+   * @param {LH.GathererArtifacts['MetaElements']} MetaElements
    * @return {Promise<ViewportMetaResult>}
   */
-  static async compute_({MetaElements}) {
+  static async compute_(MetaElements) {
     const viewportMeta = MetaElements.find(meta => meta.name === 'viewport');
 
     if (!viewportMeta) {

@@ -447,10 +447,10 @@
     "message": "Valoare"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Specialiștii în browsere recomandă ca paginile să conțină mai puțin de ~1.500 de noduri DOM. Ideal este ca arborele să aibă o profunzime mai mică de 32 de elemente și mai puțin de 60 de elemente principale/subordonate. Un DOM mare poate crește folosirea memoriei, poate produce [calcule de stil] (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) mai lungi și poate produce [rearanjări ale aspectului](https://developers.google.com/speed/articles/reflow). [Află mai multe](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Specialiștii în browsere recomandă ca paginile să conțină mai puțin de ~1.500 de elemente DOM. Ideal este ca arborele să aibă o profunzime mai mică de 32 de elemente și mai puțin de 60 de elemente principale/subordonate. Un DOM mare poate crește folosirea memoriei, poate produce [calcule de stil] (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) mai lungi și [rearanjări ale aspectului](https://developers.google.com/speed/articles/reflow) costisitoare. [Află mai multe](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{un nod}few{# noduri}other{# de noduri}}"
+    "message": "{itemCount,plural, =1{1 element}few{# elemente}other{# de elemente}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Evită o dimensiune DOM excesivă"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Adâncimea DOM maximă"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Numărul total de noduri DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Numărul total de elemente DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Numărul maxim de elemente subordonate"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Formatează codul HTML în așa fel încât crawlerele să înțeleagă mai bine conținutul aplicației."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Cele mai bune practici privind conținutul"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Pentru a apărea în rezultatele căutării, crawlerele trebuie să îți acceseze aplicația."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Accesarea cu crawlere și indexarea"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Asigură-te că paginile sunt create pentru dispozitivele mobile, pentru ca utilizatorii să nu trebuiască să ciupească sau să mărească pentru a citi paginile conținutului. [Află mai multe](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Pentru dispozitivele mobile"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "TTL cache"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "A apărut o eroare la înregistrarea urmei încărcării paginii. Te rugăm să rulezi din nou Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Timpul a expirat așteptând conexiunea inițială la protocolul Debugger."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome nu a colectat nicio captură de ecran în timpul încărcării paginii. Asigură-te că există conținut vizibil pe pagină, apoi încearcă să rulezi din nou Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Auditări trecute"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Scala scorului:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Restrânge fragmentul"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Avertismente: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Îți recomandăm să încarci GIF-ul într-un serviciu care îl va pune dispoziție pentru încorporare ca videoclip HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Instalează un [plugin WordPress de încărcare lentă](https://wordpress.org/plugins/search/lazy+load/) care oferă capacitatea de a amâna imaginile din afara ecranului sau schimbă-ți tema cu una care oferă acea funcție. Îți recomandăm să folosești și [pluginul AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Există o serie de pluginuri Wordpress care te pot ajuta să [activezi inline elementele critice](https://wordpress.org/plugins/search/critical+css/) sau să [amâni resurse mai puțin importante](https://wordpress.org/plugins/search/defer+css+javascript/). Atenție, optimizările oferite de aceste pluginuri pot să întrerupă funcțiile temei sau pluginurilor tale, astfel încât este posibil să trebuiască să modifici codul."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Temele, pluginurile și specificațiile serverului contribuie toate la timpul de răspuns al serverului. Îți recomandăm să găsești o temă mai optimizată, selectând cu atenție un plugin de optimizare și/sau făcând upgrade la server."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Îți recomandăm să afișezi extrase în listele postărilor tale (de exemplu, prin intermediul filei Mai multe), reducând numărul de postări afișate pe o anumită pagină, împărțind postările lungi pe mai multe pagini sau folosind un plugin pentru a încărca lent comentariile."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "O serie de [pluginuri WordPress](https://wordpress.org/plugins/search/minify+css/) îți pot accelera site-ul concatenând, minimizând și comprimând stilurile. Ai putea să folosești și un proces de design pentru a face minimizarea în avans, dacă este posibil."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "O serie de [pluginuri WordPress](https://wordpress.org/plugins/search/minify+javascript/) îți pot accelera site-ul concatenând, minimizând și comprimând scripturile. Ai putea să folosești și un proces de design pentru a face minimizarea în avans, dacă este posibil."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Îți recomandăm să reduci sau să schimbi numărul de [pluginuri WordPress](https://wordpress.org/plugins/) care încarcă CSS nefolosit în pagină. Ca să identifici pluginurile care adaugă conținut CSS neesențial, încearcă să rulezi [acoperirea codului](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) în Chrome DevTools. Poți identifica tema/pluginul responsabil din adresa URL a foii de stil. Caută pluginuri care au multe foi de stil în listă cu mult roșu în bara acoperirii codului. Un plugin ar trebui să pună în coadă o foaie de stil numai dacă este într-adevăr folosită în pagină."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Îți recomandăm să reduci sau să schimbi numărul de [pluginuri WordPress](https://wordpress.org/plugins/) care încarcă JavaScript nefolosit în pagină. Ca să identifici pluginurile care adaugă conținut JS neesențial, încearcă să rulezi [acoperirea codului](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) în Chrome DevTools. Poți identifica tema/pluginul responsabil din adresa URL a scriptului. Caută pluginuri care au multe scripturi în listă cu mult roșu în bara acoperirii codului. Un plugin ar trebui să pună în coadă un script numai dacă este într-adevăr folosit în pagină."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Citește despre [stocarea în memoria cache a browserului în WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Îți recomandăm să folosești un [plugin WordPress de optimizare a imaginii](https://wordpress.org/plugins/search/optimize+images/) care comprimă imaginile, păstrând calitatea."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Încarcă imaginile direct prin [biblioteca de media](https://codex.wordpress.org/Media_Library_Screen) pentru a te asigura că sunt disponibile dimensiunile de imagine necesare, apoi inserează-le din biblioteca de media sau folosește widgetul de imagine pentru a te asigura că sunt folosite dimensiunile de imagine necesare (inclusiv cele pentru punctele de întrerupere adaptabile). Evită să folosești imagini cu „dimensiune completă”, cu excepția cazului în care dimensiunile sunt adecvate pentru utilizare. [Află mai multe](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Poți activa comprimarea textului în configurarea serverului web."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Îți recomandăm să folosești un [plugin](https://wordpress.org/plugins/search/convert+webp/) sau un serviciu care convertește automat imaginile încărcate în formatele optime."
   }
 }

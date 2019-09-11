@@ -447,10 +447,10 @@
     "message": "Стойност"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Браузърните инженери препоръчват страниците да съдържат под ~ 1500 възела на DOM. Най-добре е йерархичната структура да е с дълбочина под 32 елемента и всеки родителски елемент да има по-малко от 60 дъщерни. Големият размер на DOM може да доведе до използване на повече памет, удължаване на [стиловите изчисления](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) и забавяне поради [преоформяне](https://developers.google.com/speed/articles/reflow). [Научете повече](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Браузърните инженери препоръчват страниците да съдържат под ~1500 елемента в DOM. Най-добре е йерархичната структура да е с дълбочина под 32 елемента и всеки родителски елемент да има по-малко от 60 дъщерни. Големият размер на DOM може да доведе до използване на повече памет, удължаване на [стиловите изчисления](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) и забавяне поради [преоформяне](https://developers.google.com/speed/articles/reflow). [Научете повече](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 възел}other{# възела}}"
+    "message": "{itemCount,plural, =1{1 елемент}other{# елемента}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Не използвайте DOM с твърде голям размер"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Максимална дълбочина на DOM"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Общ брой възли на DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Общ брой елементи в DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Максимален брой дъщерни елементи"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Форматирайте HTML кода си по начин, който дава възможност на роботите да разберат по-добре съдържанието на приложението ви."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Най-добри практики за съдържанието"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "За да се показва приложението ви в резултатите от търсенето, роботите се нуждаят от достъп до него."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Обхождане и индексиране"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Уверете се, че страниците ви са удобни за мобилни устройства, така че да не е необходимо потребителите да събират пръсти или да увеличават мащаба, за да прочетат съдържанието. [Научете повече](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Удобство за мобилни устройства"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Време на валидност на кеша"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Нещо се обърка при записването на трасирането за зареждането на страницата ви. Моля, стартирайте отново Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Времето за изчакване изтече при първоначалното свързване с протокола за инструмента за откриване и отстраняване на грешки."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome не събра екранни снимки при зареждането на страницата. Моля, уверете се, че на нея има видимо съдържание, и опитайте отново да стартирате Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Успешно преминати проверки"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Скала на резултата:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Свиване на фрагмента"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Предупреждения: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Добре е да качите GIF файла си в услуга, която ще даде възможност да бъде вграден като видеоклип с HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Инсталирайте [приставка за WordPress за забавено зареждане](https://wordpress.org/plugins/search/lazy+load/), която дава възможност за отлагане на зареждането на изображенията извън видимата част на екрана, или заменете темата с такава, която предоставя тази функционалност. Можете също да използвате [приставката за AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Има различни приставки за WordPress, с чиято помощ можете [да вградите важни активи](https://wordpress.org/plugins/search/critical+css/) или [да отложите зареждането на не толкова важни ресурси](https://wordpress.org/plugins/search/defer+css+javascript/). Имайте предвид, че оптимизациите, извършвани чрез тези приставки, може да възпрепятстват работата на функциите на темата ви или други приставки, така че вероятно ще се наложи да промените кода."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Времето за реакция на сървъра зависи от спецификациите му, темите и приставките. Добре е да намерите по-оптимизирана тема, внимателно да изберете приставка за оптимизиране и/или да надстроите сървъра си."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Обмислете възможността да показвате извадки в списъците си с публикации (напр. чрез маркера more), да намалите броя на публикациите, извеждани на дадена страница, да разделите дългите публикации на няколко страници или да използвате приставка, която да забави зареждането на коментарите."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Има различни [приставки за WordPress](https://wordpress.org/plugins/search/minify+css/), които могат да подобрят скоростта на сайта ви чрез конкатениране, минимизиране и компресиране на стиловете ви. Добре е също при възможност да използвате процес на компилиране, за да извършите това минимизиране предварително."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Има различни [приставки за WordPress](https://wordpress.org/plugins/search/minify+javascript/), които могат да подобрят скоростта на сайта ви чрез конкатениране, минимизиране и компресиране на скриптовете. Добре е също при възможност да използвате процес на компилиране, за да извършите това минимизиране предварително."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Добре е да намалите броя на [приставките за WordPress](https://wordpress.org/plugins/), които зареждат неизползван CSS код в страницата ви, или да ги замените с други. За да откриете приставките, които добавят ненужен CSS код, стартирайте инструмента за [покритие на кода](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) в Chrome DevTools. Можете да намерите проблемната тема/приставка в URL адреса на листа със стилове. Търсете приставки с много листове със стилове в списъка, за които преобладава червеният цвят в диаграмата на инструмента. Даден лист със стилове трябва да бъде поставен в опашката на приставка само ако действително се използва в страницата."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Добре е да намалите броя на [приставките за WordPress](https://wordpress.org/plugins/), които зареждат неизползван JavaScript код в страницата ви, или да ги замените с други. За да откриете приставките, които добавят ненужен JS код, стартирайте инструмента за [покритие на кода](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) в Chrome DevTools. Можете да намерите проблемната тема/приставка в URL адреса на скрипта. Търсете приставки с много скриптове в списъка, за които преобладава червеният цвят в диаграмата на инструмента. Даден скрипт трябва да бъде поставен в опашката на приставка само ако действително се използва в страницата."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Прочетете за [кеширането в браузъра чрез WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Добре е да използвате [приставка за WordPress за оптимизиране на изображенията](https://wordpress.org/plugins/search/optimize+images/), която компресира графичните ви файлове, като същевременно запазва качеството им."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Качвайте изображенията директно чрез [мултимедийната библиотека](https://codex.wordpress.org/Media_Library_Screen), за да разполагате с графични файлове с необходимите размери, и след това ги вмъквайте от библиотеката или използвайте приспособлението за изображения, така че да се използват файловете с оптимални размери (включително за адаптивните гранични точки). Избягвайте използването на пълноразмерни изображения, освен ако размерите са подходящи за съответното предназначение. [Научете повече](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Можете да активирате компресирането на текста в конфигурацията на уеб сървъра си."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Добре е да използвате [приставка](https://wordpress.org/plugins/search/convert+webp/) или услуга за автоматично преобразуване на качените изображения в оптималния формат."
   }
 }

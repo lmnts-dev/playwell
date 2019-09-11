@@ -447,10 +447,10 @@
     "message": "Verdi"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Nettlesereksperter anbefaler at sider inneholder mindre enn ca. 1500 DOM-noder. Den perfekte verdien er en tredybde på mindre enn 32 elementer og mindre enn 60 underordnede/overordnede elementer. En stor DOM-struktur kan øke minnebruken, føre til at [stilberegninger](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) tar lengre tid, og forårsake kostbare [gjenoppbygginger av sidevisningen](https://developers.google.com/speed/articles/reflow). [Finn ut mer](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Nettlesereksperter anbefaler at sider inneholder mindre enn ca. 1500 DOM-elementer. Den perfekte verdien er en tredybde på mindre enn 32 elementer og mindre enn 60 underordnede/overordnede elementer. En stor DOM-struktur kan øke minnebruken, føre til at [stilberegninger](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) tar lengre tid, og forårsake kostbare [gjenoppbygginger av sidevisningen](https://developers.google.com/speed/articles/reflow). [Finn ut mer](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 node}other{# noder}}"
+    "message": "{itemCount,plural, =1{1 element}other{# elementer}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Unngå for stor DOM-struktur"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Maksimal DOM-dybde"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Totalt antall DOM-noder"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Totalt antall DOM-elementer"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Maksimalt antall underordnede elementer"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Formatér HTML-koden din på en måte som gjør det enklere for søkeroboter å forstå innholdet i appen."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Anbefalte fremgangsmåter for innhold"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Søkeroboter trenger tilgang til appen din for at den skal vises i søkeresultater."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Gjennomsøking og indeksering"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Sørg for at sidene dine er mobilvennlige, så brukere ikke trenger å klype eller zoome inn for å lese innholdssidene. [Finn ut mer](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Mobilvennlig"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Buffer-TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Noe gikk galt med sporingsregistreringen for sideinnlastingen. Kjør Lighthouse på nytt. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Tidsavbrudd under venting på første tilkobling fra feilsøkingsprogramprotokollen."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome samlet ingen skjermdumper under innlasting av siden. Sørg for at det er synlig innhold på siden, og prøv deretter å kjøre Lighthouse på nytt. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Beståtte revisjoner"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Poengskala:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Skjul fragment"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Advarsler: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Vurder å laste opp GIF-filen til en tjeneste som gjør det mulig å bygge den inn som en HTML5-video."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Installer et [WordPress-programtillegg for utsatt innlasting](https://wordpress.org/plugins/search/lazy+load/) som gjør det mulig å utsette innlasting av bilder som ikke er på skjermen, eller bytt til et tema som gir denne funksjonaliteten. Vurder også å bruke [AMP-programtillegget](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Det finnes en rekke WordPress-programtillegg som kan hjelpe deg med å [bygge inn kritiske elementer direkte på siden](https://wordpress.org/plugins/search/critical+css/) eller [utsette innlasting av mindre viktige ressurser](https://wordpress.org/plugins/search/defer+css+javascript/). Vær obs på at optimalisering som gjøres av disse programtilleggene, kan ødelegge funksjonalitet i temaet ditt eller programtilleggene dine, så du må sannsynligvis gjøre kodeendringer."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Både temaer, programtillegg og tjenerspesifikasjoner virker inn på tjenerens responstid. Vurder å finne et mer optimalisert tema, velge et programtillegg for optimalisering nøye og/eller oppgradere tjeneren."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Vurder å vise utdrag på innleggslistene (f.eks. via Mer-taggen), redusere antall innlegg som vises på en gitt side, fordele lange innlegg på flere sider eller bruke et programtillegg for utsatt innlasting av kommentarer."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "En rekke [WordPress-programtillegg](https://wordpress.org/plugins/search/minify+css/) kan gjøre nettstedet ditt raskere ved å slå sammen, forminske og komprimere stilarkene dine. Det kan også være lurt å bruke en byggeprosess til å gjøre denne forminskningen på forhånd hvis mulig."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "En rekke [WordPress-programtillegg](https://wordpress.org/plugins/search/minify+javascript/) kan gjøre nettstedet ditt raskere ved å slå sammen, forminske og komprimere skriptene dine. Det kan også være lurt å bruke en byggeprosess til å gjøre denne forminskningen på forhånd hvis mulig."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Vurder å redusere eller endre antall [WordPress-programtillegg](https://wordpress.org/plugins/) som laster inn ubrukt CSS på siden. For å identifisere programtillegg som legger til overflødig CSS, prøv å kjøre [kodedekning](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) i Chrome DevTools. Du kan finne det ansvarlige temaet eller programtillegget i nettadressen til stilarket. Se opp for programtillegg som har mange stilark på listen, og som viser mye rødt i kodedekningen. Programtillegg bør bare legge stilark i kø hvis de faktisk brukes på siden."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Vurder å redusere eller endre antall [WordPress-programtillegg](https://wordpress.org/plugins/) som laster inn ubrukt JavaScript på siden. For å identifisere programtillegg som legger til overflødig JavaScript, prøv å kjøre [kodedekning](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) i Chrome DevTools. Du kan finne det ansvarlige temaet eller programtillegget i nettadressen til skriptet. Se opp for programtillegg som har mange skript på listen, og som viser mye rødt i kodedekningen. Programtillegg bør bare legge skript i kø hvis de faktisk brukes på siden."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Les om [nettleserbufring i WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Vurder å bruke et [WordPress-programtillegg for bildeoptimalisering](https://wordpress.org/plugins/search/optimize+images/) som komprimerer bildene uten at det går ut over kvaliteten."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Last opp bilder direkte gjennom [mediebiblioteket](https://codex.wordpress.org/Media_Library_Screen) for å sikre at de nødvendige bildestørrelsene er tilgjengelige, og sett dem deretter inn fra mediebiblioteket eller bruk bildemodulen for å sikre at de optimale bildestørrelsene brukes (inkludert dem som brukes for responsive stoppunkter). Unngå å bruke bilder i full størrelse med mindre dimensjonene er tilstrekkelige for bruksområdet. [Finn ut mer](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Du kan slå på tekstkomprimering i oppsettet av nettjeneren."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Vurder å bruke et [programtillegg](https://wordpress.org/plugins/search/convert+webp/) eller en tjeneste som automatisk konverterer opplastede bilder til de optimale formatene."
   }
 }

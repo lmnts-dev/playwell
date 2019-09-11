@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const Audit = require('../audit');
+const Audit = require('../audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
 
 const UIStrings = {
@@ -45,20 +45,20 @@ class Description extends Audit {
     const metaDescription = artifacts.MetaElements.find(meta => meta.name === 'description');
     if (!metaDescription) {
       return {
-        rawValue: false,
+        score: 0,
       };
     }
 
     const description = metaDescription.content || '';
     if (description.trim().length === 0) {
       return {
-        rawValue: false,
+        score: 0,
         explanation: str_(UIStrings.explanation),
       };
     }
 
     return {
-      rawValue: true,
+      score: 1,
     };
   }
 }

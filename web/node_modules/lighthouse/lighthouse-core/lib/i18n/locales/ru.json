@@ -447,10 +447,10 @@
     "message": "Значение"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Разработчики браузеров рекомендуют, чтобы на странице было не более 1500 узлов DOM. Наилучшие показатели: глубина вложенности менее 32 элементов, количество дочерних и родительских элементов – менее 60. Сложная структура DOM может увеличить использование памяти, замедлить [вычисление стилей](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) и повысить затраты на [компоновку шаблонов](https://developers.google.com/speed/articles/reflow). [Подробнее…](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Разработчики браузеров рекомендуют размещать на странице не более 1500 элементов DOM. Наилучшие показатели: глубина дерева – менее 32 элементов, количество дочерних и родительских элементов – менее 60. Сложная структура DOM может увеличить использование памяти, замедлить [вычисление стилей](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) и повысить затраты на [компоновку шаблонов](https://developers.google.com/speed/articles/reflow). [Подробнее…](https://developers.google.com/web/tools/lighthouse/audits/dom-size)"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 узел}one{# узел}few{# узла}many{# узлов}other{# узла}}"
+    "message": "{itemCount,plural, =1{1 элемент}one{# элемент}few{# элемента}many{# элементов}other{# элемента}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Сократите размер структуры DOM"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Максимальная глубина вложенности DOM"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Общее количество узлов DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Общее количество элементов DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Максимальное число дочерних элементов"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "Поисковая оптимизация"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Оптимизируйте HTML-код, чтобы поисковые роботы могли лучше проанализировать контент приложения."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Рекомендации в отношении контента"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Чтобы ваше приложение появлялось в результатах поиска, предоставьте доступ к нему поисковым роботам."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Сканирование и индексирование"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Убедитесь, что ваши страницы оптимизированы для мобильных устройств, чтобы пользователям не приходилось менять масштаб страниц или подстраивать их под размер экрана. [Подробнее…](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Оптимизация для мобильных устройств"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Время жизни кеша"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "При записи трассировки для вашей страницы произошла ошибка. Перезапустите Lighthouse. Код ошибки: {errorCode}."
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Превышено время ожидания для первичного соединения с протоколом отладчика."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "При загрузке страницы в Chrome не были сделаны скриншоты. Проверьте, есть ли на странице видимый контент, и перезапустите Lighthouse. Код ошибки: {errorCode}."
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Успешные аудиты"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Легенда:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Свернуть фрагмент"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Предупреждения: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Используйте сервисы, которые позволяют встраивать GIF-файлы на страницы сайта в формате видео HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Установите [плагин WordPress для отложенной загрузки изображений](https://wordpress.org/plugins/search/lazy+load/) или подберите тему, которая поддерживает такую возможность. Это позволит системе загружать скрытые изображения позже. Мы также рекомендуем использовать [плагин AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Используйте плагины, которые позволяют [в первую очередь загружать критически важные ресурсы](https://wordpress.org/plugins/search/critical+css/) или [откладывать загрузку менее важных](https://wordpress.org/plugins/search/defer+css+javascript/). Обратите внимание, что такие плагины могут привести к сбоям в работе других используемых вами тем или плагинов. Не исключено, что вам потребуется внести изменения в код."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Темы, плагины и спецификации сервера – все это влияет на время ответа сервера. Советуем найти более подходящую тему, тщательно подобрать плагин для оптимизации и/или обновить сервер."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Мы рекомендуем включить показ только начального фрагмента записей (например, с помощью тега More). Вы также можете сократить количество записей на одной странице, разбить длинные записи на несколько страниц или использовать отложенную загрузку комментариев."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Увеличьте скорость загрузки страниц сайта с помощью [плагинов WordPress](https://wordpress.org/plugins/search/minify+css/), которые позволяют объединять, уменьшать и сжимать стили. Рекомендуем использовать такие плагины на этапе сборки."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Увеличьте скорость загрузки страниц сайта с помощью [плагинов WordPress](https://wordpress.org/plugins/search/minify+javascript/), которые позволяют объединять, уменьшать и сжимать скрипты. Рекомендуем использовать такие плагины на этапе сборки."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Рекомендуем заменить или удалить [плагины WordPress](https://wordpress.org/plugins/), которые загружают неиспользуемый код CSS на странице сайта. Чтобы найти такие плагины, запустите [анализ покрытия кода](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) в Инструментах разработчика Chrome. Определить нужный плагин или тему можно по URL таблицы стилей. Обращайте внимание на плагины с большим количеством таблиц стилей, в которых при анализе покрытия кода преобладает красный цвет. Таблица стилей должна попадать в очередь, только если она используется на странице."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Рекомендуем заменить или удалить некоторые [плагины WordPress](https://wordpress.org/plugins/), которые загружают неиспользуемый код JavaScript на странице сайта. Чтобы найти такие плагины, запустите [анализ покрытия кода](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) в Инструментах разработчика Chrome. Определить нужный плагин или тему можно по URL скрипта. Обращайте внимание на плагины с большим количеством скриптов, в которых при анализе покрытия кода преобладает красный цвет. Скрипт должен попадать в очередь, только если он используется на странице."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Узнайте больше [о кешировании в браузере на платформе WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Чтобы сжимать изображения без потери качества, используйте [специальный плагин WordPress](https://wordpress.org/plugins/search/optimize+images/)."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Чтобы проверить размер изображений, загрузите их в [Библиотеку файлов](https://codex.wordpress.org/Media_Library_Screen). С помощью виджета или из библиотеки вы сможете вставить на страницу изображения оптимального размера, который также будет соответствовать контрольным точкам для отзывчивого дизайна. Старайтесь не размещать изображения в полном размере, за исключением тех случаев, когда он соответствует необходимому. [Подробнее…](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)"
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Включить сжатие текста можно в настройках веб-сервера."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Чтобы загружаемые изображения автоматически конвертировались в оптимальный формат, используйте специальный [плагин](https://wordpress.org/plugins/search/convert+webp/) или сервис."
   }
 }

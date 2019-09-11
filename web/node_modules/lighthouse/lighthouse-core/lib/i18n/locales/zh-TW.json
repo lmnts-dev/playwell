@@ -447,10 +447,10 @@
     "message": "值"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "瀏覽器工程師建議，頁面包含的 DOM 節點數量應少於 1,500 個左右。理想樹狀層級應包含少於 32 個元素，以及少於 60 個下層/上層元素。大型的 DOM 可能造成記憶體用量增加、延長[樣式運算](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations)的過程，還會導致費工的[版面配置重排](https://developers.google.com/speed/articles/reflow)。[瞭解詳情](https://developers.google.com/web/tools/lighthouse/audits/dom-size)"
+    "message": "瀏覽器工程師建議網頁包含的 DOM 元素數量應少於 1,500 個左右。最理想的情況是樹狀結構深度包含的元素少於 32 個，且子項/父項元素少於 60 個。大型 DOM 會增加記憶體用量、延長[樣式運算](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations)的時間，並產生費工的[版面配置重排](https://developers.google.com/speed/articles/reflow)。[瞭解詳情](https://developers.google.com/web/tools/lighthouse/audits/dom-size)。"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 個節點}other{# 個節點}}"
+    "message": "{itemCount,plural, =1{1 個元素}other{# 個元素}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "避免 DOM 過大"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "DOM 層級上限"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "DOM 節點總數"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "DOM 元素總計"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "子元素數量上限"
@@ -600,7 +600,7 @@
     "message": "{decimalProportion, number, extendedPercent} 的文字太小。"
   },
   "lighthouse-core/audits/seo/font-size.js | explanationViewport": {
-    "message": "文字難以辨識，這是因為網頁沒有針對行動裝置螢幕設定合適的檢視點中繼標記。"
+    "message": "文字難以辨識，這是因為網頁沒有針對行動裝置螢幕設定合適的可視區域中繼標記。"
   },
   "lighthouse-core/audits/seo/font-size.js | explanationWithDisclaimer": {
     "message": "{decimalProportion, number, extendedPercent} 的文字太小 (以 {decimalProportionVisited, number, extendedPercent} 範例為準)。"
@@ -702,7 +702,7 @@
     "message": "{decimalProportion, number, percent} 的輕觸目標大小適中"
   },
   "lighthouse-core/audits/seo/tap-targets.js | explanationViewportMetaNotOptimized": {
-    "message": "輕觸目標太小，這是因為網頁沒有針對行動裝置螢幕設定合適的檢視點中繼標記"
+    "message": "輕觸目標太小，這是因為網頁沒有針對行動裝置螢幕設定合適的可視區域中繼標記"
   },
   "lighthouse-core/audits/seo/tap-targets.js | failureTitle": {
     "message": "輕觸目標未設定成適當大小"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "搜尋引擎最佳化 (SEO)"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "請設定適當的 HTML 格式，讓檢索器更容易辨識你的應用程式內容。"
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "內容最佳做法"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "檢索器需要存取你的應用程式，才能將網站顯示在搜尋結果中。"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "檢索及建立索引"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "請確認你的網頁適合透過行動裝置瀏覽，讓使用者不須撥動雙指或縮放螢幕即可閱讀網頁內容。[瞭解詳情](https://developers.google.com/search/mobile-sites/)。"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "適合透過行動裝置瀏覽"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "快取 TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "追蹤記錄網頁載入情形時發生錯誤。請重新執行 Lighthouse。({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "等候偵錯工具通訊協定初始連線時發生逾時。"
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome 在網頁載入期間未能擷取螢幕畫面。請確認網頁上有可見內容，然後嘗試重新執行 Lighthouse。({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "通過稽核項目"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "分數量尺："
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "收合程式碼片段"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "警告： "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "建議你將 GIF 上傳到可將 GIF 做為 HTML5 影片嵌入的服務。"
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "安裝可延遲載入所有畫面外圖片的[延遲載入 WordPress 外掛程式](https://wordpress.org/plugins/search/lazy+load/)，或改用提供這項功能的主題。你也可以考慮使用 [AMP 外掛程式](https://wordpress.org/plugins/amp/)。"
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "有些 WordPress 外掛程式能協助你[內嵌重要的素材資源](https://wordpress.org/plugins/search/critical+css/)或[延後載入較不重要的資源](https://wordpress.org/plugins/search/defer+css+javascript/)。請注意，這些外掛程式的最佳化設定可能會對現有主題或外掛程式的功能有不良影響，因此你可能需要變更程式碼。"
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "主題、外掛程式和伺服器規格都會影響伺服器回應時間。建議你尋找經過最佳化調整的主題、謹慎選擇最佳化外掛程式，並 (或) 升級伺服器。"
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "建議你在文章清單中顯示摘錄 (例如加入更多標記)、減少特定頁面顯示的文章數量、將較長的文章分為多個頁面，或使用可延遲載入留言的外掛程式。"
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "有些 [WordPress 外掛程式](https://wordpress.org/plugins/search/minify+css/)可以透過串聯、縮小及壓縮樣式來提升網站速度。你也可以考慮透過建構流程直接執行這項壓縮作業 (如果可行的話)。"
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "有一些 [WordPress 外掛程式](https://wordpress.org/plugins/search/minify+javascript/)可以透過串聯、縮小及壓縮指令碼來提升網站速度。你也可以考慮透過建構流程直接執行這項壓縮作業 (如果可行的話)。"
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "有些 [WordPress 外掛程式](https://wordpress.org/plugins/) 會在網頁中載入未使用的 CSS，建議你減少這類外掛程式的數量，或改用其他外掛程式。如要找出會新增多餘 CSS 的外掛程式，請嘗試在 Chrome DevTools 中執行[程式碼涵蓋率](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage)功能。你可以透過樣式表網址找出有問題的主題/外掛程式。請留意在清單中包含許多樣式表，且程式碼涵蓋率中有許多紅色標示的外掛程式。外掛程式只應將網頁上實際使用的樣式表加入清單。"
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "有些 [WordPress 外掛程式](https://wordpress.org/plugins/)會在網頁中載入未使用的 JavaScript，建議你減少這類外掛程式的數量，或改用其他外掛程式。如要找出會新增多餘 JS 的外掛程式，請嘗試在 Chrome DevTools 中執行[程式碼涵蓋率](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage)功能。你可以透過指令碼網址找出有問題的主題/外掛程式。請留意在清單中包含許多指令碼，且程式碼涵蓋率中有許多紅色標示的外掛程式。外掛程式只應將網頁實際使用的指令碼加入清單。"
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "瞭解 [WordPress 的瀏覽器快取功能](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)。"
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "建議你使用[圖片最佳化 WordPress 外掛程式](https://wordpress.org/plugins/search/optimize+images/)，壓縮圖片時不會影響到畫質。"
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "你可以直接透過[媒體庫](https://codex.wordpress.org/Media_Library_Screen)上傳圖片，確保你可以使用所需的圖片大小，然後透過從媒體庫插入圖片，或使用圖片小工具來確保你使用的是最佳圖片大小 (包括回應式中斷點適用的圖片大小)。除非圖片尺寸符合使用目的，否則請避免使用「原尺寸」圖片。[瞭解詳情](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)。"
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "你可以在網路伺服器設定中啟用文字壓縮功能。"
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "建議你使用會自動將已上傳圖片轉換成最佳格式的[外掛程式](https://wordpress.org/plugins/search/convert+webp/)或服務。"
   }
 }

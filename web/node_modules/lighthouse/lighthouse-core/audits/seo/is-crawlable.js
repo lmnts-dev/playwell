@@ -5,9 +5,9 @@
  */
 'use strict';
 
-const Audit = require('../audit');
+const Audit = require('../audit.js');
 const robotsParser = require('robots-parser');
-const URL = require('../../lib/url-shim');
+const URL = require('../../lib/url-shim.js');
 const MainResource = require('../../computed/main-resource.js');
 const BLOCKLIST = new Set([
   'noindex',
@@ -81,7 +81,7 @@ class IsCrawlable extends Audit {
       title: str_(UIStrings.title),
       failureTitle: str_(UIStrings.failureTitle),
       description: str_(UIStrings.description),
-      requiredArtifacts: ['MetaElements', 'RobotsTxt', 'URL'],
+      requiredArtifacts: ['MetaElements', 'RobotsTxt', 'URL', 'devtoolsLogs'],
     };
   }
 
@@ -139,7 +139,7 @@ class IsCrawlable extends Audit {
         const details = Audit.makeTableDetails(headings, blockingDirectives);
 
         return {
-          rawValue: blockingDirectives.length === 0,
+          score: Number(blockingDirectives.length === 0),
           details,
         };
       });

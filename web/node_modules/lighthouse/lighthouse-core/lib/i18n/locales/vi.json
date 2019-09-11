@@ -447,10 +447,10 @@
     "message": "Giá trị"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Các công cụ của trình duyệt đề xuất các trang nên chứa ít hơn 1.500 nút DOM. Điểm ngọt là độ sâu của cây có ít hơn 32 thành phần và 60 thành phần con/cấp độ gốc. Một DOM lớn có thể tăng mức sử dụng bộ nhớ, khiến [các phép tính về kiểu](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) dài hơn đồng thời tạo ra [các chỉnh sửa bố cục](https://developers.google.com/speed/articles/reflow) tốn kém. [Tìm hiểu thêm](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Các kỹ sư trình duyệt khuyên rằng các trang không nên chứa quá 1.500 phần tử DOM. Tốt nhất là có độ sâu của cây nhỏ hơn 32 phần tử và có ít hơn 60 phần tử con/phần tử mẹ. Một DOM lớn có thể làm tăng mức sử dụng bộ nhớ, khiến [các phép tính về kiểu](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) dài hơn, đồng thời tạo ra [các quy trình trình bày lại bố cục](https://developers.google.com/speed/articles/reflow) tốn kém. [Tìm hiểu thêm](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 nút}other{# nút}}"
+    "message": "{itemCount,plural, =1{1 phần tử}other{# phần tử}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Tránh kích thước DOM quá lớn"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Độ sâu DOM tối đa"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Tổng số nút DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Tổng số các phần tử DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Phần tử con tối đa"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Định dạng HTML sao cho các trình thu thập thông tin có thể hiểu rõ hơn nội dung trong ứng dụng của bạn."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Các phương pháp hay nhất về nội dung"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Để xuất hiện trong kết quả tìm kiếm, các trình thu thập thông tin cần quyền truy cập vào ứng dụng của bạn."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Thu thập thông tin và lập chỉ mục"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Đảm bảo các trang của bạn thân thiện với thiết bị di động để người dùng có thể đọc các trang nội dung mà không cần phải thu phóng. [Tìm hiểu thêm](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Thân thiện với thiết bị di động"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Thời gian tồn tại (TTL) của bộ nhớ đệm"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Đã xảy ra sự cố khi ghi lại dấu vết trong quá trình tải trang của bạn. Vui lòng chạy lại Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Đã hết thời gian chờ kết nối với Giao thức của trình gỡ lỗi ban đầu ban đầu."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome không thu thập bất kỳ ảnh chụp màn hình nào trong quá trình tải trang. Hãy đảm bảo có nội dung hiển thị trên trang rồi thử chạy lại Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Số lần kiểm tra đạt yêu cầu"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Thang điểm:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Thu gọn đoạn mã"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Cảnh báo: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Hãy cân nhắc tải tệp GIF lên một dịch vụ mà nhờ đó, tệp GIF có thể được nhúng ở dạng video HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Cài đặt một [plugin tải từng phần của WordPress](https://wordpress.org/plugins/search/lazy+load/) giúp trì hoãn mọi hình ảnh ngoài màn hình, hoặc chuyển sang một giao diện cung cấp chức năng đó. Ngoài ra, hãy cân nhắc sử dụng [plugin AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Có một số plugin của WordPress có thể giúp bạn [đưa phần tử quan trọng vào nội tuyến](https://wordpress.org/plugins/search/critical+css/) hoặc [trì hoãn tài nguyên ít quan trọng hơn](https://wordpress.org/plugins/search/defer+css+javascript/). Xin lưu ý rằng những phương thức tối ưu hóa mà các plugin này cung cấp có thể làm gián đoạn tính năng của giao diện hoặc plugin, do đó, có thể bạn cần thay đổi mã."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Giao diện, plugin và thông số máy chủ đều tác động đến thời gian phản hồi của máy chủ. Hãy cân nhắc tìm một giao diện được tối ưu hóa, lựa chọn cẩn thận một plugin tối ưu hóa và/hoặc nâng cấp máy chủ."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Hãy cân nhắc hiển thị phần trích dẫn trong danh sách bài đăng (ví dụ như qua thẻ thêm), giảm số lượng bài đăng hiển thị trên một trang cụ thể, chia các bài đăng dài thành nhiều trang hoặc sử dụng một plugin để tải nhận xét theo từng phần."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Một số [plugin của WordPress](https://wordpress.org/plugins/search/minify+css/) có thể tăng tốc độ trang web của bạn bằng cách ghép, thu nhỏ và nén kiểu. Bạn cũng có thể dùng quy trình tạo để tiến hành thu nhỏ trước nếu có thể."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Một số [plugin của WordPress](https://wordpress.org/plugins/search/minify+javascript/) có thể tăng tốc độ trang web của bạn bằng cách ghép, thu nhỏ và nén tập lệnh. Ngoài ra, bạn nên dùng quy trình tạo để tiến hành thu nhỏ trước nếu có thể."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Hãy cân nhắc giảm hoặc chuyển đổi số lượng [plugin của WordPress](https://wordpress.org/plugins/) tải CSS không sử dụng trong trang của bạn. Để xác định các plugin đang thêm CSS không liên quan, hãy thử chạy [phạm vi của mã](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) trong Chrome DevTools. Bạn có thể xác định giao diện/plugin gây ra tình trạng này từ URL của biểu định kiểu. Hãy chú ý đến những plugin có nhiều biểu định kiểu trong danh sách. Những plugin này có nhiều màu đỏ trong phạm vi của mã. Một plugin chỉ nên thêm một biểu định kiểu vào hàng đợi nếu biểu định kiểu đó thực sự được sử dụng trên trang."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Hãy cân nhắc giảm hoặc chuyển đối số lượng [plugin của WordPress](https://wordpress.org/plugins/) tải JavaScript không sử dụng trong trang của bạn. Để xác định các plugin đang thêm JavaScript (JS) không liên quan, hãy thử chạy [phạm vi của mã](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) trong Chrome DevTools. Bạn có thể xác định giao diện/plugin gây ra tình trạng này từ URL của tập lệnh. Hãy chú ý đến những plugin có nhiều tập lệnh trong danh sách. Những plugin này có nhiều màu đỏ trong phạm vi của mã. Một plugin chỉ nên thêm một tập lệnh vào hàng đợi nếu tập lệnh đó thực sự được sử dụng trên trang."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Hãy đọc về [Bộ nhớ đệm của trình duyệt trong WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Hãy cân nhắc sử dụng một [plugin tối ưu hóa hình ảnh của WordPress](https://wordpress.org/plugins/search/optimize+images/) có khả năng nén hình ảnh mà vẫn giữ được chất lượng."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Trực tiếp tải hình ảnh lên thông qua [thư viện nội dung đa phương tiện](https://codex.wordpress.org/Media_Library_Screen) để đảm bảo có các kích thước hình ảnh theo yêu cầu, sau đó chèn hình ảnh từ thư viện nội dung đa phương tiện hoặc sử dụng tiện ích hình ảnh để đảm bảo sử dụng kích thước hình ảnh tối ưu (bao gồm cả các kích thước dành cho điểm ngắt phản hồi). Tránh sử dụng hình ảnh có `Kích thước đầy đủ` trừ khi những hình ảnh đó có kích thước phù hợp để sử dụng. [Tìm hiểu thêm](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Bạn có thể bật tính năng nén văn bản trong cấu hình máy chủ web."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Hãy cân nhắc sử dụng một [plugin](https://wordpress.org/plugins/search/convert+webp/) hoặc dịch vụ tự động chuyển các hình ảnh đã tải lên sang định dạng tối ưu."
   }
 }

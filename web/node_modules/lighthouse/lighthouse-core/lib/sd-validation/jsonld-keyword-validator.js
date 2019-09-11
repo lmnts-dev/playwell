@@ -41,7 +41,7 @@ module.exports = function validateJsonLD(json) {
     if (name.startsWith('@') && !VALID_KEYWORDS.has(name)) {
       errors.push({
         path: path.join('/'),
-        message: 'Unknown keyword',
+        message: `Unknown keyword "${name}"`,
       });
     }
   });

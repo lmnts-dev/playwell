@@ -447,10 +447,10 @@
     "message": "‏‮Value‬‏"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "‏‮Browser‬‏ ‏‮engineers‬‏ ‏‮recommend‬‏ ‏‮pages‬‏ ‏‮contain‬‏ ‏‮fewer‬‏ ‏‮than‬‏ ~1,500 ‏‮DOM‬‏ ‏‮nodes‬‏. ‏‮The‬‏ ‏‮sweet‬‏ ‏‮spot‬‏ ‏‮is‬‏ ‏‮a‬‏ ‏‮tree‬‏ ‏‮depth‬‏ < 32 ‏‮elements‬‏ ‏‮and‬‏ ‏‮fewer‬‏ ‏‮than‬‏ 60 ‏‮children‬‏/‏‮parent‬‏ ‏‮element‬‏. ‏‮A‬‏ ‏‮large‬‏ ‏‮DOM‬‏ ‏‮can‬‏ ‏‮increase‬‏ ‏‮memory‬‏ ‏‮usage‬‏, ‏‮cause‬‏ ‏‮longer‬‏ [‏‮style‬‏ ‏‮calculations‬‏](‏‮https‬‏://‏‮developers‬‏.‏‮google‬‏.‏‮com‬‏/‏‮web‬‏/‏‮fundamentals‬‏/‏‮performance‬‏/‏‮rendering‬‏/‏‮reduce‬‏-‏‮the‬‏-‏‮scope‬‏-‏‮and‬‏-‏‮complexity‬‏-‏‮of‬‏-‏‮style‬‏-‏‮calculations‬‏), ‏‮and‬‏ ‏‮produce‬‏ ‏‮costly‬‏ [‏‮layout‬‏ ‏‮reflows‬‏](‏‮https‬‏://‏‮developers‬‏.‏‮google‬‏.‏‮com‬‏/‏‮speed‬‏/‏‮articles‬‏/‏‮reflow‬‏). [‏‮Learn‬‏ ‏‮more‬‏](‏‮https‬‏://‏‮developers‬‏.‏‮google‬‏.‏‮com‬‏/‏‮web‬‏/‏‮tools‬‏/‏‮lighthouse‬‏/‏‮audits‬‏/‏‮dom‬‏-‏‮size‬‏)."
+    "message": "‏‮Browser‬‏ ‏‮engineers‬‏ ‏‮recommend‬‏ ‏‮pages‬‏ ‏‮contain‬‏ ‏‮fewer‬‏ ‏‮than‬‏ ~1,500 ‏‮DOM‬‏ ‏‮elements‬‏. ‏‮The‬‏ ‏‮sweet‬‏ ‏‮spot‬‏ ‏‮is‬‏ ‏‮a‬‏ ‏‮tree‬‏ ‏‮depth‬‏ < 32 ‏‮elements‬‏ ‏‮and‬‏ ‏‮fewer‬‏ ‏‮than‬‏ 60 ‏‮children‬‏/‏‮parent‬‏ ‏‮element‬‏. ‏‮A‬‏ ‏‮large‬‏ ‏‮DOM‬‏ ‏‮can‬‏ ‏‮increase‬‏ ‏‮memory‬‏ ‏‮usage‬‏, ‏‮cause‬‏ ‏‮longer‬‏ [‏‮style‬‏ ‏‮calculations‬‏](‏‮https‬‏://‏‮developers‬‏.‏‮google‬‏.‏‮com‬‏/‏‮web‬‏/‏‮fundamentals‬‏/‏‮performance‬‏/‏‮rendering‬‏/‏‮reduce‬‏-‏‮the‬‏-‏‮scope‬‏-‏‮and‬‏-‏‮complexity‬‏-‏‮of‬‏-‏‮style‬‏-‏‮calculations‬‏), ‏‮and‬‏ ‏‮produce‬‏ ‏‮costly‬‏ [‏‮layout‬‏ ‏‮reflows‬‏](‏‮https‬‏://‏‮developers‬‏.‏‮google‬‏.‏‮com‬‏/‏‮speed‬‏/‏‮articles‬‏/‏‮reflow‬‏). [‏‮Learn‬‏ ‏‮more‬‏](‏‮https‬‏://‏‮developers‬‏.‏‮google‬‏.‏‮com‬‏/‏‮web‬‏/‏‮tools‬‏/‏‮lighthouse‬‏/‏‮audits‬‏/‏‮dom‬‏-‏‮size‬‏)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 ‏‮node‬‏}zero{# ‏‮nodes‬‏}two{# ‏‮nodes‬‏}few{# ‏‮nodes‬‏}many{# ‏‮nodes‬‏}other{# ‏‮nodes‬‏}}"
+    "message": "{itemCount,plural, =1{1 ‏‮element‬‏}zero{# ‏‮elements‬‏}two{# ‏‮elements‬‏}few{# ‏‮elements‬‏}many{# ‏‮elements‬‏}other{# ‏‮elements‬‏}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "‏‮Avoid‬‏ ‏‮an‬‏ ‏‮excessive‬‏ ‏‮DOM‬‏ ‏‮size‬‏"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "‏‮Maximum‬‏ ‏‮DOM‬‏ ‏‮Depth‬‏"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "‏‮Total‬‏ ‏‮DOM‬‏ ‏‮Nodes‬‏"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "‏‮Total‬‏ ‏‮DOM‬‏ ‏‮Elements‬‏"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "‏‮Maximum‬‏ ‏‮Child‬‏ ‏‮Elements‬‏"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "‏‮SEO‬‏"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "‏‮Format‬‏ ‏‮your‬‏ ‏‮HTML‬‏ ‏‮in‬‏ ‏‮a‬‏ ‏‮way‬‏ ‏‮that‬‏ ‏‮enables‬‏ ‏‮crawlers‬‏ ‏‮to‬‏ ‏‮better‬‏ ‏‮understand‬‏ ‏‮your‬‏ ‏‮app‬‏’‏‮s‬‏ ‏‮content‬‏."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "‏‮Content‬‏ ‏‮Best‬‏ ‏‮Practices‬‏"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "‏‮To‬‏ ‏‮appear‬‏ ‏‮in‬‏ ‏‮search‬‏ ‏‮results‬‏, ‏‮crawlers‬‏ ‏‮need‬‏ ‏‮access‬‏ ‏‮to‬‏ ‏‮your‬‏ ‏‮app‬‏."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "‏‮Crawling‬‏ ‏‮and‬‏ ‏‮Indexing‬‏"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "‏‮Make‬‏ ‏‮sure‬‏ ‏‮your‬‏ ‏‮pages‬‏ ‏‮are‬‏ ‏‮mobile‬‏ ‏‮friendly‬‏ ‏‮so‬‏ ‏‮users‬‏ ‏‮don‬‏’‏‮t‬‏ ‏‮have‬‏ ‏‮to‬‏ ‏‮pinch‬‏ ‏‮or‬‏ ‏‮zoom‬‏ ‏‮in‬‏ ‏‮order‬‏ ‏‮to‬‏ ‏‮read‬‏ ‏‮the‬‏ ‏‮content‬‏ ‏‮pages‬‏. [‏‮Learn‬‏ ‏‮more‬‏](‏‮https‬‏://‏‮developers‬‏.‏‮google‬‏.‏‮com‬‏/‏‮search‬‏/‏‮mobile‬‏-‏‮sites‬‏/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "‏‮Mobile‬‏ ‏‮Friendly‬‏"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "‏‮Cache‬‏ ‏‮TTL‬‏"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "‏‮Something‬‏ ‏‮went‬‏ ‏‮wrong‬‏ ‏‮with‬‏ ‏‮recording‬‏ ‏‮the‬‏ ‏‮trace‬‏ ‏‮over‬‏ ‏‮your‬‏ ‏‮page‬‏ ‏‮load‬‏. ‏‮Please‬‏ ‏‮run‬‏ ‏‮Lighthouse‬‏ ‏‮again‬‏. ({‏‮errorCode‬‏})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "‏‮Timeout‬‏ ‏‮waiting‬‏ ‏‮for‬‏ ‏‮initial‬‏ ‏‮Debugger‬‏ ‏‮Protocol‬‏ ‏‮connection‬‏."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "‏‮Chrome‬‏ ‏‮didn‬‏'‏‮t‬‏ ‏‮collect‬‏ ‏‮any‬‏ ‏‮screenshots‬‏ ‏‮during‬‏ ‏‮the‬‏ ‏‮page‬‏ ‏‮load‬‏. ‏‮Please‬‏ ‏‮make‬‏ ‏‮sure‬‏ ‏‮there‬‏ ‏‮is‬‏ ‏‮content‬‏ ‏‮visible‬‏ ‏‮on‬‏ ‏‮the‬‏ ‏‮page‬‏, ‏‮and‬‏ ‏‮then‬‏ ‏‮try‬‏ ‏‮re‬‏-‏‮running‬‏ ‏‮Lighthouse‬‏. ({‏‮errorCode‬‏})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "‏‮Passed‬‏ ‏‮audits‬‏"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "‏‮Score‬‏ ‏‮scale‬‏:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "‏‮Collapse‬‏ ‏‮snippet‬‏"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "‏‮Warnings‬‏: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "‏‮Consider‬‏ ‏‮uploading‬‏ ‏‮your‬‏ ‏‮GIF‬‏ ‏‮to‬‏ ‏‮a‬‏ ‏‮service‬‏ ‏‮which‬‏ ‏‮will‬‏ ‏‮make‬‏ ‏‮it‬‏ ‏‮available‬‏ ‏‮to‬‏ ‏‮embed‬‏ ‏‮as‬‏ ‏‮an‬‏ ‏‮HTML‬‏5 ‏‮video‬‏."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "‏‮Install‬‏ ‏‮a‬‏ [‏‮lazy‬‏-‏‮load‬‏ ‏‮WordPress‬‏ ‏‮plugin‬‏](‏‮https‬‏://‏‮wordpress‬‏.‏‮org‬‏/‏‮plugins‬‏/‏‮search‬‏/‏‮lazy‬‏+‏‮load‬‏/) ‏‮that‬‏ ‏‮provides‬‏ ‏‮the‬‏ ‏‮ability‬‏ ‏‮to‬‏ ‏‮defer‬‏ ‏‮any‬‏ ‏‮offscreen‬‏ ‏‮images‬‏, ‏‮or‬‏ ‏‮switch‬‏ ‏‮to‬‏ ‏‮a‬‏ ‏‮theme‬‏ ‏‮that‬‏ ‏‮provides‬‏ ‏‮that‬‏ ‏‮functionality‬‏. ‏‮Also‬‏ ‏‮consider‬‏ ‏‮using‬‏ [‏‮the‬‏ ‏‮AMP‬‏ ‏‮plugin‬‏](‏‮https‬‏://‏‮wordpress‬‏.‏‮org‬‏/‏‮plugins‬‏/‏‮amp‬‏/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "‏‮There‬‏ ‏‮are‬‏ ‏‮a‬‏ ‏‮number‬‏ ‏‮of‬‏ ‏‮WordPress‬‏ ‏‮plugins‬‏ ‏‮that‬‏ ‏‮can‬‏ ‏‮help‬‏ ‏‮you‬‏ [‏‮inline‬‏ ‏‮critical‬‏ ‏‮assets‬‏](‏‮https‬‏://‏‮wordpress‬‏.‏‮org‬‏/‏‮plugins‬‏/‏‮search‬‏/‏‮critical‬‏+‏‮css‬‏/) ‏‮or‬‏ [‏‮defer‬‏ ‏‮less‬‏ ‏‮important‬‏ ‏‮resources‬‏](‏‮https‬‏://‏‮wordpress‬‏.‏‮org‬‏/‏‮plugins‬‏/‏‮search‬‏/‏‮defer‬‏+‏‮css‬‏+‏‮javascript‬‏/). ‏‮Beware‬‏ ‏‮that‬‏ ‏‮optimizations‬‏ ‏‮provided‬‏ ‏‮by‬‏ ‏‮these‬‏ ‏‮plugins‬‏ ‏‮may‬‏ ‏‮break‬‏ ‏‮features‬‏ ‏‮of‬‏ ‏‮your‬‏ ‏‮theme‬‏ ‏‮or‬‏ ‏‮plugins‬‏, ‏‮so‬‏ ‏‮you‬‏ ‏‮will‬‏ ‏‮likely‬‏ ‏‮need‬‏ ‏‮to‬‏ ‏‮make‬‏ ‏‮code‬‏ ‏‮changes‬‏."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "‏‮Themes‬‏, ‏‮plugins‬‏, ‏‮and‬‏ ‏‮server‬‏ ‏‮specifications‬‏ ‏‮all‬‏ ‏‮contribute‬‏ ‏‮to‬‏ ‏‮server‬‏ ‏‮response‬‏ ‏‮time‬‏. ‏‮Consider‬‏ ‏‮finding‬‏ ‏‮a‬‏ ‏‮more‬‏ ‏‮optimized‬‏ ‏‮theme‬‏, ‏‮carefully‬‏ ‏‮selecting‬‏ ‏‮an‬‏ ‏‮optimization‬‏ ‏‮plugin‬‏, ‏‮and‬‏/‏‮or‬‏ ‏‮upgrading‬‏ ‏‮your‬‏ ‏‮server‬‏."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "‏‮Consider‬‏ ‏‮showing‬‏ ‏‮excerpts‬‏ ‏‮in‬‏ ‏‮your‬‏ ‏‮post‬‏ ‏‮lists‬‏ (‏‮e‬‏.‏‮g‬‏. ‏‮via‬‏ ‏‮the‬‏ ‏‮more‬‏ ‏‮tag‬‏), ‏‮reducing‬‏ ‏‮the‬‏ ‏‮number‬‏ ‏‮of‬‏ ‏‮posts‬‏ ‏‮shown‬‏ ‏‮on‬‏ ‏‮a‬‏ ‏‮given‬‏ ‏‮page‬‏, ‏‮breaking‬‏ ‏‮your‬‏ ‏‮long‬‏ ‏‮posts‬‏ ‏‮into‬‏ ‏‮multiple‬‏ ‏‮pages‬‏, ‏‮or‬‏ ‏‮using‬‏ ‏‮a‬‏ ‏‮plugin‬‏ ‏‮to‬‏ ‏‮lazy‬‏-‏‮load‬‏ ‏‮comments‬‏."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "‏‮A‬‏ ‏‮number‬‏ ‏‮of‬‏ [‏‮WordPress‬‏ ‏‮plugins‬‏](‏‮https‬‏://‏‮wordpress‬‏.‏‮org‬‏/‏‮plugins‬‏/‏‮search‬‏/‏‮minify‬‏+‏‮css‬‏/) ‏‮can‬‏ ‏‮speed‬‏ ‏‮up‬‏ ‏‮your‬‏ ‏‮site‬‏ ‏‮by‬‏ ‏‮concatenating‬‏, ‏‮minifying‬‏, ‏‮and‬‏ ‏‮compressing‬‏ ‏‮your‬‏ ‏‮styles‬‏. ‏‮You‬‏ ‏‮may‬‏ ‏‮also‬‏ ‏‮want‬‏ ‏‮to‬‏ ‏‮use‬‏ ‏‮a‬‏ ‏‮build‬‏ ‏‮process‬‏ ‏‮to‬‏ ‏‮do‬‏ ‏‮this‬‏ ‏‮minification‬‏ ‏‮up‬‏-‏‮front‬‏ ‏‮if‬‏ ‏‮possible‬‏."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "‏‮A‬‏ ‏‮number‬‏ ‏‮of‬‏ [‏‮WordPress‬‏ ‏‮plugins‬‏](‏‮https‬‏://‏‮wordpress‬‏.‏‮org‬‏/‏‮plugins‬‏/‏‮search‬‏/‏‮minify‬‏+‏‮javascript‬‏/) ‏‮can‬‏ ‏‮speed‬‏ ‏‮up‬‏ ‏‮your‬‏ ‏‮site‬‏ ‏‮by‬‏ ‏‮concatenating‬‏, ‏‮minifying‬‏, ‏‮and‬‏ ‏‮compressing‬‏ ‏‮your‬‏ ‏‮scripts‬‏. ‏‮You‬‏ ‏‮may‬‏ ‏‮also‬‏ ‏‮want‬‏ ‏‮to‬‏ ‏‮use‬‏ ‏‮a‬‏ ‏‮build‬‏ ‏‮process‬‏ ‏‮to‬‏ ‏‮do‬‏ ‏‮this‬‏ ‏‮minification‬‏ ‏‮up‬‏ ‏‮front‬‏ ‏‮if‬‏ ‏‮possible‬‏."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "‏‮Consider‬‏ ‏‮reducing‬‏, ‏‮or‬‏ ‏‮switching‬‏, ‏‮the‬‏ ‏‮number‬‏ ‏‮of‬‏ [‏‮WordPress‬‏ ‏‮plugins‬‏](‏‮https‬‏://‏‮wordpress‬‏.‏‮org‬‏/‏‮plugins‬‏/) ‏‮loading‬‏ ‏‮unused‬‏ ‏‮CSS‬‏ ‏‮in‬‏ ‏‮your‬‏ ‏‮page‬‏. ‏‮To‬‏ ‏‮identify‬‏ ‏‮plugins‬‏ ‏‮that‬‏ ‏‮are‬‏ ‏‮adding‬‏ ‏‮extraneous‬‏ ‏‮CSS‬‏, ‏‮try‬‏ ‏‮running‬‏ [‏‮code‬‏ ‏‮coverage‬‏](‏‮https‬‏://‏‮developers‬‏.‏‮google‬‏.‏‮com‬‏/‏‮web‬‏/‏‮updates‬‏/2017/04/‏‮devtools‬‏-‏‮release‬‏-‏‮notes‬‏#‏‮coverage‬‏) ‏‮in‬‏ ‏‮Chrome‬‏ ‏‮DevTools‬‏. ‏‮You‬‏ ‏‮can‬‏ ‏‮identify‬‏ ‏‮the‬‏ ‏‮theme‬‏/‏‮plugin‬‏ ‏‮responsible‬‏ ‏‮from‬‏ ‏‮the‬‏ ‏‮URL‬‏ ‏‮of‬‏ ‏‮the‬‏ ‏‮stylesheet‬‏. ‏‮Look‬‏ ‏‮out‬‏ ‏‮for‬‏ ‏‮plugins‬‏ ‏‮that‬‏ ‏‮have‬‏ ‏‮many‬‏ ‏‮stylesheets‬‏ ‏‮in‬‏ ‏‮the‬‏ ‏‮list‬‏ ‏‮which‬‏ ‏‮have‬‏ ‏‮a‬‏ ‏‮lot‬‏ ‏‮of‬‏ ‏‮red‬‏ ‏‮in‬‏ ‏‮code‬‏ ‏‮coverage‬‏. ‏‮A‬‏ ‏‮plugin‬‏ ‏‮should‬‏ ‏‮only‬‏ ‏‮enqueue‬‏ ‏‮a‬‏ ‏‮stylesheet‬‏ ‏‮if‬‏ ‏‮it‬‏ ‏‮is‬‏ ‏‮actually‬‏ ‏‮used‬‏ ‏‮on‬‏ ‏‮the‬‏ ‏‮page‬‏."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "‏‮Consider‬‏ ‏‮reducing‬‏, ‏‮or‬‏ ‏‮switching‬‏, ‏‮the‬‏ ‏‮number‬‏ ‏‮of‬‏ [‏‮WordPress‬‏ ‏‮plugins‬‏](‏‮https‬‏://‏‮wordpress‬‏.‏‮org‬‏/‏‮plugins‬‏/) ‏‮loading‬‏ ‏‮unused‬‏ ‏‮JavaScript‬‏ ‏‮in‬‏ ‏‮your‬‏ ‏‮page‬‏. ‏‮To‬‏ ‏‮identify‬‏ ‏‮plugins‬‏ ‏‮that‬‏ ‏‮are‬‏ ‏‮adding‬‏ ‏‮extraneous‬‏ ‏‮JS‬‏, ‏‮try‬‏ ‏‮running‬‏ [‏‮code‬‏ ‏‮coverage‬‏](‏‮https‬‏://‏‮developers‬‏.‏‮google‬‏.‏‮com‬‏/‏‮web‬‏/‏‮updates‬‏/2017/04/‏‮devtools‬‏-‏‮release‬‏-‏‮notes‬‏#‏‮coverage‬‏) ‏‮in‬‏ ‏‮Chrome‬‏ ‏‮DevTools‬‏. ‏‮You‬‏ ‏‮can‬‏ ‏‮identify‬‏ ‏‮the‬‏ ‏‮theme‬‏/‏‮plugin‬‏ ‏‮responsible‬‏ ‏‮from‬‏ ‏‮the‬‏ ‏‮URL‬‏ ‏‮of‬‏ ‏‮the‬‏ ‏‮script‬‏. ‏‮Look‬‏ ‏‮out‬‏ ‏‮for‬‏ ‏‮plugins‬‏ ‏‮that‬‏ ‏‮have‬‏ ‏‮many‬‏ ‏‮scripts‬‏ ‏‮in‬‏ ‏‮the‬‏ ‏‮list‬‏ ‏‮which‬‏ ‏‮have‬‏ ‏‮a‬‏ ‏‮lot‬‏ ‏‮of‬‏ ‏‮red‬‏ ‏‮in‬‏ ‏‮code‬‏ ‏‮coverage‬‏. ‏‮A‬‏ ‏‮plugin‬‏ ‏‮should‬‏ ‏‮only‬‏ ‏‮enqueue‬‏ ‏‮a‬‏ ‏‮script‬‏ ‏‮if‬‏ ‏‮it‬‏ ‏‮is‬‏ ‏‮actually‬‏ ‏‮used‬‏ ‏‮on‬‏ ‏‮the‬‏ ‏‮page‬‏."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "‏‮Read‬‏ ‏‮about‬‏ [‏‮Browser‬‏ ‏‮Caching‬‏ ‏‮in‬‏ ‏‮WordPress‬‏](‏‮https‬‏://‏‮codex‬‏.‏‮wordpress‬‏.‏‮org‬‏/‏‮WordPress‬‏_‏‮Optimization‬‏#‏‮Browser‬‏_‏‮Caching‬‏)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "‏‮Consider‬‏ ‏‮using‬‏ ‏‮an‬‏ [‏‮image‬‏ ‏‮optimization‬‏ ‏‮WordPress‬‏ ‏‮plugin‬‏](‏‮https‬‏://‏‮wordpress‬‏.‏‮org‬‏/‏‮plugins‬‏/‏‮search‬‏/‏‮optimize‬‏+‏‮images‬‏/) ‏‮that‬‏ ‏‮compresses‬‏ ‏‮your‬‏ ‏‮images‬‏ ‏‮while‬‏ ‏‮retaining‬‏ ‏‮quality‬‏."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "‏‮Upload‬‏ ‏‮images‬‏ ‏‮directly‬‏ ‏‮through‬‏ ‏‮the‬‏ [‏‮media‬‏ ‏‮library‬‏](‏‮https‬‏://‏‮codex‬‏.‏‮wordpress‬‏.‏‮org‬‏/‏‮Media‬‏_‏‮Library‬‏_‏‮Screen‬‏) ‏‮to‬‏ ‏‮ensure‬‏ ‏‮that‬‏ ‏‮the‬‏ ‏‮required‬‏ ‏‮image‬‏ ‏‮sizes‬‏ ‏‮are‬‏ ‏‮available‬‏, ‏‮and‬‏ ‏‮then‬‏ ‏‮insert‬‏ ‏‮them‬‏ ‏‮from‬‏ ‏‮the‬‏ ‏‮media‬‏ ‏‮library‬‏ ‏‮or‬‏ ‏‮use‬‏ ‏‮the‬‏ ‏‮image‬‏ ‏‮widget‬‏ ‏‮to‬‏ ‏‮ensure‬‏ ‏‮the‬‏ ‏‮optimal‬‏ ‏‮image‬‏ ‏‮sizes‬‏ ‏‮are‬‏ ‏‮used‬‏ (‏‮including‬‏ ‏‮those‬‏ ‏‮for‬‏ ‏‮the‬‏ ‏‮responsive‬‏ ‏‮breakpoints‬‏). ‏‮Avoid‬‏ ‏‮using‬‏ `‏‮Full‬‏ ‏‮Size‬‏` ‏‮images‬‏ ‏‮unless‬‏ ‏‮the‬‏ ‏‮dimensions‬‏ ‏‮are‬‏ ‏‮adequate‬‏ ‏‮for‬‏ ‏‮their‬‏ ‏‮usage‬‏. [‏‮Learn‬‏ ‏‮More‬‏](‏‮https‬‏://‏‮codex‬‏.‏‮wordpress‬‏.‏‮org‬‏/‏‮Inserting‬‏_‏‮Images‬‏_‏‮into‬‏_‏‮Posts‬‏_‏‮and‬‏_‏‮Pages‬‏#‏‮Image‬‏_‏‮Size‬‏)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "‏‮You‬‏ ‏‮can‬‏ ‏‮enable‬‏ ‏‮text‬‏ ‏‮compression‬‏ ‏‮in‬‏ ‏‮your‬‏ ‏‮web‬‏ ‏‮server‬‏ ‏‮configuration‬‏."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "‏‮Consider‬‏ ‏‮using‬‏ ‏‮a‬‏ [‏‮plugin‬‏](‏‮https‬‏://‏‮wordpress‬‏.‏‮org‬‏/‏‮plugins‬‏/‏‮search‬‏/‏‮convert‬‏+‏‮webp‬‏/) ‏‮or‬‏ ‏‮service‬‏ ‏‮that‬‏ ‏‮will‬‏ ‏‮automatically‬‏ ‏‮convert‬‏ ‏‮your‬‏ ‏‮uploaded‬‏ ‏‮images‬‏ ‏‮to‬‏ ‏‮the‬‏ ‏‮optimal‬‏ ‏‮formats‬‏."
   }
 }

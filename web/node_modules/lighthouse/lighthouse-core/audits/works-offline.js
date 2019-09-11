@@ -5,8 +5,8 @@
  */
 'use strict';
 
-const URL = require('../lib/url-shim');
-const Audit = require('./audit');
+const URL = require('../lib/url-shim.js');
+const Audit = require('./audit.js');
 
 class WorksOffline extends Audit {
   /**
@@ -39,7 +39,7 @@ class WorksOffline extends Audit {
     }
 
     return {
-      rawValue: passed,
+      score: Number(passed),
       warnings,
     };
   }

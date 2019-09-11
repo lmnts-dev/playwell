@@ -102,7 +102,7 @@ setTimeout(() => {
 
   <!-- PASS(optimized): image is JPEG optimized -->
   <!-- PASS(webp): image is WebP optimized -->
-  <!-- PASSWARN(responsive): image is 25% used at DPR 2 (but small savings) -->
+  <!-- FAIL(responsive): image is 25% used at DPR 2 (but small savings) -->
   <!-- FAIL(offscreen): image is offscreen -->
   <img style="margin-top: 1000px; width: 120px; height: 80px;" src="lighthouse-480x320.webp">
 
@@ -130,20 +130,21 @@ setTimeout(() => {
   <!-- PASS(offscreen): image is onscreen -->
   <img class="onscreen" src="lighthouse-320x212-poor.jpg?duplicate">
 
-  <!-- PASS(optimized): image is WebP -->
-  <!-- PASS(webp): image is WebP optimized -->
-  <!-- FAIL(responsive): image is used at 1/16 size -->
+  <!-- PASS(optimized): image is JPEG optimized -->
+  <!-- FAIL(webp): image is not WebP optimized -->
+  <!-- PASS(responsive): image is in CSS -->
   <!-- PASS(offscreen): image is onscreen -->
-  <div class="onscreen" style="width: 120px; height: 80px; background: 50% 50% url(lighthouse-480x320.webp?css);"></div>
+  <div class="onscreen" style="width: 120px; height: 80px; background: 50% 50% url(lighthouse-480x320.jpg?css);"></div>
 
   <!-- PASS(optimized): image is JPEG optimized -->
   <!-- FAIL(webp): image is not WebP optimized -->
-  <!-- PASS(responsive): image is used numerous times in sprite-fashion -->
+  <!-- PASS(responsive): image is in CSS -->
   <!-- PASS(offscreen): image is onscreen -->
   <div class="onscreen" style="width: 30px; height: 30px; background: 0% 50% url(lighthouse-480x320.jpg?sprite);"></div>
   <div class="onscreen" style="width: 30px; height: 30px; background: 25% 50% url(lighthouse-480x320.jpg?sprite);"></div>
   <div class="onscreen" style="width: 30px; height: 30px; background: 50% 50% url(lighthouse-480x320.jpg?sprite);"></div>
   <div class="onscreen" style="width: 30px; height: 30px; background: 75% 50% url(lighthouse-480x320.jpg?sprite);"></div>
+  <p style="background: blue;">Add some text here so axe will scroll to the bottom</p>
 </div>
 
 <template id="lazily-loaded-image">

@@ -447,10 +447,10 @@
     "message": "Vērtība"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Pārlūka inženieri iesaka, lai lapā nebūtu vairāk par 1500 DOM mezgliem. Ieteicams, lai koka dziļums nepārsniegtu 32 elementus un 60 bērnelementus/vecākelementus. Liels DOM var palielināt atmiņas lietojumu, izraisīt ilgākus [stila aprēķinus](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) un radīt dārgu [izkārtojuma plūduma sakārtošanu](https://developers.google.com/speed/articles/reflow). [Uzzināt vairāk](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Pārlūkprogrammas inženieri iesaka, lai lapā nebūtu vairāk par 1500 DOM elementiem. Ieteicams, lai koka dziļums nepārsniegtu 32 elementus un 60 bērnelementus/vecākelementus. Liels DOM elements var palielināt atmiņas lietojumu, izraisīt ilgākus [stila aprēķinus](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) un radīt dārgu [izkārtojuma plūduma sakārtošanu](https://developers.google.com/speed/articles/reflow). [Uzziniet vairāk](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 mezgls}zero{# mezglu}one{# mezgls}other{# mezgli}}"
+    "message": "{itemCount,plural, =1{1 elements}zero{# elementu}one{# elements}other{# elementi}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Pārāk lielu DOM izmēru nepieļaušana"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Maksimālais DOM dziļums"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "DOM mezglu kopskaits"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "DOM elementu kopskaits"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Maksimālais pakārtoto elementu skaits"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "MPO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Formatējiet savu HTML tā, lai rāpuļprogrammas varētu labāk saprast jūsu lietotnes saturu."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Satura paraugprakse"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Rāpuļprogrammām ir nepieciešama piekļuve jūsu lietotnei, lai nodrošinātu parādīšanu meklēšanas rezultātos."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Pārmeklēšana un indeksēšana"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Jūsu lapām ir jābūt piemērotām mobilajām ierīcēm, lai lietotājiem nebūtu jāizmanto savilkšana vai tuvināšana lapu satura lasīšanai. [Uzziniet vairāk](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Piemērota mobilajām ierīcēm"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Kešatmiņas TTL vērtība"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Nevarēja reģistrēt lapas ielādes trasējumu. Lūdzu, vēlreiz palaidiet Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Gaidot sākotnējā atkļūdotāja protokola savienojumu, radās noildze."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Ielādējot lapu, Chrome neieguva ekrānuzņēmumus. Pārliecinieties, ka lapā ir redzams saturs, un pēc tam atkārtoti palaidiet Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Izpildītās pārbaudes"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Rādītāja mērogs:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Sakļaut fragmentu"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Brīdinājumi: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Apsveriet iespēju augšupielādēt GIF attēlu pakalpojumā, kuru varēs izmantot, lai iegultu GIF attēlu kā HTML5 videoklipu."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Instalējiet [atliktās ielādes WordPress spraudni](https://wordpress.org/plugins/search/lazy+load/), kas sniedz iespēju atlikt jebkādus ārpus ekrāna esošus attēlus vai mainīt motīvu uz tādu, kurā šī funkcija tiek nodrošināta. Apsveriet arī iespēju izmantot [AMP spraudni](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Ir vairāki WordPress spraudņi, kas var palīdzēt [iekļaut būtiskus līdzekļus](https://wordpress.org/plugins/search/critical+css/) vai [atlikt mazāk svarīgus resursus](https://wordpress.org/plugins/search/defer+css+javascript/). Ņemiet vērā, ka šo spraudņu nodrošinātā optimizācija var traucēt funkciju darbībai jūsu motīvā vai spraudņos, tādēļ, visticamāk, jums būs jāveic koda izmaiņas."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Motīvi, spraudņi un servera specifikācijas ietekmē servera atbildes laiku. Apsveriet iespēju atrast optimizētāku motīvu, rūpīgi izvēlēties optimizācijas spraudni un/vai jaunināt serveri."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Apsveriet iespēju rādīt fragmentus ziņu sarakstos (piemēram, izmantojot tagu “more”), samazināt attiecīgajā lapā rādāmo ziņu skaitu, sadalīt garas ziņas vairākās lapās vai izmantot spraudni, lai atliktu komentāru ielādi."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Vairāki [WordPress spraudņi](https://wordpress.org/plugins/search/minify+css/) var paātrināt jūsu vietnes darbību, savienojot, samazinot un saspiežot stilus. Ja iespējams, varat arī veikt šo samazināšanu iepriekš izveides procesā."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Vairāki [WordPress spraudņi](https://wordpress.org/plugins/search/minify+javascript/) var paātrināt jūsu vietnes darbību, savienojot, samazinot un saspiežot jūsu skriptus. Ja iespējams, varat veikt šo samazināšanu jau iepriekš izveides procesā."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Apsveriet iespēju samazināt vai mainīt to [WordPress spraudņu] skaitu (https://wordpress.org/plugins/), kuri ielādē neizmantotus CSS datus jūsu lapā. Lai identificētu spraudņus, kas pievieno liekus CSS datus, mēģiniet izpildīt [koda pārklājumu](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage), izmantojot Chrome DevTools. Saistīto motīvu/spraudni varat identificēt stila lapas vietrādī URL. Meklējiet spraudņus, kuriem sarakstā ir daudz stila lapu ar daudz sarkanām atzīmēm koda pārklājumā. Spraudnim ir jāievieto rindā stilu lapa tikai tad, ja tā faktiski tiek izmantota lapā."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Apsveriet iespēju samazināt vai mainīt tādu [WordPress spraudņu] skaitu, (https://wordpress.org/plugins/) kuri ielādē nelietotu JavaScript kodu jūsu lapā. Lai identificētu spraudņus, kuri pievieno lieku JS kodu, mēģiniet izpildīt [koda pārklājumu](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage), izmantojot Chrome DevTools. Saistīto motīvu/spraudni varat identificēt skripta vietrādī URL. Meklējiet spraudņus, kuriem sarakstā ir daudz skriptu ar daudz sarkanām atzīmēm koda pārklājumā. Spraudnim ir jāievieto rindā skripts tikai tad, ja tas faktiski tiek izmantots lapā."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Uzziniet par [pārlūkprogrammas datu saglabāšanu kešatmiņā programmatūrā WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Apsveriet iespēju izmantot [attēlu optimizācijas WordPress spraudni](https://wordpress.org/plugins/search/optimize+images/), kas saspiež attēlus, vienlaikus saglabājot kvalitāti."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Augšupielādējiet attēlus tieši, izmantojot [multivides bibliotēku](https://codex.wordpress.org/Media_Library_Screen), lai nodrošinātu nepieciešamo attēlu lielumu pieejamību, un pēc tam ievietojiet attēlus no multivides bibliotēkas vai izmantojiet attēlu logrīku, lai nodrošinātu, ka tiek izmantoti optimāli attēlu lielumi (tostarp reaģējošām robežvērtībām paredzētie). Neizmantojiet pilna izmēra attēlus, ja to izmēri neatbilst to lietojumam. [Uzziniet vairāk](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Varat iespējot teksta saspiešanu tīmekļa servera konfigurācijā."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Apsveriet iespēju izmantot [spraudni](https://wordpress.org/plugins/search/convert+webp/) vai pakalpojumu, kurā jūsu augšupielādētie attēli tiks automātiski pārveidoti optimālos formātos."
   }
 }

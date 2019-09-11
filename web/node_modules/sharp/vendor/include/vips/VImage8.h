@@ -34,7 +34,7 @@
 #include <complex>
 #include <vector>
 
-#include <string.h>
+#include <cstring>
 
 #include <vips/vips.h>
 
@@ -160,6 +160,11 @@ public:
 		return( vobject ); 
 	}
 
+	bool is_null() const
+	{
+		return vobject == 0;
+	}
+
 };
 
 class VIPS_CPLUSPLUS_API VImage;
@@ -237,6 +242,8 @@ public:
 class VImage : VObject
 {
 public:
+	using VObject::is_null;
+
 	VImage( VipsImage *image, VSteal steal = STEAL ) : 
 		VObject( (VipsObject *) image, steal )
 	{
@@ -320,6 +327,12 @@ public:
 		return( vips_image_get_yoffset( get_image() ) ); 
 	}
 
+	bool
+	has_alpha() const
+	{
+		return( vips_image_hasalpha( get_image() ) );
+	}
+
 	const char *
 	filename() const
 	{
@@ -400,13 +413,19 @@ public:
 	const void *
 	get_blob( const char *field, size_t *length ) const
 	{
-		void *value; 
+		const void *value; 
 
 		if( vips_image_get_blob( this->get_image(), field, 
 			&value, length ) )
 			throw( VError() ); 
 
 		return( value ); 
+	}
+
+	bool
+	remove( const char *name ) const
+	{
+		return( vips_image_remove( get_image(), name ) );
 	}
 
 	static VOption *
@@ -451,7 +470,10 @@ public:
 		return( VImage( image ) ); 
 	}
 
-	static VImage new_from_buffer( void *buf, size_t len,
+	static VImage new_from_buffer( const void *buf, size_t len,
+		const char *option_string, VOption *options = 0 );
+
+	static VImage new_from_buffer( const std::string &buf,
 		const char *option_string, VOption *options = 0 );
 
 	static VImage new_matrix( int width, int height );
@@ -486,6 +508,17 @@ public:
 	new_from_image( double pixel ) const
 	{
 		return( new_from_image( to_vectorv( 1, pixel ) ) ); 
+	}
+
+	VImage 
+	copy_memory() const
+	{
+		VipsImage *image;
+
+		if( !(image = vips_image_copy_memory( this->get_image() )) )
+			throw( VError() );
+
+		return( VImage( image ) );
 	}
 
 	VImage write( VImage out ) const;
@@ -619,6 +652,24 @@ public:
 	rint( VOption *options = 0 ) const
 	{
 		return( round( VIPS_OPERATION_ROUND_RINT, options ) ); 
+	}
+
+	VImage 
+	bandand( VOption *options = 0 ) const
+	{
+		return( bandbool( VIPS_OPERATION_BOOLEAN_AND, options ) ); 
+	}
+
+	VImage 
+	bandor( VOption *options = 0 ) const
+	{
+		return( bandbool( VIPS_OPERATION_BOOLEAN_OR, options ) ); 
+	}
+
+	VImage 
+	bandeor( VOption *options = 0 ) const
+	{
+		return( bandbool( VIPS_OPERATION_BOOLEAN_EOR, options ) ); 
 	}
 
 	VImage 

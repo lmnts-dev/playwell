@@ -14,12 +14,12 @@ else
   url="https://download-chromium.appspot.com/dl/Linux_x64?type=snapshots"
 fi
 
-if [ x"$LIGHTHOUSE_CHROMIUM_PATH" == x ]; then
-  echo "Error: Environment variable LIGHTHOUSE_CHROMIUM_PATH not set"
+if [ x"$CHROME_PATH" == x ]; then
+  echo "Error: Environment variable CHROME_PATH not set"
   exit 1
 fi
 
-if [ -e "$LIGHTHOUSE_CHROMIUM_PATH" ]; then
+if [ -e "$CHROME_PATH" ]; then
   echo "cached chrome found"
 else
   wget "$url" --no-check-certificate -q -O chrome.zip && unzip -q chrome.zip

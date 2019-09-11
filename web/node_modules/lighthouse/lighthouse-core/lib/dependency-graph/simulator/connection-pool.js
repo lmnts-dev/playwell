@@ -5,8 +5,8 @@
  */
 'use strict';
 
-const NetworkAnalyzer = require('./network-analyzer');
-const TcpConnection = require('./tcp-connection');
+const NetworkAnalyzer = require('./network-analyzer.js');
+const TcpConnection = require('./tcp-connection.js');
 
 const DEFAULT_SERVER_RESPONSE_TIME = 30;
 const TLS_SCHEMES = ['https', 'wss'];

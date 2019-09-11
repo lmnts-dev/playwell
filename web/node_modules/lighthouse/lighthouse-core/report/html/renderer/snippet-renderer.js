@@ -69,7 +69,7 @@ function getMessagesForLineNumber(messages, lineNumber) {
 
 /**
  * @param {LH.Audit.Details.SnippetValue} details
- * @returns {LH.Audit.Details.SnippetValue['lines']}
+ * @return {LH.Audit.Details.SnippetValue['lines']}
  */
 function getLinesWhenCollapsed(details) {
   const SURROUNDING_LINES_TO_SHOW_WHEN_COLLAPSED = 2;
@@ -230,7 +230,7 @@ class SnippetRenderer {
    * @param {DOM} dom
    * @param {DocumentFragment} tmpl
    * @param {LH.Audit.Details.SnippetValue} details
-   * @returns {DocumentFragment}
+   * @return {DocumentFragment}
    */
   static renderSnippetLines(dom, tmpl, details) {
     const {lineMessages, generalMessages, lineCount, lines} = details;

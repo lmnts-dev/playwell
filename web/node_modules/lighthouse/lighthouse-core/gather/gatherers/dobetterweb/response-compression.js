@@ -10,10 +10,10 @@
   */
 'use strict';
 
-const Gatherer = require('../gatherer');
-const URL = require('../../../lib/url-shim');
-const Sentry = require('../../../lib/sentry');
-const NetworkRequest = require('../../../lib/network-request');
+const Gatherer = require('../gatherer.js');
+const URL = require('../../../lib/url-shim.js');
+const Sentry = require('../../../lib/sentry.js');
+const NetworkRequest = require('../../../lib/network-request.js');
 const gzip = require('zlib').gzip;
 
 const CHROME_EXTENSION_PROTOCOL = 'chrome-extension:';
