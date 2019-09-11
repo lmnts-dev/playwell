@@ -29,7 +29,6 @@ const HomePage = props => (
         color: props => props.Theme.Color.Text,
       }}
     >
-      <ImgMatch src="brandmark.png" AltText="brandmark" />
     </main>
   </Layout>
 );
