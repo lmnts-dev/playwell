@@ -28,8 +28,7 @@ const HomePage = props => (
         flex: '1',
         color: props => props.Theme.Color.Text,
       }}
-    >
-    </main>
+    ></main>
   </Layout>
 );
 

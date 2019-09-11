@@ -14,6 +14,7 @@ import HeroContainer from 'components/library/Hero/HeroContainer';
 import Btn from 'components/library/Btn';
 import { Icon } from 'components/library/Icons';
 import ImgQuery from 'components/core/ImgQuery';
+import { CategoryMetaMatch } from 'components/library/CategoryMetaMatch';
 
 // Styles
 import {
@@ -38,20 +39,26 @@ import Carat from './assets/arrow--left.svg';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-// Props
-const HeroProps = {
-  bg: 'Sky',
-  color: 'White',
-  textAlign: 'center',
-};
-
 // Render Page
 const Course = ({ pageContext }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const categoryMeta = CategoryMetaMatch(pageContext.category_group_name);
+
+  console.log(pageContext);
+  console.log('CategoryMetaMatch:');
+  console.log(categoryMeta);
 
   return (
-    <Layout>
-      <HeroContainer {...HeroProps}>
+    <Layout
+      BgColor={categoryMeta.theme.bgColor}
+      PrimaryColor={categoryMeta.theme.primaryColor}
+      SecondaryColor={categoryMeta.theme.secondaryColor}
+      TertiaryColor={categoryMeta.theme.tertiaryColor}
+    >
+      <HeroContainer
+        bg={categoryMeta.theme.bgColor}
+        color={categoryMeta.theme.primaryColor}
+      >
         <Flex
           as="article"
           flexDirection="column"
@@ -63,7 +70,7 @@ const Course = ({ pageContext }) => {
           px={[1, 1, 0]}
         >
           <Hero.Avatar>
-            <ImgQuery src={CalloutBg} AltText="Avatar" />
+            {/* <ImgQuery src={CalloutBg} AltText="Avatar" /> */}
           </Hero.Avatar>
           <Hero.Tags as="ul">
             <li>{pageContext.category_group_name}</li>
@@ -258,7 +265,7 @@ const Course = ({ pageContext }) => {
         </Box>
       </Section>
 
-      <CourseFooter as="section" bg="Sky" px={1} pt={8} pb={1}>
+      <CourseFooter as="section" bg={categoryMeta.theme.bgColor} px={1} pt={8} pb={1}>
         <CourseFooter.Course as="article" m="0 auto">
           <Text as="span" fontSize={4}>
             Let's play!

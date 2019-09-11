@@ -36,7 +36,8 @@ export const CourseCardStyle = styled.div`
       background: ${hexToRGB(Theme.Color.Black, 0.02)};
     }
 
-    &:focus, &:active {
+    &:focus,
+    &:active {
       background: ${hexToRGB(Theme.Color.Black, 0.04)};
     }
   }
