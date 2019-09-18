@@ -47,10 +47,10 @@ export const wrapRootElement = ({ element }) => {
 //   return false;
 // };
 
-export const shouldUpdateScroll = () => false;
+// export const shouldUpdateScroll = () => false;
 
-export const onRouteUpdate = () =>
-  window.setTimeout(() => window.scrollTo(0, 0), transitionDelay);
+// export const onRouteUpdate = () =>
+//   window.setTimeout(() => window.scrollTo(0, 0), transitionDelay);
 
 // Page Transitions
 export const wrapPageElement = WrapPageElementWithTransition;

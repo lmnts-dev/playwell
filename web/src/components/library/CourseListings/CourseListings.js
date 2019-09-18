@@ -29,7 +29,7 @@ const ListingsResults = ({ courseData }) => {
   return (
     <ListingsResultsStyle>
       {courseData.allPlayWellClient.edges.map((client, idx) => {
-        if (idx < 20) {
+        if (idx < 50) {
           return <ClientCard idx={idx} clientData={client} />;
         }
       })}
@@ -50,8 +50,10 @@ const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
 export const CourseListings = ({ courseData, mapWidth, mapZedIndex }) => {
   return (
     <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-      <ListingsFilters courseData={courseData} />
-      <ListingsCounters courseData={courseData} />
+      <CourseListingsStyle.Toolbar>
+        <ListingsFilters courseData={courseData} />
+        <ListingsCounters courseData={courseData} />
+      </CourseListingsStyle.Toolbar>
       <ListingsResults courseData={courseData} />
     </ListingsWrapper>
   );

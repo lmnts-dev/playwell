@@ -27,13 +27,16 @@ export class ClientCard extends PureComponent {
   constructor(props) {
     super(props);
 
+    // Initial State
     this.state = {
       cardExpanded: false,
     };
 
+    // Bind expanding function
     this.toggleCard = this.toggleCard.bind(this);
   }
 
+  // Mounted State
   componentDidMount() {
     this.state = {
       cardExpanded: false,
@@ -65,8 +68,29 @@ export class ClientCard extends PureComponent {
         key={this.props.idx}
       >
         <ClientCardStyle.ClientName cardExpanded={this.state.cardExpanded}>
-          <span>{clientData.node.client_location_name}</span>
-          <Icon Name="carat" />
+          <div class="client-name">{clientData.node.client_location_name}</div>
+
+          <div class="client-counts">
+            <ClientCardStyle.CourseCount
+              bgColor={Theme.Color.Ocean}
+              textColor={Theme.Color.White}
+            >
+              5
+            </ClientCardStyle.CourseCount>
+            <ClientCardStyle.CourseCount
+              bgColor={Theme.Color.Nova}
+              textColor={Theme.Color.White}
+            >
+              5
+            </ClientCardStyle.CourseCount>
+            <ClientCardStyle.CourseCount
+              bgColor={Theme.Color.Galaxy}
+              textColor={Theme.Color.White}
+            >
+              5
+            </ClientCardStyle.CourseCount>
+            <Icon Name="carat" />
+          </div>
         </ClientCardStyle.ClientName>
         {clientData.node.courses.map((course, idx) => {
           return (

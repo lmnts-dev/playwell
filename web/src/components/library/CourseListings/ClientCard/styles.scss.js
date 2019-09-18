@@ -59,6 +59,26 @@ ClientCardStyle.ClientName = styled.span`
     transform: ${props =>
       props.cardExpanded == true ? 'rotate(90deg)' : 'rotate(0deg)'};
   }
+
+  .client-counts {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+ClientCardStyle.CourseCount = styled.span`
+  height: calc(${Root.Size} / 2);
+  width: calc(${Root.Size} / 2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  padding-top: 6px;
+  justify-content: center;
+  font-weight: bold;
+  background: ${props => (props.bgColor ? props.bgColor : Theme.Color.Slate)};
+  color: ${props => (props.textColor ? props.textColor : Theme.Color.White)};
+  margin-right: calc(${Root.Size} / 3);
 `;
 
 //////////////////////////////////////////////////////////////////////

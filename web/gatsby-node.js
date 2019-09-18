@@ -37,6 +37,20 @@ exports.onCreateWebpackConfig = ({
       plugins: [new DirectoryNamedWebpackPlugin()],
     },
   });
+
+  // Fix MapBoxGL Build Error
+  if (stage === 'build-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /mapbox-gl/,
+            use: ['null-loader'],
+          },
+        ],
+      },
+    });
+  }
 };
 
 // Implement the Gatsby API “createPages”. This is

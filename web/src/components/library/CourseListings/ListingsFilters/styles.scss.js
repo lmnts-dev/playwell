@@ -28,9 +28,9 @@ export const ListingsFiltersStyle = styled.div`
   width: 100%;
   height: ${Root.Size};
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  border-bottom: 1px solid ${Theme.Color.Gray};
+  /* border-bottom: 1px solid ${Theme.Color.Gray}; */
 
   ul {
     flex: 1;
@@ -42,17 +42,37 @@ export const ListingsFiltersStyle = styled.div`
 
 ListingsFiltersStyle.Item = styled.button`
   position: relative;
-  border-radius: 999px;
   color: ${Theme.Color.Slate};
-  /* max-width: calc(${Root.Size} * 4); */
-  height: calc(${Root.Button.Size} * 1.2);
   border: 0;
   outline: 0;
   font-weight: bold;
   text-align: center;
+  justify-content: center;
   display: flex;
-  margin-right: calc(${Root.Size} / 4);
+  flex: 1;
   cursor: pointer;
+
+  &:first-child {
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: ${Theme.Color.Blush};
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 10px;
+    bottom: 10px;
+    width: 1px;
+    background: ${Theme.Color.Blush};
+  }
 
   .ico {
     color: ${Theme.Color.Slate};
@@ -66,10 +86,10 @@ ListingsFiltersStyle.Item = styled.button`
 
   &:hover {
     color: ${Theme.Color.Warmsky};
-    background-color: ${Theme.Color.Blush};
+    background-color: ${Theme.Color.Cream};
 
     .list {
-      transform: translate(-50%, 0%);
+      transform: translate(0%, 0%);
       opacity: 1;
       visiblity: visible;
       pointer-events: all;
@@ -82,7 +102,9 @@ ListingsFiltersStyle.Item = styled.button`
 
   .filter-inner {
     display: flex;
+    flex: 1;
     align-items: center;
+    justify-content: space-between;
     position: relative;
     top: 4px;
     width: 100%;
@@ -93,12 +115,13 @@ ListingsFiltersStyle.Item = styled.button`
 
 ListingsFiltersStyle.FilterList = styled.div`
   position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, 20%);
+  top: 99%;
+  left: 0;
+  right: 0;
+  transform: translate(0, 20%);
   background: ${Theme.Color.White};
   box-shadow: 0 12px 44px 0 ${hexToRGB(Theme.Color.Galaxy, 0.11)};
-  border-radius: ${Root.Radius};
+  border-radius: 0 0 ${Root.Radius} ${Root.Radius};
   z-index: 20;
   overflow: hidden;
   transition: ${Theme.Base.Transition.String};
@@ -109,7 +132,7 @@ ListingsFiltersStyle.FilterList = styled.div`
   ul {
     display: flex;
     flex-direction: column;
-    width: calc(${Root.Size} * 4);
+    width: 100%;
 
     li {
       display: flex;

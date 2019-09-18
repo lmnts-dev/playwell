@@ -46,6 +46,14 @@ export const CourseListingsStyle = styled.section`
   }
 `;
 
+// Toolbar
+CourseListingsStyle.Toolbar = styled.div`
+  position: sticky;
+  top: ${Root.Nav.Size};
+  background: ${Theme.Color.White};
+  z-index: 500;
+`;
+
 // Results
 
 export const ListingsResultsStyle = styled.div`

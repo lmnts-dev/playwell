@@ -1,5 +1,6 @@
 // Course Map Nav Component:
-// This is component to browse courses on the Programs page.
+// This is component to browse courses on the Programs page. It exports latitude and
+// longitude coordinates.
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -7,6 +8,7 @@
 // Core
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
+import mapboxgl from 'mapbox-gl';
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -21,6 +23,9 @@ import { CourseMapNavStyle, ToggleMapBtnStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+mapboxgl.accessToken =
+  'pk.eyJ1IjoicGV0ZXJsYXhhbHQiLCJhIjoiY2p6cTExcmw5MHZpNTNubW1wc25veXJseiJ9.3nFjkPOZM2kbHYQCdkqU7g';
+
 const ToggleMapBtn = () => {
   return (
     <ToggleMapBtnStyle>
@@ -30,20 +35,73 @@ const ToggleMapBtn = () => {
   );
 };
 
-export const CourseMapNav = ({ mapWidth, mapZedIndex }) => {
-  return (
-    <CourseMapNavStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-      <div class="inner">
-        <div class="map-col">
-          <div class="map-container">
-            <ToggleMapBtn />
-            <div class="map-container-inner">Map Nav</div>
+export class CourseMapNav extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    // Initial State
+    this.state = {
+      lng: 5,
+      lat: 34,
+      zoom: 1.5,
+    };
+  }
+
+  // Initialiize Our Map
+  componentDidMount() {
+    const { lng, lat, zoom } = this.state;
+
+    const map = new mapboxgl.Map({
+      container: this.mapContainer,
+      style: 'mapbox://styles/mapbox/streets-v9',
+      center: [lng, lat],
+      zoom,
+    });
+
+    map.on('move', () => {
+      const { lng, lat } = map.getCenter();
+
+      this.setState({
+        lng: lng.toFixed(4),
+        lat: lat.toFixed(4),
+        zoom: map.getZoom().toFixed(2),
+      });
+    });
+  }
+
+  render() {
+    const mapWidth = this.props.mapWidth;
+    const mapZedIndex = this.props.mapZedIndex;
+    const { lng, lat, zoom } = this.state;
+    console.log("lat: " + lat);
+    console.log("lng: " + lng);
+    console.log("zoom: " + zoom);
+
+    return (
+      <CourseMapNavStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
+        <div class="inner">
+          <div class="map-col">
+            <div class="map-container">
+              <ToggleMapBtn />
+              <div class="map-container-inner">
+                <div
+                  ref={el => (this.mapContainer = el)}
+                  style={{
+                    position: 'absolute',
+                    left: '0',
+                    right: '0',
+                    bottom: '0',
+                    top: '0',
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </CourseMapNavStyle>
-  );
-};
+      </CourseMapNavStyle>
+    );
+  }
+}
 
 //////////////////////////////////////////////////////////////////////
 // End Component

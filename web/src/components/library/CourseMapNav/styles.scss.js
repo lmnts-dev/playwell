@@ -44,26 +44,39 @@ export const CourseMapNavStyle = styled.div`
 
     .map-col {
       display: flex;
-      flex-diirection: column;
+      flex-direction: column;
       padding-top: calc(${props => Root.Nav.Size} + ${props => Root.Size} * 1);
       width: ${props => (props.mapWidth ? props.mapWidth : '350px')};
 
       .map-container {
         position: relative;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: stretch;
+        justify-content: stretch;
         box-shadow: 0 12px 44px 0 ${hexToRGB(Theme.Color.Galaxy, 0.11)};
         background: ${Theme.Color.Sky};
         overflow: hidden;
         color: white;
         font-weight: bold;
         border-radius: 5px;
-        cursor: grab;
         height: calc(
           100% - (${props => Root.Nav.Size} + ${props => Root.Size} * 1)
         );
         width: 100%;
+      }
+
+      .map-container-inner {
+        display: flex;
+        flex: 1;
+        position: relative;
+
+        .map {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+        }
       }
     }
   }
@@ -87,6 +100,7 @@ export const ToggleMapBtnStyle = styled.button`
   cursor: pointer;
   outline: 0;
   border: 0;
+  z-index: 800;
   box-shadow: 0px 0px 0px 0px rgba(${Theme.Color.Nightysky}, 0);
   transition: all 0s ease;
 
