@@ -1,5 +1,5 @@
-// HeroContainer Component:
-// Outer Hero containment/wrapper
+// Section Component:
+// Section grid container
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -14,28 +14,46 @@ import { Container } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const HeroContainer = ({ bg, color, px, children, textAlign, FullWidth }) => (
+const Section = ({
+  alpha,
+  bg,
+  bgImage,
+  bgOverlay,
+  color,
+  fullWidth,
+  children,
+  pt,
+  pb,
+  textAlign,
+}) => (
   <Container
     as="section"
     flexWrap="wrap"
     justifyContent="center"
     alignItems="center"
     bg={bg}
-    px={px}
     color={color}
+    pt={pt}
+    pb={pb}
+    bgImage={bgImage}
     textAlign={textAlign}
+    fullWidth={fullWidth}
   >
+    {alpha && <Container.Overlay bg={bgOverlay} alpha={alpha} />}
     <Container.Inner>{children}</Container.Inner>
   </Container>
 );
 
-HeroContainer.defaultProps = {
-  bg: 'Sky',
-  color: 'White',
-  px: 1,
+Section.defaultProps = {
+  bg: 'Background',
+  color: 'Text',
+  pt: [4, 4, 8, 8],
+  pb: [4, 4, 8, 8],
+  fullWidth: false,
+  textAlign: 'center',
 };
 
-export default HeroContainer;
+export default Section;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

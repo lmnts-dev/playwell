@@ -104,6 +104,7 @@ export const RootVariables = createGlobalStyle`
 
         /* --------- Site Grid */
         --SiteWidth: ${Theme.Base.Grid.SiteWidth};
+        --ReadingWidth: ${Theme.Base.Grid.ReadingWidth};
         --NavSize: ${Theme.Base.Grid.Nav.Size.Sm};
         --FooterSize: ${Theme.Base.Grid.Footer.Size.Sm};
 

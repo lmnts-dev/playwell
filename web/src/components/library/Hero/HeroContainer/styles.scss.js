@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { Base } from 'constants/styles/Base';
 
 // Components
+import { Theme, Root } from 'constants/Theme';
 import { Box, Flex } from 'components/library/Elements';
 
 // Begin Styles
@@ -22,21 +23,15 @@ export const Container = styled(Flex)`
 `;
 
 Container.Inner = styled.div`
-  max-width: ${props => props.theme.Root.Site.Width};
   width: 100%;
+  max-width: ${props => (props.FullWidth ? '100%' : Theme.Base.Grid.SiteWidth)};
   margin: 0 auto;
   position: relative;
-  padding-top: calc(
-    ${props => props.theme.Root.Nav.Size} + ${props => props.theme.Root.Size} *
-      4
-  );
+  padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 4);
   padding-bottom: calc(${props => props.theme.Root.Size} * 1);
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-    padding-top: calc(
-      ${props => props.theme.Root.Nav.Size} + ${props => props.theme.Root.Size} *
-        2
-    );
+    padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 2);
   }
 `;
 
