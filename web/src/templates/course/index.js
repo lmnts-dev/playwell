@@ -265,7 +265,13 @@ const Course = ({ pageContext }) => {
         </Box>
       </Section>
 
-      <CourseFooter as="section" bg={categoryMeta.theme.bgColor} px={1} pt={8} pb={1}>
+      <CourseFooter
+        as="section"
+        bg={categoryMeta.theme.bgColor}
+        px={1}
+        pt={8}
+        pb={1}
+      >
         <CourseFooter.Course as="article" m="0 auto">
           <Text as="span" fontSize={4}>
             Let's play!

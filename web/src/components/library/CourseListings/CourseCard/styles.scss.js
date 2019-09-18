@@ -32,13 +32,33 @@ export const CourseCardStyle = styled.div`
     padding: ${cardPaddingY} 0 ${cardPaddingY} calc(${Root.Size} / 1);
     /* border-radius: 5px; */
 
+    &:before {
+      content: '';
+      position: absolute;
+      left: calc((${Root.Size} / 6) * -1);
+      right: calc((${Root.Size} / 6) * -1);
+      top: calc(${Root.Size} / 6);
+      bottom: calc(${Root.Size} / 6);
+      border-radius: 4px;
+      background: ${hexToRGB(Theme.Color.Ocean, 0.07)};
+      transform: scale(0.95);
+      transition: all 0.25s ease;
+      border: 1px solid ${hexToRGB(Theme.Color.Ocean, 0.08)};
+      opacity: 0;
+    }
+
     &:hover {
-      background: ${hexToRGB(Theme.Color.Black, 0.02)};
+      &:before {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     &:focus,
     &:active {
-      background: ${hexToRGB(Theme.Color.Black, 0.04)};
+      &:before {
+        background: ${hexToRGB(Theme.Color.Ocean, 0.18)};
+      }
     }
   }
 `;
@@ -51,10 +71,69 @@ CourseCardStyle.Title = styled.span`
 `;
 
 CourseCardStyle.Details = styled.span`
-  display: flex;
-  font-weight: 500;
-  font-size: 1.5rem;
-  color: ${Theme.Color.Tan};
+  .details-major {
+    width: 100%;
+    display: flex;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: ${Theme.Color.Tan};
+
+    span {
+      margin-right: calc(${Root.Size} / 2);
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        right: calc(((${Root.Size} / 2) / 2) * -1);
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: ${Theme.Color.Tan};
+      }
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
+  .details-minor {
+    width: 100%;
+    display: flex;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    margin-top: calc(${Root.Size} / 4);
+    color: ${Theme.Color.Galaxy};
+
+    span {
+      margin-right: calc(${Root.Size} / 2);
+      position: relative;
+      font-size: .8rem;
+
+      &:after {
+        content: '';
+        position: absolute;
+        right: calc(((${Root.Size} / 2) / 2) * -1);
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: ${Theme.Color.Galaxy};
+      }
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+    }
+  }
 `;
 
 CourseCardStyle.Label = styled.span`

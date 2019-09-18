@@ -41,22 +41,7 @@ const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
   return (
     <CourseListingsStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
       <div class="listings-inner">
-        <Flex
-          width={1}
-          flexWrap="wrap"
-          flexDirection="row"
-          justifyContent="flex-start"
-          alignItems="flex-start"
-        >
-          <Box
-            width={[1, 1, 1, 1]}
-            pr={[0, 0, 0, 0, 3]}
-            pl={[0, 0, 2, 6, 9]}
-            pb={[2, 2, 0, 0]}
-          >
-            <div className="listings">{children}</div>
-          </Box>
-        </Flex>
+        <div className="listings">{children}</div>
       </div>
     </CourseListingsStyle>
   );

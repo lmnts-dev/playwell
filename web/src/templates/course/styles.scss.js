@@ -11,16 +11,6 @@ import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
 import { Box, Flex, Text } from 'components/library/Elements';
 
-// Keyframe
-import {
-  FadeIn,
-  FadeOut,
-  SlideUp,
-  SlideToRight,
-  SlideToLeft,
-  Rotate,
-} from 'components/core/Transition/Keyframes';
-
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
@@ -55,7 +45,8 @@ Hero.Tags = styled(Flex)`
     font-size: 0.8rem;
     padding: 0 calc(${props => props.theme.Root.Rem} * 1);
     margin-bottom: calc(${props => props.theme.Root.Rem} * 0.8);
-    text-align: @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+    text-align: left;
+    @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
       font-size: 0.9rem;
       padding: 0 calc(${props => props.theme.Root.Rem} * 0);
     }

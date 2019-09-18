@@ -28,19 +28,37 @@ let bgGradient =
 
 export const ClientCardStyle = styled.div`
   background: ${props =>
-    props.expanded == true ? bgGradient : Theme.Color.Cream};
+    props.cardExpanded == true ? bgGradient : Theme.Color.Cream};
   border-radius: 35.5px;
-  padding: 0 calc(${Root.Size} / 2) calc(${Root.Size} / 2)
-    calc(${Root.Size} / 2);
+  padding: 0 calc(${Root.Size} / 2) 0 calc(${Root.Size} / 2);
   margin: 0 0 calc(${Root.Size} / 4) 0;
   border-radius: calc(${Root.Size} / 2);
+  border: 1px solid ${hexToRGB(Theme.Color.Cream, 0)};
+  cursor: pointer;
+
+  &:hover {
+    background: ${hexToRGB(Theme.Color.Cream, 0.2)};
+    border: 1px solid ${hexToRGB(Theme.Color.Slate, 0.3)};
+  }
+
+  .row {
+    display: ${props => (props.cardExpanded == true ? 'flex' : 'none')};
+  }
 `;
 
 ClientCardStyle.ClientName = styled.span`
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   font-weight: bold;
   font-size: 1.5rem;
   padding: calc(${Root.Size} / 2) 0;
+
+  .ico {
+    transform: ${props =>
+      props.cardExpanded == true ? 'rotate(90deg)' : 'rotate(0deg)'};
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

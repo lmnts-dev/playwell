@@ -1,5 +1,5 @@
-// Course Map Nav Component:
-// This is component to browse courses on the Programs page.
+// Client Card Component:
+// This is component to show a client & it's group of courses.
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -23,29 +23,69 @@ import { ClientCardStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const ClientCard = ({ clientData, idx }) => {
-  return (
-    <ClientCardStyle expanded={true} key={idx}>
-      <ClientCardStyle.ClientName>
-        {clientData.node.client_location_name}
-      </ClientCardStyle.ClientName>
-      {clientData.node.courses.map((course, idx) => {
-        return (
-          <CourseCard
-            courseLabel={{
-              name: course.category_group_name,
-              bgColor: Theme.Color.Primary,
-              textColor: Theme.Color.White,
-            }}
-            courseData={course}
-            clientData={clientData}
-            key={idx}
-          />
-        );
-      })}
-    </ClientCardStyle>
-  );
-};
+export class ClientCard extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      cardExpanded: false,
+    };
+
+    this.toggleCard = this.toggleCard.bind(this);
+  }
+
+  componentDidMount() {
+    this.state = {
+      cardExpanded: false,
+    };
+  }
+
+  // Card expanding function
+  toggleCard() {
+    if (this.state.cardExpanded == false) {
+      this.setState({
+        cardExpanded: true,
+      });
+    } else {
+      this.setState({
+        cardExpanded: false,
+      });
+    }
+  }
+
+  render() {
+    // Define clientDate
+    const clientData = this.props.clientData;
+
+    // Render Cards
+    return (
+      <ClientCardStyle
+        onClick={this.toggleCard}
+        cardExpanded={this.state.cardExpanded}
+        key={this.props.idx}
+      >
+        <ClientCardStyle.ClientName cardExpanded={this.state.cardExpanded}>
+          <span>{clientData.node.client_location_name}</span>
+          <Icon Name="carat" />
+        </ClientCardStyle.ClientName>
+        {clientData.node.courses.map((course, idx) => {
+          return (
+            <CourseCard
+              courseLabel={{
+                name: course.category_group_name,
+                bgColor: Theme.Color.Primary,
+                textColor: Theme.Color.White,
+              }}
+              courseData={course}
+              clientData={clientData}
+              key={idx}
+            />
+          );
+        })}
+      </ClientCardStyle>
+    );
+  }
+}
 
 //////////////////////////////////////////////////////////////////////
 // End Component

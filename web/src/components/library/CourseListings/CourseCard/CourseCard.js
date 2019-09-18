@@ -13,6 +13,9 @@ import { Link } from 'gatsby';
 import { Base } from 'constants/styles/Base';
 import { Theme, Root } from 'constants/Theme';
 
+// Helpers
+import { CategoryMetaMatch } from 'components/library/CategoryMetaMatch';
+
 // Components
 import { Icon } from 'components/library/Icons';
 import { Box, Flex } from 'components/library/Elements';
@@ -24,22 +27,31 @@ import { CourseCardStyle } from './styles.scss';
 //////////////////////////////////////////////////////////////////////
 
 export const CourseCard = ({ courseData, clientData, courseLabel, key }) => {
+  const categoryMeta = CategoryMetaMatch(courseData.category_group_name);
+
   return (
-    <CourseCardStyle key={key}>
+    <CourseCardStyle className="row" key={key}>
       <Link to={'/courses/' + clientData.node.id + '/' + courseData.course_id}>
         <CourseCardStyle.Title>
           {courseData.course_type_name}
         </CourseCardStyle.Title>
         <CourseCardStyle.Details>
-          <span>
-            {courseData.start_date} - {courseData.end_date}
-          </span>
+          <div class="details-major">
+            <span>
+              {courseData.start_date} - {courseData.end_date}
+            </span>
+            <span>{courseData.days_of_the_week}</span>
+          </div>
+          <div class="details-minor">
+            <span>{courseData.age_range_display}</span>
+            <span>{courseData.course_type_group}</span>
+          </div>
         </CourseCardStyle.Details>
 
         <CourseCardStyle.Label
-          bgColor={courseLabel.bgColor ? courseLabel.bgColor : Theme.Color.Nova}
+          bgColor={categoryMeta ? categoryMeta.theme.bgColor : Theme.Color.Nova}
           textColor={
-            courseLabel.textColor ? courseLabel.textColor : Theme.Color.White
+            categoryMeta ? categoryMeta.theme.primaryColor : Theme.Color.White
           }
         >
           <span>
