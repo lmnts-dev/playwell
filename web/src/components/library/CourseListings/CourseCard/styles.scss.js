@@ -52,6 +52,11 @@ export const CourseCardStyle = styled.div`
         opacity: 1;
         transform: scale(1);
       }
+
+      .ico {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     &:focus,
@@ -64,10 +69,23 @@ export const CourseCardStyle = styled.div`
 `;
 
 CourseCardStyle.Title = styled.span`
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   font-weight: 700;
   font-size: 1.5rem;
   margin: 0 0 ${Root.Size} 0;
+
+  .ico {
+    width: ${Root.Size};
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: all 0.25s ease;
+
+    svg {
+      fill: ${Theme.Color.Primary};
+    }
+  }
 `;
 
 CourseCardStyle.Details = styled.span`
@@ -113,7 +131,7 @@ CourseCardStyle.Details = styled.span`
     span {
       margin-right: calc(${Root.Size} / 2);
       position: relative;
-      font-size: .8rem;
+      font-size: 0.8rem;
 
       &:after {
         content: '';

@@ -83,9 +83,6 @@ export class ClientCard extends PureComponent {
 
     const programReduce = programMap(clientData.node.courses);
 
-    console.log(clientData);
-    console.log(programReduce);
-
     // Render Cards
     return (
       <ClientCardStyle

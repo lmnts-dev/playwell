@@ -44,9 +44,6 @@ const Course = ({ pageContext }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const categoryMeta = CategoryMetaMatch(pageContext.category_group_name);
 
-  console.log(pageContext);
-  console.log('CategoryMetaMatch:');
-  console.log(categoryMeta);
 
   return (
     <Layout

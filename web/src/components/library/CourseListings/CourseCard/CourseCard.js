@@ -32,8 +32,9 @@ export const CourseCard = ({ courseData, clientData, courseLabel, key }) => {
   return (
     <CourseCardStyle className="row" key={key}>
       <Link to={'/courses/' + clientData.node.id + '/' + courseData.course_id}>
-        <CourseCardStyle.Title>
-          {courseData.course_type_name}
+        <CourseCardStyle.Title className="course-title">
+          <span>{courseData.course_type_name}</span>
+          <Icon Name="carat" />
         </CourseCardStyle.Title>
         <CourseCardStyle.Details>
           <div class="details-major">
