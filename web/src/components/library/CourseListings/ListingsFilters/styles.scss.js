@@ -86,12 +86,12 @@ ListingsFiltersStyle.Item = styled.button`
 
   &:hover {
     color: ${Theme.Color.Warmsky};
-    background-color: ${Theme.Color.Cream};
+    background-color: ${hexToRGB(Theme.Color.Ocean, 0.06)};
 
     .list {
       transform: translate(0%, 0%);
       opacity: 1;
-      visiblity: visible;
+      visibility: visible;
       pointer-events: all;
     }
   }
@@ -144,8 +144,8 @@ ListingsFiltersStyle.FilterList = styled.div`
       color: ${Theme.Color.Warmsky};
 
       &:hover {
-        background-color: ${Theme.Color.Primary};
-        color: ${Theme.Color.White};
+        background-color: ${hexToRGB(Theme.Color.Ocean, 0.06)};
+        color: ${Theme.Color.Ocean};
       }
     }
   }

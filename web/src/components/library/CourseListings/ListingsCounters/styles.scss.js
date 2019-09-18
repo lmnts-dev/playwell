@@ -21,7 +21,8 @@ export const ListingsCountersStyle = styled.div`
   position: relative;
   height: ${Root.Size};
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 4px;
   justify-content: space-between;
 `;
 
@@ -44,7 +45,7 @@ ListingsCountersStyle.Item = styled.button`
     props.btnTheme.bgColor ? props.btnTheme.bgColor : Theme.Color.Blush};
 
   &:hover {
-    box-shadow: 0px 0px 0px 6px rgba(93, 99, 118, 0.2);
+    box-shadow: 0px 0px 0px 3px rgba(93, 99, 118, 0.2);
   }
 
   &:last-child {

@@ -81,7 +81,10 @@ export class ClientCard extends PureComponent {
       }
     }
 
-    const programReduce = programMap(clientData.node.courses);
+    const reducedPrograms = programMap(clientData.node.courses);
+    const reducedProgramsEntries = Object.entries(reducedPrograms);
+
+    console.log(reducedProgramsEntries);
 
     // Render Cards
     return (
@@ -94,38 +97,26 @@ export class ClientCard extends PureComponent {
           <div class="client-name">{clientData.node.client_location_name}</div>
 
           <div class="client-counts">
-            {programReduce.Course ? (
-              <ClientCardStyle.CourseCount
-                bgColor={CategoryMetaMatch('Course').theme.bgColor}
-                textColor={CategoryMetaMatch('Course').theme.primaryColor}
-              >
-                {programReduce.Course}
-              </ClientCardStyle.CourseCount>
-            ) : (
-              false
-            )}
+            {/* Remap our entries into an array and spit out the counts and appropriate
+      CategoryMetaMatch for their theme. */}
+            {reducedProgramsEntries.map((entry, idx) => {
+              // console.log(reducedProgramsEntries) to see these array values.
+              let count = entry[1];
+              let programContext = entry[0];
 
-            {programReduce.Workshop ? (
-              <ClientCardStyle.CourseCount
-                bgColor={CategoryMetaMatch('Workshop').theme.bgColor}
-                textColor={CategoryMetaMatch('Workshop').theme.primaryColor}
-              >
-                {programReduce.Workshop}
-              </ClientCardStyle.CourseCount>
-            ) : (
-              false
-            )}
+              // Return the items.
+              return (
+                <ClientCardStyle.CourseCount
+                  bgColor={CategoryMetaMatch(programContext).theme.bgColor}
+                  textColor={
+                    CategoryMetaMatch(programContext).theme.primaryColor
+                  }
+                >
+                  {count}
+                </ClientCardStyle.CourseCount>
+              );
+            }, this)}
 
-            {programReduce.Camp ? (
-              <ClientCardStyle.CourseCount
-                bgColor={CategoryMetaMatch('Camp').theme.bgColor}
-                textColor={CategoryMetaMatch('Camp').theme.primaryColor}
-              >
-                {programReduce.Camp}
-              </ClientCardStyle.CourseCount>
-            ) : (
-              false
-            )}
             <Icon Name="carat" />
           </div>
         </ClientCardStyle.ClientName>

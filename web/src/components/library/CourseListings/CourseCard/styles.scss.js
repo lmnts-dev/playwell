@@ -39,7 +39,7 @@ export const CourseCardStyle = styled.div`
       right: calc((${Root.Size} / 6) * -1);
       top: calc(${Root.Size} / 6);
       bottom: calc(${Root.Size} / 6);
-      border-radius: 4px;
+      border-radius: 16px;
       background: ${hexToRGB(Theme.Color.Ocean, 0.07)};
       transform: scale(0.95);
       transition: all 0.25s ease;

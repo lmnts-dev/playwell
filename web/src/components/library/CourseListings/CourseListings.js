@@ -25,17 +25,50 @@ import { CourseListingsStyle, ListingsResultsStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const ListingsResults = ({ courseData }) => {
-  return (
-    <ListingsResultsStyle>
-      {courseData.allPlayWellClient.edges.map((client, idx) => {
-        if (idx < 50) {
-          return <ClientCard idx={idx} clientData={client} />;
-        }
-      })}
-    </ListingsResultsStyle>
-  );
-};
+class ListingsResults extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    // Initial State
+    this.state = {
+      lat: [],
+      lng: [],
+      zoom: [],
+      showCourses: true,
+      showClasses: true,
+      ageMin: 0,
+      startDate: '',
+      courseType: '',
+      showWorkshops: true,
+      results: [],
+    };
+
+    // Bind search query function
+    // this.toggleCard = this.toggleCard.bind(this);
+  }
+
+  render() {
+    const courseData = this.props.courseData;
+
+    return (
+      <>
+        <CourseListingsStyle.Toolbar>
+          <div class="toolbar-inner">
+            <ListingsFilters courseData={courseData} />
+            <ListingsCounters courseData={courseData} />
+          </div>
+        </CourseListingsStyle.Toolbar>
+        <ListingsResultsStyle>
+          {courseData.allPlayWellClient.edges.map((client, idx) => {
+            if (idx < 50) {
+              return <ClientCard idx={idx} clientData={client} />;
+            }
+          })}
+        </ListingsResultsStyle>
+      </>
+    );
+  }
+}
 
 const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
   return (
@@ -50,10 +83,6 @@ const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
 export const CourseListings = ({ courseData, mapWidth, mapZedIndex }) => {
   return (
     <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-      <CourseListingsStyle.Toolbar>
-        <ListingsFilters courseData={courseData} />
-        <ListingsCounters courseData={courseData} />
-      </CourseListingsStyle.Toolbar>
       <ListingsResults courseData={courseData} />
     </ListingsWrapper>
   );
