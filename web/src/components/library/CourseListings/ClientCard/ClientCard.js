@@ -16,6 +16,7 @@ import { Theme, Root } from 'constants/Theme';
 import { Icon } from 'components/library/Icons';
 import { Box, Flex } from 'components/library/Elements';
 import { CourseCard } from '../CourseCard';
+import { CategoryMetaMatch } from 'components/library/CategoryMetaMatch';
 
 // Styles
 import { ClientCardStyle } from './styles.scss';
@@ -59,6 +60,31 @@ export class ClientCard extends PureComponent {
   render() {
     // Define clientDate
     const clientData = this.props.clientData;
+    const programCounts = {};
+
+    function programMap(data) {
+      if (data) {
+        let programCounts = data.reduce(function(course, value) {
+          // increment or set the property
+          // `(course[value.category_group_name] || 0)` returns the property value if defined
+          // or 0 ( since `undefined` is a falsy value
+          course[value.category_group_name] =
+            (course[value.category_group_name] || 0) + 1;
+          // return the updated object
+          return course;
+          // set the initial value as an object
+        }, {});
+
+        return programCounts;
+      } else {
+        return;
+      }
+    }
+
+    const programReduce = programMap(clientData.node.courses);
+
+    console.log(clientData);
+    console.log(programReduce);
 
     // Render Cards
     return (
@@ -71,24 +97,38 @@ export class ClientCard extends PureComponent {
           <div class="client-name">{clientData.node.client_location_name}</div>
 
           <div class="client-counts">
-            <ClientCardStyle.CourseCount
-              bgColor={Theme.Color.Ocean}
-              textColor={Theme.Color.White}
-            >
-              5
-            </ClientCardStyle.CourseCount>
-            <ClientCardStyle.CourseCount
-              bgColor={Theme.Color.Nova}
-              textColor={Theme.Color.White}
-            >
-              5
-            </ClientCardStyle.CourseCount>
-            <ClientCardStyle.CourseCount
-              bgColor={Theme.Color.Galaxy}
-              textColor={Theme.Color.White}
-            >
-              5
-            </ClientCardStyle.CourseCount>
+            {programReduce.Course ? (
+              <ClientCardStyle.CourseCount
+                bgColor={CategoryMetaMatch('Course').theme.bgColor}
+                textColor={CategoryMetaMatch('Course').theme.primaryColor}
+              >
+                {programReduce.Course}
+              </ClientCardStyle.CourseCount>
+            ) : (
+              false
+            )}
+
+            {programReduce.Workshop ? (
+              <ClientCardStyle.CourseCount
+                bgColor={CategoryMetaMatch('Workshop').theme.bgColor}
+                textColor={CategoryMetaMatch('Workshop').theme.primaryColor}
+              >
+                {programReduce.Workshop}
+              </ClientCardStyle.CourseCount>
+            ) : (
+              false
+            )}
+
+            {programReduce.Camp ? (
+              <ClientCardStyle.CourseCount
+                bgColor={CategoryMetaMatch('Camp').theme.bgColor}
+                textColor={CategoryMetaMatch('Camp').theme.primaryColor}
+              >
+                {programReduce.Camp}
+              </ClientCardStyle.CourseCount>
+            ) : (
+              false
+            )}
             <Icon Name="carat" />
           </div>
         </ClientCardStyle.ClientName>

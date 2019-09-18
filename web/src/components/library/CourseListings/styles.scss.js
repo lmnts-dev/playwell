@@ -52,6 +52,8 @@ CourseListingsStyle.Toolbar = styled.div`
   top: ${Root.Nav.Size};
   background: ${Theme.Color.White};
   z-index: 500;
+  border-bottom: 1px solid ${Theme.Color.Blush};
+  margin-bottom: calc(${Root.Size} / 4);
 `;
 
 // Results
