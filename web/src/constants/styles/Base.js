@@ -35,6 +35,7 @@ export const Base = {
   // Site Grid
   Grid: {
     SiteWidth: 1620, // px
+    ReadingWidth: 1000, // px
     Nav: {
       Size: {
         Lg: 81, // px

@@ -14,23 +14,32 @@ import HeroContainer from 'components/library/Hero/HeroContainer';
 import Btn from 'components/library/Btn';
 import { Icon } from 'components/library/Icons';
 import ImgQuery from 'components/core/ImgQuery';
-import { CategoryMetaMatch } from 'components/library/CategoryMetaMatch';
+import Section from 'components/library/Elements/Section';
+
+// Sections
+import QuestionsCallout from 'sections/QuestionsCallout';
+
+// Helpers
+import slugify from 'helpers/slugify';
+
+import ContentOverlayButton from 'components/library/ContentOverlay';
 
 // Styles
 import {
   Hero,
-  Section,
   Lead,
   Spacer,
   QuestionsNav,
-  Collapse,
+  Toggle,
   Drawer,
   CourseFooter,
   Explore,
+  CalloutSection,
 } from './styles.scss';
 
 // Constants
 import { Box, Flex, Text } from 'components/library/Elements';
+import { Theme, Root } from 'constants/Theme';
 
 // Data
 import CalloutBg from './assets/cta__courses.jpg';
@@ -39,6 +48,20 @@ import Carat from './assets/arrow--left.svg';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+// Props
+const ThemeProps = {
+  BgColor: Theme.Color.Sky,
+  PrimaryColor: Theme.Color.White,
+  SecondaryColor: Theme.Color.Primary,
+  TertiaryColor: Theme.Color.Primary,
+};
+
+const HeroProps = {
+  bg: 'Sky',
+  color: 'White',
+  textAlign: 'center',
+};
+
 // Render Page
 const Course = ({ pageContext }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -46,22 +69,14 @@ const Course = ({ pageContext }) => {
 
 
   return (
-    <Layout
-      BgColor={categoryMeta.theme.bgColor}
-      PrimaryColor={categoryMeta.theme.primaryColor}
-      SecondaryColor={categoryMeta.theme.secondaryColor}
-      TertiaryColor={categoryMeta.theme.tertiaryColor}
-    >
-      <HeroContainer
-        bg={categoryMeta.theme.bgColor}
-        color={categoryMeta.theme.primaryColor}
-      >
+    <Layout {...ThemeProps}>
+      <HeroContainer {...HeroProps}>
         <Flex
           as="article"
           flexDirection="column"
           justifyContent="center"
           alignItems="center"
-          maxWidth={props => props.theme.Grid.SiteWidth}
+          maxWidth={Theme.Base.Grid.SiteWidth}
           m="0 auto"
           pb={[4, 3]}
           px={[1, 1, 0]}
@@ -70,12 +85,46 @@ const Course = ({ pageContext }) => {
             {/* <ImgQuery src={CalloutBg} AltText="Avatar" /> */}
           </Hero.Avatar>
           <Hero.Tags as="ul">
-            <li>{pageContext.category_group_name}</li>
-            <li>{pageContext.course_type_group}</li>
             <li>
-              ages {pageContext.age_range_start}-{pageContext.age_range_end}
+              <Link
+                to={
+                  '/' +
+                  slugify(pageContext.category_group_name.toLowerCase()) +
+                  '/' +
+                  pageContext.category_group_name
+                }
+              >
+                {pageContext.category_group_name}
+              </Link>
             </li>
-            {pageContext.room && <li>{pageContext.room}</li>}
+            <li>
+              <Link
+                to={
+                  '/' +
+                  slugify(pageContext.category_group_name.toLowerCase()) +
+                  '/' +
+                  pageContext.course_type_group
+                }
+              >
+                {pageContext.course_type_group}
+              </Link>
+            </li>
+            <li>
+              <Link
+                to={
+                  '/' +
+                  slugify(pageContext.category_group_name.toLowerCase()) +
+                  '/' +
+                  'ages-' +
+                  pageContext.age_range_start +
+                  '-' +
+                  pageContext.age_range_end
+                }
+              >
+                ages {pageContext.age_range_start}-{pageContext.age_range_end}
+              </Link>
+            </li>
+            {pageContext.room && <li> room {pageContext.room}</li>}
           </Hero.Tags>
           <Text as="h3" mt={1}>
             {pageContext.course_type_name}
@@ -83,6 +132,8 @@ const Course = ({ pageContext }) => {
           <Hero.Date as="p" fontSize={[0, 1, 3]} mt={[1, 1, 0]} mb={1}>
             {pageContext.date_time_display}
           </Hero.Date>
+
+          <ContentOverlayButton>toggle</ContentOverlayButton>
           <Btn
             Label="Enroll Now"
             Size="Large"
@@ -107,21 +158,15 @@ const Course = ({ pageContext }) => {
         <Spacer.Line />
       </Spacer>
 
-      <Section
-        as="section"
-        bg="Cream"
-        pt={[7, 7, 9, 9, 11]}
-        pb={[6, 6, 8, 8, 10]}
-      >
+      <Section as="section" bg="Cream">
         <Flex
           as="article"
-          px={[2, 2, 2]}
           flexDirection="column"
           flexWrap="wrap"
+          pt={[2, 2, 4, 4]}
+          pb={[1, 1, 2, 2]}
           m={'0 auto'}
-          css={css`
-            max-width: 1000px;
-          `}
+          maxWidth={Theme.Base.Grid.ReadingWidth}
         >
           <Lead as="p" color="Nova" fontSize={[1, 1, 2, 2]}>
             {pageContext.date_time_display}
@@ -136,18 +181,12 @@ const Course = ({ pageContext }) => {
         <Spacer.Line />
       </Spacer>
 
-      <Section
-        as="section"
-        bg="White"
-        px={[1, 1, 2, 2]}
-        pt={[6, 6, 8, 8]}
-        pb={[2, 2, 3, 3]}
-      >
+      <Section as="section" bg="White" pt={[6, 6, 8, 8]} pb={[2, 2, 3, 3]}>
         <Flex
           as="article"
-          px={[1, 1, 2, 6]}
+          mx="auto"
           width={1}
-          maxWidth={props => props.theme.Grid.SiteWidth}
+          maxWidth={Theme.Base.Grid.SiteWidth}
           alignItems="flex-start"
           justifyContent="space-between"
           flexWrap="wrap"
@@ -182,93 +221,54 @@ const Course = ({ pageContext }) => {
         </Flex>
       </Section>
 
-      <Section as="section" bg="White" px={[1, 1, 2, 2]}>
+      <Section
+        bg="White"
+        textAlign="center"
+        flexWrap="wrap"
+        flexDirection="column"
+        pt={0}
+        pb={0}
+      >
         <Drawer
           as="article"
-          px={[1, 1, 2, 6]}
           width={1}
+          maxWidth={Theme.Base.Grid.SiteWidth}
+          alignItems="flex-start"
+          justifyContent="space-between"
+          flexWrap="wrap"
+          mx="auto"
           className={isExpanded ? 'expanded' : 'collapsed'}
         >
           <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[1, 1, 0]}>
-            <Text as="p" color="Galaxy">
+            <Text as="p" color="Galaxy" textAlign="center" pb={0}>
               Room
               <br />
               <Text as="span" color="Nova">
-                {pageContext.room}
+                {pageContext.room && pageContext.room}
               </Text>
             </Text>
           </Box>
           <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[1, 1, 0]}>
-            <Text as="p" color="Galaxy">
+            <Text as="p" color="Galaxy" textAlign="center" pb={0}>
               Level
               <br />
               <Text as="span" color="Nova">
-                {pageContext.age_range_display}
+                {pageContext.age_range_display && pageContext.age_range_display}
               </Text>
             </Text>
           </Box>
         </Drawer>
       </Section>
 
-      <Collapse py={1} onClick={() => setIsExpanded(!isExpanded)}>
-        <Text>{isExpanded ? 'show less' : 'show more'}</Text>
-      </Collapse>
+      <Toggle py={1} onClick={() => setIsExpanded(!isExpanded)}>
+        <Text color={Theme.Color.Galaxy}>
+          {isExpanded ? 'show less' : 'show more'}
+        </Text>
+      </Toggle>
 
-      <Section
-        as="section"
-        bg="Galaxy"
-        bgImage={CalloutBg}
-        color="white"
-        width={1}
-      >
-        <Box
-          bg={'rgba(82, 5, 137, 0.8)'}
-          px={[1, 1, 2, 2, 2]}
-          pt={[6, 6, 8, 8]}
-          pb={1}
-          width={1}
-        >
-          <Flex
-            as="article"
-            width={1}
-            maxWidth={props => props.theme.Grid.SiteWidth}
-            flexDirection="column"
-            alignItems="center"
-            justifyContent="center"
-            flexWrap="wrap"
-          >
-            <Box width={1}>
-              <Text as="span" fontSize={4} mt={1}>
-                Questions?
-              </Text>
-              <Text as="h3" mt={1} mb={1}>
-                Learn more about our workshops.
-              </Text>
-              <Btn
-                Label="Get in touch"
-                Destination="/"
-                BgColor={'rgba(250, 250, 250, 0.4)'}
-                TextColor={props => props.theme.Color.Galaxy}
-              />
-              <QuestionsNav as="ul" fontSize={[1, 1, 2, 3, 3]} mt={7}>
-                <li>Robotics</li>
-                <li>Intro to STEM</li>
-                <li>Gaming</li>
-                <li>Advanced Engineering</li>
-                <li>Engineering Themes</li>
-              </QuestionsNav>
-            </Box>
-          </Flex>
-        </Box>
-      </Section>
+      <QuestionsCallout />
 
-      <CourseFooter
-        as="section"
-        bg={categoryMeta.theme.bgColor}
-        px={1}
-        pt={8}
-        pb={1}
-      >
+      <CourseFooter as="section" bg="Sky" px={1} pt={8}>
         <CourseFooter.Course as="article" m="0 auto">
           <Text as="span" fontSize={4}>
             Let's play!

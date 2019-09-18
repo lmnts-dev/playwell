@@ -57,6 +57,7 @@ export const Theme = {
     // Site Grid
     Grid: {
       SiteWidth: Base.Grid.SiteWidth + 'px',
+      ReadingWidth: Base.Grid.ReadingWidth + 'px',
       Nav: {
         Orientation: Base.Grid.Nav.Orientation,
         Fixed: Base.Grid.Nav.Fixed,

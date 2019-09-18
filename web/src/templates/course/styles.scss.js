@@ -50,6 +50,10 @@ Hero.Tags = styled(Flex)`
       font-size: 0.9rem;
       padding: 0 calc(${props => props.theme.Root.Rem} * 0);
     }
+
+    a {
+      color: ${p => p.theme.Color.Deepsea};
+    }
   }
 `;
 
@@ -58,7 +62,7 @@ Hero.Date = styled(Text)`
   font-weight: 300;
 `;
 
-export const Section = styled(Flex)`
+export const CalloutSection = styled(Flex)`
   text-align: center;
   background-image: url('${props => props.bgImage}');
   background-size: cover;
@@ -68,11 +72,11 @@ export const Section = styled(Flex)`
   flex-direction: column;
 `;
 
-Section.Overlay = styled(Box)`
+CalloutSection.Overlay = styled(Box)`
   background: ${p => p.bgOverlay};
 `;
 
-Section.Inner = styled(Flex)``;
+CalloutSection.Inner = styled(Flex)``;
 
 export const Lead = styled(Text)`
   text-align: center;
@@ -107,10 +111,14 @@ export const QuestionsNav = styled(Flex)`
     font-weight: 700;
     margin-bottom: 1rem;
     padding: 0 calc(${props => props.theme.Root.Rem} * 0.8);
+
+    a {
+      color: ${p => p.theme.Color.White};
+    }
   }
 `;
 
-export const Collapse = styled(Box)`
+export const Toggle = styled(Box)`
   background: ${p => p.theme.Color.White};
   border-top: 1px solid #eaeaea;
   cursor: pointer;
