@@ -65,8 +65,6 @@ const HeroProps = {
 // Render Page
 const Course = ({ pageContext }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const categoryMeta = CategoryMetaMatch(pageContext.category_group_name);
-
 
   return (
     <Layout {...ThemeProps}>
@@ -82,7 +80,7 @@ const Course = ({ pageContext }) => {
           px={[1, 1, 0]}
         >
           <Hero.Avatar>
-            {/* <ImgQuery src={CalloutBg} AltText="Avatar" /> */}
+            <ImgQuery src={CalloutBg} AltText="Avatar" />
           </Hero.Avatar>
           <Hero.Tags as="ul">
             <li>
