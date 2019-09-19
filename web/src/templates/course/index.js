@@ -313,7 +313,7 @@ const Course = ({ pageContext }) => {
               </Text>
             </Box>
             <CourseFooter.Explore.Arrow>
-              <Icon Name="next" />
+              <Icon Name="NextArrow" />
             </CourseFooter.Explore.Arrow>
           </CourseFooter.Explore.Link>
         </CourseFooter.Explore>

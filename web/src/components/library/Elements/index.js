@@ -55,6 +55,7 @@ export const Flex = styled('div')`
   ${maxWidth}
   ${width}
   ${fontSize}
+  ${textAlign}
 `;
 
 Flex.displayName = 'Flex';
