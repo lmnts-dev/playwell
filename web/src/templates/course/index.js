@@ -41,10 +41,6 @@ import {
 import { Box, Flex, Text } from 'components/library/Elements';
 import { Theme, Root } from 'constants/Theme';
 
-// Data
-import CalloutBg from './assets/cta__courses.jpg';
-import Carat from './assets/arrow--left.svg';
-
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
@@ -80,7 +76,7 @@ const Course = ({ pageContext }) => {
           px={[1, 1, 0]}
         >
           <Hero.Avatar>
-            <ImgQuery src={CalloutBg} AltText="Avatar" />
+            {/* <ImgQuery src={CalloutBg} AltText="Avatar" /> */}
           </Hero.Avatar>
           <Hero.Tags as="ul">
             <li>
@@ -130,12 +126,13 @@ const Course = ({ pageContext }) => {
           <Hero.Date as="p" fontSize={[0, 1, 3]} mt={[1, 1, 0]} mb={1}>
             {pageContext.date_time_display}
           </Hero.Date>
-
-          <ContentOverlayButton>toggle</ContentOverlayButton>
+          {/* Content Overlay Modal Toggle */}
+          {/* <ContentOverlayButton>toggle</ContentOverlayButton> */}
           <Btn
+            External
             Label="Enroll Now"
             Size="Large"
-            Destination="/"
+            Destination={pageContext.action_url}
             BgColor={props => props.theme.Color.Nova}
             TextColor={props => props.theme.Color.White}
           />

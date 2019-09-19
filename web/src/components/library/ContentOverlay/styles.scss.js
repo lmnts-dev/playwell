@@ -25,7 +25,7 @@ const OverlayContentContainerStyle = styled.div`
   width: 100vw;
   /* height: calc(100vh - ${Root.Nav.Size}); */
   left: 0;
-  top: ${Root.Nav.Size};
+  top: calc(${Root.Nav.Size} * 2);
   bottom: 0;
   right: 0;
   background-color: ${Theme.Color.White};

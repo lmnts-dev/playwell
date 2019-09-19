@@ -32,7 +32,7 @@ const QuestionsCallout = () => {
       as="section"
       bg="Primary"
       bgImage={CalloutBg}
-      bgOverlay="Primary"
+      bgOverlay="#451269"
       alpha={0.8}
       color="white"
       pt={[6, 6, 8, 8]}
