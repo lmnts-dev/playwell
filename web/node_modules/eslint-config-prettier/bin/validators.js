@@ -32,11 +32,11 @@ module.exports = {
 
   "no-confusing-arrow"(options) {
     if (options.length === 0) {
-      return true;
+      return false;
     }
 
     const firstOption = options[0];
-    return !(firstOption && firstOption.allowParens);
+    return firstOption ? firstOption.allowParens === false : false;
   },
 
   "vue/html-self-closing"(options) {

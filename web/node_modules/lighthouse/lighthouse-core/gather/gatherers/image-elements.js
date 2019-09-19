@@ -9,36 +9,37 @@
   */
 'use strict';
 
-const Gatherer = require('./gatherer');
+const Gatherer = require('./gatherer.js');
 const pageFunctions = require('../../lib/page-functions.js');
 const Driver = require('../driver.js'); // eslint-disable-line no-unused-vars
 
 /* global window, getElementsInDocument, Image */
 
-/** @return {Array<LH.Artifacts.ImageElement>} */
-/* istanbul ignore next */
-function collectImageElementInfo() {
-  /** @param {Element} element */
-  function getClientRect(element) {
-    const clientRect = element.getBoundingClientRect();
-    return {
-      // Just grab the DOMRect properties we want, excluding x/y/width/height
-      top: clientRect.top,
-      bottom: clientRect.bottom,
-      left: clientRect.left,
-      right: clientRect.right,
-    };
-  }
 
-  /** @type {Array<Element>} */
-  // @ts-ignore - added by getElementsInDocumentFnString
-  const allElements = getElementsInDocument();
+/** @param {Element} element */
+/* istanbul ignore next */
+function getClientRect(element) {
+  const clientRect = element.getBoundingClientRect();
+  return {
+    // Just grab the DOMRect properties we want, excluding x/y/width/height
+    top: clientRect.top,
+    bottom: clientRect.bottom,
+    left: clientRect.left,
+    right: clientRect.right,
+  };
+}
+
+/**
+ * @param {Array<Element>} allElements
+ * @return {Array<LH.Artifacts.ImageElement>}
+ */
+/* istanbul ignore next */
+function getHTMLImages(allElements) {
   const allImageElements = /** @type {Array<HTMLImageElement>} */ (allElements.filter(element => {
     return element.localName === 'img';
   }));
 
-  /** @type {Array<LH.Artifacts.ImageElement>} */
-  const htmlImages = allImageElements.map(element => {
+  return allImageElements.map(element => {
     const computedStyle = window.getComputedStyle(element);
     return {
       // currentSrc used over src to get the url as determined by the browser
@@ -57,29 +58,29 @@ function collectImageElementInfo() {
       ),
     };
   });
+}
 
+/**
+ * @param {Array<Element>} allElements
+ * @return {Array<LH.Artifacts.ImageElement>}
+ */
+/* istanbul ignore next */
+function getCSSImages(allElements) {
   // Chrome normalizes background image style from getComputedStyle to be an absolute URL in quotes.
   // Only match basic background-image: url("http://host/image.jpeg") declarations
   const CSS_URL_REGEX = /^url\("([^"]+)"\)$/;
-  // Only find images that aren't specifically scaled
-  const CSS_SIZE_REGEX = /(auto|contain|cover)/;
 
-  const cssImages = allElements.reduce((images, element) => {
+  /** @type {Array<LH.Artifacts.ImageElement>} */
+  const images = [];
+
+  for (const element of allElements) {
     const style = window.getComputedStyle(element);
-    if (!style.backgroundImage || !CSS_URL_REGEX.test(style.backgroundImage) ||
-        !style.backgroundSize || !CSS_SIZE_REGEX.test(style.backgroundSize)) {
-      return images;
-    }
+    // If the element didn't have a CSS background image, we're not interested.
+    if (!style.backgroundImage || !CSS_URL_REGEX.test(style.backgroundImage)) continue;
 
     const imageMatch = style.backgroundImage.match(CSS_URL_REGEX);
     // @ts-ignore test() above ensures that there is a match.
     const url = imageMatch[1];
-
-    // Heuristic to filter out sprite sheets
-    const differentImages = images.filter(image => image.src !== url);
-    if (images.length - differentImages.length > 2) {
-      return differentImages;
-    }
 
     images.push({
       src: url,
@@ -94,11 +95,18 @@ function collectImageElementInfo() {
       usesObjectFit: false,
       resourceSize: 0, // this will get overwritten below
     });
+  }
 
-    return images;
-  }, /** @type {Array<LH.Artifacts.ImageElement>} */ ([]));
+  return images;
+}
 
-  return htmlImages.concat(cssImages);
+/** @return {Array<LH.Artifacts.ImageElement>} */
+/* istanbul ignore next */
+function collectImageElementInfo() {
+  /** @type {Array<Element>} */
+  // @ts-ignore - added by getElementsInDocumentFnString
+  const allElements = getElementsInDocument();
+  return getHTMLImages(allElements).concat(getCSSImages(allElements));
 }
 
 /**
@@ -160,16 +168,23 @@ class ImageElements extends Gatherer {
 
     const expression = `(function() {
       ${pageFunctions.getElementsInDocumentString}; // define function on page
-      return (${collectImageElementInfo.toString()})();
+      ${getClientRect.toString()};
+      ${getHTMLImages.toString()};
+      ${getCSSImages.toString()};
+      ${collectImageElementInfo.toString()};
+
+      return collectImageElementInfo();
     })()`;
 
     /** @type {Array<LH.Artifacts.ImageElement>} */
     const elements = await driver.evaluateAsync(expression);
 
+    /** @type {Array<LH.Artifacts.ImageElement>} */
     const imageUsage = [];
     const top50Images = Object.values(indexedNetworkRecords)
       .sort((a, b) => b.resourceSize - a.resourceSize)
       .slice(0, 50);
+
     for (let element of elements) {
       // Pull some of our information directly off the network record.
       const networkRecord = indexedNetworkRecords[element.src] || {};

@@ -12,7 +12,7 @@ const {
   rectContainsPoint,
   getBoundingRect,
   getRectCenterPoint,
-} = require('./rect-helpers');
+} = require('./rect-helpers.js');
 
 /**
  * Merge client rects together and remove small ones. This may result in a larger overall
@@ -72,7 +72,7 @@ function mergeTouchingClientRects(clientRects) {
         (rectsLineUpHorizontally || rectsLineUpVertically);
 
       if (canMerge) {
-        const replacementClientRect = getBoundingRect(crA, crB);
+        const replacementClientRect = getBoundingRect([crA, crB]);
         const mergedRectCenter = getRectCenterPoint(replacementClientRect);
 
         if (

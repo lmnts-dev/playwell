@@ -94,7 +94,7 @@ class ServiceWorker extends Audit {
     const versionsForOrigin = ServiceWorker.getVersionsForOrigin(versions, pageUrl);
     if (versionsForOrigin.length === 0) {
       return {
-        rawValue: false,
+        score: 0,
       };
     }
 
@@ -102,7 +102,7 @@ class ServiceWorker extends Audit {
         registrations, pageUrl);
     if (!controllingScopeUrl) {
       return {
-        rawValue: false,
+        score: 0,
         explanation: `This origin has one or more service workers, however the page ("${pageUrl.href}") is not in scope.`, // eslint-disable-line max-len
       };
     }
@@ -111,14 +111,14 @@ class ServiceWorker extends Audit {
         controllingScopeUrl);
     if (startUrlFailure) {
       return {
-        rawValue: false,
+        score: 0,
         explanation: `This page is controlled by a service worker, however ${startUrlFailure}.`,
       };
     }
 
     // SW controls both finalUrl and start_url.
     return {
-      rawValue: true,
+      score: 1,
     };
   }
 }

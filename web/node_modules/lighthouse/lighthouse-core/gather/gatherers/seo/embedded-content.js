@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const Gatherer = require('../gatherer');
+const Gatherer = require('../gatherer.js');
 const pageFunctions = require('../../../lib/page-functions.js');
 
 class EmbeddedContent extends Gatherer {

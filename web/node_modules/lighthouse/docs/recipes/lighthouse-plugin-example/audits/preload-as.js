@@ -37,7 +37,7 @@ class PreloadAsAudit extends Audit {
     const passed = noAsLinks.length === 0;
 
     return {
-      rawValue: passed,
+      score: passed ? 1 : 0,
       displayValue: `Found ${noAsLinks.length} preload requests with missing \`as\` attributes`,
     };
   }

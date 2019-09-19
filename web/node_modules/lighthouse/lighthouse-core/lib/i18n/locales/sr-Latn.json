@@ -447,10 +447,10 @@
     "message": "Vrednost"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Inženjeri za pregledače preporučuju da stranice sadrže manje od približno 1500 DOM čvorova. Najbolje bi bilo da dubina stabla bude ispod 32 elementa i da ima manje od 60 podređenih/nadređenih elemenata. Veliki DOM može da poveća potrošnju memorije, da izazove duža [izračunavanja stilova](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) i da dovede do skupih [preoblikovanja izgleda](https://developers.google.com/speed/articles/reflow). [Saznajte više](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Inženjeri za pregledače preporučuju da stranice sadrže manje od približno 1500 DOM elemenata. Najbolje bi bilo da dubina stabla bude ispod 32 elementa i da ima manje od 60 podređenih/nadređenih elemenata. Veliki DOM može da poveća potrošnju memorije, da izazove duža [izračunavanja stilova](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) i da dovede do skupih [preoblikovanja izgleda](https://developers.google.com/speed/articles/reflow). [Saznajte više](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 čvor}one{# čvor}few{# čvora}other{# čvorova}}"
+    "message": "{itemCount,plural, =1{1 element}one{# element}few{# elementa}other{# elemenata}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Izbegavajte preveliku veličinu DOM-a"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Maksimalna dubina DOM-a"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Ukupan broj DOM čvorova"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Ukupan broj DOM elemenata"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Maksimalan broj podređenih elemenata"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "Optimizacija za pretraživače"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Formatirajte HTML sadržaj na način koji omogućava popisivačima da bolje razumeju sadržaj aplikacije."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Najbolje prakse za sadržaj"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Da bi se aplikacija pojavila u rezultatima pretrage, popisivači treba da imaju pristup do nje."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Popisivanje i indeksiranje"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Proverite da li su stranice prilagođene mobilnim uređajima da korisnici ne bi morali da skupljaju prste ili uvećavaju prikaz kako bi čitali stranice sa sadržajem. [Saznajte više](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Prilagođeno mobilnim uređajima"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Vreme preživljavanja keša"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Došlo je do greške pri evidentiranju traga tokom učitavanja stranice. Ponovo pokrenite Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Vremensko ograničenje čekanja na inicijalnu vezu za protokol programa za otklanjanje grešaka."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome nije prikupio nijedan snimak ekrana tokom učitavanja stranice. Uverite se da je sadržaj vidljiv na stranici, pa probajte da ponovo pokrenete Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Provere sa zadovoljavajućom ocenom"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Skala rezultata:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Skupi fragment"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Upozorenja: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Predlažemo da otpremite GIF u uslugu koja će ga kodirati za ugradnju u HTML5 video."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Instalirajte [WordPress dodatnu komponentu za lako učitavanje](https://wordpress.org/plugins/search/lazy+load/) koja omogućava da odložite sve slike van ekrana ili da pređete na temu koja pruža tu funkciju. Preporučujemo i da koristite [dodatnu komponentu za AMP stranice](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Neke WordPress dodatne komponente mogu da vam pomognu da [umetnete kritične elemente](https://wordpress.org/plugins/search/critical+css/) ili [odložite manje važne resurse](https://wordpress.org/plugins/search/defer+css+javascript/). Imajte na umu da optimizacije koje pružaju ove dodatne komponente mogu da oštete funkcije ili teme dodatnih komponenti, pa ćete verovatno morati da unosite promene u kôd."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Teme, dodatne komponente i specifikacije servera doprinose vremenu odgovora servera. Preporučujemo da pronađete optimizovaniju temu, pažljivo izaberete dodatnu komponentu za optimizaciju i/ili nadogradite server."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Preporučujemo da prikažete odlomke u listama postova (na primer, preko još oznaka), smanjite broj postova koji se prikazuju na određenoj stranici, razdvojite dugačke postove na više strancia ili koristite dodatnu komponentu za lako učitavanje komentara."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Neke [WordPress dodatne komponente](https://wordpress.org/plugins/search/minify+css/) mogu da ubrzaju sajt tako što povezuju, umanjuju i komprimuju stilove. Ovo umanjivanje možete da obavite i unapred pomoću procesa dizajniranja ako je moguće."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Neke [WordPress dodatne komponente](https://wordpress.org/plugins/search/minify+javascript/) mogu da ubrzaju sajt tako što povezuju, umanjuju i komprimuju skripte. Ovo umanjivanje možete da obavite i unapred pomoću procesa dizajniranja ako je moguće."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Preporučujemo da umanjite ili promenite broj [WordPress dodatnih komponenti](https://wordpress.org/plugins/) koje na stranici učitavaju CSS koji se ne koristi. Da biste identifikovali dodatne komponente koje dodaju suvišan CSS, probajte da pokrenete [pokrivenost koda](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) u alatki Chrome DevTools. Možete da identifikujete odgovornu temu/dodatnu komponentu u URL-u stilske stranice. Potražite dodatne komponente koje na listi imaju mnogo stilskih stranica sa dosta crvenila u pokrivenosti koda. Dodatna komponenta treba da stavi stilsku stranicu na listu samo ako se stvarno koristi na stranici."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Preporučujemo da umanjite ili promenite broj [WordPress dodatnih komponenti](https://wordpress.org/plugins/) koje na stranici učitavaju JavaScript koji se ne koristi. Da biste identifikovali dodatne komponente koje dodaju suvišan JS, probajte da pokrenete [pokrivenost koda](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) u alatki Chrome DevTools. Možete da identifikujete odgovornu temu/dodatnu komponentu u URL-u skripte. Potražite dodatne komponente koje na listi imaju mnogo skripti sa dosta crvenila u pokrivenosti koda. Dodatna komponenta treba da stavi skriptu na listu samo ako se stvarno koristi na stranici."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Pročitajte više o [keširanju pregledača u WordPress-u](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Preporučujemo da koristite [WordPress dodatnu komponentu za optimizaciju slika](https://wordpress.org/plugins/search/optimize+images/) koja komprimuje slike bez gubitka kvaliteta."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Otpremajte slike direktno pomoću [biblioteke medija](https://codex.wordpress.org/Media_Library_Screen) da biste se uverili da su dostupne obavezne veličine slika, pa ih umetnite u biblioteku medija ili koristite vidžet stranice da biste se uverili da se koriste optimalne veličine slika (uključujući one za prelomne tačke koje se odazivaju). Izbegavajte korišćenje slika „pune veličine“ ako dimenzije nisu adekvatne za njihovo korišćenje. [Saznajte više](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Možete da omogućite komprimovanje teksta u konfiguraciji veb-servera."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Preporučujemo da koristite [dodatnu komponentu](https://wordpress.org/plugins/search/convert+webp/) ili uslugu koja automatski konvertuje otpremljene slike u optimalne formate."
   }
 }

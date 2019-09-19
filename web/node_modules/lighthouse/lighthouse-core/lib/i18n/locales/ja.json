@@ -447,10 +447,10 @@
     "message": "値"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "ブラウザ エンジニアは、ページに含まれる DOM のノード数が 1,500 個を超えないようにすることを推奨しています。ツリーの深さは 32 要素まで、子や親の要素数は 60 個までにするのが最適です。DOM サイズが大きいと、メモリの使用量が増え、[スタイルの計算](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations)に時間がかかり、[レイアウトのリフロー](https://developers.google.com/speed/articles/reflow)というコストが発生します。[詳細](https://developers.google.com/web/tools/lighthouse/audits/dom-size)"
+    "message": "ブラウザ エンジニアは、ページに含まれる DOM の要素数が 1,500 個を超えないようにすることを推奨しています。ツリーの深さは 32 要素まで、子や親の要素数は 60 個までにするのが最適です。DOM サイズが大きいと、メモリの使用量が増え、[スタイルの計算](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations)に時間がかかり、[レイアウトのリフロー](https://developers.google.com/speed/articles/reflow)というコストが発生します。[詳細](https://developers.google.com/web/tools/lighthouse/audits/dom-size)"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 個のノード}other{# 個のノード}}"
+    "message": "{itemCount,plural, =1{1 件の要素}other{# 件の要素}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "過大な DOM サイズの回避"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "DOM の最大深さ"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "合計 DOM ノード数"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "合計 DOM 要素数"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "子要素の上限数"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "クローラがアプリのコンテンツを正確に読み取れるように HTML を適切な形式で記述します。"
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "コンテンツ制作のおすすめの方法"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "検索結果に表示するには、クローラがアプリにアクセスできるようにする必要があります。"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "クロールとインデックス登録"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "ページをスマホ対応にして、ピンチ操作や拡大操作なしでコンテンツを読めるようにします。[詳細](https://developers.google.com/search/mobile-sites/)"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "スマホ対応"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "キャッシュの TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "ページを読み込む際のトレースの記録中にエラーが発生しました。もう一度 Lighthouse を実行してください。（{errorCode}）"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Debugger プロトコル接続の開始中にタイムアウトが発生しました。"
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome でページの読み込み中にスクリーンショットが収集されませんでした。ページにコンテンツが表示されていることを確認してから、Lighthouse を再実行してください。（{errorCode}）"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "合格した監査"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "スコア評価:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "スニペットを折りたたむ"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "警告: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "GIF を HTML5 動画として埋め込み可能なサービスにアップロードすることをご検討ください。"
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "[WordPress の遅延読み込みプラグイン](https://wordpress.org/plugins/search/lazy+load/)をインストールすると、画面外の画像の読み込みを遅らせたり、遅延読み込み機能のあるテーマに切り替えたりできます。[AMP プラグイン](https://wordpress.org/plugins/amp/)の使用もご検討ください。"
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "[重要なアセットをインラインで読み込む](https://wordpress.org/plugins/search/critical+css/)または [重要度が低いリソースの読み込みを遅らせる](https://wordpress.org/plugins/search/defer+css+javascript/)ために役立つ、さまざまな WordPress プラグインがあります。ただし、これらのプラグインの最適化処理によって、テーマやプラグインの機能が阻害されることがあります。その場合は、コードを変更する必要があります。"
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "テーマ、プラグイン、サーバー仕様はすべてサーバーの応答時間に影響します。より最適化されたテーマを探す、最適化プラグインを慎重に選ぶ、サーバーをアップグレードすることをおすすめします。"
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "「詳しく読む」タグなどを使用して投稿リストに抜粋を表示する、ページに表示する投稿の数を減らす、長い投稿を複数のページに分けて表示する、またはコメントを遅延読み込みするプラグインを使用することをご検討ください。"
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "スタイルを結合、軽量化、圧縮してサイトの動作を速くする、さまざまな [WordPress プラグイン](https://wordpress.org/plugins/search/minify+css/)があります。可能な場合は、ビルド処理で事前に軽量化しておくこともおすすめします。"
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "スクリプトを結合、軽量化、圧縮してサイトの動作を速くする、さまざまな [WordPress プラグイン](https://wordpress.org/plugins/search/minify+javascript/)があります。可能な場合は、ビルド処理で事前に軽量化しておくこともおすすめします。"
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "ページで使用されていない CSS を読み込む [WordPress プラグイン](https://wordpress.org/plugins/)の数を減らすか、他のプラグインに切り替えることをご検討ください。不要な CSS を読み込んでいるプラグインを特定するには、Chrome DevTools で [コードの Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage)を確認します。スタイルシートの URL から、それを使用しているテーマやプラグインを特定できます。多くのスタイルシートを使用しているプラグイン（コードの Coverage で赤色の部分が多いもの）をリストで探します。プラグインによってキューに追加されるスタイルシートは、実際にページで使用されるもののみにする必要があります。"
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "ページで使用されていない JavaScript を読み込む [WordPress プラグイン](https://wordpress.org/plugins/)の数を減らすか、他のプラグインに切り替えることをご検討ください。不要な JavaScript を読み込んでいるプラグインを特定するには、Chrome DevTools で [コードの Coverage](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage)を確認します。スクリプトの URL から、それを使用しているテーマやプラグインを特定できます。多くのスクリプトを使用しているプラグイン（コードの Coverage で赤色の部分が多いもの）をリストで探します。プラグインによってキューに追加されるスクリプトは、実際にページで使用されるもののみにする必要があります。"
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "[WordPress のブラウザ キャッシング](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)についてご確認ください。"
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "画質を落とさずに画像を圧縮できる [WordPress の画像最適化プラグイン](https://wordpress.org/plugins/search/optimize+images/)の使用をご検討ください。"
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "[メディア ライブラリ](https://codex.wordpress.org/Media_Library_Screen)から直接画像をアップロードして必要な画像サイズを利用できるようにしたうえで、メディア ライブラリから挿入するか、画像ウィジェットを使用して、最適な画像サイズ（レスポンシブ ブレークポイントのサイズを含む）が使用されるようにします。「フルサイズ」の画像は、十分なスペースがある場合を除いて使用しないようにします。[詳細](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)をご覧ください。"
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "ウェブサーバーの設定でテキスト圧縮を有効にできます。"
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "アップロードした画像を最適なフォーマットに自動変換する [プラグイン](https://wordpress.org/plugins/search/convert+webp/)またはサービスの使用をご検討ください。"
   }
 }

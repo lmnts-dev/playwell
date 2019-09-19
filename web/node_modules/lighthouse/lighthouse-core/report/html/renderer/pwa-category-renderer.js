@@ -18,6 +18,16 @@
 
 /* globals self, Util, CategoryRenderer */
 
+/**
+ * An always-increasing counter for making unique SVG ID suffixes.
+ */
+const getUniqueSuffix = (() => {
+  let svgSuffix = 0;
+  return function() {
+    return svgSuffix++;
+  };
+})();
+
 class PwaCategoryRenderer extends CategoryRenderer {
   /**
    * @param {LH.ReportResult.Category} category
@@ -61,6 +71,11 @@ class PwaCategoryRenderer extends CategoryRenderer {
     const wrapper = /** @type {HTMLAnchorElement} */ (this.dom.find('.lh-gauge--pwa__wrapper',
       tmpl));
     wrapper.href = `#${category.id}`;
+
+    // Correct IDs in case multiple instances end up in the page.
+    const svgRoot = tmpl.querySelector('svg');
+    if (!svgRoot) throw new Error('no SVG element found in PWA score gauge template');
+    PwaCategoryRenderer._makeSvgReferencesUnique(svgRoot);
 
     const allGroups = this._getGroupIds(category.auditRefs);
     const passingGroupIds = this._getPassingGroupIds(category.auditRefs);
@@ -146,6 +161,38 @@ class PwaCategoryRenderer extends CategoryRenderer {
     }
 
     return auditsElem;
+  }
+
+  /**
+   * Alters SVG id references so multiple instances of an SVG element can coexist
+   * in a single page. If `svgRoot` has a `<defs>` block, gives all elements defined
+   * in it unique ids, then updates id references (`<use xlink:href="...">`,
+   * `fill="url(#...)"`) to the altered ids in all descendents of `svgRoot`.
+   * @param {SVGElement} svgRoot
+   */
+  static _makeSvgReferencesUnique(svgRoot) {
+    const defsEl = svgRoot.querySelector('defs');
+    if (!defsEl) return;
+
+    const idSuffix = getUniqueSuffix();
+    const elementsToUpdate = defsEl.querySelectorAll('[id]');
+    for (const el of elementsToUpdate) {
+      const oldId = el.id;
+      const newId = `${oldId}-${idSuffix}`;
+      el.id = newId;
+
+      // Update all <use>s.
+      const useEls = svgRoot.querySelectorAll(`use[href="#${oldId}"]`);
+      for (const useEl of useEls) {
+        useEl.setAttribute('href', `#${newId}`);
+      }
+
+      // Update all fill="url(#...)"s.
+      const fillEls = svgRoot.querySelectorAll(`[fill="url(#${oldId})"]`);
+      for (const fillEl of fillEls) {
+        fillEl.setAttribute('fill', `url(#${newId})`);
+      }
+    }
   }
 }
 

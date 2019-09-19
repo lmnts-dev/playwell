@@ -447,10 +447,10 @@
     "message": "విలువ"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "పేజీలలో ~1,500 కన్నా తక్కువ DOM నోడ్‌లు ఉండాలని బ్రౌజర్ ఇంజినీర్లు సిఫార్సు చేస్తారు. ఉత్తమమైన స్థాయి < 32 అంశాల ట్రీ గాఢత మరియు 60 పిల్లలు/తల్లి/తండ్రి అంశం కన్నా తక్కువ ఉండడం. పెద్ద DOM మెమరీ వినియోగాన్ని పెంచవచ్చు, సుదీర్ఘ [శైలి గణనలు] కు దారి తీయవచ్చు (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations), మరియు ఖరీదైన [లేఅవుట్ రీఫ్లోలు]ను ఉత్పత్తి చేయవచ్చు (https://developers.google.com/speed/articles/reflow). [మరింత తెలుసుకోండి](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "బ్రౌజర్ ఇంజినీర్‌లు ~1,500 కంటే తక్కువ DOM మూలకాలు కలిగి ఉండే పేజీలను సిఫార్సు చేస్తారు. వృక్ష పటం భాగాలు < 32 మూలకాలు మరియు 60 కంటే తక్కువ ఉప మూలకాలు/మూలాధార మూలకాలు కలిగి ఉన్నవి అత్యుత్తమమైనవి. పెద్ద DOM మెమరీ వినియోగాన్ని పెంచవచ్చు, సుదీర్ఘ [శైలి గణనలు](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations)కు దారి తీయవచ్చు, అలాగే ఖరీదైన [లేఅవుట్ రీఫ్లోలు](https://developers.google.com/speed/articles/reflow) ఉత్పాదించవచ్చు. [మరింత తెలుసుకోండి](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 నోడ్}other{# నోడ్‌లు}}"
+    "message": "{itemCount,plural, =1{1 మూలకం}other{# మూలకాలు}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "అధిక DOM పరిమాణాన్ని నివారించండి"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "DOM గరిష్ట గాఢత్వము"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "మొత్తం DOM నోడ్‌లు"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "మొత్తం DOM మూలకాలు"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "పిల్ల మూలకాల గరిష్ట సంఖ్య"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "మీ యాప్ యొక్క కంటెంట్‌ను బాగా అర్థం చేసుకోవడానికి, crawlerలు ప్రారంభయ్యే విధంగా మీ HTMLను ఫార్మాట్ చేయండి."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "కంటెంట్ ఉత్తమ అభ్యాసాలు"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "శోధన ఫలితాలలో కనిపించేందుకు, crawlerలకు మీ యాప్ యాక్సెస్ అవసరం."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "క్రాలింగ్ మరియు అనుక్రమణ"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "వినియోగదారులు కంటెంట్ పేజీలను స్క్రీన్‌పై రెండు వేళ్లను ఉంచి ఆ వేళ్లను దగ్గరకు లేదా దూరానికి లాగుతూ లేదా దగ్గరగా జూమ్ చేసి చదవవలసిన అవసరం లేకుండా, మీ పేజీలు మొబైల్ అనుకూలంగా ఉన్నాయని నిర్థారించుకోండి. [మరింత తెలుసుకోండి](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "మొబైల్-అనుకూలం"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "కాష్ TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "మీ పేజీ లోడ్ చేసే సమయంలో స్థితిగతిని రికార్డ్ చేస్తున్నప్పుడు ఏదో తప్పు జరిగింది. దయచేసి Lighthouseని మళ్లీ అమలు చేయండి. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "ప్రారంభ డీబగ్గర్ ప్రోటోకాల్ కనెక్షన్ నిరీక్షణ సమయం గడువు ముగిసింది."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "పేజీ లోడ్ సమయంలో Chrome ఎలాంటి స్క్రీన్‌షాట్‌లను సేకరించలేదు. దయచేసి పేజీలో కనిపించే కంటెంట్ ఉందని నిర్ధారించుకుని, ఆపై Lighthouseని తిరిగి అమలు చేయడం ప్రయత్నించండి. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "ఉత్తీర్ణత సాధించిన ఆడిట్‌లు"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "స్కోర్ స్థాయి:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "స్నిప్పెట్‌ను కుదించు"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "హెచ్చరికలు: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "మీ GIFను HTML5 వీడియోగా పొందుపరచగల సౌలభ్యం అందించే సేవకు అప్‌లోడ్ చేయడానికి ప్రయత్నించండి."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "ఏవైనా ఆఫ్‌స్క్రీన్ చిత్రాలు ఉంటే, వాటిని మినహాయించగల సామర్థ్యం కలిగి ఉండే లేదా ఆ కార్యశీలతను అందించే థీమ్‌కు మార్చగలిగే [లేజీ-లోడ్ WordPress ప్లగ్ఇన్](https://wordpress.org/plugins/search/lazy+load/)ను ఇన్‌స్టాల్ చేసుకోండి. అలాగే, [AMP ప్లగ్ఇన్](https://wordpress.org/plugins/amp/) ఉపయోగించడం కూడా పరిశీలించండి."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "[కీలకమైన ఆస్తులను రేఖాక్రమంలో ఉంచడానికి](https://wordpress.org/plugins/search/critical+css/) లేదా [తక్కువ ప్రాముఖ్యత ఉన్న వనరులను మినహాయించడానికి](https://wordpress.org/plugins/search/defer+css+javascript/) మీకు సహాయపడగల అనేక WordPress ప్లగ్ఇన్‌లు ఉన్నాయి. ఈ ప్లగ్ఇన్‌ల ద్వారా అందించబడే ఆప్టిమైజేషన్‌లు మీ థీమ్ లేదా ప్లగ్ఇన్‌ల ఫీచర్‌లను విడగొట్టవచ్చని గుర్తుంచుకోండి, దీని వలన మీరు కోడ్‌కు మార్పులు చేయాల్సి రావచ్చు."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "థీమ్‌లు, ప్లగ్ఇన్‌లు, సర్వర్ లక్షణాలన్నీ కూడా సర్వర్ ప్రతిస్పందన సమయాన్ని ప్రభావితం చేస్తాయి. మరింత ఆప్టిమైజ్ చేయబడిన థీమ్‌ను కనుగొనడానికి, చాలా జాగ్రత్తగా ఆప్టిమైజేషన్ ప్లగ్ఇన్‌ను ఎంచుకోవడానికి మరియు/లేదా మీ సర్వర్‌ను అప్‌గ్రేడ్ చేయడానికి ప్రయత్నించండి."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "ఇవ్వబడిన పేజీలో చూపబడే పోస్ట్‌ల సంఖ్యను తగ్గించడం, మీ పొడవైన పోస్ట్‌లను బహుళ పేజీలుగా విడగొట్టడం లేదా మందకొడి లోడింగ్ వ్యాఖ్యల కోసం ప్లగ్ఇన్‌ను ఉపయోగించడం ద్వారా (అంటే, మరిన్ని ట్యాగ్ ద్వారా) మీ పోస్ట్ జాబితాలలో సారాంశాలను చూపడానికి ప్రయత్నించండి."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "అనేక [WordPress ప్లగ్ఇన్‌లు](https://wordpress.org/plugins/search/minify+css/) మీ శైలులను క్రమపరచడం, చిన్నవిగా చేయడం, కుదించడం ద్వారా మీ సైట్‌ను మరింత వేగవంతం చేయవచ్చు. వీలైతే, ఈ కనిష్ఠీకరణను ముందుగానే నిర్వహించేలా కూడా మీరు ఒక బిల్డ్ ప్రాసెస్‌ను ఉపయోగించాలని కోరుకోవచ్చు."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "అనేక [WordPress ప్లగ్ఇన్‌లు](https://wordpress.org/plugins/search/minify+javascript/) మీ స్క్రిప్ట్‌లను క్రమపరచడం, చిన్నవిగా చేయడం, కుదించడం ద్వారా మీ సైట్‌ను మరింత వేగవంతం చేయవచ్చు. వీలైతే, ఈ కనిష్ఠీకరణను ముందుగానే నిర్వహించేలా కూడా మీరు ఒక బిల్డ్ ప్రాసెస్‌ను ఉపయోగించాలని కోరుకోవచ్చు."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "మీ పేజీలో ఉపయోగించని CSSను లోడ్ చేస్తున్న [WordPress ప్లగ్ఇన్‌లు] (https://wordpress.org/plugins/) సంఖ్యను తగ్గించడం లేదా మార్చడం పరిగణనలోకి తీసుకోండి. అదనపు CSSను జోడిస్తున్న ప్లగ్ఇన్‌లను గుర్తించడానికి, Chrome DevToolsలో [కోడ్ కవరేజీ](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) అమలు చేయడానికి ప్రయత్నించండి. అందుకు కారణమైన థీమ్/ప్లగ్ఇన్‌ను స్టైల్‌షీట్‌లోని URL నుండి మీరు గుర్తించవచ్చు. కోడ్ కవరేజ్‌లో ఎక్కువ ఎరుపు రంగు కలిగి ఉన్న జాబితాలో అనేక స్టైల్‌షీట్‌లను కలిగి ఉన్న ప్లగ్ఇన్‌లను వెతకండి. నిజంగా ప్లగ్ఇన్‌ను ఆ పేజీలో ఉపయోగించిప్పుడు మాత్రమే స్టైల్‌షీట్‌కు జత చేయాలి."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "మీ పేజీలో ఉపయోగించని JavaScriptను లోడ్ చేస్తున్న [WordPress ప్లగ్ఇన్‌లు] (https://wordpress.org/plugins/) సంఖ్యను తగ్గించడం లేదా మార్చడాన్ని పరిశీలించండి. అదనపు JSను జోడించే ప్లగ్ఇన్‌లను గుర్తించడానికి, Chrome DevToolsలో [కోడ్ కవరేజీ] (https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) అమలు చేయడానికి ప్రయత్నించండి. అందుకు కారణమైన థీమ్/ప్లగ్ఇన్‌ను స్టైల్‌షీట్‌లోని URL నుండి మీరు గుర్తించవచ్చు. కోడ్ కవరేజ్‌లో ఎక్కువ ఎరుపు కలిగి ఉన్న జాబితాలో అనేక స్క్రిప్ట్‌లను కలిగి ఉన్న ప్లగ్ఇన్‌లను వెతకండి. నిజంగా ప్లగ్ఇన్‌ను ఆ పేజీలో ఉపయోగించిప్పుడు మాత్రమే స్టైల్‌షీట్‌కు జత చేయాలి."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "[WordPressలో బ్రౌజర్ కాష్ విధానం](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching) గురించి చదవండి."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "నాణ్యత తగ్గకుండా మీ చిత్రాలను కుదించే [చిత్రం ఆప్టిమైజేషన్ WordPress ప్లగ్ఇన్](https://wordpress.org/plugins/search/optimize+images/)ను ఉపయోగించడం పరిశీలించండి."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "అవసరమైన చిత్ర పరిమాణాలు అందుబాటులో ఉన్నాయో లేదో నిర్ధారించుకోవడానికి చిత్రాలను నేరుగా [మీడియా లైబ్రరీ] (https://codex.wordpress.org/Media_Library_Screen) ద్వారా అప్‌లోడ్ చేయండి, ఆపై వాటిని మీడియా లైబ్రరీ నుండి చొప్పించండి లేదా అనుకూలమైన చిత్ర పరిమాణాలను ఉపయోగించారని నిర్ధారించుకోవడానికి (ప్రతిస్పందనాత్మక బ్రేక్ పాయింట్‌లు కలిగి ఉండే వాటికి కూడా) చిత్ర విడ్జెట్‌ను ఉపయోగించండి. కొలతలు వాటి వినియోగానికి తగినట్లుగా ఉంటే మినహా, `పూర్తి పరిమాణం` చిత్రాలను వినియోగించడం నివారించండి. [మరింత తెలుసుకోండి](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "మీరు మీ వెబ్ సర్వర్ కన్ఫిగరేషన్‌లో వచన కుదింపును ప్రారంభించవచ్చు."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "మీరు అప్‌లోడ్ చేసిన చిత్రాలను అనుకూలమైన ఫార్మాట్‌లలోకి ఆటోమేటిక్‌గా మార్చే [ప్లగ్ఇన్](https://wordpress.org/plugins/search/convert+webp/) లేదా సేవను ఉపయోగించడం పరిశీలించండి."
   }
 }

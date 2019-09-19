@@ -447,10 +447,10 @@
     "message": "Nilai"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Engineer browser merekomendasikan halaman berisi kurang dari ~1.500 node DOM. Titik yang efektif adalah kedalaman hierarki < 32 elemen dan kurang dari 60 elemen turunan/induk. DOM yang besar dapat meningkatkan penggunaan memori, menyebabkan [penghitungan gaya] yang lebih lama(https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations), dan menghasilkan [penyesuaian tata letak] yang mahal(https://developers.google.com/speed/articles/reflow). [Pelajari lebih lanjut](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Engineer browser merekomendasikan halaman berisi kurang dari ~1.500 elemen DOM. Titik yang efektif adalah kedalaman hierarki < 32 elemen dan kurang dari 60 elemen turunan/induk. DOM yang besar dapat meningkatkan penggunaan memori, menyebabkan [penghitungan gaya] yang lebih lama(https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations), dan menghasilkan [penyesuaian tata letak] yang mahal(https://developers.google.com/speed/articles/reflow). [Pelajari lebih lanjut](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 node}other{# node}}"
+    "message": "{itemCount,plural, =1{1 elemen}other{# elemen}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Menghindari ukuran DOM yang berlebihan"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Kedalaman DOM Maksimum"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Total Node DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Elemen DOM Total"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Elemen Turunan Maksimum"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Format HTML Anda dengan cara yang memungkinkan crawler untuk lebih memahami konten aplikasi Anda."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Praktik Terbaik Konten"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Agar muncul di hasil penelusuran, crawler perlu mengakses aplikasi Anda."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Crawling dan Pengindeksan"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Pastikan halaman Anda mobile friendly agar pengguna tidak perlu mencubit atau memperbesar untuk membaca halaman konten. [Pelajari lebih lanjut](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Mobile Friendly"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "TTL Cache"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Terjadi kesalahan saat merekam jejak selama pemuatan halaman Anda. Harap jalankan Lighthouse kembali. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Waktu tunggu untuk sambungan Protokol Debugger awal berakhir."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome tidak mengumpulkan screenshot apa pun selama pemuatan halaman. Pastikan terdapat konten yang terlihat pada halaman, kemudian coba jalankan kembali Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Lulus audit"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Skala skor:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Ciutkan cuplikan"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Peringatan: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Sebaiknya upload GIF ke server yang akan menyediakannya untuk disematkan sebagai video HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Instal [plugin lazy load di WordPress](https://wordpress.org/plugins/search/lazy+load/) yang menyediakan kemampuan untuk menunda pemuatan gambar di bagian halaman yang belum ditampilkan, atau beralih ke tema yang menyediakan fungsi tersebut. Selain itu, sebaiknya gunakan [plugin AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Ada sejumlah plugin WordPress yang dapat membantu Anda [menyejajarkan aset penting](https://wordpress.org/plugins/search/critical+css/) atau [menunda resource yang tidak penting](https://wordpress.org/plugins/search/defer+css+javascript/). Harap berhati-hati karena pengoptimalan yang disediakan oleh plugin ini dapat merusak fitur tema atau plugin, sehingga Anda cenderung perlu mengubah kode."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Semua spesifikasi tema, plugin, dan server berkontribusi pada waktu respons server. Sebaiknya cari tema yang lebih optimal, pilih plugin pengoptimalan dengan hati-hati, dan/atau upgrade server Anda."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Sebaiknya tampilkan kutipan dalam daftar postingan (misalnya melalui tag lainnya), kurangi jumlah postingan yang ditampilkan pada halaman yang ada, bagi postingan panjang menjadi beberapa halaman, atau gunakan plugin untuk menunda pemuatan (lazy-load) komentar."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Sejumlah [plugin WordPress](https://wordpress.org/plugins/search/minify+css/) dapat mempercepat situs Anda dengan menggabungkan, meminifikasi, dan mengompresi gaya. Anda juga dapat menggunakan proses pembuatan build untuk melakukan minifikasi di muka jika mungkin."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Sejumlah [plugin WordPress](https://wordpress.org/plugins/search/minify+javascript/) dapat mempercepat situs Anda dengan menggabungkan, meminifikasi, dan mengompresi skrip Anda. Anda juga dapat menggunakan proses pembuatan build untuk melakukan minifikasi di awal jika mungkin."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Sebaiknya kurangi atau ubah jumlah [plugin WordPress](https://wordpress.org/plugins/) yang memuat CSS yang tidak digunakan di halaman Anda. Untuk mengidentifikasi plugin yang menambahkan CSS tidak relevan, coba jalankan [cakupan kode](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) di Chrome DevTools. Anda dapat mengidentifikasi tema/plugin yang bertanggung jawab dari URL stylesheet. Cari plugin yang memiliki banyak stylesheet dalam daftar yang memiliki banyak warna merah dalam cakupan kode. Plugin sebaiknya hanya menambahkan stylesheet ke antrean jika memang benar digunakan pada halaman."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Sebaiknya kurangi atau ubah jumlah [plugin WordPress](https://wordpress.org/plugins/) yang memuat JavaScript yang tidak digunakan di halaman. Untuk mengidentifikasi plugin yang menambahkan JS tidak relevan, coba jalankan [cakupan kode](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) di Chrome DevTools. Anda dapat mengidentifikasi tema/plugin yang bertanggung jawab dari URL skrip. Cari plugin dengan banyak skrip dalam daftar yang memiliki banyak warna merah dalam cakupan kode. Plugin sebaiknya hanya menambahkan skrip dalam antrean jika sebenarnya digunakan pada halaman."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Baca [Cache Browser di WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Sebaiknya gunakan [plugin WordPress untuk pengoptimalan gambar](https://wordpress.org/plugins/search/optimize+images/) yang mengompresi gambar Anda dengan tetap mempertahankan kualitas."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Upload gambar langsung melalui [library media](https://codex.wordpress.org/Media_Library_Screen) untuk memastikan bahwa ukuran gambar yang diperlukan tersedia, lalu masukkan dari library media atau gunakan widget gambar untuk memastikan ukuran gambar optimal digunakan (termasuk untuk titik henti sementara responsif). Hindari menggunakan gambar `Ukuran Penuh` kecuali dimensi memungkinkan untuk digunakan. [Pelajari Lebih Lanjut](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Anda dapat mengaktifkan kompresi teks di konfigurasi server web."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Sebaiknya gunakan [plugin](https://wordpress.org/plugins/search/convert+webp/) atau layanan yang otomatis mengonversi gambar yang diupload ke format optimal."
   }
 }

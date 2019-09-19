@@ -72,7 +72,7 @@ export const Footer = ({ navQuery }) => {
             <ul class="social">
               <li>
                 <a
-                  href={'https://www.facebook.com/sharer.php?u=' + Location}
+                  href={'https://www.facebook.com/sharer.php?u='}
                   target="_blank"
                   rel="nofollow noopener noreferrer"
                 >
@@ -82,8 +82,7 @@ export const Footer = ({ navQuery }) => {
               <li>
                 <a
                   href={
-                    'https://twitter.com/intent/tweet?url=' +
-                    '&text=Test&via=Test&hashtags=Test'
+                    'https://twitter.com/intent/tweet?url=&text=Test&via=Test&hashtags=Test'
                   }
                   target="_blank"
                   rel="nofollow noopener noreferrer"
@@ -94,9 +93,7 @@ export const Footer = ({ navQuery }) => {
               <li>
                 <a
                   href={
-                    'https://www.linkedin.com/shareArticle?mini=true&url=' +
-                    Location +
-                    '&title=Test&summary=Test&source=Test'
+                    'https://www.linkedin.com/shareArticle?mini=true&url=&title=Test&summary=Test&source=Test'
                   }
                   target="_blank"
                   rel="nofollow noopener noreferrer"

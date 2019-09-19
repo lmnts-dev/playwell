@@ -9,21 +9,9 @@
  * URL shim so we keep our code DRY
  */
 
-/* global self */
+/* global URL */
 
 const Util = require('../report/html/renderer/util.js');
-
-// Type cast so tsc sees window.URL and require('url').URL as sufficiently equivalent.
-const URL = /** @type {!Window["URL"]} */ (typeof self !== 'undefined' && self.URL) ||
-    require('url').URL;
-
-// 25 most used tld plus one domains (aka public suffixes) from http archive.
-// @see https://github.com/GoogleChrome/lighthouse/pull/5065#discussion_r191926212
-// The canonical list is https://publicsuffix.org/learn/ but we're only using subset to conserve bytes
-const listOfTlds = [
-  'com', 'co', 'gov', 'edu', 'ac', 'org', 'go', 'gob', 'or', 'net', 'in', 'ne', 'nic', 'gouv',
-  'web', 'spb', 'blog', 'jus', 'kiev', 'mil', 'wi', 'qc', 'ca', 'bel', 'on',
-];
 
 const allowedProtocols = [
   'https:', 'http:', 'chrome:', 'chrome-extension:',
@@ -100,33 +88,17 @@ class URLShim extends URL {
   }
 
   /**
-   * Gets the tld of a domain
-   *
-   * @param {string} hostname
-   * @return {string} tld
-   */
-  static getTld(hostname) {
-    const tlds = hostname.split('.').slice(-2);
-
-    if (!listOfTlds.includes(tlds[0])) {
-      return `.${tlds[tlds.length - 1]}`;
-    }
-
-    return `.${tlds.join('.')}`;
-  }
-
-  /**
    * Check if rootDomains matches
    *
-   * @param {string} urlA
-   * @param {string} urlB
+   * @param {string|URL} urlA
+   * @param {string|URL} urlB
    */
   static rootDomainsMatch(urlA, urlB) {
     let urlAInfo;
     let urlBInfo;
     try {
-      urlAInfo = new URL(urlA);
-      urlBInfo = new URL(urlB);
+      urlAInfo = Util.createOrReturnURL(urlA);
+      urlBInfo = Util.createOrReturnURL(urlB);
     } catch (err) {
       return false;
     }
@@ -135,14 +107,9 @@ class URLShim extends URL {
       return false;
     }
 
-    const tldA = URLShim.getTld(urlAInfo.hostname);
-    const tldB = URLShim.getTld(urlBInfo.hostname);
-
     // get the string before the tld
-    const urlARootDomain = urlAInfo.hostname.replace(new RegExp(`${tldA}$`), '')
-      .split('.').splice(-1)[0];
-    const urlBRootDomain = urlBInfo.hostname.replace(new RegExp(`${tldB}$`), '')
-      .split('.').splice(-1)[0];
+    const urlARootDomain = Util.getRootDomain(urlAInfo);
+    const urlBRootDomain = Util.getRootDomain(urlBInfo);
 
     return urlARootDomain === urlBRootDomain;
   }

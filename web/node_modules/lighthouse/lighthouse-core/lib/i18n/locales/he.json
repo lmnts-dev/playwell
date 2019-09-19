@@ -447,10 +447,10 @@
     "message": "ערך"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "מפתחי דפדפנים ממליצים שדפים יכילו פחות מכ-1,500 צומתי DOM. המצב האופטימלי הוא עץ בעומק של פחות מ-32 אלמנטים ופחות מ-60 אלמנטים ברמת צאצא/אב. DOM גדול יכול להגדיל את צריכת הזיכרון, להאריך [חישובי סגנון](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) ולגרום לזרימות חוזרות של פריסה שצורכות נתונים רבים [layout reflows](https://developers.google.com/speed/articles/reflow). [מידע נוסף](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "מפתחי דפדפנים ממליצים שדפים יכילו פחות מכ-1,500 רכיבי DOM. המצב האופטימלי הוא עץ בעומק של פחות מ-32 אלמנטים ופחות מ-60 אלמנטים ברמת צאצא/אב. DOM גדול יכול להגדיל את צריכת הזיכרון, להאריך [חישובי סגנון](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) ולגרום ל[זרימות חוזרות של פריסה] שצורכות נתונים רבים (https://developers.google.com/speed/articles/reflow). [מידע נוסף](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{צומת אחד}two{# צמתים}many{# צמתים}other{# צמתים}}"
+    "message": "{itemCount,plural, =1{רכיב אחד}two{# רכיבים}many{# רכיבים}other{# רכיבים}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "יש להימנע מ-DOM גדול מדי"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "עומק DOM מרבי"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "המספר הכולל של צומתי DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "סך רכיבי DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "מקסימום רכיבי צאצא"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "אופטימיזציה למנועי חיפוש"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "יש לכתוב את קוד ה-HTML באופן שיאפשר לסורקים להבין את תוכן האפליקציה בצורה טובה יותר."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "שיטות מומלצות לגבי תוכן"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "כדי שהאפליקציה תופיע בתוצאות החיפוש, סורקים צריכים לקבל גישה אליה."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "סריקה והוספה לאינדקס"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "הדפים צריכים להתאים לניידים, כדי שמשתמשים לא יצטרכו לעשות תנועת צביטה או התקרבות כדי לקרוא את דפי התוכן. [מידע נוסף](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "התאמה לניידים"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "אורך חיים (TTL) של מטמון"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "משהו השתבש בתיעוד של טעינת הדף ובמעקב אחריה. יש להריץ שוב את Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "חלף הזמן הקצוב לתפוגה בהמתנה לחיבור הראשוני של פרוטוקול Debugger."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome לא אסף צילומי מסך במהלך טעינת הדף. צריך לוודא שיש תוכן גלוי בדף, ולאחר מכן להריץ מחדש את Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "בדיקות עם ציון 'עובר'"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "סולם תוצאות:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "כיווץ קטע הטקסט"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "אזהרות: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "אפשר להעלות את ה-GIF לשירות שיאפשר להטמיע אותו כסרטון HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "אפשר להתקין [פלאגין של WordPress לטעינה מדורגת](https://wordpress.org/plugins/search/lazy+load/) שמאפשר לדחות טעינה של רכיבים שאינם מופיעים מיד במסך. ניתן גם להשתמש בעיצוב שמספק את התכונה הזו. עוד אפשרות היא להשתמש ב[פלאגין של AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "יש כמה יישומי פלאגין של WordPress שיכולים לעזור לך [להטביע נכסים קריטיים](https://wordpress.org/plugins/search/critical+css/) או [לדחות טעינה של משאבים פחות חשובים](https://wordpress.org/plugins/search/defer+css+javascript/). חשוב: ייתכן שהאופטימיזציות המבוצעות על-ידי יישומי הפלאגין האלה יגרמו לתקלות בתכונות של העיצוב או יישומי הפלאגין האחרים, ולכן כנראה שיהיה צורך לבצע שינויים בקוד."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "עיצובים, יישומי פלאגין ומפרטי שרתים משפיעים על זמן התגובה של השרת. אפשר להשתמש בעיצוב שעבר אופטימיזציה, לבחור בקפידה פלאגין לאופטימיזציה ו/או לשדרג את השרת."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "אפשר להציג קטעים ברשימות הפוסטים (למשל, עם תג 'עוד'), לצמצם את מספר הפוסטים המוצגים בדף נתון, לחלק פוסטים ארוכים למספר דפים או להשתמש בפלאגין כדי לטעון תגובות בצורה מדורגת."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "יש כמה [יישומי פלאגין של WordPress](https://wordpress.org/plugins/search/minify+css/) שיכולים להאיץ את האתר בעזרת שרשור, הקטנה ודחיסה של הסגנונות. ניתן גם להשתמש בתהליך build כדי לבצע את ההקטנה מראש, אם אפשר."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "יש כמה [יישומי פלאגין של WordPress](https://wordpress.org/plugins/search/minify+javascript/) שיכולים להאיץ את האתר בעזרת שרשור, הקטנה ודחיסה של הסקריפטים. ניתן גם להשתמש בתהליך build כדי לבצע את ההקטנה מראש, אם אפשר."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "אפשר לצמצם את מספר [יישומי הפלאגין של WordPress](https://wordpress.org/plugins/) שטוענים תוכן CSS בלתי נחוץ בדף, או להשבית אותם. כדי לזהות יישומי פלאגין שמוסיפים תוכן CSS מיותר, אפשר להפעיל [כיסוי קוד](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) ב-Chrome DevTools. ניתן לזהות את העיצוב/הפלאגין שמוסיפים CSS לפי כתובת ה-URL שבגיליון הסגנון. יישומי הפלאגין הבעייתיים הם אלה שברשימת גיליונות הסגנון שלהם יש כמות גדולה של כיסוי קוד באדום. פלאגין צריך להכניס גיליון סגנון לתור רק אם נעשה בו שימוש בדף."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "אפשר לצמצם את מספר [יישומי הפלאגין של WordPress](https://wordpress.org/plugins/) שטוענים תוכן JavaScript בלתי נחוץ בדף, או להסיר אותם. כדי לזהות יישומי פלאגין שמוסיפים תוכן JS מיותר אפשר להפעיל [כיסוי קוד](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) ב-Chrome DevTools. ניתן לזהות את העיצוב/הפלאגין שמוסיפים CSS לפי כתובת ה-URL שבסקריפט. יישומי הפלאגין הבעייתיים הם אלה שברשימת הסקריפטים שלהם יש כמות גדולה של כיסוי קוד באדום. פלאגין צריך להכניס סקריפט לתור רק אם נעשה בו שימוש בדף."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "למידע על [שמירה במטמון הדפדפן ב-WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "אפשר להשתמש ב[בפלאגין של WordPress לאופטימיזציית תמונות](https://wordpress.org/plugins/search/optimize+images/) שדוחס את התמונות בלי לפגוע באיכות שלהן."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "העלאה של תמונות באופן ישיר דרך [ספריית המדיה](https://codex.wordpress.org/Media_Library_Screen) תאפשר לך לוודא שהתמונות זמינות במידות הדרושות. לאחר מכן אפשר להוסיף אותן מספריית המדיה או להשתמש בווידג'ט התמונות כדי לוודא שנעשה שימוש בתמונות במידות האופטימליות (כולל תמונות בשביל נקודות מעבר רספונסיביות). יש להימנע משימוש בתמונות בגודל מלא, אלא אם המימדים מתאים לשימוש שנעשה בהן. [מידע נוסף](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "אפשר להפעיל דחיסת טקסט בהגדרות שרת האינטרנט."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "אפשר להשתמש ב[פלאגין](https://wordpress.org/plugins/search/convert+webp/) או שירות שימיר באופן אוטומטי את התמונות שהעלית לפורמט האופטימלי."
   }
 }

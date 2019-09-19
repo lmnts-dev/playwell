@@ -6,7 +6,7 @@
  */
 'use strict';
 
-const ManualAudit = require('../../manual/manual-audit');
+const ManualAudit = require('../../manual/manual-audit.js');
 
 /**
  * @fileoverview Manual A11y audit to check that the visual layout of the page matches the DOM.

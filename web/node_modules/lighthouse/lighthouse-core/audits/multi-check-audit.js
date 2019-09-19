@@ -9,7 +9,7 @@
  * @fileoverview Base class for boolean audits that can have multiple reasons for failure
  */
 
-const Audit = require('./audit');
+const Audit = require('./audit.js');
 
 class MultiCheckAudit extends Audit {
   /**
@@ -42,9 +42,9 @@ class MultiCheckAudit extends Audit {
     }
 
     // Include the detailed pass/fail checklist as a diagnostic.
-    /** @type {LH.Audit.Details.Diagnostic} */
+    /** @type {LH.Audit.Details.DebugData} */
     const details = {
-      type: 'diagnostic',
+      type: 'debugdata',
       // TODO: Consider not nesting detailsItem under `items`.
       items: [detailsItem],
     };
@@ -52,7 +52,7 @@ class MultiCheckAudit extends Audit {
     // If we fail, share the failures
     if (result.failures.length > 0) {
       return {
-        rawValue: false,
+        score: 0,
         explanation: `Failures: ${result.failures.join(',\n')}.`,
         details,
       };
@@ -60,7 +60,7 @@ class MultiCheckAudit extends Audit {
 
     // Otherwise, we pass
     return {
-      rawValue: true,
+      score: 1,
       details,
     };
   }

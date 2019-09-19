@@ -19,7 +19,7 @@ class Screenshots {
       .filter(evt => evt.name === SCREENSHOT_TRACE_NAME)
       .map(evt => {
         return {
-          timestamp: evt.ts / 1000,
+          timestamp: evt.ts,
           datauri: `data:image/jpeg;base64,${evt.args.snapshot}`,
         };
       });

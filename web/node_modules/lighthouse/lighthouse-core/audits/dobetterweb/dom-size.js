@@ -6,45 +6,45 @@
 
 /**
  * @fileoverview Audits a page to see how the size of DOM it creates. Stats like
- * tree depth, # children, and total nodes are returned. The score is calculated
- * based solely on the total number of nodes found on the page.
+ * tree depth, # children, and total elements are returned. The score is calculated
+ * based solely on the total number of elements found on the page.
  */
 
 'use strict';
 
-const Audit = require('../audit');
+const Audit = require('../audit.js');
 const Util = require('../../report/html/renderer/util.js');
 const i18n = require('../../lib/i18n/i18n.js');
 
-const MAX_DOM_NODES = 1500;
+const MAX_DOM_ELEMENTS = 1500;
 const MAX_DOM_TREE_WIDTH = 60;
 const MAX_DOM_TREE_DEPTH = 32;
 
 const UIStrings = {
-  /** Title of a diagnostic audit that provides detail on the size of the web page's DOM. The size of a DOM is characterized by the total number of DOM nodes and greatest DOM depth. This descriptive title is shown to users when the amount is acceptable and no user action is required. */
+  /** Title of a diagnostic audit that provides detail on the size of the web page's DOM. The size of a DOM is characterized by the total number of DOM elements and greatest DOM depth. This descriptive title is shown to users when the amount is acceptable and no user action is required. */
   title: 'Avoids an excessive DOM size',
-  /** Title of a diagnostic audit that provides detail on the size of the web page's DOM. The size of a DOM is characterized by the total number of DOM nodes and greatest DOM depth. This imperative title is shown to users when there is a significant amount of execution time that could be reduced. */
+  /** Title of a diagnostic audit that provides detail on the size of the web page's DOM. The size of a DOM is characterized by the total number of DOM elements and greatest DOM depth. This imperative title is shown to users when there is a significant amount of execution time that could be reduced. */
   failureTitle: 'Avoid an excessive DOM size',
-  /** Description of a Lighthouse audit that tells the user *why* they should reduce the size of the web page's DOM. The size of a DOM is characterized by the total number of DOM nodes and greatest DOM depth. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
+  /** Description of a Lighthouse audit that tells the user *why* they should reduce the size of the web page's DOM. The size of a DOM is characterized by the total number of DOM elements and greatest DOM depth. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Browser engineers recommend pages contain fewer than ' +
-    `~${MAX_DOM_NODES.toLocaleString()} DOM nodes. The sweet spot is a tree ` +
+    `~${MAX_DOM_ELEMENTS.toLocaleString()} DOM elements. The sweet spot is a tree ` +
     `depth < ${MAX_DOM_TREE_DEPTH} elements and fewer than ${MAX_DOM_TREE_WIDTH} ` +
     'children/parent element. A large DOM can increase memory usage, cause longer ' +
     '[style calculations](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations), ' +
     'and produce costly [layout reflows](https://developers.google.com/speed/articles/reflow). [Learn more](https://developers.google.com/web/tools/lighthouse/audits/dom-size).',
-  /** Table column header for the type of statistic. These statistics describe how big the DOM is (count of DOM nodes, children, depth). */
+  /** Table column header for the type of statistic. These statistics describe how big the DOM is (count of DOM elements, children, depth). */
   columnStatistic: 'Statistic',
   /** Table column header for the DOM element. Each DOM element is described with its HTML representation. */
   columnElement: 'Element',
   /** Table column header for the observed value of the DOM statistic. */
   columnValue: 'Value',
-  /** [ICU Syntax] Label for an audit identifying the number of DOM nodes found in the page. */
+  /** [ICU Syntax] Label for an audit identifying the number of DOM elements found in the page. */
   displayValue: `{itemCount, plural,
-    =1 {1 node}
-    other {# nodes}
+    =1 {1 element}
+    other {# elements}
     }`,
-  /** Label for the total number of DOM nodes found in the page. */
-  statisticDOMNodes: 'Total DOM Nodes',
+  /** Label for the total number of DOM elements found in the page. */
+  statisticDOMElements: 'Total DOM Elements',
   /** Label for the numeric value of the maximum depth in the page's DOM tree. */
   statisticDOMDepth: 'Maximum DOM Depth',
   /** Label for the numeric value of the maximum number of children any DOM element in the page has. The element described will have the most children in the page. */
@@ -55,8 +55,8 @@ const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
 
 class DOMSize extends Audit {
-  static get MAX_DOM_NODES() {
-    return MAX_DOM_NODES;
+  static get MAX_DOM_ELEMENTS() {
+    return MAX_DOM_ELEMENTS;
   }
 
   /**
@@ -96,7 +96,7 @@ class DOMSize extends Audit {
     const stats = artifacts.DOMStats;
 
     const score = Audit.computeLogNormalScore(
-      stats.totalDOMNodes,
+      stats.totalBodyElements,
       context.options.scorePODR,
       context.options.scoreMedian
     );
@@ -111,9 +111,9 @@ class DOMSize extends Audit {
     /** @type {LH.Audit.Details.Table['items']} */
     const items = [
       {
-        statistic: str_(UIStrings.statisticDOMNodes),
+        statistic: str_(UIStrings.statisticDOMElements),
         element: '',
-        value: Util.formatNumber(stats.totalDOMNodes),
+        value: Util.formatNumber(stats.totalBodyElements),
       },
       {
         statistic: str_(UIStrings.statisticDOMDepth),
@@ -135,8 +135,8 @@ class DOMSize extends Audit {
 
     return {
       score,
-      rawValue: stats.totalDOMNodes,
-      displayValue: str_(UIStrings.displayValue, {itemCount: stats.totalDOMNodes}),
+      numericValue: stats.totalBodyElements,
+      displayValue: str_(UIStrings.displayValue, {itemCount: stats.totalBodyElements}),
       extendedInfo: {
         value: items,
       },

@@ -10,17 +10,19 @@
  */
 module.exports = [
   {
-    requestedUrl: 'http://localhost:10200/oopif.html',
-    finalUrl: 'http://localhost:10200/oopif.html',
-    audits: {
-      'network-requests': {
-        details: {
-          items: {
+    lhr: {
+      requestedUrl: 'http://localhost:10200/oopif.html',
+      finalUrl: 'http://localhost:10200/oopif.html',
+      audits: {
+        'network-requests': {
+          details: {
+            items: {
             // We want to make sure we are finding the iframe's requests (paulirish.com) *AND*
             // the iframe's iframe's iframe's requests (youtube.com/doubleclick/etc).
             // - paulirish.com ~40-60 requests
             // - paulirish.com + all descendant iframes ~80-90 requests
-            length: '>70',
+              length: '>70',
+            },
           },
         },
       },

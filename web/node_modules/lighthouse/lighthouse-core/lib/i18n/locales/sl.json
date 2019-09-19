@@ -447,10 +447,10 @@
     "message": "Vrednost"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Inženirji za brskalnike priporočajo, da strani vsebujejo manj kot približno 1500 vozlišč DOM-a. Idealna vrednost je globina drevesa z manj kot 32 elementi in manj kot 60 podrejenimi/nadrejenimi elementi. Velik DOM lahko povzroči povečano uporabo pomnilnika, daljše [slogovne izračune](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) in drage [prilagoditve postavitve](https://developers.google.com/speed/articles/reflow). [Več o tem](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Inženirji za brskalnike priporočajo, da strani vsebujejo manj kot približno 1500 elementov DOM. Idealna vrednost je globina drevesa z manj kot 32 elementi in manj kot 60 podrejenimi/nadrejenimi elementi. Velik DOM lahko povzroči povečano uporabo pomnilnika, daljše [slogovne izračune](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) in drage [prilagoditve postavitve](https://developers.google.com/speed/articles/reflow). [Preberite več o tem](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 vozlišče}one{# vozlišče}two{# vozlišči}few{# vozlišča}other{# vozlišč}}"
+    "message": "{itemCount,plural, =1{1 element}one{# element}two{# elementa}few{# elementi}other{# elementov}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Izogibajte se prekomerni velikosti DOM-a"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Največja globina DOM-a"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Skupno število vozlišč DOM-a"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Skupno število elementov DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Največje število podrejenih elementov"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Oblikujte HTML na način, ki iskalnikom po vsebini omogoča boljše razumevanje vsebine vaše aplikacije."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Najboljši postopki glede vsebine"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Če želite, da bo prikazana v rezultatih iskanja, morajo imeti iskalniki po vsebini dostop do vaše aplikacije."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Iskanje po vsebini in indeksiranje"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Poskrbite, da so strani prilagojene za mobilne naprave, da uporabnikom ne bo treba vleči s prsti skupaj ali povečevati slike, če bodo želeli brati strani z vsebino. [Več o tem](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Prilagojeno za mobilne naprave"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "TTL predpomnjenja"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Pri snemanju sledi ob nalaganju strani je prišlo do napake. Znova zaženite Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Potek časovne omejitve pri čakanju na začetno povezavo protokola za odpravljanje napak"
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome med nalaganjem strani ni zbral posnetkov zaslona. Poskrbite, da je vsebina vidna na strani, nato poskusite znova zagnati Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Uspešni pregledi"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Rezultatska lestvica:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Strni delček"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Opozorila: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Razmislite o tem, da bi GIF naložili v storitev, prek katere bo na voljo za vdelavo kot videposnetek v obliki HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Namestite [vtičnik za postopno nalaganje za WordPress](https://wordpress.org/plugins/search/lazy+load/), ki omogoča odlog nalaganja slik, ki niso na zaslonu, ali preidite na temo, ki ponuja to funkcijo. Razmislite tudi o uporabi [vtičnika AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Na voljo je več vtičnikov za WordPress, ki vam lahko pomagajo [uvrstiti nujna sredstva](https://wordpress.org/plugins/search/critical+css/) ali [odložiti manj pomembna sredstva](https://wordpress.org/plugins/search/defer+css+javascript/). Upoštevajte, da lahko optimizacije, ki jih ponujajo ti vtičniki, pokvarijo delovanje funkcij vaših tem ali vtičnikov, zato boste verjetno morali spremeniti kodo."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Teme, vtičniki in strežniške specifikacije prispevajo k odzivnemu času strežnika. Razmislite o tem, da bi poiskali bolj optimizirano temo, skrbno izbrali optimizacijski vtičnik in/ali nadgradili strežnik."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Razmislite o tem, da bi na seznamih objav prikazali izvlečke (npr. z oznako »more«), zmanjšali število objav, prikazanih na posamezni strani, daljše objave razdelili na več strani ali uporabili vtičnik za odloženo nalaganje komentarjev."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Na voljo je več [vtičnikov za WordPress](https://wordpress.org/plugins/search/minify+css/), ki lahko s sestavljanjem, pomanjševanjem in stiskanjem slogov pospešijo vaše spletno mesto. Po možnosti uporabite tudi postopek gradnje, ki to pomanjševanje izvede vnaprej."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Na voljo je več [vtičnikov za WordPress](https://wordpress.org/plugins/search/minify+javascript/), ki lahko s sestavljanjem, pomanjševanjem in stiskanjem skriptov pospešijo vaše spletno mesto. Po možnosti uporabite tudi postopek gradnje, ki to pomanjševanje izvede vnaprej."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Razmislite o tem, da bi zmanjšali ali spremenili število [vtičnikov za WordPress](https://wordpress.org/plugins/), ki na vaši strani nalagajo neuporabljen CSS. Če želite ugotoviti, kateri vtičniki dodajo zunanji CSS, poskušajte z orodji Chrome DevTools izvesti [pokritost kode](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage). Ustrezen vtičnik/temo lahko ugotovite na podlagi URL-ja datoteke s slogi. Bodite pozorni na vtičnike, ki imajo na seznamu mnogo datotek s slogi, ki imajo v pokritosti kode veliko rdeče obarvanega območja. Datoteka s slogi naj bo v čakalni vrsti vtičnika samo, če je dejansko uporabljena na strani."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Razmislite o tem, da bi zmanjšali ali spremenili število [vtičnikov za WordPress](https://wordpress.org/plugins/), ki na vaši strani nalagajo neuporabljen JavaScript. Če želite ugotoviti, kateri vtičniki dodajo zunanji JS, poskušajte z orodji Chrome DevTools izvesti [pokritost kode](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage). Ustrezen vtičnik/temo lahko ugotovite na podlagi URL-ja skripta. Bodite pozorni na vtičnike, ki imajo na seznamu mnogo skriptov, ki imajo v pokritosti kode veliko rdeče obarvanega območja. Skript naj bo v čakalni vrsti vtičnika samo, če je dejansko uporabljen na strani."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Preberite o [predpomnjenju brskalnika v WordPressu](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Razmislite o tem, da bi uporabili [vtičnik za optimizacijo slik za WordPress](https://wordpress.org/plugins/search/optimize+images/), ki slike stisne, a ohrani kakovost."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Slike naložite neposredno prek [predstavnostne knjižnice](https://codex.wordpress.org/Media_Library_Screen) in tako zagotovite, da so na voljo potrebne velikosti slik. Nato jih vstavite iz predstavnostne knjižnice ali uporabite slikovni pripomoček, da zagotovite uporabo optimalnih velikosti slik (vključno s tistimi za odzivne prekinitvene točke). Izogibajte se slikam polne velikosti, razen če so mere primerne za njihovo uporabo. [Preberite več o tem](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Stiskanje besedila lahko omogočite v konfiguraciji spletnega strežnika."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Razmislite o tem, da bi uporabili [vtičnik](https://wordpress.org/plugins/search/convert+webp/) ali storitev, ki naložene slike samodejno pretvori v optimalne oblike."
   }
 }

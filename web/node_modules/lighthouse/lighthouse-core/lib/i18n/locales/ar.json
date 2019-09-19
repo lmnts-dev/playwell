@@ -447,10 +447,10 @@
     "message": "القيمة"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "يوصي مهندسو المتصفّح بالصفحات التي تحتوي على أقل من ~1500 عُقدة DOM. وتمثل sweet spot شبكة عمقها < 32 عنصرًا ولا تزيد عن 60 عنصرًا فرعيًا/رئيسيًا. ويمكن أن تزيد عُقدة DOM الكبيرة من استخدام الذاكرة، وتسبب [عمليات حسابية نمطية] أطول (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations)، وتنتج [عمليات إعادة عرض للتنسيق] مُكلفة (https://developers.google.com/speed/articles/reflow). [مزيد من المعلومات](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "يوصي مهندسو المتصفح بالصفحات التي تحتوي على أقل من ~1500 عنصر DOM. ويمثل أفضل مكان للاستماع إلى مكبِّرات الصوت شبكة عمقها < 32 عنصرًا ولا تزيد عن 60 عنصرًا فرعيًا/رئيسيًا. ويمكن أن يزيد عنصر DOM الكبير من استخدام الذاكرة، ويسبب [عمليات حسابية نمطية] أطول (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations)، وينتج [عمليات إعادة عرض للتنسيق] مُكلفة (https://developers.google.com/speed/articles/reflow). [تعرَّف على مزيد من المعلومات](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{عقدة واحدة}zero{# عقدة}two{عقدتان (#)}few{# عُقَد}many{# عقدةً}other{# عقدة}}"
+    "message": "{itemCount,plural, =1{عنصر واحد}zero{# عنصر}two{عنصرين (#)}few{# عناصر}many{# عنصرًا}other{# عنصر}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "تجنُب حجم DOM الزائد"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "الحد الأقصى لعمق DOM"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "إجمالى عُقَدْ DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "إجمالي عدد عناصر DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "الحد الأقصى من عناصر الأطفال"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "تحسين محركات البحث"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "يمكنك تنسيق HTML بطريقة تتيح لبرامج الزحف فهم محتوى تطبيقك بشكلٍ أفضل."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "أفضل ممارسات المحتوى"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "للظهور في نتائج البحث، تحتاج برامج الزحف إلى الوصول إلى تطبيقك."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "الزحف والفهرسة"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "يُرجى التأكُّد من أن صفحاتك متوافقة مع الجوّال، حتى لا يحتاج المستخدمون إلى التصغير أو التكبير من أجل الاطّلاع على صفحات المحتوى. [مزيد من المعلومات](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "متوافق مع الجوّال"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "ذاكرة التخزين المؤقت TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "حدث خطأ أثناء تسجيل التتبع عند تحميل صفحتك. يُرجى تشغيل Lighthouse مرة أخرى. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "مهلة انتظار ربط بروتوكول برنامج تصحيح الخلل الأول."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "لم يجمع Chrome أي لقطات شاشة خلال عملية تحميل الصفحة. يُرجى التأكُّد من وجود محتوى مرئي على الصفحة، ثم محاولة إعادة تشغيل Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "اجتياز عمليات التدقيق بنجاح"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "مقياس النتيجة:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "تصغير المقتطف"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "التحذيرات: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "يمكنك تحميل ملف GIF إلى خدمة ستتيح تضمينه باعتباره فيديو HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "يمكنك تثبيت [مكون WordPress الإضافي للتحميل الكسول](https://wordpress.org/plugins/search/lazy+load/) الذي يوفر القدرة على تأجيل أي صور خارج الشاشة، أو التبديل إلى تصميم يوفر هذه القدرة الوظيفية. يمكنك أيضًا استخدام [مكون AMP الإضافي] (https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "هناك عدد من مكونات WordPress الإضافية التي يمكنها مساعدتك على [تضمين مواد العرض المهمة] (https://wordpress.org/plugins/search/critical+css/) أو [تأجيل موارد أقل أهمية] (https://wordpress.org/plugins/search/defer+css+javascript/). عليك توخي الحذر من أن التحسينات التي توفرها هذه الإضافات قد توقف ميزات التصميم أو المكونات الإضافية، لذلك ستحتاج على الأرجح إلى إجراء تغييرات في الرمز."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "تساهم التصاميم والمكونات الإضافية ومواصفات الخادم في تحسين وقت استجابة الخادم. يمكنك البحث عن تصميم مُحسّن أكثر و/أو اختيار مكون إضافي للتحسين و/أو ترقية الخادم."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "يمكنك عرض مقتطفات في قوائم مشاركاتك (مثلاً عبر العلامة \"المزيد\")، أو تقليل عدد المشاركات المعروضة في صفحة معينة، أو تقسيم مشاركاتك الطويلة إلى صفحات متعددة، أو استخدام مكون إضافي لتحميل التعليقات ذات التحميل الكسول."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "يمكن لعدد من [مكونات WordPress الإضافية](https://wordpress.org/plugins/search/minify+css/) زيادة سرعة موقعك من خلال ربط الأنماط وتصغيرها وضغطها. يمكنك أيضًا استخدام عملية إنشاء لإزالة البيانات غير الضرورية مقدمًا إذا أمكن ذلك."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "يمكن لعدد من [مكونات WordPress الإضافية](https://wordpress.org/plugins/search/minify+javascript/) زيادة سرعة موقعك من خلال ربط النصوص البرمجية وتصغيرها وضغطها. يمكنك أيضًا استخدام عملية إنشاء لإزالة البيانات غير الضرورية مقدمًا إذا أمكن ذلك."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "يمكنك تقليل عدد [مكونات WordPress الإضافية](https://wordpress.org/plugins/) التي تُحمِّل خدمة CSS غير المُستخدَمة في صفحتك أو تبديلها. لتحديد المكونات الإضافية التي تضيف CSS دخيلة، يمكنك محاولة تشغيل [تغطية الرمز](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) في Chrome DevTools. يمكنك تحديد التصميم/المكون الإضافي المسؤول عن عنوان URL لورقة الأنماط. يمكنك البحث عن المكونات الإضافية التي تحتوي على العديد من أوراق الأنماط في القائمة والتي تحتوي على الكثير من اللون الأحمر في تغطية الرمز. يجب أن يدرِج المكون الإضافي ورقة أنماط فقط في حال تم استخدامه في الصفحة سابقًا."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "يمكنك تقليل عدد [مكونات WordPress الإضافية](https://wordpress.org/plugins/)التي تُحمِّل JavaScript غير المُستخدَم في صفحتك أو تبديلها. لتحديد المكونات الإضافية التي تضيف JS دخيلة، يمكنك محاولة تشغيل [تغطية الرمز](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) في Chrome DevTools. يمكنك تحديد التصميم/المكون الإضافي المسؤول عن عنوان URL للنص البرمجي. يمكنك البحث عن المكونات الإضافية التي تحتوي على العديد من النصوص البرمجية في القائمة والتي تحتوي على الكثير من اللون الأحمر في تغطية الرمز. يجب أن يدرِج المكون الإضافي نصًا برمجيًا فقط في حال تم استخدامه في الصفحة سابقًا."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "يمكنك الاطِّلاع على [ذاكرة التخزين المؤقت للمتصفح في WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "يمكنك استخدام [مكون WordPress الإضافي لتحسين الصورة](https://wordpress.org/plugins/search/optimize+images/) الذي يضغط صورك مع المحافظة على الجودة."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "يمكنك تحميل الصور مباشرةً من خلال [مكتبة الوسائط] (https://codex.wordpress.org/Media_Library_Screen) للتأكد من توفر أحجام الصور المطلوبة، ثم إدراجها من مكتبة الوسائط أو استخدام أداة الصورة لضمان استخدام أفضل حجم للصورة (بما في ذلك تلك الخاصة بنقاط فاصلة متجاوبة). يمكنك تجنب استخدام صور \"بالحجم الكامل\" إلا إذا كانت الأبعاد كافية لاستخدامها. [تعرَّف على مزيد من المعلومات](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "يمكنك تفعيل ضغط النص في إعداد خادم الويب."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "يمكنك استخدام [مكون إضافي](https://wordpress.org/plugins/search/convert+webp/) أو خدمة تتيح لك تحويل صورك المحمَّلة إلى أفضل التنسيقات تلقائيًا."
   }
 }

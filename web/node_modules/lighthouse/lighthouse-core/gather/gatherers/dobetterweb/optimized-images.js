@@ -10,10 +10,10 @@
   */
 'use strict';
 
-const Gatherer = require('../gatherer');
-const URL = require('../../../lib/url-shim');
-const NetworkRequest = require('../../../lib/network-request');
-const Sentry = require('../../../lib/sentry');
+const Gatherer = require('../gatherer.js');
+const URL = require('../../../lib/url-shim.js');
+const NetworkRequest = require('../../../lib/network-request.js');
+const Sentry = require('../../../lib/sentry.js');
 const Driver = require('../../driver.js'); // eslint-disable-line no-unused-vars
 
 // Image encoding can be slow and we don't want to spend forever on it.

@@ -12,162 +12,167 @@
  */
 module.exports = [
   {
-    requestedUrl: 'http://localhost:10200/online-only.html',
-    finalUrl: 'http://localhost:10200/online-only.html',
-    audits: {
-      'is-on-https': {
-        score: 1,
+    lhr: {
+      requestedUrl: 'http://localhost:10200/online-only.html',
+      finalUrl: 'http://localhost:10200/online-only.html',
+      audits: {
+        'is-on-https': {
+          score: 1,
+        },
+        'uses-http2': {
+          score: 0,
+        },
+        'external-anchors-use-rel-noopener': {
+          score: 1,
+        },
+        'appcache-manifest': {
+          score: 1,
+        },
+        'geolocation-on-start': {
+          score: 1,
+        },
+        'render-blocking-resources': {
+          score: 1,
+        },
+        'no-document-write': {
+          score: 1,
+        },
+        'uses-passive-event-listeners': {
+          score: 1,
+        },
+        'password-inputs-can-be-pasted-into': {
+          score: 1,
+        },
+        'redirects-http': {
+          score: 0,
+        },
+        'service-worker': {
+          score: 0,
+        },
+        'works-offline': {
+          score: 0,
+        },
+        'viewport': {
+          score: 1,
+        },
+        'without-javascript': {
+          score: 1,
+        },
+        'user-timings': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'critical-request-chains': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'installable-manifest': {
+          score: 0,
+          explanation: 'Failures: No manifest was fetched.',
+          details: {items: [{isParseFailure: true}]},
+        },
+        'splash-screen': {
+          score: 0,
+        },
+        'themed-omnibox': {
+          score: 0,
+        },
+        'aria-valid-attr': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'aria-allowed-attr': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'color-contrast': {
+          score: 1,
+        },
+        'image-alt': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'label': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'tabindex': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'content-width': {
+          score: 1,
+        },
       },
-      'uses-http2': {
-        score: 0,
-      },
-      'external-anchors-use-rel-noopener': {
-        score: 1,
-      },
-      'appcache-manifest': {
-        score: 1,
-      },
-      'geolocation-on-start': {
-        score: 1,
-      },
-      'render-blocking-resources': {
-        score: 1,
-      },
-      'no-document-write': {
-        score: 1,
-      },
-      'uses-passive-event-listeners': {
-        score: 1,
-      },
-      'password-inputs-can-be-pasted-into': {
-        score: 1,
-      },
-      'redirects-http': {
-        score: 0,
-      },
-      'service-worker': {
-        score: 0,
-      },
-      'works-offline': {
-        score: 0,
-      },
-      'viewport': {
-        score: 1,
-      },
-      'without-javascript': {
-        score: 1,
-      },
-      'user-timings': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'critical-request-chains': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'installable-manifest': {
-        score: 0,
-        explanation: 'Failures: No manifest was fetched.',
-        details: {items: [{isParseFailure: true}]},
-      },
-      'splash-screen': {
-        score: 0,
-      },
-      'themed-omnibox': {
-        score: 0,
-      },
-      'aria-valid-attr': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'aria-allowed-attr': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'color-contrast': {
-        score: 1,
-      },
-      'image-alt': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'label': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'tabindex': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'content-width': {
-        score: 1,
+    },
+  },
+  {
+    lhr: {
+      requestedUrl: 'http://localhost:10503/offline-ready.html',
+      finalUrl: 'http://localhost:10503/offline-ready.html',
+      audits: {
+        'is-on-https': {
+          score: 1,
+        },
+        'redirects-http': {
+          score: 0,
+        },
+        'service-worker': {
+          score: 1,
+        },
+        'works-offline': {
+          score: 1,
+        },
+        'viewport': {
+          score: 1,
+        },
+        'without-javascript': {
+          score: 1,
+        },
+        'user-timings': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'critical-request-chains': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'installable-manifest': {
+          score: 1,
+        },
+        'splash-screen': {
+          score: 0,
+        },
+        'themed-omnibox': {
+          score: 0,
+        },
+        'aria-valid-attr': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'aria-allowed-attr': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'color-contrast': {
+          score: 1,
+        },
+        'image-alt': {
+          score: 0,
+        },
+        'label': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'tabindex': {
+          scoreDisplayMode: 'notApplicable',
+        },
+        'content-width': {
+          score: 1,
+        },
       },
     },
   },
 
   {
-    requestedUrl: 'http://localhost:10503/offline-ready.html',
-    finalUrl: 'http://localhost:10503/offline-ready.html',
-    audits: {
-      'is-on-https': {
-        score: 1,
-      },
-      'redirects-http': {
-        score: 0,
-      },
-      'service-worker': {
-        score: 1,
-      },
-      'works-offline': {
-        score: 1,
-      },
-      'viewport': {
-        score: 1,
-      },
-      'without-javascript': {
-        score: 1,
-      },
-      'user-timings': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'critical-request-chains': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'installable-manifest': {
-        score: 1,
-      },
-      'splash-screen': {
-        score: 0,
-      },
-      'themed-omnibox': {
-        score: 0,
-      },
-      'aria-valid-attr': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'aria-allowed-attr': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'color-contrast': {
-        score: 1,
-      },
-      'image-alt': {
-        score: 0,
-      },
-      'label': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'tabindex': {
-        scoreDisplayMode: 'notApplicable',
-      },
-      'content-width': {
-        score: 1,
-      },
-    },
-  },
-
-  {
-    requestedUrl: 'http://localhost:10503/offline-ready.html?slow',
-    finalUrl: 'http://localhost:10503/offline-ready.html?slow',
-    audits: {
-      'service-worker': {
-        score: 1,
-      },
-      'works-offline': {
-        score: 1,
+    lhr: {
+      requestedUrl: 'http://localhost:10503/offline-ready.html?slow',
+      finalUrl: 'http://localhost:10503/offline-ready.html?slow',
+      audits: {
+        'service-worker': {
+          score: 1,
+        },
+        'works-offline': {
+          score: 1,
+        },
       },
     },
   },

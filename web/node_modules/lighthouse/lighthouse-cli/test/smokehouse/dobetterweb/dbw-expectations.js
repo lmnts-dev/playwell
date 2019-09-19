@@ -10,136 +10,240 @@
  */
 module.exports = [
   {
-    requestedUrl: 'http://localhost:10200/dobetterweb/dbw_tester.html',
-    finalUrl: 'http://localhost:10200/dobetterweb/dbw_tester.html',
-    audits: {
-      'errors-in-console': {
-        score: 0,
-        details: {
-          items: {
-            length: 6,
+    artifacts: {
+      Stacks: [{
+        id: 'jquery',
+      }, {
+        id: 'wordpress',
+      }],
+      TagsBlockingFirstPaint: [
+        {
+          tag: {
+            tagName: 'LINK',
+            url: 'http://localhost:10200/dobetterweb/dobetterweb/dbw_tester.css?delay=100',
           },
         },
-      },
-      'is-on-https': {
-        score: 0,
-        details: {
-          items: {
-            length: 1,
+        {
+          tag: {
+            tagName: 'LINK',
+            url: 'http://localhost:10200/dobetterweb/unknown404.css?delay=200',
           },
         },
-      },
-      'uses-http2': {
-        score: 0,
-        details: {
-          items: {
-            length: '>15',
+        {
+          tag: {
+            tagName: 'LINK',
+            url: 'http://localhost:10200/dobetterweb/dbw_tester.css?delay=2200',
+          },
+
+        },
+        {
+          tag: {
+            tagName: 'LINK',
+            url: 'http://localhost:10200/dobetterweb/dbw_partial_a.html?delay=200',
           },
         },
-      },
-      'external-anchors-use-rel-noopener': {
-        score: 0,
-        warnings: [/Unable to determine.*<a target="_blank">/],
-        details: {
-          items: {
-            length: 3,
+        {
+          tag: {
+            tagName: 'LINK',
+            url: 'http://localhost:10200/dobetterweb/dbw_tester.css?delay=3000&capped',
+            mediaChanges: [
+              {
+                href: 'http://localhost:10200/dobetterweb/dbw_tester.css?delay=3000&capped',
+                media: 'not-matching',
+                matches: false,
+              },
+              {
+                href: 'http://localhost:10200/dobetterweb/dbw_tester.css?delay=3000&capped',
+                media: 'screen',
+                matches: true,
+              },
+            ],
           },
         },
-      },
-      'appcache-manifest': {
-        score: 0,
-        displayValue: 'Found "clock.appcache"',
-      },
-      'geolocation-on-start': {
-        score: 0,
-      },
-      'no-document-write': {
-        score: 0,
-        details: {
-          items: {
-            length: 3,
+        {
+          tag: {
+            tagName: 'SCRIPT',
+            url: 'http://localhost:10200/dobetterweb/dbw_tester.js',
           },
         },
-      },
-      'no-vulnerable-libraries': {
-        score: 0,
-        details: {
-          items: {
-            length: 1,
+        {
+          tag: {
+            tagName: 'SCRIPT',
+            url: 'http://localhost:10200/dobetterweb/fcp-delayer.js?delay=5000',
           },
         },
-      },
-      'notification-on-start': {
-        score: 0,
-      },
-      'render-blocking-resources': {
-        score: '<1',
-        rawValue: '>100',
-        details: {
-          items: {
-            length: 7,
+      ],
+    },
+    lhr: {
+      requestedUrl: 'http://localhost:10200/dobetterweb/dbw_tester.html',
+      finalUrl: 'http://localhost:10200/dobetterweb/dbw_tester.html',
+      audits: {
+        'errors-in-console': {
+          score: 0,
+          details: {
+            items: {
+              length: 8,
+            },
           },
         },
-      },
-      'uses-passive-event-listeners': {
-        score: 0,
-        details: {
-          items: {
+        'is-on-https': {
+          score: 0,
+          details: {
+            items: {
+              length: 1,
+            },
+          },
+        },
+        'uses-http2': {
+          score: 0,
+          details: {
+            items: {
+              length: '>15',
+            },
+          },
+        },
+        'external-anchors-use-rel-noopener': {
+          score: 0,
+          warnings: [/Unable to determine.*<a target="_blank">/],
+          details: {
+            items: {
+              length: 3,
+            },
+          },
+        },
+        'appcache-manifest': {
+          score: 0,
+          displayValue: 'Found "clock.appcache"',
+        },
+        'geolocation-on-start': {
+          score: 0,
+        },
+        'no-document-write': {
+          score: 0,
+          details: {
+            items: {
+              length: 3,
+            },
+          },
+        },
+        'no-vulnerable-libraries': {
+          score: 0,
+          details: {
+            items: {
+              length: 1,
+            },
+          },
+        },
+        'notification-on-start': {
+          score: 0,
+        },
+        'render-blocking-resources': {
+          score: '<1',
+          numericValue: '>100',
+          details: {
+            items: [
+              {
+                url: 'http://localhost:10200/dobetterweb/dobetterweb/dbw_tester.css?delay=100',
+              },
+              {
+                url: 'http://localhost:10200/dobetterweb/unknown404.css?delay=200',
+              },
+              {
+                url: 'http://localhost:10200/dobetterweb/dbw_tester.css?delay=2200',
+              },
+              {
+                url: 'http://localhost:10200/dobetterweb/dbw_partial_a.html?delay=200',
+              },
+              {
+                url: 'http://localhost:10200/dobetterweb/dbw_tester.css?delay=3000&capped',
+              },
+              {
+                url: 'http://localhost:10200/dobetterweb/dbw_tester.js',
+              },
+              {
+                url: 'http://localhost:10200/dobetterweb/fcp-delayer.js?delay=5000',
+              },
+            ],
+          },
+        },
+        'uses-passive-event-listeners': {
+          score: 0,
+          details: {
+            items: {
             // Note: Originally this was 7 but M56 defaults document-level
             // listeners to passive. See https://www.chromestatus.com/features/5093566007214080
             // Note: It was 4, but {passive:false} doesn't get a warning as of M63: https://crbug.com/770208
             // Note: It was 3, but wheel events are now also passive as of field trial in M71 https://crbug.com/626196
-            length: '>=1',
+              length: '>=1',
+            },
           },
         },
-      },
-      'deprecations': {
-        score: 0,
-        details: {
-          items: {
+        'deprecations': {
+          score: 0,
+          details: {
+            items: {
             // Note: HTML Imports added to deprecations in m70, so 3 before, 4 after.
-            length: '>=3',
-          },
-        },
-      },
-      'password-inputs-can-be-pasted-into': {
-        score: 0,
-        details: {
-          items: {
-            length: 2,
-          },
-        },
-      },
-      'image-aspect-ratio': {
-        score: 0,
-        details: {
-          items: {
-            0: {
-              displayedAspectRatio: /^480 x 57/,
+              length: '>=3',
             },
-            length: 1,
           },
         },
-      },
-      'efficient-animated-content': {
-        score: '<0.5',
-        details: {
-          overallSavingsMs: '>2000',
-          items: [
+        'password-inputs-can-be-pasted-into': {
+          score: 0,
+          details: {
+            items: {
+              length: 2,
+            },
+          },
+        },
+        'image-aspect-ratio': {
+          score: 0,
+          details: {
+            items: {
+              0: {
+                displayedAspectRatio: /^480 x 57/,
+              },
+              length: 1,
+            },
+          },
+        },
+        'efficient-animated-content': {
+          score: '<0.5',
+          details: {
+            overallSavingsMs: '>2000',
+            items: [
+              {
+                url: 'http://localhost:10200/dobetterweb/lighthouse-rotating.gif',
+                totalBytes: 934285,
+                wastedBytes: 682028,
+              },
+            ],
+          },
+        },
+        'js-libraries': {
+          score: 1,
+          details: {
+            items: [{
+              name: 'jQuery',
+            },
             {
-              url: 'http://localhost:10200/dobetterweb/lighthouse-rotating.gif',
-              totalBytes: 934285,
-              wastedBytes: 682028,
-            },
-          ],
+              name: 'WordPress',
+            }],
+          },
         },
-      },
-      'js-libraries': {
-        score: 1,
-        details: {
-          items: [{
-            name: 'jQuery',
-          }],
+        'dom-size': {
+          score: 1,
+          numericValue: 137,
+          details: {
+            items: [
+              {statistic: 'Total DOM Elements', value: '137'},
+              {statistic: 'Maximum DOM Depth', value: '3'},
+              {
+                statistic: 'Maximum Child Elements',
+                value: '100',
+                element: {value: '<div id="shadow-root-container">'},
+              },
+            ],
+          },
         },
       },
     },

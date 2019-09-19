@@ -1,6 +1,9 @@
 "use strict";
 
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
 var initialState = {
   animating: false,
   autoplaying: null,
@@ -19,11 +22,17 @@ var initialState = {
   slideHeight: null,
   slideWidth: null,
   swipeLeft: null,
-  swiped: false, // used by swipeEvent. differentites between touch and swipe.
+  swiped: false,
+  // used by swipeEvent. differentites between touch and swipe.
   swiping: false,
-  touchObject: { startX: 0, startY: 0, curX: 0, curY: 0 },
+  touchObject: {
+    startX: 0,
+    startY: 0,
+    curX: 0,
+    curY: 0
+  },
   trackStyle: {},
   trackWidth: 0
 };
-
-exports.default = initialState;
+var _default = initialState;
+exports["default"] = _default;

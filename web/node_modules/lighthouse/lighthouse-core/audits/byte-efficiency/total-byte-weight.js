@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const ByteEfficiencyAudit = require('./byte-efficiency-audit');
+const ByteEfficiencyAudit = require('./byte-efficiency-audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
 const NetworkRecords = require('../../computed/network-records.js');
 
@@ -99,7 +99,7 @@ class TotalByteWeight extends ByteEfficiencyAudit {
 
     return {
       score,
-      rawValue: totalBytes,
+      numericValue: totalBytes,
       displayValue: str_(UIStrings.displayValue, {totalBytes}),
       extendedInfo: {
         value: {

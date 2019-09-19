@@ -13,9 +13,9 @@
  */
 'use strict';
 
-const ByteEfficiencyAudit = require('./byte-efficiency-audit');
-const Sentry = require('../../lib/sentry');
-const URL = require('../../lib/url-shim');
+const ByteEfficiencyAudit = require('./byte-efficiency-audit.js');
+const Sentry = require('../../lib/sentry.js');
+const URL = require('../../lib/url-shim.js');
 const i18n = require('../../lib/i18n/i18n.js');
 
 const UIStrings = {
@@ -94,19 +94,22 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
     const warnings = [];
     /** @type {Map<string, LH.Audit.ByteEfficiencyItem>} */
     const resultsMap = new Map();
-    images.forEach(image => {
-      // TODO: give SVG a free pass until a detail per pixel metric is available
-      if (!image.resourceSize || image.mimeType === 'image/svg+xml') {
-        return;
+    for (const image of images) {
+      // Ignore images without resource size information.
+      // Give SVG a free pass because creating a "responsive" SVG is of questionable value.
+      // Ignore CSS images because it's difficult to determine what is a spritesheet,
+      // and the reward-to-effort ratio for responsive CSS images is quite low https://css-tricks.com/responsive-images-css/.
+      if (!image.resourceSize || image.mimeType === 'image/svg+xml' || image.isCss) {
+        continue;
       }
 
       const processed = UsesResponsiveImages.computeWaste(image, DPR);
-      if (!processed) return;
+      if (!processed) continue;
 
       if (processed instanceof Error) {
         warnings.push(processed.message);
         Sentry.captureException(processed, {tags: {audit: this.meta.id}, level: 'warning'});
-        return;
+        continue;
       }
 
       // Don't warn about an image that was later used appropriately
@@ -114,7 +117,7 @@ class UsesResponsiveImages extends ByteEfficiencyAudit {
       if (!existing || existing.wastedBytes > processed.wastedBytes) {
         resultsMap.set(processed.url, processed);
       }
-    });
+    }
 
     const items = Array.from(resultsMap.values())
         .filter(item => item.wastedBytes > IGNORE_THRESHOLD_IN_BYTES);

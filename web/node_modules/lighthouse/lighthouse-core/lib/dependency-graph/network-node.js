@@ -5,8 +5,8 @@
  */
 'use strict';
 
-const BaseNode = require('./base-node');
-const NetworkRequest = require('../network-request');
+const BaseNode = require('./base-node.js');
+const NetworkRequest = require('../network-request.js');
 
 class NetworkNode extends BaseNode {
   /**

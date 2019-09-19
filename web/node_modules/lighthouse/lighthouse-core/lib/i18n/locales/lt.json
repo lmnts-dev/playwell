@@ -447,10 +447,10 @@
     "message": "Vertė"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Naršyklių inžinieriai rekomenduoja puslapiuose turėti ne daugiau nei apytiksliai 1,5 tūkst. DOM mazgų. Optimaliausias medžio gylis – mažiau nei 32 elementai ir mažiau nei 60 poelemenčių bei viršelemenčių. Dėl didelio DOM gali būti sunaudojama daugiau atminties, ilgiau skaičiuojami stiliai (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) ir reikia brangių išdėstymo perskaičiavimų (https://developers.google.com/speed/articles/reflow). [Sužinokite daugiau](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Naršyklių inžinieriai rekomenduoja puslapiuose turėti ne daugiau nei apytiksliai 1,5 tūkst. DOM elementų. Optimaliausias medžio gylis – mažiau nei 32 elementai ir mažiau nei 60 poelemenčių bei viršelemenčių. Dėl didelio DOM gali būti sunaudojama daugiau atminties, ilgiau [skaičiuojami stiliai](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) ir reikia brangių [išdėstymo perskaičiavimų](https://developers.google.com/speed/articles/reflow). [Sužinokite daugiau](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 mazgas}one{# mazgas}few{# mazgai}many{# mazgo}other{# mazgų}}"
+    "message": "{itemCount,plural, =1{1 elementas}one{# elementas}few{# elementai}many{# elemento}other{# elementų}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Venkite per didelių DOM"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Maksimalus DOM gylis"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Bendras DOM mazgų skaičius"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Bendras DOM elementų skaičius"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Maksimalus antrinių elementų skaičius"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "PVO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Formatuokite HTML taip, kad tikrintuvai galėtų geriau suprasti programos turinį."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Geriausios turinio praktikos pavyzdžiai"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Kad programa būtų rodoma paieškos rezultatuose, tikrintuvams reikalinga prieiga prie jos."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Tikrinimas ir indeksavimas"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Įsitikinkite, kad puslapiai yra pritaikyti mobiliesiems, kad naudotojams nereikėtų keisti mastelį arba suėmus artinti norint perskaityti puslapių turinį. [Sužinokite daugiau](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Pritaikyta mobiliesiems"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Talpyklos TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Kilo problema įrašant pėdsaką įkeliant puslapį. Dar kartą vykdykite „Lighthouse“. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Laukiant, kol bus inicijuotas derintuvės protokolo ryšys, baigėsi skirtasis laikas."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Įkeliant puslapį „Chrome“ nesukūrė ekrano kopijų. Užtikrinkite, kad puslapyje yra matomo turinio, tada pabandykite iš naujo paleisti „Lighthouse“. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Sėkmingos patikros"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Rezultatų skalė:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Sutraukti fragmentą"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Įspėjimai: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Apsvarstykite galimybę įkelti savo GIF į paslaugą, kuri leis jį įterpti kaip HTML5 vaizdo įrašą."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Įdiekite [atidėtojo įkėlimo „WordPress“ papildinį](https://wordpress.org/plugins/search/lazy+load/), leidžiantį atidėti bet kokius ne ekraninius vaizdus, arba perjunkite į šią funkciją teikiančią temą. Be to, apsvarstykite galimybę naudoti [AMP papildinį](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Yra įvairių „WordPress“ papildinių, kuriuos naudodami galite [įterpti svarbių išteklių](https://wordpress.org/plugins/search/critical+css/) ar [atidėti nelabai svarbius šaltinius](https://wordpress.org/plugins/search/defer+css+javascript/). Atminkite, kad dėl šių papildinių teikiamo optimizavimo gali būti pažeistos jūsų temos ar papildinių funkcijos, todėl tikriausiai turėsite atlikti kodo pakeitimų."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Temos, papildiniai ir serverio specifikacijos – visa tai turi įtakos serverio atsako laikui. Galbūt vertėtų surasti geriau optimizuotą temą, atidžiai pasirinkti optimizavimo papildinį ir (arba) naujovinti serverį."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Apsvarstykite galimybę rodyti ištraukas įrašų sąrašuose (pvz., naudodami daugiau elementų žymą), sumažinti nurodytame puslapyje rodomų įrašų skaičių, suskaidyti ilgus įrašus į kelis puslapius arba naudoti komentarų atidėtojo įkėlimo papildinį."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Įvairūs [„WordPress“ papildiniai](https://wordpress.org/plugins/search/minify+css/) gali padėti svetainei sparčiau veikti, sujungdami, suglaudindami stilius ir pašalindami jų nereikalingus duomenis. Be to, galbūt norėsite pasinaudoti kūrimo procesu, kad iš anksto pašalintumėte nereikalingus duomenis, jei įmanoma."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Įvairūs [„WordPress“ papildiniai](https://wordpress.org/plugins/search/minify+javascript/) gali padėti svetainei sparčiau veikti, sujungdami, suglaudindami scenarijus ir pašalindami jų nereikalingus duomenis. Be to, galbūt norėsite pasinaudoti kūrimo procesu, kad iš anksto pašalintumėte nereikalingus duomenis, jei įmanoma."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Apsvarstykite galimybę sumažinti [„WordPress“ papildinių](https://wordpress.org/plugins/), įkeliančių nenaudojamą CSS kalbą jūsų puslapyje, skaičių arba perjungti juos. Kad nustatytumėte papildinius, pridedančius nesusijusios CSS kalbos, pabandykite vykdyti [kodo aprėpties procesą](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) naudodami „Chrome DevTools“. Susijusią temą / papildinį galite nustatyti pagal stiliaus failo URL. Ieškokite papildinių, kurių sąraše pateikta daug stiliaus failų, kurių kodo aprėptyje yra daug raudonos spalvos. Papildinys turėtų įtraukti į eilę stiliaus failą, tik jei jis tikrai naudojamas puslapyje."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Apsvarstykite galimybę sumažinti [„WordPress“ papildinių](https://wordpress.org/plugins/), įkeliančių nenaudojamą „JavaScript“ jūsų puslapyje, skaičių arba perjungti juos. Kad nustatytumėte papildinius, pridedančius nesusijusios JS, pabandykite vykdyti [kodo aprėpties procesą](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) naudodami „Chrome DevTools“. Susijusią temą / papildinį galite nustatyti pagal scenarijaus URL. Ieškokite papildinių, kurių sąraše pateikta daug scenarijų, kurių kodo aprėptyje yra daug raudonos spalvos. Papildinys turėtų įtraukti į eilę scenarijų, tik jei jis tikrai naudojamas puslapyje."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Skaitykite apie [naršyklės saugojimo talpykloje funkciją sistemoje „WordPress“](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Apsvarstykite galimybę naudoti [vaizdų optimizavimo „WordPress“ papildinį](https://wordpress.org/plugins/search/optimize+images/), leidžiantį suglaudinti vaizdus išsaugant kokybę."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Įkelkite vaizdus tiesiai per [medijos biblioteką](https://codex.wordpress.org/Media_Library_Screen), kad įsitikintumėte, jog pasiekiami reikiami vaizdų dydžiai, tada įterpkite juos iš medijos bibliotekos arba naudokite vaizdų valdiklį, kad užtikrintumėte, jog naudojami optimalaus dydžio vaizdai (įskaitant tuos, kurie naudojami interaktyviems atskaitos taškams). Nenaudokite viso dydžio vaizdų, nebent galima naudoti tokių matmenų vaizdus. [Sužinokite daugiau](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Galite įgalinti teksto glaudinimą žiniatinklio serverio konfigūracijoje."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Apsvarstykite galimybę naudoti [papildinį](https://wordpress.org/plugins/search/convert+webp/) arba paslaugą, kuri automatiškai konvertuos įkeltus vaizdus pagal optimalius formatus."
   }
 }

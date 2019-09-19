@@ -447,10 +447,10 @@
     "message": "மதிப்பு"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "~1,500 DOM கணுக்களுக்குக் குறைவான கணுக்களைக் கொண்ட பக்கங்களை உலாவிப் பொறியாளர்கள் பரிந்துரைக்கின்றனர். 32 உறுப்புகளுக்குக் குறைவான கிளை அடுக்குகளும் 60க்குக் குறைவான துணைக்கிளை/கிளை உறுப்புகளும் இருப்பது உகந்தது. ஒரு பெரிய DOM, நினைவகப் பயன்பாட்டை அதிகரிக்கலாம், [ஸ்டைல் கணக்கீடுகளை] நீட்டிக்கலாம், மேலும் (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) அதிகச் செலவு பிடிக்கும் [தளவமைப்பு மறுசீராக்கங்களை] ஏற்படுத்தலாம் (https://developers.google.com/speed/articles/reflow). [மேலும் அறிக](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "~1,500 DOM உறுப்புகளுக்குக் குறைவான உறுப்புகளைக் கொண்ட பக்கங்களை உலாவிப் பொறியாளர்கள் பரிந்துரைக்கின்றனர். 32 உறுப்புகளுக்குக் குறைவான கிளை அடுக்குகளும் 60க்குக் குறைவான துணைக்கிளை/கிளை உறுப்புகளும் இருப்பது உகந்தது. ஒரு பெரிய DOM, நினைவகப் பயன்பாட்டை அதிகரிக்கலாம், [ஸ்டைல் கணக்கீடுகளை] நீட்டிக்கலாம், மேலும் (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) அதிகச் செலவு பிடிக்கும் [தளவமைப்பு மறுசீராக்கங்களை] ஏற்படுத்தலாம் (https://developers.google.com/speed/articles/reflow). [மேலும் அறிக](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 கணு}other{# கணுக்கள்}}"
+    "message": "{itemCount,plural, =1{1 உறுப்பு}other{# உறுப்புகள்}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "அபரிமிதமான DOM அளவைத் தவிர்க்கவும்"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "அதிகபட்ச DOM கிளை அடுக்கு"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "மொத்த DOM கணுக்கள்"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "மொத்த DOM உறுப்புகள்"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "அதிகபட்சத் துணை உறுப்புகள்"
@@ -771,7 +771,7 @@
     "message": "முக்கியக் கோரிக்கைகளை முன்கூட்டியே ஏற்றவும்"
   },
   "lighthouse-core/config/default-config.js | a11yAriaGroupDescription": {
-    "message": "இந்த வாய்ப்புகள் உங்கள் ஆப்ஸில் உள்ள ARIAயின் பயன்பாட்டை மேம்படுத்தும், இது ஸ்க்ரீன் ரீடர் போன்ற உதவிகரமான தொழில்நுட்பத்தைப் பயன்படுத்தும் பயனர்களின் அனுபவத்தை மேம்படுத்தக்கூடும்."
+    "message": "இந்த வாய்ப்புகள் உங்கள் ஆப்ஸில் உள்ள ARIAயின் ஆப்ஸை மேம்படுத்தும், இது ஸ்க்ரீன் ரீடர் போன்ற உதவிகரமான தொழில்நுட்பத்தைப் பயன்படுத்தும் பயனர்களின் அனுபவத்தை மேம்படுத்தக்கூடும்."
   },
   "lighthouse-core/config/default-config.js | a11yAriaGroupTitle": {
     "message": "ARIA"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "ஆப்ஸின் உள்ளடக்கத்தை கிராலர்கள் நன்கு புரிந்துகொள்ள வசதியாக HTMLலைப் பொருத்தமாக வடிவமைக்கவும்."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "உள்ளடக்கம் தொடர்பான சிறந்த நடைமுறைகள்"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "தேடல் முடிவுகளில் தோன்ற உங்கள் ஆப்ஸிற்கான அணுகல் கிராலர்களுக்குத் தேவை."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "கிராலிங் & அட்டவணைப்படுத்துதல்"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "பக்கங்களின் உள்ளடக்கத்தைப் பயனர்கள் பின்ச் செய்தோ பெரிதாக்கியோ படிக்க வேண்டிய அவசியம் ஏற்படாதவாறு உங்கள் பக்கங்கள் மொபைலுக்கு ஏற்றவையாக இருக்க வேண்டும். [மேலும் அறிக](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "மொபைலுக்கேற்றது"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "தற்காலிக நினைவக TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "உங்கள் பக்கம் ஏற்றப்படுகையில் டிரேஸைப் பதிவுசெய்யும்போது ஏதோ தவறாகிவிட்டது. Lighthouseஸை மீண்டும் இயக்கவும். ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "முதல் பிழைதிருத்தும் நெறிமுறை இணைப்பிற்கான நேரமுடிவு காத்திருப்பு."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "பக்கம் ஏற்றப்பட்டபோது ஸ்க்ரீன்ஷாட்கள் எதையும் Chrome சேகரிக்கவில்லை. பக்கத்தில் உள்ளடக்கம் காண்பிக்கப்படுவதை உறுதிசெய்து, Lighthouseஸை மீண்டும் இயக்கவும். ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "தேர்ச்சி பெற்ற தணிக்கைகள்"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "ஸ்கோர் அளவு:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "துணுக்கைச் சுருக்கு"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "எச்சரிக்கைகள்: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "உங்கள் GIFஃபை HTML5 வீடியோவாக உட்பொதிந்து கிடைக்கச் செய்யும் சேவையில் பதிவேற்ற முயலுங்கள்."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "[lazy-load WordPress செருகுநிரலை] நிறுவி (https://wordpress.org/plugins/search/lazy+load/) திரைக்கு வெளியிலுள்ள படங்களைத் தேவையான போது ஏற்றும் திறனைப் பெறலாம் அல்லது அந்தத் திறனுள்ள தீமிற்கு மாறலாம். [AMP செருகுநிரலையும்](https://wordpress.org/plugins/amp/) பயன்படுத்திப் பார்க்கவும்."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "[முக்கியமான சொத்துகளை முன்னிலைப்படுத்தவும்](https://wordpress.org/plugins/search/critical+css/) அல்லது [முக்கியத்துவம் குறைவான ஆதாரங்களைத் தவிர்க்கவும்](https://wordpress.org/plugins/search/defer+css+javascript/) உங்களுக்கு உதவக்கூடிய பல WordPress செருகுநிரல்கள் உள்ளன. இந்தச் செருகுநிரல்கள் வழங்கும் மேம்படுத்துதல்கள் உங்கள் தீமிலோ செருகுநிரலிலோ உள்ள அம்சத்தைப் பாதிக்கலாம். அதனால் நீங்கள் குறியீட்டில் சில மாற்றங்களைச் செய்ய வேண்டியிருக்கும்."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "தீம்கள், செருகுநிரல்கள், சேவையக விவரக்குறிப்புகள் அனைத்தும் சேவையகத்தின் வேகத்தை நிர்ணயிக்கும். மேலும் மேம்படுத்தப்பட்ட தீமைக் கண்டறிந்து, மேம்படுத்தும் செருகுநிரலைக் கவனமாகத் தேர்ந்தெடுத்து மற்றும்/அல்லது சேவையகத்தை மேம்படுத்தவும்."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "இடுகைப் பட்டியல்களில் முக்கியமான பகுதியை மட்டும் காட்டலாம் (உதாரணமாக மேலும் என்ற குறிச்சொல்லுடன்), பக்கத்தில் இடுகைகளின் எண்ணிக்கையைக் குறைக்கலாம், ஒரு பெரிய இடுகையைப் பல சின்ன பக்கங்களாகப் பிரிக்கலாம் அல்லது தேவையுள்ள போது மட்டும் கருத்துகளைச் செருகுநிரல்கள் மூலம் ஏற்றலாம்."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "பல [WordPress செருகுநிரல்கள்](https://wordpress.org/plugins/search/minify+javascript/) உங்கள் இணையதளத்தில் உள்ள ஸ்டைல்களைச் சிறிதாக்கியும், சுருக்கியும், ஒன்றிணைத்தும் அதை வேகப்படுத்த முடியும். முடிந்தால், ஸ்கிரிப்ட்களை முன்னதாகவே சிறிதாக்க பதிப்பு முறைமையைப் பயன்படுத்திப் பார்க்கலாம்."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "பல [WordPress செருகுநிரல்கள்](https://wordpress.org/plugins/search/minify+javascript/) உங்கள் இணையதளத்தில் உள்ள ஸ்கிரிப்ட்களைச் சிறிதாக்கியும், சுருக்கியும், ஒன்றிணைத்தும் அதை வேகப்படுத்த முடியும். முடிந்தால், ஸ்கிரிப்ட்களை முன்னதாகவே சிறிதாக்க பதிப்பு முறைமையைப் பயன்படுத்திப் பார்க்கலாம்."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "உங்கள் பக்கத்தில் [WordPress செருகுநிரல்கள்](https://wordpress.org/plugins/) ஏற்றும் பயன்படுத்தப்படாத CSSகளின் எண்ணிக்கையைக் குறைக்கவும் அல்லது மாற்றிப் பார்க்கவும். Chrome DevToolsஸில் [குறியீட்டுக் கவரேஜ்] (https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) என்பதை இயக்கி தேவையற்ற CSSஸைச் சேர்க்கும் செருகுநிரல்களைக் கண்டறியலாம். stylesheetடின் URLலில் இதற்குக் காரணமான தீம்/செருகுநிரலைக் கண்டறியலாம். அதிகமாகச் சிகப்பில் உள்ள குறியீட்டுக் கவரேஜைக் கொண்ட பட்டியலில் பல stylesheetகளைக் கொண்ட செருகுநிரல்களைக் கண்டறியவும். இணையப் பக்கத்தில் பயன்படுத்தும் பட்சத்தில் ஒரு செருகுநிரல் ஒரு stylesheetடை மட்டுமே வரிசையில் சேர்க்க வேண்டும்."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "உங்கள் பக்கத்தில் [WordPress செருகுநிரல்கள்](https://wordpress.org/plugins/) ஏற்றும் பயன்படுத்தப்படாத JavaScriptகளின் எண்ணிக்கையைக் குறைக்கவும் அல்லது மாற்றிப் பார்க்கவும். Chrome DevToolsஸில் [குறியீட்டுக் கவரேஜ்](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) என்பதை இயக்கி தேவையற்ற JSகளைச் சேர்க்கும் செருகுநிரல்களைக் கண்டறியவும். ஸ்கிரிப்ட்டின் URLலில் இதற்குக் காரணமான தீம்/செருகுநிரலைக் கண்டறியலாம். அதிகமாகச் சிகப்பில் உள்ள குறியீட்டுக் கவரேஜைக் கொண்ட பட்டியலில் பல ஸ்கிரிப்ட்களைக் கொண்ட செருகுநிரல்களைக் கண்டறியவும். இணையப் பக்கத்தில் பயன்படுத்தும் பட்சத்தில் ஒரு செருகுநிரல் ஒரு ஸ்கிரிப்ட்டை மட்டுமே வரிசையில் சேர்க்க வேண்டும்."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "[WordPressஸில் உலாவியின் தற்காலிக சேமிப்பு] பற்றி அறிய: (https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "இதைப் பயன்படுத்தி உங்கள் படங்களின் தரத்தை இழக்காமல் சுருக்கலாம்: [படங்களை மேம்படுத்தும் WordPress செருகுநிரல்](https://wordpress.org/plugins/search/optimize+images/)"
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "[மீடியா லைப்ரரி](https://codex.wordpress.org/Media_Library_Screen) மூலம் படத்தை நேரடியாகப் பதிவேற்றி சரியான அளவில் கிடைக்கிறதா என்று உறுதிப்படுத்தலாம், பிறகு மீடியா லைப்ரரியிலிருந்தோ பட விட்ஜெட்டைப் பயன்படுத்தியோ மேம்படுத்தப்பட்ட அளவில் படங்கள் பயன்படுத்தப்படுகிறதா என்பதை உறுதி செய்யவும் (பதிலளிக்கும் அளவு வரம்புகள் உட்பட). பயன்படுத்துவதற்கு ஏதுவான அளவுகள் உள்ளபோது மட்டுமே 'முழு அளவு' படங்களைப் பயன்படுத்தவும். [மேலும் அறிக](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "இணையச் சேவையக உள்ளமைவில் உரை சுருக்குதலை இயக்கலாம்."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "நீங்கள் பதிவேற்றிய படங்களை மேம்படுத்தப்பட்ட வடிவத்திற்குத் தானாக மாற்ற ஒரு [செருகுநிரலையோ](https://wordpress.org/plugins/search/convert+webp/) சேவையையோ பயன்படுத்திப் பாருங்கள்."
   }
 }

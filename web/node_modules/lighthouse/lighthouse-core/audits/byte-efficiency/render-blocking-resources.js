@@ -9,12 +9,12 @@
  */
 'use strict';
 
-const Audit = require('../audit');
+const Audit = require('../audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
-const BaseNode = require('../../lib/dependency-graph/base-node');
-const ByteEfficiencyAudit = require('./byte-efficiency-audit');
-const UnusedCSS = require('./unused-css-rules');
-const NetworkRequest = require('../../lib/network-request');
+const BaseNode = require('../../lib/dependency-graph/base-node.js');
+const ByteEfficiencyAudit = require('./byte-efficiency-audit.js');
+const UnusedCSS = require('./unused-css-rules.js');
+const NetworkRequest = require('../../lib/network-request.js');
 const TraceOfTab = require('../../computed/trace-of-tab.js');
 const LoadSimulator = require('../../computed/load-simulator.js');
 const FirstContentfulPaint = require('../../computed/metrics/first-contentful-paint.js');
@@ -70,10 +70,9 @@ class RenderBlockingResources extends Audit {
       title: str_(UIStrings.title),
       scoreDisplayMode: Audit.SCORING_MODES.NUMERIC,
       description: str_(UIStrings.description),
-      // This audit also looks at CSSUsage but has a graceful fallback if it failed, so do not mark
-      // it as a "requiredArtifact".
-      // TODO: look into adding an `optionalArtifacts` property that captures this
-      requiredArtifacts: ['URL', 'TagsBlockingFirstPaint', 'traces'],
+      // TODO: look into adding an `optionalArtifacts` property that captures the non-required nature
+      // of CSSUsage
+      requiredArtifacts: ['URL', 'TagsBlockingFirstPaint', 'traces', 'devtoolsLogs', 'CSSUsage'],
     };
   }
 
@@ -224,7 +223,7 @@ class RenderBlockingResources extends Audit {
     return {
       displayValue,
       score: ByteEfficiencyAudit.scoreForWastedMs(wastedMs),
-      rawValue: wastedMs,
+      numericValue: wastedMs,
       details,
     };
   }

@@ -18,6 +18,7 @@
     "clients/**/*.js",
     "build/**/*.js",
     "./types/**/*.d.ts",
+    "eslint-local-rules.js",
   ],
   "exclude": [
     "lighthouse-core/test/**/*.js",

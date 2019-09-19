@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const htmlReportAssets = require('./html/html-report-assets');
+const htmlReportAssets = require('./html/html-report-assets.js');
 
 class ReportGenerator {
   /**
@@ -57,14 +57,14 @@ class ReportGenerator {
    *  - the score value of the audit
    *
    * @param {LH.Result} lhr
-   * @returns {string}
+   * @return {string}
    */
   static generateReportCSV(lhr) {
     // To keep things "official" we follow the CSV specification (RFC4180)
     // The document describes how to deal with escaping commas and quotes etc.
     const CRLF = '\r\n';
     const separator = ',';
-    /** @param {string} value @returns {string} */
+    /** @param {string} value @return {string} */
     const escape = value => `"${value.replace(/"/g, '""')}"`;
 
     // Possible TODO: tightly couple headers and row values

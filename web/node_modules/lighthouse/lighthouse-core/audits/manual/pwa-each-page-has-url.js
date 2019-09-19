@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const ManualAudit = require('./manual-audit');
+const ManualAudit = require('./manual-audit.js');
 
 /**
  * @fileoverview Manual PWA audit to ensure every page has a deep link.

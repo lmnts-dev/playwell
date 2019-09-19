@@ -5,11 +5,11 @@
  */
 'use strict';
 
-const BaseNode = require('../base-node');
-const TcpConnection = require('./tcp-connection');
-const ConnectionPool = require('./connection-pool');
-const DNSCache = require('./dns-cache');
-const mobileSlow4G = require('../../../config/constants').throttling.mobileSlow4G;
+const BaseNode = require('../base-node.js');
+const TcpConnection = require('./tcp-connection.js');
+const ConnectionPool = require('./connection-pool.js');
+const DNSCache = require('./dns-cache.js');
+const mobileSlow4G = require('../../../config/constants.js').throttling.mobileSlow4G;
 
 /** @typedef {BaseNode.Node} Node */
 /** @typedef {import('../network-node')} NetworkNode */

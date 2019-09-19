@@ -5,9 +5,9 @@
  */
 'use strict';
 
-const Audit = require('./audit');
-const URL = require('../lib/url-shim');
-const Util = require('../report/html/renderer/util');
+const Audit = require('./audit.js');
+const URL = require('../lib/url-shim.js');
+const Util = require('../report/html/renderer/util.js');
 const NetworkRecords = require('../computed/network-records.js');
 
 /**
@@ -139,7 +139,6 @@ class MixedContent extends Audit {
       const score = (secureRecords.length + 0.5 * upgradeableResources.length) / totalRecords;
 
       return {
-        rawValue: upgradeableResources.length === 0,
         score,
         displayValue: displayValue,
         details,

@@ -9,14 +9,13 @@ const parseJSON = require('./json-linter.js');
 const validateJsonLD = require('./jsonld-keyword-validator.js');
 const expandAsync = require('./json-expander.js');
 const validateSchemaOrg = require('./schema-validator.js');
-
-/** @typedef {'json'|'json-ld'|'json-ld-expand'|'schema-org'} ValidatorType */
+const getLineNumberFromJsonLDPath = require('./line-number-from-jsonld-path.js');
 
 /**
  * Validates JSON-LD input. Returns array of error objects.
  *
  * @param {string} textInput
- * @returns {Promise<Array<{path: ?string, validator: ValidatorType, message: string}>>}
+ * @returns {Promise<Array<LH.StructuredData.ValidationError>>}
  */
 module.exports = async function validate(textInput) {
   // STEP 1: VALIDATE JSON
@@ -24,8 +23,8 @@ module.exports = async function validate(textInput) {
 
   if (parseError) {
     return [{
-      validator: 'json',
-      path: parseError.lineNumber,
+      validator: /** @type {LH.StructuredData.ValidatorType} */ ('json'),
+      lineNumber: parseError.lineNumber,
       message: parseError.message,
     }];
   }
@@ -38,9 +37,10 @@ module.exports = async function validate(textInput) {
   if (jsonLdErrors.length) {
     return jsonLdErrors.map(error => {
       return {
-        validator: /** @type {ValidatorType} */ ('json-ld'),
+        validator: /** @type {LH.StructuredData.ValidatorType} */ ('json-ld'),
         path: error.path,
         message: error.message,
+        lineNumber: getLineNumberFromJsonLDPath(inputObject, error.path),
       };
     });
   }
@@ -52,8 +52,7 @@ module.exports = async function validate(textInput) {
     expandedObj = await expandAsync(inputObject);
   } catch (error) {
     return [{
-      validator: 'json-ld-expand',
-      path: null,
+      validator: /** @type {LH.StructuredData.ValidatorType} */ ('json-ld-expand'),
       message: error.message,
     }];
   }
@@ -64,12 +63,15 @@ module.exports = async function validate(textInput) {
   if (schemaOrgErrors.length) {
     return schemaOrgErrors.map(error => {
       return {
-        validator: /** @type {ValidatorType} */ ('schema-org'),
+        validator: /** @type {LH.StructuredData.ValidatorType} */ ('schema-org'),
         path: error.path,
         message: error.message,
+        lineNumber: error.path ? getLineNumberFromJsonLDPath(inputObject, error.path) : null,
+        validTypes: error.validTypes,
       };
     });
   }
 
   return [];
 };
+

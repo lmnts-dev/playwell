@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const pwaDetailsExpectations = require('./pwa-expectations').PWA_DETAILS_EXPECTATIONS;
+const pwaDetailsExpectations = require('./pwa-expectations.js').PWA_DETAILS_EXPECTATIONS;
 
 const jakeExpectations = {...pwaDetailsExpectations, hasShortName: false};
 
@@ -15,124 +15,137 @@ const jakeExpectations = {...pwaDetailsExpectations, hasShortName: false};
  */
 module.exports = [
   {
-    requestedUrl: 'https://jakearchibald.github.io/svgomg/',
-    finalUrl: 'https://jakearchibald.github.io/svgomg/',
-    audits: {
-      'is-on-https': {
-        score: 1,
-      },
-      'redirects-http': {
+    lhr: {
+      requestedUrl: 'https://jakearchibald.github.io/svgomg/',
+      finalUrl: 'https://jakearchibald.github.io/svgomg/',
+      audits: {
+        'is-on-https': {
+          score: 1,
+        },
+        'redirects-http': {
         // Note: relies on JS redirect.
         // see https://github.com/GoogleChrome/lighthouse/issues/2383
-        score: 0,
-      },
-      'service-worker': {
-        score: 1,
-      },
-      'works-offline': {
-        score: 1,
-      },
-      'offline-start-url': {
-        score: 1,
-      },
-      'viewport': {
-        score: 1,
-      },
-      'without-javascript': {
-        score: 1,
-      },
-      'load-fast-enough-for-pwa': {
+          score: 0,
+        },
+        'service-worker': {
+          score: 1,
+        },
+        'works-offline': {
+          score: 1,
+        },
+        'offline-start-url': {
+          score: 1,
+        },
+        'viewport': {
+          score: 1,
+        },
+        'without-javascript': {
+          score: 1,
+        },
+        'load-fast-enough-for-pwa': {
         // Ignore speed test; just verify that it ran.
-      },
-      'installable-manifest': {
-        score: 0,
-        details: {items: [jakeExpectations]},
-        explanation: /^Failures: .*short_name/,
-      },
-      'splash-screen': {
-        score: 1,
-        details: {items: [jakeExpectations]},
-      },
-      'themed-omnibox': {
-        score: 1,
-        details: {items: [jakeExpectations]},
-      },
-      'content-width': {
-        score: 1,
-      },
+        },
+        'installable-manifest': {
+          score: 0,
+          details: {items: [jakeExpectations]},
+          explanation: /^Failures: .*short_name/,
+        },
+        'splash-screen': {
+          score: 1,
+          details: {items: [jakeExpectations]},
+        },
+        'themed-omnibox': {
+          score: 1,
+          details: {items: [jakeExpectations]},
+        },
+        'content-width': {
+          score: 1,
+        },
+        'apple-touch-icon': {
+          score: 1,
+          warnings: [
+            /apple-touch-icon-precomposed/,
+          ],
+        },
 
-      // "manual" audits. Just verify in the results.
-      'pwa-cross-browser': {
-        score: null,
-        scoreDisplayMode: 'manual',
-      },
-      'pwa-page-transitions': {
-        score: null,
-        scoreDisplayMode: 'manual',
-      },
-      'pwa-each-page-has-url': {
-        score: null,
-        scoreDisplayMode: 'manual',
+        // "manual" audits. Just verify in the results.
+        'pwa-cross-browser': {
+          score: null,
+          scoreDisplayMode: 'manual',
+        },
+        'pwa-page-transitions': {
+          score: null,
+          scoreDisplayMode: 'manual',
+        },
+        'pwa-each-page-has-url': {
+          score: null,
+          scoreDisplayMode: 'manual',
+        },
       },
     },
   },
 
   {
-    requestedUrl: 'https://shop.polymer-project.org/',
-    finalUrl: 'https://shop.polymer-project.org/',
-    audits: {
-      'is-on-https': {
-        score: 1,
-      },
-      'redirects-http': {
-        score: 1,
-      },
-      'service-worker': {
-        score: 1,
-      },
-      'works-offline': {
-        score: 1,
-      },
-      'offline-start-url': {
-        score: 1,
-      },
-      'viewport': {
-        score: 1,
-      },
-      'without-javascript': {
-        score: 1,
-      },
-      'load-fast-enough-for-pwa': {
+    lhr: {
+      requestedUrl: 'https://shop.polymer-project.org/',
+      finalUrl: 'https://shop.polymer-project.org/',
+      audits: {
+        'is-on-https': {
+          score: 1,
+        },
+        'redirects-http': {
+          score: 1,
+        },
+        'service-worker': {
+          score: 1,
+        },
+        'works-offline': {
+          score: 1,
+        },
+        'offline-start-url': {
+          score: 1,
+        },
+        'viewport': {
+          score: 1,
+        },
+        'without-javascript': {
+          score: 1,
+        },
+        'load-fast-enough-for-pwa': {
         // Ignore speed test; just verify that it ran.
-      },
-      'installable-manifest': {
-        score: 1,
-        details: {items: [pwaDetailsExpectations]},
-      },
-      'splash-screen': {
-        score: 1,
-        details: {items: [pwaDetailsExpectations]},
-      },
-      'themed-omnibox': {
-        score: 1,
-        details: {items: [pwaDetailsExpectations]},
-      },
-      'content-width': {
-        score: 1,
-      },
+        },
+        'installable-manifest': {
+          score: 1,
+          details: {items: [pwaDetailsExpectations]},
+        },
+        'splash-screen': {
+          score: 1,
+          details: {items: [pwaDetailsExpectations]},
+        },
+        'themed-omnibox': {
+          score: 1,
+          details: {items: [pwaDetailsExpectations]},
+        },
+        'content-width': {
+          score: 1,
+        },
+        'apple-touch-icon': {
+          score: 0,
+        },
 
-      // "manual" audits. Just verify in the results.
-      'pwa-cross-browser': {
-        score: null,
-        scoreDisplayMode: 'manual',
-      },
-      'pwa-page-transitions': {
-        score: null,
-        scoreDisplayMode: 'manual',
-      },
-      'pwa-each-page-has-url': {
-        score: null,
-        scoreDisplayMode: 'manual',
+        // "manual" audits. Just verify in the results.
+        'pwa-cross-browser': {
+          score: null,
+          scoreDisplayMode: 'manual',
+        },
+        'pwa-page-transitions': {
+          score: null,
+          scoreDisplayMode: 'manual',
+        },
+        'pwa-each-page-has-url': {
+          score: null,
+          scoreDisplayMode: 'manual',
+        },
       },
     },
   },

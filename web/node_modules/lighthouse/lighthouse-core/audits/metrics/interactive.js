@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const Audit = require('../audit');
+const Audit = require('../audit.js');
 const i18n = require('../../lib/i18n/i18n.js');
 const Interactive = require('../../computed/metrics/interactive.js');
 
@@ -78,7 +78,7 @@ class InteractiveMetric extends Audit {
         context.options.scorePODR,
         context.options.scoreMedian
       ),
-      rawValue: timeInMs,
+      numericValue: timeInMs,
       displayValue: str_(i18n.UIStrings.seconds, {timeInMs}),
       extendedInfo: {
         value: extendedInfo,

@@ -54,7 +54,7 @@ class LanternFirstCPUIdle extends LanternInteractive {
 
     longTasks.sort((a, b) => a.start - b.start);
     // Require here to resolve circular dependency.
-    const FirstCPUIdle = require('./first-cpu-idle');
+    const FirstCPUIdle = require('./first-cpu-idle.js');
     return FirstCPUIdle.findQuietWindow(fmpTimeInMs, Infinity, longTasks);
   }
 

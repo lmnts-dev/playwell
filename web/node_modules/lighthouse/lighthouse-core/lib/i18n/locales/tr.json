@@ -447,10 +447,10 @@
     "message": "Değer"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Tarayıcı mühendisleri, sayfaların yaklaşık olarak 1500'den az DOM düğümü içermesini önerir. En etkili nokta, 32 öğeden ve 60 alt/üst öğeden az olan bir ağaç derinliğidir. Büyük bir DOM, bellek kullanımını artırarak daha uzun [stil hesaplamalarına] (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) yol açabilir ve yüksek maliyetli [düzen yeniden düzenlemeleri](https://developers.google.com/speed/articles/reflow) oluşturabilir. [Daha fazla bilgi](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Tarayıcı mühendisleri, sayfaların yaklaşık olarak 1.500'den az DOM öğesi içermesini önerir. En iyisi, 32 öğeden ve 60 alt/üst öğeden az olan bir ağaç derinliğidir. Büyük bir DOM, bellek kullanımını artırarak daha uzun [stil hesaplamalarına](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) yol açabilir ve yüksek maliyetli [düzen yeniden düzenlemeleri](https://developers.google.com/speed/articles/reflow) oluşturabilir. [Daha fazla bilgi](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 düğüm}other{# düğüm}}"
+    "message": "{itemCount,plural, =1{1 öğe}other{# öğe}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Aşırı büyük bir DOM boyutundan kaçının"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Maksimum DOM Derinliği"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Toplam DOM Düğümü"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Tüm DOM Öğeleri"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Maksimum Alt Öğe"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Tarayıcıların uygulamanızın içeriğini daha iyi anlamasını sağlayacak şekilde HTML kodunuzu biçimlendirin."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "İçerik En İyi Uygulamaları"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Uygulamanızın arama sonuçlarında görünmesi için, tarayıcıların uygulamanıza erişmesi gerekir."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Tarama ve Dizine Ekleme"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Kullanıcıların sayfadaki içerikleri okumak üzere sıkıştırma hareketi yapmak veya yakınlaştırmak zorunda kalmamaları için sayfalarınızın mobil uyumlu olduğundan emin olun. [Daha fazla bilgi](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Mobil Uyumlu"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "TTL'yi Önbelleğe Alma"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Sayfa yüklemenizin üzerine iz kaydedilirken bir sorun oluştu. Lütfen Lighthouse'u tekrar çalıştırın. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "İlk Hata Ayıklayıcı Protokolü bağlantısı beklenirken zaman aşımı oluştu."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome, sayfa yükleme sırasında ekran görüntüsü toplayamadı. Lütfen sayfada görülebilir içerik olduğundan emin olun ve sonra Lighthouse'u tekrar çalıştırmayı deneyin. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Başarılı denetimler"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Puan ölçeği:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Snippet'i daralt"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Uyarılar: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "GIF dosyanızı, HTML5 videosu olarak katıştırmak için kullanılabilmesini sağlayacak bir hizmete yüklemeyi düşünün."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Ekran dışı görüntüleri erteleme veya bu işlevselliği sağlayan bir temaya geçiş yapma olanağı veren bir [WordPress geç yükleme (lazy-load) eklentisi](https://wordpress.org/plugins/search/lazy+load/) yükleyin. Ayrıca [AMP eklentisini](https://wordpress.org/plugins/amp/) kullanmayı da düşünün."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "[Kritik öğeleri satır içi yapmanıza](https://wordpress.org/plugins/search/critical+css/) veya [daha az önemli kaynakları ertelemenize](https://wordpress.org/plugins/search/defer+css+javascript/) yardımcı olabilecek çeşitli WordPress eklentileri vardır. Bu eklentilerin sağlayacağı optimizasyonların tema veya eklentilerinizin özelliklerini bozabileceğine dikkat edin. Bunu engellemek için muhtemelen kodda değişiklik yapmanız gerekecektir."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Temalar, eklentiler ve sunucu özellikleri öğelerinin tümü sunucunun yanıt süresini etkiler. Bir optimizayon eklentisini dikkatle seçerek ve/veya sunucunuzu yeni sürüme geçirerek, daha ileri düzeyde optimize edilmiş bir tema bulmayı düşünün."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Yayın listelerinizde alıntılar göstermeyi (ör. daha fazla etiket kullanarak), belirli bir sayfada gösterilen yayınların sayısını azaltmayı, uzun yayınlarınızı birden fazla sayfaya bölmeyi veya yorumların geç yüklenmesi için bir eklenti kullanmayı düşünün."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Çeşitli [WordPress eklentileri](https://wordpress.org/plugins/search/minify+css/) stillerinizi sıralayarak, küçülterek ve sıkıştırarak sitenizi hızlandırabilir. Ayrıca mümkünse bu sadeleştirmeyi yapmak için bir derleme işlemi kullanmak isteyebilirsiniz."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Çeşitli [WordPress eklentileri](https://wordpress.org/plugins/search/minify+javascript/), komut dosyalarınızı sıralayarak, küçülterek ve sıkıştırarak sitenizi hızlandırabilir. Ayrıca mümkünse bu sadeleştirmeyi yapmak için bir derleme işlemi kullanmak isteyebilirsiniz."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Sayfanızda kullanılmayan CSS'leri yükleyen [WordPress eklentilerinin](https://wordpress.org/plugins/) sayısını azaltmayı veya değiştirmeyi düşünün. Gereksiz CSS yükleyen eklentileri belirlemek için Chrome DevTools'da [kod kapsamını](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) çalıştırmayı düşünün. Sorumlu temayı/eklentiyi stil sayfasının URL'sinden belirleyebilirsiniz. Listede çok sayıda stil sayfasına sahip olan ve kod kapsamında çok sayıda kırmızı işaret taşıyan eklentileri arayın. Bir eklenti sadece sayfada gerçekten kullanılan bir stil sayfasını kuyruğa almalıdır."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Sayfanızda kullanılmayan JavaScript'ler yükleyen [WordPress eklentilerinin](https://wordpress.org/plugins/) sayısını azaltmayı veya değiştirmeyi düşünün. Gereksiz JS ekleyen eklentileri belirlemek için Chrome DevTools'da [kod kapsamını](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) çalıştırmayı düşünün. Sorumlu temayı/eklentiyi komut dosyasının URL'sinden belirleyebilirsiniz. Listede çok sayıda komut dosyasına sahip olan ve kod kapsamında çok sayıda kırmızı işaret taşıyan eklentileri arayın. Bir eklenti sadece sayfada gerçekten kullanılan bir komut dosyasını kuyruğa almalıdır."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "[WordPress'te Tarayıcı Önbelleği] (https://codex.wordpress.org/WordPress_Optimization#Browser_Caching) ile ilgili bilgi edinin."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Kaliteden ödün vermeden resimlerinizi sıkıştıran bir [resim optimizasyonu WordPress eklentisi] (https://wordpress.org/plugins/search/optimize+images/) kullanmayı düşünün."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Gerekli resim boyutlarının kullanılabilmesi için resimleri doğrudan [medya kitaplığından](https://codex.wordpress.org/Media_Library_Screen) yükleyin, ardından ideal resim boyutlarının kullanıldığından (esnek ayrılma noktası için olanlar dahil) emin olmak için resimleri medya kitaplığından ekleyin veya resim widget'ını kullanın. Boyutları kullanım için yeterli değilse \"Tam Boy\" resimler kullanmaktan kaçının. [Daha Fazla Bilgi](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Web sunucunuzun yapılandırmasında metin sıkıştırmayı etkinleştirebilirsiniz."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Yüklediğiniz resimleri ideal biçimlere otomatik olarak dönüştürecek bir [eklenti](https://wordpress.org/plugins/search/convert+webp/) veya hizmet kullanmayı düşünün."
   }
 }

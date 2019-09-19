@@ -50,7 +50,7 @@ const handleOk = function(results) {
   console.log(results); // eslint-disable-line no-console
   // TODO: use lighthouse results for checking your performance expectations.
   // e.g. process.exit(1) or throw Error if score falls below a certain threshold.
-  // if (results.audits['first-meaningful-paint'].rawValue > 3000) {
+  // if (results.audits['first-meaningful-paint'].numericValue > 3000) {
   //   console.log(`Warning: Time to first meaningful paint ${results.audits['first-meaningful-paint'].displayValue}`);
   //   process.exit(1);
   // }

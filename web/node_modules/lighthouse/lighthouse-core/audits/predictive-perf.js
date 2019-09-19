@@ -5,8 +5,8 @@
  */
 'use strict';
 
-const Audit = require('./audit');
-const Util = require('../report/html/renderer/util');
+const Audit = require('./audit.js');
+const Util = require('../report/html/renderer/util.js');
 
 const LanternFcp = require('../computed/metrics/lantern-first-contentful-paint.js');
 const LanternFmp = require('../computed/metrics/lantern-first-meaningful-paint.js');
@@ -88,10 +88,10 @@ class PredictivePerf extends Audit {
 
     return {
       score,
-      rawValue: values.roughEstimateOfTTI,
+      numericValue: values.roughEstimateOfTTI,
       displayValue: Util.formatMilliseconds(values.roughEstimateOfTTI),
       details: {
-        type: 'diagnostic',
+        type: 'debugdata',
         // TODO: Consider not nesting values under `items`.
         items: [values],
       },

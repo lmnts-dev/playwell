@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const Gatherer = require('./gatherer');
+const Gatherer = require('./gatherer.js');
 
 /**
  * @fileoverview Returns the innerText of the <body> element while JavaScript is

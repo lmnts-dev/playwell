@@ -47,18 +47,27 @@ declare global {
 
   module LH {
     // During report generation, the LHR object is transformed a bit for convenience
-    // Primarily, the auditResult is added as .result onto the auditRef.
-    // Also: a reportCategories property is added. We're lazy sometimes. It'll be removed in due time.
+    // Primarily, the auditResult is added as .result onto the auditRef. We're lazy sometimes. It'll be removed in due time.
     export interface ReportResult extends Result {
       categories: Record<string, ReportResult.Category>;
-      reportCategories: Array<ReportResult.Category>;
     }
     export module ReportResult {
       export interface Category extends Result.Category {
         auditRefs: Array<AuditRef>
       }
+
       export interface AuditRef extends Result.AuditRef {
-        result: Audit.Result
+        result: Audit.Result;
+        stackPacks?: StackPackDescription[];
+      }
+
+      export interface StackPackDescription {
+         /** The title of the stack pack. */
+        title: string;
+        /** A base64 data url to be used as the stack pack's icon. */
+        iconDataURL: string;
+        /** The stack-specific description for this audit. */
+        description: string;
       }
     }
   }

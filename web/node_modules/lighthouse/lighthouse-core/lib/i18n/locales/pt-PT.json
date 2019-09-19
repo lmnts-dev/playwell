@@ -447,10 +447,10 @@
     "message": "Valor"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Os engenheiros de navegadores recomendam que as páginas contenham menos de ~1500 nós de DOM. O ideal é uma árvore com uma profundidade < 32 elementos e menos de 60 elementos superiores/secundários. Um DOM grande pode aumentar a utilização da memória, gerar [cálculos de estilo](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) mais demorados e produzir [ajustes de esquema](https://developers.google.com/speed/articles/reflow) dispendiosos. [Saiba mais](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Os engenheiros de navegadores recomendam que as páginas contenham menos de ~1500 elementos DOM. O ideal é uma árvore com uma profundidade < 32 elementos e menos de 60 elementos superiores/secundários. Um DOM grande pode aumentar a utilização da memória, gerar [cálculos de estilo](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) mais demorados e produzir [ajustes de esquema](https://developers.google.com/speed/articles/reflow) dispendiosos. [Saiba mais](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 nó}other{# nós}}"
+    "message": "{itemCount,plural, =1{1 elemento}other{# elementos}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Evite um tamanho excessivo do DOM"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Profundidade máxima do DOM"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Total de nós do DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Total de elementos DOM"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Máximo de elementos secundários"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Formate o HTML de uma forma que permita aos motores de rastreio compreender melhor o conteúdo da aplicação."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Práticas recomendadas para conteúdo"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Para ser apresentada nos resultados da pesquisa, os motores de rastreio necessitam de acesso à sua aplicação."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Rastreio e indexação"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Certifique-se de que as suas páginas são compatíveis com dispositivos móveis, de modo a que os utilizadores não tenham de juntar os dedos ou aumentar o zoom para lerem as páginas de conteúdo. [Saiba mais](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Compatível com dispositivos móveis"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "TTL da cache"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Ocorreu um erro ao registar o rastreio durante o carregamento da sua página. Volte a executar o Lighthouse. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Atingido o tempo limite de espera pela ligação inicial do protocolo do depurador."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "O Chrome não recolheu quaisquer capturas de ecrã durante o carregamento da página. Certifique-se de que existe conteúdo visível na página e, em seguida, experimente executar novamente o Lighthouse. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Auditorias aprovadas"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Escala da pontuação:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Reduzir fragmento"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Avisos: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Considere carregar o GIF para um serviço que o disponibilizará para incorporação como vídeo HTML5."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Instale um [plug-in do WordPress de carregamento lento](https://wordpress.org/plugins/search/lazy+load/) com capacidade para adiar imagens não visíveis ou para mudar para um tema com essa funcionalidade. Considere ainda a utilização do [plug-in de AMP](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Há vários plug-ins do WordPress que o podem ajudar a [colocar recursos críticos inline](https://wordpress.org/plugins/search/critical+css/) ou [adiar recursos menos importantes](https://wordpress.org/plugins/search/defer+css+javascript/). Tenha em atenção que as otimizações oferecidas por estes plug-ins podem quebrar funcionalidades do seu tema ou plug-ins, pelo que poderá ser necessário efetuar alterações ao código."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "As especificações dos temas, plug-ins e servidor, no seu conjunto, contribuem para o tempo de resposta do servidor. Considere procurar um tema mais otimizado, selecionar cuidadosamente um plug-in de otimização e/ou atualizar o servidor."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Considere mostrar excertos nas suas listas de publicações (por exemplo, através da etiqueta de mais), reduzir o número de publicações apresentadas numa determinada página, dividir as publicações longas em várias páginas ou utilizar um plug-in para tornar o carregamento de comentários lento."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Há vários [plug-ins do WordPress](https://wordpress.org/plugins/search/minify+css/) que podem acelerar o seu site ao concatenar, reduzir e comprimir os seus estilos. Poderá ainda utilizar um processo de criação para proceder previamente à redução se possível."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Um número de [plug-ins do WordPress](https://wordpress.org/plugins/search/minify+javascript/) pode acelerar o seu site ao concatenar, reduzir e comprimir os seus scripts. Poderá ainda utilizar um processo de criação para proceder previamente à redução se possível."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Considere reduzir ou mudar o número de [plug-ins do WordPress](https://wordpress.org/plugins/) que carregam CSS não utilizadas na sua página. Para identificar plug-ins que estejam a adicionar CSS estranhas, experimente realizar a [cobertura de código](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) nas DevTools do Chrome. Pode identificar o tema/plug-in responsável a partir do URL da folha de estilos. Esteja atento a plug-ins que tenham muitas folhas de estilo na lista com muito vermelho na cobertura do código. Um plug-in só deve ter uma folha de estilos na fila de espera se esta for realmente utilizada na página."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Considere reduzir ou mudar o número de [plug-ins do WordPress](https://wordpress.org/plugins/) que carregam JavaScript não utilizado na sua página. Para identificar plug-ins que estejam a adicionar JS estranho, experimente realizar a [cobertura de código](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) nas DevTools do Chrome. Pode identificar o tema/plug-in responsável a partir do URL do script. Esteja atento a plug-ins que tenham muitos scripts na lista com muito vermelho na cobertura do código. Um plug-in só deve ter um script na fila de espera se este for realmente utilizado na página."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Leia sobre [Colocação do navegador em cache no WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Considere utilizar um [plug-in do WordPress de otimização da imagem](https://wordpress.org/plugins/search/optimize+images/) que comprime as imagens, ao mesmo tempo que mantém a qualidade."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Carregue imagens diretamente a partir da [biblioteca de multimédia](https://codex.wordpress.org/Media_Library_Screen) para garantir que estão disponíveis os tamanhos de imagem necessários e, em seguida, introduza-as a partir da biblioteca de multimédia ou utilize o widget de imagens para garantir que são utilizados os tamanhos ideais das imagens (incluindo as referentes a breakpoints adaptáveis). Evite utilizar imagens de \"tamanho original\", a menos que as dimensões sejam adequadas à utilização. [Saiba mais](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Pode ativar a compressão de texto na configuração do servidor Web."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Considere utilizar um [plug-in](https://wordpress.org/plugins/search/convert+webp/) ou serviço que converta automaticamente as imagens carregadas nos formatos ideais."
   }
 }

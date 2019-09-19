@@ -23,7 +23,7 @@ const HeroContainer = ({ bg, color, px, children, textAlign, FullWidth }) => (
     bg={bg}
     px={px}
     color={color}
-    textAlign={textAlign}
+    textAlign={textAlign ? textAlign : 'center'}
   >
     <Container.Inner>{children}</Container.Inner>
   </Container>

@@ -5,7 +5,7 @@
  */
 'use strict';
 
-const Gatherer = require('../gatherer');
+const Gatherer = require('../gatherer.js');
 
 /**
  * Get and return `name`, `publicId`, `systemId` from

@@ -5,8 +5,9 @@
  */
 'use strict';
 
-const Audit = require('./audit');
-const LHError = require('../lib/lh-error');
+const Audit = require('./audit.js');
+const LHError = require('../lib/lh-error.js');
+const TraceOfTab = require('../computed/trace-of-tab.js');
 const Screenshots = require('../computed/screenshots.js');
 
 class FinalScreenshot extends Audit {
@@ -30,7 +31,9 @@ class FinalScreenshot extends Audit {
    */
   static async audit(artifacts, context) {
     const trace = artifacts.traces[Audit.DEFAULT_PASS];
+    const traceOfTab = await TraceOfTab.request(trace, context);
     const screenshots = await Screenshots.request(trace, context);
+    const {navigationStart} = traceOfTab.timestamps;
     const finalScreenshot = screenshots[screenshots.length - 1];
 
     if (!finalScreenshot) {
@@ -38,9 +41,10 @@ class FinalScreenshot extends Audit {
     }
 
     return {
-      rawValue: true,
+      score: 1,
       details: {
         type: 'screenshot',
+        timing: Math.round((finalScreenshot.timestamp - navigationStart) / 1000),
         timestamp: finalScreenshot.timestamp,
         data: finalScreenshot.datauri,
       },

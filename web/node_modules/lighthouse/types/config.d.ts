@@ -15,16 +15,12 @@ declare global {
        */
       export interface Json {
         extends?: 'lighthouse:default' | 'lighthouse:full' | string | boolean;
-        settings?: SettingsJson;
+        settings?: SharedFlagsSettings;
         passes?: PassJson[] | null;
         audits?: Config.AuditJson[] | null;
         categories?: Record<string, CategoryJson> | null;
         groups?: Record<string, Config.GroupJson> | null;
         plugins?: Array<string>,
-      }
-
-      export interface SettingsJson extends SharedFlagsSettings {
-        extraHeaders?: Crdp.Network.Headers | null;
       }
 
       export interface PassJson {
@@ -80,7 +76,7 @@ declare global {
         group?: string;
       }
 
-      export interface Settings extends Required<SettingsJson> {
+      export interface Settings extends Required<SharedFlagsSettings> {
         throttling: Required<ThrottlingSettings>;
       }
 

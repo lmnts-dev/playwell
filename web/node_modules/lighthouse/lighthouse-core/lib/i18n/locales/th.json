@@ -447,10 +447,10 @@
     "message": "ค่า"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "วิศวกรเบราว์เซอร์แนะนำให้ใช้หน้าเว็บที่มีโหนด DOM น้อยกว่าประมาณ 1,500 รายการ ความลึกที่เหมาะที่สุดคือแบบต้นไม้ซึ่งมีองค์ประกอบน้อยกว่า 32 รายการและมีองค์ประกอบย่อย/หลักน้อยกว่า 60 รายการ DOM ขนาดใหญ่อาจใช้หน่วยความจำเพิ่มขึ้น ทำให้[การคำนวณสไตล์](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations)ยาวนานขึ้น และสร้าง[การจัดเรียงการออกแบบใหม่](https://developers.google.com/speed/articles/reflow)ที่ต้องใช้ค่าใช้จ่ายสูง [ดูข้อมูลเพิ่มเติม](https://developers.google.com/web/tools/lighthouse/audits/dom-size)"
+    "message": "วิศวกรเบราว์เซอร์แนะนำให้ใช้หน้าเว็บที่มีองค์ประกอบ DOM น้อยกว่า 1,500 รายการโดยประมาณ ความลึกที่เหมาะที่สุดคือแบบต้นไม้ซึ่งมีองค์ประกอบน้อยกว่า 32 รายการและมีองค์ประกอบย่อย/หลักน้อยกว่า 60 รายการ DOM ขนาดใหญ่อาจใช้หน่วยความจำเพิ่มขึ้น ทำให้[การคำนวณสไตล์](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) ยาวนานขึ้น และสร้าง[การจัดเรียงการออกแบบใหม่](https://developers.google.com/speed/articles/reflow) ซึ่งมีค่าใช้จ่ายสูง [ดูข้อมูลเพิ่มเติม](https://developers.google.com/web/tools/lighthouse/audits/dom-size)"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 โหนด}other{# โหนด}}"
+    "message": "{itemCount,plural, =1{1 องค์ประกอบ}other{# องค์ประกอบ}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "หลีกเลี่ยง DOM ที่มีขนาดใหญ่เกินไป"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "ความลึก DOM สูงสุด"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "โหนด DOM ทั้งหมด"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "องค์ประกอบ DOM ทั้งหมด"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "จำนวนองค์ประกอบย่อยสูงสุด"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "จัด HTML ให้อยู่ในรูปแบบที่ช่วยให้โปรแกรมรวบรวมข้อมูลเข้าใจเนื้อหาแอปได้ง่ายขึ้น"
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "แนวทางปฏิบัติที่ดีที่สุดเกี่ยวกับเนื้อหา"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "โปรแกรมรวบรวมข้อมูลจะต้องเข้าถึงแอปของคุณได้เพื่อให้แอปปรากฏในผลการค้นหา"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "การรวบรวมข้อมูลและจัดทำดัชนี"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "ตรวจสอบว่าหน้าเว็บเหมาะกับอุปกรณ์เคลื่อนที่ ผู้ใช้จะได้ไม่ต้องบีบนิ้วหรือซูมเข้าเพื่ออ่านหน้าเนื้อหา [ดูข้อมูลเพิ่มเติม](https://developers.google.com/search/mobile-sites/)"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "เหมาะกับอุปกรณ์เคลื่อนที่"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "แคช TTL"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "เกิดข้อผิดพลาดในการบันทึกการติดตามระหว่างการโหลดหน้าเว็บ โปรดเรียกใช้ Lighthouse อีกครั้ง ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "หมดเวลาระหว่างที่รอการเชื่อมต่อโปรโตคอลโปรแกรมแก้ไขข้อบกพร่องเริ่มต้น"
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome ไม่ได้รวบรวมภาพหน้าจอใดๆ ระหว่างการโหลดหน้า โปรดตรวจสอบว่ามีเนื้อหาที่มองเห็นได้ในหน้าเว็บ จากนั้นลองเรียกใช้ Lighthouse อีกครั้ง ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "การตรวจสอบที่ผ่านแล้ว"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "ระดับคะแนน"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "ยุบตัวอย่างข้อมูล"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "คำเตือน "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "ลองอัปโหลด GIF ไปยังบริการซึ่งจะทำให้ใช้ GIF เพื่อฝังเป็นวิดีโอ HTML5 ได้"
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "ติดตั้ง[ปลั๊กอิน WordPress การโหลดแบบ Lazy Loading](https://wordpress.org/plugins/search/lazy+load/) ที่จะช่วยเลื่อนเวลาโหลดรูปภาพนอกหน้าจอ หรือเปลี่ยนไปใช้ธีมที่มีฟังก์ชันดังกล่าว นอกจากนี้แล้วให้ลองใช้[ปลั๊กอิน AMP](https://wordpress.org/plugins/amp/) ด้วย"
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "มีปลั๊กอิน WordPress หลายรายการที่ช่วยคุณ[แทรกเนื้อหาที่สำคัญ](https://wordpress.org/plugins/search/critical+css/) หรือ[เลื่อนเวลาโหลดทรัพยากรที่สำคัญน้อยกว่า](https://wordpress.org/plugins/search/defer+css+javascript/) โปรดระวังว่าการเพิ่มประสิทธิภาพโดยปลั๊กอินเหล่านี้อาจทำให้ฟีเจอร์ของธีมหรือปลั๊กอินของคุณเสียหาย ซึ่งน่าจะทำให้คุณต้องแก้ไขโค้ด"
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "การกำหนดธีม ปลั๊กอิน และเซิร์ฟเวอร์ล้วนส่งผลต่อเวลาการตอบสนองของเซิร์ฟเวอร์ ลองหาธีมที่เพิ่มประสิทธิภาพมากขึ้น พยายามเลือกปลั๊กอินการเพิ่มประสิทธิภาพด้วยความระมัดระวัง และ/หรืออัปเกรดเซิร์ฟเวอร์"
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "ลองแสดงข้อความที่ตัดตอนมาในรายการโพสต์ (เช่น ผ่านแท็ก \"เพิ่มเติม\") ลดจำนวนโพสต์ที่แสดงในหน้าหนึ่งๆ แบ่งโพสต์ยาวๆ เป็นหลายหน้า หรือใช้ปลั๊กอินเพื่อโหลดความคิดเห็นแบบ Lazy Loading"
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "มี[ปลั๊กอิน WordPress](https://wordpress.org/plugins/search/minify+css/) หลายอย่างที่ช่วยให้เว็บไซต์เร็วขึ้นได้ด้วยการลิงก์ ลดขนาด และบีบอัดสไตล์ นอกจากนี้คุณอาจใช้กระบวนการของเวอร์ชันเพื่อลดขนาดล่วงหน้าหากเป็นไปได้"
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "มี[ปลั๊กอิน WordPress]https://wordpress.org/plugins/search/minify+javascript/) หลายอย่างที่ช่วยให้เว็บไซต์เร็วขึ้นได้ด้วยการลิงก์ ลดขนาด และบีบอัดสคริปต์ นอกจากนี้คุณอาจใช้กระบวนการของเวอร์ชันเพื่อลดขนาดล่วงหน้าหากเป็นไปได้"
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "ลองลดหรือเปลี่ยนจำนวน[ปลั๊กอิน WordPress](https://wordpress.org/plugins/) ที่โหลด CSS ที่ไม่ได้ใช้ในหน้าเว็บของคุณ หากต้องการระบุปลั๊กอินที่เพิ่ม CSS โดยไม่จำเป็น ให้ลองเรียกใช้[การครอบคลุมโค้ด](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) ใน DevTools ของ Chrome คุณระบุธีม/ปลั๊กอินที่รับผิดชอบได้จาก URL ของสไตล์ชีต หาปลั๊กอินที่มีสไตล์ชีตจำนวนมากอยู่ในรายการซึ่งมีสีแดงอยู่จำนวนมากในการครอบคลุมโค้ด ปลั๊กอินควรเป็นเพียงตัวกำหนดลำดับของสไตล์ชีตเท่านั้นหากใช้ปลั๊กอินในหน้าจริงๆ"
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "ลองลดหรือเปลี่ยนจำนวน[ปลั๊กอิน WordPress](https://wordpress.org/plugins/) ที่โหลด JavaScript ที่ไม่ได้ใช้ในหน้าเว็บของคุณ หากต้องการระบุปลั๊กอินที่เพิ่ม JS โดยไม่จำเป็น ให้ลองเรียกใช้[การครอบคลุมโค้ด](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage)ใน DevTools ของ Chrome คุณระบุธีม/ปลั๊กอินที่รับผิดชอบได้จาก URL ของสคริปต์ หาปลั๊กอินที่มีสคริปต์จำนวนมากอยู่ในรายการซึ่งมีสีแดงอยู่จำนวนมากในการครอบคลุมโค้ด ปลั๊กอินควรเป็นเพียงตัวกำหนดลำดับของสคริปต์เท่านั้นหากใช้ปลั๊กอินในหน้าจริงๆ"
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "อ่านเกี่ยวกับ[การแคชเบราว์เซอร์ใน WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)"
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "ลองใช้[ปลั๊กอิน WordPress การเพิ่มประสิทธิภาพรูปภาพ](https://wordpress.org/plugins/search/optimize+images/) ที่บีบอัดรูปภาพแต่ยังคงคุณภาพไว้ได้"
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "อัปโหลดรูปภาพโดยตรงผ่าน[คลังสื่อ](https://codex.wordpress.org/Media_Library_Screen) เพื่อให้แน่ใจว่ามีขนาดรูปภาพที่จำเป็นพร้อมใช้งาน จากนั้นแทรกรูปภาพจากคลังสื่อหรือใช้วิดเจ็ตรูปภาพเพื่อให้มีการใช้ขนาดรูปภาพที่มีประสิทธิภาพสูงสุด (รวมถึงขนาดสำหรับเบรกพอยท์ที่ปรับเปลี่ยนตามอุปกรณ์) หลีกเลี่ยงการใช้รูปภาพ \"ขนาดเต็ม\" นอกเสียจากว่าขนาดจะเพียงพอต่อการใช้งาน [ดูข้อมูลเพิ่มเติม](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)"
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "คุณเปิดใช้การบีบอัดข้อความในการกำหนดค่าเว็บเซิร์ฟเวอร์ได้"
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "ลองใช้[ปลั๊กอิน](https://wordpress.org/plugins/search/convert+webp/) หรือบริการที่จะแปลงรูปภาพที่อัปโหลดเป็นรูปแบบที่เหมาะสมที่สุดโดยอัตโนมัติ"
   }
 }

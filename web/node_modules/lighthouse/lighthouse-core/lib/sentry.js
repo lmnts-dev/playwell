@@ -110,7 +110,6 @@ function init(opts) {
 
     const context = Object.assign({
       url: opts.url,
-      deviceEmulation: !opts.flags.disableDeviceEmulation,
       emulatedFormFactor: opts.flags.emulatedFormFactor,
       throttlingMethod: opts.flags.throttlingMethod,
     }, opts.flags.throttling);

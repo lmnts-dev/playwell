@@ -26,6 +26,7 @@ export const CourseMapNavStyle = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
+  animation: ${FadeIn} 1s ease 0s 1 normal forwards;
   z-index: ${props => (props.mapZedIndex ? props.mapZedIndex : 4)};
   display: flex;
   flex-direction: column;
@@ -43,27 +44,81 @@ export const CourseMapNavStyle = styled.div`
 
     .map-col {
       display: flex;
-      flex-diirection: column;
-      padding-top: calc(
-        ${props => props.theme.Root.Nav.Size} +
-          ${props => props.theme.Root.Size} * 1
-      );
+      flex-direction: column;
+      padding-top: calc(${props => Root.Nav.Size} + ${props => Root.Size} * 1);
       width: ${props => (props.mapWidth ? props.mapWidth : '350px')};
 
       .map-container {
+        position: relative;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: stretch;
+        justify-content: stretch;
         box-shadow: 0 12px 44px 0 ${hexToRGB(Theme.Color.Galaxy, 0.11)};
         background: ${Theme.Color.Sky};
-        position: relative;
         overflow: hidden;
+        color: white;
+        font-weight: bold;
         border-radius: 5px;
-        height: ${props =>
-          props.mapWidth ? 'calc(' + props.mapWidth + '* 1.2)' : '350px'};
+        height: calc(
+          100% - (${props => Root.Nav.Size} + ${props => Root.Size} * 1)
+        );
         width: 100%;
       }
+
+      .map-container-inner {
+        display: flex;
+        flex: 1;
+        position: relative;
+
+        .map {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+        }
+      }
     }
+  }
+`;
+
+export const ToggleMapBtnStyle = styled.button`
+  background: ${Theme.Color.White};
+  border-radius: 4px;
+  color: ${Theme.Color.Galaxy};
+  position: absolute;
+  right: calc(${Root.Size} / 6);
+  top: calc(${Root.Size} / 6);
+  font-weight: bold;
+  height: ${Root.Button.Size};
+  display: inline-flex;
+  align-items: center;
+  padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 6);
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  z-index: 800;
+  box-shadow: 0px 0px 0px 0px rgba(${Theme.Color.Nightysky}, 0);
+  transition: all 0s ease;
+
+  .ico {
+    color: ${Theme.Color.Galaxy};
+    display: block;
+    margin-right: calc(${Root.Size} / 4);
+  }
+
+  span {
+    &:last-child {
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 0px 6px rgba(93, 99, 118, 0.2);
   }
 `;
 

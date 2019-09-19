@@ -447,10 +447,10 @@
     "message": "Antal"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Webbläsarutvecklare rekommenderar att en sidas DOM ska ha färre än ca 1 500 noder. Ett träd där djupet är mindre än 32 element och det finns högst 60 underordnade/överordnade element är idealiskt. Stora DOM-träd kan medföra ökad minnesförbrukning, längre [formatmallsberäkningar](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) och resurskrävande [omflödning av layouten](https://developers.google.com/speed/articles/reflow). [Läs mer](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Webbläsarutvecklare rekommenderar att en sidas DOM ska ha färre än ca 1 500 element. Ett träd där djupet är mindre än 32 element och det finns högst 60 underordnade/överordnade element är idealiskt. Stora DOM-träd kan medföra ökad minnesförbrukning, längre [formatmallsberäkningar] (https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) och resurskrävande [omflödning av layouten] (https://developers.google.com/speed/articles/reflow). [Läs mer](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 nod}other{# noder}}"
+    "message": "{itemCount,plural, =1{1 element}other{# element}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Undvik ett onödigt stort DOM-träd"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "Största DOM-djup"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "Totalt antal noder i DOM"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "Totalt antal DOM-element"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Högsta antal underordnade element"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "SEO"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Formatera HTML-koden på ett sätt som gör det enklare för sökrobotar att tolka appens innehåll."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Bästa metoder för innehåll"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Du måste ge sökrobotar tillgång till appen om den ska kunna visas i sökresultaten."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Genomsökning och indexering"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Gör sidorna mobilanpassade så att användarna kan läsa dem utan att behöva nypa eller zooma in. [Läs mer](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Mobilanpassad"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Lagringstid i cacheminnet"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Ett fel uppstod när spårningen skulle registreras för sidinläsningen. Kör Lighthouse igen. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Tidsgränsen överskreds under väntan på den första anslutningen till felsökningsprotokollet."
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Inga skärmdumpar togs i Chrome medan sidan lästes in. Kontrollera att det finns synligt innehåll på sidan och kör Lighthouse igen. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Godkända granskningar"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Poängskala:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Komprimera utdrag"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Varningar: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "Ladda upp GIF-filen till en tjänst som kan göra den tillgänglig för inbäddning som HTML5-video."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Installera en [WordPress-plugin för lat inläsning](https://wordpress.org/plugins/search/lazy+load/) som ger möjlighet att skjuta upp inläsningen av bilder som inte visas på skärmen, eller byt till ett tema som har den funktionen. Du kan även använda [AMP-pluginmodulen](https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Det finns ett antal pluginmoduler för WordPress som kan hjälpa dig att [lägga in kritiska tillgångar direkt på sidan](https://wordpress.org/plugins/search/critical+css/) eller [skjuta upp inläsningen av mindre viktiga resurser](https://wordpress.org/plugins/search/defer+css+javascript/). Tänk på att optimeringarna som dessa pluginmoduler gör kan leda till att funktioner i teman eller andra pluginmoduler slutar fungera, så du kan behöva ändra i koden."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Serverns svarstider påverkas av teman, pluginmoduler och serverns prestanda. Du kan använda ett mer optimerat tema, välja en optimeringsplugin och/eller uppgradera servern."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Du kan visa utdrag i inläggslistan (t.ex. via en more-tagg), minska antalet inlägg på sidan, dela upp långa inlägg på flera sidor eller använda en plugin som läser in kommentarer med lat inläsning."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Det finns ett antal [pluginmoduler för WordPress](https://wordpress.org/plugins/search/minify+css/) som kan göra webbplatsen snabbare genom att sammanfoga, minifiera och komprimera formatmallar. Du kan också göra minifieringen direkt i konstruktionsfasen om möjligt."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Det finns ett antal [pluginmoduler för WordPress](https://wordpress.org/plugins/search/minify+javascript/) som kan göra webbplatsen snabbare genom att sammanfoga, minifiera och komprimera skript. Du kan också göra minifieringen direkt i konstruktionsfasen om möjligt."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Du kan minska antalet [WordPress-pluginmoduler](https://wordpress.org/plugins/) som läser in CSS som inte används på sidan, eller byta ut dem. Testa fliken för [kodtäckning](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) i Chromes utvecklarverktyg om du vill se vilka pluginmoduler som lägger till överflödig CSS. Du ser på CSS-formatmallens webbadress vilket tema eller vilken plugin som koden kommer från. Titta efter pluginmoduler med många CSS-formatmallar på listan där en stor del av stapeln är röd. En plugin ska bara ställa en formatmall i kö för inläsning om den faktiskt används på sidan."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Du kan minska antalet [WordPress-pluginmoduler](https://wordpress.org/plugins/) som läser in JavaScript som inte används på sidan, eller byta ut dem. Testa fliken för [kodtäckning](https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) i Chromes utvecklarverktyg om du vill se vilka pluginmoduler som lägger till överflödig JS. Du ser på skriptets webbadress vilket tema eller vilken plugin som koden kommer från. Titta efter pluginmoduler med många skript på listan där en stor del av stapeln är röd. En plugin ska bara ställa ett skript i kö för inläsning om det faktiskt används på sidan."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Läs mer om [cachelagring i webbläsaren och WordPress](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Du kan använda en [WordPress-plugin för bildoptimering](https://wordpress.org/plugins/search/optimize+images/) som komprimerar bilderna utan att göra avkall på kvaliteten."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Säkerställ att de bildstorlekar som krävs finns tillgängliga genom att ladda upp bilderna direkt via [mediebiblioteket](https://codex.wordpress.org/Media_Library_Screen) och infoga dem sedan från mediebiblioteket eller med bildwidgeten, så att de optimala bildstorlekarna används (även för brytpunkterna för responsiv design). Undvik fullstora bilder, såvida de inte har mått som passar där bilderna ska användas. [Läs mer](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Du kan aktivera textkomprimering i webbserverns konfiguration."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Du kan använda en [plugin](https://wordpress.org/plugins/search/convert+webp/) eller tjänst som konverterar uppladdade bilder till optimalt format automatiskt."
   }
 }

@@ -447,10 +447,10 @@
     "message": "Arvo"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | description": {
-    "message": "Selainten kehittäjät suosittelevat käyttämään sivulla enintään noin 1 500:aa DOM-noodia. Sopiva puun syvyys on korkeintaan 32 elementtiä ja alle 60 ala- tai ylätason elementtiä. Suuri DOM voi lisätä muistin käyttöä, pidentää [tyylilaskelmia](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) ja aiheuttaa työläitä [asettelun uudelleenjuoksutuksia](https://developers.google.com/speed/articles/reflow). [Lue lisää](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
+    "message": "Selainten kehittäjät suosittelevat käyttämään sivulla enintään noin 1 500:aa DOM-elementtiä. Sopiva puun syvyys on alle 32 elementtiä ja alle 60 ala- ja ylätason elementtiä. Suuri DOM voi lisätä muistin käyttöä, pidentää [tyylilaskelmia](https://developers.google.com/web/fundamentals/performance/rendering/reduce-the-scope-and-complexity-of-style-calculations) ja aiheuttaa työläitä [asettelun uudelleenjuoksutuksia](https://developers.google.com/speed/articles/reflow). [Lue lisää](https://developers.google.com/web/tools/lighthouse/audits/dom-size)."
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | displayValue": {
-    "message": "{itemCount,plural, =1{1 noodi}other{# noodia}}"
+    "message": "{itemCount,plural, =1{1 elementti}other{# elementtiä}}"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | failureTitle": {
     "message": "Vältä liian suurta DOM:ää"
@@ -458,8 +458,8 @@
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMDepth": {
     "message": "DOM:n enimmäissyvyys"
   },
-  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMNodes": {
-    "message": "DOM-noodien kokonaismäärä"
+  "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMElements": {
+    "message": "DOM-elementit yhteensä"
   },
   "lighthouse-core/audits/dobetterweb/dom-size.js | statisticDOMWidth": {
     "message": "Alatason elementtien maksimimäärä"
@@ -875,6 +875,24 @@
   "lighthouse-core/config/default-config.js | seoCategoryTitle": {
     "message": "Hakukoneoptimointi"
   },
+  "lighthouse-core/config/default-config.js | seoContentGroupDescription": {
+    "message": "Muotoile HTML niin, että indeksointirobottien on helpompi ymmärtää sovelluksen sisältöä."
+  },
+  "lighthouse-core/config/default-config.js | seoContentGroupTitle": {
+    "message": "Parhaat sisältökäytännöt"
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupDescription": {
+    "message": "Indeksointiroboteilla on oltava pääsy sovellukseen, jotta se voi näkyä hakutuloksissa."
+  },
+  "lighthouse-core/config/default-config.js | seoCrawlingGroupTitle": {
+    "message": "Indeksointi ja hakemistoon lisääminen"
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupDescription": {
+    "message": "Varmista, että sivut ovat mobiiliystävällisiä, jotta käyttäjien ei tarvitse nipistää tai lähentää sisältösivuja lukeakseen niitä. [Lue lisää](https://developers.google.com/search/mobile-sites/)."
+  },
+  "lighthouse-core/config/default-config.js | seoMobileGroupTitle": {
+    "message": "Mobiiliystävällinen"
+  },
   "lighthouse-core/lib/i18n/i18n.js | columnCacheTTL": {
     "message": "Välimuistin käyttöikä"
   },
@@ -907,6 +925,9 @@
   },
   "lighthouse-core/lib/lh-error.js | badTraceRecording": {
     "message": "Sivun lataamisen jäljen tallennuksessa tapahtui virhe. Suorita Lighthouse uudelleen. ({errorCode})"
+  },
+  "lighthouse-core/lib/lh-error.js | criTimeout": {
+    "message": "Aikakatkaisu: odotetaan yhteyttä virheenkorjausprotokollaan"
   },
   "lighthouse-core/lib/lh-error.js | didntCollectScreenshots": {
     "message": "Chrome ei kerännyt kuvakaappauksia sivun latautumisen aikana. Varmista, että sisältö näkyy sivulla, ja suorita sitten Lighthouse uudelleen. ({errorCode})"
@@ -980,9 +1001,6 @@
   "lighthouse-core/report/html/renderer/util.js | passedAuditsGroupTitle": {
     "message": "Hyväksytyt tarkastukset"
   },
-  "lighthouse-core/report/html/renderer/util.js | scorescaleLabel": {
-    "message": "Pisteasteikko:"
-  },
   "lighthouse-core/report/html/renderer/util.js | snippetCollapseButtonLabel": {
     "message": "Tiivistä koodinpätkä"
   },
@@ -1000,5 +1018,47 @@
   },
   "lighthouse-core/report/html/renderer/util.js | warningHeader": {
     "message": "Varoitukset: "
+  },
+  "stack-packs/packs/wordpress.js | efficient_animated_content": {
+    "message": "GIF kannattaa ehkä ladata palveluun, jonka avulla se voidaan upottaa HTML5-videona."
+  },
+  "stack-packs/packs/wordpress.js | offscreen_images": {
+    "message": "Asenna [WordPressin lazy load ‑laajennus](https://wordpress.org/plugins/search/lazy+load/), joka lykkää näytöllä näkymättömien kuvien lataamista, tai vaihtaa teemaan, joka tarjoaa tämän ominaisuuden. Harkitse myös [AMP-laajennuksen] käyttöä (https://wordpress.org/plugins/amp/)."
+  },
+  "stack-packs/packs/wordpress.js | render_blocking_resources": {
+    "message": "Monet WordPress-laajennukset voivat [tuoda tärkeää materiaalia sivun sisälle] (https://wordpress.org/plugins/search/critical+css/) tai [lykätä vähemmän tärkeiden resurssien lataamista](https://wordpress.org/plugins/search/defer+css+javascript/). Huomaa, että näiden laajennusten tuomat optimoinnit voivat rikkoa teeman tai laajennusten toimintoja, joten sinun on todennäköisesti muutettava koodia."
+  },
+  "stack-packs/packs/wordpress.js | time_to_first_byte": {
+    "message": "Teemat, laajennukset ja palvelinasetukset vaikuttavat kaikki palvelimen vastausaikaan. Sinun kannattaa ehkä etsiä optimoidumpi teema, valita optimointilaajennus tai päivittää palvelimesi."
+  },
+  "stack-packs/packs/wordpress.js | total_byte_weight": {
+    "message": "Sinun kannattaa ehkä näyttää postausluettelossa katkelmia (esim. more-tagin avulla), näyttää yhdellä sivulla vähemmän postauksia, jakaa pitkät postaukset usealle sivulle tai käyttää kommenttien lazy load ‑laajennusta."
+  },
+  "stack-packs/packs/wordpress.js | unminified_css": {
+    "message": "Monet [WordPress-laajennukset](https://wordpress.org/plugins/search/minify+css/) voivat nopeuttaa sivustosi toimintaa yhdistämällä, kutistamalla ja pakkaamalla tyylejä. Tämä kutistaminen voidaan mahdollisesti tehdä jo aiemmin kehitysvaiheen prosessilla."
+  },
+  "stack-packs/packs/wordpress.js | unminified_javascript": {
+    "message": "Monet [WordPress-laajennukset](https://wordpress.org/plugins/search/minify+javascript/) voivat nopeuttaa sivustosi toimintaa yhdistämällä, kutistamalla ja pakkaamalla skriptejä. Tämä kutistaminen voidaan mahdollisesti tehdä jo aiemmin kehitysvaiheen prosessilla."
+  },
+  "stack-packs/packs/wordpress.js | unused_css_rules": {
+    "message": "Sinun kannattaa ehkä poistaa tai vaihtaa toisiin [WordPress-laajennuksia](https://wordpress.org/plugins/), jotka lataavat sivulla käyttämätöntä CSS:ää. Etsi tarpeetonta CSS:ää lisääviä laajennuksia [tutkimalla koodin testikattavuutta] (https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) Chromen DevToolsissa. Löydät syynä olevan teeman tai laajennuksen tyylitiedoston URL-osoitteen avulla. Etsi laajennuksia, joilla on monia tyylitiedostoja luettelossa ja paljon punaista koodin testikattavuudessa. Laajennuksen pitäisi lisätä tyylitiedosto jonoon vain, jos sitä todella käytetään sivulla."
+  },
+  "stack-packs/packs/wordpress.js | unused_javascript": {
+    "message": "Sinun kannattaa ehkä poistaa tai vaihtaa toisiin [WordPress-laajennuksia](https://wordpress.org/plugins/), jotka lataavat sivulla käyttämätöntä JavaScriptiä. Etsi tarpeetonta JS:ää lisääviä laajennuksia [tutkimalla koodin testikattavuutta] (https://developers.google.com/web/updates/2017/04/devtools-release-notes#coverage) Chromen DevToolsissa. Löydät syynä olevan teeman tai laajennuksen skriptin URL-osoitteen avulla. Etsi laajennuksia, joilla on monia skriptejä luettelossa ja paljon punaista koodin testikattavuudessa. Laajennuksen pitäisi lisätä skripti jonoon vain, jos sitä todella käytetään sivulla."
+  },
+  "stack-packs/packs/wordpress.js | uses_long_cache_ttl": {
+    "message": "Lue lisää [selaimen välimuistin käytöstä WordPressissä](https://codex.wordpress.org/WordPress_Optimization#Browser_Caching)."
+  },
+  "stack-packs/packs/wordpress.js | uses_optimized_images": {
+    "message": "Harkitse [WordPressin kuvaoptimointilaajennusta](https://wordpress.org/plugins/search/optimize+images/), joka pakkaa kuvat mutta säilyttää niiden laadun."
+  },
+  "stack-packs/packs/wordpress.js | uses_responsive_images": {
+    "message": "Lataa kuvat suoraan [mediakirjastosta](https://codex.wordpress.org/Media_Library_Screen), jolloin oikeat kuvakoot ovat varmasti saatavilla, ja lisää ne kuvakirjastosta tai varmista oikeiden kuvakokojen käyttö kuva-widgetillä (myös responsiivisuuden raja-arvojen kohdalla). Älä käytä täysikokoisia kuvia, paitsi jos sivun koko on riittävä. [Lue lisää](https://codex.wordpress.org/Inserting_Images_into_Posts_and_Pages#Image_Size)."
+  },
+  "stack-packs/packs/wordpress.js | uses_text_compression": {
+    "message": "Voit ottaa tekstin pakkaamisen käyttöön palvelimen määrityksistä."
+  },
+  "stack-packs/packs/wordpress.js | uses_webp_images": {
+    "message": "Sinun kannattaa ehkä käyttää [laajennusta](https://wordpress.org/plugins/search/convert+webp/) tai palvelua, joka muuntaa ladatut kuvat automaattisesti oikeisiin muotoihin."
   }
 }
