@@ -33,12 +33,9 @@ export const SliderContainer = styled(Box)`
 
 export const SliderArrow = styled(Box)`
   cursor: pointer;
-  transform: scale(1.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: calc(${Root.Size} * 0.5);
-  height: calc(${Root.Size} * 0.5);
+  top: 50%;
+  transform: translate(0, -50%);
+  position: absolute;
 
   svg {
     transition: ${Theme.Base.Transition.String};
@@ -55,7 +52,13 @@ export const SliderArrow = styled(Box)`
   &:active {
   }
 
+  &.prev-slide {
+    left: calc(${Root.Size} * -1);
+  }
+
   &.next-slide {
+    right: calc(${Root.Size} * -1);
+    
     svg {
       transform: rotate(0deg) translateX(0);
     }

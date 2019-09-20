@@ -1,5 +1,5 @@
 // HomeHero.js:
-// This is the course detail page data template.
+// Homepage hero with slick slider
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -17,7 +17,7 @@ import { LocationFilter } from './LocationFilter';
 import Slider from 'react-slick';
 
 // Styles
-import { SliderContainer, Actions, HeroBtn } from './styles.scss';
+import { SliderContainer, SliderArrow, Actions, HeroBtn } from './styles.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -27,25 +27,27 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-function SampleNextArrow(props) {
-  const { className, style, onClick } = props;
+function NextArrow(props) {
+  const { onClick } = props;
   return (
-    <button
-      className={className}
-      style={{ ...style, display: 'block', background: 'red' }}
+    <SliderArrow
+      className="next-slide"
       onClick={onClick}
-    />
+    >
+      <Icon Name="carat" />
+    </SliderArrow>
   );
 }
 
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
+function PrevArrow(props) {
+  const { onClick } = props;
   return (
-    <button
-      className={className}
-      style={{ ...style, display: 'block', background: 'green' }}
+    <SliderArrow
+      className="prev-slide"
       onClick={onClick}
-    />
+    >
+      <Icon Name="carat" />
+    </SliderArrow>
   );
 }
 
@@ -61,8 +63,8 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   centerPadding: '60px',
-  nextArrow: <SampleNextArrow />,
-  prevArrow: <SamplePrevArrow />,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
 };
 
 // Render Page
