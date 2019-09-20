@@ -49,7 +49,7 @@ export const LocationFilter = ({ courseData }) => {
   return (
     <ListingsFiltersStyle>
       <ListingsFiltersItem
-        label="Arizona"
+        label="Location"
         items={[
           { name: 'State', value: 'Arizona' },
           { name: 'State', value: 'Arizona' },
