@@ -27,6 +27,28 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <button
+      className={className}
+      style={{ ...style, display: 'block', background: 'red' }}
+      onClick={onClick}
+    />
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <button
+      className={className}
+      style={{ ...style, display: 'block', background: 'green' }}
+      onClick={onClick}
+    />
+  );
+}
+
 const HeroProps = {
   bg: '',
   color: 'White',
@@ -39,6 +61,8 @@ const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
   centerPadding: '60px',
+  nextArrow: <SampleNextArrow />,
+  prevArrow: <SamplePrevArrow />,
 };
 
 // Render Page

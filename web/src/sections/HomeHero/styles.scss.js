@@ -29,42 +29,6 @@ import {
 
 export const SliderContainer = styled(Box)`
   text-align: left;
-
-  .carousel {
-    position: relative;
-  }
-  .carousel__slider--horizontal {
-    height: 180px;
-  }
-  .carousel__back-button,
-  .carousel__next-button {
-    outline: none;
-    background: transparent;
-    border: none;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: calc(${Root.Size} * 1);
-    height: calc(${Root.Size} * 1);
-
-    &:disabled {
-      opacity: 0.7;
-    }
-  }
-  .carousel__next-button {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-  }
-  .carousel__inner-slide {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    padding-right: calc(${Root.Size} * 2);
-    padding-left: calc(${Root.Size} * 2);
-  }
 `;
 
 export const SliderArrow = styled(Box)`
@@ -123,7 +87,7 @@ export const HeroBtn = styled.button`
   text-align: center;
   display: inline-block;
   position: relative;
-  padding: 0.5rem 3rem 0.2rem;
+  padding: 0.5rem 3rem 0.3rem;
   margin-right: 1rem;
 
   &:hover {
