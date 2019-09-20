@@ -38,13 +38,14 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
+  centerPadding: '60px',
 };
 
 // Render Page
 const HomeHero = ({ bgColor, textColor, slides }) => {
   return (
     <HeroContainer {...HeroProps}>
-      <SliderContainer width={[1, 1, 1, 1, 6 / 10]} pl={[0, 0, 2, 6, 9]}>
+      <SliderContainer width={[1, 1, 1, 1, 1 / 2]} pl={[0, 0, 2, 6, 9]}>
         <Slider {...settings}>
           {slides.map(slide => (
             <Box index={slide.index} key={slide.message}>
@@ -55,7 +56,7 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
             </Box>
           ))}
         </Slider>
-        <Actions width={[1, 1, 1, 7 / 10]} pl={[0, 0, 2, 6, 9]}>
+        <Actions width={[1, 1, 1, 7 / 10]}>
           <HeroBtn bgColor={Theme.Color.Nova} textColor={Theme.Color.White}>
             Explore Courses
           </HeroBtn>
