@@ -33,6 +33,9 @@ export const SliderContainer = styled(Box)`
   .carousel {
     position: relative;
   }
+  .carousel__slider--horizontal {
+    height: 180px;
+  }
   .carousel__back-button,
   .carousel__next-button {
     outline: none;
@@ -105,7 +108,6 @@ export const SliderArrow = styled(Box)`
 `;
 
 export const Actions = styled(Flex)`
-  padding-left: calc(${Root.Size} * 2);
   position: relative;
 `;
 
@@ -116,14 +118,13 @@ export const HeroBtn = styled.button`
   border-radius: 999px;
   color: ${props => (props.textColor ? props.textColor : Theme.Color.White)};
   cursor: pointer;
-  height: calc(${Root.Button.Size} * 1.2);
   outline: 0;
   font-weight: bold;
   text-align: center;
-  display: flex;
+  display: inline-block;
   position: relative;
-  margin-right: calc(${Root.Size} / 4);
-  padding: 1.2rem 3rem 2.1rem;
+  padding: 0.5rem 3rem 0.2rem;
+  margin-right: 1rem;
 
   &:hover {
     box-shadow: 0px 0px 0px 3px rgba(93, 99, 118, 0.2);

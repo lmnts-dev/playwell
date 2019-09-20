@@ -40,7 +40,7 @@ export const Icon = props => {
           <Intercom />
         </IconStyle>
       );
-    case 'NextArrow':
+    case 'nextArrow':
       return (
         <IconStyle className="ico">
           <NextArrow />

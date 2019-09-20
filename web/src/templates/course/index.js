@@ -288,7 +288,7 @@ const Course = ({ pageContext }) => {
             pb={[2, 2, 0]}
           >
             <CourseFooter.Explore.Arrow>
-              <Icon Name="next" />
+              <Icon Name="nextArrow" />
             </CourseFooter.Explore.Arrow>
             <Box>
               <Text as="span" fontSize={2} mt={1} color="Deepsea">
@@ -313,7 +313,7 @@ const Course = ({ pageContext }) => {
               </Text>
             </Box>
             <CourseFooter.Explore.Arrow>
-              <Icon Name="NextArrow" />
+              <Icon Name="nextArrow" />
             </CourseFooter.Explore.Arrow>
           </CourseFooter.Explore.Link>
         </CourseFooter.Explore>
