@@ -160,7 +160,7 @@ export const Theme = {
   ],
   colors: Color,
   fontSizes: [
-    "1rem", "1.2rem", "1.5rem", "1.8rem", "2rem", "2.5rem", "3rem",
+    "1rem", "1.2rem", "1.5rem", "1.8rem", "2rem", "2.5rem", "3rem", "3.5rem", "4rem",
   ],
   space: [
     '0',

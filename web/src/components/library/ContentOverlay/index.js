@@ -20,7 +20,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import Btn from 'components/library/Btn/';
 
 // Constants
-import { Theme, Root } from 'constants/Theme';
+import { Box, Flex, Text } from 'components/library/Elements';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -97,20 +97,26 @@ class OverlayContentContainer extends React.Component {
       return (
         <OverlayContentContainerStyle>
           <div className="overlay-inner">
-            <span
+            <Box
               onClick={this.props.overlayToggle}
               // These are eslint errors for accessibility below.
               onKeyPress={this.props.overlayToggle}
               role="button"
               tabIndex="0"
+              color="black"
+              py={6}
             >
               Hide Modal
-            </span>
+            </Box>
             <iframe
               className="dutchie-iframe"
               frameBorder="0"
               title="menu"
+<<<<<<< HEAD
               src="https://play-well-registration.com/registration/new/81341"
+=======
+              src="https://www.siteinspire.com"
+>>>>>>> f01bc72005bbedb8da40fa1afdbdd39d4a33aa92
             />
           </div>
         </OverlayContentContainerStyle>

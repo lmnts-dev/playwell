@@ -15,7 +15,7 @@ import IconStyle from './styles.scss';
 import Carat from './SVG/Carat';
 import Gear from './SVG/Gear';
 import Intercom from './SVG/Intercom';
-import Next from './SVG/Next';
+import NextArrow from './SVG/NextArrow';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -40,10 +40,10 @@ export const Icon = props => {
           <Intercom />
         </IconStyle>
       );
-    case 'next':
+    case 'nextArrow':
       return (
         <IconStyle className="ico">
-          <Next />
+          <NextArrow />
         </IconStyle>
       );
     default:
