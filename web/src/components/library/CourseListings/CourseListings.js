@@ -18,12 +18,54 @@ import { Box, Flex } from 'components/library/Elements';
 import { ListingsCounters } from './ListingsCounters';
 import { ListingsFilters } from './ListingsFilters';
 import { ClientCard } from './ClientCard';
+import { ProgramsHero } from 'components/library/Hero/ProgramsHero';
+import { CourseMapNav } from 'components/library/CourseMapNav';
 
 // Styles
 import { CourseListingsStyle, ListingsResultsStyle } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
+
+class FilteredResults extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    // Initial state of filtered results
+    this.state = {
+      filtered: [],
+    };
+  }
+
+  // componentDidMount() {
+  //   this.setState({
+  //     filtered: this.props.results,
+  //   });
+  // }
+
+  // componentWillReceiveProps(nextProps) {
+  //   this.setState({
+  //     filtered: nextProps.results,
+  //   });
+  // }
+
+  render() {
+    return (
+      <ListingsResultsStyle>
+        {this.props.results.map((client, idx) => {
+          // console.log(client);
+          if (idx < 150) {
+            if (client.node.courses.length > 0) {
+              return <ClientCard key={idx} clientData={client} />;
+            } else {
+              return;
+            }
+          }
+        })}
+      </ListingsResultsStyle>
+    );
+  }
+}
 
 class ListingsResults extends PureComponent {
   constructor(props) {
@@ -34,37 +76,79 @@ class ListingsResults extends PureComponent {
       lat: [],
       lng: [],
       zoom: [],
-      showCourses: true,
-      showClasses: true,
+      categoryFilter: '',
       ageMin: 0,
       startDate: '',
       courseType: '',
-      showWorkshops: true,
       results: [],
     };
 
     // Bind search query function
-    // this.toggleCard = this.toggleCard.bind(this);
+    this.toggleCategoryFilter = this.toggleCategoryFilter.bind(this);
+  }
+
+  toggleCategoryFilter(context) {
+    if (this.state.categoryFilter == context) {
+      this.setState({
+        categoryFilter: '',
+      });
+    } else {
+      this.setState({
+        categoryFilter: context,
+      });
+    }
+
+    return console.log(context);
   }
 
   render() {
+    // Source Data
     const courseData = this.props.courseData;
+
+    // Filter Categories
+    const categoryFilter = this.state.categoryFilter;
+    const filteredCourseDataByCategory = queryString =>
+      courseData.allPlayWellClient.edges.map((node, idx) => {
+        return {
+          node: {
+            client_id: node.node.id,
+            client_location_name: node.node.client_location_name,
+            courses: node.node.courses.filter((course, idxx) => {
+              // Define our query
+              const filter = queryString;
+
+              // Set up the conditions
+              return course.category_group_name.includes(filter);
+            }, this),
+            display_address: node.node.display_address,
+            geocode_address: node.node.geocode_address,
+            id: node.node.location_id,
+            location_lat: node.node.location_lat,
+            location_lng: node.node.location_lng,
+            public_note: node.node.public_note,
+            key: idx,
+          },
+        };
+      }, this);
+
+    // Map Settings
+    const mapZedIndex = this.props.mapZedIndex;
+    const mapWidth = this.props.mapWidth;
 
     return (
       <>
         <CourseListingsStyle.Toolbar>
-          <div class="toolbar-inner">
+          <div className="toolbar-inner">
             <ListingsFilters courseData={courseData} />
-            <ListingsCounters courseData={courseData} />
+            <ListingsCounters
+              toggleCategoryFilter={this.toggleCategoryFilter.bind(this)}
+              courseData={filteredCourseDataByCategory(categoryFilter)}
+            />
           </div>
         </CourseListingsStyle.Toolbar>
-        <ListingsResultsStyle>
-          {courseData.allPlayWellClient.edges.map((client, idx) => {
-            if (idx < 50) {
-              return <ClientCard idx={idx} clientData={client} />;
-            }
-          })}
-        </ListingsResultsStyle>
+        <FilteredResults
+          results={filteredCourseDataByCategory(categoryFilter)}
+        />
       </>
     );
   }
@@ -73,7 +157,7 @@ class ListingsResults extends PureComponent {
 const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
   return (
     <CourseListingsStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-      <div class="listings-inner">
+      <div className="listings-inner">
         <div className="listings">{children}</div>
       </div>
     </CourseListingsStyle>
@@ -82,9 +166,19 @@ const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
 
 export const CourseListings = ({ courseData, mapWidth, mapZedIndex }) => {
   return (
-    <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-      <ListingsResults courseData={courseData} />
-    </ListingsWrapper>
+    <main>
+      <ProgramsHero
+        bg={Theme.Color.Galaxy}
+        color="White"
+        flexDirection="row"
+        mapWidth={mapWidth}
+        mapZedIndex={mapZedIndex}
+      />
+      <CourseMapNav mapWidth={mapWidth} mapZedIndex={mapZedIndex} />
+      <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
+        <ListingsResults courseData={courseData} />
+      </ListingsWrapper>
+    </main>
   );
 };
 

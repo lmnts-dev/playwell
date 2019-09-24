@@ -1,5 +1,5 @@
-// Index.js:
-// This is the home page of the website.
+// programs/index.js:
+// This is the programs page of the website.
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -18,34 +18,17 @@ import { Box, Flex } from 'components/library/Elements';
 // Constants
 import { Theme, Root } from 'constants/Theme';
 
-let mapWidth = '400px';
-let mapZedIndex = 5;
-
 // Begin Component
 
 //////////////////////////////////////////////////////////////////////
 
-// Props
-let HeroProps = {
-  bg: Theme.Color.Galaxy,
-  color: 'White',
-  flexDirection: 'row',
-  mapWidth: mapWidth,
-  mapZedIndex: mapZedIndex,
-};
-
-let MapNavProps = {
-  mapWidth: mapWidth,
-  mapZedIndex: mapZedIndex,
-};
-
 // Render Page
-const ProgramsPage = props => (
-  <Layout>
-    <main>
-      <ProgramsHero {...HeroProps} />
-      <CourseMapNav {...MapNavProps} />
-
+const ProgramsPage = props => {
+  let mapWidth = '400px';
+  let mapZedIndex = 5;
+  
+  return (
+    <Layout>
       <StaticQuery
         query={graphql`
           query {
@@ -100,9 +83,9 @@ const ProgramsPage = props => (
           />
         )}
       />
-    </main>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default ProgramsPage;
 

@@ -79,11 +79,11 @@ export class CourseMapNav extends PureComponent {
 
     return (
       <CourseMapNavStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-        <div class="inner">
-          <div class="map-col">
-            <div class="map-container">
+        <div className="inner">
+          <div className="map-col">
+            <div className="map-container">
               <ToggleMapBtn />
-              <div class="map-container-inner">
+              <div className="map-container-inner">
                 <div
                   ref={el => (this.mapContainer = el)}
                   style={{

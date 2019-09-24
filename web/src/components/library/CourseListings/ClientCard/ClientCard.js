@@ -84,19 +84,18 @@ export class ClientCard extends PureComponent {
     const reducedPrograms = programMap(clientData.node.courses);
     const reducedProgramsEntries = Object.entries(reducedPrograms);
 
-    console.log(reducedProgramsEntries);
+    // console.log(reducedProgramsEntries);
 
     // Render Cards
     return (
       <ClientCardStyle
         onClick={this.toggleCard}
         cardExpanded={this.state.cardExpanded}
-        key={this.props.idx}
       >
         <ClientCardStyle.ClientName cardExpanded={this.state.cardExpanded}>
-          <div class="client-name">{clientData.node.client_location_name}</div>
+          <div className="client-name">{clientData.node.client_location_name}</div>
 
-          <div class="client-counts">
+          <div className="client-counts">
             {/* Remap our entries into an array and spit out the counts and appropriate
       CategoryMetaMatch for their theme. */}
             {reducedProgramsEntries.map((entry, idx) => {
@@ -111,6 +110,7 @@ export class ClientCard extends PureComponent {
                   textColor={
                     CategoryMetaMatch(programContext).theme.primaryColor
                   }
+                  key={idx}
                 >
                   {count}
                 </ClientCardStyle.CourseCount>

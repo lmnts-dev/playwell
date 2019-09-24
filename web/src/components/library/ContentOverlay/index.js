@@ -112,11 +112,7 @@ class OverlayContentContainer extends React.Component {
               className="dutchie-iframe"
               frameBorder="0"
               title="menu"
-<<<<<<< HEAD
-              src="https://play-well-registration.com/registration/new/81341"
-=======
               src="https://www.siteinspire.com"
->>>>>>> f01bc72005bbedb8da40fa1afdbdd39d4a33aa92
             />
           </div>
         </OverlayContentContainerStyle>

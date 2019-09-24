@@ -27,7 +27,7 @@ import { Icon } from 'components/library/Icons';
 const SearchBar = () => {
   return (
     <SearchBarStyle>
-      <div class="inner">
+      <div className="inner">
         {/* <Icon Name="map-marker-alt" fas /> */}
         <input placeholder="Or find a location near.." />
         <Icon Name="search" fas />
