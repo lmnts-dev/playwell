@@ -17,7 +17,7 @@ import { LocationFilter } from './LocationFilter';
 import Slider from 'react-slick';
 
 // Styles
-import { SliderContainer, SliderArrow, Actions, HeroBtn } from './styles.scss';
+import { SliderContainer, SliderArrow, Actions, HeroBtn, Mask } from './styles.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
@@ -27,13 +27,11 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+// Slick slider custom arrows
 function NextArrow(props) {
   const { onClick } = props;
   return (
-    <SliderArrow
-      className="next-slide"
-      onClick={onClick}
-    >
+    <SliderArrow className="next-slide" onClick={onClick}>
       <Icon Name="carat" />
     </SliderArrow>
   );
@@ -42,19 +40,18 @@ function NextArrow(props) {
 function PrevArrow(props) {
   const { onClick } = props;
   return (
-    <SliderArrow
-      className="prev-slide"
-      onClick={onClick}
-    >
+    <SliderArrow className="prev-slide" onClick={onClick}>
       <Icon Name="carat" />
     </SliderArrow>
   );
 }
 
+// Props
 const HeroProps = {
   bg: '',
   color: 'White',
   textAlign: 'center',
+  withMask: true,
 };
 
 const settings = {
@@ -70,13 +67,13 @@ const settings = {
 // Render Page
 const HomeHero = ({ bgColor, textColor, slides }) => {
   return (
-    <HeroContainer {...HeroProps}>
-      <SliderContainer width={[1, 1, 1, 1, 1 / 2]} pl={[0, 0, 2, 6, 9]}>
+    <HeroContainer {...HeroProps} fullWidth>
+      <SliderContainer width={[1, 1, 1, 1, 1 / 2]} pt={2} pl={[0, 0, 2, 6, 9]}>
         <Slider {...settings}>
           {slides.map(slide => (
             <Box index={slide.index} key={slide.message}>
               <Text as="h2">{slide.message}</Text>
-              <Text as="span" fontSize={3} color="Primary" pb={2}>
+              <Text as="span" fontSize={[1, 2, 3, 3]} color="Primary" pb={2}>
                 {slide.detail}
               </Text>
             </Box>

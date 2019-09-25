@@ -42,7 +42,7 @@ const HeroSlides = [
   },
   {
     index: 1,
-    message: 'People are natural engineers. We help kids realize it.',
+    message: 'People are engineers. We help kids realize it.',
     detail: 'Purposeful Play to Build a Better Future',
   },
   {

@@ -29,6 +29,10 @@ import {
 
 export const SliderContainer = styled(Box)`
   text-align: left;
+
+  .slick-slider {
+    margin-bottom: calc(${Root.Size} / 2);
+  }
 `;
 
 export const SliderArrow = styled(Box)`
