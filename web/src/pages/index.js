@@ -56,8 +56,9 @@ const HeroSlides = [
 const HomePage = ({ bgColor, textColor }) => (
   <Layout {...ThemeProps}>
     <HomeHero slides={HeroSlides} />
-    <Section textAlign="left">
-      <Box width={[1, 3 / 4, 7 / 10, 7 / 10, 1 / 2]} px={[0, 0, 2, 6, 8]}>
+    <Section textAlign="left" pt={0}>
+      {/* <Box width={[1, 3 / 4, 7 / 10, 7 / 10, 1 / 2]} px={[0, 0, 2, 6, 8]}> */}
+      <Box width={[1, 3 / 4, 7 / 10, 7 / 10, 1 / 2]}>
         <Text as="span" color="Galaxy" fontSize={[1, 2, 2]} mb={1}>
           Taking our imagination up a level
         </Text>

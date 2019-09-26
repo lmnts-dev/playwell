@@ -29,7 +29,7 @@ const SearchBar = () => {
     <SearchBarStyle>
       <div className="inner">
         {/* <Icon Name="map-marker-alt" fas /> */}
-        <input placeholder="Or find a location near.." />
+        <input placeholder="Or search by location..." />
         <Icon Name="search" fas />
       </div>
     </SearchBarStyle>

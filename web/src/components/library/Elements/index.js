@@ -74,7 +74,7 @@ Button.displayName = 'Button';
 
 export const Text = styled('div')`
   box-sizing: border-box;
-  display: flex;
+  display: block;
   transition: all ${Theme.Base.Transition.Duration};
   ${space}
   ${color}

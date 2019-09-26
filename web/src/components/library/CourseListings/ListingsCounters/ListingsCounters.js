@@ -32,11 +32,49 @@ export class ListingsCounters extends PureComponent {
   constructor(props) {
     // Make our props accessible through this.props
     super(props);
+
+    this.state = {
+      active: false,
+      activeContext: '',
+    };
+
+    // Bind toggleActiveCategory function
+    this.toggleActiveCategory = this.toggleActiveCategory.bind(this);
+  }
+
+  // Toggle Active Category State
+  toggleActiveCategory(context) {
+    if (context == this.state.activeContext) {
+      this.setState({
+        activeContext: '',
+        active: false,
+      });
+
+      // Run our parent function from CourseListings.js to filter categories.
+      this.props.toggleCategoryFilter(context);
+
+      console.log('this.state.activeContext: ' + this.state.activeContext);
+      console.log('this.state.active: ' + this.state.active);
+    } else {
+      this.setState({
+        activeContext: context,
+        active: true,
+      });
+
+      // Run our parent function from CourseListings.js to filter categories.
+      this.props.toggleCategoryFilter(context);
+
+      console.log('this.state.activeContext: ' + this.state.activeContext);
+      console.log('this.state.active: ' + this.state.active);
+    }
   }
 
   render() {
     const courseData = this.props.courseData;
     const toggleCategoryFilter = this.props.toggleCategoryFilter;
+
+    console.log('this.state.activeContext: ' + this.state.activeContext);
+    console.log('this.state.active: ' + this.state.active);
 
     // Re-map all program data to reduce (count) the data easier.
 
@@ -104,21 +142,21 @@ export class ListingsCounters extends PureComponent {
     const reducedProgramsEntries = Object.entries(reducedPrograms);
 
     // The Items
-    const ListingsCountersItem = ({
-      count,
-      context,
-      btnTheme,
-      toggleCategoryFilter,
-    }) => {
+    const ListingsCountersItem = ({ count, context, btnTheme }) => {
       return (
         <ListingsCountersStyle.Item
           btnTheme={btnTheme}
           // Pass our toggle function from the CourseListings component
-          onClick={() => toggleCategoryFilter(context)}
+          onClick={() => this.toggleActiveCategory(context)}
           // These are eslint errors for accessibility below.
-          onKeyPress={() => toggleCategoryFilter(context)}
+          onKeyPress={() => this.toggleActiveCategory(context)}
           role="button"
           tabIndex="0"
+          className={
+            this.state.activeContext == context
+              ? 'filter-item active-item'
+              : 'filter-item'
+          }
         >
           <span className="counter-inner">
             <span>{count + ' '}</span>
@@ -129,7 +167,9 @@ export class ListingsCounters extends PureComponent {
     };
 
     return (
-      <ListingsCountersStyle>
+      <ListingsCountersStyle
+        className={this.state.active ? 'active-filter' : false}
+      >
         {/* Remap our entries into an array and spit out the counts and appropriate
         CategoryMetaMatch for their theme. */}
         {reducedProgramsEntries.map((entry, idx) => {
@@ -143,7 +183,6 @@ export class ListingsCounters extends PureComponent {
               count={count}
               label={programContext}
               context={programContext}
-              toggleCategoryFilter={toggleCategoryFilter}
               key={idx}
               btnTheme={{
                 bgColor: CategoryMetaMatch(programContext).theme.bgColor,

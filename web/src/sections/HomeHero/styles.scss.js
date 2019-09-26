@@ -29,6 +29,10 @@ import {
 
 export const SliderContainer = styled(Box)`
   text-align: left;
+
+  .slick-slider {
+    margin-bottom: calc(${Root.Size} / 2);
+  }
 `;
 
 export const SliderArrow = styled(Box)`
@@ -103,7 +107,7 @@ export const HeroBtn = styled.button`
 
   .counter-inner {
     position: relative;
-    top: 4px;
+    top: 0px;
     width: 100%;
     text-align: center;
   }

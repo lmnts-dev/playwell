@@ -37,18 +37,6 @@ class FilteredResults extends PureComponent {
     };
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     filtered: this.props.results,
-  //   });
-  // }
-
-  // componentWillReceiveProps(nextProps) {
-  //   this.setState({
-  //     filtered: nextProps.results,
-  //   });
-  // }
-
   render() {
     return (
       <ListingsResultsStyle>
@@ -139,10 +127,10 @@ class ListingsResults extends PureComponent {
       <>
         <CourseListingsStyle.Toolbar>
           <div className="toolbar-inner">
-            <ListingsFilters courseData={courseData} />
+            <ListingsFilters courseData={courseData.allPlayWellClient.edges} />
             <ListingsCounters
               toggleCategoryFilter={this.toggleCategoryFilter.bind(this)}
-              courseData={filteredCourseDataByCategory(categoryFilter)}
+              courseData={courseData.allPlayWellClient.edges}
             />
           </div>
         </CourseListingsStyle.Toolbar>
