@@ -18,7 +18,7 @@ import Btn from 'components/library/Btn';
 import HomeHero from 'sections/HomeHero';
 
 // Styles
-import {} from './styles.scss';
+import { Scroll } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -52,13 +52,20 @@ const HeroSlides = [
   },
 ];
 
+const sectionPadding = [0, 0, 2, 6, 8];
+
 // Render Page
 const HomePage = ({ bgColor, textColor }) => (
   <Layout {...ThemeProps}>
     <HomeHero slides={HeroSlides} />
+    <Scroll pl={sectionPadding}>
+      <Scroll.Positioner>
+        <span>Scroll</span>
+        <Scroll.Line />
+      </Scroll.Positioner>
+    </Scroll>
     <Section textAlign="left" pt={0}>
-      {/* <Box width={[1, 3 / 4, 7 / 10, 7 / 10, 1 / 2]} px={[0, 0, 2, 6, 8]}> */}
-      <Box width={[1, 3 / 4, 7 / 10, 7 / 10, 1 / 2]}>
+      <Box width={[1, 3 / 4, 7 / 10, 7 / 10, 1 / 2]} px={sectionPadding}>
         <Text as="span" color="Galaxy" fontSize={[1, 2, 2]} mb={1}>
           Taking our imagination up a level
         </Text>
