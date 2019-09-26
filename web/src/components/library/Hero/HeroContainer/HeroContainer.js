@@ -9,11 +9,12 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 // Components
+import { Text } from 'components/library/Elements';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 
 // Styles
-import { Container, Mask } from './styles.scss';
+import { Container, Mask, Scroll } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -44,10 +45,18 @@ const HeroContainer = ({
   >
     <Container.Inner>{children}</Container.Inner>
     {withMask && (
-      <Mask>
-        <FooterCurveSlice bgColor={Theme.Color.Black} />
-        <FooterAngleSlice bgColor={Theme.Color.Background} />
-      </Mask>
+      <>
+        <Mask>
+          <FooterCurveSlice bgColor={Theme.Color.Dino} />
+          <FooterAngleSlice bgColor={Theme.Color.Background} />
+        </Mask>
+        <Scroll>
+          <Scroll.Positioner>
+            <span>Scroll</span>
+            <Scroll.Line />
+          </Scroll.Positioner>
+        </Scroll>
+      </>
     )}
   </Container>
 );

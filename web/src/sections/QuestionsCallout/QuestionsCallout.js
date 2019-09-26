@@ -31,7 +31,7 @@ const QuestionsCallout = () => {
     <Section
       bg="Primary"
       bgImage={CalloutBg}
-      bgOverlay="#451269"
+      bgOverlay="Dino"
       alpha={0.8}
       color="white"
       textAlign="center"

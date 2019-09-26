@@ -107,7 +107,7 @@ export const HeroBtn = styled.button`
 
   .counter-inner {
     position: relative;
-    top: 4px;
+    top: 0px;
     width: 100%;
     text-align: center;
   }

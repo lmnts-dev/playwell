@@ -13,11 +13,12 @@ import { Base } from 'constants/styles/Base';
 
 // Components
 import { Box, Flex } from 'components/library/Elements';
+import Section from 'components/library/Elements/Section';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-let heroHeight = '120vh';
+let heroHeight = '130vh';
 
 export const Container = styled(Flex)`
   height: ${props => (props.withMask ? heroHeight : '70vh')};
@@ -39,6 +40,7 @@ Container.Inner = styled.div`
 `;
 
 export const Mask = styled.div`
+
   .footer-curve-slice,
   .footer-angle-slice {
     width: 100%;
@@ -47,13 +49,50 @@ export const Mask = styled.div`
     right: 0;
     bottom: 0;
     height: calc(${heroHeight} / 2);
-    min-height: calc(${heroHeight} / 2);
+    /* min-height: calc(${heroHeight} / 1.6); */
     z-index: -1;
   }
 
   .footer-curve-slice {
-    opacity: 0.05;
+    opacity: 1;
+    bottom: 106px;
   }
+`;
+
+export const Scroll = styled.div`
+  align-self: flex-end;
+  text-align: left;
+  position: relative;
+  width: 100%;
+  max-width: ${Theme.Base.Grid.SiteWidth};
+  margin: 0 auto;
+  padding-right: ${Root.Grid.Gutter.Right};
+  padding-left: ${Root.Grid.Gutter.Left};
+  top: -3rem;
+  z-index: 9;
+
+  span {
+    color: ${Theme.Color.Dino};
+    text-align: left;
+    font-size: 1rem;
+    width: 100%;
+    display: inline-block;
+  }
+`;
+
+Scroll.Positioner = styled.div`
+  display: block;
+  flex-wrap: wrap;
+  position: relative;
+  text-align: center;
+  height: 100px;
+`;
+
+Scroll.Line = styled.span`
+  display: block;
+  width: 0;
+  height: 100px;
+  border-left: 1px dashed ${p => p.theme.Color.Primary};
 `;
 
 //////////////////////////////////////////////////////////////////////
