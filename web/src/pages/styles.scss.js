@@ -13,6 +13,7 @@ import Btn from 'components/library/Btn';
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
 import { Box, Flex, Text } from 'components/library/Elements';
+import Section from 'components/library/Elements/Section';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -44,6 +45,7 @@ Scroll.Positioner = styled.div`
   text-align: center;
   position: relative;
   bottom: 200px;
+  padding-left: ${Root.Grid.Indent.X};
 `;
 
 Scroll.Line = styled.div`

@@ -74,6 +74,21 @@ export const Base = {
         Left: 25, // px
       },
     },
+
+    Indent: {
+      Lg: {
+        X: 120, // px
+        Y: 20, // px
+      },
+      Md: {
+        X: 80, // px
+        Y: 10, // px
+      },
+      Sm: {
+        X: 0, // px
+        Y: 0, // px
+      },
+    },
   },
 
   // View Width (vw) Based Measurements
