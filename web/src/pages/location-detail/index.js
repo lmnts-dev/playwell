@@ -18,7 +18,7 @@ import Btn from 'components/library/Btn';
 // Sections
 
 // Styles
-import { Hero, Spacer } from './styles.scss';
+import { Hero, Spacer, Intro } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -113,16 +113,8 @@ const LocationDetail = () => {
         <Spacer.Line />
       </Spacer>
 
-      <Section bg="Cream" textAlign="center">
-        <Flex
-          as="article"
-          flexDirection="column"
-          flexWrap="wrap"
-          pt={[2, 2, 4, 4]}
-          pb={[1, 1, 2, 2]}
-          m={'0 auto'}
-          maxWidth={Theme.Base.Grid.ReadingWidth}
-        >
+      <Intro bg="Cream" textAlign="center">
+        <Intro.Inner pt={[2, 2, 4, 4]} pb={[1, 1, 2, 2]}>
           <Text as="p" color="Nova" className="lead">
             Arizona’s Leading STEM Education &amp; Engineering Programs
           </Text>
@@ -133,8 +125,8 @@ const LocationDetail = () => {
             Duis convallis magna eget eleifend tempor. Ut non lobortis metus.
             Donec sit amet vulputate risus. Vivamus et lacinia ante.
           </Text>
-        </Flex>
-      </Section>
+        </Intro.Inner>
+      </Intro>
 
       <Section bg="Dino" pt={12} pb={12} />
       <Section bg="Dino" pt={12} pb={12} />

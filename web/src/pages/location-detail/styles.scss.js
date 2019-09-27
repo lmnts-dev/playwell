@@ -86,6 +86,15 @@ Hero.Heading = styled.h2`
   }
 `;
 
+export const Intro = styled(Section)``;
+
+Intro.Inner = styled(Flex)`
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: ${Theme.Base.Grid.ReadingWidth};
+`;
+
 export const Spacer = styled(Flex)`
   position: relative;
   justify-content: center;
