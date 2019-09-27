@@ -21,7 +21,7 @@ import Section from 'components/library/Elements/Section';
 export const Hero = styled(Box)`
   background: ${Theme.Color.Background};
   padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 2);
-  padding-bottom: calc(${Theme.Root.Size} * 2);
+  padding-bottom: calc(${Theme.Root.Size} * 1);
   text-align: left;
 `;
 
@@ -84,6 +84,20 @@ Hero.Heading = styled.h2`
   span {
     color: ${Theme.Color.Nova};
   }
+`;
+
+export const Spacer = styled(Flex)`
+  position: relative;
+  justify-content: center;
+`;
+
+Spacer.Line = styled.span`
+  width: 0;
+  height: 100px;
+  position: absolute;
+  bottom: -50px;
+  border-left: 1px dashed ${p => p.theme.Color.Primary};
+  z-index: 9;
 `;
 
 //////////////////////////////////////////////////////////////////////

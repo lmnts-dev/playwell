@@ -27,7 +27,6 @@ import ContentOverlayButton from 'components/library/ContentOverlay';
 // Styles
 import {
   Hero,
-  Lead,
   Spacer,
   QuestionsNav,
   Toggle,
@@ -163,12 +162,12 @@ const Course = ({ pageContext }) => {
           m={'0 auto'}
           maxWidth={Theme.Base.Grid.ReadingWidth}
         >
-          <Lead as="p" color="Nova" fontSize={[1, 1, 2, 2]}>
+          <Text as="p" color="Nova" className="lead">
             {pageContext.date_time_display}
-          </Lead>
-          <Lead as="p" color="Galaxy" fontSize={[1, 1, 2, 2]}>
+          </Text>
+          <Text as="p" color="Galaxy" className="lead">
             {pageContext.course_type_long_description}
-          </Lead>
+          </Text>
         </Flex>
       </Section>
 

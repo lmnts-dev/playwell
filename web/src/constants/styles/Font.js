@@ -38,7 +38,7 @@ export const Font = {
     Sm: '1rem',
     Md: '1rem',
     Lg: '1rem',
-    ViewWidth: { 
+    ViewWidth: {
       Sm: '6.8vw',
       Md: '5.2vw',
       Lg: '1.2vw',
@@ -118,6 +118,11 @@ export const Typography = createGlobalStyle`
     line-height: 1.4;
     font-size: 1rem;
     letter-spacing: -0.2px;
+
+    &.lead {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
   }
 
   /* Header Styles */

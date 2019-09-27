@@ -89,11 +89,6 @@ CalloutSection.Overlay = styled(Box)`
 
 CalloutSection.Inner = styled(Flex)``;
 
-export const Lead = styled(Text)`
-  text-align: center;
-  font-weight: 400;
-`;
-
 export const Spacer = styled(Flex)`
   position: relative;
   justify-content: center;
@@ -105,6 +100,7 @@ Spacer.Line = styled.span`
   position: absolute;
   bottom: -50px;
   border-left: 1px dashed ${p => p.theme.Color.Primary};
+  z-index: 9;
 `;
 
 export const QuestionsNav = styled(Flex)`
