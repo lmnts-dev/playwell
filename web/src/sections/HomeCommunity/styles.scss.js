@@ -28,7 +28,7 @@ export const Community = styled(Section)`
 
 export const SliderContainer = styled(Box)`
   text-align: left;
-  margin-top: calc(${Root.Size} * 1);
+  margin-top: calc(${Root.Size} / 2);
 
   .slick-slider {
     margin-bottom: calc(${Root.Size} / 2);
@@ -36,8 +36,9 @@ export const SliderContainer = styled(Box)`
 
   .slick-slide {
     width: 530px;
-    height: 480px;
+    height: 500px;
     outline: none;
+    margin-top: calc(${Root.Size} / 2.5);
 
     &:focus {
       outline: none;
@@ -48,8 +49,8 @@ export const SliderContainer = styled(Box)`
     
     .slick-inner {
       background: ${Theme.Color.White};
-      box-shadow: 0px 10px 27px ${hexToRGB('#510689', 0.2)};
-      border-radius: calc(${Root.Radius} * 1);
+      box-shadow: 0px 14px 27px ${hexToRGB('#510689', 0.2)};
+      border-radius: calc(${Root.Radius} / 2);
     }
   }
 
@@ -58,11 +59,12 @@ export const SliderContainer = styled(Box)`
     margin-bottom: calc(${Root.Size} / 2);
     font-size: 1.5rem;
     font-weight: 500;
-    color: ${Theme.Color.Primary};
+    color: ${Theme.Color.Dino};
   }
 
   .slide-detail {
     padding-bottom: 0;
+    color: ${Theme.Color.Dino};
   }
 
   ul {

@@ -39,6 +39,7 @@ const settings = {
   variableWidth: true,
   lazyLoad: 'progressive',
   adaptiveHeight: true,
+  useTransform: false,
 };
 
 // Render Page
