@@ -143,6 +143,30 @@ const CommunitySlides = [
       },
     ],
   },
+  {
+    index: 3,
+    header: 'Building a coral reef out of Lego materials',
+    detail:
+      'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
+    tags: [
+      {
+        id: 0,
+        tag: 'Engineering',
+      },
+      {
+        id: 1,
+        tag: 'Camp',
+      },
+      {
+        id: 2,
+        tag: 'Mechanics',
+      },
+      {
+        id: 3,
+        tag: 'Robotics',
+      },
+    ],
+  },
 ];
 
 export default HomePage;

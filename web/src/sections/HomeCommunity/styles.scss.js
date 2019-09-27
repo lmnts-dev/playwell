@@ -46,7 +46,6 @@ export const SliderContainer = styled(Box)`
   }
 
   .slick-active {
-    
     .slick-inner {
       background: ${Theme.Color.White};
       box-shadow: 0px 14px 27px ${hexToRGB('#510689', 0.2)};
@@ -78,6 +77,27 @@ export const SliderContainer = styled(Box)`
       font-weight: 500;
       display: inline-block;
       margin-right: calc(${Root.Size} / 4);
+    }
+  }
+
+  .slick-dots {
+    li {
+      margin: 0;
+
+      &.slick-active {
+        button {
+          &:before {
+            color: ${Theme.Color.Sunset};
+          }
+        }
+      }
+
+      button {
+        &:before {
+          color: ${Theme.Color.Sunset};
+          font-size: 8px;
+        }
+      }
     }
   }
 `;
