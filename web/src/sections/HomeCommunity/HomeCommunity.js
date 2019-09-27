@@ -71,6 +71,12 @@ const HomeCommunity = ({ slides }) => {
           ))}
         </Slider>
       </SliderContainer>
+      <Btn
+        External
+        Label="Our Community"
+        BgColor={Theme.Color.Primary}
+        TextColor={Theme.Color.White}
+      />
     </Community>
   );
 };

@@ -47,6 +47,8 @@ const HomePage = ({ bgColor, textColor }) => (
     </Scroll>
     <HomeIntro />
     <HomeCommunity slides={CommunitySlides} />
+    <Section bg="Background" pt={12} pb={12} />
+    <HomeIntro />
     <Section bg="Dino" pt={12} pb={12} />
   </Layout>
 );
