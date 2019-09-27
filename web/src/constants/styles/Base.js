@@ -77,7 +77,7 @@ export const Base = {
 
     Indent: {
       Lg: {
-        X: 120, // px
+        X: 175, // px
         Y: 20, // px
       },
       Md: {
