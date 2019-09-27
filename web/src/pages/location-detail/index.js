@@ -1,5 +1,5 @@
-// Index.js:
-// This is the home page of the website.
+// Location Detail Temlate:
+// This is the data template for the Locations Detail page
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -34,20 +34,12 @@ const ThemeProps = {
   TertiaryColor: Theme.Color.Primary,
 };
 
-const HeroProps = {
-  bg: 'Background',
-  color: 'Dino',
-  textAlign: 'left',
-};
-
 // Render Page
 const LocationDetail = () => {
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "locations-hero.jpg" }) {
         childImageSharp {
-          # Specify a fluid image and fragment
-          # The default maxWidth is 800 pixels
           fluid {
             ...GatsbyImageSharpFluid
           }
@@ -105,7 +97,7 @@ const LocationDetail = () => {
       <Section bg="Dino" pt={0} pb={0} fullWidth>
         <Img
           fluid={data.file.childImageSharp.fluid}
-          alt="Gatsby Docs are awesome"
+          alt="STEM Education &amp; Engineering in"
         />
       </Section>
 
@@ -128,8 +120,6 @@ const LocationDetail = () => {
         </Intro.Inner>
       </Intro>
 
-      <Section bg="Dino" pt={12} pb={12} />
-      <Section bg="Dino" pt={12} pb={12} />
       <Section bg="Dino" pt={12} pb={12} />
     </Layout>
   );

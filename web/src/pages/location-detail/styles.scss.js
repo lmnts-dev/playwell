@@ -1,4 +1,4 @@
-// Homepage Styles:
+// Location Detail Styles:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -7,13 +7,12 @@
 import styled from 'styled-components';
 
 // Components
-import Btn from 'components/library/Btn';
+import { Box, Flex, Text } from 'components/library/Elements';
+import Section from 'components/library/Elements/Section';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
-import { Box, Flex, Text } from 'components/library/Elements';
-import Section from 'components/library/Elements/Section';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -34,8 +33,7 @@ Hero.Inner = styled(Box)`
   padding-left: ${Root.Grid.Gutter.Left};
   overflow-x: visible;
 
-  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-  }
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {}
 `;
 
 Hero.Tags = styled.div`
@@ -45,8 +43,7 @@ Hero.Tags = styled.div`
   margin-bottom: calc(${Theme.Root.Size} / 8);
 
   li {
-    /* display: inline-block; */
-    color: ${p => p.theme.Color.Deepsea};
+    color: ${Theme.Color.Deepsea};
     text-transform: uppercase;
     letter-spacing: calc(${Theme.Root.Size} * 0.05);
     font-weight: 500;
@@ -105,7 +102,7 @@ Spacer.Line = styled.span`
   height: 100px;
   position: absolute;
   bottom: -50px;
-  border-left: 1px dashed ${p => p.theme.Color.Primary};
+  border-left: 1px dashed ${Theme.Color.Primary};
   z-index: 9;
 `;
 
