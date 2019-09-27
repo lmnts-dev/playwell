@@ -76,7 +76,7 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
       <SliderContainer width={[1, 1, 1, 1, 6 / 10]} pt={2} pl={[0, 0, 2, 6, 9]}>
         <Slider {...settings}>
           {slides.map(slide => (
-            <Box index={slide.index} key={slide.message}>
+            <Box key={slide.index}>
               <Text as="h2">{slide.message}</Text>
               <Text as="span" fontSize={[1, 2, 3, 3]} color="Primary" pb={2}>
                 {slide.detail}

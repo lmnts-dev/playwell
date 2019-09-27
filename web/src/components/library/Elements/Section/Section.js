@@ -37,10 +37,9 @@ const Section = ({
     pb={pb}
     bgImage={bgImage}
     textAlign={textAlign}
-    fullWidth={fullWidth}
   >
     {alpha && <Container.Overlay bg={bgOverlay} alpha={alpha} />}
-    <Container.Inner>{children}</Container.Inner>
+    <Container.Inner fullWidth={fullWidth}>{children}</Container.Inner>
   </Container>
 );
 
@@ -49,8 +48,8 @@ Section.defaultProps = {
   color: 'Text',
   pt: [4, 4, 8, 8],
   pb: [4, 4, 8, 8],
-  fullWidth: false,
   textAlign: 'center',
+  fullWidth: true,
 };
 
 export default Section;

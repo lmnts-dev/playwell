@@ -40,8 +40,9 @@ Container.Inner = styled(Box)`
   max-width: ${props => (props.fullWidth ? '100%' : Theme.Base.Grid.SiteWidth)};
   margin: 0 auto;
   position: relative;
-  padding-right: ${Root.Grid.Gutter.Right};
-  padding-left: ${Root.Grid.Gutter.Left};
+  padding-right: ${props => (props.fullWidth ? '0' : Root.Grid.Gutter.Right)};
+  padding-left: ${props => (props.fullWidth ? '0' : Root.Grid.Gutter.Left)};
+  overflow-x: visible;
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {}
 `;

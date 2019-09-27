@@ -37,12 +37,14 @@ const settings = {
   focusOnSelect: true,
   className: 'center',
   variableWidth: true,
+  lazyLoad: 'progressive',
+  adaptiveHeight: true,
 };
 
 // Render Page
 const HomeCommunity = ({ slides }) => {
   return (
-    <Community>
+    <Community fullWidth={true}>
       <Text as="h3" color="Sunset">
         People Who've
         <br />
@@ -51,18 +53,16 @@ const HomeCommunity = ({ slides }) => {
       <SliderContainer width={1}>
         <Slider {...settings}>
           {slides.map(slide => (
-            <Box index={slide.index} key={slide.message}>
+            <Box key={slide.index}>
               <Box mx={1}>
                 <Box p={2} bg="White">
-                  <Text as="p">{slide.message}</Text>
-                  <Text
-                    as="span"
-                    fontSize={[1, 2, 3, 3]}
-                    color="Primary"
-                    pb={2}
-                  >
-                    {slide.detail}
-                  </Text>
+                  <ul>
+                    {slide.tags.map(tags => (
+                      <li key={tags.id}>{tags.tag}</li>
+                    ))}
+                  </ul>
+                  <span className="slide-header">{slide.header}</span>
+                  <p className="slide-detail">{slide.detail}</p>
                 </Box>
               </Box>
             </Box>
