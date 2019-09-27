@@ -15,6 +15,9 @@ import Btn from 'components/library/Btn';
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
 
+// Helpers
+import hexToRGB from 'helpers/hexToRGB';
+
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
@@ -33,11 +36,20 @@ export const SliderContainer = styled(Box)`
 
   .slick-slide {
     width: 530px;
-    height: 300px;
+    height: 480px;
     outline: none;
 
     &:focus {
       outline: none;
+    }
+  }
+
+  .slick-active {
+    
+    .slick-inner {
+      background: ${Theme.Color.White};
+      box-shadow: 0px 10px 27px ${hexToRGB('#510689', 0.2)};
+      border-radius: calc(${Root.Radius} * 1);
     }
   }
 
@@ -55,6 +67,7 @@ export const SliderContainer = styled(Box)`
 
   ul {
     width: 100%;
+    margin-top: calc(${Root.Size} / 2.5);
     margin-bottom: calc(${Root.Size} / 2.5);
 
     li {

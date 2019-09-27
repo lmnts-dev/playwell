@@ -49,7 +49,7 @@ Section.defaultProps = {
   pt: [4, 4, 8, 8],
   pb: [4, 4, 8, 8],
   textAlign: 'center',
-  fullWidth: true,
+  fullWidth: false,
 };
 
 export default Section;

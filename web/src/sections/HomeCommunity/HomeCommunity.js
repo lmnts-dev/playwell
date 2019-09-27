@@ -55,7 +55,8 @@ const HomeCommunity = ({ slides }) => {
           {slides.map(slide => (
             <Box key={slide.index}>
               <Box mx={1}>
-                <Box p={2} bg="White">
+                <Box className="slick-inner" p={2}>
+                  <Box py="90px" />
                   <ul>
                     {slide.tags.map(tags => (
                       <li key={tags.id}>{tags.tag}</li>
