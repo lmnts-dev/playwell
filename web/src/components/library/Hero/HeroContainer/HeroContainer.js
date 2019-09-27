@@ -9,7 +9,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 // Components
-import { Text } from 'components/library/Elements';
+import { Box, Text } from 'components/library/Elements';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 
@@ -21,6 +21,8 @@ import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
+
+const sectionPadding = [0, 0, 2, 6, 8];
 
 const HeroContainer = ({
   bg,
@@ -45,18 +47,10 @@ const HeroContainer = ({
   >
     <Container.Inner>{children}</Container.Inner>
     {withMask && (
-      <>
-        <Mask>
-          <FooterCurveSlice bgColor={Theme.Color.Dino} />
-          <FooterAngleSlice bgColor={Theme.Color.Background} />
-        </Mask>
-        <Scroll>
-          <Scroll.Positioner>
-            <span>Scroll</span>
-            <Scroll.Line />
-          </Scroll.Positioner>
-        </Scroll>
-      </>
+      <Mask>
+        <FooterCurveSlice bgColor={Theme.Color.Dino} />
+        <FooterAngleSlice bgColor={Theme.Color.Background} />
+      </Mask>
     )}
   </Container>
 );

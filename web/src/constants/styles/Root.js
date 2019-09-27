@@ -36,6 +36,10 @@ export const RootVariables = createGlobalStyle`
     --GutterBottom: ${Theme.Base.Grid.Gutter.Lg.Bottom};
     --GutterLeft: ${Theme.Base.Grid.Gutter.Lg.Left};
 
+    /* --- Indents */
+    --IndentX: ${Theme.Base.Grid.Indent.Lg.X};
+    --IndentY: ${Theme.Base.Grid.Indent.Lg.Y};
+
     /* --------- Buttons */
     --ButtonSize: ${Theme.Base.Button.Lg};
 
@@ -73,6 +77,10 @@ export const RootVariables = createGlobalStyle`
         --GutterRight: ${Theme.Base.Grid.Gutter.Md.Right};
         --GutterBottom: ${Theme.Base.Grid.Gutter.Md.Bottom};
         --GutterLeft: ${Theme.Base.Grid.Gutter.Md.Left};
+
+        /* --- Indents */
+        --IndentX: ${Theme.Base.Grid.Indent.Md.X};
+        --IndentY: ${Theme.Base.Grid.Indent.Md.Y};
 
         /* --------- Buttons */
         --ButtonSize: ${Theme.Base.Button.Md};
@@ -113,6 +121,10 @@ export const RootVariables = createGlobalStyle`
         --GutterRight: ${Theme.Base.Grid.Gutter.Sm.Right};
         --GutterBottom: ${Theme.Base.Grid.Gutter.Sm.Bottom};
         --GutterLeft: ${Theme.Base.Grid.Gutter.Sm.Left};
+
+        /* --- Indents */
+        --IndentX: ${Theme.Base.Grid.Indent.Sm.X};
+        --IndentY: ${Theme.Base.Grid.Indent.Sm.Y};
 
         /* --------- Buttons */
         --ButtonSize: ${Theme.Base.Button.Sm};
