@@ -6,6 +6,17 @@
 'use strict';
 
 const ManualAudit = require('./manual-audit.js');
+const i18n = require('../../lib/i18n/i18n.js');
+
+const UIStrings = {
+  /** Title of a Lighthouse audit that prompts the user to manually check that each page on their website uses a unique URL. */
+  title: 'Each page has a URL',
+  /** Description of a Lighthouse audit that tells the user why they should use unique URLs for each web page. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
+  description: 'Ensure individual pages are deep linkable via URL and that URLs are ' +
+      'unique for the purpose of shareability on social media. [Learn more](https://web.dev/pwa-each-page-has-url).',
+};
+
+const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
 /**
  * @fileoverview Manual PWA audit to ensure every page has a deep link.
@@ -18,11 +29,11 @@ class PWAEachPageHasURL extends ManualAudit {
   static get meta() {
     return Object.assign({
       id: 'pwa-each-page-has-url',
-      description: 'Ensure individual pages are deep linkable via the URLs and that URLs are ' +
-          'unique for the purpose of shareability on social media. [Learn more](https://developers.google.com/web/progressive-web-apps/checklist#each-page-has-a-url).',
-      title: 'Each page has a URL',
+      title: str_(UIStrings.title),
+      description: str_(UIStrings.description),
     }, super.partialMeta);
   }
 }
 
 module.exports = PWAEachPageHasURL;
+module.exports.UIStrings = UIStrings;

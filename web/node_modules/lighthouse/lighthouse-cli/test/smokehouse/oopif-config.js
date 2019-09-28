@@ -10,9 +10,4 @@
  */
 module.exports = {
   extends: 'lighthouse:default',
-  settings: {
-    onlyAudits: [
-      'network-requests',
-    ],
-  },
 };

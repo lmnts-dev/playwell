@@ -21,7 +21,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they should try to pass. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Definition list items (`<dt>` and `<dd>`) must be wrapped in a ' +
       'parent `<dl>` element to ensure that screen readers can properly announce them. ' +
-      '[Learn more](https://dequeuniversity.com/rules/axe/3.1/dlitem?application=lighthouse).',
+      '[Learn more](https://web.dev/dlitem/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

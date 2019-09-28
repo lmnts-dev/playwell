@@ -226,6 +226,43 @@ function getNodeSelector(node) {
 }
 
 /**
+ * This function checks if an element or an ancestor of an element is `position:fixed`.
+ * In addition we ensure that the element is capable of behaving as a `position:fixed`
+ * element, checking that it lives within a scrollable ancestor.
+ * @param {HTMLElement} element
+ * @return {boolean}
+ */
+/* istanbul ignore next */
+function isPositionFixed(element) {
+  /**
+   * @param {HTMLElement} element
+   * @param {string} attr
+   * @return {string}
+   */
+  function getStyleAttrValue(element, attr) {
+    // Check style before computedStyle as computedStyle is expensive.
+    return element.style[attr] || window.getComputedStyle(element)[attr];
+  }
+
+  // Position fixed/sticky has no effect in case when document does not scroll.
+  const htmlEl = document.querySelector('html');
+  if (htmlEl.scrollHeight <= htmlEl.clientHeight ||
+      !['scroll', 'auto', 'visible'].includes(getStyleAttrValue(htmlEl, 'overflowY'))) {
+    return false;
+  }
+
+  let currentEl = element;
+  while (currentEl) {
+    const position = getStyleAttrValue(currentEl, 'position');
+    if ((position === 'fixed' || position === 'sticky')) {
+      return true;
+    }
+    currentEl = currentEl.parentElement;
+  }
+  return false;
+}
+
+/**
  * Generate a human-readable label for the given element, based on end-user facing
  * strings like the innerText or alt attribute.
  * Falls back to the tagName if no useful label is found.
@@ -280,4 +317,5 @@ module.exports = {
   getNodeSelector: getNodeSelector,
   getNodeLabel: getNodeLabel,
   getNodeLabelString: getNodeLabel.toString(),
+  isPositionFixedString: isPositionFixed.toString(),
 };

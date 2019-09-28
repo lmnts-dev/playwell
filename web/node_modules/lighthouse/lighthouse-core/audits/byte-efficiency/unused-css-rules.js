@@ -19,7 +19,9 @@ const UIStrings = {
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
-const IGNORE_THRESHOLD_IN_BYTES = 2048;
+// Allow 10KB of unused CSS to permit `:hover` and other styles not used on a non-interactive load.
+// @see https://github.com/GoogleChrome/lighthouse/issues/9353 for more discussion.
+const IGNORE_THRESHOLD_IN_BYTES = 10 * 1024;
 const PREVIEW_LENGTH = 100;
 
 /** @typedef {LH.Artifacts.CSSStyleSheetInfo & {networkRecord: LH.Artifacts.NetworkRequest, usedRules: Array<LH.Crdp.CSS.RuleUsage>}} StyleSheetInfo */

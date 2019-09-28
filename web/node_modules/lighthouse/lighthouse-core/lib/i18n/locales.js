@@ -10,15 +10,18 @@
  *
  * Google locale inheritance rules: https://goto.google.com/ccssm
  * CLDR language aliases: https://www.unicode.org/cldr/charts/latest/supplemental/aliases.html
+ * CLDR locale inheritance: https://github.com/unicode-cldr/cldr-core/blob/master/supplemental/parentLocales.json
  */
 
-/** @typedef {Record<string, {message: string}>} LocaleMessages */
+// TODO(paulirish): Centralize locale inheritance (combining this & i18n.lookupLocale()), adopt cldr parentLocale rules.
+
+/** @typedef {Record<string, {message: string}>} LhlMessages */
 
 // The keys within this const must exactly match the LH.Locale type in externs.d.ts
-/** @type {Record<LH.Locale, LocaleMessages>} */
+/** @type {Record<LH.Locale, LhlMessages>} */
 const locales = {
-  'en-US': require('./en-US.json'), // The 'source' strings, with descriptions
-  'en': require('./en-US.json'), // According to CLDR/ICU, 'en' == 'en-US' dates/numbers (Why?!)
+  'en-US': require('./locales/en-US.json'), // The 'source' strings, with descriptions
+  'en': require('./locales/en-US.json'), // According to CLDR/ICU, 'en' == 'en-US' dates/numbers (Why?!)
 
   // TODO: en-GB has just ~10 messages that are different from en-US. We should only ship those.
   'en-AU': require('./locales/en-GB.json'), // Alias of 'en-GB'

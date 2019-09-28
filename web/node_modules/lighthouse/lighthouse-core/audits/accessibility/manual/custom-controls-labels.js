@@ -19,7 +19,7 @@ class CustomControlsLabels extends ManualAudit {
   static get meta() {
     return Object.assign({
       id: 'custom-controls-labels',
-      description: 'Custom interactive controls have associated labels, provided by aria-label or aria-labelledby. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#try_it_with_a_screen_reader).',
+      description: 'Custom interactive controls have associated labels, provided by aria-label or aria-labelledby. [Learn more](https://web.dev/custom-controls-labels/).',
       title: 'Custom controls have associated labels',
     }, super.partialMeta);
   }

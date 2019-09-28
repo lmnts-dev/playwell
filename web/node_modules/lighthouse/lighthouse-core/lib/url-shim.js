@@ -32,6 +32,7 @@ function rewriteChromeInternalUrl(url) {
   return url.replace(/^chrome:\/\/chrome\//, 'chrome://');
 }
 
+// URL is global as of node 10. https://nodejs.org/api/globals.html#globals_url
 class URLShim extends URL {
   /**
    * @param {string} url

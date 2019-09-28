@@ -19,7 +19,7 @@ class CustomControlsRoles extends ManualAudit {
   static get meta() {
     return Object.assign({
       id: 'custom-controls-roles',
-      description: 'Custom interactive controls have appropriate ARIA roles. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#try_it_with_a_screen_reader).',
+      description: 'Custom interactive controls have appropriate ARIA roles. [Learn more](https://web.dev/custom-control-roles/).',
       title: 'Custom controls have ARIA roles',
     }, super.partialMeta);
   }

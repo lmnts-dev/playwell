@@ -19,7 +19,7 @@ class InteractiveElementAffordance extends ManualAudit {
   static get meta() {
     return Object.assign({
       id: 'interactive-element-affordance',
-      description: 'Interactive elements, such as links and buttons, should indicate their state and be distinguishable from non-interactive elements. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#interactive_elements_like_links_and_buttons_should_indicate_their_purpose_and_state).',
+      description: 'Interactive elements, such as links and buttons, should indicate their state and be distinguishable from non-interactive elements. [Learn more](https://web.dev/interactive-element-affordance/).',
       title: 'Interactive elements indicate their purpose and state',
     }, super.partialMeta);
   }

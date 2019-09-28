@@ -21,7 +21,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they should try to pass. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'The value of an id attribute must be unique to prevent ' +
       'other instances from being overlooked by assistive technologies. ' +
-      '[Learn more](https://dequeuniversity.com/rules/axe/3.1/duplicate-id?application=lighthouse).',
+      '[Learn more](https://web.dev/duplicate-id/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

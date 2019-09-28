@@ -21,7 +21,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they should try to pass. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'The title gives screen reader users an overview of the page, and search ' +
       'engine users rely on it heavily to determine if a page is relevant to their search. ' +
-      '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/title).',
+      '[Learn more](https://web.dev/document-title/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

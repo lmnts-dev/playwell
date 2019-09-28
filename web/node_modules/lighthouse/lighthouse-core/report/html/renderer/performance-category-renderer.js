@@ -127,8 +127,8 @@ class PerformanceCategoryRenderer extends CategoryRenderer {
 
     // Metric descriptions toggle.
     const toggleTmpl = this.dom.cloneTemplate('#tmpl-lh-metrics-toggle', this.templateContext);
-    const toggleEl = this.dom.find('.lh-metrics-toggle', toggleTmpl);
-    metricAuditsEl.append(...toggleEl.childNodes);
+    const _toggleEl = this.dom.find('.lh-metrics-toggle', toggleTmpl);
+    metricAuditsEl.append(..._toggleEl.childNodes);
 
     const metricAudits = category.auditRefs.filter(audit => audit.group === 'metrics');
     const keyMetrics = metricAudits.filter(a => a.weight >= 3);

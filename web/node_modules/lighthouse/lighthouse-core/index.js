@@ -66,5 +66,6 @@ lighthouse.traceCategories = require('./gather/driver.js').traceCategories;
 lighthouse.Audit = require('./audits/audit.js');
 lighthouse.Gatherer = require('./gather/gatherers/gatherer.js');
 lighthouse.NetworkRecords = require('./computed/network-records.js');
+lighthouse.registerLocaleData = require('./lib/i18n/i18n.js').registerLocaleData;
 
 module.exports = lighthouse;

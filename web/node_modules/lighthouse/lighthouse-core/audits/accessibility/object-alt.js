@@ -21,7 +21,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they should try to pass. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Screen readers cannot translate non-text content. Adding alt text to ' +
       '`<object>` elements helps screen readers convey meaning to users. ' +
-      '[Learn more](https://dequeuniversity.com/rules/axe/3.1/object-alt?application=lighthouse).',
+      '[Learn more](https://web.dev/object-alt/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

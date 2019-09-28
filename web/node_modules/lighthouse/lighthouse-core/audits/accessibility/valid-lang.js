@@ -21,7 +21,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they should try to pass. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Specifying a valid [BCP 47 language](https://www.w3.org/International/questions/qa-choosing-language-tags#question) ' +
       'on elements helps ensure that text is pronounced correctly by a screen reader. ' +
-      '[Learn more](https://dequeuniversity.com/rules/axe/3.1/valid-lang?application=lighthouse).',
+      '[Learn more](https://web.dev/valid-lang/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

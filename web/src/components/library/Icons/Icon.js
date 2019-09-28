@@ -14,6 +14,7 @@ import IconStyle from './styles.scss';
 // Icon Files
 import Carat from './SVG/Carat';
 import Gear from './SVG/Gear';
+import BasicLego from './SVG/BasicLego';
 import Intercom from './SVG/Intercom';
 import Next from './SVG/Next';
 
@@ -44,6 +45,12 @@ export const Icon = props => {
       return (
         <IconStyle className="ico">
           <Next />
+        </IconStyle>
+      );
+    case 'basicLego':
+      return (
+        <IconStyle className="ico ico-lego" legoColor={props.Color}>
+          <BasicLego />
         </IconStyle>
       );
     default:
