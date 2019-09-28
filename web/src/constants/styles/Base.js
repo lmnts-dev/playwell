@@ -81,7 +81,7 @@ export const Base = {
         Y: 20, // px
       },
       Md: {
-        X: 80, // px
+        X: 0, // px
         Y: 10, // px
       },
       Sm: {

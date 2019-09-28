@@ -14,6 +14,7 @@ import Layout from 'components/core/Layout';
 import Section from 'components/library/Elements/Section';
 import { Box, Flex, Text } from 'components/library/Elements';
 import Btn from 'components/library/Btn';
+import SplitSection from 'components/library/Section/SplitSection';
 
 // Sections
 
@@ -52,7 +53,7 @@ const LocationDetail = () => {
       <Hero>
         <Hero.Inner>
           <Box width={1} px={Root.Grid.Indent.X}>
-            <Hero.Tags as="ul">
+            <Hero.Tags>
               <li>
                 <Link to={'/'}>Robotics</Link>
               </li>
@@ -70,9 +71,11 @@ const LocationDetail = () => {
               </li>
             </Hero.Tags>
           </Box>
-          <Box width={[1, 1, 8 / 10, 6 / 10]} px={Root.Grid.Indent.X}>
+          <Box width={1} px={Root.Grid.Indent.X}>
             <Hero.Heading>
-              STEM Education &amp; Engineering in <span>STATE</span>
+              STEM Education &amp;
+              <br />
+              Engineering in <span>STATE</span>
             </Hero.Heading>
             <Box mr={1} display="inline-block">
               <Btn
@@ -119,6 +122,15 @@ const LocationDetail = () => {
           </Text>
         </Intro.Inner>
       </Intro>
+
+      <SplitSection>
+        <div className="block">
+          <div className="block-content">asdf</div>
+          <div className="block-img-wrap">
+            <div className="block-img">sdf</div>
+          </div>
+        </div>
+      </SplitSection>
 
       <Section bg="Dino" pt={12} pb={12} />
     </Layout>

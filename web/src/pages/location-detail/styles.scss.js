@@ -36,7 +36,7 @@ Hero.Inner = styled(Box)`
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {}
 `;
 
-Hero.Tags = styled.div`
+Hero.Tags = styled.ul`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -48,12 +48,12 @@ Hero.Tags = styled.div`
     letter-spacing: calc(${Theme.Root.Size} * 0.05);
     font-weight: 500;
     font-size: 0.8rem;
-    padding: 0 calc(${Theme.Root.Rem} * 1);
+    padding: 0 calc(${Theme.Root.Rem} * 0);
     margin-bottom: calc(${Theme.Root.Rem} * 0.8);
 
     @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
       font-size: 0.9rem;
-      padding: 0 calc(${Theme.Root.Rem} * 0);
+      /* padding: 0 calc(${Theme.Root.Rem} * 0); */
     }
 
     &:after {
