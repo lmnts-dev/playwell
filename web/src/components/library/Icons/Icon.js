@@ -17,6 +17,7 @@ import Gear from './SVG/Gear';
 import BasicLego from './SVG/BasicLego';
 import Intercom from './SVG/Intercom';
 import NextArrow from './SVG/NextArrow';
+import Swoop from './SVG/Swoop';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -39,6 +40,12 @@ export const Icon = props => {
       return (
         <IconStyle className="ico ico-intercom">
           <Intercom />
+        </IconStyle>
+      );
+    case 'swoop':
+      return (
+        <IconStyle className="ico ico-swoop">
+          <Swoop />
         </IconStyle>
       );
     case 'nextArrow':
