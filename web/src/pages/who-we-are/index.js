@@ -50,6 +50,9 @@ WhoSection.Inner = styled.div`
   margin: 0 auto;
   max-width: ${Root.Site.Width};
   padding: 0 ${Root.Grid.Gutter.Right} 0 ${Root.Grid.Gutter.Left};
+
+  ${props =>
+    props.noPaddingLeft ? 'padding-left: 0;' : null};
 `;
 
 const LogoList = styled.div`
@@ -133,7 +136,12 @@ const Team = styled.div`
           color: ${Theme.Color.Sunset};
         }
       }
-      
+
+      img {
+        width: calc(${Root.Size} * 2);
+        height: calc(${Root.Size} * 3);
+      }
+
       .social {
         a {
           svg {
@@ -146,6 +154,64 @@ const Team = styled.div`
   }
 `;
 
+const ImageWithTextCard = styled.div`
+  position: relative;
+
+  > .ico {
+    position: absolute;
+    bottom: calc(${Root.Size} * -1);
+    right: calc(${Root.Size} * -1);
+    height: 20vw;
+    width: 20vw;
+    z-index: 1;
+
+    svg {
+      height: 100%;
+      width: 100%;
+      fill: ${Theme.Color.Lilac};
+    }
+  }
+
+  .image,
+  .text {
+    position: relative;
+    z-index: 2;
+  }
+
+  .text {
+    padding: calc(${Root.Size});
+    background-color: ${Theme.Color.White};
+    border-bottom-right-radius: calc(${Root.Size});
+
+    .h3,
+    .h6 {
+      font-weight: 700;
+    }
+
+    .h3 {
+      padding: calc(${Root.Size} / 6) 0;
+    }
+  }
+
+  .image {
+  }
+`;
+
+const ImageWithText = styled.div`
+  .h3,
+  .h6 {
+    font-weight: 700;
+
+    &.txt-clr-sunset {
+      color: ${Theme.Color.Sunset};
+    }
+  }
+
+  .h3 {
+    padding: calc(${Root.Size} / 6) 0;
+  }
+`;
+
 // Render Page
 const ProgramPage = () => {
   return (
@@ -153,8 +219,49 @@ const ProgramPage = () => {
       <WhoSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
-      >
-        <WhoSection.Inner></WhoSection.Inner>
+      ></WhoSection>
+      <WhoSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
+        <WhoSection.Inner>
+          <ImageWithText>
+            <div className="text">
+              <div className="h6">Tremendous learning mediums</div>
+              <div className="h3 txt-clr-sunset">Inspiring Play Since 1997</div>
+              <p>
+                Play-Well TEKnologies was founded by Tim Bowen in 1997.
+                Introduced to the LEGO® building system in 1996 and recognizing
+                it to be both a popular play medium and a tremendous learning
+                medium, Tim began to develop projects which drew on his
+                professional experience and combined the elements of fun,
+                challenge, and learning.
+              </p>
+            </div>
+            <div className="image"></div>
+          </ImageWithText>
+        </WhoSection.Inner>
+      </WhoSection>
+      <WhoSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
+        <WhoSection.Inner noPaddingLeft>
+          <ImageWithTextCard>
+            <Icon Name="gear" />
+            <div className="image"></div>
+            <div className="text">
+              <div className="h6">Constant Improvement</div>
+              <div className="h3">From local to nationwide.</div>
+              <p>
+                He began operating a summer camp program in 1997, followed by
+                after school enrichment classes in 1998. With steady growth of
+                the company, project development is now undertaken by a staff of
+                instructors bent on constantly improving the programs.
+              </p>
+              <Btn
+                Label="Our Values"
+                BgColor={Theme.Color.Nova}
+                TextColor={Theme.Color.White}
+                Destination="/"
+              />
+            </div>
+          </ImageWithTextCard>
+        </WhoSection.Inner>
       </WhoSection>
       <WhoSection
         BgColor={Theme.Color.Background}
