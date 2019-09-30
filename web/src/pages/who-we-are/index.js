@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Styles
 
@@ -156,6 +157,8 @@ const Team = styled.div`
 
 const ImageWithTextCard = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: row;
 
   > .ico {
     position: absolute;
@@ -198,18 +201,28 @@ const ImageWithTextCard = styled.div`
 `;
 
 const ImageWithText = styled.div`
-  .h3,
-  .h6 {
-    font-weight: 700;
+  display: flex;
+  flex-direction: row;
 
-    &.txt-clr-sunset {
-      color: ${Theme.Color.Sunset};
+    .text, .image {
+        flex: 1;
     }
-  }
 
-  .h3 {
-    padding: calc(${Root.Size} / 6) 0;
-  }
+    .text {
+
+        .h3,
+        .h6 {
+            font-weight: 700;
+
+            &.txt-clr-sunset {
+            color: ${Theme.Color.Sunset};
+            }
+        }
+
+        .h3 {
+            padding: calc(${Root.Size} / 6) 0;
+        }
+    }
 `;
 
 // Render Page
@@ -243,7 +256,9 @@ const ProgramPage = () => {
         <WhoSection.Inner noPaddingLeft>
           <ImageWithTextCard>
             <Icon Name="gear" />
-            <div className="image"></div>
+            <div className="image">
+              <ImgMatch src="intro-smiles.jpg" />
+            </div>
             <div className="text">
               <div className="h6">Constant Improvement</div>
               <div className="h3">From local to nationwide.</div>

@@ -232,9 +232,7 @@ CourseFooter.Explore.Link = styled(Flex)`
     }
 
     svg {
-      transition: ${Theme.Base.Transition.String};
       transform: rotate(180deg) translateX(0);
-      fill: ${Theme.Color.Primary};
     }
 
     &:hover {

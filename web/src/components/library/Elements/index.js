@@ -55,6 +55,7 @@ export const Flex = styled('div')`
   ${maxWidth}
   ${width}
   ${fontSize}
+  ${textAlign}
 `;
 
 Flex.displayName = 'Flex';
@@ -73,6 +74,7 @@ Button.displayName = 'Button';
 
 export const Text = styled('div')`
   box-sizing: border-box;
+  display: block;
   transition: all ${Theme.Base.Transition.Duration};
   ${space}
   ${color}

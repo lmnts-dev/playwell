@@ -196,6 +196,7 @@ exports.createPages = ({ graphql, actions }) => {
               course.course_web_publishing_action_type,
             action_type: course.action_type,
             action_url_external: course.action_url_external,
+            theme: course.course_type_group,
           },
         });
       });

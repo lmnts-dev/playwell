@@ -41,10 +41,6 @@ import {
 import { Box, Flex, Text } from 'components/library/Elements';
 import { Theme, Root } from 'constants/Theme';
 
-// Data
-import CalloutBg from './assets/cta__courses.jpg';
-import Carat from './assets/arrow--left.svg';
-
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
@@ -80,7 +76,7 @@ const Course = ({ pageContext }) => {
           px={[1, 1, 0]}
         >
           <Hero.Avatar>
-            <ImgQuery src={CalloutBg} AltText="Avatar" />
+            {/* <ImgQuery src={CalloutBg} AltText="Avatar" /> */}
           </Hero.Avatar>
           <Hero.Tags as="ul">
             <li>
@@ -130,12 +126,13 @@ const Course = ({ pageContext }) => {
           <Hero.Date as="p" fontSize={[0, 1, 3]} mt={[1, 1, 0]} mb={1}>
             {pageContext.date_time_display}
           </Hero.Date>
-
-          <ContentOverlayButton>toggle</ContentOverlayButton>
+          {/* Content Overlay Modal Toggle */}
+          {/* <ContentOverlayButton>toggle</ContentOverlayButton> */}
           <Btn
+            External
             Label="Enroll Now"
             Size="Large"
-            Destination="/"
+            Destination={pageContext.action_url}
             BgColor={props => props.theme.Color.Nova}
             TextColor={props => props.theme.Color.White}
           />
@@ -156,7 +153,7 @@ const Course = ({ pageContext }) => {
         <Spacer.Line />
       </Spacer>
 
-      <Section as="section" bg="Cream">
+      <Section bg="Cream" textAlign="center">
         <Flex
           as="article"
           flexDirection="column"
@@ -179,7 +176,7 @@ const Course = ({ pageContext }) => {
         <Spacer.Line />
       </Spacer>
 
-      <Section as="section" bg="White" pt={[6, 6, 8, 8]} pb={[2, 2, 3, 3]}>
+      <Section bg="White" textAlign="center" pt={[6, 6, 8, 8]} pb={[2, 2, 3, 3]}>
         <Flex
           as="article"
           mx="auto"
@@ -291,7 +288,7 @@ const Course = ({ pageContext }) => {
             pb={[2, 2, 0]}
           >
             <CourseFooter.Explore.Arrow>
-              <Icon Name="next" />
+              <Icon Name="nextArrow" />
             </CourseFooter.Explore.Arrow>
             <Box>
               <Text as="span" fontSize={2} mt={1} color="Deepsea">
@@ -316,7 +313,7 @@ const Course = ({ pageContext }) => {
               </Text>
             </Box>
             <CourseFooter.Explore.Arrow>
-              <Icon Name="next" />
+              <Icon Name="nextArrow" />
             </CourseFooter.Explore.Arrow>
           </CourseFooter.Explore.Link>
         </CourseFooter.Explore>
