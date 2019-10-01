@@ -8,6 +8,8 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import Slider from 'react-slick'; // For Slick Slider
+import { Helmet } from 'react-helmet'; // For Slick Styles
 
 // Components
 import Layout from 'components/core/Layout';
@@ -16,76 +18,98 @@ import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
+import  { BasicSection, BasicInner } from 'components/library/Section/BasicSection';
 
 // Styles
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
+import { Base } from 'constants/styles/Base';
 
 // Data
-// import ImgPlaceholder from './assets/placeholder.jpg';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-// Props
-const HeroProps = {
-  bg: 'Sky',
-  color: 'White',
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
-  playButtonBg: 'Nova',
-  gear: true,
-};
+// The Slider itself.
+class MarqueeSlider extends React.Component {
+  constructor(props) {
+    // Make our props accessible through this.props
+    super(props);
+  }
 
-const WhoSection = styled.div`
-  width: 100%;
-  margin: 0;
-  overflow: hidden;
-  background: ${props => (props.BgColor ? props.BgColor : Theme.Color.Primary)};
-  color: ${props => (props.TextColor ? props.TextColor : Theme.Color.White)};
-  padding: calc(${Root.Grid.Gutter.Top} * 4) 0
-    calc(${Root.Grid.Gutter.Bottom} * 4) 0;
-  ${props =>
-    props.BorderTop
-      ? `
-        background-image: linear-gradient(to right, ` + Theme.Color.Clay + ` 50%, rgba(255,255,255,0) 0%);
-        background-position: bottom;
-        background-size: 10px 1px;
-        background-repeat: repeat-x;
-    `
-      : null};
-  ${props => (props.noPaddingBottom ? 'padding-bottom: 0;' : null)};
-  ${props => (props.noPaddingTop ? 'padding-top: 0;' : null)};
-`;
+  render() {
+    // React-Slick Settings
+    // Read more: https://react-slick.neostack.com/
 
 
-WhoSection.Inner = styled.div`
-  margin: 0 auto;
-  max-width: ${Root.Site.Width};
-  padding: 0 calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 2) 0 calc(${
-    Root.Grid.Gutter.Left
-    } + ${Root.Size} * 2);
-  };
+    // Pass into Slick Settings.
+    const settings = {
+      speed: 5000,
+      autoplay: true,
+      autoplaySpeed: 5000,
+      centerMode: true,
+      cssEase: 'linear',
+      slidesToShow: 5,
+      slidesToScroll: 1,
+      variableWidth: false,
+      infinite: true,
+      initialSlide: 1,
+      arrows: false,
+      buttons: false,
+      responsive: [
+        {
+          breakpoint: Base.Media.Width.Lg + 'px',
+          settings: {
+            slidesToShow: 3,
+          }
+        }
+      ]
+    };
 
-  ${props => (props.noPaddingLeft ? 'padding-left: 0;' : null)};
-  ${props => (props.noPaddingRight ? 'padding-right: 0;' : null)};
-`;
+    return (
+      <>
+        <Helmet>
+          <link rel="stylesheet" type="text/css" href="/vendor/slick.min.css" />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/vendor/slick-theme.min.css"
+          />
+        </Helmet>
+        <Slider ref={h => (this.slider = h)} {...settings}>
+          {this.props.children}
+        </Slider>
+      </>
+    );
+  }
+}
 
-const LogoList = styled.div`
+const LegoList = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   background-color: ${Theme.Color.White};
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: block;
+  }
 
   .item {
     text-align: center;
     margin-right: calc(${Root.Size});
     color: ${Theme.Color.Dino};
     flex: 1;
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      margin-right: calc(${Root.Size} / 2);
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      margin-right: 0;
+      margin-bottom: calc(${Root.Size} / 2);
+    }
 
     &:last-of-type {
-      margin-right: 0;
+      margin-right: 0 !important;
+      margin-bottom: 0 !important;
     }
 
     span.ico {
@@ -94,6 +118,11 @@ const LogoList = styled.div`
       display: block;
       margin-left: 30%;
       margin-right: 20%;
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        width: 70%;
+        margin-left: 20%;
+        margin-right: 10%;
+      }
     }
 
     .h6 {
@@ -115,22 +144,24 @@ const Partners = styled.div`
       padding-bottom: calc(${Root.Size} / 3);
     }
   }
-  .carousel {
+  .slick-slider {
     padding: calc(${Root.Size} / 2) 0 ${Root.Size} 0;
     .partner {
-      display: inline-block;
-      margin: calc(${Root.Size} / 10);
-      background-color: ${Theme.Color.White};
-      border-radius: ${Theme.Base.Geometry.Radius};
-      width: calc(${Root.Size} * 3);
-      height: calc(${Root.Size} * 3);
+      height: 16.66vw;
+      max-height: calc(${Root.Size} * 4);
 
       .gatsby-image-wrapper {
-        position: relative;
-        left: 10%;
-        top: 10%;
-        width: 80%;
-        height: 80%;
+        background-color: ${Theme.Color.White};
+        margin: calc(${Root.Size} / 10);
+        height: 100%;
+        border-radius: ${Theme.Base.Geometry.Radius};
+        img {
+          position: relative;
+          width: 80% !important;
+          height: 80% !important;
+          left: 10% !important;
+          top: 10% !important;
+        }
       }
     }
   }
@@ -139,9 +170,17 @@ const Partners = styled.div`
 const Team = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: block;
+    text-align: center;
+  }
+
   .left {
     padding-right: calc(${Root.Size});
     padding-top: calc(${Root.Size} * 1.5);
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding: 0;
+    }
     .h3 {
       font-weight: 700;
       padding-bottom: calc(${Root.Size} / 4);
@@ -152,6 +191,10 @@ const Team = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      justify-content: center;
+      padding-top: calc(${Root.Size} / 2);
+    }
 
     .member {
       text-align: center;
@@ -192,14 +235,25 @@ const ImageWithTextCard = styled.div`
   flex-direction: row;
   margin-right: calc(${Root.Grid.Gutter.Right});
   margin-bottom: calc(${Root.Size} * 1.25);
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: block;
+  }
 
   > .ico {
     position: absolute;
     bottom: calc(${Root.Size} * -1.25);
     right: calc(${Root.Size} * -1.5);
-    height: 20vw;
-    width: 20vw;
     z-index: 1;
+    height: calc(${Root.Size} * 5.5);
+    width: calc(${Root.Size} * 5.5);
+    @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
+      height: 20vw;
+      width: 20vw;
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      height: calc(${Root.Size} * 4);
+      width: calc(${Root.Size} * 4);
+    }
 
     svg {
       height: 100%;
@@ -222,6 +276,9 @@ const ImageWithTextCard = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      padding: calc(${Root.Size} / 1.5);
+    }
 
     .h2,
     .h6 {
@@ -235,6 +292,10 @@ const ImageWithTextCard = styled.div`
 
   .image {
     flex: 5;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      height: 40vw;
+      min-height: calc(${Root.Size} * 4);
+    }
     .gatsby-image-wrapper {
       height: 100%;
     }
@@ -246,19 +307,41 @@ const ImageWithText = styled.div`
   flex-direction: row;
   align-items: center;
   position: relative;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: block;
+  }
 
   .ico-swoop {
     position: absolute;
     height: calc(100% + calc(${Root.Size} * 2));
-    right: 0;
+    right: calc(calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 2)) * -1);
     top: calc(${Root.Size} * -1);
-    width: auto;
+    width: calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 4));
     svg {
       height: 100%;
+      width: 100%;
       path {
-        height: 100%;
         fill: ${Theme.Color.Galaxy};
       }
+    }
+
+    @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
+      height: calc(100% + calc(${Root.Size}));
+      top: calc(${Root.Size} * -0.5);
+      width: auto;
+      right: 0;
+      svg {
+        width: auto;
+      }
+    }
+
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      height: 80%;
+      top: 10%;
+    }
+
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      display: none;
     }
   }
 
@@ -269,6 +352,10 @@ const ImageWithText = styled.div`
 
   .text {
     max-width: calc(${Root.Size} * 7);
+    margin-right: calc(${Root.Size});
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      max-width: none;
+    }
 
     .h2,
     .h6 {
@@ -287,9 +374,37 @@ const ImageWithText = styled.div`
   .image {
     height: calc(${Root.Size} * 9);
     margin-right: calc(${Root.Size} / 2);
+    flex-shrink: 20;
+    position: relative;
+
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .ico-swoop {
+      display: none;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        display: block;
+        width: 50vw;
+        height: 100%;
+        z-index: 1;
+        svg {
+          width: 100%;
+        }
+      }
+    }
 
     .gatsby-image-wrapper {
       height: 100%;
+      z-index: 2;
+      position: relative;
+
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 50vw;
+      }
       > div {
         height: 100%;
         width: auto !important;
@@ -317,7 +432,8 @@ const TopCarousel = styled.div`
     }
 
     p {
-      padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0 calc(${Root.Size} * 1.5);
+      padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0
+        calc(${Root.Size} * 1.5);
       line-height: 1.2;
     }
   }
@@ -328,6 +444,10 @@ const TopCarousel = styled.div`
     z-index: 3;
     bottom: 0;
     left: -5vw;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      width: calc(${Root.Size} * 6);
+      left: calc(${Root.Size} * -1);
+    }
   }
 
   .footer-curve-slice {
@@ -360,32 +480,29 @@ const CenteredTitle = styled.div`
   text-align: center;
   color: ${Theme.Color.Blush};
   font-weight: 700;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    padding-bottom: ${Root.Size};
+  }
 `;
 
 const Carousel = styled.div`
   padding-top: calc(${Root.Size});
-  overflow: hidden;
-  white-space: nowrap;
   background: linear-gradient(
     to top,
-    ${Theme.Color.Nova} 80%,
-    ${Theme.Color.Background} 80%
+    ${Theme.Color.Nova} 75%,
+    ${Theme.Color.Background} 75%
   );
-  .container {
-    display: inline-block;
-
+  .slick-slider {
     .gatsby-image-wrapper {
-      border-radius: calc(${Root.Size} / 8);
-      display: inline-block;
-      position: relative;
-      left: 0%;
-      width: 20vw;
-      max-width: calc(${Root.Size} * 5);
-      min-width: calc(${Root.Size} * 2);
-      height: 27vw;
+      display: block !important;
+      height: 25vw;
       max-height: calc(${Root.Size} * 7);
-      min-width: calc(${Root.Size} * 2.75);
-      margin: 0 calc(${Root.Size} / 8);
+      border-radius: calc(${Root.Size} / 8);
+
+      img {
+        border-radius: calc(${Root.Size} / 8);
+        margin-left: calc(${Root.Size} / 8);
+      }
     }
   }
 `;
@@ -394,79 +511,108 @@ const FooterExt = styled.div`
   display: flex;
   flex-direction: row;
   padding-bottom: calc(${Root.Size} * 3);
+  position: relative;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: block;
+  }
 
-  .left, .right {
+  .left,
+  .right {
     flex: 1;
 
-    .h3, .h5 {
+    .h3,
+    .h5 {
       font-weight: 700;
     }
     .h5 {
-      color: ${Theme.Color.Dino}
+      color: ${Theme.Color.Dino};
     }
   }
 
   .left {
-    background-image: linear-gradient(${Theme.Color.Eggplant} 40%, rgba(255,255,255,0) 0%);
+    background-image: linear-gradient(
+      ${Theme.Color.Eggplant} 40%,
+      rgba(255, 255, 255, 0) 0%
+    );
     background-position: right;
     background-size: 1px 10px;
     background-repeat: repeat-y;
     padding-right: calc(${Root.Size});
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      background-image: none;
+      padding-right: 0;
+    }
   }
 
   .right {
     padding-left: calc(${Root.Size});
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      padding-left: 0;
+      padding-top: calc(${Root.Size} / 2);
+    }
   }
-
-
-`
+`;
 
 // Render Page
-const WhoPage = () => {
+const WhoPage = ({
+    SliderSettings,
+}) => {
   return (
     <Layout>
-      <WhoSection
+      <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
         noPaddingBottom
         noPaddingTop
+        noInner
       >
         <Carousel>
-          <div className="container">
+          <MarqueeSlider SliderSettings={SliderSettings}>
             <ImgMatch src="intro-smiles.jpg" />
             <ImgMatch src="intro-smiles.jpg" />
             <ImgMatch src="intro-smiles.jpg" />
             <ImgMatch src="intro-smiles.jpg" />
             <ImgMatch src="intro-smiles.jpg" />
-          </div>
+            <ImgMatch src="intro-smiles.jpg" />
+            <ImgMatch src="intro-smiles.jpg" />
+          </MarqueeSlider>
         </Carousel>
-      </WhoSection>
-      <WhoSection
+      </BasicSection>
+      <BasicSection
         BgColor={Theme.Color.Nova}
         TextColor={Theme.Color.White}
         noPaddingBottom
+        noInner
       >
         <TopCarousel>
-          <div className="text-block">
-            <div className="headline txt-clr-clay">Play comes first.</div>
-            <p className="h3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              viverra enim sed magna vestibulum, nec imperdiet orci egestas. Sed
-              in magna sapien.
-            </p>
-          </div>
+          <BasicInner>
+            <div className="text-block">
+              <div className="headline txt-clr-clay">Play comes first.</div>
+              <p className="h3">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+                viverra enim sed magna vestibulum, nec imperdiet orci egestas.
+                Sed in magna sapien.
+              </p>
+            </div>
+          </BasicInner>
           <FooterCurveSlice bgColor={Theme.Color.Black} />
           <FooterAngleSlice />
           <div className="clouds">
             <ImgMatch src="clouds.png" />
           </div>
         </TopCarousel>
-      </WhoSection>
-      <WhoSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
-        <CenteredTitle>
-          <div className="headline">Our Story</div>
-        </CenteredTitle>
-        <WhoSection.Inner noPaddingRight>
+      </BasicSection>
+      <BasicSection
+        noPaddingRight
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner>
+          <CenteredTitle>
+            <div className="headline">Our Story</div>
+          </CenteredTitle>
+        </BasicInner>
+        <BasicInner noPaddingRight>
           <ImageWithText>
             <Icon Name="swoop" />
             <div className="text">
@@ -487,12 +633,16 @@ const WhoPage = () => {
                 objectPosition="100% 50%"
                 src="gears.png"
               />
+              <Icon Name="swoop" />
             </div>
           </ImageWithText>
-        </WhoSection.Inner>
-      </WhoSection>
-      <WhoSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
-        <WhoSection.Inner noPaddingLeft noPaddingRight>
+        </BasicInner>
+      </BasicSection>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner noPaddingLeft noPaddingRight>
           <ImageWithTextCard>
             <Icon Name="gear" />
             <div className="image">
@@ -515,14 +665,14 @@ const WhoPage = () => {
               />
             </div>
           </ImageWithTextCard>
-        </WhoSection.Inner>
-      </WhoSection>
-      <WhoSection
+        </BasicInner>
+      </BasicSection>
+      <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
         BorderTop="true"
       >
-        <WhoSection.Inner>
+        <BasicInner wideWidth>
           <Team>
             <div className="left">
               <div className="h3 txt-clr-dino">Our Team</div>
@@ -569,22 +719,39 @@ const WhoPage = () => {
               </div>
             </div>
           </Team>
-        </WhoSection.Inner>
-      </WhoSection>
-      <WhoSection
+        </BasicInner>
+      </BasicSection>
+      <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
         BorderTop="true"
       >
-        <WhoSection.Inner>
-          <Partners>
-            <div className="h3">Our Partners</div>
-            <div className="carousel">
-              <div className="partner"><ImgMatch objectFit="contain" src="gears.png"/></div>
-              <div className="partner"><ImgMatch objectFit="contain" src="gears.png"/></div>
-              <div className="partner"><ImgMatch objectFit="contain" src="gears.png"/></div>
-              <div className="partner"><ImgMatch objectFit="contain" src="gears.png"/></div>
+        <Partners>
+          <div className="h3">Our Partners</div>
+          <MarqueeSlider SliderSettings={SliderSettings}>
+            <div className="partner">
+              <ImgMatch objectFit="contain" src="gears.png" />
             </div>
+            <div className="partner">
+              <ImgMatch objectFit="contain" src="gears.png" />
+            </div>
+            <div className="partner">
+              <ImgMatch objectFit="contain" src="gears.png" />
+            </div>
+            <div className="partner">
+              <ImgMatch objectFit="contain" src="gears.png" />
+            </div>
+            <div className="partner">
+              <ImgMatch objectFit="contain" src="gears.png" />
+            </div>
+            <div className="partner">
+              <ImgMatch objectFit="contain" src="gears.png" />
+            </div>
+            <div className="partner">
+              <ImgMatch objectFit="contain" src="gears.png" />
+            </div>
+          </MarqueeSlider>
+          <BasicInner>
             <div className="h3 txt-clr-dino">
               Interested in Play-Well for your organization?
             </div>
@@ -594,12 +761,12 @@ const WhoPage = () => {
               TextColor={Theme.Color.White}
               Destination="/partnerships"
             />
-          </Partners>
-        </WhoSection.Inner>
-      </WhoSection>
-      <WhoSection BgColor={Theme.Color.White} BorderTop="true">
-        <WhoSection.Inner>
-          <LogoList>
+          </BasicInner>
+        </Partners>
+      </BasicSection>
+      <BasicSection BgColor={Theme.Color.White} BorderTop="true">
+        <BasicInner>
+          <LegoList>
             <div className="item">
               <Icon Name="basicLego" Color="orange" />
               <div className="h6">Creative Collaboration</div>
@@ -626,14 +793,14 @@ const WhoPage = () => {
                 their job and their organization.
               </p>
             </div>
-          </LogoList>
-        </WhoSection.Inner>
-      </WhoSection>
-      <WhoSection
+          </LegoList>
+        </BasicInner>
+      </BasicSection>
+      <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Eggplant}
       >
-        <WhoSection.Inner>
+        <BasicInner>
           <FooterExt>
             <div className="left">
               <div className="h5">Looking to join out team?</div>
@@ -641,11 +808,13 @@ const WhoPage = () => {
             </div>
             <div className="right">
               <div className="h5">Keep Reading.</div>
-              <div className="h3">Learn about out Values &amp; why we do what we do.</div>
+              <div className="h3">
+                Learn about out Values &amp; why we do what we do.
+              </div>
             </div>
           </FooterExt>
-        </WhoSection.Inner>
-      </WhoSection>
+        </BasicInner>
+      </BasicSection>
     </Layout>
   );
 };
