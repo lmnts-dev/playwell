@@ -20,6 +20,7 @@ export const BasicSection = ({
   BgColor,
   TextColor,
   BorderTop,
+  BorderTopVertical,
   noPaddingBottom,
   noPaddingTop,
   children,
@@ -28,6 +29,7 @@ export const BasicSection = ({
     BgColor={BgColor}
     TextColor={TextColor}
     BorderTop={BorderTop}
+    BorderTopVertical={BorderTopVertical}
     noPaddingBottom={noPaddingBottom}
     noPaddingTop={noPaddingTop}
   >

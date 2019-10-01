@@ -32,7 +32,7 @@ export const Icon = props => {
       );
     case 'gear':
       return (
-        <IconStyle className="ico">
+        <IconStyle className="ico ico-gear">
           <Gear />
         </IconStyle>
       );

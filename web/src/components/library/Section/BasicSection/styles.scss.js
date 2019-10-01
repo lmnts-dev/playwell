@@ -21,31 +21,52 @@ import { Base } from 'constants/styles/Base';
 
 
 export const BasicSectionStyle = styled.div`
-  width: 100%;
-  margin: 0;
-  overflow: hidden;
-  background: ${props => (props.BgColor ? props.BgColor : Theme.Color.Primary)};
-  color: ${props => (props.TextColor ? props.TextColor : Theme.Color.White)};
-  padding: calc(${Root.Grid.Gutter.Top} * 4) 0
-    calc(${Root.Grid.Gutter.Bottom} * 4) 0;
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    padding: calc(${Root.Grid.Gutter.Top}) 0
-    calc(${Root.Grid.Gutter.Bottom}) 0;
-  };
-  ${props =>
-    props.BorderTop
-      ? `
+         width: 100%;
+         margin: 0;
+         overflow: hidden;
+         position: relative;
+         background: ${props =>
+           props.BgColor ? props.BgColor : Theme.Color.Primary};
+         color: ${props =>
+           props.TextColor ? props.TextColor : Theme.Color.White};
+         padding: calc(${Root.Grid.Gutter.Top} * 4) 0
+           calc(${Root.Grid.Gutter.Bottom} * 4) 0;
+         @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+           padding: calc(${Root.Grid.Gutter.Top}) 0
+             calc(${Root.Grid.Gutter.Bottom}) 0;
+         }
+         ${props =>
+           props.BorderTop
+             ? `
         background-image: linear-gradient(to right, ` +
-        Theme.Color.Clay +
-        ` 50%, rgba(255,255,255,0) 0%);
+               Theme.Color.Clay +
+               ` 50%, rgba(255,255,255,0) 0%);
         background-position: bottom;
         background-size: 10px 1px;
         background-repeat: repeat-x;
     `
-      : null};
-  ${props => (props.noPaddingBottom ? 'padding-bottom: 0 !important;' : null)};
-  ${props => (props.noPaddingTop ? 'padding-top: 0 !important;' : null)};
-`;
+             : null};
+         ${props =>
+           props.noPaddingBottom ? 'padding-bottom: 0 !important;' : null};
+         ${props => (props.noPaddingTop ? 'padding-top: 0 !important;' : null)};
+
+      
+         &:after {
+          // content: '';
+           position: absolute;
+           width: 1px;
+           height: calc(${Root.Size} / 2);
+           bottom: 0;
+           left: 50%;
+           background-image: linear-gradient(
+             ${Theme.Color.Nova} 40%,
+             rgba(255, 255, 255, 0) 0%
+           );
+           background-position: right;
+           background-size: 1px 10px;
+           background-repeat: repeat-y;
+         }
+       `;
 
 export const BasicInnerStyle = styled.div`
   margin: 0 auto;

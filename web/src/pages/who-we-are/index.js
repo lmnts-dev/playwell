@@ -19,7 +19,8 @@ import ImgMatch from 'components/core/ImgMatch';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 import  { BasicSection, BasicInner } from 'components/library/Section/BasicSection';
-
+import LegoList from 'components/library/Section/LegoList';
+import Marquee from 'components/library/Section/Marquee';
 // Styles
 
 // Constants
@@ -31,106 +32,8 @@ import { Base } from 'constants/styles/Base';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-// The Slider itself.
-class MarqueeSlider extends React.Component {
-  constructor(props) {
-    // Make our props accessible through this.props
-    super(props);
-  }
-
-  render() {
-    // React-Slick Settings
-    // Read more: https://react-slick.neostack.com/
 
 
-    // Pass into Slick Settings.
-    const settings = {
-      speed: 5000,
-      autoplay: true,
-      autoplaySpeed: 5000,
-      centerMode: true,
-      cssEase: 'linear',
-      slidesToShow: 5,
-      slidesToScroll: 1,
-      variableWidth: false,
-      infinite: true,
-      initialSlide: 1,
-      arrows: false,
-      buttons: false,
-      responsive: [
-        {
-          breakpoint: Base.Media.Width.Lg + 'px',
-          settings: {
-            slidesToShow: 3,
-          }
-        }
-      ]
-    };
-
-    return (
-      <>
-        <Helmet>
-          <link rel="stylesheet" type="text/css" href="/vendor/slick.min.css" />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/vendor/slick-theme.min.css"
-          />
-        </Helmet>
-        <Slider ref={h => (this.slider = h)} {...settings}>
-          {this.props.children}
-        </Slider>
-      </>
-    );
-  }
-}
-
-const LegoList = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  background-color: ${Theme.Color.White};
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    display: block;
-  }
-
-  .item {
-    text-align: center;
-    margin-right: calc(${Root.Size});
-    color: ${Theme.Color.Dino};
-    flex: 1;
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      margin-right: calc(${Root.Size} / 2);
-    }
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      margin-right: 0;
-      margin-bottom: calc(${Root.Size} / 2);
-    }
-
-    &:last-of-type {
-      margin-right: 0 !important;
-      margin-bottom: 0 !important;
-    }
-
-    span.ico {
-      width: 50%;
-      height: auto;
-      display: block;
-      margin-left: 30%;
-      margin-right: 20%;
-      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-        width: 70%;
-        margin-left: 20%;
-        margin-right: 10%;
-      }
-    }
-
-    .h6 {
-      font-weight: bold;
-      padding: calc(${Root.Size} / 4) 0;
-    }
-  }
-`;
 
 const Partners = styled.div`
   text-align: center;
@@ -146,7 +49,7 @@ const Partners = styled.div`
   }
   .slick-slider {
     padding: calc(${Root.Size} / 2) 0 ${Root.Size} 0;
-    .partner {
+    .item {
       height: 16.66vw;
       max-height: calc(${Root.Size} * 4);
 
@@ -485,28 +388,6 @@ const CenteredTitle = styled.div`
   }
 `;
 
-const Carousel = styled.div`
-  padding-top: calc(${Root.Size});
-  background: linear-gradient(
-    to top,
-    ${Theme.Color.Nova} 75%,
-    ${Theme.Color.Background} 75%
-  );
-  .slick-slider {
-    .gatsby-image-wrapper {
-      display: block !important;
-      height: 25vw;
-      max-height: calc(${Root.Size} * 7);
-      border-radius: calc(${Root.Size} / 8);
-
-      img {
-        border-radius: calc(${Root.Size} / 8);
-        margin-left: calc(${Root.Size} / 8);
-      }
-    }
-  }
-`;
-
 const FooterExt = styled.div`
   display: flex;
   flex-direction: row;
@@ -553,6 +434,29 @@ const FooterExt = styled.div`
   }
 `;
 
+const Carousel = styled.div`
+  padding-top: calc(${Root.Size});
+  background: linear-gradient(
+    to top,
+    ${Theme.Color.Nova} 75%,
+    ${Theme.Color.Background} 75%
+  );
+  .slick-slider {
+    .item {
+      .gatsby-image-wrapper {
+        display: block !important;
+        height: 25vw;
+        max-height: calc(${Root.Size} * 7);
+        margin-left: calc(${Root.Size} / 8);
+
+        img {
+          border-radius: calc(${Root.Size} / 8);
+        }
+      }
+    }
+  }
+`;
+
 // Render Page
 const WhoPage = ({
     SliderSettings,
@@ -567,15 +471,7 @@ const WhoPage = ({
         noInner
       >
         <Carousel>
-          <MarqueeSlider SliderSettings={SliderSettings}>
-            <ImgMatch src="intro-smiles.jpg" />
-            <ImgMatch src="intro-smiles.jpg" />
-            <ImgMatch src="intro-smiles.jpg" />
-            <ImgMatch src="intro-smiles.jpg" />
-            <ImgMatch src="intro-smiles.jpg" />
-            <ImgMatch src="intro-smiles.jpg" />
-            <ImgMatch src="intro-smiles.jpg" />
-          </MarqueeSlider>
+          <Marquee />
         </Carousel>
       </BasicSection>
       <BasicSection
@@ -728,29 +624,7 @@ const WhoPage = ({
       >
         <Partners>
           <div className="h3">Our Partners</div>
-          <MarqueeSlider SliderSettings={SliderSettings}>
-            <div className="partner">
-              <ImgMatch objectFit="contain" src="gears.png" />
-            </div>
-            <div className="partner">
-              <ImgMatch objectFit="contain" src="gears.png" />
-            </div>
-            <div className="partner">
-              <ImgMatch objectFit="contain" src="gears.png" />
-            </div>
-            <div className="partner">
-              <ImgMatch objectFit="contain" src="gears.png" />
-            </div>
-            <div className="partner">
-              <ImgMatch objectFit="contain" src="gears.png" />
-            </div>
-            <div className="partner">
-              <ImgMatch objectFit="contain" src="gears.png" />
-            </div>
-            <div className="partner">
-              <ImgMatch objectFit="contain" src="gears.png" />
-            </div>
-          </MarqueeSlider>
+          <Marquee />
           <BasicInner>
             <div className="h3 txt-clr-dino">
               Interested in Play-Well for your organization?
@@ -766,34 +640,7 @@ const WhoPage = ({
       </BasicSection>
       <BasicSection BgColor={Theme.Color.White} BorderTop="true">
         <BasicInner>
-          <LegoList>
-            <div className="item">
-              <Icon Name="basicLego" Color="orange" />
-              <div className="h6">Creative Collaboration</div>
-              <p>
-                A greater sense of understanding and connection between your
-                staff, as they will now know how others play, and in turn, how
-                they best work.
-              </p>
-            </div>
-            <div className="item">
-              <Icon Name="basicLego" Color="purple" />
-              <div className="h6">New Perspectives</div>
-              <p>
-                A willingness to tackle problems from a play perspective,
-                embracing failure as part of the process of finding the
-                solution.
-              </p>
-            </div>
-            <div className="item">
-              <Icon Name="basicLego" Color="blue" />
-              <div className="h6">Staff Morale</div>
-              <p>
-                A rejuvenated staff who rediscovers what they find fun about
-                their job and their organization.
-              </p>
-            </div>
-          </LegoList>
+          <LegoList />
         </BasicInner>
       </BasicSection>
       <BasicSection
