@@ -14,9 +14,10 @@ import Layout from 'components/core/Layout';
 import Section from 'components/library/Elements/Section';
 import { Box, Flex, Text } from 'components/library/Elements';
 import Btn from 'components/library/Btn';
-import SplitSection from 'components/library/Section/SplitSection';
 
 // Sections
+import LocationCoordinators from 'sections/LocationCoordinators';
+import LocationSplitSection from 'sections/LocationSplitSection';
 
 // Styles
 import { Hero, Spacer, Intro } from './styles.scss';
@@ -123,14 +124,20 @@ const LocationDetail = () => {
         </Intro.Inner>
       </Intro>
 
-      <SplitSection>
-        <div className="block">
-          <div className="block-content">asdf</div>
-          <div className="block-img-wrap">
-            <div className="block-img">sdf</div>
-          </div>
-        </div>
-      </SplitSection>
+      <LocationSplitSection />
+
+      <Section textAlign="left">
+        <Flex flexWrap="wrap">
+          <Box width={[1, 1, 1 / 2, 4 / 10]} pr={[0, 0, 0, 12]}>
+            <Text as="h2" color="Dino">
+              Coordinators in STATE
+            </Text>
+          </Box>
+          <Box width={[1, 1, 1 / 2, 6 / 10]}>
+            <LocationCoordinators />
+          </Box>
+        </Flex>
+      </Section>
 
       <Section bg="Dino" pt={12} pb={12} />
     </Layout>

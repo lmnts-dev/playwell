@@ -7,7 +7,7 @@
 // Core
 import React from 'react';
 
-// Components
+// Page
 import HomePage from './HomePage';
 
 // Begin Component
