@@ -1,5 +1,5 @@
 // Index.js:
-// This is the home page of the website.
+// This is the landing page of the who section of the website.
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -96,7 +96,7 @@ const LogoList = styled.div`
       margin-right: 20%;
     }
 
-    .header {
+    .h6 {
       font-weight: bold;
       padding: calc(${Root.Size} / 4) 0;
     }
@@ -235,6 +235,9 @@ const ImageWithTextCard = styled.div`
 
   .image {
     flex: 5;
+    .gatsby-image-wrapper {
+      height: 100%;
+    }
   }
 `;
 
@@ -387,8 +390,39 @@ const Carousel = styled.div`
   }
 `;
 
+const FooterExt = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-bottom: calc(${Root.Size} * 3);
+
+  .left, .right {
+    flex: 1;
+
+    .h3, .h5 {
+      font-weight: 700;
+    }
+    .h5 {
+      color: ${Theme.Color.Dino}
+    }
+  }
+
+  .left {
+    background-image: linear-gradient(${Theme.Color.Eggplant} 40%, rgba(255,255,255,0) 0%);
+    background-position: right;
+    background-size: 1px 10px;
+    background-repeat: repeat-y;
+    padding-right: calc(${Root.Size});
+  }
+
+  .right {
+    padding-left: calc(${Root.Size});
+  }
+
+
+`
+
 // Render Page
-const ProgramPage = () => {
+const WhoPage = () => {
   return (
     <Layout>
       <WhoSection
@@ -568,7 +602,7 @@ const ProgramPage = () => {
           <LogoList>
             <div className="item">
               <Icon Name="basicLego" Color="orange" />
-              <div className="header">Creative Collaboration</div>
+              <div className="h6">Creative Collaboration</div>
               <p>
                 A greater sense of understanding and connection between your
                 staff, as they will now know how others play, and in turn, how
@@ -577,7 +611,7 @@ const ProgramPage = () => {
             </div>
             <div className="item">
               <Icon Name="basicLego" Color="purple" />
-              <div className="header">New Perspectives</div>
+              <div className="h6">New Perspectives</div>
               <p>
                 A willingness to tackle problems from a play perspective,
                 embracing failure as part of the process of finding the
@@ -586,7 +620,7 @@ const ProgramPage = () => {
             </div>
             <div className="item">
               <Icon Name="basicLego" Color="blue" />
-              <div className="header">Staff Morale</div>
+              <div className="h6">Staff Morale</div>
               <p>
                 A rejuvenated staff who rediscovers what they find fun about
                 their job and their organization.
@@ -595,11 +629,28 @@ const ProgramPage = () => {
           </LogoList>
         </WhoSection.Inner>
       </WhoSection>
+      <WhoSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Eggplant}
+      >
+        <WhoSection.Inner>
+          <FooterExt>
+            <div className="left">
+              <div className="h5">Looking to join out team?</div>
+              <div className="h3">Check out our Jobs &amp; Careers page.</div>
+            </div>
+            <div className="right">
+              <div className="h5">Keep Reading.</div>
+              <div className="h3">Learn about out Values &amp; why we do what we do.</div>
+            </div>
+          </FooterExt>
+        </WhoSection.Inner>
+      </WhoSection>
     </Layout>
   );
 };
 
-export default ProgramPage;
+export default WhoPage;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
