@@ -110,30 +110,29 @@ const LargeTextBlock = styled.div`
   font-weight: 700;
   margin: 0 auto;
   position: relative;
-
-  > div {
-    max-width: calc(${Root.Size} * 20);
-  }
+  max-width: calc(${Root.Size} * 20);
 
   .headline {
     color: ${Theme.Color.Eggplant};
     padding: calc(${Root.Size} / 4) 0;
   }
 
-  .absolute-image {
+  ~ .absolute-image {
     position: absolute;
     top: calc(${Root.Size} * -4.5);
     width: 20%;
     left: calc(${Root.Size} * -1);
     height: auto;
     transform: rotate(260deg);
+    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+      left: calc(${Root.Size} * .5);
+    }
   }
 `;
 
 const TextWithManyImages = styled.div`
   display: flex;
   flex-direction: row;
-  min-height: 30vw;
 
   .text {
     font-weight: 700;
@@ -151,17 +150,32 @@ const TextWithManyImages = styled.div`
 
     > .gatsby-image-wrapper {
       display: inline-block;
-      height: 100%;
+      padding-top: 66.66%;
       width: 66.66%;
+      height: 0;
+
+      > div {
+        position: absolute;
+        padding-bottom: 0 !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
     }
 
     .column {
       width: 33.33%;
-      height: 100%;
+      padding-top: 66.66%;
       margin-left: 4px;
+      height: 0;
+      position: relative;
 
       .gatsby-image-wrapper {
         width: 100%;
+        position: absolute !important;
+        top: 0;
+        left: 0;
         height: 50%;
 
         &:first-of-type {
@@ -170,6 +184,7 @@ const TextWithManyImages = styled.div`
 
         &:last-of-type {
           margin-top: 4px;
+          top: 50%;
         }
       }
     }
@@ -180,8 +195,9 @@ const CenteredTitle = styled.div`
   text-align: center;
   color: ${Theme.Color.Blush};
   font-weight: 700;
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    padding-bottom: ${Root.Size};
+
+  > div {
+    position: relative;
   }
 
   .absolute-image {
@@ -192,12 +208,21 @@ const CenteredTitle = styled.div`
     height: auto;
     transform: scaleX(-1);
 
+    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+      left: calc(${Root.Size} * -0.5);
+    }
+
     .ico-swoop {
       width: 100%;
       display: block;
 
       svg {
-        transform: rotate(180deg) scaleX(-1) translateY(calc(${Root.Size} * 1.5));
+        transform: rotate(180deg) scaleX(-1)
+          translateY(calc(${Root.Size} * 1.5));
+        @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+          transform: rotate(-90deg) scaleX(-1)
+            translateX(calc(${Root.Size} * 2));
+        }
 
         path {
           fill: ${Theme.Color.Dino};
@@ -311,11 +336,11 @@ const WhoWhyPage = () => {
           <CenteredTitle>
             <BasicInner>
               <div className="headline">Our Values</div>
+              <div className="absolute-image">
+                <Icon Name="swoop" />
+                <ImgMatch src="gears.png" />
+              </div>
             </BasicInner>
-            <div className="absolute-image">
-              <Icon Name="swoop" />
-              <ImgMatch src="gears.png" />
-            </div>
           </CenteredTitle>
         </BasicSection>
 
@@ -386,22 +411,26 @@ const WhoWhyPage = () => {
           BgColor={Theme.Color.Background}
           TextColor={Theme.Color.Sunset}
         >
+          <BasicInner>
             <LargeTextBlock>
-              <BasicInner>
-                <Number className="h1">04</Number>
-                <div className="h4">Encourage the qualities of</div>
-                <div className="headline txt-clr-eggplant">
-                  Inquisitiveness Self Reliance &amp; Self Confidence
-                </div>
-                <div className="h4">In children &amp; in everybody.</div>
-              </BasicInner>
-              <div className="absolute-image">
-                <ImgMatch src="gears.png" />
+              <Number className="h1">04</Number>
+              <div className="h4">Encourage the qualities of</div>
+              <div className="headline txt-clr-eggplant">
+                Inquisitiveness Self Reliance &amp; Self Confidence
               </div>
+              <div className="h4">In children &amp; in everybody.</div>
             </LargeTextBlock>
+            <div className="absolute-image">
+              <ImgMatch src="gears.png" />
+            </div>
+          </BasicInner>
         </BasicSection>
 
-        <BasicSection BgColor={Theme.Color.Background} noPaddingTop BorderMiddle>
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          noPaddingTop
+          BorderMiddle
+        >
           <Carousel>
             <Marquee />
           </Carousel>

@@ -87,6 +87,7 @@ export const BasicSectionStyle = styled.div`
 
 export const BasicInnerStyle = styled.div`
   margin: 0 auto;
+  position: relative;
   max-width: ${Root.Site.Width};
   padding: 0 calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 2) 0 calc(${
          Root.Grid.Gutter.Left
