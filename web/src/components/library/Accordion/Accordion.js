@@ -26,11 +26,12 @@ const Accordion = ({ children, title }) => {
   const [setHeight, setHeightState] = useState('0px');
   const [setRotate, setRotateState] = useState('accordion-icon');
 
-  // Reference the accordion height
+  // Reference the accordion content height
   const content = useRef(null);
 
-  // Toggle classes
+  // Toggle classes / height
   function toggleAccordion() {
+    setActiveState(setActive === '' ? 'active' : '');
     setHeightState(
       setActive === 'active' ? '0px' : `${content.current.scrollHeight}px`
     );
