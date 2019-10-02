@@ -20,7 +20,7 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const Accordion = ({ children, location }) => {
+const Accordion = ({ children, title }) => {
   // Accordion hooks
   const [setActive, setActiveState] = useState('');
   const [setHeight, setHeightState] = useState('0px');
@@ -31,7 +31,6 @@ const Accordion = ({ children, location }) => {
 
   // Toggle classes
   function toggleAccordion() {
-    setActiveState(setActive === '' ? 'active' : '');
     setHeightState(
       setActive === 'active' ? '0px' : `${content.current.scrollHeight}px`
     );
@@ -48,7 +47,7 @@ const Accordion = ({ children, location }) => {
           onClick={toggleAccordion}
         >
           <Text as="span" fontWeight={500} fontSize="1.6rem">
-            {location}
+            {title}
           </Text>
           <AccordionContainer.Icon Name="carat" className={`${setRotate}`} />
         </AccordionContainer.Accordion>

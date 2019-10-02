@@ -39,6 +39,7 @@ const LocationCoordinators = ({ cities }) => {
   // Render page
   return (
     <Section textAlign="left">
+      {/* todo: make styled components */}
       <Flex flexWrap="wrap" px={[0, 0, 4, 6]}>
         <Box
           width={[1, 1, 1 / 2, 4 / 10]}
@@ -51,7 +52,7 @@ const LocationCoordinators = ({ cities }) => {
         </Box>
         <Box width={[1, 1, 1 / 2, 6 / 10]}>
           {cities.map(city => (
-            <Accordion location={city.city}>
+            <Accordion title={city.city}>
               <Article key={city.id}>
                 <Article.Figure>
                   <ImgMatch
