@@ -7,7 +7,7 @@
 // Core
 import React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
@@ -54,10 +54,9 @@ const LocationCoordinators = ({ cities }) => {
             <Accordion location={city.city}>
               <Article key={city.id}>
                 <Article.Figure>
-                  <Img
-                    fluid={data.file.childImageSharp.fluid}
-                    objectFit="contain"
-                    alt="STEM Education &amp; Engineering in"
+                  <ImgMatch
+                    src="placeholder.jpeg"
+                    AltText="STEM Education &amp; Engineering in"
                   />
                 </Article.Figure>
                 <Article.Info>

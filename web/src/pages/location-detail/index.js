@@ -8,7 +8,7 @@
 // Core
 import React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Components
 import Layout from 'components/core/Layout';
@@ -39,105 +39,91 @@ const ThemeProps = {
 };
 
 // Render Page
-const LocationDetail = () => {
-  // Temporary placeholder
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: { eq: "locations-hero.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `);
-  return (
-    <Layout {...ThemeProps}>
-      <Hero>
-        <Hero.Inner>
-          <Box width={1} px={Root.Grid.Indent.X}>
-            <Hero.Tags>
-              <li>
-                <Link to={'/'}>Robotics</Link>
-              </li>
-              <li>
-                <Link to={'/'}>Intro to STEM</Link>
-              </li>
-              <li>
-                <Link to={'/'}>Gaming</Link>
-              </li>
-              <li>
-                <Link to={'/'}>Advanced Engineering</Link>
-              </li>
-              <li>
-                <Link to={'/'}>Engineering Themes</Link>
-              </li>
-            </Hero.Tags>
+const LocationDetail = () => (
+  <Layout {...ThemeProps}>
+    <Hero>
+      <Hero.Inner>
+        <Box width={1} px={Root.Grid.Indent.X}>
+          <Hero.Tags>
+            <li>
+              <Link to={'/'}>Robotics</Link>
+            </li>
+            <li>
+              <Link to={'/'}>Intro to STEM</Link>
+            </li>
+            <li>
+              <Link to={'/'}>Gaming</Link>
+            </li>
+            <li>
+              <Link to={'/'}>Advanced Engineering</Link>
+            </li>
+            <li>
+              <Link to={'/'}>Engineering Themes</Link>
+            </li>
+          </Hero.Tags>
+        </Box>
+        <Box width={1} px={Root.Grid.Indent.X}>
+          <Hero.Heading>
+            STEM Education &amp;
+            <br />
+            Engineering in <span>STATE</span>
+          </Hero.Heading>
+          <Box mr={1} display="inline-block">
+            <Btn
+              External
+              Label="View Programs"
+              BgColor={Theme.Color.Nova}
+              TextColor={Theme.Color.White}
+            />
           </Box>
-          <Box width={1} px={Root.Grid.Indent.X}>
-            <Hero.Heading>
-              STEM Education &amp;
-              <br />
-              Engineering in <span>STATE</span>
-            </Hero.Heading>
-            <Box mr={1} display="inline-block">
-              <Btn
-                External
-                Label="View Programs"
-                BgColor={Theme.Color.Nova}
-                TextColor={Theme.Color.White}
-              />
-            </Box>
-            <Box display="inline-block">
-              <Btn
-                External
-                Label="Contact Manager"
-                BgColor={Theme.Color.Blush}
-                TextColor={Theme.Color.Primary}
-              />
-            </Box>
+          <Box display="inline-block">
+            <Btn
+              External
+              Label="Contact Manager"
+              BgColor={Theme.Color.Blush}
+              TextColor={Theme.Color.Primary}
+            />
           </Box>
-        </Hero.Inner>
-      </Hero>
+        </Box>
+      </Hero.Inner>
+    </Hero>
 
-      <Section bg="Dino" pt={0} pb={0} fullWidth>
-        <Img
-          fluid={data.file.childImageSharp.fluid}
-          alt="STEM Education &amp; Engineering in"
-        />
-      </Section>
+    <Section bg="Dino" pt={0} pb={0} fullWidth>
+      <ImgMatch
+        src="locations-hero.jpg"
+        AltText="STEM Education &amp; Engineering in"
+      />
+    </Section>
 
-      {/* // Vertical dashed spacer */}
-      <Spacer>
-        <Spacer.Line />
-      </Spacer>
+    {/* // Vertical dashed spacer */}
+    <Spacer>
+      <Spacer.Line />
+    </Spacer>
 
-      <Intro bg="Cream" textAlign="center">
-        <Intro.Inner pt={[2, 2, 4, 4]} pb={[1, 1, 2, 2]}>
-          <Text as="p" color="Nova" className="lead">
-            Arizona’s Leading STEM Education &amp; Engineering Programs
-          </Text>
-          <Text as="p" color="Galaxy" className="lead">
-            Ut vehicula dictum tristique. Cras at sem nec risus sollicitudin
-            varius. Proin ultrices metus arcu, ut lacinia libero ornare eget.
-            Morbi orci mi, scelerisque a justo quis, euismod sollicitudin dui.
-            Duis convallis magna eget eleifend tempor. Ut non lobortis metus.
-            Donec sit amet vulputate risus. Vivamus et lacinia ante.
-          </Text>
-        </Intro.Inner>
-      </Intro>
+    <Intro bg="Cream" textAlign="center">
+      <Intro.Inner pt={[2, 2, 4, 4]} pb={[1, 1, 2, 2]}>
+        <Text as="p" color="Nova" className="lead">
+          Arizona’s Leading STEM Education &amp; Engineering Programs
+        </Text>
+        <Text as="p" color="Galaxy" className="lead">
+          Ut vehicula dictum tristique. Cras at sem nec risus sollicitudin
+          varius. Proin ultrices metus arcu, ut lacinia libero ornare eget.
+          Morbi orci mi, scelerisque a justo quis, euismod sollicitudin dui.
+          Duis convallis magna eget eleifend tempor. Ut non lobortis metus.
+          Donec sit amet vulputate risus. Vivamus et lacinia ante.
+        </Text>
+      </Intro.Inner>
+    </Intro>
 
-      <LocationSplitSection />
+    <LocationSplitSection />
 
-      <LocationCoordinators cities={Cities} />
+    <LocationCoordinators cities={Cities} />
 
-      <LocationEvents />
+    <LocationEvents />
 
-      <Section bg="Dino" pt={12} pb={12} />
-    </Layout>
-  );
-};
+    <Section bg="Dino" pt={12} pb={12} />
+  </Layout>
+);
 
 // Data
 const Cities = [
