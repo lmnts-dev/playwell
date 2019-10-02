@@ -6,7 +6,8 @@
 
 // Core
 import React from 'react';
-import { Link } from 'gatsby';
+import { Link, useStaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
@@ -15,7 +16,7 @@ import Accordion from 'components/library/Accordion';
 // Sections
 
 // Styles
-import { Intro } from './styles.scss';
+import { Article } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -23,18 +24,55 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const LocationCoordinators = () => {
+const LocationCoordinators = ({ cities }) => {
+  const data = useStaticQuery(graphql`
+    query {
+      file(relativePath: { eq: "placeholder.jpeg" }) {
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `);
+
+  // Render Page
   return (
-    <Intro textAlign="left">
-      <Accordion location="Apache Junction">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </Accordion>
-      <Accordion location="Avondale">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </Accordion>
-    </Intro>
+    <>
+      {cities.map(city => (
+        <Accordion location={city.city}>
+          <Article key={city.id}>
+            <Article.Figure>
+              <Img
+                fluid={data.file.childImageSharp.fluid}
+                objectFit="contain"
+                alt="STEM Education &amp; Engineering in"
+              />
+            </Article.Figure>
+            <Article.Info>
+              <Flex flexWrap="wrap">
+                <Article.Info.Details>
+                  {city.state} <span>{city.role}</span>
+                </Article.Info.Details>
+                <Article.Info.Name fontSize="1.6rem">
+                  {city.name}
+                </Article.Info.Name>
+                <Article.Info.Contact>
+                  <span>
+                    <a href={'mailto:' + city.email}>{city.email}</a>
+                  </span>
+                  <span><a href={'tel:' + city.phone}>{city.phone}</a></span>
+                  <span>
+                    <a href="/">More</a>
+                  </span>
+                </Article.Info.Contact>
+              </Flex>
+            </Article.Info>
+          </Article>
+        </Accordion>
+      ))}
+    </>
   );
 };
 

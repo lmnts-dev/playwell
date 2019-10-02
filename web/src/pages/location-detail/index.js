@@ -134,7 +134,7 @@ const LocationDetail = () => {
             </Text>
           </Box>
           <Box width={[1, 1, 1 / 2, 6 / 10]}>
-            <LocationCoordinators />
+            <LocationCoordinators cities={Cities} />
           </Box>
         </Flex>
       </Section>
@@ -143,6 +143,37 @@ const LocationDetail = () => {
     </Layout>
   );
 };
+
+// Data
+const Cities = [
+  {
+    id: 0,
+    city: 'Apache Junction',
+    state: 'arizona',
+    role: 'manager',
+    name: 'Jennifer Gaona',
+    email: 'jen@gaonoa.com',
+    phone: '+1 123 456 7890',
+  },
+  {
+    id: 1,
+    city: 'Avondale',
+    state: 'arizona',
+    role: 'manager',
+    name: 'Jennifer Gaona',
+    email: 'jen@gaonoa.com',
+    phone: '+1 123 456 7890',
+  },
+  {
+    id: 2,
+    city: 'Benson',
+    state: 'arizona',
+    role: 'manager',
+    name: 'Jennifer Gaona',
+    email: 'jen@gaonoa.com',
+    phone: '+1 123 456 7890',
+  },
+];
 
 export default LocationDetail;
 

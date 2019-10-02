@@ -8,7 +8,7 @@ import Img from 'gatsby-image/withIEPolyfill';
 const Image = ({ AltText, objectFit, objectPosition, src, ...props }) => {
   const data = useStaticQuery(graphql`
     query {
-      allFile(filter: { internal: { mediaType: { regex: "images/" } } }) {
+      allFile(filter: { internal: { mediaType: { regex: "assets/images/" } } }) {
         edges {
           node {
             relativePath

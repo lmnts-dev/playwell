@@ -36,6 +36,10 @@ AccordionContainer.Inner = styled.div`
 AccordionContainer.Icon = styled(Icon)`
   margin-left: auto;
   transition: transform 0.3s ease;
+
+  svg {
+    fill: ${Theme.Color.Nova};
+  }
 `;
 
 AccordionContainer.Accordion = styled.button`
@@ -69,7 +73,11 @@ AccordionContainer.Content.Inner = styled.div`
   background: ${Theme.Color.White};
   border-radius: calc(${Root.Radius} / 3);
   margin-bottom: calc(${Root.Size} / 3 );
-  padding: calc(${Root.Size} / 3);
+  padding: calc(${Root.Size} / 1);
+
+  @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding: calc(${Root.Size} / 3);
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

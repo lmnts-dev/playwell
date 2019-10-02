@@ -84,6 +84,8 @@ export const Text = styled('div')`
   ${fontSize}
   ${fontWeight}
   ${lineHeight}
+  ${maxWidth}
+  ${width}
 `;
 
 Box.displayName = 'Text';
