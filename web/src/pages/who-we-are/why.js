@@ -46,8 +46,11 @@ const Number = styled.div`
 const ImageWithText = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   position: relative;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    flex-direction: column-reverse;
+  }
 
   .image,
   .text {
@@ -60,6 +63,16 @@ const ImageWithText = styled.div`
     width: 100%;
     top: -20%;
     right: -50%;
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      height: 130%;
+      top: -15%;
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      height: calc(${Root.Size} * 3);
+      top: auto;
+      bottom: calc(${Root.Size} * -1.5);
+    }
+
     svg {
       height: 100%;
       width: auto;
@@ -69,6 +82,11 @@ const ImageWithText = styled.div`
 
   .image {
     margin-right: calc(${Root.Size} / 4);
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      height: 50vw;
+      max-height: calc(${Root.Size} * 6);
+      margin-right: 0;
+    }
 
     .gatsby-image-wrapper {
       height: 100%;
@@ -77,8 +95,18 @@ const ImageWithText = styled.div`
 
   .text {
     .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
       padding: ${Root.Size} calc(${Root.Size} * 1.5);
       max-width: calc(${Root.Size} * 9);
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        padding: calc(${Root.Size} * 0.5);
+      }
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        max-width: none;
+      }
 
       .h4 {
         font-weight: 700;
@@ -100,6 +128,9 @@ const ImageWithText = styled.div`
         .image {
           margin-right: 0;
           margin-left: calc(${Root.Size} / 4);
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            margin-left: 0;
+          }
         }
     `
       : null};
@@ -110,11 +141,23 @@ const LargeTextBlock = styled.div`
   font-weight: 700;
   margin: 0 auto;
   position: relative;
-  max-width: calc(${Root.Size} * 20);
+  max-width: calc(${Root.Size} * 15);
+  @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+    max-width: calc(${Root.Size} * 12);
+  }
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    max-width: calc(${Root.Size} * 11);
+  }
 
   .headline {
     color: ${Theme.Color.Eggplant};
     padding: calc(${Root.Size} / 4) 0;
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      font-size: 6rem;
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      font-size: 4rem;
+    }
   }
 
   ~ .absolute-image {
@@ -125,7 +168,10 @@ const LargeTextBlock = styled.div`
     height: auto;
     transform: rotate(260deg);
     @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
-      left: calc(${Root.Size} * .5);
+      left: calc(${Root.Size} * 0.5);
+    }
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      top: calc(${Root.Size} * -2.5);
     }
   }
 `;
@@ -133,6 +179,9 @@ const LargeTextBlock = styled.div`
 const TextWithManyImages = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: block;
+  }
 
   .text {
     font-weight: 700;
@@ -141,18 +190,36 @@ const TextWithManyImages = styled.div`
     flex-direction: column;
     justify-content: center;
     padding: ${Root.Size} ${Root.Size} ${Root.Size} 0;
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      padding: calc(${Root.Size} / 2) calc(${Root.Size} / 2)
+        calc(${Root.Size} / 2) 0;
+      &.h4 {
+        font-size: 1.75rem;
+      }
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      padding: calc(${Root.Size}) calc(${Root.Size})
+        calc(${Root.Size}) 0;
+    }
   }
 
   .images {
     flex: 3;
     display: flex;
     flex-direction: row;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      height: 50vw;
+      max-height: calc(${Root.Size} * 6);
+    }
 
     > .gatsby-image-wrapper {
       display: inline-block;
       padding-top: 66.66%;
       width: 66.66%;
-      height: 0;
+      height: 100%;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding-top: 0;
+      }
 
       > div {
         position: absolute;
@@ -168,8 +235,11 @@ const TextWithManyImages = styled.div`
       width: 33.33%;
       padding-top: 66.66%;
       margin-left: 4px;
-      height: 0;
+      height: 100%;
       position: relative;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding-top: 0;
+      }
 
       .gatsby-image-wrapper {
         width: 100%;
@@ -211,6 +281,9 @@ const CenteredTitle = styled.div`
     @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
       left: calc(${Root.Size} * -0.5);
     }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      bottom: 0;
+    }
 
     .ico-swoop {
       width: 100%;
@@ -223,6 +296,10 @@ const CenteredTitle = styled.div`
           transform: rotate(-90deg) scaleX(-1)
             translateX(calc(${Root.Size} * 2));
         }
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          transform:
+            translate(calc(${Root.Size} / -2), calc( ${Root.Size}));
+        }
 
         path {
           fill: ${Theme.Color.Dino};
@@ -232,13 +309,15 @@ const CenteredTitle = styled.div`
   }
 `;
 
-const Carousel =
-  styled.div`
+const Carousel = styled.div`
   padding-top: calc(${Root.Size});
   position: relative;
 
   .slick-slider {
-    filter: drop-shadow(0px 8px 34px ${hexToRGB(Theme.Color.Eggplant, 0.20)});
+    filter: drop-shadow(0px 8px 34px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
+    }
 
     .item {
       .gatsby-image-wrapper {
@@ -410,8 +489,9 @@ const WhoWhyPage = () => {
         <BasicSection
           BgColor={Theme.Color.Background}
           TextColor={Theme.Color.Sunset}
+          noPaddingBottom
         >
-          <BasicInner>
+          <BasicInner wideWidth>
             <LargeTextBlock>
               <Number className="h1">04</Number>
               <div className="h4">Encourage the qualities of</div>

@@ -22,6 +22,8 @@ const LegoListStyles = styled.div`
   align-items: flex-start;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     display: block;
+    max-width: calc(${Root.Size} * 7);
+    margin: 0 auto;
   }
 
   .item {
