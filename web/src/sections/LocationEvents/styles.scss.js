@@ -23,7 +23,7 @@ import hexToRGB from 'helpers/hexToRGB';
 
 export const Events = styled.div`
   background: ${Theme.Color.Background};
-  border-top: 1px solid ${hexToRGB(Thee.Color.Nova, 0.3)};
+  border-top: 1px solid ${hexToRGB(Theme.Color.Nova, 0.3)};
 `;
 //////////////////////////////////////////////////////////////////////
 // End Styles
