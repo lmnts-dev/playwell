@@ -67,23 +67,6 @@ const ImageWithText = styled.div`
     }
   }
 
-  .absolute-image {
-    position: absolute;
-    left: 0;
-    top: calc(${Root.Size} * -2);
-    width: 25%;
-    height: 100%;
-
-    &.bottom {
-      top: auto;
-      bottom: calc(${Root.Size} * -2);
-      transform: scaleX(-1);
-      width: 25%;
-      height: auto;
-      left: calc(${Root.Size} / -2);
-    }
-  }
-
   .image {
     margin-right: calc(${Root.Size} / 4);
 
@@ -94,7 +77,8 @@ const ImageWithText = styled.div`
 
   .text {
     .container {
-      padding: ${Root.Size};
+      padding: ${Root.Size} calc(${Root.Size} * 1.5);
+      max-width: calc(${Root.Size} * 9);
 
       .h4 {
         font-weight: 700;
@@ -110,6 +94,9 @@ const ImageWithText = styled.div`
     props.reversedOrder
       ? `
         flex-direction: row-reverse;
+        .container {
+          margin: 0 auto;
+        }
         .image {
           margin-right: 0;
           margin-left: calc(${Root.Size} / 4);
@@ -121,11 +108,25 @@ const ImageWithText = styled.div`
 const LargeTextBlock = styled.div`
   text-align: center;
   font-weight: 700;
-  max-width: calc(${Root.Size} * 15);
   margin: 0 auto;
+  position: relative;
+
+  > div {
+    max-width: calc(${Root.Size} * 20);
+  }
 
   .headline {
     color: ${Theme.Color.Eggplant};
+    padding: calc(${Root.Size} / 4) 0;
+  }
+
+  .absolute-image {
+    position: absolute;
+    top: calc(${Root.Size} * -4.5);
+    width: 20%;
+    left: calc(${Root.Size} * -1);
+    height: auto;
+    transform: rotate(260deg);
   }
 `;
 
@@ -182,6 +183,28 @@ const CenteredTitle = styled.div`
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     padding-bottom: ${Root.Size};
   }
+
+  .absolute-image {
+    position: absolute;
+    bottom: calc(${Root.Size} * -4);
+    width: 20%;
+    left: calc(${Root.Size} * -1);
+    height: auto;
+    transform: scaleX(-1);
+
+    .ico-swoop {
+      width: 100%;
+      display: block;
+
+      svg {
+        transform: rotate(180deg) scaleX(-1) translateY(calc(${Root.Size} * 1.5));
+
+        path {
+          fill: ${Theme.Color.Dino};
+        }
+      }
+    }
+  }
 `;
 
 const Carousel =
@@ -190,14 +213,14 @@ const Carousel =
   position: relative;
 
   .slick-slider {
-    filter: drop-shadow(0px 8px 34px ${hexToRGB(Theme.Color.Eggplant, 0.25)});
+    filter: drop-shadow(0px 8px 34px ${hexToRGB(Theme.Color.Eggplant, 0.20)});
 
     .item {
       .gatsby-image-wrapper {
         display: block !important;
         height: 25vw;
         max-height: calc(${Root.Size} * 7);
-        margin-left: calc(${Root.Size} / 8);
+        margin-left: calc(${Root.Size} / 4);
 
         img {
           border-radius: calc(${Root.Size} / 8);
@@ -210,6 +233,7 @@ const Carousel =
 const TextBlock = styled.div`
   text-align: center;
   position: relative;
+  z-index: 1;
   padding: calc(${Root.Size} * 2) 0 calc(${Root.Size} * 1.5) 0;
 
   .h4 {
@@ -242,7 +266,7 @@ const TextBlock = styled.div`
       width: 100%;
       height: 100%;
       background-color: ${Theme.Color.Eggplant};
-      opacity: 0.2;
+      opacity: 0.3;
       z-index: 2;
     }
 
@@ -262,6 +286,7 @@ const WhoWhyPage = () => {
           TextColor={Theme.Color.White}
           noPaddingTop
           noPaddingBottom
+          BorderBottomVertical
         >
           <TextBlock>
             <div className="background-image">
@@ -282,28 +307,26 @@ const WhoWhyPage = () => {
           </TextBlock>
         </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        noPaddingBottom
-        BorderTopVertical
-      >
-        <BasicInner>
+        <BasicSection BgColor={Theme.Color.Background} BorderTopVertical>
           <CenteredTitle>
-            <div className="headline">Our Values</div>
+            <BasicInner>
+              <div className="headline">Our Values</div>
+            </BasicInner>
+            <div className="absolute-image">
+              <Icon Name="swoop" />
+              <ImgMatch src="gears.png" />
+            </div>
           </CenteredTitle>
-        </BasicInner>
         </BasicSection>
 
         <BasicSection
           BgColor={Theme.Color.Background}
           TextColor={Theme.Color.Sunset}
+          noPaddingTop
+          noPaddingBottom
         >
           <BasicInner noPaddingLeft noPaddingRight>
             <ImageWithText>
-              <div className="absolute-image">
-                <Icon Name="swoop" />
-                <ImgMatch src="gears.png" />
-              </div>
               <div className="image">
                 <ImgMatch src="intro-smiles.jpg" />
               </div>
@@ -339,9 +362,6 @@ const WhoWhyPage = () => {
               </div>
             </ImageWithText>
             <ImageWithText>
-              <div className="absolute-image bottom">
-                <ImgMatch src="gears.png" />
-              </div>
               <div className="image">
                 <ImgMatch src="intro-smiles.jpg" />
               </div>
@@ -364,28 +384,30 @@ const WhoWhyPage = () => {
 
         <BasicSection
           BgColor={Theme.Color.Background}
-          noPaddingTop
           TextColor={Theme.Color.Sunset}
         >
-          <BasicInner>
             <LargeTextBlock>
-              <Number className="h1">04</Number>
-              <div className="h4">Encourage the qualities of</div>
-              <div className="headline txt-clr-eggplant">
-                Inquisitiveness Self Reliance &amp; Self Confidence
+              <BasicInner>
+                <Number className="h1">04</Number>
+                <div className="h4">Encourage the qualities of</div>
+                <div className="headline txt-clr-eggplant">
+                  Inquisitiveness Self Reliance &amp; Self Confidence
+                </div>
+                <div className="h4">In children &amp; in everybody.</div>
+              </BasicInner>
+              <div className="absolute-image">
+                <ImgMatch src="gears.png" />
               </div>
-              <div className="h4">In children &amp; in everybody.</div>
             </LargeTextBlock>
-          </BasicInner>
         </BasicSection>
 
-        <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
+        <BasicSection BgColor={Theme.Color.Background} noPaddingTop BorderMiddle>
           <Carousel>
             <Marquee />
           </Carousel>
         </BasicSection>
 
-        <BasicSection BgColor={Theme.Color.Background}>
+        <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
           <BasicInner>
             <LegoList />
           </BasicInner>
