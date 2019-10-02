@@ -19,6 +19,7 @@ import Btn from 'components/library/Btn';
 // Sections
 import LocationCoordinators from 'sections/LocationCoordinators';
 import LocationSplitSection from 'sections/LocationSplitSection';
+import LocationEvents from 'sections/LocationEvents';
 
 // Styles
 import { Hero, Spacer, Intro } from './styles.scss';
@@ -130,6 +131,8 @@ const LocationDetail = () => {
       <LocationSplitSection />
 
       <LocationCoordinators cities={Cities} />
+
+      <LocationEvents />
 
       <Section bg="Dino" pt={12} pb={12} />
     </Layout>
