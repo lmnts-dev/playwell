@@ -33,6 +33,7 @@ const HeroProps = {
   BgAlt: 'Placeholder Image Alt',
   playButtonBg: 'Nova',
   gear: true,
+  textAlign: 'left',
 };
 
 // Render Page

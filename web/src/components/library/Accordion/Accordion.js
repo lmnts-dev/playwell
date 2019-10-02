@@ -1,5 +1,6 @@
-// HeroContainer Component:
-// Outer Hero containment/wrapper
+// <Accordion /> component:
+// Accordion with empty children for custom laouts
+// todo: style props for border, text,
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -55,7 +56,9 @@ const Accordion = ({ children, location }) => {
           ref={content}
           style={{ maxHeight: `${setHeight}` }}
         >
-          <AccordionContainer.Content.Inner>{children}</AccordionContainer.Content.Inner>
+          <AccordionContainer.Content.Inner>
+            {children}
+          </AccordionContainer.Content.Inner>
         </AccordionContainer.Content>
       </AccordionContainer.Inner>
     </AccordionContainer>

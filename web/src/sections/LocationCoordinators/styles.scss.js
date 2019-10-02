@@ -8,8 +8,6 @@ import styled from 'styled-components';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
-import Section from 'components/library/Elements/Section';
-import Btn from 'components/library/Btn';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -22,13 +20,19 @@ export const Article = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  background: ${Theme.Color.White};
+  padding: calc(${Root.Size} / 2);
   width: 100%;
+
+  @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding: calc(${Root.Size} / 3);
+  }
 `;
 
 Article.Info = styled.div`
   display: flex;
-  padding-left: calc(${Root.Size} / 1);
-  width: 80%;
+  padding-left: calc(${Root.Size} / 2);
+  width: 75%;
 
   @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
     padding-left: calc(${Root.Size} / 3);
@@ -38,8 +42,8 @@ Article.Info = styled.div`
 
 Article.Figure = styled.figure`
   margin: 0;
-  width: 20%;
-  height: 20%;
+  width: 25%;
+  height: 25%;
 
   @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
     width: 15%;

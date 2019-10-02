@@ -33,7 +33,8 @@ Hero.Inner = styled(Box)`
   padding-left: ${Root.Grid.Gutter.Left};
   overflow-x: visible;
 
-  @media (min-width: ${Base.Media.Width.Md + 'px'}) {}
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+  }
 `;
 
 Hero.Tags = styled.ul`

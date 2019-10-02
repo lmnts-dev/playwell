@@ -1,5 +1,6 @@
-// Location Detail Temlate:
+// Location detail template:
 // This is the data template for the Locations Detail page
+// todo: make <Spacer /> a component
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -38,6 +39,7 @@ const ThemeProps = {
 
 // Render Page
 const LocationDetail = () => {
+  // Temporary placeholder
   const data = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "locations-hero.jpg" }) {
@@ -105,6 +107,7 @@ const LocationDetail = () => {
         />
       </Section>
 
+      {/* // Vertical dashed spacer */}
       <Spacer>
         <Spacer.Line />
       </Spacer>
@@ -126,18 +129,7 @@ const LocationDetail = () => {
 
       <LocationSplitSection />
 
-      <Section textAlign="left">
-        <Flex flexWrap="wrap">
-          <Box width={[1, 1, 1 / 2, 4 / 10]} pr={[0, 0, 0, 12]}>
-            <Text as="h2" color="Dino">
-              Coordinators in STATE
-            </Text>
-          </Box>
-          <Box width={[1, 1, 1 / 2, 6 / 10]}>
-            <LocationCoordinators cities={Cities} />
-          </Box>
-        </Flex>
-      </Section>
+      <LocationCoordinators cities={Cities} />
 
       <Section bg="Dino" pt={12} pb={12} />
     </Layout>
@@ -167,6 +159,24 @@ const Cities = [
   {
     id: 2,
     city: 'Benson',
+    state: 'arizona',
+    role: 'manager',
+    name: 'Jennifer Gaona',
+    email: 'jen@gaonoa.com',
+    phone: '+1 123 456 7890',
+  },
+  {
+    id: 3,
+    city: 'Buckeye',
+    state: 'arizona',
+    role: 'manager',
+    name: 'Jennifer Gaona',
+    email: 'jen@gaonoa.com',
+    phone: '+1 123 456 7890',
+  },
+  {
+    id: 4,
+    city: 'Carefree',
     state: 'arizona',
     role: 'manager',
     name: 'Jennifer Gaona',

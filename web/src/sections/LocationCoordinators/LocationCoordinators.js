@@ -1,5 +1,5 @@
-// HomeIntro.js:
-// Homepage introduction
+// <LocationCoordinators /> section:
+// Location detail template coordinator accordion
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -11,9 +11,8 @@ import Img from 'gatsby-image';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
+import Section from 'components/library/Elements/Section';
 import Accordion from 'components/library/Accordion';
-
-// Sections
 
 // Styles
 import { Article } from './styles.scss';
@@ -37,42 +36,57 @@ const LocationCoordinators = ({ cities }) => {
     }
   `);
 
-  // Render Page
+  // Render page
   return (
-    <>
-      {cities.map(city => (
-        <Accordion location={city.city}>
-          <Article key={city.id}>
-            <Article.Figure>
-              <Img
-                fluid={data.file.childImageSharp.fluid}
-                objectFit="contain"
-                alt="STEM Education &amp; Engineering in"
-              />
-            </Article.Figure>
-            <Article.Info>
-              <Flex flexWrap="wrap">
-                <Article.Info.Details>
-                  {city.state} <span>{city.role}</span>
-                </Article.Info.Details>
-                <Article.Info.Name fontSize="1.6rem">
-                  {city.name}
-                </Article.Info.Name>
-                <Article.Info.Contact>
-                  <span>
-                    <a href={'mailto:' + city.email}>{city.email}</a>
-                  </span>
-                  <span><a href={'tel:' + city.phone}>{city.phone}</a></span>
-                  <span>
-                    <a href="/">More</a>
-                  </span>
-                </Article.Info.Contact>
-              </Flex>
-            </Article.Info>
-          </Article>
-        </Accordion>
-      ))}
-    </>
+    <Section textAlign="left">
+      <Flex flexWrap="wrap" px={[0, 0, 4, 6]}>
+        <Box
+          width={[1, 1, 1 / 2, 4 / 10]}
+          pr={[0, 0, 0, 12]}
+          pb={'var(--Size)'}
+        >
+          <Text as="h2" color="Dino">
+            Coordinators in Arizona
+          </Text>
+        </Box>
+        <Box width={[1, 1, 1 / 2, 6 / 10]}>
+          {cities.map(city => (
+            <Accordion location={city.city}>
+              <Article key={city.id}>
+                <Article.Figure>
+                  <Img
+                    fluid={data.file.childImageSharp.fluid}
+                    objectFit="contain"
+                    alt="STEM Education &amp; Engineering in"
+                  />
+                </Article.Figure>
+                <Article.Info>
+                  <Flex flexWrap="wrap">
+                    <Article.Info.Details>
+                      {city.state} <span>{city.role}</span>
+                    </Article.Info.Details>
+                    <Article.Info.Name fontSize="1.6rem">
+                      {city.name}
+                    </Article.Info.Name>
+                    <Article.Info.Contact>
+                      <span>
+                        <a href={'mailto:' + city.email}>{city.email}</a>
+                      </span>
+                      <span>
+                        <a href={'tel:' + city.phone}>{city.phone}</a>
+                      </span>
+                      <span>
+                        <a href="/">More</a>
+                      </span>
+                    </Article.Info.Contact>
+                  </Flex>
+                </Article.Info>
+              </Article>
+            </Accordion>
+          ))}
+        </Box>
+      </Flex>
+    </Section>
   );
 };
 

@@ -1,5 +1,5 @@
-// HeroContainer Styles:
-// Outer container styles for Hero variations
+// <Accordion /> Styles:
+// Accordion component styles
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -13,7 +13,6 @@ import { Base } from 'constants/styles/Base';
 
 // Components
 import { Box, Flex } from 'components/library/Elements';
-import Section from 'components/library/Elements/Section';
 import { Icon } from 'components/library/Icons';
 
 // Helpers
@@ -45,39 +44,36 @@ AccordionContainer.Icon = styled(Icon)`
 AccordionContainer.Accordion = styled.button`
   align-items: center;
   background: transparent;
-  color: ${Theme.Color.Dino};
+  color: ${hexToRGB(Theme.Color.Dino, 0.7)};
   cursor: pointer;
   display: flex;
   border: none;
   outline: none;
-  padding: calc(${Root.Size} / 3) calc(${Root.Size} / 4);
+  padding: calc(${Root.Size} / 2) calc(${Root.Size} / 3);
   transition: background-color 0.6s ease;
+
+  @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding: calc(${Root.Size} / 3) calc(${Root.Size} / 4);
+  }
 
   &:last-child {
     margin-bottom: 0;
   }
 
-  .active {
-    color: ${hexToRGB(Theme.Color.Dino, 0.7)};
+  &.active {
+    color: ${Theme.Color.Dino};
   }
 `;
 
 AccordionContainer.Content = styled(Box)`
   overflow: hidden;
   transition: max-height 0.6s ease;
-  /* padding: calc(${Root.Size} / 3 ); */
   border-bottom: 1px solid ${hexToRGB(Theme.Color.Sunlight, 0.5)};
 `;
 
 AccordionContainer.Content.Inner = styled.div`
-  background: ${Theme.Color.White};
   border-radius: calc(${Root.Radius} / 3);
   margin-bottom: calc(${Root.Size} / 3 );
-  padding: calc(${Root.Size} / 1);
-
-  @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
-    padding: calc(${Root.Size} / 3);
-  }
 `;
 
 //////////////////////////////////////////////////////////////////////
