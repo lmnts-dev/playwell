@@ -28,28 +28,26 @@ QuoteContainer.Quote = styled(Text)`
   &:before {
     content: '"';
     color: ${Theme.Color.Primary};
-    font-size: 4rem;
+    font-size: 3rem;
     position: absolute;
     top: -40px;
-    left: 48%;
+    left: -20px;
 
     @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-      top: -30px;
-      left: -20px;
+      font-size: 4rem;
     }
   }
 
   &:after {
     content: '"';
     color: ${Theme.Color.Primary};
-    font-size: 4rem;
+    font-size: 3rem;
     position: absolute;
-    bottom: -70px;
-    right: 46%;
+    bottom: -60px;
+    right: -20px;
 
     @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-      bottom: -60px;
-      right: -20px;
+      font-size: 4rem;
     }
   }
 `;
