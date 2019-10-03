@@ -31,7 +31,7 @@ const LocationSplitSection = () => (
   <>
     <SplitSection Flex="row-reverse">
       <Block
-        Padding={[1, 1, 1, 1]}
+        Padding={[2, 2, 2, 2]}
         Width={0.5}
         BgColor={Theme.Color.White}
         TextColor={Theme.Color.Nightsky}
@@ -66,7 +66,7 @@ const LocationSplitSection = () => (
 
     <SplitSection Flex="row">
       <Block
-        Padding={[1, 1, 1, 1]}
+        Padding={[2, 2, 2, 2]}
         Width={0.5}
         BgColor={Theme.Color.White}
         TextColor={Theme.Color.Nightsky}

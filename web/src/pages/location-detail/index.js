@@ -21,6 +21,7 @@ import { Icon } from 'components/library/Icons';
 import LocationCoordinators from 'sections/LocationCoordinators';
 import LocationSplitSection from 'sections/LocationSplitSection';
 import LocationEvents from 'sections/LocationEvents';
+import Quote from 'sections/Quote';
 
 import LegoList from 'components/library/Section/LegoList';
 
@@ -127,6 +128,12 @@ const LocationDetail = () => (
     <Section bg="White">
       <LegoList />
     </Section>
+
+    <Quote color="Sunset">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra
+      enim sed magna vestibulum, nec imperdiet orci egestas. Sed in magna
+      sapien.
+    </Quote>
 
     <Section bg="Dino" pt={12} pb={12} />
   </Layout>
