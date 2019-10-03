@@ -7,7 +7,7 @@
 
 // Core
 import React from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { Link } from 'gatsby';
 import ImgMatch from 'components/core/ImgMatch';
 
 // Components
