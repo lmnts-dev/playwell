@@ -29,7 +29,6 @@ const LegoListStyles = styled.div`
   .item {
     text-align: center;
     margin-right: calc(${Root.Size});
-    color: ${Theme.Color.Dino};
     flex: 1;
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
       margin-right: calc(${Root.Size} / 2);

@@ -638,9 +638,16 @@ const WhoPage = ({
           </BasicInner>
         </Partners>
       </BasicSection>
-      <BasicSection BgColor={Theme.Color.White} BorderTop="true">
+      <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino} BorderTop>
         <BasicInner>
-          <LegoList />
+          <LegoList 
+            TitleOne="Creative Collaboration" 
+            TitleTwo="New Perspectives" 
+            TitleThree="Staff Morale" 
+            TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
+            TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution." 
+            TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."          
+          />
         </BasicInner>
       </BasicSection>
       <BasicSection

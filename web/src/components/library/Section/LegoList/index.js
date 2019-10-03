@@ -18,35 +18,35 @@ import LegoListStyles from './styles.scss';
 //////////////////////////////////////////////////////////////////////
 
 export const LegoList = ({
-    children
+    TitleOne,
+    TitleTwo,
+    TitleThree,
+    TextOne,
+    TextTwo,
+    TextThree
 }) => (
     <LegoListStyles>
         <div className="item">
             <Icon Name="basicLego" Color="orange" />
-            <div className="h6">Creative Collaboration</div>
+            <div className="h6">{TitleOne}</div>
             <p>
-            A greater sense of understanding and connection between your
-            staff, as they will now know how others play, and in turn, how
-            they best work.
+                {TextOne}
             </p>
         </div>
         <div className="item">
             <Icon Name="basicLego" Color="purple" />
-            <div className="h6">New Perspectives</div>
+            <div className="h6">{TitleTwo}</div>
             <p>
-            A willingness to tackle problems from a play perspective,
-            embracing failure as part of the process of finding the solution.
+                {TextTwo}
             </p>
         </div>
         <div className="item">
             <Icon Name="basicLego" Color="blue" />
-            <div className="h6">Staff Morale</div>
+            <div className="h6">{TitleThree}</div>
             <p>
-            A rejuvenated staff who rediscovers what they find fun about
-            their job and their organization.
+                {TextThree}
             </p>
         </div>
-        {children}
     </LegoListStyles>
 );
 
