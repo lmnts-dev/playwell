@@ -36,7 +36,7 @@ const LocationSplitSection = () => (
         BgColor={Theme.Color.White}
         TextColor={Theme.Color.Nightsky}
       >
-        <Text as="span" color="Galaxy" fontSize={[1, 2, 2]} mb={1}>
+        <Text as="span" color="Galaxy" fontSize={[1, 2, 2]} fontWeight={700} mb={1}>
           Do it yourself
         </Text>
         <Text as="h2" color="Sunset">
@@ -71,7 +71,7 @@ const LocationSplitSection = () => (
         BgColor={Theme.Color.White}
         TextColor={Theme.Color.Nightsky}
       >
-        <Text as="span" color="Galaxy" fontSize={[1, 2, 2]} mb={1}>
+        <Text as="span" color="Galaxy" fontSize={[1, 2, 2]} fontWeight={700} mb={1}>
           Playing since 1997
         </Text>
         <Text as="h2" color="Sunset">

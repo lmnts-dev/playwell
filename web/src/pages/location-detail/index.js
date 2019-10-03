@@ -15,14 +15,17 @@ import Layout from 'components/core/Layout';
 import Section from 'components/library/Elements/Section';
 import { Box, Flex, Text } from 'components/library/Elements';
 import Btn from 'components/library/Btn';
+import { Icon } from 'components/library/Icons';
 
 // Sections
 import LocationCoordinators from 'sections/LocationCoordinators';
 import LocationSplitSection from 'sections/LocationSplitSection';
 import LocationEvents from 'sections/LocationEvents';
 
+import LegoList from 'components/library/Section/LegoList';
+
 // Styles
-import { Hero, Spacer, Intro } from './styles.scss';
+import { Hero, Spacer, Intro, LegoListStyles } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -120,6 +123,10 @@ const LocationDetail = () => (
     <LocationCoordinators cities={Cities} />
 
     <LocationEvents />
+
+    <Section bg="White">
+      <LegoList />
+    </Section>
 
     <Section bg="Dino" pt={12} pb={12} />
   </Layout>

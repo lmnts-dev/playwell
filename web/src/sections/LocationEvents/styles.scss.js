@@ -21,9 +21,13 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Events = styled.div`
+export const Events = styled(Box)`
+  display: flex;
+  flex-wrap: wrap;
   background: ${Theme.Color.Background};
   border-top: 1px solid ${hexToRGB(Theme.Color.Nova, 0.3)};
+  padding-top: calc(${Root.Grid.Gutter.Top} * 4);
 `;
+
 //////////////////////////////////////////////////////////////////////
 // End Styles

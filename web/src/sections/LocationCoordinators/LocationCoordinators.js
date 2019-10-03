@@ -40,7 +40,7 @@ const LocationCoordinators = ({ cities }) => {
   return (
     <Section textAlign="left">
       {/* todo: make styled components */}
-      <Flex flexWrap="wrap" px={[0, 0, 4, 6]}>
+      <Flex flexWrap="wrap">
         <Box
           width={[1, 1, 1 / 2, 4 / 10]}
           pr={[0, 0, 0, 12]}

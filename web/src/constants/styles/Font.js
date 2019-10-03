@@ -115,13 +115,13 @@ export const Typography = createGlobalStyle`
   /* Paragraph Styles */
   p {
     font-family: ${Font.Body};
-    line-height: 1.4;
     font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.4;
     letter-spacing: -0.2px;
 
     &.lead {
       font-size: 1.4rem;
-      font-weight: 500;
     }
   }
 

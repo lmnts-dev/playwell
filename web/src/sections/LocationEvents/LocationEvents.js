@@ -26,21 +26,21 @@ import { Theme, Root } from 'constants/Theme';
 const LocationEvents = () => {
   // Render page
   return (
-    <Events>
-      <Section textAlign="left">
-        <Flex flexWrap="wrap" px={[0, 0, 4, 6]}>
-          <Box width={[1, 1, 1 / 2, 4 / 10]} pr={4} pb={'var(--Size)'}>
-            <Text as="h2" color="Dino">
-              STEM &amp; Engineering Events Happening in Arizona
-            </Text>
-          </Box>
-          <Box width={[1, 1, 1 / 2, 6 / 10]}>
-            .<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.
-            <br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />
-          </Box>
-        </Flex>
-      </Section>
-    </Events>
+    <Section textAlign="left" pt={0}>
+      <Events pt={[4, 4, 8, 8]}>
+        <Box width={[1, 1, 1 / 2, 4 / 10]} pr={4} pb={'var(--Size)'}>
+          <Text as="h2" color="Dino">
+            STEM &amp; Engineering Events Happening in Arizona
+          </Text>
+        </Box>
+        <Box width={[1, 1, 1 / 2, 6 / 10]}>
+          .<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.
+          <br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.
+          <br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.<br />.
+          <br />.<br />
+        </Box>
+      </Events>
+    </Section>
   );
 };
 
