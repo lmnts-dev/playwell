@@ -16,7 +16,7 @@ import { Box, Flex } from 'components/library/Elements';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Scroll = styled.div`
+export const Container = styled.div`
   align-self: flex-end;
   text-align: left;
   position: relative;
@@ -41,7 +41,7 @@ export const Scroll = styled.div`
   }
 `;
 
-Scroll.Inner = styled(Box)`
+Container.Inner = styled(Box)`
   width: 100%;
   max-width: ${Theme.Base.Grid.SiteWidth};
   /* height: 0; */
@@ -62,7 +62,7 @@ Scroll.Inner = styled(Box)`
   }
 `;
 
-Scroll.Positioner = styled.div`
+Container.Positioner = styled.div`
   width: fit-content;
   text-align: center;
   position: relative;
@@ -70,7 +70,7 @@ Scroll.Positioner = styled.div`
   z-index: 9;
 `;
 
-Scroll.Line = styled.div`
+Container.Line = styled.div`
   border-left: 1px dashed ${p => p.theme.Color.Primary};
   display: block;
   width: 0;

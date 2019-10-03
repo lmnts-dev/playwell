@@ -1,5 +1,5 @@
-// Section Component:
-// Section grid container
+// <Spacer /> Component:
+// Vertical dashed spacer
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -9,20 +9,20 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 // Styles
-import { Scroll } from './styles.scss';
+import { Container } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
 const Spacer = ({ children, indent }) => (
-  <Scroll indent={indent}>
-    <Scroll.Inner>
-      <Scroll.Positioner>
+  <Container indent={indent}>
+    <Container.Inner>
+      <Container.Positioner>
         <span>{children}</span>
-        <Scroll.Line />
-      </Scroll.Positioner>
-    </Scroll.Inner>
-  </Scroll>
+        <Container.Line />
+      </Container.Positioner>
+    </Container.Inner>
+  </Container>
 );
 
 Spacer.defaultProps = {};
