@@ -93,18 +93,16 @@ export const BasicInnerStyle = styled.div`
   margin: 0 auto;
   position: relative;
   max-width: ${Root.Site.Width};
-  padding: 0 calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 2) 0
-    calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 2);
-  @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-    padding: 0 calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 1) 0
-      calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 1);
-  }
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    padding: 0 calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 0.5) 0
+  padding: 0 calc(${Root.Grid.Gutter.Right});
+
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+    padding: 0 calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 0.25) 0
       calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 0.25);
   }
-  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-    padding: 0 calc(${Root.Grid.Gutter.Right});
+
+  @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+    padding: 0 calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 1) 0
+      calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 1);
   }
 
   ${props =>

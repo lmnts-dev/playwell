@@ -41,29 +41,29 @@ Container.Inner = styled(Box)`
   margin: 0 auto;
   overflow-x: visible;
   position: relative;
-  padding-right: ${Root.Grid.Gutter.Right};
-  padding-left: ${Root.Grid.Gutter.Left};
+  padding-right: ${props => (props.fullWidth ? '0' : Root.Grid.Gutter.Right)};
+  padding-left: ${props => (props.fullWidth ? '0' : Root.Grid.Gutter.Left)};
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     padding-right: ${props =>
       props.fullWidth
-        ? Root.Grid.Gutter.Right
+        ? '0'
         : `calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 0.25)`};
     padding-left: ${props =>
       props.fullWidth
-        ? Root.Grid.Gutter.Left
+        ? '0'
         : `calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 0.25)`};
   }
 
   @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
     padding-right: ${props =>
       props.fullWidth
-        ? Root.Grid.Gutter.Right
-        : `calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 2)`};
+        ? '0'
+        : `calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 1)`};
     padding-left: ${props =>
       props.fullWidth
-        ? Root.Grid.Gutter.Left
-        : `calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 2)`};
+        ? '0'
+        : `calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 1)`};
   }
 `;
 
