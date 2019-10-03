@@ -530,7 +530,7 @@ const WhoPage = ({
           />
         </BasicInner>
       </BasicSection>
-      
+
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Eggplant}
@@ -550,6 +550,7 @@ const WhoPage = ({
           </FooterExt>
         </BasicInner>
       </BasicSection>
+
     </Layout>
   );
 };

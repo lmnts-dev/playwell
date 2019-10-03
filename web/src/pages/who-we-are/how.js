@@ -164,6 +164,37 @@ const AccordianFeature = styled.div`
   }
 `
 
+const SplitTextBoxes = styled.div`
+  width: 100%;
+  background: linear-gradient( to right, ${Theme.Color.Eggplant} 50%, ${Theme.Color.Sunset} 50%);
+
+  .basic-inner {
+    display: flex;
+    flex-direction: row;
+
+    .container {
+      flex: 1;
+      padding: calc(${Root.Size} * 2) 0;
+
+      &:first-of-type {
+        padding-right: calc(${Root.Size} * 2);
+      }
+
+      &:last-of-type {
+        padding-left: calc(${Root.Size} * 2);
+      }
+
+      .h6, .h3 {
+        font-weight: 700;
+      }
+
+      .h3 {
+        padding: calc(${Root.Size} / 8) 0;
+      }
+    }
+  }
+`
+
 // Render Page
 const WhoHowPage = () => {
     return (
@@ -356,6 +387,50 @@ const WhoHowPage = () => {
               ButtonDest="/"
             />
           </BasicInner>
+        </BasicSection>
+
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Whitet}
+        >
+          <SplitTextBoxes>
+            <BasicInner>
+              <div className="container">
+                <div className="h6">
+                  Playing anywhere
+                </div>
+                <div className="h3">
+                  Find a program near you
+                </div>
+                <p className="p-lg">
+                  Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.
+                </p>
+                <Btn
+                  Label="Expore Programs"
+                  BgColor={Theme.Color.Nova}
+                  TextColor={Theme.Color.White}
+                  Destination="/"
+                />
+              </div>
+              <div className="container">
+                <div className="h6">
+                  Do it Yourself
+                </div>
+                <div className="h3">
+                  Host Your Own Program
+                </div>
+                <p className="p-lg">
+                  Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.
+                </p>
+                <Btn
+                  Label="Learn How"
+                  BgColor={Theme.Color.Nova}
+                  TextColor={Theme.Color.White}
+                  Destination="/"
+                />
+              </div>
+              </BasicInner>
+            </SplitTextBoxes>
         </BasicSection>
 
       </Layout>
