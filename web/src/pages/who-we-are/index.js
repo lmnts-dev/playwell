@@ -21,6 +21,7 @@ import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurve
 import  { BasicSection, BasicInner } from 'components/library/Section/BasicSection';
 import LegoList from 'components/library/Section/LegoList';
 import Marquee from 'components/library/Section/Marquee';
+import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 // Styles
 
 // Constants
@@ -201,118 +202,6 @@ const ImageWithTextCard = styled.div`
     }
     .gatsby-image-wrapper {
       height: 100%;
-    }
-  }
-`;
-
-const ImageWithText = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    display: block;
-  }
-
-  .ico-swoop {
-    position: absolute;
-    height: calc(100% + calc(${Root.Size} * 2));
-    right: calc(calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 2)) * -1);
-    top: calc(${Root.Size} * -1);
-    width: calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 4));
-    svg {
-      height: 100%;
-      width: 100%;
-      path {
-        fill: ${Theme.Color.Galaxy};
-      }
-    }
-
-    @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
-      height: calc(100% + calc(${Root.Size}));
-      top: calc(${Root.Size} * -0.5);
-      width: auto;
-      right: 0;
-      svg {
-        width: auto;
-      }
-    }
-
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      height: 80%;
-      top: 10%;
-    }
-
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      display: none;
-    }
-  }
-
-  .text,
-  .image {
-    flex: 1;
-  }
-
-  .text {
-    max-width: calc(${Root.Size} * 7);
-    margin-right: calc(${Root.Size});
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      max-width: none;
-    }
-
-    .h2,
-    .h6 {
-      font-weight: 700;
-
-      &.txt-clr-sunset {
-        color: ${Theme.Color.Sunset};
-      }
-    }
-
-    .h2 {
-      padding: calc(${Root.Size} / 6) 0;
-    }
-  }
-
-  .image {
-    height: calc(${Root.Size} * 9);
-    margin-right: calc(${Root.Size} / 2);
-    flex-shrink: 20;
-    position: relative;
-
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-
-    .ico-swoop {
-      display: none;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        display: block;
-        width: 50vw;
-        height: 100%;
-        z-index: 1;
-        svg {
-          width: 100%;
-        }
-      }
-    }
-
-    .gatsby-image-wrapper {
-      height: 100%;
-      z-index: 2;
-      position: relative;
-
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        width: 50vw;
-      }
-      > div {
-        height: 100%;
-        width: auto !important;
-        padding-bottom: 0 !important;
-      }
     }
   }
 `;
@@ -498,6 +387,7 @@ const WhoPage = ({
           </div>
         </TopCarousel>
       </BasicSection>
+
       <BasicSection
         noPaddingRight
         BgColor={Theme.Color.Background}
@@ -509,31 +399,20 @@ const WhoPage = ({
           </CenteredTitle>
         </BasicInner>
         <BasicInner noPaddingRight>
-          <ImageWithText>
-            <Icon Name="swoop" />
-            <div className="text">
-              <div className="h6">Tremendous learning mediums</div>
-              <div className="h2 txt-clr-sunset">Inspiring Play Since 1997</div>
-              <p className="p-lg">
-                Play-Well TEKnologies was founded by Tim Bowen in 1997.
-                Introduced to the LEGO® building system in 1996 and recognizing
-                it to be both a popular play medium and a tremendous learning
-                medium, Tim began to develop projects which drew on his
-                professional experience and combined the elements of fun,
-                challenge, and learning.
-              </p>
-            </div>
-            <div className="image">
-              <ImgMatch
-                objectFit="contain"
-                objectPosition="100% 50%"
-                src="gears.png"
-              />
-              <Icon Name="swoop" />
-            </div>
-          </ImageWithText>
+          <EdgeImageWithText 
+            Caption="Tremendous learning mediums" 
+            Header="Inspiring Play Since 1997"
+            Image="gears.png"
+            Paragraph="Play-Well TEKnologies was founded by Tim Bowen in 1997.
+            Introduced to the LEGO® building system in 1996 and recognizing
+            it to be both a popular play medium and a tremendous learning
+            medium, Tim began to develop projects which drew on his
+            professional experience and combined the elements of fun,
+            challenge, and learning."
+          />
         </BasicInner>
       </BasicSection>
+      
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}

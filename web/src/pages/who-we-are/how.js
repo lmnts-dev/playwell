@@ -16,6 +16,7 @@ import Btn from 'components/library/Btn';
 import ImageAccordian from 'components/library/ImageAccordian';
 import ImgMatch from 'components/core/ImgMatch';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
+import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 import Marquee from 'components/library/Section/Marquee';
 import LegoList from 'components/library/Section/LegoList';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
@@ -243,7 +244,7 @@ const WhoHowPage = () => {
           noPaddingTop
         >
           <AccordianFeature>
-            <BasicInner WideWidth>
+            <BasicInner wideWidth>
               <ul>
                 <li><a className="h6" href="/">Robotics</a></li>
                 <li><a className="h6" href="/">Intro to STEM</a></li>
@@ -323,6 +324,24 @@ const WhoHowPage = () => {
             />
           </BasicInner>
         </BasicSection>
+
+        <BasicSection
+          noPaddingRight
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Dino}
+        >
+          <BasicInner noPaddingRight>
+            <EdgeImageWithText 
+              Caption="Would you like to Play with us?" 
+              Header="Purposeful Play is for Adults too"
+              Image="gears.png"
+              Paragraph="Partnering with Play-Well for your company could bring new waves of innovation and problem solving to your team an opportunity to bring educational activities to your event, or any way you need to play."
+              ButtonText="Get In Touch"
+              ButtonDest="/"
+            />
+          </BasicInner>
+        </BasicSection>
+
       </Layout>
     );
   };
