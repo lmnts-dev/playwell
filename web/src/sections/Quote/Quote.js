@@ -1,18 +1,15 @@
-// <LocationCoordinators /> section:
-// Location detail template coordinator accordion
+// <Quote /> section:
+// Full width quote section
+// todo: break quote down into a component
 
 // Imports
 //////////////////////////////////////////////////////////////////////
 
 // Core
 import React from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
-import Section from 'components/library/Elements/Section';
-import Accordion from 'components/library/Accordion';
 
 // Styles
 import { QuoteContainer } from './styles.scss';
