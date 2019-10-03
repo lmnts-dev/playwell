@@ -566,7 +566,7 @@ const WhoPage = ({
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
-        BorderTop="true"
+        BorderTop={Theme.Color.Clay}
       >
         <BasicInner wideWidth>
           <Team>
@@ -620,7 +620,7 @@ const WhoPage = ({
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
-        BorderTop="true"
+        BorderTop={Theme.Color.Clay}
       >
         <Partners>
           <div className="h3">Our Partners</div>
@@ -638,7 +638,7 @@ const WhoPage = ({
           </BasicInner>
         </Partners>
       </BasicSection>
-      <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino} BorderTop>
+      <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino} BorderTop={Theme.Color.Clay}>
         <BasicInner>
           <LegoList 
             TitleOne="Creative Collaboration" 

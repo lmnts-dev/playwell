@@ -16,6 +16,7 @@ import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
 import Marquee from 'components/library/Section/Marquee';
 import LegoList from 'components/library/Section/LegoList';
+import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 import {
@@ -37,104 +38,6 @@ import hexToRGB from 'helpers/hexToRGB';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
-
-const Number = styled.div`
-    color: ${Theme.Color.Blush};
-    font-weight: 700;
-`
-
-const ImageWithText = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  position: relative;
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    flex-direction: column-reverse;
-  }
-
-  .image,
-  .text {
-    flex: 1;
-  }
-
-  .ico-gear {
-    position: absolute;
-    height: 140%;
-    width: 100%;
-    top: -20%;
-    right: -50%;
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      height: 130%;
-      top: -15%;
-    }
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      height: calc(${Root.Size} * 3);
-      top: auto;
-      bottom: calc(${Root.Size} * -1.5);
-    }
-
-    svg {
-      height: 100%;
-      width: auto;
-      fill: ${Theme.Color.Nova};
-    }
-  }
-
-  .image {
-    margin-right: calc(${Root.Size} / 4);
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      height: 50vw;
-      max-height: calc(${Root.Size} * 6);
-      margin-right: 0;
-    }
-
-    .gatsby-image-wrapper {
-      height: 100%;
-    }
-  }
-
-  .text {
-    .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      height: 100%;
-      padding: ${Root.Size} calc(${Root.Size} * 1.5);
-      max-width: calc(${Root.Size} * 9);
-      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-        padding: calc(${Root.Size} * 0.5);
-      }
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        max-width: none;
-      }
-
-      .h4 {
-        font-weight: 700;
-      }
-
-      p {
-        color: ${Theme.Color.Dino};
-      }
-    }
-  }
-
-  ${props =>
-    props.reversedOrder
-      ? `
-        flex-direction: row-reverse;
-        .container {
-          margin: 0 auto;
-        }
-        .image {
-          margin-right: 0;
-          margin-left: calc(${Root.Size} / 4);
-          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-            margin-left: 0;
-          }
-        }
-    `
-      : null};
-`;
 
 const LargeTextBlock = styled.div`
   text-align: center;
@@ -430,59 +333,33 @@ const WhoWhyPage = () => {
           noPaddingBottom
         >
           <BasicInner noPaddingLeft noPaddingRight>
-            <ImageWithText>
-              <div className="image">
-                <ImgMatch src="intro-smiles.jpg" />
-              </div>
-              <div className="text">
-                <div className="container">
-                  <Number className="h1">01</Number>
-                  <div className="h4">Build problem-solving skills</div>
-                  <p className="p-lg">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-                    egestas. Sed in magna sapien.
-                  </p>
-                </div>
-              </div>
-            </ImageWithText>
-            <ImageWithText reversedOrder>
+            <ImageWithTextBlock 
+              Image="intro-smiles.jpg" 
+              Header="Build problem-solving skills" 
+              Number="01"
+              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+              egestas. Sed in magna sapien." 
+            />
+            <ImageWithTextBlock 
+              reversedOrder 
+              Image="intro-smiles.jpg" 
+              Header="Provide an opportunity for creative expression" 
+              Number="06"
+              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+              egestas. Sed in magna sapien." 
+            >
               <Icon Name="gear" />
-              <div className="image">
-                <ImgMatch src="intro-smiles.jpg" />
-              </div>
-              <div className="text">
-                <div className="container">
-                  <Number className="h1">02</Number>
-                  <div className="h4">
-                    Provide an opportunity for creative expression
-                  </div>
-                  <p className="p-lg">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-                    egestas. Sed in magna sapien.
-                  </p>
-                </div>
-              </div>
-            </ImageWithText>
-            <ImageWithText>
-              <div className="image">
-                <ImgMatch src="intro-smiles.jpg" />
-              </div>
-              <div className="text">
-                <div className="container">
-                  <Number className="h1">03</Number>
-                  <div className="h4">
-                    Foster a greater appreciation of how things work
-                  </div>
-                  <p className="p-lg">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-                    egestas. Sed in magna sapien.
-                  </p>
-                </div>
-              </div>
-            </ImageWithText>
+            </ImageWithTextBlock>
+            <ImageWithTextBlock 
+              Image="intro-smiles.jpg" 
+              Header="Foster a greater appreciation of how things work" 
+              Number="03"
+              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+              egestas. Sed in magna sapien." 
+            />
           </BasicInner>
         </BasicSection>
 

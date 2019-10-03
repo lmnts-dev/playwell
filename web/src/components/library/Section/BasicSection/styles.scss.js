@@ -36,12 +36,13 @@ export const BasicSectionStyle = styled.div`
       calc(${Root.Grid.Gutter.Bottom}) 0;
   }
   ${props => (props.BorderTop || props.BorderMiddle ) ? `
-    background-image: linear-gradient(to right, ` + Theme.Color.Clay + ` 50%, rgba(255,255,255,0) 0%);
-    background-position: bottom;
+    background-image: linear-gradient(to right, ` + props.BorderTop + ` 50%, rgba(255,255,255,0) 0%);
+    background-position: top;
     background-size: 10px 1px;
     background-repeat: repeat-x;
   `
   : null};
+
   ${props => props.BorderMiddle ? 'background-position: left center;' : null};
   ${props => props.noPaddingBottom ? 'padding-bottom: 0 !important;' : null};
   ${props => (props.noPaddingTop ? 'padding-top: 0 !important;' : null)};

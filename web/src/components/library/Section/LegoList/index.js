@@ -1,5 +1,5 @@
-// MasonrySection Component:
-// This is a component for a MasonryGrid of Widgets.
+// LegoList Component:
+// This is a section for three components of lego, headline and text.
 
 // Imports
 //////////////////////////////////////////////////////////////////////
