@@ -59,4 +59,26 @@ module.exports = [
       },
     },
   },
+  {
+    lhr: {
+      // Our interstitial error handling used to be quite aggressive, so we'll test a page
+      // that has a bad iframe to make sure LH audits successfully.
+      // https://github.com/GoogleChrome/lighthouse/issues/9562
+      requestedUrl: 'http://localhost:10200/badssl-iframe.html',
+      finalUrl: 'http://localhost:10200/badssl-iframe.html',
+      audits: {
+        'first-contentful-paint': {
+          scoreDisplayMode: 'numeric',
+        },
+      },
+    },
+    artifacts: {
+      devtoolsLogs: {
+        defaultPass: NONEMPTY_ARRAY,
+      },
+      traces: {
+        defaultPass: {traceEvents: NONEMPTY_ARRAY},
+      },
+    },
+  },
 ];

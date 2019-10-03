@@ -22,7 +22,7 @@ const UIStrings = {
   description: 'Link text (and alternate text for images, when used as links) that is ' +
       'discernible, unique, and focusable improves the navigation experience for ' +
       'screen reader users. ' +
-      '[Learn more](https://dequeuniversity.com/rules/axe/3.1/link-name?application=lighthouse).',
+      '[Learn more](https://web.dev/link-name/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

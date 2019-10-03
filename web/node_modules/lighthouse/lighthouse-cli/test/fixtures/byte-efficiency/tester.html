@@ -158,9 +158,9 @@ setTimeout(() => {
 // PASS: unused but too small savings
 generateInlineStyleWithSize(512, '.too-small { background: none; }\n');
 // PASS: used
-generateInlineStyleWithSize(5000, '.mostly-used { background: none; }\n', true);
+generateInlineStyleWithSize(12000, '.mostly-used { background: none; }\n', true);
 // FAIL: unused and a bit of savings
-generateInlineStyleWithSize(5000, '.kinda-unused { background: none; }\n');
+generateInlineStyleWithSize(12000, '.kinda-unused { background: none; }\n');
 // FAIL: unused and lots of savings
 generateInlineStyleWithSize(30000, '.definitely-unused { background: none; }\n');
 </script>

@@ -125,8 +125,15 @@ export const Typography = createGlobalStyle`
     }
   }
 
+  .p-lg {
+    font-family: ${Font.Body};
+    line-height: 1.4;
+    font-size: 1.2rem;
+    letter-spacing: -0.2px;
+  }
+
   /* Header Styles */
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, .headline {
     font-family: ${Font.Header};
     line-height: 1.1;
     padding: 0;
@@ -160,6 +167,13 @@ export const Typography = createGlobalStyle`
   }
   h6, .h6 {
     font-size: 1.5rem;
+  }
+
+  .headline {
+    font-size: 7.25rem;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      font-size: 4rem;
+    }
   }
 
   h1, h2, h3, h4, h5, h6, p { padding-bottom: calc(var(--Size) / 3.5); }

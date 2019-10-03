@@ -162,13 +162,16 @@ function findInheritedCSSRule(inheritedEntries = []) {
  * @param {LH.Crdp.CSS.GetMatchedStylesForNodeResponse} matched CSS rules
  * @returns {NodeFontData['cssRule']|undefined}
  */
-function getEffectiveFontRule({inlineStyle, matchedCSSRules, inherited}) {
+function getEffectiveFontRule({attributesStyle, inlineStyle, matchedCSSRules, inherited}) {
   // Inline styles have highest priority
   if (hasFontSizeDeclaration(inlineStyle)) return {type: 'Inline', ...inlineStyle};
 
   // Rules directly referencing the node come next
   const matchedRule = findMostSpecificMatchedCSSRule(matchedCSSRules);
   if (matchedRule) return matchedRule;
+
+  // Then comes attributes styles (<font size="1">)
+  if (hasFontSizeDeclaration(attributesStyle)) return {type: 'Attributes', ...attributesStyle};
 
   // Finally, find an inherited property if there is one
   const inheritedRule = findInheritedCSSRule(inherited);

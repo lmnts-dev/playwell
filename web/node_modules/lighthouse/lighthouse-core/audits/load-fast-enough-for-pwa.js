@@ -27,12 +27,16 @@ const UIStrings = {
   /** Imperative title of a Lighthouse audit that tells the user that their page has loaded fast enough to be considered a Progressive Web App. This imperative title is shown to users when the web page has loaded too slowly to be considered a Progressive Web App. */
   failureTitle: 'Page load is not fast enough on mobile networks',
   /** Description of a Lighthouse audit that tells the user *why* they need to load fast enough on mobile networks. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
-  description: 'A fast page load over a cellular network ensures a good mobile user experience. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/fast-3g).',
+  description: 'A fast page load over a cellular network ensures a good mobile user experience. [Learn more](https://web.dev/load-fast-enough-for-pwa).',
   /** Label for the audit identifying the time it took for the page to become interactive. */
   displayValueText: 'Interactive at {timeInMs, number, seconds}\xa0s',
   /** Label for the audit identifying the time it took for the page to become interactive on a mobile network. */
   displayValueTextWithOverride: 'Interactive on simulated mobile network at ' +
   '{timeInMs, number, seconds}\xa0s',
+  /** Explanatory message displayed when a web page loads too slowly to be considered quickly interactive. This references another Lighthouse auditing category, "Performance", that can give additional details on performance debugging.  */
+  explanationLoadSlow: 'Your page loads too slowly and is not interactive within 10 seconds. ' +
+    'Look at the opportunities and diagnostics in the "Performance" section to learn how to ' +
+    'improve.',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
@@ -86,9 +90,7 @@ class LoadFastEnough4Pwa extends Audit {
     let explanation;
     if (!score) {
       displayValue = str_(displayValueTemplate, {timeInMs: tti.timing});
-      explanation = 'Your page loads too slowly and is not interactive within 10 seconds. ' +
-        'Look at the opportunities and diagnostics in the "Performance" section to learn how to ' +
-        'improve.';
+      explanation = str_(UIStrings.explanationLoadSlow);
     }
 
     return {

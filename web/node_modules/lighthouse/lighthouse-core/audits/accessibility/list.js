@@ -23,7 +23,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they should try to pass. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Screen readers have a specific way of announcing lists. Ensuring proper list ' +
       'structure aids screen reader output. ' +
-      '[Learn more](https://dequeuniversity.com/rules/axe/3.1/list?application=lighthouse).',
+      '[Learn more](https://web.dev/list/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

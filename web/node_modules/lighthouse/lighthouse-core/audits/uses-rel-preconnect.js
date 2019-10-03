@@ -27,9 +27,12 @@ const UIStrings = {
   title: 'Preconnect to required origins',
   /** Description of a Lighthouse audit that tells the user how to connect early to third-party domains that will be used to load page resources. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description:
-    'Consider adding preconnect or dns-prefetch resource hints to establish early ' +
+    'Consider adding `preconnect` or `dns-prefetch` resource hints to establish early ' +
     `connections to important third-party origins. [Learn more](https://developers.google.com/web/fundamentals/performance/resource-prioritization#preconnect).`,
-  /** A warning message that is shown when the user tried to follow the advice of the audit, but it's not working as expected. Forgetting to set the `crossorigin` HTML attribute, or setting it to an incorrect value, on the link is a common mistake when adding preconnect links. */
+  /**
+   * @description A warning message that is shown when the user tried to follow the advice of the audit, but it's not working as expected. Forgetting to set the `crossorigin` HTML attribute, or setting it to an incorrect value, on the link is a common mistake when adding preconnect links.
+   * @example {https://example.com} securityOrigin
+   * */
   crossoriginWarning: 'A preconnect <link> was found for "{securityOrigin}" but was not used ' +
     'by the browser. Check that you are using the `crossorigin` attribute properly.',
 };

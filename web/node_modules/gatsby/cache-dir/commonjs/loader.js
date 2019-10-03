@@ -161,7 +161,7 @@ class BaseLoader {
   }
 
   loadPageDataJson(rawPath) {
-    const pagePath = (0, _findPath.cleanPath)(rawPath);
+    const pagePath = (0, _findPath.findPath)(rawPath);
 
     if (this.pageDataDb.has(pagePath)) {
       return Promise.resolve(this.pageDataDb.get(pagePath));
@@ -181,7 +181,7 @@ class BaseLoader {
 
 
   loadPage(rawPath) {
-    const pagePath = (0, _findPath.cleanPath)(rawPath);
+    const pagePath = (0, _findPath.findPath)(rawPath);
 
     if (this.pageDb.has(pagePath)) {
       const page = this.pageDb.get(pagePath);
@@ -193,18 +193,6 @@ class BaseLoader {
     }
 
     const inFlight = this.loadPageDataJson(pagePath).then(result => {
-      if (result.notFound) {
-        // if request was a 404, we should fallback to findMatchPath.
-        let foundMatchPatch = (0, _findPath.findMatchPath)(pagePath);
-
-        if (foundMatchPatch && foundMatchPatch !== pagePath) {
-          return this.loadPage(foundMatchPatch).then(pageResources => {
-            this.pageDb.set(pagePath, this.pageDb.get(foundMatchPatch));
-            return pageResources;
-          });
-        }
-      }
-
       if (result.status === `error`) {
         return {
           status: `error`
@@ -262,7 +250,7 @@ class BaseLoader {
 
 
   loadPageSync(rawPath) {
-    const pagePath = (0, _findPath.cleanPath)(rawPath);
+    const pagePath = (0, _findPath.findPath)(rawPath);
 
     if (this.pageDb.has(pagePath)) {
       return this.pageDb.get(pagePath).payload;
@@ -304,18 +292,10 @@ class BaseLoader {
       return false;
     }
 
-    const realPath = (0, _findPath.cleanPath)(pagePath); // Todo make doPrefetch logic cacheable
+    const realPath = (0, _findPath.findPath)(pagePath); // Todo make doPrefetch logic cacheable
     // eslint-disable-next-line consistent-return
 
-    this.doPrefetch(realPath).then(pageData => {
-      if (!pageData) {
-        const matchPath = (0, _findPath.findMatchPath)(realPath);
-
-        if (matchPath && matchPath !== realPath) {
-          return this.prefetch(matchPath);
-        }
-      }
-
+    this.doPrefetch(realPath).then(() => {
       if (!this.prefetchCompleted.has(pagePath)) {
         this.apiRunner(`onPostPrefetchPathname`, {
           pathname: pagePath
@@ -335,7 +315,7 @@ class BaseLoader {
   }
 
   getResourceURLsForPathname(rawPath) {
-    const pagePath = (0, _findPath.cleanPath)(rawPath);
+    const pagePath = (0, _findPath.findPath)(rawPath);
     const page = this.pageDataDb.get(pagePath);
 
     if (page) {
@@ -347,7 +327,7 @@ class BaseLoader {
   }
 
   isPageNotFound(rawPath) {
-    const pagePath = (0, _findPath.cleanPath)(rawPath);
+    const pagePath = (0, _findPath.findPath)(rawPath);
     const page = this.pageDb.get(pagePath);
     return page && page.notFound === true;
   }

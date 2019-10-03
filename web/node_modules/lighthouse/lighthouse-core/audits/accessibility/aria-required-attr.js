@@ -20,7 +20,7 @@ const UIStrings = {
   failureTitle: '`[role]`s do not have all required `[aria-*]` attributes',
   /** Description of a Lighthouse audit that tells the user *why* they should try to pass. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Some ARIA roles have required attributes that describe the state ' +
-      'of the element to screen readers. [Learn more](https://dequeuniversity.com/rules/axe/3.1/aria-required-attr?application=lighthouse).',
+      'of the element to screen readers. [Learn more](https://web.dev/aria-required-attr/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

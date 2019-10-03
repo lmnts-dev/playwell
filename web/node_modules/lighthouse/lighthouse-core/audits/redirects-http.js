@@ -6,6 +6,19 @@
 'use strict';
 
 const Audit = require('./audit.js');
+const i18n = require('../lib/i18n/i18n.js');
+
+const UIStrings = {
+  /** Title of a Lighthouse audit that provides detail on HTTP to HTTPS redirects. This descriptive title is shown to users when HTTP traffic is redirected to HTTPS. */
+  title: 'Redirects HTTP traffic to HTTPS',
+  /** Title of a Lighthouse audit that provides detail on HTTP to HTTPS redirects. This descriptive title is shown to users when HTTP traffic is not redirected to HTTPS. */
+  failureTitle: 'Does not redirect HTTP traffic to HTTPS',
+  /** Description of a Lighthouse audit that tells the user why they should direct HTTP traffic to HTTPS. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
+  description: 'If you\'ve already set up HTTPS, make sure that you redirect all HTTP ' +
+    'traffic to HTTPS in order to enable secure web features for all your users. [Learn more](https://web.dev/redirects-http).',
+};
+
+const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
 class RedirectsHTTP extends Audit {
   /**
@@ -14,10 +27,9 @@ class RedirectsHTTP extends Audit {
   static get meta() {
     return {
       id: 'redirects-http',
-      title: 'Redirects HTTP traffic to HTTPS',
-      failureTitle: 'Does not redirect HTTP traffic to HTTPS',
-      description: 'If you\'ve already set up HTTPS, make sure that you redirect all HTTP ' +
-         'traffic to HTTPS. [Learn more](https://developers.google.com/web/tools/lighthouse/audits/http-redirects-to-https).',
+      title: str_(UIStrings.title),
+      failureTitle: str_(UIStrings.failureTitle),
+      description: str_(UIStrings.description),
       requiredArtifacts: ['HTTPRedirect'],
     };
   }
@@ -34,3 +46,4 @@ class RedirectsHTTP extends Audit {
 }
 
 module.exports = RedirectsHTTP;
+module.exports.UIStrings = UIStrings;

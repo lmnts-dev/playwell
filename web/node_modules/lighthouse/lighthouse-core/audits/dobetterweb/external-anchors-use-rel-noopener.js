@@ -17,8 +17,11 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user why and how they should secure cross-origin links. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Add `rel="noopener"` or `rel="noreferrer"` to any external links to improve ' +
     'performance and prevent security vulnerabilities. ' +
-    '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/noopener).',
-  /** Warning that some links' destinations cannot be determined and therefore the audit cannot evaluate the link's safety. */
+    '[Learn more](https://web.dev/external-anchors-use-rel-noopener).',
+  /**
+   * @description Warning that some links' destinations cannot be determined and therefore the audit cannot evaluate the link's safety.
+   * @example {<a target="_blank">} anchorHTML
+   */
   warning: 'Unable to determine the destination for anchor ({anchorHTML}). ' +
     'If not used as a hyperlink, consider removing target=_blank.',
   /** Label for a column in a data table; entries will be the target attribute of a link. Each entry is either an empty string or a string like `_blank`.  */

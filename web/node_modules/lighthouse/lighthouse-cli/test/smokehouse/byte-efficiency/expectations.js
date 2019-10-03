@@ -48,7 +48,7 @@ module.exports = [
         },
         'unused-css-rules': {
           details: {
-            overallSavingsBytes: '>35000',
+            overallSavingsBytes: '>40000',
             items: {
               length: 2,
             },
@@ -132,12 +132,12 @@ module.exports = [
               },
               {
                 url: 'http://localhost:10200/byte-efficiency/script.js?gzip=1',
-                transferSize: 1136,
+                transferSize: 1158,
                 resourceSize: 52997,
               },
               {
                 url: 'http://localhost:10200/byte-efficiency/script.js',
-                transferSize: 53181,
+                transferSize: 53203,
                 resourceSize: 52997,
               },
               {

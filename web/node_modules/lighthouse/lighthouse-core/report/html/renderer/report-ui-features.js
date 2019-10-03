@@ -46,10 +46,10 @@ class ReportUIFeatures {
     this._document = this._dom.document();
     /** @type {ParentNode} */
     this._templateContext = this._dom.document();
+    /** @type {DropDown} */
+    this._dropDown = new DropDown(this._dom);
     /** @type {boolean} */
     this._copyAttempt = false;
-    /** @type {HTMLElement} */
-    this.toolsButton; // eslint-disable-line no-unused-expressions
     /** @type {HTMLElement} */
     this.topbarEl; // eslint-disable-line no-unused-expressions
     /** @type {HTMLElement} */
@@ -61,9 +61,7 @@ class ReportUIFeatures {
 
     this.onMediaQueryChange = this.onMediaQueryChange.bind(this);
     this.onCopy = this.onCopy.bind(this);
-    this.onToolsButtonClick = this.onToolsButtonClick.bind(this);
-    this.onToolAction = this.onToolAction.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onDropDownMenuClick = this.onDropDownMenuClick.bind(this);
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onChevronClick = this.onChevronClick.bind(this);
     this.collapseAllDetails = this.collapseAllDetails.bind(this);
@@ -81,7 +79,7 @@ class ReportUIFeatures {
     this.json = report;
 
     this._setupMediaQueryListeners();
-    this._setupToolsButton();
+    this._dropDown.setup(this.onDropDownMenuClick);
     this._setupThirdPartyFilter();
     this._setUpCollapseDetailsAfterPrinting();
     this._resetUIState();
@@ -203,14 +201,6 @@ class ReportUIFeatures {
   onMediaQueryChange(mql) {
     const root = this._dom.find('.lh-root', this._document);
     root.classList.toggle('lh-narrow', mql.matches);
-  }
-
-  _setupToolsButton() {
-    this.toolsButton = this._dom.find('.lh-tools__button', this._document);
-    this.toolsButton.addEventListener('click', this.onToolsButtonClick);
-
-    const dropdown = this._dom.find('.lh-tools__dropdown', this._document);
-    dropdown.addEventListener('click', this.onToolAction);
   }
 
   _setupThirdPartyFilter() {
@@ -381,27 +371,13 @@ class ReportUIFeatures {
     }
   }
 
-  closeToolsDropdown() {
-    this.toolsButton.classList.remove('active');
-  }
-
-  /**
-   * Click handler for tools button.
-   * @param {Event} e
-   */
-  onToolsButtonClick(e) {
-    e.preventDefault();
-    this.toolsButton.classList.toggle('active');
-    this._document.addEventListener('keydown', this.onKeyDown);
-  }
-
   /**
    * Resets the state of page before capturing the page for export.
    * When the user opens the exported HTML page, certain UI elements should
    * be in their closed state (not opened) and the templates should be unstamped.
    */
   _resetUIState() {
-    this.closeToolsDropdown();
+    this._dropDown.close();
     this._dom.resetTemplates();
   }
 
@@ -409,7 +385,7 @@ class ReportUIFeatures {
    * Handler for tool button.
    * @param {Event} e
    */
-  onToolAction(e) {
+  onDropDownMenuClick(e) {
     e.preventDefault();
 
     const el = /** @type {?Element} */ (e.target);
@@ -424,12 +400,10 @@ class ReportUIFeatures {
         break;
       case 'print-summary':
         this.collapseAllDetails();
-        this.closeToolsDropdown();
         this._print();
         break;
       case 'print-expanded':
         this.expandAllDetails();
-        this.closeToolsDropdown();
         this._print();
         break;
       case 'save-json': {
@@ -463,22 +437,11 @@ class ReportUIFeatures {
       }
     }
 
-    this.closeToolsDropdown();
-    this._document.removeEventListener('keydown', this.onKeyDown);
+    this._dropDown.close();
   }
 
   _print() {
     self.print();
-  }
-
-  /**
-   * Keydown handler for the document.
-   * @param {KeyboardEvent} e
-   */
-  onKeyDown(e) {
-    if (e.keyCode === 27) { // ESC
-      this.closeToolsDropdown();
-    }
   }
 
   /**
@@ -488,7 +451,7 @@ class ReportUIFeatures {
   onKeyUp(e) {
     // Ctrl+P - Expands audit details when user prints via keyboard shortcut.
     if ((e.ctrlKey || e.metaKey) && e.keyCode === 80) {
-      this.closeToolsDropdown();
+      this._dropDown.close();
     }
   }
 
@@ -649,6 +612,196 @@ class ReportUIFeatures {
     // Mutate at end to avoid layout thrashing.
     this.highlightEl.style.transform = `translate(${offset}px)`;
     this.stickyHeaderEl.classList.toggle('lh-sticky-header--visible', showStickyHeader);
+  }
+}
+
+class DropDown {
+  /**
+   * @param {DOM} dom
+   */
+  constructor(dom) {
+    /** @type {DOM} */
+    this._dom = dom;
+    /** @type {HTMLElement} */
+    this._toggleEl; // eslint-disable-line no-unused-expressions
+    /** @type {HTMLElement} */
+    this._menuEl; // eslint-disable-line no-unused-expressions
+
+    this.onDocumentKeyDown = this.onDocumentKeyDown.bind(this);
+    this.onToggleClick = this.onToggleClick.bind(this);
+    this.onToggleKeydown = this.onToggleKeydown.bind(this);
+    this.onMenuKeydown = this.onMenuKeydown.bind(this);
+
+    this._getNextMenuItem = this._getNextMenuItem.bind(this);
+    this._getNextSelectableNode = this._getNextSelectableNode.bind(this);
+    this._getPreviousMenuItem = this._getPreviousMenuItem.bind(this);
+  }
+
+  /**
+   * @param {function(MouseEvent): any} menuClickHandler
+   */
+  setup(menuClickHandler) {
+    this._toggleEl = this._dom.find('.lh-tools__button', this._dom.document());
+    this._toggleEl.addEventListener('click', this.onToggleClick);
+    this._toggleEl.addEventListener('keydown', this.onToggleKeydown);
+
+    this._menuEl = this._dom.find('.lh-tools__dropdown', this._dom.document());
+    this._menuEl.addEventListener('keydown', this.onMenuKeydown);
+    this._menuEl.addEventListener('click', menuClickHandler);
+  }
+
+  close() {
+    this._toggleEl.classList.remove('active');
+    this._toggleEl.setAttribute('aria-expanded', 'false');
+    if (this._menuEl.contains(this._dom.document().activeElement)) {
+      // Refocus on the tools button if the drop down last had focus
+      this._toggleEl.focus();
+    }
+    this._dom.document().removeEventListener('keydown', this.onDocumentKeyDown);
+  }
+
+  /**
+   * @param {HTMLElement} firstFocusElement
+   */
+  open(firstFocusElement) {
+    if (this._toggleEl.classList.contains('active')) {
+      // If the drop down is already open focus on the element
+      firstFocusElement.focus();
+    } else {
+      // Wait for drop down transition to complete so options are focusable.
+      this._menuEl.addEventListener('transitionend', () => {
+        firstFocusElement.focus();
+      }, {once: true});
+    }
+
+    this._toggleEl.classList.add('active');
+    this._toggleEl.setAttribute('aria-expanded', 'true');
+    this._dom.document().addEventListener('keydown', this.onDocumentKeyDown);
+  }
+
+  /**
+   * Click handler for tools button.
+   * @param {Event} e
+   */
+  onToggleClick(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    if (this._toggleEl.classList.contains('active')) {
+      this.close();
+    } else {
+      this.open(this._getNextMenuItem());
+    }
+  }
+
+  /**
+   * Handler for tool button.
+   * @param {KeyboardEvent} e
+   */
+  onToggleKeydown(e) {
+    switch (e.code) {
+      case 'ArrowUp':
+        e.preventDefault();
+        this.open(this._getPreviousMenuItem());
+        break;
+      case 'ArrowDown':
+      case 'Enter':
+      case ' ':
+        e.preventDefault();
+        this.open(this._getNextMenuItem());
+        break;
+      default:
+       // no op
+    }
+  }
+
+  /**
+   * Handler for tool DropDown.
+   * @param {KeyboardEvent} e
+   */
+  onMenuKeydown(e) {
+    const el = /** @type {?HTMLElement} */ (e.target);
+
+    switch (e.code) {
+      case 'ArrowUp':
+        e.preventDefault();
+        this._getPreviousMenuItem(el).focus();
+        break;
+      case 'ArrowDown':
+        e.preventDefault();
+        this._getNextMenuItem(el).focus();
+        break;
+      case 'Home':
+        e.preventDefault();
+        this._getNextMenuItem().focus();
+        break;
+      case 'End':
+        e.preventDefault();
+        this._getPreviousMenuItem().focus();
+        break;
+      default:
+       // no op
+    }
+  }
+
+  /**
+   * Keydown handler for the document.
+   * @param {KeyboardEvent} e
+   */
+  onDocumentKeyDown(e) {
+    if (e.keyCode === 27) { // ESC
+      this.close();
+    }
+  }
+
+  /**
+   * @param {Array<Node>} allNodes
+   * @param {?Node=} startNode
+   * @returns {Node}
+   */
+  _getNextSelectableNode(allNodes, startNode) {
+    const nodes = allNodes.filter((node) => {
+      if (!(node instanceof HTMLElement)) {
+        return false;
+      }
+
+      // 'Save as Gist' option may be disabled.
+      if (node.hasAttribute('disabled')) {
+        return false;
+      }
+
+      // 'Save as Gist' option may have display none.
+      if (window.getComputedStyle(node).display === 'none') {
+        return false;
+      }
+
+      return true;
+    });
+
+    let nextIndex = startNode ? (nodes.indexOf(startNode) + 1) : 0;
+    if (nextIndex >= nodes.length) {
+      nextIndex = 0;
+    }
+
+    return nodes[nextIndex];
+  }
+
+  /**
+   * @param {?Element=} startEl
+   * @returns {HTMLElement}
+   */
+  _getNextMenuItem(startEl) {
+    const nodes = Array.from(this._menuEl.childNodes);
+    return /** @type {HTMLElement} */ (this._getNextSelectableNode(nodes, startEl));
+  }
+
+  /**
+   * @param {?Element=} startEl
+   * @returns {HTMLElement}
+   */
+  _getPreviousMenuItem(startEl) {
+    const nodes = Array.from(this._menuEl.childNodes).reverse();
+    return /** @type {HTMLElement} */ (this._getNextSelectableNode(nodes, startEl));
   }
 }
 

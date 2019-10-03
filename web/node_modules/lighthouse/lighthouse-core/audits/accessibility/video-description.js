@@ -22,7 +22,7 @@ const UIStrings = {
   /** Description of a Lighthouse audit that tells the user *why* they should try to pass. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
   description: 'Audio descriptions provide relevant information for videos that dialogue ' +
       'cannot, such as facial expressions and scenes. ' +
-      '[Learn more](https://dequeuniversity.com/rules/axe/3.1/video-description?application=lighthouse).',
+      '[Learn more](https://web.dev/video-description/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

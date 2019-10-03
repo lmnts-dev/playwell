@@ -23,7 +23,7 @@ const UIStrings = {
   description: 'Captions make audio elements usable for deaf or hearing-impaired users, ' +
       'providing critical information such as who is talking, what they\'re saying, ' +
       'and other non-speech information. ' +
-      '[Learn more](https://dequeuniversity.com/rules/axe/3.1/audio-caption?application=lighthouse).',
+      '[Learn more](https://web.dev/audio-caption/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

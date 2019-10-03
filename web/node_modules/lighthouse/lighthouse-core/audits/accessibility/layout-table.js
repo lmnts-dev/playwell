@@ -25,7 +25,7 @@ const UIStrings = {
   description: 'A table being used for layout purposes should not include data elements, ' +
       'such as the th or caption elements or the summary attribute, because this can ' +
       'create a confusing experience for screen reader users. ' +
-      '[Learn more](https://dequeuniversity.com/rules/axe/3.1/layout-table?application=lighthouse).',
+      '[Learn more](https://web.dev/layout-table/).',
 };
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);

@@ -29,10 +29,10 @@ function processForProto(lhr) {
   // 'ignore unknown fields' in the language of conversion.
   if (reportJson.configSettings) {
     // The settings that are in both proto and LHR
-    const {emulatedFormFactor, locale, onlyCategories} = reportJson.configSettings;
+    const {emulatedFormFactor, locale, onlyCategories, channel} = reportJson.configSettings;
 
     // @ts-ignore - intentionally only a subset of settings.
-    reportJson.configSettings = {emulatedFormFactor, locale, onlyCategories};
+    reportJson.configSettings = {emulatedFormFactor, locale, onlyCategories, channel};
   }
 
   // Remove runtimeError if it is NO_ERROR

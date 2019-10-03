@@ -19,7 +19,7 @@ class UseLandmarks extends ManualAudit {
   static get meta() {
     return Object.assign({
       id: 'use-landmarks',
-      description: 'Landmark elements (<main>, <nav>, etc.) are used to improve the keyboard navigation of the page for assistive technology. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#take_advantage_of_headings_and_landmarks).',
+      description: 'Landmark elements (<main>, <nav>, etc.) are used to improve the keyboard navigation of the page for assistive technology. [Learn more](https://web.dev/use-landmarks/).',
       title: 'HTML5 landmark elements are used to improve navigation',
     }, super.partialMeta);
   }

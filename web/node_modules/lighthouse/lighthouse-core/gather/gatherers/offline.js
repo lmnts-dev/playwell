@@ -13,6 +13,9 @@ class Offline extends Gatherer {
    * @param {LH.Gatherer.PassContext} passContext
    */
   beforePass(passContext) {
+    // This call sets up the offline state for the page navigation of the `offlinePass` in gather-runner.
+    // gather-runner will automatically go back online before the `afterPass` phase, so no additional
+    // cleanup is necessary.
     return passContext.driver.goOffline();
   }
 
@@ -21,14 +24,13 @@ class Offline extends Gatherer {
    * @param {LH.Gatherer.LoadData} loadData
    * @return {Promise<LH.Artifacts['Offline']>}
    */
-  afterPass(passContext, loadData) {
+  async afterPass(passContext, loadData) {
     const navigationRecord = loadData.networkRecords.filter(record => {
       return URL.equalWithExcludedFragments(record.url, passContext.url) &&
         record.fetchedViaServiceWorker;
     }).pop(); // Take the last record that matches.
 
-    return passContext.driver.goOnline(passContext)
-      .then(_ => navigationRecord ? navigationRecord.statusCode : -1);
+    return navigationRecord ? navigationRecord.statusCode : -1;
   }
 }
 

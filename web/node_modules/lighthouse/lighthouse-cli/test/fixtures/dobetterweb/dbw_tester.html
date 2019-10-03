@@ -30,7 +30,7 @@
 <!-- Note: these will only fail when using the static-server.js, which supports the ?delay=true param.
      If you're using your own server, the resource will load instantly and the
      stylesheets will be ignored for being below the threshold. -->
-<link rel="stylesheet" href="./dobetterweb/dbw_tester.css?delay=100"> <!-- FAIL, when run under smokehouse -->
+<link rel="stylesheet" href="./dbw_tester.css?delay=100">
 <link rel="stylesheet" href="./unknown404.css?delay=200"> <!-- FAIL -->
 <link rel="stylesheet" href="./dbw_tester.css?delay=2200"> <!-- FAIL -->
 <link rel="stylesheet" href="./dbw_disabled.css?delay=200&isdisabled" disabled> <!-- PASS -->
@@ -418,12 +418,14 @@ if (location.search === '') {
 }
 </script>
 
-<!-- PASS: not in header, so it does not block rendering. zone.js is loaded
-     by the static-server and provides a polyfill for Promise. -->
-<script src="/zone.js"></script>
+<!-- Including this script validates that driver.evaluateAsync() still works even with
+  window.Promise being mucked with. See file source for details.
+  Also, script is located down here to avoid being flagged in render-blocking-resources. -->
+<script src="./third_party/aggressive-promise-polyfill.js"></script>
+
 <!-- FAIL(is-on-https): requires a non-localhost http file
-     FAIL: Loads a vulnerable JS library
--->
+     FAIL(no-vulnerable-libraries): Loads a vulnerable JS library -->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </body>
 </html>

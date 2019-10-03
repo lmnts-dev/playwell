@@ -21,8 +21,6 @@ const UIStrings = {
     =1 {1 user timing}
     other {# user timings}
     }`,
-  /** Label for the Name column in the User Timing event data table. User Timing API entries are added by the developer of the web page. An example user timing event name: 'pageload_logoimage_done' */
-  columnName: 'Name',
   /** Label for the Type column in the User Timing event data table. User Timing API entries are added by the developer of the web page. The only possible types are 'Mark' and Measure'. */
   columnType: 'Type',
   /** Label for the Start Time column in the User Timing event data table. User Timing API entries are added by the developer of the web page. Start Times are the number of milliseconds since the page started loading, e.g. '380.26 ms' */
@@ -96,7 +94,7 @@ class UserTimings extends Audit {
 
       /** @type {LH.Audit.Details.Table['headings']} */
       const headings = [
-        {key: 'name', itemType: 'text', text: str_(UIStrings.columnName)},
+        {key: 'name', itemType: 'text', text: str_(i18n.UIStrings.columnName)},
         {key: 'timingType', itemType: 'text', text: str_(UIStrings.columnType)},
         {key: 'startTime', itemType: 'ms', granularity: 0.01,
           text: str_(UIStrings.columnStartTime)},

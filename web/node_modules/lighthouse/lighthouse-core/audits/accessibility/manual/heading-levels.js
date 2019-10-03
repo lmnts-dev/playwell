@@ -19,7 +19,7 @@ class HeadingLevels extends ManualAudit {
   static get meta() {
     return Object.assign({
       id: 'heading-levels',
-      description: 'Headings are used to create an outline for the page and heading levels are not skipped. [Learn more](https://developers.google.com/web/fundamentals/accessibility/how-to-review#take_advantage_of_headings_and_landmarks).',
+      description: 'Headings are used to create an outline for the page and heading levels are not skipped. [Learn more](https://web.dev/heading-levels/).',
       title: 'Headings don\'t skip levels',
     }, super.partialMeta);
   }

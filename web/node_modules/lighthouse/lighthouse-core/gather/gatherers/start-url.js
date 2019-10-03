@@ -11,20 +11,36 @@ const Gatherer = require('./gatherer.js');
 
 class StartUrl extends Gatherer {
   /**
-   * Grab the manifest, extract it's start_url, attempt to `fetch()` it while offline
+   * Go offline, assess the start url, go back online.
    * @param {LH.Gatherer.PassContext} passContext
    * @return {Promise<LH.Artifacts['StartUrl']>}
    */
   async afterPass(passContext) {
+    // `afterPass` is always online, so manually go offline to check start_url.
+    await passContext.driver.goOffline();
+    const result = await this._determineStartUrlAvailability(passContext);
+    await passContext.driver.goOnline(passContext);
+
+    return result;
+  }
+
+  /**
+   * Grab the manifest, extract its start_url, attempt to `fetch()` it while offline
+   * @param {LH.Gatherer.PassContext} passContext
+   * @return {Promise<LH.Artifacts['StartUrl']>}
+   */
+  async _determineStartUrlAvailability(passContext) {
     const manifest = passContext.baseArtifacts.WebAppManifest;
     const startUrlInfo = this._readManifestStartUrl(manifest);
     if (startUrlInfo.isReadFailure) {
       return {statusCode: -1, explanation: startUrlInfo.reason};
     }
 
-    return this._attemptStartURLFetch(passContext.driver, startUrlInfo.startUrl).catch(() => {
-      return {statusCode: -1, explanation: 'Unable to fetch start URL via service worker.'};
-    });
+    try {
+      return await this._attemptStartURLFetch(passContext.driver, startUrlInfo.startUrl);
+    } catch (err) {
+      return {statusCode: -1, explanation: 'Error while fetching start_url via service worker.'};
+    }
   }
 
   /**
@@ -59,7 +75,7 @@ class StartUrl extends Gatherer {
     // Wait up to 3s to get a matched network request from the fetch() to work
     const timeoutPromise = new Promise(resolve =>
       setTimeout(
-        () => resolve({statusCode: -1, explanation: 'Timed out waiting for fetched start_url.'}),
+        () => resolve({statusCode: -1, explanation: 'Timed out waiting for start_url to respond.'}),
         3000
       )
     );
@@ -77,7 +93,7 @@ class StartUrl extends Gatherer {
         if (!response.fromServiceWorker) {
           return resolve({
             statusCode: -1,
-            explanation: 'Unable to fetch start URL via service worker.',
+            explanation: 'The start_url did respond, but not via a service worker.',
           });
         }
         // Successful SW-served fetch of the start_URL

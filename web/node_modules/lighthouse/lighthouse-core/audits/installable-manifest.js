@@ -7,6 +7,20 @@
 
 const MultiCheckAudit = require('./multi-check-audit.js');
 const ManifestValues = require('../computed/manifest-values.js');
+const i18n = require('../lib/i18n/i18n.js');
+
+const UIStrings = {
+  /** Title of a Lighthouse audit that provides detail on if a website is installable as an application. This descriptive title is shown to users when a webapp is installable. */
+  title: 'Web app manifest meets the installability requirements',
+  /** Title of a Lighthouse audit that provides detail on if a website is installable as an application. This descriptive title is shown to users when a webapp is not installable. */
+  failureTitle: 'Web app manifest does not meet the installability requirements',
+  /** Description of a Lighthouse audit that tells the user why installability is important for webapps. This is displayed after a user expands the section to see more. No character length limits. 'Learn More' becomes link text to additional documentation. */
+  description: 'Browsers can proactively prompt users to add your app to their homescreen, ' +
+    'which can lead to higher engagement. ' +
+    '[Learn more](https://web.dev/installable-manifest).',
+};
+
+const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
 /**
  * @fileoverview
@@ -29,11 +43,9 @@ class InstallableManifest extends MultiCheckAudit {
   static get meta() {
     return {
       id: 'installable-manifest',
-      title: 'Web app manifest meets the installability requirements',
-      failureTitle: 'Web app manifest does not meet the installability requirements',
-      description: 'Browsers can proactively prompt users to add your app to their homescreen, ' +
-          'which can lead to higher engagement. ' +
-          '[Learn more](https://developers.google.com/web/tools/lighthouse/audits/install-prompt).',
+      title: str_(UIStrings.title),
+      failureTitle: str_(UIStrings.failureTitle),
+      description: str_(UIStrings.description),
       requiredArtifacts: ['URL', 'WebAppManifest'],
     };
   }
@@ -92,3 +104,4 @@ class InstallableManifest extends MultiCheckAudit {
 }
 
 module.exports = InstallableManifest;
+module.exports.UIStrings = UIStrings;
