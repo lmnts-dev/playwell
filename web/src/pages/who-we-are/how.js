@@ -74,8 +74,38 @@ const SimpleTextWithImage = styled.div`
 const CenteredTitle = styled.div`
   text-align: center;
   font-weight: 700;
-  max-width: calc(${Root.Size} * 7);
+  max-width: ${props => props.MaxWidth ? props.MaxWidth : '100%' };
   margin: 0 auto;
+`
+
+const CurveAndAngle = styled.div `
+  position: relative;
+  width: 100vw;
+  height: 30vw;
+
+  .footer-angle-slice {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 85%;
+    z-index: 2;
+  }
+
+  .footer-curve-slice {
+    width: 100%;
+    height: calc(100% - ${Root.Size});
+    z-index: 1;
+    margin-bottom: calc(${Root.Size});
+  }
+
+  .absolute-image {
+    position: absolute;
+    width: 25vw;
+    height: 25vw;
+    bottom: 0;
+    right: 2vw;
+  }
 `
 
 // Render Page
@@ -89,7 +119,7 @@ const WhoHowPage = () => {
           BorderTop={Theme.Color.White}
         >
           <BasicInner>
-            <CenteredTitle>
+            <CenteredTitle MaxWidth="500px">
               <div className="h3">
                 Lorem ipsum dolar sit amet, consectetur a.
               </div>
@@ -101,6 +131,7 @@ const WhoHowPage = () => {
           BgColor={Theme.Color.Lilac}
           TextColor={Theme.Color.White}
           noPaddingTop
+          noPaddingBottom
         >
           <BasicInner>
             <LegoList 
@@ -113,8 +144,17 @@ const WhoHowPage = () => {
             />
           </BasicInner>
         </BasicSection>
+        <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Lilac}>
+            <CurveAndAngle>
+              <FooterCurveSlice bgColor={Theme.Color.Dino} />
+              <FooterAngleSlice bgColor={Theme.Color.Background} />
+              <div className="absolute-image">
+                <ImgMatch src="gears.png" />
+              </div>
+            </CurveAndAngle>
+        </BasicSection>
 
-        <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
+        <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino} noPaddingTop>
           <BasicInner>
             <SimpleTextWithImage>
               <div className="text">
@@ -126,6 +166,32 @@ const WhoHowPage = () => {
                 <ImgMatch src="graph.png"/>
               </div>
             </SimpleTextWithImage>
+          </BasicInner>
+        </BasicSection>
+
+        <BasicSection
+          BgColor={Theme.Color.Blush}
+          TextColor={Theme.Color.Nova}
+        >
+          <BasicInner>
+            <CenteredTitle>
+              <div className="headline">
+                Our Programs
+              </div>
+            </CenteredTitle>
+          </BasicInner>
+        </BasicSection>
+
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Blush}
+        >
+          <BasicInner>
+            <CenteredTitle>
+              <div className="headline">
+                Our Process
+              </div>
+            </CenteredTitle>
           </BasicInner>
         </BasicSection>
 
