@@ -56,6 +56,12 @@ const LegoListStyles = styled.div`
       }
     }
 
+    .gatsby-image-wrapper {
+      width: 80%;
+      margin: 0 auto;
+      margin-bottom: calc(${Root.Size} / 3);
+    }
+
     .h6 {
       font-weight: bold;
       padding: calc(${Root.Size} / 4) 0;

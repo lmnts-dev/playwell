@@ -325,6 +325,22 @@ const WhoHowPage = () => {
           </BasicInner>
         </BasicSection>
 
+        <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
+          <BasicInner>
+            <LegoList 
+              TitleOne="Benefit Two" 
+              TitleTwo="Benefit Two" 
+              TitleThree="Benefit Two" 
+              TextOne='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
+              TextTwo='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics' 
+              TextThree='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics' 
+              ImageOne="graph.png"      
+              ImageTwo="graph.png" 
+              ImageThree="graph.png" 
+            />
+          </BasicInner>
+        </BasicSection>
+
         <BasicSection
           noPaddingRight
           BgColor={Theme.Color.Background}

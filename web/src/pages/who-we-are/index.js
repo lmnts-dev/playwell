@@ -412,7 +412,7 @@ const WhoPage = ({
           />
         </BasicInner>
       </BasicSection>
-      
+
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
@@ -517,6 +517,7 @@ const WhoPage = ({
           </BasicInner>
         </Partners>
       </BasicSection>
+
       <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino} BorderTop={Theme.Color.Clay}>
         <BasicInner>
           <LegoList 
@@ -529,6 +530,7 @@ const WhoPage = ({
           />
         </BasicInner>
       </BasicSection>
+      
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Eggplant}
