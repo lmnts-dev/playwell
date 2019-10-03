@@ -20,13 +20,14 @@ import { Icon } from 'components/library/Icons';
 // Sections
 import LocationCoordinators from 'sections/LocationCoordinators';
 import LocationSplitSection from 'sections/LocationSplitSection';
+import LocationPrograms from 'sections/LocationPrograms';
 import LocationEvents from 'sections/LocationEvents';
 import Quote from 'sections/Quote';
 
 import LegoList from 'components/library/Section/LegoList';
 
 // Styles
-import { Hero, Spacer, Intro, LegoListStyles } from './styles.scss';
+import { Hero, Spacer, Intro, Scroll } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -36,8 +37,8 @@ import { Theme, Root } from 'constants/Theme';
 
 // Props
 const ThemeProps = {
-  BgColor: Theme.Color.Sunset,
-  PrimaryColor: Theme.Color.White,
+  BgColor: Theme.Color.Background,
+  PrimaryColor: Theme.Color.Dino,
   SecondaryColor: Theme.Color.Primary,
   TertiaryColor: Theme.Color.Primary,
 };
@@ -91,19 +92,16 @@ const LocationDetail = () => (
         </Box>
       </Hero.Inner>
     </Hero>
-
     <Section bg="Dino" pt={0} pb={0} fullWidth>
       <ImgMatch
         src="locations-hero.jpg"
         AltText="STEM Education &amp; Engineering in"
       />
     </Section>
-
     {/* // Vertical dashed spacer */}
     <Spacer>
       <Spacer.Line />
     </Spacer>
-
     <Intro bg="Cream" textAlign="center">
       <Intro.Inner pt={[2, 2, 4, 4]} pb={[1, 1, 2, 2]}>
         <Text as="p" color="Nova" className="lead">
@@ -118,24 +116,28 @@ const LocationDetail = () => (
         </Text>
       </Intro.Inner>
     </Intro>
-
     <LocationSplitSection />
-
     <LocationCoordinators cities={Cities} />
-
-    <LocationEvents />
-
+    {/* <LocationEvents /> */}
     <Section bg="White">
       <LegoList />
     </Section>
-
     <Quote color="Sunset">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra
       enim sed magna vestibulum, nec imperdiet orci egestas. Sed in magna
       sapien.
     </Quote>
+    <LocationPrograms />
+    <Scroll>
+      <Scroll.Positioner>
+        <span>Play</span>
+        <Scroll.Line />
+      </Scroll.Positioner>
+    </Scroll>
 
-    <Section bg="Dino" pt={12} pb={12} />
+    <Section bg="Background" pt={12} pb={12} />
+    <Section bg="Background" pt={12} pb={12} />
+    <Section bg="Background" pt={12} pb={12} />
   </Layout>
 );
 

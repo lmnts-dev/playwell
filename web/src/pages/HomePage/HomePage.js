@@ -10,6 +10,7 @@ import React from 'react';
 // Components
 import Layout from 'components/core/Layout';
 import Section from 'components/library/Elements/Section';
+import Spacer from 'components/library/Spacer';
 
 // Sections
 import HomeHero from 'sections/HomeHero';
@@ -17,7 +18,7 @@ import HomeIntro from 'sections/HomeIntro';
 import HomeCommunity from 'sections/HomeCommunity';
 
 // Styles
-import { Scroll } from './styles.scss';
+import {} from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -37,12 +38,7 @@ const ThemeProps = {
 const HomePage = ({ bgColor, textColor }) => (
   <Layout {...ThemeProps}>
     <HomeHero slides={HeroSlides} />
-    <Scroll>
-      <Scroll.Positioner>
-        <span>Scroll</span>
-        <Scroll.Line />
-      </Scroll.Positioner>
-    </Scroll>
+    <Spacer indent>Scroll</Spacer>
     <HomeIntro />
     <HomeCommunity slides={CommunitySlides} />
     <Section bg="Background" pt={12} pb={12} />

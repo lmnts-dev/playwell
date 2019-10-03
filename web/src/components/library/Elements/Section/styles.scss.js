@@ -18,10 +18,18 @@ import { Box, Flex } from 'components/library/Elements';
 
 export const Container = styled(Flex)`
   text-align: ${props => props.textAlign};
-  background-image: url('${props => props.bgImage}');
+  background-image: url(${props => props.bgImage});
   background-size: cover;
   background-position: center center;
   position: relative;
+
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+    padding-left: ${props => (props.indent ? `calc(${Root.Size} * 1)` : '0')};
+  }
+
+  @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+    padding-left: ${props => (props.indent ? `calc(${Root.Size} * 2.5)` : '0')};
+  }
 `;
 
 Container.Overlay = styled(Box)`
