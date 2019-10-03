@@ -13,6 +13,7 @@ import styled from 'styled-components';
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
+import ImageAccordian from 'components/library/ImageAccordian';
 import ImgMatch from 'components/core/ImgMatch';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import Marquee from 'components/library/Section/Marquee';
@@ -78,7 +79,7 @@ const CenteredTitle = styled.div`
   margin: 0 auto;
 `
 
-const CurveAndAngle = styled.div `
+const CurveAndAngle = styled.div`
   position: relative;
   width: 100vw;
   height: 30vw;
@@ -105,6 +106,60 @@ const CurveAndAngle = styled.div `
     height: 25vw;
     bottom: 0;
     right: 2vw;
+  }
+`
+
+const AccordianFeature = styled.div`
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: calc(${Root.Size} / 3);
+
+    li {
+      font-weight: 700;
+      padding: calc(${Root.Size} / 6);
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+
+      &:last-of-type {
+        padding-right: 0;
+      }
+
+      a {
+        color: ${Theme.Color.Clay};
+
+        &:visited {
+          color: ${Theme.Color.Clay};
+        }
+      }
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+
+    .image-accordian {
+      flex: 1;
+
+      &:nth-of-type(2) {
+        margin: 0 calc(${Root.Size} / 2);
+      }
+    }
+  }
+
+  .footer-angle-slice {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 20vw;
   }
 `
 
@@ -183,8 +238,45 @@ const WhoHowPage = () => {
         </BasicSection>
 
         <BasicSection
+          BgColor={Theme.Color.Blush}
+          TextColor={Theme.Color.Clay}
+          noPaddingTop
+        >
+          <AccordianFeature>
+            <BasicInner WideWidth>
+              <ul>
+                <li><a className="h6" href="/">Robotics</a></li>
+                <li><a className="h6" href="/">Intro to STEM</a></li>
+                <li><a className="h6" href="/">Gaming</a></li>
+                <li><a className="h6" href="/">Advanced Engineering</a></li>
+                <li><a className="h6" href="/">Engineering Themes</a></li>
+              </ul>
+              <div className="container">
+                <ImageAccordian 
+                  Header="Worshops" 
+                  Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
+                  Image="intro-smiles.jpg"
+                />
+                <ImageAccordian 
+                  Header="Classes" 
+                  Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
+                  Image="intro-smiles.jpg"
+                />
+                <ImageAccordian 
+                  Header="Camps" 
+                  Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
+                  Image="intro-smiles.jpg"
+                />
+              </div>
+            </BasicInner>
+            <FooterAngleSlice bgColor={Theme.Color.Background} />
+          </AccordianFeature>
+        </BasicSection>
+
+        <BasicSection
           BgColor={Theme.Color.Background}
           TextColor={Theme.Color.Blush}
+          noPaddingTop
         >
           <BasicInner>
             <CenteredTitle>

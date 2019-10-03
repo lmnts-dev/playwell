@@ -48,6 +48,7 @@ export const BasicInner = ({
          children,
        }) => (
          <BasicInnerStyle
+           className="basic-inner"
            noPaddingLeft={noPaddingLeft}
            noPaddingRight={noPaddingRight}
            wideWidth={wideWidth}
