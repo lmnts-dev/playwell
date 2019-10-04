@@ -41,13 +41,13 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-
 const SimpleTextWithImage = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
 
-  .image, .text {
+  .image,
+  .text {
     flex: 1;
   }
 
@@ -63,7 +63,8 @@ const SimpleTextWithImage = styled.div`
     }
   }
 
-  .h6, .h2 {
+  .h6,
+  .h2 {
     font-weight: 700;
   }
 
@@ -71,14 +72,14 @@ const SimpleTextWithImage = styled.div`
     color: ${Theme.Color.Sunset};
     padding: calc(${Root.Size} / 5) 0;
   }
-`
+`;
 
 const CenteredTitle = styled.div`
   text-align: center;
   font-weight: 700;
-  max-width: ${props => props.MaxWidth ? props.MaxWidth : '100%' };
+  max-width: ${props => (props.MaxWidth ? props.MaxWidth : '100%')};
   margin: 0 auto;
-`
+`;
 
 const CurveAndAngle = styled.div`
   position: relative;
@@ -108,10 +109,9 @@ const CurveAndAngle = styled.div`
     bottom: 0;
     right: 2vw;
   }
-`
+`;
 
 const AccordianFeature = styled.div`
-
   ul {
     display: flex;
     flex-direction: row;
@@ -162,11 +162,15 @@ const AccordianFeature = styled.div`
     width: 100vw;
     height: 20vw;
   }
-`
+`;
 
 const SplitTextBoxes = styled.div`
   width: 100%;
-  background: linear-gradient( to right, ${Theme.Color.Eggplant} 50%, ${Theme.Color.Sunset} 50%);
+  background: linear-gradient(
+    to right,
+    ${Theme.Color.Eggplant} 50%,
+    ${Theme.Color.Sunset} 50%
+  );
 
   .basic-inner {
     display: flex;
@@ -184,7 +188,8 @@ const SplitTextBoxes = styled.div`
         padding-left: calc(${Root.Size} * 2);
       }
 
-      .h6, .h3 {
+      .h6,
+      .h3 {
         font-weight: 700;
       }
 
@@ -193,252 +198,271 @@ const SplitTextBoxes = styled.div`
       }
     }
   }
-`
+`;
 
 // Render Page
 const WhoHowPage = () => {
-    return (
-      <Layout>
+  return (
+    <Layout>
+      <BasicSection
+        BgColor={Theme.Color.Lilac}
+        TextColor={Theme.Color.White}
+        BorderTop={Theme.Color.White}
+      >
+        <BasicInner>
+          <CenteredTitle MaxWidth="500px">
+            <div className="h3">Lorem ipsum dolar sit amet, consectetur a.</div>
+          </CenteredTitle>
+        </BasicInner>
+      </BasicSection>
 
-        <BasicSection
-          BgColor={Theme.Color.Lilac}
-          TextColor={Theme.Color.White}
-          BorderTop={Theme.Color.White}
-        >
-          <BasicInner>
-            <CenteredTitle MaxWidth="500px">
-              <div className="h3">
-                Lorem ipsum dolar sit amet, consectetur a.
-              </div>
-            </CenteredTitle>
+      <BasicSection
+        BgColor={Theme.Color.Lilac}
+        TextColor={Theme.Color.White}
+        noPaddingTop
+        noPaddingBottom
+      >
+        <BasicInner>
+          <LegoList
+            TitleOne="Creative Collaboration"
+            TitleTwo="New Perspectives"
+            TitleThree="Staff Morale"
+            TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
+            TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution."
+            TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."
+          />
+        </BasicInner>
+      </BasicSection>
+      <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Lilac}>
+        <CurveAndAngle>
+          <FooterCurveSlice bgColor={Theme.Color.Dino} />
+          <FooterAngleSlice bgColor={Theme.Color.Background} />
+          <div className="absolute-image">
+            <ImgMatch src="gears.png" />
+          </div>
+        </CurveAndAngle>
+      </BasicSection>
+
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+      >
+        <BasicInner>
+          <SimpleTextWithImage>
+            <div className="text">
+              <div className="h6">Our Impact on STEM Comprehension</div>
+              <div className="h2">Children Learn While Playing</div>
+              <p className="p-lg">
+                Our assessment measured three goals including: students
+                knowledge of STEM terms or concepts, ability to generalize
+                information, and increasing positive feelings towards STEM
+                subjects. For example, the definition of gravity or friction, or
+                that when two gears interlock their teeth its called meshing.
+              </p>
+            </div>
+            <div className="image">
+              <ImgMatch src="graph.png" />
+            </div>
+          </SimpleTextWithImage>
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection BgColor={Theme.Color.Blush} TextColor={Theme.Color.Nova}>
+        <BasicInner>
+          <CenteredTitle>
+            <div className="headline">Our Programs</div>
+          </CenteredTitle>
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection
+        BgColor={Theme.Color.Blush}
+        TextColor={Theme.Color.Clay}
+        noPaddingTop
+      >
+        <AccordianFeature>
+          <BasicInner wideWidth>
+            <ul>
+              <li>
+                <a className="h6" href="/">
+                  Robotics
+                </a>
+              </li>
+              <li>
+                <a className="h6" href="/">
+                  Intro to STEM
+                </a>
+              </li>
+              <li>
+                <a className="h6" href="/">
+                  Gaming
+                </a>
+              </li>
+              <li>
+                <a className="h6" href="/">
+                  Advanced Engineering
+                </a>
+              </li>
+              <li>
+                <a className="h6" href="/">
+                  Engineering Themes
+                </a>
+              </li>
+            </ul>
+            <div className="container">
+              <ImageAccordian
+                Header="Worshops"
+                Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                Image="intro-smiles.jpg"
+              />
+              <ImageAccordian
+                Header="Classes"
+                Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                Image="intro-smiles.jpg"
+              />
+              <ImageAccordian
+                Header="Camps"
+                Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                Image="intro-smiles.jpg"
+              />
+            </div>
           </BasicInner>
-        </BasicSection>
+          <FooterAngleSlice bgColor={Theme.Color.Background} />
+        </AccordianFeature>
+      </BasicSection>
 
-        <BasicSection
-          BgColor={Theme.Color.Lilac}
-          TextColor={Theme.Color.White}
-          noPaddingTop
-          noPaddingBottom
-        >
-          <BasicInner>
-            <LegoList 
-              TitleOne="Creative Collaboration" 
-              TitleTwo="New Perspectives" 
-              TitleThree="Staff Morale" 
-              TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
-              TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution." 
-              TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."
-            />
-          </BasicInner>
-        </BasicSection>
-        <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Lilac}>
-            <CurveAndAngle>
-              <FooterCurveSlice bgColor={Theme.Color.Dino} />
-              <FooterAngleSlice bgColor={Theme.Color.Background} />
-              <div className="absolute-image">
-                <ImgMatch src="gears.png" />
-              </div>
-            </CurveAndAngle>
-        </BasicSection>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Blush}
+        noPaddingTop
+      >
+        <BasicInner>
+          <CenteredTitle>
+            <div className="headline">Our Process</div>
+          </CenteredTitle>
+        </BasicInner>
+      </BasicSection>
 
-        <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino} noPaddingTop>
-          <BasicInner>
-            <SimpleTextWithImage>
-              <div className="text">
-                <div className="h6">Our Impact on STEM Comprehension</div>
-                <div className="h2">Children Learn While Playing</div>
-                <p className="p-lg">Our assessment measured three goals including: students knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feelings towards STEM subjects. For example, the definition of gravity or friction, or that when two gears interlock their teeth its called meshing.</p>
-              </div>
-              <div className="image">
-                <ImgMatch src="graph.png"/>
-              </div>
-            </SimpleTextWithImage>
-          </BasicInner>
-        </BasicSection>
-
-        <BasicSection
-          BgColor={Theme.Color.Blush}
-          TextColor={Theme.Color.Nova}
-        >
-          <BasicInner>
-            <CenteredTitle>
-              <div className="headline">
-                Our Programs
-              </div>
-            </CenteredTitle>
-          </BasicInner>
-        </BasicSection>
-
-        <BasicSection
-          BgColor={Theme.Color.Blush}
-          TextColor={Theme.Color.Clay}
-          noPaddingTop
-        >
-          <AccordianFeature>
-            <BasicInner wideWidth>
-              <ul>
-                <li><a className="h6" href="/">Robotics</a></li>
-                <li><a className="h6" href="/">Intro to STEM</a></li>
-                <li><a className="h6" href="/">Gaming</a></li>
-                <li><a className="h6" href="/">Advanced Engineering</a></li>
-                <li><a className="h6" href="/">Engineering Themes</a></li>
-              </ul>
-              <div className="container">
-                <ImageAccordian 
-                  Header="Worshops" 
-                  Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
-                  Image="intro-smiles.jpg"
-                />
-                <ImageAccordian 
-                  Header="Classes" 
-                  Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
-                  Image="intro-smiles.jpg"
-                />
-                <ImageAccordian 
-                  Header="Camps" 
-                  Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." 
-                  Image="intro-smiles.jpg"
-                />
-              </div>
-            </BasicInner>
-            <FooterAngleSlice bgColor={Theme.Color.Background} />
-          </AccordianFeature>
-        </BasicSection>
-
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Blush}
-          noPaddingTop
-        >
-          <BasicInner>
-            <CenteredTitle>
-              <div className="headline">
-                Our Process
-              </div>
-            </CenteredTitle>
-          </BasicInner>
-        </BasicSection>
-
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Sunset}
-          noPaddingTop
-          noPaddingBottom
-        >
-          <BasicInner noPaddingLeft noPaddingRight>
-            <ImageWithTextBlock 
-              Image="intro-smiles.jpg" 
-              Header="Build problem-solving skills" 
-              Number="01"
-              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Sunset}
+        noPaddingTop
+        noPaddingBottom
+      >
+        <BasicInner noPaddingLeft noPaddingRight>
+          <ImageWithTextBlock
+            Image="intro-smiles.jpg"
+            Header="Build problem-solving skills"
+            Number="01"
+            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien." 
-            />
-            <ImageWithTextBlock 
-              reversedOrder 
-              Image="intro-smiles.jpg" 
-              Header="Provide an opportunity for creative expression" 
-              Number="06"
-              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              egestas. Sed in magna sapien."
+          />
+          <ImageWithTextBlock
+            reversedOrder
+            Image="intro-smiles.jpg"
+            Header="Provide an opportunity for creative expression"
+            Number="06"
+            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien." 
-            >
-              <Icon Name="gear" />
-            </ImageWithTextBlock>
-            <ImageWithTextBlock 
-              Image="intro-smiles.jpg" 
-              Header="Foster a greater appreciation of how things work" 
-              Number="03"
-              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              egestas. Sed in magna sapien."
+          >
+            <Icon Name="gear" />
+          </ImageWithTextBlock>
+          <ImageWithTextBlock
+            Image="intro-smiles.jpg"
+            Header="Foster a greater appreciation of how things work"
+            Number="03"
+            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien." 
-            />
-          </BasicInner>
-        </BasicSection>
+              egestas. Sed in magna sapien."
+          />
+        </BasicInner>
+      </BasicSection>
 
-        <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner>
+          <LegoList
+            TitleOne="Benefit Two"
+            TitleTwo="Benefit Two"
+            TitleThree="Benefit Two"
+            TextOne='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
+            TextTwo='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
+            TextThree='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
+            ImageOne="graph.png"
+            ImageTwo="graph.png"
+            ImageThree="graph.png"
+          />
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection
+        noPaddingRight
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner noPaddingRight>
+          <EdgeImageWithText
+            Caption="Would you like to Play with us?"
+            Header="Purposeful Play is for Adults too"
+            Image="gears.png"
+            Paragraph="Partnering with Play-Well for your company could bring new waves of innovation and problem solving to your team an opportunity to bring educational activities to your event, or any way you need to play."
+            ButtonText="Get In Touch"
+            ButtonDest="/"
+          />
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Whitet}
+      >
+        <SplitTextBoxes>
           <BasicInner>
-            <LegoList 
-              TitleOne="Benefit Two" 
-              TitleTwo="Benefit Two" 
-              TitleThree="Benefit Two" 
-              TextOne='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
-              TextTwo='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics' 
-              TextThree='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics' 
-              ImageOne="graph.png"      
-              ImageTwo="graph.png" 
-              ImageThree="graph.png" 
-            />
+            <div className="container">
+              <div className="h6">Playing anywhere</div>
+              <div className="h3">Find a program near you</div>
+              <p className="p-lg">
+                Our assessments measured three goals including: students's
+                knowledge of STEM terms or concepts, ability to generalize
+                information, and increasing positive feeling towards STEM
+                subjects.
+              </p>
+              <Btn
+                Label="Expore Programs"
+                BgColor={Theme.Color.Nova}
+                TextColor={Theme.Color.White}
+                Destination="/"
+              />
+            </div>
+            <div className="container">
+              <div className="h6">Do it Yourself</div>
+              <div className="h3">Host Your Own Program</div>
+              <p className="p-lg">
+                Our assessments measured three goals including: students's
+                knowledge of STEM terms or concepts, ability to generalize
+                information, and increasing positive feeling towards STEM
+                subjects.
+              </p>
+              <Btn
+                Label="Learn How"
+                BgColor={Theme.Color.Nova}
+                TextColor={Theme.Color.White}
+                Destination="/"
+              />
+            </div>
           </BasicInner>
-        </BasicSection>
+        </SplitTextBoxes>
+      </BasicSection>
+    </Layout>
+  );
+};
 
-        <BasicSection
-          noPaddingRight
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Dino}
-        >
-          <BasicInner noPaddingRight>
-            <EdgeImageWithText 
-              Caption="Would you like to Play with us?" 
-              Header="Purposeful Play is for Adults too"
-              Image="gears.png"
-              Paragraph="Partnering with Play-Well for your company could bring new waves of innovation and problem solving to your team an opportunity to bring educational activities to your event, or any way you need to play."
-              ButtonText="Get In Touch"
-              ButtonDest="/"
-            />
-          </BasicInner>
-        </BasicSection>
+export default WhoHowPage;
 
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Whitet}
-        >
-          <SplitTextBoxes>
-            <BasicInner>
-              <div className="container">
-                <div className="h6">
-                  Playing anywhere
-                </div>
-                <div className="h3">
-                  Find a program near you
-                </div>
-                <p className="p-lg">
-                  Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.
-                </p>
-                <Btn
-                  Label="Expore Programs"
-                  BgColor={Theme.Color.Nova}
-                  TextColor={Theme.Color.White}
-                  Destination="/"
-                />
-              </div>
-              <div className="container">
-                <div className="h6">
-                  Do it Yourself
-                </div>
-                <div className="h3">
-                  Host Your Own Program
-                </div>
-                <p className="p-lg">
-                  Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.
-                </p>
-                <Btn
-                  Label="Learn How"
-                  BgColor={Theme.Color.Nova}
-                  TextColor={Theme.Color.White}
-                  Destination="/"
-                />
-              </div>
-              </BasicInner>
-            </SplitTextBoxes>
-        </BasicSection>
-
-      </Layout>
-    );
-  };
-  
-  export default WhoHowPage;
-  
-  //////////////////////////////////////////////////////////////////////
-  // End Component
-  
+//////////////////////////////////////////////////////////////////////
+// End Component

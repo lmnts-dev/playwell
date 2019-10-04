@@ -13,20 +13,18 @@ import { Icon } from 'components/library/Icons';
 // Constants
 
 // Styles
- import { ImageWithTextBlockStyles, BlockNumber } from './styles.scss';
+import { ImageWithTextBlockStyles, BlockNumber } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-
-
 export const ImageWithTextBlock = ({
-    reversedOrder,
-    Image,
-    Number,
-    Header,
-    Paragraph,
-    children
+  reversedOrder,
+  Image,
+  Number,
+  Header,
+  Paragraph,
+  children,
 }) => (
   <ImageWithTextBlockStyles reversedOrder={reversedOrder}>
     {children}
@@ -36,19 +34,14 @@ export const ImageWithTextBlock = ({
     <div className="text">
       <div className="container">
         <BlockNumber className="h1">{Number}</BlockNumber>
-        <div className="h4">
-          {Header}
-        </div>
-        <p className="p-lg">
-          {Paragraph}
-        </p>
+        <div className="h4">{Header}</div>
+        <p className="p-lg">{Paragraph}</p>
       </div>
     </div>
   </ImageWithTextBlockStyles>
 );
 
 export default ImageWithTextBlock;
-
 
 //////////////////////////////////////////////////////////////////////
 // End Component

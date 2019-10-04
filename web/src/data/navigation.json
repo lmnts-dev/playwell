@@ -43,7 +43,7 @@
             ],
             "minorLinkList": [
               {
-                "route": false,
+                "route": "",
                 "label": "Subhead",
                 "subhead": true
               },
@@ -97,7 +97,7 @@
             ],
             "minorLinkList": [
               {
-                "route": false,
+                "route": "",
                 "label": "Subhead",
                 "subhead": true
               },
@@ -136,7 +136,7 @@
             ],
             "minorLinkList": [
               {
-                "route": false,
+                "route": "",
                 "label": "Subhead",
                 "subhead": true
               },
@@ -180,7 +180,7 @@
             ],
             "minorLinkList": [
               {
-                "route": false,
+                "route": "",
                 "label": "Subhead",
                 "subhead": true
               },
@@ -224,7 +224,7 @@
             ],
             "minorLinkList": [
               {
-                "route": false,
+                "route": "",
                 "label": "Subhead",
                 "subhead": true
               },

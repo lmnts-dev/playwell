@@ -175,7 +175,12 @@ const Course = ({ pageContext }) => {
         <Spacer.Line />
       </Spacer>
 
-      <Section bg="White" textAlign="center" pt={[6, 6, 8, 8]} pb={[2, 2, 3, 3]}>
+      <Section
+        bg="White"
+        textAlign="center"
+        pt={[6, 6, 8, 8]}
+        pb={[2, 2, 3, 3]}
+      >
         <Flex
           as="article"
           mx="auto"

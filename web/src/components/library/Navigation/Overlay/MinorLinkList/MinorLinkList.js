@@ -19,7 +19,7 @@ export const MinorLinkList = ({ linkList, navOverlayToggle }) => {
       {/* Map our linkList prop */}
       {linkList.map((link, idx) => {
         // If the route is specified...
-        if (link.route != undefined) {
+        if (link.route != "") {
           // If it isn't a subhead...
           if (link.subhead == true) {
             return (

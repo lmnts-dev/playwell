@@ -79,13 +79,25 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
     <HeroContainer {...HeroProps} fullWidth>
       <Decorator>
         <div className="decorator__hero decorator__hero--top">
-          <ImgMatch src="cloud-big.png" AltText="Cloud" />
+          <ImgMatch
+            src="cloud-big.png"
+            AltText="Cloud"
+            style={{ zIndex: '-10' }}
+          />
         </div>
         <div className="decorator__hero decorator__hero--waterfall">
-          <ImgMatch src="waterfall.png" AltText="Cloud" />
+          <ImgMatch
+            src="waterfall.png"
+            AltText="Cloud"
+            style={{ zIndex: '-10' }}
+          />
         </div>
         <div className="decorator__hero decorator__hero--volcano">
-          <ImgMatch src="volcano.png" AltText="Cloud" />
+          <ImgMatch
+            src="volcano.png"
+            AltText="Cloud"
+            style={{ zIndex: '-10' }}
+          />
         </div>
       </Decorator>
       <SliderContainer

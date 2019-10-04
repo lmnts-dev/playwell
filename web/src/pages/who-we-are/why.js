@@ -101,8 +101,7 @@ const TextWithManyImages = styled.div`
       }
     }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      padding: calc(${Root.Size}) calc(${Root.Size})
-        calc(${Root.Size}) 0;
+      padding: calc(${Root.Size}) calc(${Root.Size}) calc(${Root.Size}) 0;
     }
   }
 
@@ -200,8 +199,7 @@ const CenteredTitle = styled.div`
             translateX(calc(${Root.Size} * 2));
         }
         @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          transform:
-            translate(calc(${Root.Size} / -2), calc( ${Root.Size}));
+          transform: translate(calc(${Root.Size} / -2), calc(${Root.Size}));
         }
 
         path {
@@ -286,155 +284,153 @@ const TextBlock = styled.div`
 
 // Render Page
 const WhoWhyPage = () => {
-    return (
-      <Layout>
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.White}
-          noPaddingTop
-          noPaddingBottom
-          BorderBottomVertical
-        >
-          <TextBlock>
-            <div className="background-image">
-              <ImgMatch src="intro-smiles.jpg" />
+  return (
+    <Layout>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.White}
+        noPaddingTop
+        noPaddingBottom
+        BorderBottomVertical
+      >
+        <TextBlock>
+          <div className="background-image">
+            <ImgMatch src="intro-smiles.jpg" />
+          </div>
+          <BasicInner>
+            <div className="h4">
+              Combining the elements of fun, challenge, and learning since 1997
             </div>
-            <BasicInner>
-              <div className="h4">
-                Combining the elements of fun, challenge, and learning since
-                1997
-              </div>
-              <Btn
-                Label="Our Story"
-                BgColor={Theme.Color.Sky}
-                TextColor={Theme.Color.White}
-                Destination="/"
-              />
-            </BasicInner>
-          </TextBlock>
-        </BasicSection>
-
-        <BasicSection BgColor={Theme.Color.Background} BorderTopVertical>
-          <CenteredTitle>
-            <BasicInner>
-              <div className="headline">Our Values</div>
-              <div className="absolute-image">
-                <Icon Name="swoop" />
-                <ImgMatch src="gears.png" />
-              </div>
-            </BasicInner>
-          </CenteredTitle>
-        </BasicSection>
-
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Sunset}
-          noPaddingTop
-          noPaddingBottom
-        >
-          <BasicInner noPaddingLeft noPaddingRight>
-            <ImageWithTextBlock 
-              Image="intro-smiles.jpg" 
-              Header="Build problem-solving skills" 
-              Number="01"
-              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien." 
-            />
-            <ImageWithTextBlock 
-              reversedOrder 
-              Image="intro-smiles.jpg" 
-              Header="Provide an opportunity for creative expression" 
-              Number="06"
-              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien." 
-            >
-              <Icon Name="gear" />
-            </ImageWithTextBlock>
-            <ImageWithTextBlock 
-              Image="intro-smiles.jpg" 
-              Header="Foster a greater appreciation of how things work" 
-              Number="03"
-              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien." 
+            <Btn
+              Label="Our Story"
+              BgColor={Theme.Color.Sky}
+              TextColor={Theme.Color.White}
+              Destination="/"
             />
           </BasicInner>
-        </BasicSection>
+        </TextBlock>
+      </BasicSection>
 
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Sunset}
-          noPaddingBottom
-        >
-          <BasicInner wideWidth>
-            <LargeTextBlock>
-              <Number className="h1">04</Number>
-              <div className="h4">Encourage the qualities of</div>
-              <div className="headline txt-clr-eggplant">
-                Inquisitiveness Self Reliance &amp; Self Confidence
-              </div>
-              <div className="h4">In children &amp; in everybody.</div>
-            </LargeTextBlock>
+      <BasicSection BgColor={Theme.Color.Background} BorderTopVertical>
+        <CenteredTitle>
+          <BasicInner>
+            <div className="headline">Our Values</div>
             <div className="absolute-image">
+              <Icon Name="swoop" />
               <ImgMatch src="gears.png" />
             </div>
           </BasicInner>
-        </BasicSection>
+        </CenteredTitle>
+      </BasicSection>
 
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          noPaddingTop
-          BorderMiddle
-        >
-          <Carousel>
-            <Marquee />
-          </Carousel>
-        </BasicSection>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Sunset}
+        noPaddingTop
+        noPaddingBottom
+      >
+        <BasicInner noPaddingLeft noPaddingRight>
+          <ImageWithTextBlock
+            Image="intro-smiles.jpg"
+            Header="Build problem-solving skills"
+            Number="01"
+            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+              egestas. Sed in magna sapien."
+          />
+          <ImageWithTextBlock
+            reversedOrder
+            Image="intro-smiles.jpg"
+            Header="Provide an opportunity for creative expression"
+            Number="06"
+            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+              egestas. Sed in magna sapien."
+          >
+            <Icon Name="gear" />
+          </ImageWithTextBlock>
+          <ImageWithTextBlock
+            Image="intro-smiles.jpg"
+            Header="Foster a greater appreciation of how things work"
+            Number="03"
+            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+              egestas. Sed in magna sapien."
+          />
+        </BasicInner>
+      </BasicSection>
 
-        <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino} noPaddingTop>
-          <BasicInner>
-            <LegoList 
-              TitleOne="Creative Collaboration" 
-              TitleTwo="New Perspectives" 
-              TitleThree="Staff Morale" 
-              TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
-              TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution." 
-              TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."       
-            />
-          </BasicInner>
-        </BasicSection>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Sunset}
+        noPaddingBottom
+      >
+        <BasicInner wideWidth>
+          <LargeTextBlock>
+            <Number className="h1">04</Number>
+            <div className="h4">Encourage the qualities of</div>
+            <div className="headline txt-clr-eggplant">
+              Inquisitiveness Self Reliance &amp; Self Confidence
+            </div>
+            <div className="h4">In children &amp; in everybody.</div>
+          </LargeTextBlock>
+          <div className="absolute-image">
+            <ImgMatch src="gears.png" />
+          </div>
+        </BasicInner>
+      </BasicSection>
 
-        <BasicSection
-          BgColor={Theme.Color.Blush}
-          TextColor={Theme.Color.Dino}
-          noPaddingTop
-          noPaddingBottom
-        >
-          <BasicInner noPaddingRight>
-            <TextWithManyImages>
-              <div className="text h4">
-                We do this in the context of fun-filled engineering and
-                architectural projects, activities that both the children and
-                the instructors enjoy.
-              </div>
-              <div className="images">
+      <BasicSection BgColor={Theme.Color.Background} noPaddingTop BorderMiddle>
+        <Carousel>
+          <Marquee />
+        </Carousel>
+      </BasicSection>
+
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+      >
+        <BasicInner>
+          <LegoList
+            TitleOne="Creative Collaboration"
+            TitleTwo="New Perspectives"
+            TitleThree="Staff Morale"
+            TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
+            TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution."
+            TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."
+          />
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection
+        BgColor={Theme.Color.Blush}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+        noPaddingBottom
+      >
+        <BasicInner noPaddingRight>
+          <TextWithManyImages>
+            <div className="text h4">
+              We do this in the context of fun-filled engineering and
+              architectural projects, activities that both the children and the
+              instructors enjoy.
+            </div>
+            <div className="images">
+              <ImgMatch src="intro-smiles.jpg" />
+              <div className="column">
                 <ImgMatch src="intro-smiles.jpg" />
-                <div className="column">
-                  <ImgMatch src="intro-smiles.jpg" />
-                  <ImgMatch src="intro-smiles.jpg" />
-                </div>
+                <ImgMatch src="intro-smiles.jpg" />
               </div>
-            </TextWithManyImages>
-          </BasicInner>
-        </BasicSection>
-      </Layout>
-    );
-  };
-  
-  export default WhoWhyPage;
-  
-  //////////////////////////////////////////////////////////////////////
-  // End Component
-  
+            </div>
+          </TextWithManyImages>
+        </BasicInner>
+      </BasicSection>
+    </Layout>
+  );
+};
+
+export default WhoWhyPage;
+
+//////////////////////////////////////////////////////////////////////
+// End Component

@@ -26,7 +26,7 @@ import { Theme, Root } from 'constants/Theme';
 const ProgramsPage = props => {
   let mapWidth = '400px';
   let mapZedIndex = 5;
-  
+
   return (
     <Layout>
       <StaticQuery

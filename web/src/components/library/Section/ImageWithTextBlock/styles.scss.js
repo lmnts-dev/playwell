@@ -111,9 +111,9 @@ export const ImageWithTextBlockStyles = styled.div`
 `;
 
 export const BlockNumber = styled.div`
-    color: ${Theme.Color.Blush};
-    font-weight: 700;
-`
+  color: ${Theme.Color.Blush};
+  font-weight: 700;
+`;
 
 //////////////////////////////////////////////////////////////////////
 // End Styles

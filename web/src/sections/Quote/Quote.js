@@ -35,7 +35,7 @@ const Quote = ({ color, children }) => {
 
 Quote.defaultProps = {
   color: 'Sunset',
-}
+};
 
 export default Quote;
 
