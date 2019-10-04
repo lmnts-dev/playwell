@@ -14,8 +14,6 @@ import ImgMatch from 'components/core/ImgMatch';
 import Layout from 'components/core/Layout';
 import Section from 'components/library/Elements/Section';
 import { Box, Flex, Text } from 'components/library/Elements';
-import Btn from 'components/library/Btn';
-import { Icon } from 'components/library/Icons';
 import SpacerCentered from 'components/library/Spacer/Centered';
 
 // Sections
@@ -25,6 +23,8 @@ import LocationSplitSection from 'sections/LocationSplitSection';
 import LocationPrograms from 'sections/LocationPrograms';
 import LocationEvents from 'sections/LocationEvents';
 import Quote from 'sections/Quote';
+import LocationIntro from 'sections/LocationIntro';
+import LocationPlayCenter from 'sections/LocationPlayCenter';
 
 import LegoList from 'components/library/Section/LegoList';
 
@@ -51,6 +51,7 @@ const LocationDetail = () => (
     <Box
       position="relative"
       css={css`
+        overflow: hidden;
         z-index: 9;
       `}
     >
@@ -73,26 +74,10 @@ const LocationDetail = () => (
     </Section>
 
     <SpacerCentered />
-
-    <Intro bg="Cream" textAlign="center">
-      <Intro.Inner pt={[2, 2, 4, 4]} pb={[1, 1, 2, 2]}>
-        <Text as="p" color="Nova" className="lead">
-          Arizona’s Leading STEM Education &amp; Engineering Programs
-        </Text>
-        <Text as="p" color="Galaxy" className="lead">
-          Ut vehicula dictum tristique. Cras at sem nec risus sollicitudin
-          varius. Proin ultrices metus arcu, ut lacinia libero ornare eget.
-          Morbi orci mi, scelerisque a justo quis, euismod sollicitudin dui.
-          Duis convallis magna eget eleifend tempor. Ut non lobortis metus.
-          Donec sit amet vulputate risus. Vivamus et lacinia ante.
-        </Text>
-      </Intro.Inner>
-    </Intro>
-
+    
+    <LocationIntro />
     <LocationSplitSection />
-
     <LocationCoordinators cities={Cities} />
-
     {/* <LocationEvents /> */}
 
     <Section bg="White">
@@ -125,32 +110,7 @@ const LocationDetail = () => (
       </Decorator>
     </Box>
 
-    <Section textAlign="left" pt={[8, 8, 12, 12]} indent>
-      <Box width={[1, 6 / 10, 1 / 2, 4 / 10]}>
-        <Text
-          as="span"
-          color="Galaxy"
-          fontSize={[1, 2, 2]}
-          fontWeight={700}
-          mb={1}
-        >
-          Do it yourself
-        </Text>
-        <Text as="h2" color="Sunset">
-          Build Your Own World of Opportunity
-        </Text>
-        <Text as="p" color="Galaxy" fontSize={[0, 1, 1]} mt={[1, 1, 0]} mb={1}>
-          Bring yourkid over or fring out your inner kid with some of our online
-          activities to feed your imagination.
-        </Text>
-        <Btn
-          Label="View Our Menu"
-          Destination="/menu"
-          BgColor={Theme.Color.Primary}
-          TextColor={Theme.Color.White}
-        />
-      </Box>
-    </Section>
+    <LocationPlayCenter />
 
     <Box
       position="relative"
