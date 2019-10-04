@@ -33,7 +33,7 @@ Container.Inner = styled.div`
   margin: 0 auto;
   position: relative;
   padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 4);
-  padding-bottom: calc(${props => props.theme.Root.Size} * 1);
+  padding-bottom: calc(${Theme.Root.Size} * 1);
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 2);

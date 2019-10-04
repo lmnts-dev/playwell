@@ -538,7 +538,7 @@ const WhoPage = ({
         <BasicInner>
           <FooterExt>
             <div className="left">
-              <div className="h5">Looking to join out team?</div>
+              <div className="h5">Looking to join our team?</div>
               <div className="h3">Check out our Jobs &amp; Careers page.</div>
             </div>
             <div className="right">

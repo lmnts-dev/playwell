@@ -55,7 +55,9 @@ Hero.Tags = styled(Flex)`
     font-size: 0.8rem;
     padding: 0 calc(${props => props.theme.Root.Rem} * 1);
     margin-bottom: calc(${props => props.theme.Root.Rem} * 0.8);
-    text-align: @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+    text-align: center;
+    
+    @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
       font-size: 0.9rem;
       padding: 0 calc(${props => props.theme.Root.Rem} * 0);
     }
@@ -87,11 +89,6 @@ CalloutSection.Overlay = styled(Box)`
 
 CalloutSection.Inner = styled(Flex)``;
 
-export const Lead = styled(Text)`
-  text-align: center;
-  font-weight: 400;
-`;
-
 export const Spacer = styled(Flex)`
   position: relative;
   justify-content: center;
@@ -103,6 +100,7 @@ Spacer.Line = styled.span`
   position: absolute;
   bottom: -50px;
   border-left: 1px dashed ${p => p.theme.Color.Primary};
+  z-index: 9;
 `;
 
 export const QuestionsNav = styled(Flex)`

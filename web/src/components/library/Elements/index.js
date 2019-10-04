@@ -21,7 +21,9 @@ import {
   fontSize,
   fontWeight,
   lineHeight,
-  maxWidth
+  maxWidth,
+  display,
+  position,
 } from 'styled-system';
 
 import { Theme, Root } from 'constants/Theme';
@@ -40,6 +42,8 @@ export const Box = styled('div')`
   ${textAlign}
   ${maxWidth}
   ${fontSize}
+  ${display}
+  ${position}
 `;
 
 Box.displayName = 'Box';
@@ -82,6 +86,8 @@ export const Text = styled('div')`
   ${fontSize}
   ${fontWeight}
   ${lineHeight}
+  ${maxWidth}
+  ${width}
 `;
 
 Box.displayName = 'Text';

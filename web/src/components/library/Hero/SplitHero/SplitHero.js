@@ -34,8 +34,9 @@ const SplitHero = ({
   gear,
   playButtonBg,
   px,
+  textAlign,
 }) => (
-  <HeroContainer bg={bg} px={px} color={color}>
+  <HeroContainer bg={bg} px={px} color={color} textAlign={textAlign}>
     <Flex
       width={1}
       flexWrap="wrap"

@@ -1,26 +1,28 @@
-// Index.js:
-// This is the home page of the website.
+// <SpacerCentered /> Component:
+// Vertical centered dashed spacer
 
 // Imports
 //////////////////////////////////////////////////////////////////////
 
 // Core
 import React from 'react';
+import { Link } from 'gatsby';
 
-// Page
-import HomePage from './HomePage';
+// Styles
+import { Container } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-// Render Page
-const Index = () => (
-  <>
-    <HomePage />
-  </>
+const Centered = () => (
+  <Container>
+    <Container.Line />
+  </Container>
 );
 
-export default Index;
+Centered.defaultProps = {};
+
+export default Centered;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

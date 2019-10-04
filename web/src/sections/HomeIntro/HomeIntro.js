@@ -29,9 +29,9 @@ import { Theme, Root } from 'constants/Theme';
 // Render Page
 const HomeIntro = () => {
   return (
-    <Intro pt={0} textAlign="left">
+    <Intro pt={0} textAlign="left" indent>
       <Intro.Inner>
-        <Box width={[1 / 2]} px={Root.Grid.Indent.X}>
+        <Box width={[1 / 2]}>
           <Text as="span" color="Galaxy" fontSize={[1, 2, 2]} mb={1}>
             Taking our imagination up a level
           </Text>
