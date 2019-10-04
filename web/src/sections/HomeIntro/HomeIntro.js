@@ -13,9 +13,6 @@ import { Box, Flex, Text } from 'components/library/Elements';
 import Btn from 'components/library/Btn';
 
 import ImgMatch from 'components/core/ImgMatch';
-import ImgQuery from 'components/core/ImgQuery';
-
-import BgQuery from 'assets/images/intro-smiles.jpg';
 
 // Styles
 import { Intro } from './styles.scss';
@@ -31,7 +28,7 @@ const HomeIntro = () => {
   return (
     <Intro pt={0} textAlign="left" indent>
       <Intro.Inner>
-        <Box width={[1 / 2]}>
+        <Box width={[1 / 2]} pr={10}>
           <Text as="span" color="Galaxy" fontSize={[1, 2, 2]} mb={1}>
             Taking our imagination up a level
           </Text>
@@ -59,7 +56,7 @@ const HomeIntro = () => {
         </Box>
         <Intro.Image width={[1 / 2]}>
           <figure>
-            {/* <ImgMatch src={BgQuery} AltText="Hero Alt" className="hero-img" /> */}
+            <ImgMatch src="intro-smiles.jpg" AltText="Hero Alt" />
           </figure>
         </Intro.Image>
       </Intro.Inner>

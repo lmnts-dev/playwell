@@ -31,6 +31,8 @@ const HeroContainer = ({
   fullWidth,
   withMask,
   heroHeight,
+  curveBg,
+  sliceBg,
 }) => (
   <Container
     as="section"
@@ -48,8 +50,8 @@ const HeroContainer = ({
     <Container.Inner>{children}</Container.Inner>
     {withMask && (
       <Mask>
-        <FooterCurveSlice bgColor={Theme.Color.Dino} />
-        <FooterAngleSlice bgColor={Theme.Color.Background} />
+        <FooterCurveSlice bgColor={curveBg} />
+        <FooterAngleSlice bgColor={sliceBg} />
       </Mask>
     )}
   </Container>
@@ -59,6 +61,8 @@ HeroContainer.defaultProps = {
   bg: 'Sky',
   color: 'White',
   px: 1,
+  curveBg: Theme.Color.Deepsea,
+  sliceBg: Theme.Color.Background,
 };
 
 export default HeroContainer;

@@ -19,7 +19,7 @@ import { Base } from 'constants/styles/Base';
 export const Hero = styled(Box)`
   background: ${Theme.Color.Background};
   padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 2);
-  padding-bottom: calc(${Theme.Root.Size} * 1);
+  padding-bottom: calc(${Theme.Root.Size} * 1.5);
   text-align: left;
   overflow: hidden;
   position: relative;
