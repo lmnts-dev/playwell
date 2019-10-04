@@ -1,6 +1,6 @@
 // LocationSplitSections.js:
 // Location detail page split sections
-// todo: clean up <components />, typography
+// todo: clean up, typography
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -14,6 +14,7 @@ import Img from 'gatsby-image';
 import { Box, Flex, Text } from 'components/library/Elements';
 import Btn from 'components/library/Btn';
 import SplitSection from 'components/library/Section/SplitSection';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Elements
 import Block from 'components/library/Block';

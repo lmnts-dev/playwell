@@ -23,6 +23,7 @@ import {
   lineHeight,
   maxWidth,
   display,
+  position,
 } from 'styled-system';
 
 import { Theme, Root } from 'constants/Theme';
@@ -42,6 +43,7 @@ export const Box = styled('div')`
   ${maxWidth}
   ${fontSize}
   ${display}
+  ${position}
 `;
 
 Box.displayName = 'Box';

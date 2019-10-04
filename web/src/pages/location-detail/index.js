@@ -1,6 +1,6 @@
 // Location detail template:
 // This is the data template for the Locations Detail page
-// todo: make <Spacer /> a component
+// todo: Use <Spacer in place of <Scroll && add props to <Spacer
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -16,8 +16,10 @@ import Section from 'components/library/Elements/Section';
 import { Box, Flex, Text } from 'components/library/Elements';
 import Btn from 'components/library/Btn';
 import { Icon } from 'components/library/Icons';
+import SpacerCentered from 'components/library/Spacer/Centered';
 
 // Sections
+import LocationHero from 'sections/LocationHero';
 import LocationCoordinators from 'sections/LocationCoordinators';
 import LocationSplitSection from 'sections/LocationSplitSection';
 import LocationPrograms from 'sections/LocationPrograms';
@@ -27,7 +29,7 @@ import Quote from 'sections/Quote';
 import LegoList from 'components/library/Section/LegoList';
 
 // Styles
-import { Hero, Spacer, Intro, Scroll } from './styles.scss';
+import { Hero, Spacer, Intro, Scroll, Decorator } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -46,62 +48,32 @@ const ThemeProps = {
 // Render Page
 const LocationDetail = () => (
   <Layout {...ThemeProps}>
-    <Hero>
-      <Hero.Inner>
-        <Box width={1} px={Root.Grid.Indent.X}>
-          <Hero.Tags>
-            <li>
-              <Link to={'/'}>Robotics</Link>
-            </li>
-            <li>
-              <Link to={'/'}>Intro to STEM</Link>
-            </li>
-            <li>
-              <Link to={'/'}>Gaming</Link>
-            </li>
-            <li>
-              <Link to={'/'}>Advanced Engineering</Link>
-            </li>
-            <li>
-              <Link to={'/'}>Engineering Themes</Link>
-            </li>
-          </Hero.Tags>
-        </Box>
-        <Box width={1} px={Root.Grid.Indent.X}>
-          <Hero.Heading>
-            STEM Education &amp;
-            <br />
-            Engineering in <span>STATE</span>
-          </Hero.Heading>
-          <Box mr={1} display="inline-block">
-            <Btn
-              External
-              Label="View Programs"
-              BgColor={Theme.Color.Nova}
-              TextColor={Theme.Color.White}
-            />
-          </Box>
-          <Box display="inline-block">
-            <Btn
-              External
-              Label="Contact Manager"
-              BgColor={Theme.Color.Blush}
-              TextColor={Theme.Color.Primary}
-            />
-          </Box>
-        </Box>
-      </Hero.Inner>
-    </Hero>
+    <Box
+      position="relative"
+      css={css`
+        z-index: 9;
+      `}
+    >
+      <Decorator className="decorator__hero decorator__hero--top">
+        <ImgMatch src="cloud-big.png" AltText="Cloud" />
+      </Decorator>
+
+      <Decorator className="decorator__hero decorator__hero--bottom">
+        <ImgMatch src="cloud-big.png" AltText="Cloud" />
+      </Decorator>
+    </Box>
+
+    <LocationHero />
+
     <Section bg="Dino" pt={0} pb={0} fullWidth>
       <ImgMatch
         src="locations-hero.jpg"
         AltText="STEM Education &amp; Engineering in"
       />
     </Section>
-    {/* // Vertical dashed spacer */}
-    <Spacer>
-      <Spacer.Line />
-    </Spacer>
+
+    <SpacerCentered />
+
     <Intro bg="Cream" textAlign="center">
       <Intro.Inner pt={[2, 2, 4, 4]} pb={[1, 1, 2, 2]}>
         <Text as="p" color="Nova" className="lead">
@@ -116,18 +88,25 @@ const LocationDetail = () => (
         </Text>
       </Intro.Inner>
     </Intro>
+
     <LocationSplitSection />
+
     <LocationCoordinators cities={Cities} />
+
     {/* <LocationEvents /> */}
+
     <Section bg="White">
       <LegoList />
     </Section>
+
     <Quote color="Sunset">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra
       enim sed magna vestibulum, nec imperdiet orci egestas. Sed in magna
       sapien.
     </Quote>
+
     <LocationPrograms />
+
     <Scroll>
       <Scroll.Positioner>
         <span>Play</span>
@@ -135,9 +114,54 @@ const LocationDetail = () => (
       </Scroll.Positioner>
     </Scroll>
 
-    <Section bg="Background" pt={12} pb={12} />
-    <Section bg="Background" pt={12} pb={12} />
-    <Section bg="Background" pt={12} pb={12} />
+    <Box
+      position="relative"
+      css={css`
+        z-index: 9;
+      `}
+    >
+      <Decorator className="decorator__footer decorator__footer--top">
+        <ImgMatch src="cloud-small.png" AltText="Cloud" />
+      </Decorator>
+    </Box>
+
+    <Section textAlign="left" pt={[8, 8, 12, 12]} indent>
+      <Box width={[1, 6 / 10, 1 / 2, 4 / 10]}>
+        <Text
+          as="span"
+          color="Galaxy"
+          fontSize={[1, 2, 2]}
+          fontWeight={700}
+          mb={1}
+        >
+          Do it yourself
+        </Text>
+        <Text as="h2" color="Sunset">
+          Build Your Own World of Opportunity
+        </Text>
+        <Text as="p" color="Galaxy" fontSize={[0, 1, 1]} mt={[1, 1, 0]} mb={1}>
+          Bring yourkid over or fring out your inner kid with some of our online
+          activities to feed your imagination.
+        </Text>
+        <Btn
+          Label="View Our Menu"
+          Destination="/menu"
+          BgColor={Theme.Color.Primary}
+          TextColor={Theme.Color.White}
+        />
+      </Box>
+    </Section>
+
+    <Box
+      position="relative"
+      css={css`
+        z-index: 9;
+      `}
+    >
+      <Decorator className="decorator__footer decorator__footer--bottom">
+        <ImgMatch src="volcano.png" AltText="Cloud" />
+      </Decorator>
+    </Box>
   </Layout>
 );
 
