@@ -70,7 +70,7 @@ Scroll.Line = styled.div`
 `;
 
 export const Decorator = styled(Box)`
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 
   &.decorator__hero {

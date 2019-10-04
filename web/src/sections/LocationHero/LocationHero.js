@@ -15,6 +15,7 @@ import Btn from 'components/library/Btn';
 
 // Styles
 import { Hero } from './styles.scss';
+import { Decorator } from '../../pages/location-detail/styles.scss'
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -24,6 +25,19 @@ import { Theme, Root } from 'constants/Theme';
 
 const LocationHero = ({ cities }) => (
   <Hero>
+    <Box
+      css={css`
+        z-index: 9;
+      `}
+    >
+      <Decorator className="decorator__hero decorator__hero--top">
+        <ImgMatch src="cloud-big.png" AltText="Cloud" />
+      </Decorator>
+
+      <Decorator className="decorator__hero decorator__hero--bottom">
+        <ImgMatch src="cloud-big.png" AltText="Cloud" />
+      </Decorator>
+    </Box>
     <Hero.Inner>
       <Box width={1} px={Root.Grid.Indent.X}>
         <Hero.Tags>

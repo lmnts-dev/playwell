@@ -48,22 +48,6 @@ const ThemeProps = {
 // Render Page
 const LocationDetail = () => (
   <Layout {...ThemeProps}>
-    <Box
-      position="relative"
-      css={css`
-        overflow: hidden;
-        z-index: 9;
-      `}
-    >
-      <Decorator className="decorator__hero decorator__hero--top">
-        <ImgMatch src="cloud-big.png" AltText="Cloud" />
-      </Decorator>
-
-      <Decorator className="decorator__hero decorator__hero--bottom">
-        <ImgMatch src="cloud-big.png" AltText="Cloud" />
-      </Decorator>
-    </Box>
-
     <LocationHero />
 
     <Section bg="Dino" pt={0} pb={0} fullWidth>
@@ -113,7 +97,6 @@ const LocationDetail = () => (
     <LocationPlayCenter />
 
     <Box
-      position="relative"
       css={css`
         z-index: 9;
       `}
