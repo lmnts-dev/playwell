@@ -8,10 +8,10 @@
 // Core
 import React from 'react';
 import { Link } from 'gatsby';
-import ImgMatch from 'components/core/ImgMatch';
 
 // Components
 import Layout from 'components/core/Layout';
+import ImgMatch from 'components/core/ImgMatch';
 import Section from 'components/library/Elements/Section';
 import { Box, Flex, Text } from 'components/library/Elements';
 import SpacerCentered from 'components/library/Spacer/Centered';
@@ -24,7 +24,7 @@ import LocationPrograms from 'sections/LocationPrograms';
 import LocationEvents from 'sections/LocationEvents';
 import Quote from 'sections/Quote';
 import LocationIntro from 'sections/LocationIntro';
-import LocationPlayCenter from 'sections/LocationPlayCenter';
+import LocationPlayZone from 'sections/LocationPlayZone';
 
 import LegoList from 'components/library/Section/LegoList';
 
@@ -93,7 +93,7 @@ const LocationDetail = () => (
       </div>
     </Decorator>
 
-    <LocationPlayCenter />
+    <LocationPlayZone />
 
     {/* <Decorator>
       <div className="decorator__footer decorator__footer--bottom">

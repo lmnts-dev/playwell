@@ -23,7 +23,7 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const LocationPlayCenter = () => (
+const LocationPlayZone = () => (
   <Container textAlign="left" pt={[8, 8, 12, 12]} indent>
     <Container.Image>
       <ImgMatch src="lego-ladder.png" AltText="Cloud" />
@@ -49,7 +49,7 @@ const LocationPlayCenter = () => (
   </Container>
 );
 
-export default LocationPlayCenter;
+export default LocationPlayZone;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

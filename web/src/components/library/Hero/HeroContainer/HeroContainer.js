@@ -22,8 +22,6 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const sectionPadding = [0, 0, 2, 6, 8];
-
 const HeroContainer = ({
   bg,
   color,
@@ -32,6 +30,8 @@ const HeroContainer = ({
   textAlign,
   fullWidth,
   withMask,
+  curveBg,
+  sliceBg,
 }) => (
   <Container
     as="section"
@@ -48,8 +48,8 @@ const HeroContainer = ({
     <Container.Inner>{children}</Container.Inner>
     {withMask && (
       <Mask>
-        <FooterCurveSlice bgColor={Theme.Color.Dino} />
-        <FooterAngleSlice bgColor={Theme.Color.Background} />
+        <FooterCurveSlice bgColor={curveBg} />
+        <FooterAngleSlice bgColor={sliceBg} />
       </Mask>
     )}
   </Container>
@@ -59,6 +59,8 @@ HeroContainer.defaultProps = {
   bg: 'Sky',
   color: 'White',
   px: 1,
+  curveBg: Theme.Color.Deepsea,
+  sliceBg: Theme.Color.Background,
 };
 
 export default HeroContainer;

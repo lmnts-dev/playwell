@@ -22,12 +22,16 @@ export const Intro = styled(Section)``;
 
 Intro.Inner = styled.div`
   display: flex;
-  
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
 Intro.Image = styled(Box)`
-  height: 100%;
-  padding: 8rem;
+  clip-path: circle(39%);
+
+  figure {
+    margin: 0;
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

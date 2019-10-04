@@ -25,6 +25,7 @@ export const Container = styled(Flex)`
   height: ${props => (props.withMask ? heroHeight : '70vh')};
   text-align: ${props => props.textAlign};
   position: relative;
+  overflow: hidden;
 `;
 
 Container.Inner = styled.div`

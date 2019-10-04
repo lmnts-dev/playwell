@@ -9,10 +9,13 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 
 // Components
+import ImgMatch from 'components/core/ImgMatch';
 import { Box, Flex, Text } from 'components/library/Elements';
 import { Icon } from 'components/library/Icons';
 import HeroContainer from 'components/library/Hero/HeroContainer';
 import { LocationFilter } from './LocationFilter';
+
+// Vendor
 import Slider from 'react-slick';
 
 // Styles
@@ -25,6 +28,7 @@ import {
 } from './styles.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Decorator } from '../../pages/HomePage/styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -73,12 +77,27 @@ const settings = {
 const HomeHero = ({ bgColor, textColor, slides }) => {
   return (
     <HeroContainer {...HeroProps} fullWidth>
-      <SliderContainer width={[1, 1, 1, 1, 6 / 10]} pt={2} pl={[0, 0, 2, 6, 9]}>
+      <Decorator>
+        <div className="decorator__hero decorator__hero--top">
+          <ImgMatch src="cloud-big.png" AltText="Cloud" />
+        </div>
+        <div className="decorator__hero decorator__hero--waterfall">
+          <ImgMatch src="waterfall.png" AltText="Cloud" />
+        </div>
+        <div className="decorator__hero decorator__hero--volcano">
+          <ImgMatch src="volcano.png" AltText="Cloud" />
+        </div>
+      </Decorator>
+      <SliderContainer
+        width={[1, 1, 1, 1, 6 / 10]}
+        pt={2}
+        pl={Root.Grid.Indent.X}
+      >
         <Slider {...settings}>
           {slides.map(slide => (
             <Box key={slide.index}>
               <Text as="h2">{slide.message}</Text>
-              <Text as="span" fontSize={[1, 2, 3, 3]} color="Primary" pb={2}>
+              <Text className="h5" fontWeight={700} color="Deepsea">
                 {slide.detail}
               </Text>
             </Box>
@@ -91,6 +110,15 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
           <LocationFilter />
         </Actions>
       </SliderContainer>
+      <Decorator
+        css={css`
+          position: relative;
+        `}
+      >
+        <div className="decorator__hero decorator__hero--left">
+          <ImgMatch src="cloud-small.png" AltText="Cloud" />
+        </div>
+      </Decorator>
     </HeroContainer>
   );
 };

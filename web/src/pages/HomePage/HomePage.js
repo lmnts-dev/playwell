@@ -16,6 +16,7 @@ import Spacer from 'components/library/Spacer';
 import HomeHero from 'sections/HomeHero';
 import HomeIntro from 'sections/HomeIntro';
 import HomeCommunity from 'sections/HomeCommunity';
+import LocationPlayZone from 'sections/LocationPlayZone';
 
 // Styles
 import {} from './styles.scss';
@@ -28,7 +29,7 @@ import { Theme, Root } from 'constants/Theme';
 
 // Props
 const ThemeProps = {
-  BgColor: Theme.Color.Sunset,
+  BgColor: Theme.Color.Ocean,
   PrimaryColor: Theme.Color.White,
   SecondaryColor: Theme.Color.Primary,
   TertiaryColor: Theme.Color.Primary,
@@ -44,6 +45,7 @@ const HomePage = ({ bgColor, textColor }) => (
     <Section bg="Background" pt={12} pb={12} />
     <HomeIntro />
     <Section bg="Dino" pt={12} pb={12} />
+    <LocationPlayZone />
   </Layout>
 );
 
