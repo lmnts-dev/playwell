@@ -41,9 +41,9 @@ export class CourseMapNav extends PureComponent {
 
     // Initial State
     this.state = {
-      lng: 5,
-      lat: 34,
-      zoom: 1.5,
+      lat: 40.7088,
+      lng: -73.9888,
+      zoom: 10.6,
     };
   }
 
@@ -73,9 +73,9 @@ export class CourseMapNav extends PureComponent {
     const mapWidth = this.props.mapWidth;
     const mapZedIndex = this.props.mapZedIndex;
     const { lng, lat, zoom } = this.state;
-    console.log("lat: " + lat);
-    console.log("lng: " + lng);
-    console.log("zoom: " + zoom);
+    console.log('lat: ' + lat);
+    console.log('lng: ' + lng);
+    console.log('zoom: ' + zoom);
 
     return (
       <CourseMapNavStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
