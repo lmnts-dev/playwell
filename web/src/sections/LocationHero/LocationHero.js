@@ -25,19 +25,15 @@ import { Theme, Root } from 'constants/Theme';
 
 const LocationHero = ({ cities }) => (
   <Hero>
-    <Box
-      css={css`
-        z-index: 9;
-      `}
-    >
-      <Decorator className="decorator__hero decorator__hero--top">
+    <Decorator>
+      <div className="decorator__hero decorator__hero--top">
         <ImgMatch src="cloud-big.png" AltText="Cloud" />
-      </Decorator>
+      </div>
 
-      <Decorator className="decorator__hero decorator__hero--bottom">
+      <div className="decorator__hero decorator__hero--bottom">
         <ImgMatch src="cloud-big.png" AltText="Cloud" />
-      </Decorator>
-    </Box>
+      </div>
+    </Decorator>
     <Hero.Inner>
       <Box width={1} px={Root.Grid.Indent.X}>
         <Hero.Tags>

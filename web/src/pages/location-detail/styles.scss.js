@@ -71,9 +71,9 @@ Scroll.Line = styled.div`
 
 export const Decorator = styled(Box)`
   /* overflow: hidden; */
-  position: relative;
+  z-index: 9;
 
-  &.decorator__hero {
+  .decorator__hero {
     position: absolute;
     top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
 
@@ -110,7 +110,7 @@ export const Decorator = styled(Box)`
     }
   }
 
-  &.decorator__footer {
+  .decorator__footer {
     position: absolute;
     /* top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1); */
 

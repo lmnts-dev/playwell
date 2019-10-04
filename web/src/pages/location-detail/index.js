@@ -58,7 +58,7 @@ const LocationDetail = () => (
     </Section>
 
     <SpacerCentered />
-    
+
     <LocationIntro />
     <LocationSplitSection />
     <LocationCoordinators cities={Cities} />
@@ -83,28 +83,23 @@ const LocationDetail = () => (
       </Scroll.Positioner>
     </Scroll>
 
-    <Box
-      position="relative"
+    <Decorator
       css={css`
-        z-index: 9;
+        position: relative;
       `}
     >
-      <Decorator className="decorator__footer decorator__footer--top">
+      <div className="decorator__footer decorator__footer--top">
         <ImgMatch src="cloud-small.png" AltText="Cloud" />
-      </Decorator>
-    </Box>
+      </div>
+    </Decorator>
 
     <LocationPlayCenter />
 
-    <Box
-      css={css`
-        z-index: 9;
-      `}
-    >
-      <Decorator className="decorator__footer decorator__footer--bottom">
+    {/* <Decorator>
+      <div className="decorator__footer decorator__footer--bottom">
         <ImgMatch src="volcano.png" AltText="Cloud" />
-      </Decorator>
-    </Box>
+      </div>
+    </Decorator> */}
   </Layout>
 );
 
