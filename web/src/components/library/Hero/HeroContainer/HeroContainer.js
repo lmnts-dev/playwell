@@ -22,8 +22,6 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const sectionPadding = [0, 0, 2, 6, 8];
-
 const HeroContainer = ({
   bg,
   color,
@@ -32,6 +30,7 @@ const HeroContainer = ({
   textAlign,
   fullWidth,
   withMask,
+  heroHeight,
 }) => (
   <Container
     as="section"
@@ -44,6 +43,7 @@ const HeroContainer = ({
     textAlign={textAlign ? textAlign : 'center'}
     fullWidth={fullWidth}
     withMask={withMask}
+    heroHeight={heroHeight}
   >
     <Container.Inner>{children}</Container.Inner>
     {withMask && (

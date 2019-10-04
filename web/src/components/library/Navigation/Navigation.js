@@ -116,6 +116,8 @@ class NavigationBar extends PureComponent {
   }
 
   render() {
+    console.log(this.props.navQuery);
+
     return (
       <>
         <NavigationStyle
@@ -165,7 +167,7 @@ class NavigationBar extends PureComponent {
                 IconFas
               />
               <Btn
-                Label="Arizona"
+                Label="Brooklyn, NYC"
                 Destination="/"
                 BorderStyle="solid"
                 BorderWidth="1px"

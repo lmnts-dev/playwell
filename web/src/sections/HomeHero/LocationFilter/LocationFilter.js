@@ -26,7 +26,7 @@ export const LocationFilter = ({ courseData }) => {
   const ListingsFiltersItem = ({ label, items }) => {
     return (
       <ListingsFiltersStyle.Item onClick={() => console.log(items)}>
-        <span class="filter-inner">
+        <span className="filter-inner">
           <span>{label}</span>
           <Icon Name="carat" />
         </span>
@@ -49,7 +49,7 @@ export const LocationFilter = ({ courseData }) => {
   return (
     <ListingsFiltersStyle>
       <ListingsFiltersItem
-        label="Location"
+        label="Brooklyn, NYC"
         items={[
           { name: 'State', value: 'Arizona' },
           { name: 'State', value: 'Arizona' },

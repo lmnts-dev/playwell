@@ -124,23 +124,13 @@
           "subNav": {
             "focusLinkList": [
               {
-                "route": "/",
-                "label": "About Link",
+                "route": "/who-we-are",
+                "label": "Our Story",
                 "focus": true
               },
               {
                 "route": "/",
-                "label": "About Link",
-                "focus": false
-              },
-              {
-                "route": "/",
-                "label": "About Link",
-                "focus": false
-              },
-              {
-                "route": "/",
-                "label": "About Link",
+                "label": "We're Hiring",
                 "focus": false
               }
             ],

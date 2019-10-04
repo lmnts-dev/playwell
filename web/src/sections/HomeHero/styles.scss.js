@@ -62,7 +62,7 @@ export const SliderArrow = styled(Box)`
 
   &.next-slide {
     right: calc(${Root.Size} * -1);
-    
+
     svg {
       transform: rotate(0deg) translateX(0);
     }
@@ -80,6 +80,13 @@ export const SliderArrow = styled(Box)`
 
 export const Actions = styled(Flex)`
   position: relative;
+
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
 `;
 
 export const HeroBtn = styled.button`
@@ -92,13 +99,22 @@ export const HeroBtn = styled.button`
   outline: 0;
   font-weight: bold;
   text-align: center;
-  display: inline-block;
+  display: flex;
   position: relative;
-  padding: 0.5rem 3rem 0.3rem;
+  height: calc(${Root.Button.Size} * 1.5);
+  line-height: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 3px calc(${Root.Size} / 2) 0 calc(${Root.Size} / 2);
   margin-right: 1rem;
 
   &:hover {
     box-shadow: 0px 0px 0px 3px rgba(93, 99, 118, 0.2);
+    text-decoration: none;
+
+    button {
+      text-decoration: none;
+    }
   }
 
   &:last-child {

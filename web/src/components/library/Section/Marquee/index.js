@@ -83,25 +83,25 @@ class MarqueeSlider extends React.Component {
 // The SubLevel Page Itself
 const Marquee = () => (
     <MarqueeSlider>
-      <div class="item">
+      <div className="item">
         <ImgMatch src="intro-smiles.jpg" />
       </div>
-      <div class="item">
+      <div className="item">
         <ImgMatch src="intro-smiles.jpg" />
       </div>
-      <div class="item">
+      <div className="item">
         <ImgMatch src="intro-smiles.jpg" />
       </div>
-      <div class="item">
+      <div className="item">
         <ImgMatch src="intro-smiles.jpg" />
       </div>
-      <div class="item">
+      <div className="item">
         <ImgMatch src="intro-smiles.jpg" />
       </div>
-      <div class="item">
+      <div className="item">
         <ImgMatch src="intro-smiles.jpg" />
       </div>
-      <div class="item">
+      <div className="item">
         <ImgMatch src="intro-smiles.jpg" />
       </div>
     </MarqueeSlider>

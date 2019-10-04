@@ -130,6 +130,9 @@ export class NavigationOverlay extends PureComponent {
                     {/* TODO: Componentize */}
                     <figure className="line-break" />
 
+                    {console.log('navContext.subNav.minorLinkList:')}
+                    {console.log(navContext.subNav.minorLinkList)}
+
                     <MinorLinkList
                       navOverlayToggle={this.props.navOverlayToggle}
                       linkList={navContext.subNav.minorLinkList}

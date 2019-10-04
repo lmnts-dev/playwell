@@ -18,23 +18,38 @@ import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
-import  { BasicSection, BasicInner } from 'components/library/Section/BasicSection';
+import {
+  BasicSection,
+  BasicInner,
+} from 'components/library/Section/BasicSection';
 import LegoList from 'components/library/Section/LegoList';
 import Marquee from 'components/library/Section/Marquee';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
+import SplitHero from 'components/library/Hero/SplitHero';
+
 // Styles
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
 
+// Props
+const HeroProps = {
+  bg: 'Sky',
+  color: 'White',
+  flexDirection: 'row',
+  BgAlt: 'Placeholder Image Alt',
+  playButtonBg: 'Nova',
+  gear: true,
+  textAlign: 'left',
+  withMask: false,
+  heroHeight: 'auto',
+};
+
 // Data
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
-
-
-
 
 const Partners = styled.div`
   text-align: center;
@@ -83,7 +98,7 @@ const Team = styled.div`
     padding-right: calc(${Root.Size});
     padding-top: calc(${Root.Size} * 1.5);
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding: 0;
+      padding: 0;
     }
     .h3 {
       font-weight: 700;
@@ -347,11 +362,18 @@ const Carousel = styled.div`
 `;
 
 // Render Page
-const WhoPage = ({
-    SliderSettings,
-}) => {
+const WhoPage = ({ SliderSettings }) => {
   return (
     <Layout>
+      <SplitHero {...HeroProps}>
+        <h2>Join a team of creative problem solvers &amp; creators</h2>
+        <h6>We are passionate specialists in STEM Education.</h6>
+        <Btn
+          Label="View Listings"
+          BgColor={props => props.theme.Color.Galaxy}
+          TextColor="white"
+        />
+      </SplitHero>
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
@@ -399,8 +421,8 @@ const WhoPage = ({
           </CenteredTitle>
         </BasicInner>
         <BasicInner noPaddingRight>
-          <EdgeImageWithText 
-            Caption="Tremendous learning mediums" 
+          <EdgeImageWithText
+            Caption="Tremendous learning mediums"
             Header="Inspiring Play Since 1997"
             Image="gears.png"
             Paragraph="Play-Well TEKnologies was founded by Tim Bowen in 1997.
@@ -518,15 +540,19 @@ const WhoPage = ({
         </Partners>
       </BasicSection>
 
-      <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino} BorderTop={Theme.Color.Clay}>
+      <BasicSection
+        BgColor={Theme.Color.White}
+        TextColor={Theme.Color.Dino}
+        BorderTop={Theme.Color.Clay}
+      >
         <BasicInner>
-          <LegoList 
-            TitleOne="Creative Collaboration" 
-            TitleTwo="New Perspectives" 
-            TitleThree="Staff Morale" 
+          <LegoList
+            TitleOne="Creative Collaboration"
+            TitleTwo="New Perspectives"
+            TitleThree="Staff Morale"
             TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
-            TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution." 
-            TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."          
+            TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution."
+            TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."
           />
         </BasicInner>
       </BasicSection>
@@ -550,7 +576,6 @@ const WhoPage = ({
           </FooterExt>
         </BasicInner>
       </BasicSection>
-
     </Layout>
   );
 };

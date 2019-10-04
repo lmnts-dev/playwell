@@ -35,8 +35,17 @@ const SplitHero = ({
   playButtonBg,
   px,
   textAlign,
+  withMask,
+  heroHeight,
 }) => (
-  <HeroContainer bg={bg} px={px} color={color} textAlign={textAlign}>
+  <HeroContainer
+    withMask={withMask}
+    bg={bg}
+    px={px}
+    color={color}
+    textAlign={textAlign}
+    heroHeight={heroHeight}
+  >
     <Flex
       width={1}
       flexWrap="wrap"

@@ -85,9 +85,11 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
           ))}
         </Slider>
         <Actions width={[1, 1, 1, 7 / 10]}>
-          <HeroBtn bgColor={Theme.Color.Nova} textColor={Theme.Color.White}>
-            Explore Courses
-          </HeroBtn>
+          <Link to="/programs">
+            <HeroBtn bgColor={Theme.Color.Nova} textColor={Theme.Color.White}>
+              Explore Courses
+            </HeroBtn>
+          </Link>
           <LocationFilter />
         </Actions>
       </SliderContainer>

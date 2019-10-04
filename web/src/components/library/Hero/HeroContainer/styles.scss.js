@@ -22,7 +22,7 @@ let heroHeight = '130vh';
 let minHeroHeight = '500px';
 
 export const Container = styled(Flex)`
-  height: ${props => (props.withMask ? heroHeight : '70vh')};
+  min-height: ${props => (props.withMask == true ? heroHeight : '70vh')};
   text-align: ${props => props.textAlign};
   position: relative;
 `;
@@ -41,7 +41,6 @@ Container.Inner = styled.div`
 `;
 
 export const Mask = styled.div`
-
   .footer-curve-slice,
   .footer-angle-slice {
     width: 100%;
