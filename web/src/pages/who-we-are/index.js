@@ -26,6 +26,8 @@ import LegoList from 'components/library/Section/LegoList';
 import Marquee from 'components/library/Section/Marquee';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 import SplitHero from 'components/library/Hero/SplitHero';
+import SubNav from 'components/library/SubNav';
+import { Box, Flex } from 'components/library/Elements';
 
 // Styles
 
@@ -35,15 +37,24 @@ import { Base } from 'constants/styles/Base';
 
 // Props
 const HeroProps = {
-  bg: 'Sky',
-  color: 'White',
+  bg: Theme.Color.Cream,
+  color: Theme.Color.Primary,
   flexDirection: 'row',
   BgAlt: 'Placeholder Image Alt',
-  playButtonBg: 'Nova',
-  gear: true,
+  playButton: false,
+  playButtonBg: Theme.Color.Nova,
+  gear: false,
   textAlign: 'left',
   withMask: false,
   heroHeight: 'auto',
+  bgMatch: 'team.jpg',
+};
+
+const ThemeProps = {
+  BgColor: Theme.Color.Cream,
+  PrimaryColor: 'unset',
+  SecondaryColor: Theme.Color.Primary,
+  TertiaryColor: Theme.Color.Primary,
 };
 
 // Data
@@ -364,16 +375,14 @@ const Carousel = styled.div`
 // Render Page
 const WhoPage = ({ SliderSettings }) => {
   return (
-    <Layout>
+    <Layout {...ThemeProps}>
       <SplitHero {...HeroProps}>
         <h2>Join a team of creative problem solvers &amp; creators</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
-        <Btn
-          Label="View Listings"
-          BgColor={props => props.theme.Color.Galaxy}
-          TextColor="white"
-        />
       </SplitHero>
+      <Box css={{ position: 'relative', height: 0 }}>
+        <SubNav />
+      </Box>
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}

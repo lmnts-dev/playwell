@@ -23,6 +23,9 @@ import {
   BasicSection,
   BasicInner,
 } from 'components/library/Section/BasicSection';
+import { Box, Flex } from 'components/library/Elements';
+import SubNav from 'components/library/SubNav';
+import SplitHero from 'components/library/Hero/SplitHero';
 
 // Styles
 
@@ -35,6 +38,28 @@ import { Base } from 'constants/styles/Base';
 
 // Helpers
 import hexToRGB from 'helpers/hexToRGB';
+
+// Props
+const HeroProps = {
+  bg: Theme.Color.Cream,
+  color: Theme.Color.Primary,
+  flexDirection: 'row',
+  BgAlt: 'Placeholder Image Alt',
+  playButton: false,
+  playButtonBg: Theme.Color.Nova,
+  gear: false,
+  textAlign: 'left',
+  withMask: false,
+  heroHeight: 'auto',
+  bgMatch: 'team.jpg',
+};
+
+const ThemeProps = {
+  BgColor: Theme.Color.Cream,
+  PrimaryColor: 'unset',
+  SecondaryColor: Theme.Color.Primary,
+  TertiaryColor: Theme.Color.Primary,
+};
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -285,7 +310,14 @@ const TextBlock = styled.div`
 // Render Page
 const WhoWhyPage = () => {
   return (
-    <Layout>
+    <Layout {...ThemeProps}>
+      <SplitHero {...HeroProps}>
+        <h2>Join a team of creative problem solvers &amp; creators</h2>
+        <h6>We are passionate specialists in STEM Education.</h6>
+      </SplitHero>
+      <Box css={{ position: 'relative', height: 0 }}>
+        <SubNav />
+      </Box>
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.White}

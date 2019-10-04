@@ -137,22 +137,32 @@
             "minorLinkList": [
               {
                 "route": "",
-                "label": "Subhead",
+                "label": "Learn more",
                 "subhead": true
               },
               {
-                "route": "/",
-                "label": "About Link",
+                "route": "/who-we-are/who",
+                "label": "Who",
                 "subhead": false
               },
               {
-                "route": "/",
-                "label": "About Link",
+                "route": "/who-we-are/why",
+                "label": "Why",
                 "subhead": false
               },
               {
-                "route": "/",
-                "label": "About Link",
+                "route": "/who-we-are/how",
+                "label": "How",
+                "subhead": false
+              },
+              {
+                "route": "/who-we-are/careers",
+                "label": "Careers",
+                "subhead": false
+              },
+              {
+                "route": "/who-we-are/news-press",
+                "label": "News & Press",
                 "subhead": false
               }
             ]

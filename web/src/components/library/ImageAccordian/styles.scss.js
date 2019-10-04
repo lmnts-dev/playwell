@@ -21,19 +21,18 @@ const ImageAccordianStyle = styled.div`
 
     .h5 {
       font-weight: 700;
-      line-height: .8 !important;
+      line-height: 0.8 !important;
     }
 
     p {
       padding-bottom: 0;
       max-height: 0;
       overflow: hidden;
-      transition-duration: .25s;
+      transition-duration: 0.25s;
     }
 
-
-
-    .ico, input {
+    .ico,
+    input {
       position: absolute;
       top: 0;
       right: 0;
@@ -45,7 +44,7 @@ const ImageAccordianStyle = styled.div`
     .ico {
       pointer-events: none;
       background-color: ${Theme.Color.Nova};
-      transition-duration: .25s;
+      transition-duration: 0.25s;
 
       g {
         fill: ${Theme.Color.White};
@@ -74,7 +73,7 @@ const ImageAccordianStyle = styled.div`
       height: 100%;
     }
   }
-`
+`;
 
 export default ImageAccordianStyle;
 

@@ -27,16 +27,16 @@ export const Rotator = styled(Box)`
     svg {
       fill: ${props => props.fill};
       stroke: ${props => props.strokeColor};
-      stroke-width: 1px;
+      stroke-width: .5px;
       stroke-dashoffset: 5px;
       stroke-dasharray: 5px;
-      transition: all 20s ease;
+      transition: all 60s ease;
       width: ${props => props.width};
       height: ${props => props.height};
 
       &:hover {
-        stroke-dashoffset: 0px;
-        stroke-dasharray: 300px;
+        /* stroke-dashoffset: 0px; */
+        /* stroke-dasharray: 300px; */
       }
     }
   }

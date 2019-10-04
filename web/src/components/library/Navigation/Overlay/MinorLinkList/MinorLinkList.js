@@ -19,8 +19,8 @@ export const MinorLinkList = ({ linkList, navOverlayToggle }) => {
       {/* Map our linkList prop */}
       {linkList.map((link, idx) => {
         // If the route is specified...
-        if (link.route != "") {
-          // If it isn't a subhead...
+        if (link.route != '') {
+          // If it is a subhead...
           if (link.subhead == true) {
             return (
               <li key={idx} className="minor-link-subhead">
@@ -31,12 +31,14 @@ export const MinorLinkList = ({ linkList, navOverlayToggle }) => {
                   tabIndex="0"
                   className="nav-item"
                 >
+                  {console.log('link.route')}
+                  {console.log(link.route)}
                   <span className="label">{link.label}</span>
                 </span>
               </li>
             );
           }
-          // If it is a subhead...
+          // If it isn't a subhead...
           else {
             return (
               <li key={idx}>
@@ -48,6 +50,8 @@ export const MinorLinkList = ({ linkList, navOverlayToggle }) => {
                     tabIndex="0"
                     className="nav-item"
                   >
+                    {console.log('link.route')}
+                    {console.log(link.route)}
                     <span className="label">{link.label}</span>
                   </span>
                 </Link>

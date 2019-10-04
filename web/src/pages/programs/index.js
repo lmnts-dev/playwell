@@ -18,6 +18,14 @@ import { Box, Flex } from 'components/library/Elements';
 // Constants
 import { Theme, Root } from 'constants/Theme';
 
+// Props
+const ThemeProps = {
+  BgColor: Theme.Color.Galaxy,
+  PrimaryColor: Theme.Color.White,
+  SecondaryColor: Theme.Color.Primary,
+  TertiaryColor: Theme.Color.Primary,
+};
+
 // Begin Component
 
 //////////////////////////////////////////////////////////////////////
@@ -28,7 +36,7 @@ const ProgramsPage = props => {
   let mapZedIndex = 5;
 
   return (
-    <Layout>
+    <Layout {...ThemeProps}>
       <StaticQuery
         query={graphql`
           query {

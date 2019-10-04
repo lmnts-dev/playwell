@@ -122,7 +122,7 @@ class NavigationBar extends PureComponent {
       <>
         <NavigationStyle
           className={
-            this.state.navOverlayVisible == true ? 'hidden' : undefined
+            this.state.navOverlayVisible == true ? 'nav-bar hidden' : 'nav-bar'
           }
         >
           <NavigationBodyPadding />
@@ -134,7 +134,7 @@ class NavigationBar extends PureComponent {
                 <Brandmark />
               </Link>
 
-              <ul>
+              <ul className="linklist">
                 {this.props.navQuery.primaryNav.linkList.map((link, idx) => {
                   if (link.subNav.length != false) {
                     return (

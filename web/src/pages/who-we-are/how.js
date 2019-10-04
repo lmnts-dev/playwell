@@ -25,6 +25,9 @@ import {
   BasicSection,
   BasicInner,
 } from 'components/library/Section/BasicSection';
+import SplitHero from 'components/library/Hero/SplitHero';
+import { Box, Flex } from 'components/library/Elements';
+import SubNav from 'components/library/SubNav';
 
 // Styles
 
@@ -37,6 +40,26 @@ import { Base } from 'constants/styles/Base';
 
 // Helpers
 import hexToRGB from 'helpers/hexToRGB';
+
+// Props
+const ThemeProps = {
+  BgColor: Theme.Color.Cream,
+  PrimaryColor: Theme.Color.White,
+  SecondaryColor: Theme.Color.Primary,
+  TertiaryColor: Theme.Color.Primary,
+};
+
+const HeroProps = {
+  bg: Theme.Color.Lilac,
+  color: Theme.Color.White,
+  flexDirection: 'row',
+  BgAlt: 'Placeholder Image Alt',
+  playButtonBg: Theme.Color.Nova,
+  gear: true,
+  textAlign: 'left',
+  withMask: false,
+  heroHeight: 'auto',
+};
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -203,7 +226,15 @@ const SplitTextBoxes = styled.div`
 // Render Page
 const WhoHowPage = () => {
   return (
-    <Layout>
+    <Layout {...ThemeProps}>
+      <SplitHero {...HeroProps}>
+        <h2>Join a team of creative problem solvers &amp; creators</h2>
+        <h6>We are passionate specialists in STEM Education.</h6>
+      </SplitHero>
+      <Box css={{ position: 'relative', height: 0 }}>
+        <SubNav />
+      </Box>
+
       <BasicSection
         BgColor={Theme.Color.Lilac}
         TextColor={Theme.Color.White}
