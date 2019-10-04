@@ -9,6 +9,8 @@ const crypto = require('crypto');
 const CLIENT_API_URI = 'https://course-finder.play-well.org/webservice/courses';
 const MANAGER_API_URI =
   'https://course-finder.play-well.org/webservice/managers';
+const LOCATION_STATES_API_URI =
+  'https://course-finder.play-well.org/webservice/states';
 
 // Create our GraphQL Architecture
 exports.sourceNodes = async ({ actions }) => {
@@ -18,6 +20,7 @@ exports.sourceNodes = async ({ actions }) => {
   // Client API Route to GraphQL Architecture:
   // This is to return PlayWell Clients & Courses.
   const client_results = await axios.get(CLIENT_API_URI);
+
   for (const client of client_results.data) {
     await createNode({
       children: [],
@@ -76,4 +79,69 @@ exports.sourceNodes = async ({ actions }) => {
     });
   }
 
+  // States API Route to GraphQL Architecture:
+  // This is to return all PlayWell States & Counties.
+  const location_states_results = await axios.get(LOCATION_STATES_API_URI);
+
+  // Create internal index of states. For internal use only.
+  let state_index = 0;
+
+  // Create our GraphQL index of states & their respective counties.
+  for (const state of location_states_results.data) {
+    // Create an index so we can have an ID per State.
+    state_index = state_index + 1;
+
+    // Our function to loop through the county data.
+
+    let counties = [];
+    const COUNTIES_API_URI = supplied_id =>
+      'https://course-finder.play-well.org/webservice/state/' +
+      supplied_id +
+      '/counties';
+
+    const getCountiesData = async state_id => {
+      // create a new promise inside of the async function
+      let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve(true), 2000); // resolve
+      });
+
+      try {
+        counties[0] = await axios.get(COUNTIES_API_URI(state_id)).then(res => {
+          counties.push(res);
+        });
+      } catch (err) {
+        console.log(err);
+      }
+
+      let result = await promise;
+
+      return counties[0];
+    };
+
+    const countiesDataResults = state_id => {
+      let results = getCountiesData(state_id);
+    };
+
+    console.log('Node for ' + state.name + ' Created');
+    console.log(state.name + "'s query for counties: ");
+    console.log(countiesDataResults(state.state_id));
+    console.log(counties);
+
+    await createNode({
+      children: [],
+      id: state_index.toString(),
+      playwell_state_id: state.state_id.toString(),
+      name: state.name,
+      abbrev: state.abbrev,
+      parent: null,
+      counties: getCountiesData(state.state_id),
+      internal: {
+        type: 'PlayWellStates',
+        contentDigest: crypto
+          .createHash(`md5`)
+          .update(JSON.stringify(state))
+          .digest(`hex`),
+      },
+    });
+  }
 };
