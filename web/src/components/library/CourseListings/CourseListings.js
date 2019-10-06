@@ -86,7 +86,7 @@ class ListingsResults extends PureComponent {
       });
     }
 
-    return console.log(context);
+    // return console.log(context);
   }
 
   render() {

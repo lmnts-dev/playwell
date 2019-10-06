@@ -31,8 +31,6 @@ export const MinorLinkList = ({ linkList, navOverlayToggle }) => {
                   tabIndex="0"
                   className="nav-item"
                 >
-                  {console.log('link.route')}
-                  {console.log(link.route)}
                   <span className="label">{link.label}</span>
                 </span>
               </li>
@@ -50,8 +48,6 @@ export const MinorLinkList = ({ linkList, navOverlayToggle }) => {
                     tabIndex="0"
                     className="nav-item"
                   >
-                    {console.log('link.route')}
-                    {console.log(link.route)}
                     <span className="label">{link.label}</span>
                   </span>
                 </Link>

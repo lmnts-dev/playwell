@@ -53,8 +53,8 @@ export class ListingsCounters extends PureComponent {
       // Run our parent function from CourseListings.js to filter categories.
       this.props.toggleCategoryFilter(context);
 
-      console.log('this.state.activeContext: ' + this.state.activeContext);
-      console.log('this.state.active: ' + this.state.active);
+      // console.log('this.state.activeContext: ' + this.state.activeContext);
+      // console.log('this.state.active: ' + this.state.active);
     } else {
       this.setState({
         activeContext: context,
@@ -64,8 +64,8 @@ export class ListingsCounters extends PureComponent {
       // Run our parent function from CourseListings.js to filter categories.
       this.props.toggleCategoryFilter(context);
 
-      console.log('this.state.activeContext: ' + this.state.activeContext);
-      console.log('this.state.active: ' + this.state.active);
+      // console.log('this.state.activeContext: ' + this.state.activeContext);
+      // console.log('this.state.active: ' + this.state.active);
     }
   }
 
@@ -73,8 +73,8 @@ export class ListingsCounters extends PureComponent {
     const courseData = this.props.courseData;
     const toggleCategoryFilter = this.props.toggleCategoryFilter;
 
-    console.log('this.state.activeContext: ' + this.state.activeContext);
-    console.log('this.state.active: ' + this.state.active);
+    // console.log('this.state.activeContext: ' + this.state.activeContext);
+    // console.log('this.state.active: ' + this.state.active);
 
     // Re-map all program data to reduce (count) the data easier.
 

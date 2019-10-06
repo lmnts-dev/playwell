@@ -49,13 +49,8 @@ exports.sourceNodes = async ({ actions }) => {
   // This is to return all PlayWell Managers.
   const manager_results = await axios.get(MANAGER_API_URI);
 
-  // Create our GraphQL index of managers.
-  // Create an index so we can have an ID per manager.
-  let managerArray = [];
-
+  // Create our GraphQL index of Managers.
   manager_results.data.forEach(async (manager, idx) => {
-    // Create an index so we can have an ID per manager.
-
     await createNode({
       children: [],
       id: idx.toString(),
@@ -108,7 +103,7 @@ exports.sourceNodes = async ({ actions }) => {
     }
   );
 
-  // Resolve Promises:
+  //// Resolve County Promises:
 
   // First establish an empty array
   let countiesArray = [];
