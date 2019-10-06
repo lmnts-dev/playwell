@@ -2,6 +2,7 @@
 // By Peter Laxalt
 
 const axios = require('axios');
+const fetch = require('node-fetch');
 const crypto = require('crypto');
 
 // Our API Routes:
@@ -9,8 +10,6 @@ const crypto = require('crypto');
 const CLIENT_API_URI = 'https://course-finder.play-well.org/webservice/courses';
 const MANAGER_API_URI =
   'https://course-finder.play-well.org/webservice/managers';
-const LOCATION_STATES_API_URI =
-  'https://course-finder.play-well.org/webservice/states';
 
 // Create our GraphQL Architecture
 exports.sourceNodes = async ({ actions }) => {
@@ -81,60 +80,60 @@ exports.sourceNodes = async ({ actions }) => {
 
   // States API Route to GraphQL Architecture:
   // This is to return all PlayWell States & Counties.
+  const LOCATION_STATES_API_URI =
+    'https://course-finder.play-well.org/webservice/states';
   const location_states_results = await axios.get(LOCATION_STATES_API_URI);
 
-  // Create internal index of states. For internal use only.
-  let state_index = 0;
+  // Initialize our counties URI.
+  const COUNTIES_API_URI = supplied_id =>
+    'https://course-finder.play-well.org/webservice/state/' +
+    supplied_id +
+    '/counties';
+
+  // Our function to loop through the appropriate county + state ID combination
+  // and add the results to our counties array.
+  const getCountiesData = state_id => {
+    return axios
+      .get(COUNTIES_API_URI(state_id))
+      .catch(error => console.error(error));
+  };
+
+  // Create Promises Array
+  const locationsPromises = location_states_results.data.map(
+    (location, idx) => {
+      return getCountiesData(location.state_id);
+    }
+  );
+
+  // Resolve Promises:
+
+  // First establish an empty array
+  let countiesArray = [];
+
+  // Don't let any code below run until the Promises have been rsolved
+  await Promise.all(locationsPromises).then(res => {
+    countiesArray = res;
+  });
 
   // Create our GraphQL index of states & their respective counties.
-  for (const state of location_states_results.data) {
-    // Create an index so we can have an ID per State.
-    state_index = state_index + 1;
+  location_states_results.data.forEach(async (state, idx) => {
 
-    // Our function to loop through the county data.
+    // For Debugging Purposes Only:
+    // console.log('Node for ' + state.name + ' Created');
+    // console.log(state.name + "'s query for counties: ");
+    // console.log(COUNTIES_API_URI(state.state_id));
+    // console.log('countiesArray');
+    // console.log(countiesArray[idx].data);
 
-    let counties = [];
-    const COUNTIES_API_URI = supplied_id =>
-      'https://course-finder.play-well.org/webservice/state/' +
-      supplied_id +
-      '/counties';
-
-    const getCountiesData = async state_id => {
-      // create a new promise inside of the async function
-      let promise = new Promise((resolve, reject) => {
-        setTimeout(() => resolve(true), 2000); // resolve
-      });
-
-      try {
-        counties[0] = await axios.get(COUNTIES_API_URI(state_id)).then(res => {
-          counties.push(res);
-        });
-      } catch (err) {
-        console.log(err);
-      }
-
-      let result = await promise;
-
-      return counties[0];
-    };
-
-    const countiesDataResults = state_id => {
-      let results = getCountiesData(state_id);
-    };
-
-    console.log('Node for ' + state.name + ' Created');
-    console.log(state.name + "'s query for counties: ");
-    console.log(countiesDataResults(state.state_id));
-    console.log(counties);
-
+    // Create our nodes.
     await createNode({
       children: [],
-      id: state_index.toString(),
+      id: idx.toString(),
       playwell_state_id: state.state_id.toString(),
       name: state.name,
       abbrev: state.abbrev,
       parent: null,
-      counties: getCountiesData(state.state_id),
+      counties: countiesArray[idx].data,
       internal: {
         type: 'PlayWellStates',
         contentDigest: crypto
@@ -143,5 +142,5 @@ exports.sourceNodes = async ({ actions }) => {
           .digest(`hex`),
       },
     });
-  }
+  });
 };
