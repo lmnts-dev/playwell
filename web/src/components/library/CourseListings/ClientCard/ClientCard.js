@@ -21,6 +21,9 @@ import { CategoryMetaMatch } from 'components/library/CategoryMetaMatch';
 // Styles
 import { ClientCardStyle } from './styles.scss';
 
+// Helpers
+import slugify from 'helpers/slugify';
+
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
@@ -58,11 +61,18 @@ export class ClientCard extends PureComponent {
   }
 
   render() {
-    // Define clientDate
-    const clientData = this.props.clientData;
-    const programCounts = {};
+    // Define our data
+    let clientData = this.props.clientData;
+    let stateSlug = this.props.stateSlug;
+    let countySlug = this.props.countySlug;
+    let locationMetaResults = this.props.locationMetaResults;
 
-    function programMap(data) {
+    // Initial programCounts object
+    let programCounts = {};
+
+    // Reduce our Programs to get some summarized counts
+    // of what's in each listing.
+    const programMap = data => {
       if (data) {
         let programCounts = data.reduce(function(course, value) {
           // increment or set the property
@@ -79,10 +89,10 @@ export class ClientCard extends PureComponent {
       } else {
         return;
       }
-    }
+    };
 
-    const reducedPrograms = programMap(clientData.node.courses);
-    const reducedProgramsEntries = Object.entries(reducedPrograms);
+    let reducedPrograms = programMap(clientData.node.courses);
+    let reducedProgramsEntries = Object.entries(reducedPrograms);
 
     // console.log(reducedProgramsEntries);
 
@@ -93,7 +103,9 @@ export class ClientCard extends PureComponent {
         cardExpanded={this.state.cardExpanded}
       >
         <ClientCardStyle.ClientName cardExpanded={this.state.cardExpanded}>
-          <div className="client-name">{clientData.node.client_location_name}</div>
+          <div className="client-name">
+            {clientData.node.client_location_name}
+          </div>
 
           <div className="client-counts">
             {/* Remap our entries into an array and spit out the counts and appropriate
@@ -121,6 +133,9 @@ export class ClientCard extends PureComponent {
           </div>
         </ClientCardStyle.ClientName>
         {clientData.node.courses.map((course, idx) => {
+          // Build our slugified strings for pretty URLs.
+          let programSlug = slugify(course.course_type_name);
+
           return (
             <CourseCard
               courseLabel={{
@@ -129,6 +144,10 @@ export class ClientCard extends PureComponent {
                 textColor: Theme.Color.White,
               }}
               courseData={course}
+              locationMetaResults={locationMetaResults}
+              stateSlug={stateSlug}
+              countySlug={countySlug}
+              programSlug={programSlug}
               clientData={clientData}
               key={idx}
             />

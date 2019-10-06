@@ -23,7 +23,7 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const LocationHero = ({ cities }) => (
+const LocationHero = ({ cities, name }) => (
   <Hero>
     <Decorator>
       <div className="decorator__hero decorator__hero--top">
@@ -58,7 +58,7 @@ const LocationHero = ({ cities }) => (
         <Hero.Heading>
           STEM Education &amp;
           <br />
-          Engineering in <span>STATE</span>
+          Engineering in <span>{name}</span>
         </Hero.Heading>
         <Box mr={1} display="inline-block">
           <Btn

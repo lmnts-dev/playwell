@@ -46,9 +46,9 @@ const ThemeProps = {
 };
 
 // Render Page
-const LocationDetail = () => (
+const LocationDetail = ({ pageContext }) => (
   <Layout {...ThemeProps}>
-    <LocationHero />
+    <LocationHero name={pageContext.name} />
 
     <Section bg="Dino" pt={0} pb={0} fullWidth>
       <ImgMatch

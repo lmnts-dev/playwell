@@ -26,12 +26,35 @@ import { CourseCardStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const CourseCard = ({ courseData, clientData, courseLabel }) => {
+export const CourseCard = ({
+  courseData,
+  clientData,
+  courseLabel,
+  stateSlug,
+  countySlug,
+  programSlug,
+  locationMetaResults,
+}) => {
   const categoryMeta = CategoryMetaMatch(courseData.category_group_name);
+
+  console.log(stateSlug);
+  console.log(countySlug);
+  console.log(programSlug);
 
   return (
     <CourseCardStyle className="row">
-      <Link to={'/courses/' + clientData.node.client_id + '/' + courseData.course_id}>
+      <Link
+        to={
+          '/programs/' +
+          stateSlug +
+          '/' +
+          countySlug +
+          '/' +
+          programSlug +
+          '-' +
+          courseData.course_id
+        }
+      >
         <CourseCardStyle.Title className="course-title">
           <span>{courseData.course_type_name}</span>
           <Icon Name="carat" />

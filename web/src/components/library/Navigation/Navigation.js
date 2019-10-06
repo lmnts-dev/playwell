@@ -116,7 +116,7 @@ class NavigationBar extends PureComponent {
   }
 
   render() {
-    console.log(this.props.navQuery);
+    // console.log(this.props.navQuery);
 
     return (
       <>

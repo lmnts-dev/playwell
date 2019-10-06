@@ -46,6 +46,8 @@ const ProgramsPage = props => {
                   id
                   display_address
                   geocode_address
+                  county_id
+                  state_id
                   public_note
                   location_lng
                   location_lat
@@ -77,6 +79,23 @@ const ProgramsPage = props => {
                     course_web_publishing_action_type
                     action_type
                     action_url_external
+                  }
+                }
+              }
+            }
+
+            allPlayWellStates {
+              edges {
+                node {
+                  id
+                  abbrev
+                  name
+                  playwell_state_id
+                  counties {
+                    cost_code
+                    cost_code_name
+                    county_id
+                    name
                   }
                 }
               }

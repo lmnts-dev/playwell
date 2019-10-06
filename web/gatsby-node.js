@@ -222,12 +222,10 @@ exports.createPages = ({ graphql, actions }) => {
         state: matchState[0].node,
         county: matchCounty[0],
       };
-
-      // return matchState;
     };
 
     // Define Our Course Template
-    const courseSample = path.resolve(`src/templates/Course/index.js`);
+    const courseTemplate = path.resolve(`src/templates/Course/index.js`);
 
     // Create Pages
     _.each(result.data.allPlayWellClient.edges, client => {
@@ -248,8 +246,8 @@ exports.createPages = ({ graphql, actions }) => {
         let programSlug = slugify(course.course_type_name);
 
         createPage({
-          path: `/programs/${stateSlug}/${countySlug}/${programSlug}`,
-          component: slash(courseSample),
+          path: `/programs/${stateSlug}/${countySlug}/${programSlug}-${course.course_id}`,
+          component: slash(courseTemplate),
           context: {
             // Location Data
             state_id: client.node.state_id,
@@ -296,6 +294,59 @@ exports.createPages = ({ graphql, actions }) => {
             action_type: course.action_type,
             action_url_external: course.action_url_external,
             theme: course.course_type_group,
+          },
+        });
+      });
+    });
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    // Create Location Landing Pages
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    // Define Our Locations Template
+    const locationsTemplate = path.resolve(`src/templates/Location/index.js`);
+
+    // Create Pages
+    _.each(result.data.allPlayWellStates.edges, state => {
+      // Build our slugified strings for pretty URLs.
+      let stateSlug = slugify(state.node.name);
+
+      //  Create our State Pages
+      createPage({
+        path: `/states/${stateSlug}`,
+        component: slash(locationsTemplate),
+        context: {
+          isCounty: false,
+          id: state.node.state_id,
+          abbrev: state.node.abbrev,
+          name: state.node.name,
+          playwell_state_id: state.node.playwell_state_id,
+          counties: state.node.counties,
+        },
+      });
+
+      // Loop through each state's respective Counties data
+      _.each(state.node.counties, county => {
+        // Build our slugified strings for pretty URLs.
+        let countySlug = slugify(county.name);
+
+        //  Create our Counties Pages
+        createPage({
+          path: `/states/${stateSlug}/${countySlug}`,
+          component: slash(locationsTemplate),
+          context: {
+            isCounty: true,
+            cost_code: county.cost_code,
+            cost_code_name: county.cost_code_name,
+            county_id: county.county_id,
+            name: county.name,
+            parentState: {
+              id: state.node.state_id,
+              abbrev: state.node.abbrev,
+              name: state.node.name,
+              playwell_state_id: state.node.playwell_state_id,
+              counties: state.node.counties,
+            },
           },
         });
       });

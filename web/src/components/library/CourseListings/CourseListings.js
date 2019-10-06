@@ -21,12 +21,17 @@ import { ClientCard } from './ClientCard';
 import { ProgramsHero } from 'components/library/Hero/ProgramsHero';
 import { CourseMapNav } from 'components/library/CourseMapNav';
 
+// Helpers
+import slugify from 'helpers/slugify';
+import locationMatch from 'helpers/LocationMatch';
+
 // Styles
 import { CourseListingsStyle, ListingsResultsStyle } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+// Our Filtered Results component
 class FilteredResults extends PureComponent {
   constructor(props) {
     super(props);
@@ -38,23 +43,52 @@ class FilteredResults extends PureComponent {
   }
 
   render() {
+    // Define our data variables
+    let results = this.props.results;
+    let stateEdges = this.props.stateEdges;
+
+    console.log(stateEdges);
+    console.log(results);
+
+    // Show our listings
     return (
       <ListingsResultsStyle>
-        {this.props.results.map((client, idx) => {
+        {results.map((client, idx) => {
+          // Get our Location Meta Data for this Client
+          let locationMetaResults = locationMatch(
+            stateEdges,
+            client.node.county_id,
+            client.node.state_id
+          );
+
+          // Build our slugified strings for pretty URLs.
+          let stateSlug = slugify(locationMetaResults.state.name);
+          let countySlug = slugify(locationMetaResults.county.name);
+
           // console.log(client);
           if (idx < 150) {
             if (client.node.courses.length > 0) {
-              return <ClientCard key={idx} clientData={client} />;
+              // Return our cards
+              return (
+                <ClientCard
+                  key={idx}
+                  clientData={client}
+                  locationMetaResults={locationMetaResults}
+                  stateSlug={stateSlug}
+                  countySlug={countySlug}
+                />
+              );
             } else {
               return;
             }
           }
-        })}
+        }, this)}
       </ListingsResultsStyle>
     );
   }
 }
 
+// Our Listing Results
 class ListingsResults extends PureComponent {
   constructor(props) {
     super(props);
@@ -75,6 +109,7 @@ class ListingsResults extends PureComponent {
     this.toggleCategoryFilter = this.toggleCategoryFilter.bind(this);
   }
 
+  // Our Function to Toggle Categories
   toggleCategoryFilter(context) {
     if (this.state.categoryFilter == context) {
       this.setState({
@@ -85,13 +120,12 @@ class ListingsResults extends PureComponent {
         categoryFilter: context,
       });
     }
-
-    // return console.log(context);
   }
 
   render() {
     // Source Data
     const courseData = this.props.courseData;
+    const stateEdges = this.props.courseData.allPlayWellStates.edges;
 
     // Filter Categories
     const categoryFilter = this.state.categoryFilter;
@@ -109,6 +143,8 @@ class ListingsResults extends PureComponent {
               return course.category_group_name.includes(filter);
             }, this),
             display_address: node.node.display_address,
+            county_id: node.node.county_id,
+            state_id: node.node.state_id,
             geocode_address: node.node.geocode_address,
             id: node.node.location_id,
             location_lat: node.node.location_lat,
@@ -136,12 +172,14 @@ class ListingsResults extends PureComponent {
         </CourseListingsStyle.Toolbar>
         <FilteredResults
           results={filteredCourseDataByCategory(categoryFilter)}
+          stateEdges={stateEdges}
         />
       </>
     );
   }
 }
 
+// The wrapper around our listings.
 const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
   return (
     <CourseListingsStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
@@ -152,6 +190,7 @@ const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
   );
 };
 
+// The page itself.
 export const CourseListings = ({ courseData, mapWidth, mapZedIndex }) => {
   return (
     <main>
