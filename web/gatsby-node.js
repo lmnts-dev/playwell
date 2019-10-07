@@ -311,6 +311,15 @@ exports.createPages = ({ graphql, actions }) => {
       // Build our slugified strings for pretty URLs.
       let stateSlug = slugify(state.node.name);
 
+      // Pass Filtered State Manager Array
+      const filteredStateManagers = state_id => {
+        let filteredManagers = result.data.allPlayWellManagers.edges.filter(
+          manager => manager.node.state_id == state_id
+        );
+
+        return filteredManagers;
+      };
+
       //  Create our State Pages
       createPage({
         path: `/states/${stateSlug}`,
@@ -322,6 +331,7 @@ exports.createPages = ({ graphql, actions }) => {
           name: state.node.name,
           playwell_state_id: state.node.playwell_state_id,
           counties: state.node.counties,
+          managers: filteredStateManagers(state.node.playwell_state_id),
         },
       });
 
@@ -329,6 +339,15 @@ exports.createPages = ({ graphql, actions }) => {
       _.each(state.node.counties, county => {
         // Build our slugified strings for pretty URLs.
         let countySlug = slugify(county.name);
+
+        // Pass Filtered County Manager Array
+        const filteredCountyManagers = cost_code => {
+          let filteredManagers = result.data.allPlayWellManagers.edges.filter(
+            manager => manager.node.cost_code == cost_code
+          );
+
+          return filteredManagers;
+        };
 
         //  Create our Counties Pages
         createPage({
@@ -340,12 +359,14 @@ exports.createPages = ({ graphql, actions }) => {
             cost_code_name: county.cost_code_name,
             county_id: county.county_id,
             name: county.name,
+            managers: filteredCountyManagers(county.cost_code),
             parentState: {
               id: state.node.state_id,
               abbrev: state.node.abbrev,
               name: state.node.name,
               playwell_state_id: state.node.playwell_state_id,
               counties: state.node.counties,
+              managers: filteredStateManagers(state.node.playwell_state_id),
             },
           },
         });

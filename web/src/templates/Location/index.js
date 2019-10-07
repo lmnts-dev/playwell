@@ -46,62 +46,68 @@ const ThemeProps = {
 };
 
 // Render Page
-const LocationDetail = ({ pageContext }) => (
-  <Layout {...ThemeProps}>
-    <LocationHero name={pageContext.name} />
+const LocationDetail = ({ pageContext }) => {
+  // For Debugging Purposes only
+  console.log(pageContext);
 
-    <Section bg="Dino" pt={0} pb={0} fullWidth>
-      <ImgMatch
-        src="locations-hero.jpg"
-        AltText="STEM Education &amp; Engineering in"
-      />
-    </Section>
+  // Build Page
+  return (
+    <Layout {...ThemeProps}>
+      <LocationHero pageContext={pageContext} />
 
-    <SpacerCentered />
+      <Section bg="Dino" pt={0} pb={0} fullWidth>
+        <ImgMatch
+          src="locations-hero.jpg"
+          AltText="STEM Education &amp; Engineering in"
+        />
+      </Section>
 
-    <LocationIntro />
-    <LocationSplitSection />
-    <LocationCoordinators cities={Cities} />
-    {/* <LocationEvents /> */}
+      <SpacerCentered />
 
-    <Section bg="White">
-      <LegoList />
-    </Section>
+      <LocationIntro />
+      <LocationSplitSection />
+      <LocationCoordinators cities={Cities} />
+      {/* <LocationEvents /> */}
 
-    <Quote color="Sunset">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra
-      enim sed magna vestibulum, nec imperdiet orci egestas. Sed in magna
-      sapien.
-    </Quote>
+      <Section bg="White">
+        <LegoList />
+      </Section>
 
-    <LocationPrograms />
+      <Quote color="Sunset">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra
+        enim sed magna vestibulum, nec imperdiet orci egestas. Sed in magna
+        sapien.
+      </Quote>
 
-    <Scroll>
-      <Scroll.Positioner>
-        <span>Play</span>
-        <Scroll.Line />
-      </Scroll.Positioner>
-    </Scroll>
+      <LocationPrograms />
 
-    <Decorator
-      css={css`
-        position: relative;
-      `}
-    >
-      <div className="decorator__footer decorator__footer--top">
-        <ImgMatch src="cloud-small.png" AltText="Cloud" />
-      </div>
-    </Decorator>
+      <Scroll>
+        <Scroll.Positioner>
+          <span>Play</span>
+          <Scroll.Line />
+        </Scroll.Positioner>
+      </Scroll>
 
-    <LocationPlayZone />
+      <Decorator
+        css={css`
+          position: relative;
+        `}
+      >
+        <div className="decorator__footer decorator__footer--top">
+          <ImgMatch src="cloud-small.png" AltText="Cloud" />
+        </div>
+      </Decorator>
 
-    {/* <Decorator>
+      <LocationPlayZone />
+
+      {/* <Decorator>
       <div className="decorator__footer decorator__footer--bottom">
         <ImgMatch src="volcano.png" AltText="Cloud" />
       </div>
     </Decorator> */}
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 // Data
 const Cities = [

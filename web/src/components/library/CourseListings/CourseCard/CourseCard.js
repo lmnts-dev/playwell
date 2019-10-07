@@ -37,9 +37,10 @@ export const CourseCard = ({
 }) => {
   const categoryMeta = CategoryMetaMatch(courseData.category_group_name);
 
-  console.log(stateSlug);
-  console.log(countySlug);
-  console.log(programSlug);
+  // For Debugging Purposes only.
+  // console.log(stateSlug);
+  // console.log(countySlug);
+  // console.log(programSlug);
 
   return (
     <CourseCardStyle className="row">
