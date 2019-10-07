@@ -37,7 +37,7 @@ export const BasicSectionStyle = styled.div`
     background-image: linear-gradient(to right, ` +
         Theme.Color.Clay +
         ` 50%, rgba(255,255,255,0) 0%);
-    background-position: bottom;
+    background-position: top;
     background-size: 10px 1px;
     background-repeat: repeat-x;
   `

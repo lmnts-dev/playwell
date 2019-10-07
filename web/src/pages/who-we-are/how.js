@@ -138,12 +138,14 @@ const AccordianFeature = styled.div`
   ul {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-bottom: calc(${Root.Size} / 3);
 
     li {
       font-weight: 700;
       padding: calc(${Root.Size} / 6);
+      white-space: nowrap;
 
       &:first-of-type {
         padding-left: 0;
@@ -155,6 +157,9 @@ const AccordianFeature = styled.div`
 
       a {
         color: ${Theme.Color.Clay};
+        @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+          font-size: 1rem;
+        }
 
         &:visited {
           color: ${Theme.Color.Clay};
@@ -168,12 +173,18 @@ const AccordianFeature = styled.div`
     flex-direction: row;
     position: relative;
     width: 100%;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      display: block;
+    }
 
     .image-accordian {
       flex: 1;
 
       &:nth-of-type(2) {
         margin: 0 calc(${Root.Size} / 2);
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          margin: calc(${Root.Size} / 4) 0;
+        }
       }
     }
   }
@@ -194,21 +205,40 @@ const SplitTextBoxes = styled.div`
     ${Theme.Color.Eggplant} 50%,
     ${Theme.Color.Sunset} 50%
   );
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    background: linear-gradient(
+      to bottom,
+      ${Theme.Color.Eggplant} 50%,
+      ${Theme.Color.Sunset} 50%
+    );
+  }
 
   .basic-inner {
     display: flex;
     flex-direction: row;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      display: block;
+    }
 
     .container {
       flex: 1;
       padding: calc(${Root.Size} * 2) 0;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding: calc(${Root.Size}) 0;
+      }
 
       &:first-of-type {
         padding-right: calc(${Root.Size} * 2);
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          padding-right: 0;
+        }
       }
 
       &:last-of-type {
         padding-left: calc(${Root.Size} * 2);
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          padding-left: 0;
+        }
       }
 
       .h6,
@@ -222,6 +252,31 @@ const SplitTextBoxes = styled.div`
     }
   }
 `;
+
+const Slider = styled.div`
+  .h5, .h6, ,.h3 {
+    font-weight: 700;
+  }
+
+  .h3 {
+    padding-top: calc(${Root.Size} / 6);
+    color: ${Theme.Color.Sunset};
+  }
+
+  .slider {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+    padding-top: calc(${Root.Size} / 2);
+
+    .item {
+      flex: 1;
+      justify-content: space-between;
+      text-align: center;
+    }
+  }
+`
 
 // Render Page
 const WhoHowPage = () => {
@@ -379,7 +434,6 @@ const WhoHowPage = () => {
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
         noPaddingTop
-        noPaddingBottom
       >
         <BasicInner noPaddingLeft noPaddingRight>
           <ImageWithTextBlock
@@ -409,6 +463,49 @@ const WhoHowPage = () => {
               Nulla viverra enim sed magna vestibulum, nec imperdiet orci
               egestas. Sed in magna sapien."
           />
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+        BorderTop={Theme.Color.Clay}
+      >
+        <BasicInner noPaddingRight>
+          <Slider>
+            <div className="h6">
+              It's not always one size fits all.
+            </div>
+            <div className="h3">
+              Our Curriculums
+            </div>
+            <div className="slider">
+              <div className="item">
+                <div className="h5">
+                  Intro Into STEM
+                </div>
+                <ImgMatch src="intro-smiles.jpg"/>
+              </div>
+              <div className="item">
+                <div className="h5">
+                  Robotics
+                </div>
+                <ImgMatch src="intro-smiles.jpg"/>
+              </div>
+              <div className="item">
+                <div className="h5">
+                  Engineering
+                </div>
+                <ImgMatch src="intro-smiles.jpg"/>
+              </div>
+              <div className="item">
+                <div className="h5">
+                  Gaming
+                </div>
+                <ImgMatch src="intro-smiles.jpg"/>
+              </div>
+            </div>
+          </Slider>
         </BasicInner>
       </BasicSection>
 
