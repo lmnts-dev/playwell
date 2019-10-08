@@ -61,6 +61,7 @@ const HeroProps = {
   color: 'White',
   textAlign: 'center',
   withMask: true,
+  fullWidth: true,
 };
 
 const settings = {
@@ -76,7 +77,7 @@ const settings = {
 // Render Page
 const HomeHero = ({ bgColor, textColor, slides }) => {
   return (
-    <HeroContainer {...HeroProps} fullWidth>
+    <HeroContainer {...HeroProps}>
       <Decorator>
         <div className="decorator__hero decorator__hero--top">
           <ImgMatch src="cloud-big.png" AltText="Cloud" />
