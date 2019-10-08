@@ -23,8 +23,6 @@ import { Base } from 'constants/styles/Base';
 // The Section Slider:
 // For displaying widgets within a SlideSection.
 
-
-
 // The Slider itself.
 class MarqueeSlider extends React.Component {
   constructor(props) {
@@ -35,7 +33,6 @@ class MarqueeSlider extends React.Component {
   render() {
     // React-Slick Settings
     // Read more: https://react-slick.neostack.com/
-
 
     // Pass into Slick Settings.
     const settings = {
@@ -56,9 +53,9 @@ class MarqueeSlider extends React.Component {
           breakpoint: Base.Media.Width.Lg + 'px',
           settings: {
             slidesToShow: 3,
-          }
-        }
-      ]
+          },
+        },
+      ],
     };
 
     return (
@@ -79,32 +76,31 @@ class MarqueeSlider extends React.Component {
   }
 }
 
-
 // The SubLevel Page Itself
 const Marquee = () => (
-    <MarqueeSlider>
-      <div class="item">
-        <ImgMatch src="intro-smiles.jpg" />
-      </div>
-      <div class="item">
-        <ImgMatch src="intro-smiles.jpg" />
-      </div>
-      <div class="item">
-        <ImgMatch src="intro-smiles.jpg" />
-      </div>
-      <div class="item">
-        <ImgMatch src="intro-smiles.jpg" />
-      </div>
-      <div class="item">
-        <ImgMatch src="intro-smiles.jpg" />
-      </div>
-      <div class="item">
-        <ImgMatch src="intro-smiles.jpg" />
-      </div>
-      <div class="item">
-        <ImgMatch src="intro-smiles.jpg" />
-      </div>
-    </MarqueeSlider>
+  <MarqueeSlider>
+    <div className="item">
+      <ImgMatch src="intro-smiles.jpg" />
+    </div>
+    <div className="item">
+      <ImgMatch src="intro-smiles.jpg" />
+    </div>
+    <div className="item">
+      <ImgMatch src="intro-smiles.jpg" />
+    </div>
+    <div className="item">
+      <ImgMatch src="intro-smiles.jpg" />
+    </div>
+    <div className="item">
+      <ImgMatch src="intro-smiles.jpg" />
+    </div>
+    <div className="item">
+      <ImgMatch src="intro-smiles.jpg" />
+    </div>
+    <div className="item">
+      <ImgMatch src="intro-smiles.jpg" />
+    </div>
+  </MarqueeSlider>
 );
 
 export default Marquee;

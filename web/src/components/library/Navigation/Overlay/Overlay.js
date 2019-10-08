@@ -134,6 +134,7 @@ export class NavigationOverlay extends PureComponent {
                       navOverlayToggle={this.props.navOverlayToggle}
                       linkList={navContext.subNav.minorLinkList}
                     />
+
                   </div>
                 </div>
               </div>

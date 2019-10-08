@@ -24,8 +24,3 @@ build
 public
 public/
 public/static
-
-/web/build
-/web/public
-/web/public/
-/web/public/static

@@ -37,24 +37,25 @@ export const BasicSection = ({
     noPaddingBottom={noPaddingBottom}
     noPaddingTop={noPaddingTop}
   >
-      {children}
+    {children}
   </BasicSectionStyle>
 );
 
 export const BasicInner = ({
-         noPaddingLeft,
-         noPaddingRight,
-         wideWidth,
-         children,
-       }) => (
-         <BasicInnerStyle
-           noPaddingLeft={noPaddingLeft}
-           noPaddingRight={noPaddingRight}
-           wideWidth={wideWidth}
-         >
-           {children}
-         </BasicInnerStyle>
-       );
+  noPaddingLeft,
+  noPaddingRight,
+  wideWidth,
+  children,
+}) => (
+  <BasicInnerStyle
+    className="basic-inner"
+    noPaddingLeft={noPaddingLeft}
+    noPaddingRight={noPaddingRight}
+    wideWidth={wideWidth}
+  >
+    {children}
+  </BasicInnerStyle>
+);
 
 export default BasicSection;
 

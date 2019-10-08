@@ -1,5 +1,5 @@
-// Index.js:
-// This is the home page of the website.
+// programs/index.js:
+// This is the programs page of the website.
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -18,34 +18,25 @@ import { Box, Flex } from 'components/library/Elements';
 // Constants
 import { Theme, Root } from 'constants/Theme';
 
-let mapWidth = '400px';
-let mapZedIndex = 5;
+// Props
+const ThemeProps = {
+  BgColor: Theme.Color.Galaxy,
+  PrimaryColor: Theme.Color.White,
+  SecondaryColor: Theme.Color.Primary,
+  TertiaryColor: Theme.Color.Primary,
+};
 
 // Begin Component
 
 //////////////////////////////////////////////////////////////////////
 
-// Props
-let HeroProps = {
-  bg: Theme.Color.Galaxy,
-  color: 'White',
-  flexDirection: 'row',
-  mapWidth: mapWidth,
-  mapZedIndex: mapZedIndex,
-};
-
-let MapNavProps = {
-  mapWidth: mapWidth,
-  mapZedIndex: mapZedIndex,
-};
-
 // Render Page
-const ProgramsPage = props => (
-  <Layout>
-    <main>
-      <ProgramsHero {...HeroProps} />
-      <CourseMapNav {...MapNavProps} />
+const ProgramsPage = props => {
+  let mapWidth = '400px';
+  let mapZedIndex = 5;
 
+  return (
+    <Layout {...ThemeProps}>
       <StaticQuery
         query={graphql`
           query {
@@ -55,6 +46,8 @@ const ProgramsPage = props => (
                   id
                   display_address
                   geocode_address
+                  county_id
+                  state_id
                   public_note
                   location_lng
                   location_lat
@@ -90,6 +83,23 @@ const ProgramsPage = props => (
                 }
               }
             }
+
+            allPlayWellStates {
+              edges {
+                node {
+                  id
+                  abbrev
+                  name
+                  playwell_state_id
+                  counties {
+                    cost_code
+                    cost_code_name
+                    county_id
+                    name
+                  }
+                }
+              }
+            }
           }
         `}
         render={data => (
@@ -100,9 +110,9 @@ const ProgramsPage = props => (
           />
         )}
       />
-    </main>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
 export default ProgramsPage;
 

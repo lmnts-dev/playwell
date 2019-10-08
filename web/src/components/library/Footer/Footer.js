@@ -35,14 +35,14 @@ export const Footer = ({ navQuery }) => {
     <FooterStyle>
       <FooterCurveSlice bgColor={Theme.Color.Black} />
       <FooterAngleSlice />
-      <div class="inner">
-        <div class="content">
-          <div class="col">
+      <div className="inner">
+        <div className="content">
+          <div className="col">
             <Link to="/">
               <Brandmark animate />
             </Link>
           </div>
-          <div class="col">
+          <div className="col">
             <ul>
               {navQuery.footerNav.linkList.map((link, idx) => {
                 if (idx < navLimit) {
@@ -55,7 +55,7 @@ export const Footer = ({ navQuery }) => {
               })}
             </ul>
           </div>
-          <div class="col">
+          <div className="col">
             <ul>
               {navQuery.footerNav.linkList.map((link, idx) => {
                 if (idx > navLimit) {
@@ -68,8 +68,8 @@ export const Footer = ({ navQuery }) => {
               })}
             </ul>
           </div>
-          <div class="col">
-            <ul class="social">
+          <div className="col">
+            <ul className="social">
               <li>
                 <a
                   href={'https://www.facebook.com/sharer.php?u='}

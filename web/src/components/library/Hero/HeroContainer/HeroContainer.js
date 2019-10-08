@@ -30,6 +30,7 @@ const HeroContainer = ({
   textAlign,
   fullWidth,
   withMask,
+  heroHeight,
   curveBg,
   sliceBg,
 }) => (
@@ -44,6 +45,7 @@ const HeroContainer = ({
     textAlign={textAlign ? textAlign : 'center'}
     fullWidth={fullWidth}
     withMask={withMask}
+    heroHeight={heroHeight}
   >
     <Container.Inner>{children}</Container.Inner>
     {withMask && (

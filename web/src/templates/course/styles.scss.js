@@ -56,7 +56,7 @@ Hero.Tags = styled(Flex)`
     padding: 0 calc(${props => props.theme.Root.Rem} * 1);
     margin-bottom: calc(${props => props.theme.Root.Rem} * 0.8);
     text-align: center;
-    
+
     @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
       font-size: 0.9rem;
       padding: 0 calc(${props => props.theme.Root.Rem} * 0);

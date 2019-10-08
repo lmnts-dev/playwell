@@ -15,7 +15,7 @@ import Btn from 'components/library/Btn';
 
 // Styles
 import { Hero } from './styles.scss';
-import { Decorator } from '../../pages/location-detail/styles.scss'
+import { Decorator } from '../../pages/location-detail/styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -23,7 +23,7 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const LocationHero = ({ cities }) => (
+const LocationHero = ({ cities, pageContext }) => (
   <Hero>
     <Decorator>
       <div className="decorator__hero decorator__hero--top">
@@ -58,7 +58,12 @@ const LocationHero = ({ cities }) => (
         <Hero.Heading>
           STEM Education &amp;
           <br />
-          Engineering in <span>STATE</span>
+          Engineering in{' '}
+          <span>
+            {pageContext.isCounty
+              ? pageContext.name + ', ' + pageContext.parentState.name
+              : pageContext.name}
+          </span>
         </Hero.Heading>
         <Box mr={1} display="inline-block">
           <Btn

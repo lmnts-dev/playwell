@@ -1,8 +1,31 @@
-// Helpers
+////////////////////////////////////////////////////////////////////////////////////
+// Universal Helpers
+////////////////////////////////////////////////////////////////////////////////////
+
 const _ = require(`lodash`);
 const path = require(`path`);
 const slash = require(`slash`);
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
+
+// Gatsby uses Redux to manage its internal state.
+// Plugins and sites can use functions like "createPage"
+// to interact with Gatsby.
+// We are using 'lodash' above for the _.each function. Read more:
+// https://lodash.com/docs/4.17.11#forEach
+
+// Use Gatsby's createPage() function. Read more:
+// https://www.gatsbyjs.org/docs/creating-and-modifying-pages/
+// createPage({
+//   // Each page is required to have a `path` as well
+//   // as a template component. The `context` is
+//   // optional but is often necessary so the template
+//   // can query data specific to each page.
+//   path: `/${edge.node.uid}/`,
+//   component: slash(topLevelPageTemplate),
+//   context: {
+//     Id: edge.node.id,
+//   },
+// });
 
 // Slugify Helper
 
@@ -22,7 +45,9 @@ function slugify(string) {
     .replace(/-+$/, ''); // Trim - from end of text
 }
 
+////////////////////////////////////////////////////////////////////////////////////
 // Begin Exports
+////////////////////////////////////////////////////////////////////////////////////
 
 exports.onCreateWebpackConfig = ({
   stage,
@@ -53,6 +78,9 @@ exports.onCreateWebpackConfig = ({
   }
 };
 
+////////////////////////////////////////////////////////////////////////////////////
+// Create Pages
+////////////////////////////////////////////////////////////////////////////////////
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
 // access to any information necessary to programmatically
@@ -60,6 +88,10 @@ exports.onCreateWebpackConfig = ({
 
 // This code is based on GatsbyGram's implementation of createPages():
 // Learn more: https://github.com/gatsbyjs/gatsby/blob/master/examples/gatsbygram/gatsby-node.js
+////////////////////////////////////////////////////////////////////////////////////
+
+// Get our Data
+// Check out https://localhost:8000/___graphql to see what is getting spit out here.
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -86,6 +118,8 @@ exports.createPages = ({ graphql, actions }) => {
               public_note
               location_lng
               location_lat
+              state_id
+              county_id
               client_location_name
               courses {
                 course_id
@@ -118,6 +152,38 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+
+        allPlayWellManagers {
+          edges {
+            node {
+              id
+              cell_number
+              cost_code
+              cost_code_name
+              email
+              manager
+              state
+              state_id
+            }
+          }
+        }
+
+        allPlayWellStates {
+          edges {
+            node {
+              id
+              abbrev
+              name
+              playwell_state_id
+              counties {
+                cost_code
+                cost_code_name
+                county_id
+                name
+              }
+            }
+          }
+        }
       }
     `
   ).then(result => {
@@ -126,39 +192,69 @@ exports.createPages = ({ graphql, actions }) => {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
-
+    // Create Course (Client) Pages
     ////////////////////////////////////////////////////////////////////////////////////
 
-    const courseSample = path.resolve(`src/templates/Course/index.js`);
+    // Helper Functions
 
-    // Create Client Pages
+    // Match State ID + Client ID
+
+    // LocationMatch Helper
+    const locationMatch = (edges, countyId, stateId) => {
+      // Props:
+      // edges: Should always be allPlayWellStates.edges
+      // countyId: source.node.county_id,
+      // stateId: source.node.state_id
+
+      // Filter by State
+      const matchState = edges.filter(
+        state => state.node.playwell_state_id == stateId
+      );
+
+      // Filter the matchState's Counties for the matching County
+      const matchCounty = matchState[0].node.counties
+        ? matchState[0].node.counties.filter(
+            county => county.county_id == countyId
+          )
+        : false;
+
+      return {
+        state: matchState[0].node,
+        county: matchCounty[0],
+      };
+    };
+
+    // Define Our Course Template
+    const courseTemplate = path.resolve(`src/templates/Course/index.js`);
+
+    // Create Pages
     _.each(result.data.allPlayWellClient.edges, client => {
-      // Gatsby uses Redux to manage its internal state.
-      // Plugins and sites can use functions like "createPage"
-      // to interact with Gatsby.
-      // We are using 'lodash' above for the _.each function. Read more:
-      // https://lodash.com/docs/4.17.11#forEach
+      // Get our Location Meta Data
+      let locationMetaResults = locationMatch(
+        result.data.allPlayWellStates.edges,
+        client.node.county_id,
+        client.node.state_id
+      );
 
-      // Use Gatsby's createPage() function. Read more:
-      // https://www.gatsbyjs.org/docs/creating-and-modifying-pages/
-      // createPage({
-      //   // Each page is required to have a `path` as well
-      //   // as a template component. The `context` is
-      //   // optional but is often necessary so the template
-      //   // can query data specific to each page.
-      //   path: `/${edge.node.uid}/`,
-      //   component: slash(topLevelPageTemplate),
-      //   context: {
-      //     Id: edge.node.id,
-      //   },
-      // });
+      // Build our slugified strings for pretty URLs.
+      let stateSlug = slugify(locationMetaResults.state.name);
+      let countySlug = slugify(locationMetaResults.county.name);
 
       //  Create our Course Pages
       _.each(client.node.courses, course => {
+        // Build our slugified strings for pretty URLs.
+        let programSlug = slugify(course.course_type_name);
+
         createPage({
-          path: `/courses/${client.node.id}/${course.course_id}`,
-          component: slash(courseSample),
+          path: `/programs/${stateSlug}/${countySlug}/${programSlug}-${course.course_id}`,
+          component: slash(courseTemplate),
           context: {
+            // Location Data
+            state_id: client.node.state_id,
+            county_id: client.node.county_id,
+            locationMeta: locationMetaResults,
+
+            // Additional Data
             id: client.node.id,
             display_address: client.node.display_address,
             geocode_address: client.node.geocode_address,
@@ -166,6 +262,7 @@ exports.createPages = ({ graphql, actions }) => {
             location_lng: client.node.location_lng,
             location_lat: client.node.location_lat,
             client_location_name: client.node.client_location_name,
+            client_id: client.state_id,
             course_id: course.course_id,
             is_full: course.is_full,
             start_date: course.start_date,
@@ -197,6 +294,80 @@ exports.createPages = ({ graphql, actions }) => {
             action_type: course.action_type,
             action_url_external: course.action_url_external,
             theme: course.course_type_group,
+          },
+        });
+      });
+    });
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    // Create Location Landing Pages
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    // Define Our Locations Template
+    const locationsTemplate = path.resolve(`src/templates/Location/index.js`);
+
+    // Create Pages
+    _.each(result.data.allPlayWellStates.edges, state => {
+      // Build our slugified strings for pretty URLs.
+      let stateSlug = slugify(state.node.name);
+
+      // Pass Filtered State Manager Array
+      const filteredStateManagers = state_id => {
+        let filteredManagers = result.data.allPlayWellManagers.edges.filter(
+          manager => manager.node.state_id == state_id
+        );
+
+        return filteredManagers;
+      };
+
+      //  Create our State Pages
+      createPage({
+        path: `/states/${stateSlug}`,
+        component: slash(locationsTemplate),
+        context: {
+          isCounty: false,
+          id: state.node.state_id,
+          abbrev: state.node.abbrev,
+          name: state.node.name,
+          playwell_state_id: state.node.playwell_state_id,
+          counties: state.node.counties,
+          managers: filteredStateManagers(state.node.playwell_state_id),
+        },
+      });
+
+      // Loop through each state's respective Counties data
+      _.each(state.node.counties, county => {
+        // Build our slugified strings for pretty URLs.
+        let countySlug = slugify(county.name);
+
+        // Pass Filtered County Manager Array
+        const filteredCountyManagers = cost_code => {
+          let filteredManagers = result.data.allPlayWellManagers.edges.filter(
+            manager => manager.node.cost_code == cost_code
+          );
+
+          return filteredManagers;
+        };
+
+        //  Create our Counties Pages
+        createPage({
+          path: `/states/${stateSlug}/${countySlug}`,
+          component: slash(locationsTemplate),
+          context: {
+            isCounty: true,
+            cost_code: county.cost_code,
+            cost_code_name: county.cost_code_name,
+            county_id: county.county_id,
+            name: county.name,
+            managers: filteredCountyManagers(county.cost_code),
+            parentState: {
+              id: state.node.state_id,
+              abbrev: state.node.abbrev,
+              name: state.node.name,
+              playwell_state_id: state.node.playwell_state_id,
+              counties: state.node.counties,
+              managers: filteredStateManagers(state.node.playwell_state_id),
+            },
           },
         });
       });

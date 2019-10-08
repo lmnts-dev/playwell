@@ -46,6 +46,7 @@ export const ProgramsHeroStyle = styled.section`
     .inline {
       display: flex;
       animation: ${SlideUp} 2s ease 0s 1 normal forwards;
+      text-align: left !important;
     }
 
     .location {

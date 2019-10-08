@@ -26,114 +26,175 @@ import { ListingsCountersStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const ListingsCounters = ({ courseData }) => {
-  // Re-map all program data to reduce (count) the data easier.
+// { courseData, toggleCategoryFilter }
 
-  function allProgramsMapTransformer(data) {
-    // If there's data
-    if (data) {
-      // Define the empty array
-      const allPrograms = [];
+export class ListingsCounters extends PureComponent {
+  constructor(props) {
+    // Make our props accessible through this.props
+    super(props);
 
-      // Loop through all clients.
-      let clientProgramsMap = data.map((client, idx) => {
-        // Map the individual courses in the Client's data.
-        let clientPrograms = client.node.courses.map((program, idxx) => {
-          // Return the new array.
-          return program;
-        });
+    this.state = {
+      active: false,
+      activeContext: '',
+    };
 
-        // Return the new array.
-        return clientPrograms;
-      }, this);
+    // Bind toggleActiveCategory function
+    this.toggleActiveCategory = this.toggleActiveCategory.bind(this);
+  }
 
-      // Concatenate and return only an array of courses.
-      return allPrograms.concat.apply([], clientProgramsMap);
-    }
+  // Toggle Active Category State
+  toggleActiveCategory(context) {
+    if (context == this.state.activeContext) {
+      this.setState({
+        activeContext: '',
+        active: false,
+      });
 
-    // Else, throw an error message that the data doesn't exist.
-    else {
-      return; // Add error message
+      // Run our parent function from CourseListings.js to filter categories.
+      this.props.toggleCategoryFilter(context);
+
+      // console.log('this.state.activeContext: ' + this.state.activeContext);
+      // console.log('this.state.active: ' + this.state.active);
+    } else {
+      this.setState({
+        activeContext: context,
+        active: true,
+      });
+
+      // Run our parent function from CourseListings.js to filter categories.
+      this.props.toggleCategoryFilter(context);
+
+      // console.log('this.state.activeContext: ' + this.state.activeContext);
+      // console.log('this.state.active: ' + this.state.active);
     }
   }
 
-  // Reduce Program Data to Get Proper Counts
-  function programReducer(data) {
-    // If there's data
-    if (data) {
-      // Let's reduce it
-      let programCounts = data.reduce(
-        // Establish an accumulator, i.e., something that gets
-        // incremented as this reducer runs. Also define your callback.
-        // ('client' in this case)
-        function(acc, client) {
-          acc[client.category_group_name] =
-            (acc[client.category_group_name] || 0) + 1;
+  render() {
+    const courseData = this.props.courseData;
+    const toggleCategoryFilter = this.props.toggleCategoryFilter;
+
+    // console.log('this.state.activeContext: ' + this.state.activeContext);
+    // console.log('this.state.active: ' + this.state.active);
+
+    // Re-map all program data to reduce (count) the data easier.
+
+    const allProgramsMapTransformer = data => {
+      // If there's data
+      if (data) {
+        // Define the empty array
+        const allPrograms = [];
+
+        // Loop through all clients.
+        let clientProgramsMap = data.map((client, idx) => {
+          // Map the individual courses in the Client's data.
+          let clientPrograms = client.node.courses.map((program, idxx) => {
+            // Return the new array.
+            return program;
+          });
 
           // Return the new array.
-          return acc;
-        },
+          return clientPrograms;
+        }, this);
 
-        // This is your accumulator's starting value, kind of like a schema.
-        {}
-      );
+        // Concatenate and return only an array of courses.
+        return allPrograms.concat.apply([], clientProgramsMap);
+      }
 
-      // Return your reducer function.
-      return programCounts;
-    }
-    // Else, throw an error message that the data doesn't exist.
-    else {
-      return; // Add error message
-    }
-  }
+      // Else, throw an error message that the data doesn't exist.
+      else {
+        return; // Add error message
+      }
+    };
 
-  // Assign our newly counted data variables.
-  const allProgramsMap = allProgramsMapTransformer(
-    courseData.allPlayWellClient.edges
-  );
-  const reducedPrograms = programReducer(allProgramsMap);
-  const reducedProgramsEntries = Object.entries(reducedPrograms);
+    // Reduce Program Data to Get Proper Counts
+    const programReducer = data => {
+      // If there's data
+      if (data) {
+        // Let's reduce it
+        let programCounts = data.reduce(
+          // Establish an accumulator, i.e., something that gets
+          // incremented as this reducer runs. Also define your callback.
+          // ('client' in this case)
+          function(acc, client) {
+            acc[client.category_group_name] =
+              (acc[client.category_group_name] || 0) + 1;
 
-  // The Items
-  const ListingsCountersItem = ({ count, label, context, btnTheme }) => {
-    return (
-      <ListingsCountersStyle.Item
-        btnTheme={btnTheme}
-        onClick={() => console.log(context)}
-      >
-        <span class="counter-inner">
-          <span>{count + ' '}</span>
-          <span>{label + 's'}</span>
-        </span>
-      </ListingsCountersStyle.Item>
-    );
-  };
-  return (
-    <ListingsCountersStyle>
-      {/* Remap our entries into an array and spit out the counts and appropriate
-      CategoryMetaMatch for their theme. */}
-      {reducedProgramsEntries.map((entry, idx) => {
-        // console.log(reducedProgramsEntries) to see these array values.
-        let count = entry[1];
-        let programContext = entry[0];
+            // Return the new array.
+            return acc;
+          },
 
-        // Return the items.
-        return (
-          <ListingsCountersItem
-            count={count}
-            label={programContext}
-            context={programContext}
-            key={idx}
-            btnTheme={{
-              bgColor: CategoryMetaMatch(programContext).theme.bgColor,
-              txtColor: CategoryMetaMatch(programContext).theme.primaryColor,
-            }}
-          />
+          // This is your accumulator's starting value, kind of like a schema.
+          {}
         );
-      }, this)}
-    </ListingsCountersStyle>
-  );
-};
+
+        // Return your reducer function.
+        return programCounts;
+      }
+      // Else, throw an error message that the data doesn't exist.
+      else {
+        return; // Add error message
+      }
+    };
+
+    // Assign our newly counted data variables.
+    const allProgramsMap = allProgramsMapTransformer(courseData);
+    const reducedPrograms = programReducer(allProgramsMap);
+    const reducedProgramsEntries = Object.entries(reducedPrograms);
+
+    // The Items
+    const ListingsCountersItem = ({ count, context, btnTheme }) => {
+      return (
+        <ListingsCountersStyle.Item
+          btnTheme={btnTheme}
+          // Pass our toggle function from the CourseListings component
+          onClick={() => this.toggleActiveCategory(context)}
+          // These are eslint errors for accessibility below.
+          onKeyPress={() => this.toggleActiveCategory(context)}
+          role="button"
+          tabIndex="0"
+          className={
+            this.state.activeContext == context
+              ? 'filter-item active-item'
+              : 'filter-item'
+          }
+        >
+          <span className="counter-inner">
+            <span>{count + ' '}</span>
+            <span>{context + 's'}</span>
+          </span>
+        </ListingsCountersStyle.Item>
+      );
+    };
+
+    return (
+      <ListingsCountersStyle
+        className={this.state.active ? 'active-filter' : false}
+      >
+        {/* Remap our entries into an array and spit out the counts and appropriate
+        CategoryMetaMatch for their theme. */}
+        {reducedProgramsEntries.map((entry, idx) => {
+          // console.log(reducedProgramsEntries) to see these array values.
+          let count = entry[1];
+          let programContext = entry[0];
+
+          // Return the items.
+          return (
+            <ListingsCountersItem
+              count={count}
+              label={programContext}
+              context={programContext}
+              key={idx}
+              btnTheme={{
+                bgColor: CategoryMetaMatch(programContext).theme.bgColor,
+                txtColor: CategoryMetaMatch(programContext).theme.primaryColor,
+              }}
+            />
+          );
+        }, this)}
+      </ListingsCountersStyle>
+    );
+  }
+}
 
 //////////////////////////////////////////////////////////////////////
 // End Component

@@ -26,24 +26,48 @@ import { CourseCardStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const CourseCard = ({ courseData, clientData, courseLabel, key }) => {
+export const CourseCard = ({
+  courseData,
+  clientData,
+  courseLabel,
+  stateSlug,
+  countySlug,
+  programSlug,
+  locationMetaResults,
+}) => {
   const categoryMeta = CategoryMetaMatch(courseData.category_group_name);
 
+  // For Debugging Purposes only.
+  // console.log(stateSlug);
+  // console.log(countySlug);
+  // console.log(programSlug);
+
   return (
-    <CourseCardStyle className="row" key={key}>
-      <Link to={'/courses/' + clientData.node.id + '/' + courseData.course_id}>
+    <CourseCardStyle className="row">
+      <Link
+        to={
+          '/programs/' +
+          stateSlug +
+          '/' +
+          countySlug +
+          '/' +
+          programSlug +
+          '-' +
+          courseData.course_id
+        }
+      >
         <CourseCardStyle.Title className="course-title">
           <span>{courseData.course_type_name}</span>
           <Icon Name="carat" />
         </CourseCardStyle.Title>
         <CourseCardStyle.Details>
-          <div class="details-major">
+          <div className="details-major">
             <span>
               {courseData.start_date} - {courseData.end_date}
             </span>
             <span>{courseData.days_of_the_week}</span>
           </div>
-          <div class="details-minor">
+          <div className="details-minor">
             <span>{courseData.age_range_display}</span>
             <span>{courseData.course_type_group}</span>
           </div>

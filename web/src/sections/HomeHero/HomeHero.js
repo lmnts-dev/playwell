@@ -80,13 +80,25 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
     <HeroContainer {...HeroProps}>
       <Decorator>
         <div className="decorator__hero decorator__hero--top">
-          <ImgMatch src="cloud-big.png" AltText="Cloud" />
+          <ImgMatch
+            src="cloud-big.png"
+            AltText="Cloud"
+            style={{ zIndex: '-10' }}
+          />
         </div>
         <div className="decorator__hero decorator__hero--waterfall">
-          <ImgMatch src="waterfall.png" AltText="Cloud" />
+          <ImgMatch
+            src="waterfall.png"
+            AltText="Cloud"
+            style={{ zIndex: '-10' }}
+          />
         </div>
         <div className="decorator__hero decorator__hero--volcano">
-          <ImgMatch src="volcano.png" AltText="Cloud" />
+          <ImgMatch
+            src="volcano.png"
+            AltText="Cloud"
+            style={{ zIndex: '-10' }}
+          />
         </div>
       </Decorator>
       <SliderContainer
@@ -105,9 +117,11 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
           ))}
         </Slider>
         <Actions width={[1, 1, 1, 7 / 10]}>
-          <HeroBtn bgColor={Theme.Color.Nova} textColor={Theme.Color.White}>
-            Explore Courses
-          </HeroBtn>
+          <Link to="/programs">
+            <HeroBtn bgColor={Theme.Color.Nova} textColor={Theme.Color.White}>
+              Explore Courses
+            </HeroBtn>
+          </Link>
           <LocationFilter />
         </Actions>
       </SliderContainer>

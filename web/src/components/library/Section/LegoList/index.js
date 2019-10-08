@@ -1,5 +1,6 @@
-// MasonrySection Component:
-// This is a component for a MasonryGrid of Widgets.
+// LegoList Component:
+// This is a section for three components of lego, headline and text
+// with the option to add custom images to replace the logos
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -18,36 +19,36 @@ import LegoListStyles from './styles.scss';
 //////////////////////////////////////////////////////////////////////
 
 export const LegoList = ({
-    children
+  TitleOne,
+  TitleTwo,
+  TitleThree,
+  TextOne,
+  TextTwo,
+  TextThree,
+  ImageOne,
+  ImageTwo,
+  ImageThree,
 }) => (
-    <LegoListStyles>
-        <div className="item">
-            <Icon Name="basicLego" Color="orange" />
-            <div className="h6">Creative Collaboration</div>
-            <p>
-            A greater sense of understanding and connection between your
-            staff, as they will now know how others play, and in turn, how
-            they best work.
-            </p>
-        </div>
-        <div className="item">
-            <Icon Name="basicLego" Color="purple" />
-            <div className="h6">New Perspectives</div>
-            <p>
-            A willingness to tackle problems from a play perspective,
-            embracing failure as part of the process of finding the solution.
-            </p>
-        </div>
-        <div className="item">
-            <Icon Name="basicLego" Color="blue" />
-            <div className="h6">Staff Morale</div>
-            <p>
-            A rejuvenated staff who rediscovers what they find fun about
-            their job and their organization.
-            </p>
-        </div>
-        {children}
-    </LegoListStyles>
+  <LegoListStyles>
+    <div className="item">
+      {ImageOne && <ImgMatch src={ImageOne} />}
+      {!ImageOne && <Icon Name="basicLego" Color="orange" />}
+      <div className="h6">{TitleOne}</div>
+      <p>{TextOne}</p>
+    </div>
+    <div className="item">
+      {ImageTwo && <ImgMatch src={ImageTwo} />}
+      {!ImageTwo && <Icon Name="basicLego" Color="purple" />}
+      <div className="h6">{TitleTwo}</div>
+      <p>{TextTwo}</p>
+    </div>
+    <div className="item">
+      {ImageThree && <ImgMatch src={ImageThree} />}
+      {!ImageThree && <Icon Name="basicLego" Color="blue" />}
+      <div className="h6">{TitleThree}</div>
+      <p>{TextThree}</p>
+    </div>
+  </LegoListStyles>
 );
 
 export default LegoList;

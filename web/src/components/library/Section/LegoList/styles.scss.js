@@ -29,7 +29,6 @@ const LegoListStyles = styled.div`
   .item {
     text-align: center;
     margin-right: calc(${Root.Size});
-    color: ${Theme.Color.Dino};
     flex: 1;
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
       margin-right: calc(${Root.Size} / 2);
@@ -57,13 +56,18 @@ const LegoListStyles = styled.div`
       }
     }
 
+    .gatsby-image-wrapper {
+      width: 80%;
+      margin: 0 auto;
+      margin-bottom: calc(${Root.Size} / 3);
+    }
+
     .h6 {
       font-weight: bold;
       padding: calc(${Root.Size} / 4) 0;
     }
   }
 `;
-
 
 export default LegoListStyles;
 
