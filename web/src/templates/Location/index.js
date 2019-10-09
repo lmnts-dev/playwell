@@ -49,6 +49,7 @@ const ThemeProps = {
 const LocationDetail = ({ pageContext }) => {
   // For Debugging Purposes only
   console.log(pageContext);
+  console.log(pageContext.managers.manager);
 
   // Build Page
   return (
@@ -64,9 +65,10 @@ const LocationDetail = ({ pageContext }) => {
 
       <SpacerCentered />
 
-      <LocationIntro />
+      <LocationIntro pageContext={pageContext} />
       <LocationSplitSection />
-      <LocationCoordinators cities={Cities} />
+      <LocationCoordinators pageContext={pageContext} cities={Cities} />
+      
       {/* <LocationEvents /> */}
 
       <Section bg="White">
