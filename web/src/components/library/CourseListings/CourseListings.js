@@ -18,7 +18,7 @@ import { Box, Flex } from 'components/library/Elements';
 import { ListingsCounters } from './ListingsCounters';
 import { ListingsFilters } from './ListingsFilters';
 import { ClientCard } from './ClientCard';
-import { ProgramsHero } from 'components/library/Hero/ProgramsHero';
+import { CourseHero } from './CourseHero';
 import { CourseMapNav } from 'components/library/CourseMapNav';
 
 // Helpers
@@ -47,8 +47,9 @@ class FilteredResults extends PureComponent {
     let results = this.props.results;
     let stateEdges = this.props.stateEdges;
 
-    console.log(stateEdges);
-    console.log(results);
+    // For Debugging only
+    // console.log(stateEdges);
+    // console.log(results);
 
     // Show our listings
     return (
@@ -191,15 +192,21 @@ const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
 };
 
 // The page itself.
-export const CourseListings = ({ courseData, mapWidth, mapZedIndex }) => {
+export const CourseListings = ({
+  courseData,
+  mapWidth,
+  mapZedIndex,
+  geoData,
+}) => {
   return (
     <main>
-      <ProgramsHero
+      <CourseHero
         bg={Theme.Color.Galaxy}
         color="White"
         flexDirection="row"
         mapWidth={mapWidth}
         mapZedIndex={mapZedIndex}
+        geoData={geoData}
       />
       <CourseMapNav mapWidth={mapWidth} mapZedIndex={mapZedIndex} />
       <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>

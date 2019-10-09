@@ -51,7 +51,7 @@ CourseListingsStyle.Toolbar = styled.div`
   position: sticky;
   top: ${Root.Nav.Size};
   background: ${Theme.Color.White};
-  z-index: 500;
+  z-index: 5;
   margin-bottom: calc(${Root.Size} / 4);
 
   .toolbar-inner {

@@ -10,10 +10,7 @@ import { Link, StaticQuery, graphql } from 'gatsby';
 
 // Components
 import Layout from 'components/core/Layout';
-import { ProgramsHero } from 'components/library/Hero/ProgramsHero';
-import { CourseMapNav } from 'components/library/CourseMapNav';
 import { CourseListings } from 'components/library/CourseListings';
-import { Box, Flex } from 'components/library/Elements';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -105,6 +102,7 @@ const ProgramsPage = props => {
         render={data => (
           <CourseListings
             courseData={data}
+            geoData={data.allPlayWellStates}
             mapWidth={mapWidth}
             mapZedIndex={mapZedIndex}
           />
