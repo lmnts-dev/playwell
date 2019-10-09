@@ -25,12 +25,19 @@ import {
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Hero = styled.div``;
+export const Hero = styled(Flex)`
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: ${Base.Grid.SiteWidth};
+`;
 
 Hero.Avatar = styled.div`
   width: 130px;
   height: 130px;
   background: white;
+  /* clip-path: circle(50%); <--- this clips the shadow so using border radius instead */
   border-radius: 99rem;
   box-shadow: 0 9px 27px rgba(0, 0, 0, 0.1);
   margin: 0 auto calc(${props => props.theme.Root.Rem} * 2);
@@ -71,13 +78,13 @@ Hero.Tags = styled(Flex)`
 `;
 
 Hero.Date = styled(Text)`
-  color: ${props => props.theme.Color.Deepsea};
+  color: ${p => p.theme.Color.Deepsea};
   font-weight: 300;
 `;
 
 export const CalloutSection = styled(Flex)`
   text-align: center;
-  background-image: url('${props => props.bgImage}');
+  background-image: url('${p => p.bgImage}');
   background-size: cover;
   background-position: center center;
   text-align: center;
@@ -116,7 +123,7 @@ export const QuestionsNav = styled(Flex)`
   }
 
   li {
-    color: ${props => props.theme.Color.White};
+    color: ${p => p.theme.Color.White};
     font-weight: 700;
     margin-bottom: 1rem;
     padding: 0 calc(${props => props.theme.Root.Rem} * 0.8);
@@ -162,7 +169,7 @@ CourseFooter.Course = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: ${props => props.theme.Base.Grid.ReadingWidth};
+  max-width: ${p => p.theme.Base.Grid.ReadingWidth};
 `;
 
 //////////////////////////////////////////////////////////////////////

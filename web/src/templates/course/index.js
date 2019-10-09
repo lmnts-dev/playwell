@@ -1,5 +1,6 @@
 // Course.js:
 // This is the course detail page data template.
+// todo: section consolidation and cleanup/refactor
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -53,32 +54,25 @@ const ThemeProps = {
 };
 
 const HeroProps = {
-  bg: 'Sky',
-  color: 'White',
+  bg: ThemeProps.BgColor,
+  color: ThemeProps.PrimaryColor,
   textAlign: 'center',
 };
 
 // Render Page
-const Course = ({ pageContext, data }) => {
+const Course = ({ pageContext }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  console.log('pageContext:');
-  console.log(pageContext);
-
+  // console.log('pageContext:');
+  // console.log(pageContext);
   // console.log('data:');
   // console.log(data);
-
   // console.log(locationMatch(pageContext.county_id, pageContext.state_id, pageContext.locationMeta.state.name));
 
   return (
     <Layout {...ThemeProps}>
       <HeroContainer {...HeroProps}>
-        <Flex
+        <Hero
           as="article"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          maxWidth={Theme.Base.Grid.SiteWidth}
-          m="0 auto"
           pb={[4, 3]}
           px={[1, 1, 0]}
         >
@@ -156,7 +150,7 @@ const Course = ({ pageContext, data }) => {
           <Hero.Tags as="ul">
             <li>more</li>
           </Hero.Tags>
-        </Flex>
+        </Hero>
       </HeroContainer>
 
       <Spacer>
