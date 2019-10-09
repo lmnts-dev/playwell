@@ -16,6 +16,7 @@ import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
+import Team from 'components/library/Elements/Team';
 import ImgMatch from 'components/core/ImgMatch';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
@@ -80,7 +81,7 @@ const Partners = styled.div`
   }
 `;
 
-const Team = styled.div`
+const TeamSection = styled.div`
   display: flex;
   flex-direction: row;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
@@ -97,47 +98,7 @@ const Team = styled.div`
     .h3 {
       font-weight: 700;
       padding-bottom: calc(${Root.Size} / 4);
-    }
-  }
-
-  .right {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      justify-content: center;
-      padding-top: calc(${Root.Size} / 2);
-    }
-
-    .member {
-      text-align: center;
-      p {
-        font-weight: 700;
-        color: ${Theme.Color.Dino};
-        padding-bottom: 0;
-        line-height: 1;
-
-        &:last-of-type {
-          color: ${Theme.Color.Sunset};
-        }
-      }
-
-      .gatsby-image-wrapper {
-        border-radius: calc(${Root.Size} / 8);
-        margin: 0 calc(${Root.Size} / 12) calc(${Root.Size} / 6)
-          calc(${Root.Size} / 12);
-        width: calc(${Root.Size} * 2.25);
-        height: calc(${Root.Size} * 3);
-      }
-
-      .social {
-        a {
-          svg {
-            height: calc(${Root.Size} / 2);
-            width: calc(${Root.Size} / 2);
-          }
-        }
-      }
+      white-space: nowrap;
     }
   }
 `;
@@ -468,7 +429,7 @@ const WhoPage = ({ SliderSettings }) => {
         BorderTop={Theme.Color.Clay}
       >
         <BasicInner wideWidth>
-          <Team>
+          <TeamSection>
             <div className="left">
               <div className="h3 txt-clr-dino">Our Team</div>
               <Btn
@@ -478,42 +439,23 @@ const WhoPage = ({ SliderSettings }) => {
                 Destination="/"
               />
             </div>
-            <div className="right">
-              <div className="member">
-                <ImgMatch src="intro-smiles.jpg" />
-                <p>Tim Bowen</p>
-                <p>President</p>
-                <div className="social">
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                </div>
-              </div>
-
-              <div className="member">
-                <ImgMatch src="intro-smiles.jpg" />
-                <p>Tim Bowen</p>
-                <p>President</p>
-                <div className="social">
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Team>
+            <Team 
+              members={[
+                {name: "Alisha", image: "intro-smiles.jpg", title:"employee", socialIcon1:"facebook", socialLink1:"/"},
+                {name: "Binh", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Kylie", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Matt", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Pete", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Meeko", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Laxalt", image: "intro-smiles.jpg", title:"employee"},
+                {name: "McIver", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Bob", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Ted", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Joe", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Tim", image: "intro-smiles.jpg", title:"employee"},
+              ]}
+            />
+          </TeamSection>
         </BasicInner>
       </BasicSection>
       <BasicSection
