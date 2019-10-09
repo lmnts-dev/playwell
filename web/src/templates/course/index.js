@@ -13,11 +13,12 @@ import Layout from 'components/core/Layout';
 import HeroContainer from 'components/library/Hero/HeroContainer';
 import Btn from 'components/library/Btn';
 import { Icon } from 'components/library/Icons';
-import ImgQuery from 'components/core/ImgQuery';
+import ImgMatch from 'components/core/ImgMatch';
 import Section from 'components/library/Elements/Section';
 
 // Sections
 import QuestionsCallout from 'sections/QuestionsCallout';
+import LocationSplitLinks from 'sections/LocationSplitLinks';
 
 // Helpers
 import slugify from 'helpers/slugify';
@@ -66,7 +67,7 @@ const Course = ({ pageContext, data }) => {
   // console.log('data:');
   // console.log(data);
 
-  // console.log(locationMatch(pageContext.county_id, pageContext.state_id));
+  // console.log(locationMatch(pageContext.county_id, pageContext.state_id, pageContext.locationMeta.state.name));
 
   return (
     <Layout {...ThemeProps}>
@@ -82,7 +83,7 @@ const Course = ({ pageContext, data }) => {
           px={[1, 1, 0]}
         >
           <Hero.Avatar>
-            {/* <ImgQuery src={CalloutBg} AltText="Avatar" /> */}
+            <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
           </Hero.Avatar>
           <Hero.Tags as="ul">
             <li>
@@ -274,17 +275,17 @@ const Course = ({ pageContext, data }) => {
 
       <QuestionsCallout />
 
-      <CourseFooter as="section" bg="Sky" px={1} pt={8}>
+      <CourseFooter bg="Sky" color="White">
         <CourseFooter.Course as="article" m="0 auto">
-          <Text as="span" fontSize={4}>
+          <Text className="h5" fontWeight="400" mb={1}>
             Let's play!
           </Text>
-          <Text as="h3" mt={1}>
+          <Text as="h3" mb={1}>
             {pageContext.course_type_name}
           </Text>
-          <Hero.Date as="p" fontSize={[0, 1, 3]} mt={[1, 1, 0]} mb={1}>
+          <Text className="h4" as="p" color="Deepsea" fontWeight="400">
             {pageContext.date_time_display}
-          </Hero.Date>
+          </Text>
           <Btn
             Label="Enroll Now"
             Destination="/"
@@ -292,43 +293,9 @@ const Course = ({ pageContext, data }) => {
             TextColor={props => props.theme.Color.White}
           />
         </CourseFooter.Course>
-        <CourseFooter.Explore as="article" width={1} mt={8}>
-          <CourseFooter.Explore.Link
-            width={[1, 1, 1 / 2]}
-            px={[1, 1, 3, 8]}
-            pb={[2, 2, 0]}
-          >
-            <CourseFooter.Explore.Arrow>
-              <Icon Name="nextArrow" />
-            </CourseFooter.Explore.Arrow>
-            <Box>
-              <Text as="span" fontSize={2} mt={1} color="Deepsea">
-                Keep exploring
-              </Text>
-              <Text as="h4" mt={1}>
-                Keep exploring our programs.
-              </Text>
-            </Box>
-          </CourseFooter.Explore.Link>
-          <CourseFooter.Explore.Link
-            width={[1, 1, 1 / 2]}
-            px={[1, 1, 3, 8]}
-            pt={[2, 2, 0]}
-          >
-            <Box>
-              <Text as="span" fontSize={2} mt={1} color="Deepsea">
-                What's new?
-              </Text>
-              <Text as="h4" mt={1}>
-                See what else is happening in Arizona.
-              </Text>
-            </Box>
-            <CourseFooter.Explore.Arrow>
-              <Icon Name="nextArrow" />
-            </CourseFooter.Explore.Arrow>
-          </CourseFooter.Explore.Link>
-        </CourseFooter.Explore>
       </CourseFooter>
+
+      <LocationSplitLinks pageContext={pageContext} />
     </Layout>
   );
 };
