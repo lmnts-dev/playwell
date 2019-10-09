@@ -57,6 +57,10 @@ export const LinkContainer = styled(Flex)`
     justify-content: flex-end;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   svg {
     transition: ${Theme.Base.Transition.String};
     transform: rotate(180deg) translateX(0);
@@ -111,9 +115,9 @@ export const LinkContainer = styled(Flex)`
 LinkContainer.Arrow = styled(Box)`
   background: rgba(0, 0, 0, 0);
   /* cursor: pointer; */
-  transform: scale(1.5);
-  width: calc(${Root.Size} * 2);
-  height: calc(${Root.Size} * 2);
+  transform: scale(2);
+  width: calc(${Root.Size} * 1);
+  height: calc(${Root.Size} * 1);
   border-radius: 50%;
   display: flex;
   justify-content: center;

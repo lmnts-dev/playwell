@@ -48,7 +48,7 @@ import { Theme, Root } from 'constants/Theme';
 const ThemeProps = {
   BgColor: Theme.Color.Sky,
   PrimaryColor: Theme.Color.White,
-  SecondaryColor: Theme.Color.Primary,
+  SecondaryColor: Theme.Color.Deepsea,
   TertiaryColor: Theme.Color.Primary,
 };
 
@@ -86,6 +86,9 @@ const Course = ({ pageContext, data }) => {
             <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
           </Hero.Avatar>
           <Hero.Tags as="ul">
+            <li>
+              <Link to={'/programs'}>programs</Link>
+            </li>
             <li>
               <Link
                 to={
@@ -246,24 +249,28 @@ const Course = ({ pageContext, data }) => {
           mx="auto"
           className={isExpanded ? 'expanded' : 'collapsed'}
         >
-          <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[1, 1, 0]}>
-            <Text as="p" color="Galaxy" textAlign="center" pb={0}>
-              Room
-              <br />
-              <Text as="span" color="Nova">
-                {pageContext.room && pageContext.room}
+          {pageContext.room && (
+            <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[2, 2, 6]}>
+              <Text as="p" color="Galaxy" textAlign="center" pb={0}>
+                Room
+                <br />
+                <Text as="span" color="Nova">
+                  {pageContext.room}
+                </Text>
               </Text>
-            </Text>
-          </Box>
-          <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[1, 1, 0]}>
-            <Text as="p" color="Galaxy" textAlign="center" pb={0}>
-              Level
-              <br />
-              <Text as="span" color="Nova">
-                {pageContext.age_range_display && pageContext.age_range_display}
+            </Box>
+          )}
+          {pageContext.age_range_display && (
+            <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[3, 3, 6]}>
+              <Text as="p" color="Galaxy" textAlign="center" pb={0}>
+                Level
+                <br />
+                <Text as="span" color="Nova">
+                  {pageContext.age_range_display}
+                </Text>
               </Text>
-            </Text>
-          </Box>
+            </Box>
+          )}
         </Drawer>
       </Section>
 
@@ -295,7 +302,7 @@ const Course = ({ pageContext, data }) => {
         </CourseFooter.Course>
       </CourseFooter>
 
-      <LocationSplitLinks pageContext={pageContext} />
+      <LocationSplitLinks pageContext={pageContext} themeProps={ThemeProps} />
     </Layout>
   );
 };

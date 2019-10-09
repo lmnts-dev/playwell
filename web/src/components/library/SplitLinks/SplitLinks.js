@@ -1,5 +1,6 @@
 // <SplitLinks /> component:
 // Pre-footer animated arrow split links
+// todo: arrow height for cleaner central rotation
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -21,23 +22,21 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const SplitLink = ({ title, message, first, last, to }) => (
+export const SplitLink = ({ title, message, first, last, to, themeProps }) => (
   <LinkContainer width={[1, 1, 1 / 2]} px={[1, 1, 3, 8]} pb={[2, 2, 0]}>
     {first && (
       <LinkContainer.Arrow>
         <Icon Name="nextArrow" />
       </LinkContainer.Arrow>
     )}
-    <div>
-      <Link to={to}>
-        <Text as="span" fontSize={2} mt={1} color="Deepsea">
-          {title}
-        </Text>
-        <Text className="h4" fontWeight="600" mt={1}>
-          {message}
-        </Text>
-      </Link>
-    </div>
+    <Link to={to}>
+      <Text as="span" fontSize={2} mt={1} fontWeight="600" color={themeProps.SecondaryColor}>
+        {title}
+      </Text>
+      <Text as="span" className="h4" fontWeight="600" mt={1} color={themeProps.PrimaryColor}>
+        {message}
+      </Text>
+    </Link>
     {last && (
       <LinkContainer.Arrow>
         <Icon Name="nextArrow" />
@@ -48,7 +47,7 @@ export const SplitLink = ({ title, message, first, last, to }) => (
 
 const SplitLinks = ({ children }) => (
   <CourseFooter>
-    <CourseFooter.Explore as="article" width={1} mt={8}>
+    <CourseFooter.Explore as="article" width={1}>
       {children}
     </CourseFooter.Explore>
   </CourseFooter>
