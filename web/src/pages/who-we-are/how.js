@@ -283,12 +283,23 @@ const WhoHowPage = () => {
       >
         <BasicInner>
           <LegoList
-            TitleOne="Creative Collaboration"
-            TitleTwo="New Perspectives"
-            TitleThree="Staff Morale"
-            TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
-            TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution."
-            TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."
+            blocks={[
+              {
+                title: 'Creative Collaboration',
+                text: 'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                legoColor: 'orange',
+              },
+              {
+                title: 'New Perspectives',
+                text: 'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                legoColor: 'purple',
+              },
+              {
+                title: 'Staff Morale',
+                text: 'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                legoColor: 'blue',
+              },
+            ]}
           />
         </BasicInner>
       </BasicSection>
@@ -399,10 +410,7 @@ const WhoHowPage = () => {
         noPaddingTop
       >
         <BasicInner>
-          <CenteredTitle
-            Title="Our Process"
-            Class="headline"
-          />
+          <CenteredTitle Title="Our Process" Class="headline" />
         </BasicInner>
       </BasicSection>
 
@@ -481,15 +489,29 @@ const WhoHowPage = () => {
       >
         <BasicInner>
           <LegoList
-            TitleOne="Benefit Two"
-            TitleTwo="Benefit Two"
-            TitleThree="Benefit Two"
-            TextOne='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
-            TextTwo='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
-            TextThree='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
-            ImageOne="graph.png"
-            ImageTwo="graph.png"
-            ImageThree="graph.png"
+            blocks={[
+              {
+                title: 'Creative Collaboration',
+                text:
+                  'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                legoColor: 'orange',
+                image: 'graph.png',
+              },
+              {
+                title: 'New Perspectives',
+                text:
+                  'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                legoColor: 'purple',
+                image: 'graph.png',
+              },
+              {
+                title: 'Staff Morale',
+                text:
+                  'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                legoColor: 'blue',
+                image: 'graph.png',
+              },
+            ]}
           />
         </BasicInner>
       </BasicSection>

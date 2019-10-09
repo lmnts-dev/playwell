@@ -555,12 +555,23 @@ const WhoPage = ({ SliderSettings }) => {
       >
         <BasicInner>
           <LegoList
-            TitleOne="Creative Collaboration"
-            TitleTwo="New Perspectives"
-            TitleThree="Staff Morale"
-            TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
-            TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution."
-            TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."
+            blocks={[
+              {
+                title: 'Creative Collaboration',
+                text: 'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                legoColor: 'orange',
+              },
+              {
+                title: 'New Perspectives',
+                text: 'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                legoColor: 'purple',
+              },
+              {
+                title: 'Staff Morale',
+                text: 'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                legoColor: 'blue',
+              },
+            ]}
           />
         </BasicInner>
       </BasicSection>
