@@ -34,7 +34,7 @@ export const BasicSectionStyle = styled.div`
   ${props => props.BgLinear ? `
     .linear-background {
       position: absolute;
-      top: 0;
+      top: 1px;
       bottom: 0;
       left: 0;
       right: 0;

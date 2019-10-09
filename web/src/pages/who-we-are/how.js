@@ -444,9 +444,14 @@ const WhoHowPage = () => {
 
       <BasicSection
         BgColor={Theme.Color.Background}
+        BorderTop={Theme.Color.Clay}
+        noPaddingTop
+      />
+
+      <BasicSection
+        BgColor={Theme.Color.Background}
         BgLinear={Theme.Color.White}
         TextColor={Theme.Color.Dino}
-        BorderTop={Theme.Color.Clay}
       >
         <BasicInner noPaddingRight>
           <EdgeSlider

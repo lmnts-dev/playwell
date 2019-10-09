@@ -84,8 +84,8 @@ const EdgeSliderStyle = styled.div`
       &.slick-prev {
         right: calc(${Root.Size} * 1.75);
         &:before {
-          border-right-color: ${Theme.Color.White};
-          border-top-color: ${Theme.Color.White};
+          border-right-color: transparent;
+          border-top-color: transparent;
         }
       }
 
@@ -93,8 +93,8 @@ const EdgeSliderStyle = styled.div`
 
         &:before {
           left: calc(${Root.Size} / 4.5);
-          border-left-color: ${Theme.Color.White};
-          border-bottom-color: ${Theme.Color.White};
+          border-left-color: transparent;
+          border-bottom-color: transparent;
         }
       }
     }

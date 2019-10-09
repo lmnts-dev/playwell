@@ -1,5 +1,5 @@
-// Why.js:
-// This is why portion of the who section of the site.
+// Careers.js:
+// This is careers portion of the who section of the site.
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -15,6 +15,7 @@ import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
 import Marquee from 'components/library/Section/Marquee';
+import CenterSlider from 'components/library/Section/CenterSlider';
 import GiantTextBlock from 'components/library/Section/GiantTextBlock';
 import LegoList from 'components/library/Section/LegoList';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
@@ -61,46 +62,6 @@ const ThemeProps = {
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
-
-const LargeTextBlock = styled.div`
-  text-align: center;
-  font-weight: 700;
-  margin: 0 auto;
-  position: relative;
-  max-width: calc(${Root.Size} * 15);
-  @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-    max-width: calc(${Root.Size} * 12);
-  }
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    max-width: calc(${Root.Size} * 11);
-  }
-
-  .headline {
-    color: ${Theme.Color.Eggplant};
-    padding: calc(${Root.Size} / 4) 0;
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      font-size: 6rem;
-    }
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      font-size: 4rem;
-    }
-  }
-
-  ~ .absolute-image {
-    position: absolute;
-    top: calc(${Root.Size} * -4.5);
-    width: 20%;
-    left: calc(${Root.Size} * -1);
-    height: auto;
-    transform: rotate(260deg);
-    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
-      left: calc(${Root.Size} * 0.5);
-    }
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      top: calc(${Root.Size} * -2.5);
-    }
-  }
-`;
 
 const TextWithManyImages = styled.div`
   display: flex;
@@ -238,52 +199,7 @@ const Carousel = styled.div`
   position: relative;
 `;
 
-const TextBlock = styled.div`
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  padding: calc(${Root.Size} * 2) 0 calc(${Root.Size} * 1.5) 0;
 
-  .h3 {
-    font-weight: 700;
-    max-width: calc(${Root.Size} * 10);
-    margin: 0 auto;
-    padding-bottom: calc(${Root.Size} / 4);
-  }
-
-  > div {
-    z-index: 2;
-    position: relative;
-  }
-
-  .background-image {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-
-    &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: ${Theme.Color.Eggplant};
-      opacity: 0.3;
-      z-index: 2;
-    }
-
-    .gatsby-image-wrapper {
-      height: 100%;
-      z-index: 1;
-    }
-  }
-`;
 
 // Render Page
 const WhoWhyPage = () => {
@@ -296,76 +212,54 @@ const WhoWhyPage = () => {
       <Box css={{ position: 'relative', height: 0 }}>
         <SubNav />
       </Box>
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.White}
-        noPaddingTop
-        noPaddingBottom
-        BorderBottomVertical
-      >
-        <TextBlock>
-          <div className="background-image">
-            <ImgMatch src="intro-smiles.jpg" />
-          </div>
-          <BasicInner>
-            <div className="h3">
-              Combining the elements of fun, challenge, and learning since 1997
-            </div>
-            <Btn
-              Label="Our Story"
-              BgColor={Theme.Color.Sky}
-              TextColor={Theme.Color.White}
-              Destination="/"
-            />
-          </BasicInner>
-        </TextBlock>
-      </BasicSection>
 
-      <BasicSection BgColor={Theme.Color.Background} BorderTopVertical>
+      <BasicSection BgColor={Theme.Color.Background}>
         <CenteredTitle>
           <BasicInner>
-            <div className="headline">Our Values</div>
-            <div className="absolute-image">
-              <Icon Name="swoop" />
-              <ImgMatch src="gears.png" />
-            </div>
+            <div className="headline">Our Team</div>
           </BasicInner>
         </CenteredTitle>
       </BasicSection>
 
       <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Sunset}
-        noPaddingTop
-        noPaddingBottom
+        BgColor={Theme.Color.Blush}
+        TextColor={Theme.Color.Eggplant}
       >
-        <BasicInner noPaddingLeft noPaddingRight>
-          <ImageWithTextBlock
-            Image="intro-smiles.jpg"
-            Header="Build problem-solving skills"
-            Number="01"
-            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien."
-          />
-          <ImageWithTextBlock
-            reversedOrder
-            Image="intro-smiles.jpg"
-            Header="Provide an opportunity for creative expression"
-            Number="06"
-            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien."
-          >
-            <Icon Name="gear" />
-          </ImageWithTextBlock>
-          <ImageWithTextBlock
-            Image="intro-smiles.jpg"
-            Header="Foster a greater appreciation of how things work"
-            Number="03"
-            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien."
+        <BasicInner>
+          <div className="h3">Testimonials</div>
+          <CenterSlider
+            testimonials={[
+              {
+                name: 'Alisha',
+                quote: 'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                title: 'Recent Applicant',
+                image: 'intro-smiles.jpg',
+              },
+              {
+                name: 'Binh',
+                quote:'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                title: 'Recent Applicant',
+                image: 'intro-smiles.jpg',
+              },
+              {
+                name: 'Kylie',
+                quote:'Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                title: 'Recent Applicant',
+                image: 'intro-smiles.jpg',
+              },
+              {
+                name: 'Matt',
+                quote: 'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                title: 'Recent Applicant',
+                image: 'intro-smiles.jpg',
+              },
+              {
+                name: 'Pete',
+                quote: 'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                title: 'Recent Applicant',
+                image: 'intro-smiles.jpg',
+              },
+            ]}
           />
         </BasicInner>
       </BasicSection>
@@ -377,18 +271,17 @@ const WhoWhyPage = () => {
       >
         <BasicInner wideWidth>
           <GiantTextBlock
-            Number="04"
-            topText="Encourage the qualities of"
+            headerText="Core Values"
+            topText="We believe in a culture of"
             giantText="Inquisitiveness Self Reliance &amp; Self Confidence"
             bottomText="in children &amp; in everybody."
+            buttonText="View Listings"
+            buttonDest="/"
           />
-          <div className="absolute-image">
-            <ImgMatch src="gears.png" />
-          </div>
         </BasicInner>
       </BasicSection>
 
-      <BasicSection BgColor={Theme.Color.Background} noPaddingTop BorderMiddle>
+      <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
         <Carousel>
           <Marquee
             images={[
@@ -408,7 +301,7 @@ const WhoWhyPage = () => {
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
-        noPaddingTop
+        BorderTop={Theme.Color.Clay}
       >
         <BasicInner>
           <LegoList
