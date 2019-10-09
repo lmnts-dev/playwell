@@ -15,6 +15,7 @@ import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
 import Marquee from 'components/library/Section/Marquee';
+import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import GiantTextBlock from 'components/library/Section/GiantTextBlock';
 import LegoList from 'components/library/Section/LegoList';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
@@ -186,53 +187,6 @@ const TextWithManyImages = styled.div`
   }
 `;
 
-const CenteredTitle = styled.div`
-  text-align: center;
-  color: ${Theme.Color.Blush};
-  font-weight: 700;
-
-  > div {
-    position: relative;
-  }
-
-  .absolute-image {
-    position: absolute;
-    bottom: calc(${Root.Size} * -4);
-    width: 20%;
-    left: calc(${Root.Size} * -1);
-    height: auto;
-    transform: scaleX(-1);
-
-    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
-      left: calc(${Root.Size} * -0.5);
-    }
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      bottom: 0;
-    }
-
-    .ico-swoop {
-      width: 100%;
-      display: block;
-
-      svg {
-        transform: rotate(180deg) scaleX(-1)
-          translateY(calc(${Root.Size} * 1.5));
-        @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
-          transform: rotate(-90deg) scaleX(-1)
-            translateX(calc(${Root.Size} * 2));
-        }
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          transform: translate(calc(${Root.Size} / -2), calc(${Root.Size}));
-        }
-
-        path {
-          fill: ${Theme.Color.Dino};
-        }
-      }
-    }
-  }
-`;
-
 const Carousel = styled.div`
   padding-top: calc(${Root.Size});
   position: relative;
@@ -322,15 +276,17 @@ const WhoWhyPage = () => {
       </BasicSection>
 
       <BasicSection BgColor={Theme.Color.Background} BorderTopVertical>
-        <CenteredTitle>
-          <BasicInner>
-            <div className="headline">Our Values</div>
+        <BasicInner>
+          <CenteredTitle
+            Title="Our Values"
+            Class="headline"
+          >
             <div className="absolute-image">
               <Icon Name="swoop" />
               <ImgMatch src="gears.png" />
             </div>
-          </BasicInner>
-        </CenteredTitle>
+          </CenteredTitle>
+        </BasicInner>
       </BasicSection>
 
       <BasicSection

@@ -15,6 +15,7 @@ import { Helmet } from 'react-helmet'; // For Slick Styles
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
+import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import ImgMatch from 'components/core/ImgMatch';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
@@ -276,10 +277,7 @@ const TopCarousel = styled.div`
   }
 `;
 
-const CenteredTitle = styled.div`
-  text-align: center;
-  color: ${Theme.Color.Blush};
-  font-weight: 700;
+const Centered = styled(CenteredTitle)`
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     padding-bottom: ${Root.Size};
   }
@@ -415,9 +413,10 @@ const WhoPage = ({ SliderSettings }) => {
         TextColor={Theme.Color.Dino}
       >
         <BasicInner>
-          <CenteredTitle>
-            <div className="headline">Our Story</div>
-          </CenteredTitle>
+          <Centered
+            Class="headline"
+            Title="Our Story"
+          />
         </BasicInner>
         <BasicInner noPaddingRight>
           <EdgeImageWithText

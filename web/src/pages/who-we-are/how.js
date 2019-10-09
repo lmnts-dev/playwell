@@ -14,6 +14,7 @@ import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import ImageAccordian from 'components/library/ImageAccordian';
+import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import ImgMatch from 'components/core/ImgMatch';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
@@ -96,13 +97,6 @@ const SimpleTextWithImage = styled.div`
     color: ${Theme.Color.Sunset};
     padding: calc(${Root.Size} / 5) 0;
   }
-`;
-
-const CenteredTitle = styled.div`
-  text-align: center;
-  font-weight: 700;
-  max-width: ${props => (props.MaxWidth ? props.MaxWidth : '100%')};
-  margin: 0 auto;
 `;
 
 const CurveAndAngle = styled.div`
@@ -272,9 +266,12 @@ const WhoHowPage = () => {
         BorderTop={Theme.Color.White}
       >
         <BasicInner>
-          <CenteredTitle MaxWidth="500px">
-            <div className="h3">Lorem ipsum dolar sit amet, consectetur a.</div>
-          </CenteredTitle>
+          <CenteredTitle
+            MaxWidth="500px"
+            Title="Lorem ipsum dolar sit amet, consectetur a."
+            Class="h3"
+            TextColor={Theme.Color.White}
+          />
         </BasicInner>
       </BasicSection>
 
@@ -332,9 +329,11 @@ const WhoHowPage = () => {
 
       <BasicSection BgColor={Theme.Color.Blush} TextColor={Theme.Color.Nova}>
         <BasicInner>
-          <CenteredTitle>
-            <div className="headline">Our Programs</div>
-          </CenteredTitle>
+          <CenteredTitle
+            Title="Our Programs"
+            Class="headline"
+            TextColor={Theme.Color.Nova}
+          />
         </BasicInner>
       </BasicSection>
 
@@ -400,9 +399,10 @@ const WhoHowPage = () => {
         noPaddingTop
       >
         <BasicInner>
-          <CenteredTitle>
-            <div className="headline">Our Process</div>
-          </CenteredTitle>
+          <CenteredTitle
+            Title="Our Process"
+            Class="headline"
+          />
         </BasicInner>
       </BasicSection>
 
