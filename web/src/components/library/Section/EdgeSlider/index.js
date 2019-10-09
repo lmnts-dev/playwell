@@ -37,12 +37,12 @@ class EdgeSliderSlider extends React.Component {
     // Pass into Slick Settings.
     const settings = {
       speed: 1000,
-      autoplay: true,
+      autoplay: false,
       slidesToShow: 3.8,
       slidesToScroll: 1,
       variableWidth: false,
       infinite: false,
-      arrows: false,
+      arrows: true,
       buttons: false,
       responsive: [
         {
@@ -73,8 +73,10 @@ class EdgeSliderSlider extends React.Component {
 }
 
 // The SubLevel Page Itself
-const EdgeSlider = ({ images, titles }) => (
+const EdgeSlider = ({ images, titles, caption, title }) => (
   <EdgeSliderStyle>
+    <div className="h6">{caption}</div>
+    <div className="h3">{title}</div>
     <EdgeSliderSlider>
       {images.map((image, index) => {
         return (

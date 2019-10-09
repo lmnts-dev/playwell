@@ -253,23 +253,6 @@ const SplitTextBoxes = styled.div`
   }
 `;
 
-const Slider = styled.div`
-  .h5,
-  .h6,
-  .h3 {
-    font-weight: 700;
-  }
-
-  .h3 {
-    padding-top: calc(${Root.Size} / 6);
-    color: ${Theme.Color.Sunset};
-  }
-  
-  .slick-slider {
-    padding-top: calc(${Root.Size} / 2);
-  }
-`;
-
 // Render Page
 const WhoHowPage = () => {
   return (
@@ -465,26 +448,24 @@ const WhoHowPage = () => {
         BorderTop={Theme.Color.Clay}
       >
         <BasicInner noPaddingRight>
-          <Slider>
-            <div className="h6">It's not always one size fits all.</div>
-            <div className="h3">Our Curriculums</div>
-            <EdgeSlider
-              images={[
-                'intro-smiles.jpg',
-                'intro-smiles.jpg',
-                'intro-smiles.jpg',
-                'intro-smiles.jpg',
-                'intro-smiles.jpg',
-              ]}
-              titles={[
-                'Intro Into STEM',
-                'Robotics',
-                'Engineering',
-                'Gaming',
-                'Building',
-              ]}
-            />
-          </Slider>
+          <EdgeSlider
+            images={[
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+            ]}
+            titles={[
+              'Intro Into STEM',
+              'Robotics',
+              'Engineering',
+              'Gaming',
+              'Building',
+            ]}
+            caption="It's not always one size fits all"
+            title="Our Curriculums"
+          />
         </BasicInner>
       </BasicSection>
 
