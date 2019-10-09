@@ -63,6 +63,7 @@ const EdgeSliderStyle = styled.div`
 
       &.slick-disabled {
         opacity: .2;
+        cursor: default;
 
         &:before {
           opacity: 1;

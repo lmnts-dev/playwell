@@ -18,6 +18,7 @@ import ImgMatch from 'components/core/ImgMatch';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 import EdgeSlider from 'components/library/Section/EdgeSlider';
+import Marquee from 'components/library/Section/Marquee';
 import LegoList from 'components/library/Section/LegoList';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
@@ -492,6 +493,7 @@ const WhoHowPage = () => {
         noPaddingRight
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
+        noPaddingBottom
       >
         <BasicInner noPaddingRight>
           <EdgeImageWithText
@@ -503,11 +505,22 @@ const WhoHowPage = () => {
             ButtonDest="/"
           />
         </BasicInner>
+        <Marquee
+          images={[
+            'brandmark.png',
+            'brandmark.png',
+            'brandmark.png',
+            'brandmark.png',
+            'brandmark.png',
+            'brandmark.png',
+          ]}
+          SquareFormat
+        />
       </BasicSection>
 
       <BasicSection
         BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Whitet}
+        TextColor={Theme.Color.White}
       >
         <SplitTextBoxes>
           <BasicInner>
