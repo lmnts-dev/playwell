@@ -23,17 +23,29 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 export const SplitLink = ({ title, message, first, last, to, themeProps }) => (
-  <LinkContainer width={[1, 1, 1 / 2]} px={[1, 1, 3, 8]} pb={[2, 2, 0]}>
+  <LinkContainer width={[1, 1, 1 / 2]}>
     {first && (
       <LinkContainer.Arrow>
         <Icon Name="nextArrow" />
       </LinkContainer.Arrow>
     )}
     <Link to={to}>
-      <Text as="span" fontSize={2} mt={1} fontWeight="600" color={themeProps.SecondaryColor}>
+      <Text
+        as="span"
+        className="h6"
+        fontWeight="600"
+        mt={1}
+        color={themeProps.SecondaryColor}
+      >
         {title}
       </Text>
-      <Text as="span" className="h4" fontWeight="600" mt={1} color={themeProps.PrimaryColor}>
+      <Text
+        as="span"
+        className="h4"
+        fontWeight="600"
+        mt={1}
+        color={themeProps.PrimaryColor}
+      >
         {message}
       </Text>
     </Link>

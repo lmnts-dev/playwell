@@ -23,7 +23,7 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const LocationCoordinators = ({ cities, pageContext }) => {
+const LocationCoordinators = ({ pageContext }) => {
   // County / State conditional
   const countyState = pageContext.isCounty
     ? pageContext.name + ', ' + pageContext.parentState.name
@@ -35,7 +35,7 @@ const LocationCoordinators = ({ cities, pageContext }) => {
       <Flex flexWrap="wrap">
         <Box
           width={[1, 1, 1 / 2, 4 / 10]}
-          pr={[0, 0, 0, 12]}
+          pr={[0, 0, 0, 'calc(var(--Size) * 2)']}
           pb={'var(--Size)'}
         >
           <Text as="h2" color="Dino">
@@ -44,7 +44,7 @@ const LocationCoordinators = ({ cities, pageContext }) => {
         </Box>
         <Box width={[1, 1, 1 / 2, 6 / 10]}>
           {pageContext.managers.map(manager => (
-            <Accordion key={manager.node.id} title={manager.node.manager}>
+            <Accordion key={manager.node.id} title={manager.node.cost_code_name}>
               <Article>
                 <Article.Figure>
                   <ImgMatch

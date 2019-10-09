@@ -29,13 +29,11 @@ CourseFooter.Course = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: ${props => props.theme.Base.Grid.SiteWidth};
   text-align: center;
 `;
 
 CourseFooter.Explore = styled(Flex)`
   text-align: left;
-  max-width: calc(${props => props.theme.Base.Grid.SiteWidth} / 1.1);
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -43,18 +41,23 @@ CourseFooter.Explore = styled(Flex)`
 
 export const LinkContainer = styled(Flex)`
   align-items: center;
-  border-right: none;
-  border-bottom: 1px dashed ${p => p.theme.Color.White};
-  /* cursor: pointer; */
   flex-direction: row;
   flex-direction: row-reverse;
   justify-content: space-between;
+  border-right: none;
+  border-bottom: 1px dashed ${p => p.theme.Color.White};
+  padding: calc(${Root.Size} * 0.7) calc(${Root.Size} / 2) calc(${Root.Size});
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-    border-right: 1px dashed ${p => p.theme.Color.White};
-    border-bottom: none;
     flex-direction: row;
     justify-content: flex-end;
+    border-right: 1px dashed ${p => p.theme.Color.White};
+    border-bottom: none;
+    padding: 0 calc(${Root.Size} * 1.5);
+  }
+
+  @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+    padding: 0 calc(${Root.Size} * 2);
   }
 
   a {

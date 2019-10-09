@@ -56,7 +56,7 @@ const LocationDetail = ({ pageContext }) => {
     <Layout {...ThemeProps}>
       <LocationHero pageContext={pageContext} />
 
-      <Section bg="Dino" pt={0} pb={0} fullWidth>
+      <Section pt={0} pb={0} fullWidth>
         <ImgMatch
           src="locations-hero.jpg"
           AltText="STEM Education &amp; Engineering in"
@@ -67,7 +67,7 @@ const LocationDetail = ({ pageContext }) => {
 
       <LocationIntro pageContext={pageContext} />
       <LocationSplitSection />
-      <LocationCoordinators pageContext={pageContext} cities={Cities} />
+      <LocationCoordinators pageContext={pageContext} />
       
       {/* <LocationEvents /> */}
 
@@ -110,55 +110,6 @@ const LocationDetail = ({ pageContext }) => {
     </Layout>
   );
 };
-
-// Data
-const Cities = [
-  {
-    id: 0,
-    city: 'Apache Junction',
-    state: 'arizona',
-    role: 'manager',
-    name: 'Jennifer Gaona',
-    email: 'jen@gaonoa.com',
-    phone: '+1 123 456 7890',
-  },
-  {
-    id: 1,
-    city: 'Avondale',
-    state: 'arizona',
-    role: 'manager',
-    name: 'Jennifer Gaona',
-    email: 'jen@gaonoa.com',
-    phone: '+1 123 456 7890',
-  },
-  {
-    id: 2,
-    city: 'Benson',
-    state: 'arizona',
-    role: 'manager',
-    name: 'Jennifer Gaona',
-    email: 'jen@gaonoa.com',
-    phone: '+1 123 456 7890',
-  },
-  {
-    id: 3,
-    city: 'Buckeye',
-    state: 'arizona',
-    role: 'manager',
-    name: 'Jennifer Gaona',
-    email: 'jen@gaonoa.com',
-    phone: '+1 123 456 7890',
-  },
-  {
-    id: 4,
-    city: 'Carefree',
-    state: 'arizona',
-    role: 'manager',
-    name: 'Jennifer Gaona',
-    email: 'jen@gaonoa.com',
-    phone: '+1 123 456 7890',
-  },
-];
 
 export default LocationDetail;
 
