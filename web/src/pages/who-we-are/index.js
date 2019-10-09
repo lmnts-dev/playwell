@@ -381,7 +381,7 @@ const WhoPage = ({ SliderSettings }) => {
             'intro-smiles.jpg',
             'intro-smiles.jpg',
           ]}
-          LinearBackground={Theme.Color.Nova}
+          BgLinear={Theme.Color.Nova}
         />
       </BasicSection>
       <BasicSection

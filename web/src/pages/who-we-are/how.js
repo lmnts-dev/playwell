@@ -264,33 +264,9 @@ const Slider = styled.div`
     padding-top: calc(${Root.Size} / 6);
     color: ${Theme.Color.Sunset};
   }
-
-  .slider {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: no-wrap;
+  
+  .slick-slider {
     padding-top: calc(${Root.Size} / 2);
-    filter: drop-shadow(0px 8px 34px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
-    }
-
-    .item {
-      flex: 1;
-      justify-content: space-between;
-      text-align: center;
-      .gatsby-image-wrapper {
-        display: block !important;
-        height: 25vw;
-        max-height: calc(${Root.Size} * 7);
-        margin-left: calc(${Root.Size} / 4);
-
-        img {
-          border-radius: calc(${Root.Size} / 8);
-        }
-      }
-    }
   }
 `;
 
@@ -484,6 +460,7 @@ const WhoHowPage = () => {
 
       <BasicSection
         BgColor={Theme.Color.Background}
+        BgLinear={Theme.Color.White}
         TextColor={Theme.Color.Dino}
         BorderTop={Theme.Color.Clay}
       >

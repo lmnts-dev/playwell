@@ -31,6 +31,18 @@ export const BasicSectionStyle = styled.div`
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     padding: calc(${Root.Grid.Gutter.Top}) 0 calc(${Root.Grid.Gutter.Bottom}) 0;
   }
+  ${props => props.BgLinear ? `
+    .linear-background {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient( to bottom, ` + props.BgLinear + ` 75%, ` + props.BgColor + ` 75% );
+    }
+  `
+  : null};
+
   ${props =>
     props.BorderTop || props.BorderMiddle
       ? `

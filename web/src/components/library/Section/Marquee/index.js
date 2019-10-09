@@ -77,11 +77,11 @@ class MarqueeSlider extends React.Component {
 }
 
 // The SubLevel Page Itself
-const Marquee = ({ images, SquareFormat, Shadow, LinearBackground }) => (
+const Marquee = ({ images, SquareFormat, Shadow, BgLinear }) => (
   <MarqueeStyle
     SquareFormat={SquareFormat}
     Shadow={Shadow}
-    LinearBackground={LinearBackground}
+    BgLinear={BgLinear}
   >
     <MarqueeSlider>
       {images.map((image, index) => {

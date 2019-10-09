@@ -38,13 +38,14 @@ const EdgeSliderStyle = styled.div`
 
       .gatsby-image-wrapper {
         display: block !important;
-        height: 25vw;
+        padding-top: 60%;
         max-height: calc(${Root.Size} * 7);
         border-radius: calc(${Root.Size} / 8);
+        margin-top calc(${Root.Size} / 4);
 
         img {
           border-radius: calc(${Root.Size} / 8);
-          margin-left: calc(${Root.Size} / 8);
+          margin-left: calc(${Root.Size} / 4);
         }
       }
     }
