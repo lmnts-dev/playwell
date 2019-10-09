@@ -89,7 +89,7 @@ const Course = ({ pageContext }) => {
                   '/' +
                   slugify(pageContext.category_group_name.toLowerCase()) +
                   '/' +
-                  pageContext.category_group_name
+                  slugify(pageContext.category_group_name.toLowerCase())
                 }
               >
                 {pageContext.category_group_name}

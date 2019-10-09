@@ -56,7 +56,7 @@ const HomeIntro = () => {
         </Box>
         <Intro.Image width={[1 / 2]}>
           <figure>
-            <ImgMatch src="intro-smiles.jpg" AltText="Hero Alt" />
+            <ImgMatch src="home-intro.jpg" AltText="Hero Alt" />
           </figure>
         </Intro.Image>
       </Intro.Inner>
