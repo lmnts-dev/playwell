@@ -15,6 +15,7 @@ import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
 import Marquee from 'components/library/Section/Marquee';
+import Team from 'components/library/Elements/Team';
 import CenterSlider from 'components/library/Section/CenterSlider';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import GiantTextBlock from 'components/library/Section/GiantTextBlock';
@@ -173,6 +174,28 @@ const WhoWhyPage = () => {
             Title="Our Team"
             Class="headline"
             TextColor={Theme.Color.Blush}
+          />
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
+        <BasicInner>
+          <Team
+              members={[
+                {name: "Alisha", image: "intro-smiles.jpg", title:"employee", socialIcon1:"facebook", socialLink1:"/"},
+                {name: "Binh", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Kylie", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Matt", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Pete", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Meeko", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Laxalt", image: "intro-smiles.jpg", title:"employee"},
+                {name: "McIver", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Bob", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Ted", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Joe", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Tim", image: "intro-smiles.jpg", title:"employee"},
+              ]}
+              Justify="center"
           />
         </BasicInner>
       </BasicSection>

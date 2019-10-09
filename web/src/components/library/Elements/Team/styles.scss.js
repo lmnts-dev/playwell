@@ -21,6 +21,7 @@ const TeamStyle = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: ${props => props.Justify ? props.Justify : "flex-start"};
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       justify-content: center;
       padding-top: calc(${Root.Size} / 2);

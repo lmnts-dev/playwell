@@ -18,9 +18,10 @@ import TeamStyle from './styles.scss';
 //////////////////////////////////////////////////////////////////////
 
 export const Team = ({
-  members
+  members,
+  Justify,
 }) => (
-  <TeamStyle>
+  <TeamStyle Justify={Justify}>
     <div className="team-container">
       {members.map((member, index) => {
         return (
