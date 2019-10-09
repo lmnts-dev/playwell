@@ -36,9 +36,6 @@ import { Base } from 'constants/styles/Base';
 // Data
 // import ImgPlaceholder from './assets/placeholder.jpg';
 
-// Helpers
-import hexToRGB from 'helpers/hexToRGB';
-
 // Props
 const HeroProps = {
   bg: Theme.Color.Cream,
@@ -238,26 +235,6 @@ const CenteredTitle = styled.div`
 const Carousel = styled.div`
   padding-top: calc(${Root.Size});
   position: relative;
-
-  .slick-slider {
-    filter: drop-shadow(0px 8px 34px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
-    }
-
-    .item {
-      .gatsby-image-wrapper {
-        display: block !important;
-        height: 25vw;
-        max-height: calc(${Root.Size} * 7);
-        margin-left: calc(${Root.Size} / 4);
-
-        img {
-          border-radius: calc(${Root.Size} / 8);
-        }
-      }
-    }
-  }
 `;
 
 const TextBlock = styled.div`
@@ -266,7 +243,7 @@ const TextBlock = styled.div`
   z-index: 1;
   padding: calc(${Root.Size} * 2) 0 calc(${Root.Size} * 1.5) 0;
 
-  .h4 {
+  .h3 {
     font-weight: 700;
     max-width: calc(${Root.Size} * 10);
     margin: 0 auto;
@@ -312,7 +289,7 @@ const WhoWhyPage = () => {
   return (
     <Layout {...ThemeProps}>
       <SplitHero {...HeroProps}>
-        <h2>Join a team of creative problem solvers &amp; creators</h2>
+        <h2>We provide opportunities for creative expression</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
       </SplitHero>
       <Box css={{ position: 'relative', height: 0 }}>
@@ -330,7 +307,7 @@ const WhoWhyPage = () => {
             <ImgMatch src="intro-smiles.jpg" />
           </div>
           <BasicInner>
-            <div className="h4">
+            <div className="h3">
               Combining the elements of fun, challenge, and learning since 1997
             </div>
             <Btn
@@ -414,7 +391,18 @@ const WhoWhyPage = () => {
 
       <BasicSection BgColor={Theme.Color.Background} noPaddingTop BorderMiddle>
         <Carousel>
-          <Marquee />
+          <Marquee
+            images={[
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+            ]}
+            Shadow
+          />
         </Carousel>
       </BasicSection>
 

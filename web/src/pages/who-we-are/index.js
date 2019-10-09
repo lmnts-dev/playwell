@@ -76,24 +76,6 @@ const Partners = styled.div`
   }
   .slick-slider {
     padding: calc(${Root.Size} / 2) 0 ${Root.Size} 0;
-    .item {
-      height: 16.66vw;
-      max-height: calc(${Root.Size} * 4);
-
-      .gatsby-image-wrapper {
-        background-color: ${Theme.Color.White};
-        margin: calc(${Root.Size} / 10);
-        height: 100%;
-        border-radius: ${Theme.Base.Geometry.Radius};
-        img {
-          position: relative;
-          width: 80% !important;
-          height: 80% !important;
-          left: 10% !important;
-          top: 10% !important;
-        }
-      }
-    }
   }
 `;
 
@@ -350,7 +332,6 @@ const FooterExt = styled.div`
 `;
 
 const Carousel = styled.div`
-  padding-top: calc(${Root.Size});
   background: linear-gradient(
     to top,
     ${Theme.Color.Nova} 75%,
@@ -377,8 +358,8 @@ const WhoPage = ({ SliderSettings }) => {
   return (
     <Layout {...ThemeProps}>
       <SplitHero {...HeroProps}>
-        <h2>Join a team of creative problem solvers &amp; creators</h2>
-        <h6>We are passionate specialists in STEM Education.</h6>
+        <h2>Passionate industry leaders in STEM Education since 1997</h2>
+        <h6>Lorem ipsum dolor sit amet, consectetur a.</h6>
       </SplitHero>
       <Box css={{ position: 'relative', height: 0 }}>
         <SubNav />
@@ -390,9 +371,18 @@ const WhoPage = ({ SliderSettings }) => {
         noPaddingTop
         noInner
       >
-        <Carousel>
-          <Marquee />
-        </Carousel>
+        <Marquee
+          images={[
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+          ]}
+          LinearBackground={Theme.Color.Nova}
+        />
       </BasicSection>
       <BasicSection
         BgColor={Theme.Color.Nova}
@@ -534,7 +524,17 @@ const WhoPage = ({ SliderSettings }) => {
       >
         <Partners>
           <div className="h3">Our Partners</div>
-          <Marquee />
+          <Marquee
+            images={[
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+            ]}
+            SquareFormat
+          />
           <BasicInner>
             <div className="h3 txt-clr-dino">
               Interested in Play-Well for your organization?

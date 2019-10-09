@@ -51,7 +51,7 @@ const ImageAccordianStyle = styled.div`
       right: 0;
       height: calc(${Root.Size} / 2);
       width: calc(${Root.Size} / 2);
-      
+      margin: calc(${Root.Size} / 4);
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         margin: calc(${Root.Size} / 2.5) calc(${Root.Size} / 4) 0 calc(${Root.Size} / 4);
       }

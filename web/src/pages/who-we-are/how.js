@@ -17,7 +17,7 @@ import ImageAccordian from 'components/library/ImageAccordian';
 import ImgMatch from 'components/core/ImgMatch';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
-import Marquee from 'components/library/Section/Marquee';
+import EdgeSlider from 'components/library/Section/EdgeSlider';
 import LegoList from 'components/library/Section/LegoList';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
@@ -254,7 +254,9 @@ const SplitTextBoxes = styled.div`
 `;
 
 const Slider = styled.div`
-  .h5, .h6, ,.h3 {
+  .h5,
+  .h6,
+  .h3 {
     font-weight: 700;
   }
 
@@ -269,14 +271,28 @@ const Slider = styled.div`
     flex-direction: row;
     flex-wrap: no-wrap;
     padding-top: calc(${Root.Size} / 2);
+    filter: drop-shadow(0px 8px 34px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
+    }
 
     .item {
       flex: 1;
       justify-content: space-between;
       text-align: center;
+      .gatsby-image-wrapper {
+        display: block !important;
+        height: 25vw;
+        max-height: calc(${Root.Size} * 7);
+        margin-left: calc(${Root.Size} / 4);
+
+        img {
+          border-radius: calc(${Root.Size} / 8);
+        }
+      }
     }
   }
-`
+`;
 
 // Render Page
 const WhoHowPage = () => {
@@ -473,38 +489,24 @@ const WhoHowPage = () => {
       >
         <BasicInner noPaddingRight>
           <Slider>
-            <div className="h6">
-              It's not always one size fits all.
-            </div>
-            <div className="h3">
-              Our Curriculums
-            </div>
-            <div className="slider">
-              <div className="item">
-                <div className="h5">
-                  Intro Into STEM
-                </div>
-                <ImgMatch src="intro-smiles.jpg"/>
-              </div>
-              <div className="item">
-                <div className="h5">
-                  Robotics
-                </div>
-                <ImgMatch src="intro-smiles.jpg"/>
-              </div>
-              <div className="item">
-                <div className="h5">
-                  Engineering
-                </div>
-                <ImgMatch src="intro-smiles.jpg"/>
-              </div>
-              <div className="item">
-                <div className="h5">
-                  Gaming
-                </div>
-                <ImgMatch src="intro-smiles.jpg"/>
-              </div>
-            </div>
+            <div className="h6">It's not always one size fits all.</div>
+            <div className="h3">Our Curriculums</div>
+            <EdgeSlider
+              images={[
+                'intro-smiles.jpg',
+                'intro-smiles.jpg',
+                'intro-smiles.jpg',
+                'intro-smiles.jpg',
+                'intro-smiles.jpg',
+              ]}
+              titles={[
+                'Intro Into STEM',
+                'Robotics',
+                'Engineering',
+                'Gaming',
+                'Building',
+              ]}
+            />
           </Slider>
         </BasicInner>
       </BasicSection>

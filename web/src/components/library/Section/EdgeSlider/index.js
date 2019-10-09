@@ -1,4 +1,4 @@
-// Marquee.js: using slick
+// EdgeSlider.js: using slick
 //
 // />
 
@@ -15,7 +15,7 @@ import ImgMatch from 'components/core/ImgMatch';
 import { Base } from 'constants/styles/Base';
 
 // Styles
-import MarqueeStyle from './styles.scss';
+import EdgeSliderStyle from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -24,7 +24,7 @@ import MarqueeStyle from './styles.scss';
 // For displaying widgets within a SlideSection.
 
 // The Slider itself.
-class MarqueeSlider extends React.Component {
+class EdgeSliderSlider extends React.Component {
   constructor(props) {
     // Make our props accessible through this.props
     super(props);
@@ -36,16 +36,12 @@ class MarqueeSlider extends React.Component {
 
     // Pass into Slick Settings.
     const settings = {
-      speed: 5000,
+      speed: 1000,
       autoplay: true,
-      autoplaySpeed: 5000,
-      centerMode: true,
-      cssEase: 'linear',
-      slidesToShow: 5,
+      slidesToShow: 3.8,
       slidesToScroll: 1,
       variableWidth: false,
-      infinite: true,
-      initialSlide: 1,
+      infinite: false,
       arrows: false,
       buttons: false,
       responsive: [
@@ -77,22 +73,19 @@ class MarqueeSlider extends React.Component {
 }
 
 // The SubLevel Page Itself
-const Marquee = ({ images, SquareFormat, Shadow, LinearBackground }) => (
-  <MarqueeStyle
-    SquareFormat={SquareFormat}
-    Shadow={Shadow}
-    LinearBackground={LinearBackground}
-  >
-    <MarqueeSlider>
+const EdgeSlider = ({ images, titles }) => (
+  <EdgeSliderStyle>
+    <EdgeSliderSlider>
       {images.map((image, index) => {
         return (
           <div className="item">
+            <div className="h5">{titles[index]}</div>
             <ImgMatch src={image} />
           </div>
         );
       })}
-    </MarqueeSlider>
-  </MarqueeStyle>
+    </EdgeSliderSlider>
+  </EdgeSliderStyle>
 );
 
-export default Marquee;
+export default EdgeSlider;
