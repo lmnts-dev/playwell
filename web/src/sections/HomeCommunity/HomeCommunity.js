@@ -46,7 +46,7 @@ const settings = {
 // Render Page
 const HomeCommunity = ({ slides }) => {
   return (
-    <Community fullWidth={true}>
+    <Community pt={0} fullWidth>
       <Text as="h3" color="Sunset">
         People Who've
         <br />
