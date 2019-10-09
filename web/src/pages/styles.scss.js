@@ -1,4 +1,4 @@
-// Homepage Styles:
+// HomePage Styles:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -18,42 +18,110 @@ import Section from 'components/library/Elements/Section';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Scroll = styled(Box)`
-  align-self: flex-end;
-  text-align: left;
-  position: relative;
-  width: 100%;
-  height: 0;
-  max-width: ${Theme.Base.Grid.SiteWidth};
-  margin: 0 auto;
-  padding-right: ${Root.Grid.Gutter.Right};
-  padding-left: ${Root.Grid.Gutter.Left};
-  top: calc(${Theme.Root.Size} * -2);
-  z-index: 9;
+export const Decorator = styled(Box)`
+  /* overflow: hidden; */
+  z-index: 2;
 
-  span {
-    color: ${Theme.Color.Dino};
-    font-size: 1rem;
-    font-weight: bold;
-    display: block;
-    margin-bottom: calc(${Theme.Root.Size} * 0.1);
+  .decorator__hero {
+    position: absolute;
+    top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
+
+    &--top {
+      top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
+      right: -100px;
+      width: 140px;
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        right: -120px;
+        width: 200px;
+      }
+
+      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+        right: -170px;
+        width: 340px;
+      }
+    }
+
+    &--waterfall {
+      top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 3);
+      
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        
+      }
+
+      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+        right: 0;
+        width: 600px;
+      }
+    }
+
+    &--volcano {
+      top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 9);
+      
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        
+      }
+
+      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+        right: 35vw;
+        width: 400px;
+      }
+    }
+
+    &--left {
+      top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * -2.5);
+      left: -95px;
+      width: 140px;
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        left: -120px;
+        width: 200px;
+      }
+
+      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+        left: -70px;
+        width: 180px;
+      }
+    }
   }
-`;
 
-Scroll.Positioner = styled.div`
-  width: fit-content;
-  text-align: center;
-  position: relative;
-  bottom: 200px;
-  padding-left: ${Root.Grid.Indent.X};
-`;
+  .decorator__footer {
+    position: absolute;
+    /* top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1); */
 
-Scroll.Line = styled.div`
-  border-left: 1px dashed ${p => p.theme.Color.Primary};
-  display: block;
-  width: 0;
-  height: 160px;
-  margin: 0 auto;
+    &--top {
+      top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * -2.5);
+      left: -95px;
+      width: 140px;
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        left: -120px;
+        width: 200px;
+      }
+
+      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+        left: -25px;
+        width: 180px;
+      }
+    }
+
+    &--bottom {
+      left: 50%;
+      width: 400px;
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+
+        width: 400px;
+      }
+
+      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+
+        width: 400px;
+      }
+    }
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

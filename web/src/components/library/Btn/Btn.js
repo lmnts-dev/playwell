@@ -29,7 +29,7 @@ const BtnInner = ({
   BorderStyle,
 }) => (
   <BtnStyle.Inner
-    className="btn-inner"
+    className={BorderColor ? 'btn-inner btn-border' : 'btn-inner'}
     BgColor={BgColor}
     TextColor={TextColor}
     Size={Size}

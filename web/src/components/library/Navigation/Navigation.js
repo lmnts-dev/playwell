@@ -116,11 +116,13 @@ class NavigationBar extends PureComponent {
   }
 
   render() {
+    // console.log(this.props.navQuery);
+
     return (
       <>
         <NavigationStyle
           className={
-            this.state.navOverlayVisible == true ? 'hidden' : undefined
+            this.state.navOverlayVisible == true ? 'nav-bar hidden' : 'nav-bar'
           }
         >
           <NavigationBodyPadding />
@@ -132,7 +134,7 @@ class NavigationBar extends PureComponent {
                 <Brandmark />
               </Link>
 
-              <ul>
+              <ul className="linklist">
                 {this.props.navQuery.primaryNav.linkList.map((link, idx) => {
                   if (link.subNav.length != false) {
                     return (
@@ -165,12 +167,15 @@ class NavigationBar extends PureComponent {
                 IconFas
               />
               <Btn
-                Label="Arizona"
+                Label="Brooklyn, NYC"
                 Destination="/"
                 BorderStyle="solid"
                 BorderWidth="1px"
                 BorderColor={Theme.Color.Primary}
                 TextColor={Theme.Color.Primary}
+                IconClass="map-marker-alt"
+                IconPosition="left"
+                IconFas
               />
               <Btn
                 Label="Let's Play"

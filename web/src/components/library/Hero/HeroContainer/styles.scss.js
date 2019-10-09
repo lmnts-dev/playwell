@@ -22,9 +22,26 @@ let heroHeight = '130vh';
 let minHeroHeight = '500px';
 
 export const Container = styled(Flex)`
-  height: ${props => (props.withMask ? heroHeight : '70vh')};
+  min-height: ${props => (props.withMask == true ? heroHeight : '70vh')};
   text-align: ${props => props.textAlign};
   position: relative;
+  overflow: hidden;
+
+  .feature-image {
+    position: relative;
+
+    .section-img {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+
+      .gatsby-image-wrapper {
+        height: 100%;
+      }
+    }
+  }
 `;
 
 Container.Inner = styled.div`
@@ -33,7 +50,7 @@ Container.Inner = styled.div`
   margin: 0 auto;
   position: relative;
   padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 4);
-  padding-bottom: calc(${props => props.theme.Root.Size} * 1);
+  padding-bottom: calc(${Theme.Root.Size} * 1);
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 2);
@@ -41,7 +58,6 @@ Container.Inner = styled.div`
 `;
 
 export const Mask = styled.div`
-
   .footer-curve-slice,
   .footer-angle-slice {
     width: 100%;

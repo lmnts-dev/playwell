@@ -24,6 +24,19 @@ export const ListingsCountersStyle = styled.div`
   align-items: flex-start;
   padding-top: 4px;
   justify-content: space-between;
+
+  &.active-filter {
+    .filter-item {
+      opacity: 0.5;
+      transition: all 0.25s ease;
+
+      &.active-item {
+        transition: all 0.25s ease;
+        opacity: 1;
+        box-shadow: 0px 0px 0px 6px ${hexToRGB(Theme.Color.Sky, 0.2)};
+      }
+    }
+  }
 `;
 
 ListingsCountersStyle.Item = styled.button`
@@ -43,6 +56,7 @@ ListingsCountersStyle.Item = styled.button`
   margin-right: calc(${Root.Size} / 4);
   background-color: ${props =>
     props.btnTheme.bgColor ? props.btnTheme.bgColor : Theme.Color.Blush};
+  transition: all .25s ease;
 
   &:hover {
     box-shadow: 0px 0px 0px 3px rgba(93, 99, 118, 0.2);

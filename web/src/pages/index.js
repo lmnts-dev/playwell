@@ -6,20 +6,20 @@
 
 // Core
 import React from 'react';
-import { graphql } from 'gatsby';
 
 // Components
 import Layout from 'components/core/Layout';
-import { Box, Flex, Text } from 'components/library/Elements';
 import Section from 'components/library/Elements/Section';
+import Spacer from 'components/library/Spacer';
 
 // Sections
 import HomeHero from 'sections/HomeHero';
 import HomeIntro from 'sections/HomeIntro';
 import HomeCommunity from 'sections/HomeCommunity';
+import LocationPlayZone from 'sections/LocationPlayZone';
 
 // Styles
-import { Scroll, Intro } from './styles.scss';
+import {} from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -29,7 +29,7 @@ import { Theme, Root } from 'constants/Theme';
 
 // Props
 const ThemeProps = {
-  BgColor: Theme.Color.Sunset,
+  BgColor: Theme.Color.Ocean,
   PrimaryColor: Theme.Color.White,
   SecondaryColor: Theme.Color.Primary,
   TertiaryColor: Theme.Color.Primary,
@@ -39,17 +39,13 @@ const ThemeProps = {
 const HomePage = ({ bgColor, textColor }) => (
   <Layout {...ThemeProps}>
     <HomeHero slides={HeroSlides} />
-    <Scroll>
-      <Scroll.Positioner>
-        <span>Scroll</span>
-        <Scroll.Line />
-      </Scroll.Positioner>
-    </Scroll>
+    <Spacer indent>Scroll</Spacer>
     <HomeIntro />
     <HomeCommunity slides={CommunitySlides} />
     <Section bg="Background" pt={12} pb={12} />
     <HomeIntro />
     <Section bg="Dino" pt={12} pb={12} />
+    <LocationPlayZone />
   </Layout>
 );
 

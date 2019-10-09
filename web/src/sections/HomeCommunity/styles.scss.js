@@ -68,7 +68,6 @@ export const SliderContainer = styled(Box)`
 
   ul {
     width: 100%;
-    margin-top: calc(${Root.Size} / 2.5);
     margin-bottom: calc(${Root.Size} / 2.5);
 
     li {

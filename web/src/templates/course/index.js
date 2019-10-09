@@ -27,7 +27,6 @@ import ContentOverlayButton from 'components/library/ContentOverlay';
 // Styles
 import {
   Hero,
-  Lead,
   Spacer,
   QuestionsNav,
   Toggle,
@@ -59,8 +58,15 @@ const HeroProps = {
 };
 
 // Render Page
-const Course = ({ pageContext }) => {
+const Course = ({ pageContext, data }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  console.log('pageContext:');
+  console.log(pageContext);
+
+  // console.log('data:');
+  // console.log(data);
+
+  // console.log(locationMatch(pageContext.county_id, pageContext.state_id));
 
   return (
     <Layout {...ThemeProps}>
@@ -163,12 +169,12 @@ const Course = ({ pageContext }) => {
           m={'0 auto'}
           maxWidth={Theme.Base.Grid.ReadingWidth}
         >
-          <Lead as="p" color="Nova" fontSize={[1, 1, 2, 2]}>
+          <Text as="p" color="Nova" className="lead">
             {pageContext.date_time_display}
-          </Lead>
-          <Lead as="p" color="Galaxy" fontSize={[1, 1, 2, 2]}>
+          </Text>
+          <Text as="p" color="Galaxy" className="lead">
             {pageContext.course_type_long_description}
-          </Lead>
+          </Text>
         </Flex>
       </Section>
 
@@ -176,7 +182,12 @@ const Course = ({ pageContext }) => {
         <Spacer.Line />
       </Spacer>
 
-      <Section bg="White" textAlign="center" pt={[6, 6, 8, 8]} pb={[2, 2, 3, 3]}>
+      <Section
+        bg="White"
+        textAlign="center"
+        pt={[6, 6, 8, 8]}
+        pb={[2, 2, 3, 3]}
+      >
         <Flex
           as="article"
           mx="auto"
@@ -326,117 +337,3 @@ export default Course;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
-
-{
-  /* <main
-  style={{
-    padding: '20px',
-    backgroundColor: props => props.theme.Color.Background,
-    flex: '1',
-    color: props => props.theme.Color.Text,
-  }}
->
-  <span>action_type: </span>
-  <strong>{pageContext.action_type}</strong>
-  <br />
-  <span>action_url: </span>
-  <strong>{pageContext.action_url}</strong>
-  <br />
-  <span>action_url_comment: </span>
-  <strong>{pageContext.action_url_comment}</strong>
-  <br />
-  <span>action_url_external: </span>
-  <strong>{pageContext.action_url_external}</strong>
-  <br />
-  <span>age_range_display: </span>
-  <strong>{pageContext.age_range_display}</strong>
-  <br />
-  <span>age_range_end: </span>
-  <strong>{pageContext.age_range_end}</strong>
-  <br />
-  <span>age_range_start: </span>
-  <strong>{pageContext.age_range_start}</strong>
-  <br />
-  <span>category_group_name: </span>
-  <strong>{pageContext.category_group_name}</strong>
-  <br />
-  <span>client_location_name: </span>
-  <strong>{pageContext.client_location_name}</strong>
-  <br />
-  <span>course_id: </span>
-  <strong>{pageContext.course_id}</strong>
-  <br />
-  <span>course_type_group: </span>
-  <strong>{pageContext.course_type_group}</strong>
-  <br />
-  <span>course_type_long_description: </span>
-  <strong>{pageContext.course_type_long_description}</strong>
-  <br />
-  <span>course_type_name: </span>
-  <strong>{pageContext.course_type_name}</strong>
-  <br />
-  <span>course_web_publishing_action_type: </span>
-  <strong>{pageContext.course_web_publishing_action_type}</strong>
-  <br />
-  <span>course_web_publishing_action_type_id: </span>
-  <strong>{pageContext.course_web_publishing_action_type_id}</strong>
-  <br />
-  <span>date_time_display: </span>
-  <strong>{pageContext.date_time_display}</strong>
-  <br />
-  <span>days_of_the_week: </span>
-  <strong>{pageContext.days_of_the_week}</strong>
-  <br />
-  <span>display_address: </span>
-  <strong>{pageContext.display_address}</strong>
-  <br />
-  <span>email_registration_description: </span>
-  <strong>{pageContext.email_registration_description}</strong>
-  <br />
-  <span>end_date: </span>
-  <strong>{pageContext.end_date}</strong>
-  <br />
-  <span>geocode_address: </span>
-  <strong>{pageContext.geocode_address}</strong>
-  <br />
-  <span>id: </span>
-  <strong>{pageContext.id}</strong>
-  <br />
-  <span>isCreatedByStatefulCreatePages: </span>
-  <strong>{pageContext.isCreatedByStatefulCreatePages}</strong>
-  <br />
-  <span>is_full: </span>
-  <strong>{pageContext.is_full}</strong>
-  <br />
-  <span>is_restricted_registration: </span>
-  <strong>{pageContext.is_restricted_registration}</strong>
-  <br />
-  <span>location_lat: </span>
-  <strong>{pageContext.location_lat}</strong>
-  <br />
-  <span>location_lng: </span>
-  <strong>{pageContext.location_lng}</strong>
-  <br />
-  <span>omit_dates: </span>
-  <strong>{pageContext.omit_dates}</strong>
-  <br />
-  <span>phone_registration_description: </span>
-  <strong>{pageContext.phone_registration_description}</strong>
-  <br />
-  <span>public_note: </span>
-  <strong>{pageContext.public_note}</strong>
-  <br />
-  <span>room: </span>
-  <strong>{pageContext.room}</strong>
-  <br />
-  <span>start_date: </span>
-  <strong>{pageContext.start_date}</strong>
-  <br />
-  <br />
-  <br />
-  <br />
-  <Link to="/dir-sample">
-    <h2>Back to Directory</h2>
-  </Link>
-</main> */
-}

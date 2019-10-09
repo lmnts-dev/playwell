@@ -112,8 +112,8 @@ class OverlayContentContainer extends React.Component {
                 >
                   <figure />
                 </span>
-                <span class="overlay-title">Carson City, Nevada</span>
-                <span class="overlay-icon">
+                <span className="overlay-title">Carson City, Nevada</span>
+                <span className="overlay-icon">
                   <Icon fas={true} Name="share-alt" />
                 </span>
               </div>

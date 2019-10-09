@@ -26,18 +26,14 @@ export const ListingsFilters = ({ courseData }) => {
   const ListingsFiltersItem = ({ label, items }) => {
     return (
       <ListingsFiltersStyle.Item onClick={() => console.log(items)}>
-        <span class="filter-inner">
+        <span className="filter-inner">
           <span>{label}</span>
           <Icon Name="carat" />
         </span>
         <ListingsFiltersStyle.FilterList className="list">
           <ul>
             {items.map((item, idx) => {
-              return (
-                <li key={idx}>
-                  {item.name} - {item.value} - {idx}
-                </li>
-              );
+              return <li key={idx}>{item.name}</li>;
             })}
           </ul>
         </ListingsFiltersStyle.FilterList>
@@ -51,28 +47,37 @@ export const ListingsFilters = ({ courseData }) => {
       <ListingsFiltersItem
         label="Any Age"
         items={[
-          { name: 'Filter Name', value: 10 },
-          { name: 'Filter Name', value: 10 },
-          { name: 'Filter Name', value: 10 },
-          { name: 'Filter Name', value: 10 },
+          { name: 'Under 5', value: 5 },
+          { name: 'Age 5', value: 5 },
+          { name: 'Age 6', value: 6 },
+          { name: 'Age 7', value: 7 },
+          { name: 'Age 8', value: 8 },
+          { name: 'Age 9', value: 9 },
+          { name: '10 and over', value: 10 },
         ]}
       />
+
       <ListingsFiltersItem
-        label="Start Date"
+        label="Any Date"
         items={[
-          { name: 'Filter Name', value: 10 },
-          { name: 'Filter Name', value: 10 },
-          { name: 'Filter Name', value: 10 },
-          { name: 'Filter Name', value: 10 },
+          { name: 'This Month', value: 10 },
+          { name: 'Next Month', value: 10 },
+          { name: 'Next 6 Months', value: 10 },
+          { name: 'Next Year', value: 10 },
         ]}
       />
       <ListingsFiltersItem
         label="Course Type"
         items={[
-          { name: 'Filter Name', value: 10 },
-          { name: 'Filter Name', value: 10 },
-          { name: 'Filter Name', value: 10 },
-          { name: 'Filter Name', value: 10 },
+          { name: 'LEGO®: Basic', value: 'Basic Lego' },
+          { name: 'LEGO®: Advanced', value: 'Advanced' },
+          { name: 'Ninjago', value: 'Ninjago' },
+          { name: 'Star Wars', value: 'Star Wars' },
+          { name: 'Super Heroes', value: 'Super Heroes' },
+          { name: 'LEGO® Robotics', value: 'Lego Robotics' },
+          { name: 'Pre-School', value: 'Pre School' },
+          { name: 'Minecraft Theme', value: 'Minecraft' },
+          { name: 'Other', value: 'Other' },
         ]}
       />
     </ListingsFiltersStyle>

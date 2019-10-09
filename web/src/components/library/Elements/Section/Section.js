@@ -25,6 +25,7 @@ const Section = ({
   pt,
   pb,
   textAlign,
+  indent
 }) => (
   <Container
     as="section"
@@ -37,6 +38,7 @@ const Section = ({
     pb={pb}
     bgImage={bgImage}
     textAlign={textAlign}
+    indent={indent}
   >
     {alpha && <Container.Overlay bg={bgOverlay} alpha={alpha} />}
     <Container.Inner fullWidth={fullWidth}>{children}</Container.Inner>
