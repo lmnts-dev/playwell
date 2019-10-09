@@ -28,7 +28,7 @@ import {
 } from './styles.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Decorator } from '../../pages/HomePage/styles.scss';
+import { Decorator } from '../../pages/styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
