@@ -232,6 +232,32 @@ export const SearchBarStyle = styled.div`
               }
             }
           }
+
+          .no-results {
+            padding: calc(${Root.Size} *  1.5) calc(${Root.Size} / 2)  ${
+  Root.Size
+} calc(${Root.Size} / 2);
+
+            width: 100%;
+            color: ${hexToRGB(Theme.Color.Ocean, 0.6)};
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            .ico {
+              margin-bottom: ${Root.Size};
+              i {
+                font-size: 4rem;
+                color: ${Theme.Color.Ocean};
+                border-radius: 50%;
+                background: ${hexToRGB(Theme.Color.Ocean, 0.18)};
+                padding: calc(${Root.Size} / 4);
+              }
+            }
+            .label {
+              font-size: 2rem;
+            }
+          }
         }
 
         a {
@@ -242,7 +268,7 @@ export const SearchBarStyle = styled.div`
           justify-content: space-between;
           flex: 1;
           height: calc(${Root.Size} * 0.8);
-          padding: 0 calc(${Root.Size} / 4);
+          padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
           border-radius: 0px 999px 999px 0px;
           &:hover {
             text-decoration: none;

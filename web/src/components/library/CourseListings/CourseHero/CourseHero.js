@@ -35,12 +35,13 @@ class SearchBar extends PureComponent {
 
     // Assign initial state
     this.state = {
-      filteredResults: [],
+      query: '',
       resultsActive: false,
+      queryActive: false,
     };
 
     // Bind our functions
-    // this.searchWrapperRef = this.searchWrapperRef.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSearchResultsToggle = this.handleSearchResultsToggle.bind(this);
   }
 
@@ -51,8 +52,9 @@ class SearchBar extends PureComponent {
 
     // Assign State
     this.state = {
-      filteredResults: [],
+      query: '',
       resultsActive: false,
+      queryActive: false,
     };
   }
 
@@ -63,8 +65,9 @@ class SearchBar extends PureComponent {
 
     // De-assign State
     this.state = {
-      filteredResults: [],
+      query: '',
       resultsActive: false,
+      queryActive: false,
     };
   }
 
@@ -76,11 +79,14 @@ class SearchBar extends PureComponent {
   // Function to listen for mouse clicks to show/hide results bar
   handleSearchResultsToggle(event) {
     // If the click is outside of the input, hide results
-    if (this.refs.inputField && !this.refs.inputField.contains(event.target)) {
+    if (
+      this.refs.searchInputWrapper &&
+      !this.refs.searchInputWrapper.contains(event.target)
+    ) {
       this.setState({
         resultsActive: false,
       });
-    } 
+    }
     // If the click is inside of the input, show results
     else {
       this.setState({
@@ -91,11 +97,86 @@ class SearchBar extends PureComponent {
     document.addEventListener('mousedown', this.handleSearchResultsToggle);
   }
 
+  // Handle our query updates
+  handleInputChange = query => {
+    if (query.target.value.length != '') {
+      this.setState({
+        query: query.target.value,
+        queryActive: true,
+      });
+    } else {
+      this.setState({
+        query: '',
+        queryActive: false,
+      });
+    }
+  };
+
   render() {
-    const results = this.props.geoData.edges;
+    // Clean our queries
+    const searchSafeQuery = this.state.query.toLowerCase();
+
+    // Create our Results array
+    const results = this.props.geoData.edges.filter(location => {
+      // Clean our Location's name
+      const searchSafeName = location.node.name.toLowerCase();
+
+      /*
+      // Clean our county names, make them iterable. and
+      // return true if it is inside of the new array
+      */
+
+      // Create empty array
+      const searchSafeCounties = [];
+
+      // Iterate through Counties and add to said array
+      const cleanCountyNames = () => {
+        //  Convert each county name to lowercase
+        location.node.counties.forEach((county, idx) => {
+          searchSafeCounties.push(county.name.toLowerCase());
+        });
+      };
+
+      // Run above function synchronously
+      cleanCountyNames();
+
+      // Iterate through cleaned array with clean query and return truthy
+      // or falsy if it exists
+      const isCountyMatch = searchSafeCounties.filter(county => {
+        if (county.includes(searchSafeQuery)) {
+          return true;
+        }
+      });
+
+      /*
+      // Return our filtered results
+      */
+
+      if (searchSafeName.includes(searchSafeQuery)) {
+        return location;
+      } else if (isCountyMatch.length > 0) {
+        return location;
+      }
+
+      // For Debugging only.
+      // console.log('searchSafeCounties:');
+      // console.log(searchSafeCounties);
+
+      // console.log('isCountyMatch:');
+      // console.log(isCountyMatch);
+
+      // console.log('searchSafeName: ' + searchSafeName);
+      // console.log('searchSafeQuery: ' + searchSafeQuery);
+    });
+
+    // For Debugging only.
+    // console.log('results:');
+    // console.log(results);
+    // console.log('resultsSample:');
+    // console.log(resultsSample);
 
     return (
-      <SearchBarStyle>
+      <SearchBarStyle ref="searchInputWrapper">
         <div
           className={
             this.state.resultsActive == true
@@ -106,8 +187,8 @@ class SearchBar extends PureComponent {
           <div className="inner">
             {/* <Icon Name="map-marker-alt" fas /> */}
             <input
-              ref="inputField"
               placeholder="Or search by another location..."
+              onChange={this.handleInputChange}
             />
             <Icon Name="search" fas />
           </div>
@@ -117,6 +198,8 @@ class SearchBar extends PureComponent {
           <SearchBarResults
             className="search-results-wrapper"
             results={results}
+            searchSafeQuery={searchSafeQuery}
+            queryActive={this.state.queryActive}
           />
         ) : (
           false
@@ -127,21 +210,38 @@ class SearchBar extends PureComponent {
 }
 
 // Our Search Bar Results
-const SearchBarResults = ({ results, resultsActive }) => {
+const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
   return (
     <div className={'search-results'}>
       <ul className="search-results-inner">
         {/* Map all availabe locations */}
-        {results.map((result, idx) => {
-          // Build our slugified strings for pretty URLs.
-          const rootSlug = '/programs/';
-          const stateSlug = slugify(result.node.name);
-          const slugString = rootSlug + stateSlug + '/';
+        {results.length > 0 ? (
+          results.map((result, idx) => {
+            // Build our slugified strings for pretty URLs.
+            const rootSlug = '/programs/';
+            const stateSlug = slugify(result.node.name);
+            const slugString = rootSlug + stateSlug + '/';
 
-          return (
-            <ResultRow slugString={slugString} key={idx} result={result} />
-          );
-        })}
+            return (
+              <ResultRow
+                slugString={slugString}
+                searchSafeQuery={searchSafeQuery}
+                key={idx}
+                result={result}
+                queryActive={queryActive}
+              />
+            );
+          })
+        ) : (
+          <li>
+            <div className="results-row">
+              <div className="no-results">
+                <Icon Name="sad-cry" fas />
+                <span className="label">No results found.</span>
+              </div>
+            </div>
+          </li>
+        )}
       </ul>
     </div>
   );
@@ -154,7 +254,7 @@ class ResultRow extends PureComponent {
 
     // Initial State
     this.state = {
-      rowExpanded: false,
+      rowExpanded: 'unset',
     };
 
     // Bind expanding function
@@ -164,19 +264,22 @@ class ResultRow extends PureComponent {
   // Mounted State
   componentDidMount() {
     this.state = {
-      rowExpanded: false,
+      rowExpanded: 'unset',
     };
   }
 
   // Card expanding function
   toggleRow() {
-    if (this.state.rowExpanded == false) {
+    if (
+      this.state.rowExpanded == 'closed' ||
+      this.state.rowExpanded == 'unset'
+    ) {
       this.setState({
-        rowExpanded: true,
+        rowExpanded: 'open',
       });
     } else {
       this.setState({
-        rowExpanded: false,
+        rowExpanded: 'closed',
       });
     }
   }
@@ -184,12 +287,50 @@ class ResultRow extends PureComponent {
   render() {
     const result = this.props.result;
     const slugString = this.props.slugString;
+    const queryActive = this.props.queryActive;
+    const searchSafeQuery = this.props.searchSafeQuery;
+
+    // Logic to show/hide rows on search.
+    const showRows = () => {
+      if (queryActive == true) {
+        if (this.state.rowExpanded == 'unset' && queryActive == true) {
+          return true;
+        } else if (this.state.rowExpanded == 'closed' && queryActive == true) {
+          return false;
+        }
+      } else {
+        if (
+          this.state.rowExpanded == 'unset' ||
+          this.state.rowExpanded == 'closed'
+        ) {
+          return false;
+        } else {
+          return true;
+        }
+      }
+    };
+
+    // For Debugging Purposes:
+    // console.log('queryActive: ' + queryActive);
+    // console.log('this.state.rowExpanded: ' + this.state.rowExpanded);
+    // console.log('showRows: ' + showRows());
+
+    // Filter our counties by searchSafeQuery
+    const filteredCounties = result.node.counties.filter(county => {
+      if (county.name.toLowerCase().includes(searchSafeQuery)) {
+        return county;
+      }
+    });
+
+    // For Debugging Purposes:
+    console.log('filteredCounties:');
+    console.log(filteredCounties);
 
     return (
       <li>
         <div
           className={
-            this.state.rowExpanded == false
+            showRows() == false
               ? 'results-row'
               : 'results-row results-sub-visible'
           }
@@ -199,7 +340,7 @@ class ResultRow extends PureComponent {
           </Link>
 
           {/* Show/hide action button if counties available */}
-          {result.node.counties.length > 0 ? (
+          {filteredCounties.length > 0 ? (
             <span
               className="result-action"
               onClick={this.toggleRow}
@@ -215,16 +356,16 @@ class ResultRow extends PureComponent {
         </div>
 
         {/* Show Counties if availabe */}
-        {result.node.counties.length > 0 ? (
+        {filteredCounties.length > 0 ? (
           <ul
             className={
-              this.state.rowExpanded == false
+              showRows() == false
                 ? 'results-sub results-sub-hidden'
                 : 'results-sub'
             }
           >
             {/* Map Counties */}
-            {result.node.counties.map((county, idxx) => {
+            {filteredCounties.map((county, idxx) => {
               // Build our slugified strings for pretty URLs.
               let countySlug = slugify(county.name);
               let countySlugString = slugString + countySlug + '/';
