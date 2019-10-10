@@ -15,6 +15,7 @@ import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
 import Marquee from 'components/library/Section/Marquee';
+import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 import Team from 'components/library/Elements/Team';
 import CenterSlider from 'components/library/Section/CenterSlider';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
@@ -62,89 +63,6 @@ const ThemeProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const TextWithManyImages = styled.div`
-  display: flex;
-  flex-direction: row;
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    display: block;
-  }
-
-  .text {
-    font-weight: 700;
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: ${Root.Size} ${Root.Size} ${Root.Size} 0;
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      padding: calc(${Root.Size} / 2) calc(${Root.Size} / 2)
-        calc(${Root.Size} / 2) 0;
-      &.h4 {
-        font-size: 1.75rem;
-      }
-    }
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      padding: calc(${Root.Size}) calc(${Root.Size}) calc(${Root.Size}) 0;
-    }
-  }
-
-  .images {
-    flex: 3;
-    display: flex;
-    flex-direction: row;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      height: 50vw;
-      max-height: calc(${Root.Size} * 6);
-    }
-
-    > .gatsby-image-wrapper {
-      display: inline-block;
-      padding-top: 66.66%;
-      width: 66.66%;
-      height: 100%;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding-top: 0;
-      }
-
-      > div {
-        position: absolute;
-        padding-bottom: 0 !important;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    .column {
-      width: 33.33%;
-      padding-top: 66.66%;
-      margin-left: 4px;
-      height: 100%;
-      position: relative;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding-top: 0;
-      }
-
-      .gatsby-image-wrapper {
-        width: 100%;
-        position: absolute !important;
-        top: 0;
-        left: 0;
-        height: 50%;
-
-        &:first-of-type {
-          margin-bottom: 4px;
-        }
-
-        &:last-of-type {
-          margin-top: 4px;
-          top: 50%;
-        }
-      }
-    }
-  }
-`;
 
 const Carousel = styled.div`
   padding-top: calc(${Root.Size});
@@ -346,20 +264,12 @@ const WhoWhyPage = () => {
         noPaddingBottom
       >
         <BasicInner noPaddingRight>
-          <TextWithManyImages>
-            <div className="text h4">
-              We do this in the context of fun-filled engineering and
+          <TextWithManyImages
+            Text="We do this in the context of fun-filled engineering and
               architectural projects, activities that both the children and the
-              instructors enjoy.
-            </div>
-            <div className="images">
-              <ImgMatch src="intro-smiles.jpg" />
-              <div className="column">
-                <ImgMatch src="intro-smiles.jpg" />
-                <ImgMatch src="intro-smiles.jpg" />
-              </div>
-            </div>
-          </TextWithManyImages>
+              instructors enjoy."
+            Images={[ "intro-smiles.jpg", "intro-smiles.jpg", "intro-smiles.jpg" ]}
+          />
         </BasicInner>
       </BasicSection>
     </Layout>

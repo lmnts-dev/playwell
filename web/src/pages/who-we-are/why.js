@@ -14,6 +14,7 @@ import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
+import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 import Marquee from 'components/library/Section/Marquee';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import GiantTextBlock from 'components/library/Section/GiantTextBlock';
@@ -62,130 +63,6 @@ const ThemeProps = {
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
-
-const LargeTextBlock = styled.div`
-  text-align: center;
-  font-weight: 700;
-  margin: 0 auto;
-  position: relative;
-  max-width: calc(${Root.Size} * 15);
-  @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-    max-width: calc(${Root.Size} * 12);
-  }
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    max-width: calc(${Root.Size} * 11);
-  }
-
-  .headline {
-    color: ${Theme.Color.Eggplant};
-    padding: calc(${Root.Size} / 4) 0;
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      font-size: 6rem;
-    }
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      font-size: 4rem;
-    }
-  }
-
-  ~ .absolute-image {
-    position: absolute;
-    top: calc(${Root.Size} * -4.5);
-    width: 20%;
-    left: calc(${Root.Size} * -1);
-    height: auto;
-    transform: rotate(260deg);
-    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
-      left: calc(${Root.Size} * 0.5);
-    }
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      top: calc(${Root.Size} * -2.5);
-    }
-  }
-`;
-
-const TextWithManyImages = styled.div`
-  display: flex;
-  flex-direction: row;
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    display: block;
-  }
-
-  .text {
-    font-weight: 700;
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: ${Root.Size} ${Root.Size} ${Root.Size} 0;
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      padding: calc(${Root.Size} / 2) calc(${Root.Size} / 2)
-        calc(${Root.Size} / 2) 0;
-      &.h4 {
-        font-size: 1.75rem;
-      }
-    }
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      padding: calc(${Root.Size}) calc(${Root.Size}) calc(${Root.Size}) 0;
-    }
-  }
-
-  .images {
-    flex: 3;
-    display: flex;
-    flex-direction: row;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      height: 50vw;
-      max-height: calc(${Root.Size} * 6);
-    }
-
-    > .gatsby-image-wrapper {
-      display: inline-block;
-      padding-top: 66.66%;
-      width: 66.66%;
-      height: 100%;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding-top: 0;
-      }
-
-      > div {
-        position: absolute;
-        padding-bottom: 0 !important;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    .column {
-      width: 33.33%;
-      padding-top: 66.66%;
-      margin-left: 4px;
-      height: 100%;
-      position: relative;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding-top: 0;
-      }
-
-      .gatsby-image-wrapper {
-        width: 100%;
-        position: absolute !important;
-        top: 0;
-        left: 0;
-        height: 50%;
-
-        &:first-of-type {
-          margin-bottom: 4px;
-        }
-
-        &:last-of-type {
-          margin-top: 4px;
-          top: 50%;
-        }
-      }
-    }
-  }
-`;
 
 const Carousel = styled.div`
   padding-top: calc(${Root.Size});
@@ -277,10 +154,7 @@ const WhoWhyPage = () => {
 
       <BasicSection BgColor={Theme.Color.Background} BorderTopVertical>
         <BasicInner>
-          <CenteredTitle
-            Title="Our Values"
-            Class="headline"
-          >
+          <CenteredTitle Title="Our Values" Class="headline">
             <div className="absolute-image">
               <Icon Name="swoop" />
               <ImgMatch src="gears.png" />
@@ -371,17 +245,20 @@ const WhoWhyPage = () => {
             blocks={[
               {
                 title: 'Creative Collaboration',
-                text: 'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                text:
+                  'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
                 legoColor: 'orange',
               },
               {
                 title: 'New Perspectives',
-                text: 'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                text:
+                  'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
                 legoColor: 'purple',
               },
               {
                 title: 'Staff Morale',
-                text: 'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                text:
+                  'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
                 legoColor: 'blue',
               },
             ]}
@@ -396,20 +273,16 @@ const WhoWhyPage = () => {
         noPaddingBottom
       >
         <BasicInner noPaddingRight>
-          <TextWithManyImages>
-            <div className="text h4">
-              We do this in the context of fun-filled engineering and
+          <TextWithManyImages
+            Text="We do this in the context of fun-filled engineering and
               architectural projects, activities that both the children and the
-              instructors enjoy.
-            </div>
-            <div className="images">
-              <ImgMatch src="intro-smiles.jpg" />
-              <div className="column">
-                <ImgMatch src="intro-smiles.jpg" />
-                <ImgMatch src="intro-smiles.jpg" />
-              </div>
-            </div>
-          </TextWithManyImages>
+              instructors enjoy."
+            Images={[
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+            ]}
+          />
         </BasicInner>
       </BasicSection>
     </Layout>
