@@ -12,7 +12,7 @@ import { Base } from 'constants/styles/Base';
 //////////////////////////////////////////////////////////////////////
 
 export const ImageWithTextCardStyle = styled.div`
-   position: relative;
+  position: relative;
   display: flex;
   flex-direction: row;
   margin-right: calc(${Root.Grid.Gutter.Right});
