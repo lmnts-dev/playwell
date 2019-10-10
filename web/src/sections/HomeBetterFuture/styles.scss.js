@@ -1,4 +1,4 @@
-// <HomeIntro /> Styles:
+// Homepage Styles:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -18,16 +18,17 @@ import { Base } from 'constants/styles/Base';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Intro = styled(Section)``;
+export const Container = styled(Section)``;
 
-Intro.Inner = styled.div`
+Container.Inner = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
 `;
 
-Intro.Image = styled(Box)`
-  clip-path: circle(50%);
+Container.Image = styled(Box)`
+  clip-path: circle(38%);
+  overflow: hidden;
 
   figure {
     margin: 0;

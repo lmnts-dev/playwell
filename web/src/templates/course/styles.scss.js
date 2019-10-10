@@ -12,16 +12,6 @@ import { Base } from 'constants/styles/Base';
 import { Box, Flex, Text } from 'components/library/Elements';
 import Section from 'components/library/Elements/Section';
 
-// Keyframe
-import {
-  FadeIn,
-  FadeOut,
-  SlideUp,
-  SlideToRight,
-  SlideToLeft,
-  Rotate,
-} from 'components/core/Transition/Keyframes';
-
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 

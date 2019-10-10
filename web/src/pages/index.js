@@ -17,6 +17,8 @@ import HomeHero from 'sections/HomeHero';
 import HomeIntro from 'sections/HomeIntro';
 import HomeCommunity from 'sections/HomeCommunity';
 import LocationPlayZone from 'sections/LocationPlayZone';
+import HomePrograms from 'sections/HomePrograms';
+import HomeBetterFuture from 'sections/HomeBetterFuture';
 
 // Styles
 import {} from './styles.scss';
@@ -32,7 +34,7 @@ const ThemeProps = {
   BgColor: Theme.Color.Ocean,
   PrimaryColor: Theme.Color.White,
   SecondaryColor: Theme.Color.Primary,
-  TertiaryColor: Theme.Color.Primary,
+  TertiaryColor: Theme.Color.Nova,
 };
 
 // Render Page
@@ -42,9 +44,8 @@ const HomePage = ({ bgColor, textColor }) => (
     <Spacer indent>Scroll</Spacer>
     <HomeIntro />
     <HomeCommunity slides={CommunitySlides} />
-    <Section bg="Background" pt={12} pb={12} />
-    <HomeIntro />
-    <Section bg="Dino" pt={12} pb={12} />
+    <HomeBetterFuture themeProps={ThemeProps} />
+    <HomePrograms />
     <LocationPlayZone />
   </Layout>
 );

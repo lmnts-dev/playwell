@@ -24,6 +24,7 @@ import {
   maxWidth,
   display,
   position,
+  overflow
 } from 'styled-system';
 
 import { Theme, Root } from 'constants/Theme';
@@ -60,6 +61,7 @@ export const Flex = styled('div')`
   ${width}
   ${fontSize}
   ${textAlign}
+  ${overflow}
 `;
 
 Flex.displayName = 'Flex';
@@ -72,6 +74,7 @@ export const Button = styled('button')`
   ${space}
   ${width}
   ${color}
+  ${overflow}
 `;
 
 Button.displayName = 'Button';
