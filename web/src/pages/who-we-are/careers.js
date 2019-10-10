@@ -20,9 +20,6 @@ import CenterSlider from 'components/library/Section/CenterSlider';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import GiantTextBlock from 'components/library/Section/GiantTextBlock';
 import LegoList from 'components/library/Section/LegoList';
-import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
-import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 import {
   BasicSection,
   BasicInner,
@@ -168,6 +165,25 @@ const WhoWhyPage = () => {
         <SubNav />
       </Box>
 
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        noPaddingTop
+        noPaddingBottom
+      >
+        <Marquee
+          images={[
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+          ]}
+          SquareFormat
+        />
+      </BasicSection>
+
       <BasicSection BgColor={Theme.Color.Background}>
         <BasicInner>
           <CenteredTitle
@@ -181,21 +197,27 @@ const WhoWhyPage = () => {
       <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
         <BasicInner>
           <Team
-              members={[
-                {name: "Alisha", image: "intro-smiles.jpg", title:"employee", socialIcon1:"facebook", socialLink1:"/"},
-                {name: "Binh", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Kylie", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Matt", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Pete", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Meeko", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Laxalt", image: "intro-smiles.jpg", title:"employee"},
-                {name: "McIver", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Bob", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Ted", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Joe", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Tim", image: "intro-smiles.jpg", title:"employee"},
-              ]}
-              Justify="center"
+            members={[
+              {
+                name: 'Alisha',
+                image: 'intro-smiles.jpg',
+                title: 'employee',
+                socialIcon1: 'facebook',
+                socialLink1: '/',
+              },
+              { name: 'Binh', image: 'intro-smiles.jpg', title: 'employee' },
+              { name: 'Kylie', image: 'intro-smiles.jpg', title: 'employee' },
+              { name: 'Matt', image: 'intro-smiles.jpg', title: 'employee' },
+              { name: 'Pete', image: 'intro-smiles.jpg', title: 'employee' },
+              { name: 'Meeko', image: 'intro-smiles.jpg', title: 'employee' },
+              { name: 'Laxalt', image: 'intro-smiles.jpg', title: 'employee' },
+              { name: 'McIver', image: 'intro-smiles.jpg', title: 'employee' },
+              { name: 'Bob', image: 'intro-smiles.jpg', title: 'employee' },
+              { name: 'Ted', image: 'intro-smiles.jpg', title: 'employee' },
+              { name: 'Joe', image: 'intro-smiles.jpg', title: 'employee' },
+              { name: 'Tim', image: 'intro-smiles.jpg', title: 'employee' },
+            ]}
+            Justify="center"
           />
         </BasicInner>
       </BasicSection>
@@ -296,17 +318,20 @@ const WhoWhyPage = () => {
             blocks={[
               {
                 title: 'Creative Collaboration',
-                text: 'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                text:
+                  'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
                 legoColor: 'orange',
               },
               {
                 title: 'New Perspectives',
-                text: 'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                text:
+                  'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
                 legoColor: 'purple',
               },
               {
                 title: 'Staff Morale',
-                text: 'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                text:
+                  'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
                 legoColor: 'blue',
               },
             ]}
