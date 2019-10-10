@@ -64,12 +64,6 @@ const ThemeProps = {
 //////////////////////////////////////////////////////////////////////
 
 
-const Carousel = styled.div`
-  padding-top: calc(${Root.Size});
-  position: relative;
-`;
-
-
 
 // Render Page
 const WhoWhyPage = () => {
@@ -195,7 +189,6 @@ const WhoWhyPage = () => {
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
-        noPaddingBottom
       >
         <BasicInner wideWidth>
           <GiantTextBlock
@@ -210,7 +203,6 @@ const WhoWhyPage = () => {
       </BasicSection>
 
       <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
-        <Carousel>
           <Marquee
             images={[
               'intro-smiles.jpg',
@@ -223,7 +215,6 @@ const WhoWhyPage = () => {
             ]}
             Shadow
           />
-        </Carousel>
       </BasicSection>
 
       <BasicSection
