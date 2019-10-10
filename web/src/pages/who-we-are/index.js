@@ -18,14 +18,13 @@ import Btn from 'components/library/Btn';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import Team from 'components/library/Elements/Team';
 import ImgMatch from 'components/core/ImgMatch';
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
-import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 import {
   BasicSection,
   BasicInner,
 } from 'components/library/Section/BasicSection';
 import LegoList from 'components/library/Section/LegoList';
 import ImageWithTextCard from 'components/library/Section/ImageWithTextCard';
+import CurveAndAngle from 'components/library/Section/CurveAndAngle';
 import Marquee from 'components/library/Section/Marquee';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 import SplitHero from 'components/library/Hero/SplitHero';
@@ -100,7 +99,7 @@ const TeamSection = styled.div`
   }
 `;
 
-const TopCarousel = styled.div`
+const ClayTextBlock = styled.div`
   position: relative;
 
   .text-block {
@@ -121,43 +120,6 @@ const TopCarousel = styled.div`
       padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0
         calc(${Root.Size} * 1.5);
       line-height: 1.2;
-    }
-  }
-
-  .clouds {
-    width: 30vw;
-    position: absolute !important;
-    z-index: 3;
-    bottom: 0;
-    left: -5vw;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      width: calc(${Root.Size} * 6);
-      left: calc(${Root.Size} * -1);
-    }
-  }
-
-  .footer-curve-slice {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-  }
-
-  .footer-curve-slice {
-    z-index: 1;
-    transform: scale(1, 0.5) translateY(49%);
-    path {
-      fill: ${Theme.Color.Clay};
-    }
-  }
-
-  .footer-angle-slice {
-    position: relative;
-    z-index: 2;
-    width: 100vw;
-    height: 20vw;
-    transform: translateY(4px);
-    path {
-      fill: ${Theme.Color.Background};
     }
   }
 `;
@@ -245,7 +207,7 @@ const WhoPage = ({ SliderSettings }) => {
         noPaddingBottom
         noInner
       >
-        <TopCarousel>
+        <ClayTextBlock>
           <BasicInner>
             <div className="text-block">
               <div className="headline txt-clr-clay">Play comes first.</div>
@@ -256,12 +218,15 @@ const WhoPage = ({ SliderSettings }) => {
               </p>
             </div>
           </BasicInner>
-          <FooterCurveSlice bgColor={Theme.Color.Black} />
-          <FooterAngleSlice />
-          <div className="clouds">
-            <ImgMatch src="clouds.png" />
-          </div>
-        </TopCarousel>
+        </ClayTextBlock>
+      </BasicSection>
+
+      <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Nova}>
+        <CurveAndAngle
+          CurveColor={Theme.Color.Clay}
+          AngleColor={Theme.Color.Background}
+          Clouds="2"
+        />
       </BasicSection>
 
       <BasicSection
@@ -323,20 +288,34 @@ const WhoPage = ({ SliderSettings }) => {
                 Destination="/"
               />
             </div>
-            <Team 
+            <Team
               members={[
-                {name: "Alisha", image: "intro-smiles.jpg", title:"employee", socialIcon1:"facebook", socialLink1:"/"},
-                {name: "Binh", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Kylie", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Matt", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Pete", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Meeko", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Laxalt", image: "intro-smiles.jpg", title:"employee"},
-                {name: "McIver", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Bob", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Ted", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Joe", image: "intro-smiles.jpg", title:"employee"},
-                {name: "Tim", image: "intro-smiles.jpg", title:"employee"},
+                {
+                  name: 'Alisha',
+                  image: 'intro-smiles.jpg',
+                  title: 'employee',
+                  socialIcon1: 'facebook',
+                  socialLink1: '/',
+                },
+                { name: 'Binh', image: 'intro-smiles.jpg', title: 'employee' },
+                { name: 'Kylie', image: 'intro-smiles.jpg', title: 'employee' },
+                { name: 'Matt', image: 'intro-smiles.jpg', title: 'employee' },
+                { name: 'Pete', image: 'intro-smiles.jpg', title: 'employee' },
+                { name: 'Meeko', image: 'intro-smiles.jpg', title: 'employee' },
+                {
+                  name: 'Laxalt',
+                  image: 'intro-smiles.jpg',
+                  title: 'employee',
+                },
+                {
+                  name: 'McIver',
+                  image: 'intro-smiles.jpg',
+                  title: 'employee',
+                },
+                { name: 'Bob', image: 'intro-smiles.jpg', title: 'employee' },
+                { name: 'Ted', image: 'intro-smiles.jpg', title: 'employee' },
+                { name: 'Joe', image: 'intro-smiles.jpg', title: 'employee' },
+                { name: 'Tim', image: 'intro-smiles.jpg', title: 'employee' },
               ]}
             />
           </TeamSection>
@@ -350,7 +329,7 @@ const WhoPage = ({ SliderSettings }) => {
       >
         <Partners>
           <BasicInner>
-            <CenteredTitle 
+            <CenteredTitle
               Title="Our Partners"
               Class="h3"
               TextColor={Theme.Color.Sunset}
@@ -368,7 +347,7 @@ const WhoPage = ({ SliderSettings }) => {
             SquareFormat
           />
           <BasicInner>
-            <CenteredTitle 
+            <CenteredTitle
               Title="Interested in Play-Well for your organization?"
               Class="h3"
               TextColor={Theme.Color.Dino}
@@ -394,17 +373,20 @@ const WhoPage = ({ SliderSettings }) => {
             blocks={[
               {
                 title: 'Creative Collaboration',
-                text: 'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                text:
+                  'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
                 legoColor: 'orange',
               },
               {
                 title: 'New Perspectives',
-                text: 'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                text:
+                  'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
                 legoColor: 'purple',
               },
               {
                 title: 'Staff Morale',
-                text: 'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                text:
+                  'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
                 legoColor: 'blue',
               },
             ]}
