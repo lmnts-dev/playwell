@@ -197,6 +197,10 @@ export const CourseListings = ({
   mapWidth,
   mapZedIndex,
   geoData,
+  stateId,
+  countyId,
+  costCodeId,
+  pageContext,
 }) => {
   return (
     <main>
@@ -207,6 +211,10 @@ export const CourseListings = ({
         mapWidth={mapWidth}
         mapZedIndex={mapZedIndex}
         geoData={geoData}
+        stateId={stateId}
+        countyId={countyId}
+        costCodeId={costCodeId}
+        pageContext={pageContext}
       />
       <CourseMapNav mapWidth={mapWidth} mapZedIndex={mapZedIndex} />
       <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>

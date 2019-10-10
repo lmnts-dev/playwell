@@ -323,8 +323,8 @@ class ResultRow extends PureComponent {
     });
 
     // For Debugging Purposes:
-    console.log('filteredCounties:');
-    console.log(filteredCounties);
+    // console.log('filteredCounties:');
+    // console.log(filteredCounties);
 
     return (
       <li>
@@ -368,7 +368,9 @@ class ResultRow extends PureComponent {
             {filteredCounties.map((county, idxx) => {
               // Build our slugified strings for pretty URLs.
               let countySlug = slugify(county.name);
-              let countySlugString = slugString + countySlug + '/';
+              let costCodeSlug = slugify(county.cost_code_name);
+              let countySlugString =
+                slugString + '/' + costCodeSlug + '/' + countySlug + '/';
 
               return (
                 <li key={idxx}>
@@ -390,7 +392,24 @@ class ResultRow extends PureComponent {
 }
 
 // Simple Course Hero Display Component
-const CourseHeroContent = ({ mapWidth, mapZedIndex, geoData }) => {
+const CourseHeroContent = ({ mapWidth, mapZedIndex, geoData, pageContext }) => {
+  // Check our County names if they contain 'County'
+  const countyClean = countyName => {
+    if (countyName.toLowerCase().includes('county')) {
+      return countyName;
+    } else {
+      return countyName + ' County';
+    }
+  };
+
+  // Create page name
+  const countyState =
+    pageContext.isCounty == true
+      ? countyClean(pageContext.name) + ', ' + pageContext.parentState.name
+      : pageContext.isCostCode == true
+      ? pageContext.cost_code_name + ', ' + pageContext.parentState.name
+      : pageContext.name;
+
   return (
     <CourseHeroContentStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
       <h1>
@@ -400,7 +419,11 @@ const CourseHeroContent = ({ mapWidth, mapZedIndex, geoData }) => {
         <span className="location h2">
           <span className="inline">
             <Icon Name="map-marker-alt" fas />
-            <span>Brooklyn, NYC</span>
+            {pageContext != undefined ? (
+              <span>{countyState}</span>
+            ) : (
+              <span>Brooklyn, NYC</span>
+            )}
           </span>
         </span>
       </h1>
@@ -409,7 +432,7 @@ const CourseHeroContent = ({ mapWidth, mapZedIndex, geoData }) => {
   );
 };
 
-// Full Wrapper 
+// Full Wrapper
 export const CourseHero = ({
   BgMatch,
   BgQuery,
@@ -420,6 +443,7 @@ export const CourseHero = ({
   mapWidth,
   mapZedIndex,
   geoData,
+  pageContext,
 }) => (
   <CourseHeroStyle bg={bg}>
     <HeroContainer bg="none" px={px} color={color}>
@@ -440,6 +464,7 @@ export const CourseHero = ({
             geoData={geoData}
             mapZedIndex={mapZedIndex}
             mapWidth={mapWidth}
+            pageContext={pageContext}
           />
         </Box>
       </Flex>

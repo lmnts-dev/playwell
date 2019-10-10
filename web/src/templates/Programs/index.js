@@ -1,5 +1,5 @@
-// programs/index.js:
-// This is the programs page of the website.
+// templates/Programs/index.js:
+// This is the templated programs page of the website.
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -28,7 +28,7 @@ const ThemeProps = {
 //////////////////////////////////////////////////////////////////////
 
 // Render Page
-const ProgramsPage = props => {
+const ProgramsPage = ({ pageContext }) => {
   return (
     <Layout {...ThemeProps}>
       <StaticQuery
@@ -98,9 +98,10 @@ const ProgramsPage = props => {
         `}
         render={data => (
           <CourseListings
-            stateId={''}
-            countyId={''}
-            costCodeId={''}
+            stateId={pageContext.state_id}
+            countyId={pageContext.county_id}
+            costCodeId={pageContext.cost_code_id}
+            pageContext={pageContext}
             courseData={data}
             geoData={data.allPlayWellStates}
             mapWidth={Theme.mapWidth}

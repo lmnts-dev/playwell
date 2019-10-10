@@ -27,13 +27,24 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 const LocationHero = ({ cities, pageContext }) => {
+  // Check our County names if they contain 'County'
+  const countyClean = countyName => {
+    if (countyName.toLowerCase().includes('county')) {
+      return countyName;
+    } else {
+      return countyName + ' County';
+    }
+  };
+
+  // Create page name
   const countyState =
     pageContext.isCounty == true
-      ? pageContext.name + ', ' + pageContext.parentState.name
+      ? countyClean(pageContext.name) + ', ' + pageContext.parentState.name
       : pageContext.isCostCode == true
       ? pageContext.cost_code_name + ', ' + pageContext.parentState.name
       : pageContext.name;
 
+  // Create slugs
   const programsSlug =
     pageContext.isCounty == true
       ? slugify(pageContext.parentState.name.toLowerCase()) +
