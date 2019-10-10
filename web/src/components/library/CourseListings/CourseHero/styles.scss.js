@@ -78,6 +78,10 @@ export const CourseHeroContentStyle = styled.div`
   z-index: ${props => (props.mapZedIndex ? props.mapZedIndex + 1 : 5)};
   overflow: visible;
   z-index: 500;
+
+  @media (max-width: ${Theme.Base.Media.Width.Md}) {
+    width: 100%;
+  }
 `;
 
 // Search Bar

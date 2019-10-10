@@ -67,21 +67,19 @@ class FilteredResults extends PureComponent {
           let countySlug = slugify(locationMetaResults.county.name);
 
           // console.log(client);
-          if (idx < 150) {
-            if (client.node.courses.length > 0) {
-              // Return our cards
-              return (
-                <ClientCard
-                  key={idx}
-                  clientData={client}
-                  locationMetaResults={locationMetaResults}
-                  stateSlug={stateSlug}
-                  countySlug={countySlug}
-                />
-              );
-            } else {
-              return;
-            }
+          if (client.node.courses.length > 0) {
+            // Return our cards
+            return (
+              <ClientCard
+                key={idx}
+                clientData={client}
+                locationMetaResults={locationMetaResults}
+                stateSlug={stateSlug}
+                countySlug={countySlug}
+              />
+            );
+          } else {
+            return;
           }
         }, this)}
       </ListingsResultsStyle>
@@ -127,11 +125,45 @@ class ListingsResults extends PureComponent {
     // Source Data
     const courseData = this.props.courseData;
     const stateEdges = this.props.courseData.allPlayWellStates.edges;
+    const pageContext = this.props.pageContext;
+
+    // Our Filters
+    const stateId = this.props.stateId;
+    const countyId = this.props.countyId;
+    const costCodeId = this.props.costCodeId;
 
     // Filter Categories
     const categoryFilter = this.state.categoryFilter;
-    const filteredCourseDataByCategory = queryString =>
-      courseData.allPlayWellClient.edges.map((node, idx) => {
+    const geoFilteredCourseData = courseData.allPlayWellClient.edges
+      .map((node, idx) => {
+        return {
+          node: {
+            client_id: node.node.id,
+            client_location_name: node.node.client_location_name,
+            courses: node.node.courses,
+            display_address: node.node.display_address,
+            county_id: node.node.county_id,
+            state_id: node.node.state_id,
+            geocode_address: node.node.geocode_address,
+            id: node.node.location_id,
+            location_lat: node.node.location_lat,
+            location_lng: node.node.location_lng,
+            public_note: node.node.public_note,
+            key: idx,
+          },
+        };
+      }, this)
+      .filter(client => {
+        if (
+          client.node.state_id == stateId ||
+          client.node.county_id == countyId
+        ) {
+          return client;
+        }
+      }, this);
+
+    const filteredCourseDataByToggle = queryString =>
+      geoFilteredCourseData.map((node, idx) => {
         return {
           node: {
             client_id: node.node.id,
@@ -156,23 +188,27 @@ class ListingsResults extends PureComponent {
         };
       }, this);
 
-    // Map Settings
-    const mapZedIndex = this.props.mapZedIndex;
-    const mapWidth = this.props.mapWidth;
+    /**
+     * For Debugging Purposes Only:
+     * */
+    // console.log('pageContext:');
+    // console.log(pageContext);
+    // console.log('filteredCourseDataByToggle():');
+    // console.log(filteredCourseDataByToggle());
 
     return (
       <>
         <CourseListingsStyle.Toolbar>
           <div className="toolbar-inner">
-            <ListingsFilters courseData={courseData.allPlayWellClient.edges} />
+            <ListingsFilters courseData={geoFilteredCourseData} />
             <ListingsCounters
               toggleCategoryFilter={this.toggleCategoryFilter.bind(this)}
-              courseData={courseData.allPlayWellClient.edges}
+              courseData={geoFilteredCourseData}
             />
           </div>
         </CourseListingsStyle.Toolbar>
         <FilteredResults
-          results={filteredCourseDataByCategory(categoryFilter)}
+          results={filteredCourseDataByToggle(categoryFilter)}
           stateEdges={stateEdges}
         />
       </>
@@ -202,6 +238,13 @@ export const CourseListings = ({
   costCodeId,
   pageContext,
 }) => {
+  /**
+   *  For Debugging Purposes Only:
+   * */
+  console.log('stateId: ' + stateId);
+  console.log('countyId: ' + countyId);
+  console.log('costCodeId: ' + costCodeId);
+
   return (
     <main>
       <CourseHero
@@ -218,7 +261,13 @@ export const CourseListings = ({
       />
       <CourseMapNav mapWidth={mapWidth} mapZedIndex={mapZedIndex} />
       <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-        <ListingsResults courseData={courseData} />
+        <ListingsResults
+          courseData={courseData}
+          stateId={stateId}
+          countyId={countyId}
+          costCodeId={costCodeId}
+          pageContext={pageContext}
+        />
       </ListingsWrapper>
     </main>
   );

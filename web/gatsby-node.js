@@ -427,7 +427,6 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           isCounty: false,
           isCostCode: false,
-          id: state.node.state_id,
           abbrev: state.node.abbrev,
           name: state.node.name,
           playwell_state_id: state.node.playwell_state_id,

@@ -404,11 +404,11 @@ class ResultRow extends PureComponent {
     /**
      * For Debugging Purposes
      */
-    console.log('filteredCountiesAndCostCodes:');
-    console.log(filteredCountiesAndCostCodes);
+    // console.log('filteredCountiesAndCostCodes:');
+    // console.log(filteredCountiesAndCostCodes);
 
-    console.log('costCodeGroups():');
-    console.log(costCodeGroups());
+    // console.log('costCodeGroups():');
+    // console.log(costCodeGroups());
 
     return (
       <li>
@@ -464,10 +464,13 @@ class ResultRow extends PureComponent {
                   <ul className="results-sub">
                     {/* Map our counties. */}
                     {costCode.counties.map((county, idxxx) => {
+                      // Build our slugified strings for pretty URLs.
+                      let countySlug = slugify(county.name);
+
                       return (
                         <li key={idxxx}>
                           <div className="results-row">
-                            <Link to={costCodeSlugString}>
+                            <Link to={costCodeSlugString + '/' + countySlug}>
                               <span>{county.name}</span>
                             </Link>
                           </div>
