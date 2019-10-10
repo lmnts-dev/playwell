@@ -45,7 +45,7 @@ export const NavigationOverlayStyle = styled.nav`
   bottom: 0px;
   left: 0px;
   right: 0px;
-  z-index: 600;
+  z-index: 800;
   display: flex;
   flex-direction: column;
 

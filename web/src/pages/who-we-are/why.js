@@ -15,6 +15,8 @@ import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
 import Marquee from 'components/library/Section/Marquee';
+import CenteredTitle from 'components/library/Elements/CenteredTitle';
+import GiantTextBlock from 'components/library/Section/GiantTextBlock';
 import LegoList from 'components/library/Section/LegoList';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
@@ -35,9 +37,6 @@ import { Base } from 'constants/styles/Base';
 
 // Data
 // import ImgPlaceholder from './assets/placeholder.jpg';
-
-// Helpers
-import hexToRGB from 'helpers/hexToRGB';
 
 // Props
 const HeroProps = {
@@ -188,76 +187,9 @@ const TextWithManyImages = styled.div`
   }
 `;
 
-const CenteredTitle = styled.div`
-  text-align: center;
-  color: ${Theme.Color.Blush};
-  font-weight: 700;
-
-  > div {
-    position: relative;
-  }
-
-  .absolute-image {
-    position: absolute;
-    bottom: calc(${Root.Size} * -4);
-    width: 20%;
-    left: calc(${Root.Size} * -1);
-    height: auto;
-    transform: scaleX(-1);
-
-    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
-      left: calc(${Root.Size} * -0.5);
-    }
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      bottom: 0;
-    }
-
-    .ico-swoop {
-      width: 100%;
-      display: block;
-
-      svg {
-        transform: rotate(180deg) scaleX(-1)
-          translateY(calc(${Root.Size} * 1.5));
-        @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
-          transform: rotate(-90deg) scaleX(-1)
-            translateX(calc(${Root.Size} * 2));
-        }
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          transform: translate(calc(${Root.Size} / -2), calc(${Root.Size}));
-        }
-
-        path {
-          fill: ${Theme.Color.Dino};
-        }
-      }
-    }
-  }
-`;
-
 const Carousel = styled.div`
   padding-top: calc(${Root.Size});
   position: relative;
-
-  .slick-slider {
-    filter: drop-shadow(0px 8px 34px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
-    }
-
-    .item {
-      .gatsby-image-wrapper {
-        display: block !important;
-        height: 25vw;
-        max-height: calc(${Root.Size} * 7);
-        margin-left: calc(${Root.Size} / 4);
-
-        img {
-          border-radius: calc(${Root.Size} / 8);
-        }
-      }
-    }
-  }
 `;
 
 const TextBlock = styled.div`
@@ -266,7 +198,7 @@ const TextBlock = styled.div`
   z-index: 1;
   padding: calc(${Root.Size} * 2) 0 calc(${Root.Size} * 1.5) 0;
 
-  .h4 {
+  .h3 {
     font-weight: 700;
     max-width: calc(${Root.Size} * 10);
     margin: 0 auto;
@@ -312,7 +244,7 @@ const WhoWhyPage = () => {
   return (
     <Layout {...ThemeProps}>
       <SplitHero {...HeroProps}>
-        <h2>Join a team of creative problem solvers &amp; creators</h2>
+        <h2>We provide opportunities for creative expression</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
       </SplitHero>
       <Box css={{ position: 'relative', height: 0 }}>
@@ -330,7 +262,7 @@ const WhoWhyPage = () => {
             <ImgMatch src="intro-smiles.jpg" />
           </div>
           <BasicInner>
-            <div className="h4">
+            <div className="h3">
               Combining the elements of fun, challenge, and learning since 1997
             </div>
             <Btn
@@ -344,15 +276,17 @@ const WhoWhyPage = () => {
       </BasicSection>
 
       <BasicSection BgColor={Theme.Color.Background} BorderTopVertical>
-        <CenteredTitle>
-          <BasicInner>
-            <div className="headline">Our Values</div>
+        <BasicInner>
+          <CenteredTitle
+            Title="Our Values"
+            Class="headline"
+          >
             <div className="absolute-image">
               <Icon Name="swoop" />
               <ImgMatch src="gears.png" />
             </div>
-          </BasicInner>
-        </CenteredTitle>
+          </CenteredTitle>
+        </BasicInner>
       </BasicSection>
 
       <BasicSection
@@ -398,14 +332,12 @@ const WhoWhyPage = () => {
         noPaddingBottom
       >
         <BasicInner wideWidth>
-          <LargeTextBlock>
-            <Number className="h1">04</Number>
-            <div className="h4">Encourage the qualities of</div>
-            <div className="headline txt-clr-eggplant">
-              Inquisitiveness Self Reliance &amp; Self Confidence
-            </div>
-            <div className="h4">In children &amp; in everybody.</div>
-          </LargeTextBlock>
+          <GiantTextBlock
+            Number="04"
+            topText="Encourage the qualities of"
+            giantText="Inquisitiveness Self Reliance &amp; Self Confidence"
+            bottomText="in children &amp; in everybody."
+          />
           <div className="absolute-image">
             <ImgMatch src="gears.png" />
           </div>
@@ -414,7 +346,18 @@ const WhoWhyPage = () => {
 
       <BasicSection BgColor={Theme.Color.Background} noPaddingTop BorderMiddle>
         <Carousel>
-          <Marquee />
+          <Marquee
+            images={[
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+            ]}
+            Shadow
+          />
         </Carousel>
       </BasicSection>
 
@@ -425,12 +368,23 @@ const WhoWhyPage = () => {
       >
         <BasicInner>
           <LegoList
-            TitleOne="Creative Collaboration"
-            TitleTwo="New Perspectives"
-            TitleThree="Staff Morale"
-            TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
-            TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution."
-            TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."
+            blocks={[
+              {
+                title: 'Creative Collaboration',
+                text: 'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                legoColor: 'orange',
+              },
+              {
+                title: 'New Perspectives',
+                text: 'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                legoColor: 'purple',
+              },
+              {
+                title: 'Staff Morale',
+                text: 'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                legoColor: 'blue',
+              },
+            ]}
           />
         </BasicInner>
       </BasicSection>

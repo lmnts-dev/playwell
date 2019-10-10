@@ -1,4 +1,4 @@
-// <LocationSplitLinks /> section:
+// <CourseSplitLinks /> section:
 // todo: whats new link slug
 
 // Imports
@@ -20,36 +20,53 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const CourseSplitLinks = ({ pageContext, themeProps }) => {
+const CourseSplitLinks = ({
+  pageContext,
+  themeProps,
+  stateName,
+  countyName,
+  costCodeName,
+}) => {
   // Build our slugified strings for pretty URLs.
-  let stateSlug = slugify(pageContext.locationMeta.state.name);
-  let countySlug = slugify(pageContext.locationMeta.county.name);
+  let stateSlug = slugify(stateName);
+  let countySlug = slugify(countyName);
+  let costCodeSlug = slugify(costCodeName);
   let programSlug = slugify(pageContext.course_type_name);
 
   // Our pretty URL
-  let whatsNewLink = `/programs/${stateSlug}/${countySlug}`;
+  let programsLink = `/programs/${stateSlug}/${costCodeSlug}/${countySlug}`;
+  let locationLink = `/locations/${stateSlug}/${costCodeSlug}/${countySlug}`;
 
-  // County / State conditional
-  const countyState = pageContext.locationMeta.county.name
-    ? pageContext.locationMeta.county.name +
-      ', ' +
-      pageContext.locationMeta.state.name
-    : pageContext.locationMeta.state.name;
+  // Check our County names if they contain 'County'
+  const countyClean = countyName => {
+    if (
+      countyName.toLowerCase().includes('county') ||
+      countyName.toLowerCase().includes('district')
+    ) {
+      return countyName;
+    } else {
+      return countyName + ' County';
+    }
+  };
+
+  const countyStateString = costCodeName
+    ? costCodeName + ', ' + pageContext.locationMeta.state.name
+    : stateName;
 
   return (
     <Section bg={themeProps.BgColor} pt={0}>
       <SplitLinks>
         <SplitLink
           title="Keep exploring"
-          message="Keep exploring our programs."
-          to="/programs"
+          message={'Keep exploring our programs in ' + countyStateString + '.'}
+          to={programsLink}
           themeProps={themeProps}
           first
         />
         <SplitLink
           title="What's new?"
-          message={'See what else is happening in ' + countyState + '.'}
-          to={whatsNewLink}
+          message={'See what else is happening in ' + countyStateString + '.'}
+          to={locationLink}
           themeProps={themeProps}
           last
         />

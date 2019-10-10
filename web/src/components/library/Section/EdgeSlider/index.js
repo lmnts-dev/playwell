@@ -1,4 +1,4 @@
-// Marquee.js: using slick
+// EdgeSlider.js: using slick
 //
 // />
 
@@ -15,7 +15,7 @@ import ImgMatch from 'components/core/ImgMatch';
 import { Base } from 'constants/styles/Base';
 
 // Styles
-import MarqueeStyle from './styles.scss';
+import EdgeSliderStyle from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -24,7 +24,7 @@ import MarqueeStyle from './styles.scss';
 // For displaying widgets within a SlideSection.
 
 // The Slider itself.
-class MarqueeSlider extends React.Component {
+class EdgeSliderSlider extends React.Component {
   constructor(props) {
     // Make our props accessible through this.props
     super(props);
@@ -36,17 +36,13 @@ class MarqueeSlider extends React.Component {
 
     // Pass into Slick Settings.
     const settings = {
-      speed: 5000,
-      autoplay: true,
-      autoplaySpeed: 5000,
-      centerMode: true,
-      cssEase: 'linear',
-      slidesToShow: 5,
+      speed: 1000,
+      autoplay: false,
+      slidesToShow: 3.8,
       slidesToScroll: 1,
       variableWidth: false,
-      infinite: true,
-      initialSlide: 1,
-      arrows: false,
+      infinite: false,
+      arrows: true,
       buttons: false,
       responsive: [
         {
@@ -77,22 +73,21 @@ class MarqueeSlider extends React.Component {
 }
 
 // The SubLevel Page Itself
-const Marquee = ({ images, SquareFormat, Shadow, BgLinear }) => (
-  <MarqueeStyle
-    SquareFormat={SquareFormat}
-    Shadow={Shadow}
-    BgLinear={BgLinear}
-  >
-    <MarqueeSlider>
+const EdgeSlider = ({ images, titles, caption, title }) => (
+  <EdgeSliderStyle>
+    <div className="h6">{caption}</div>
+    <div className="h3">{title}</div>
+    <EdgeSliderSlider>
       {images.map((image, index) => {
         return (
           <div className="item">
+            <div className="h5">{titles[index]}</div>
             <ImgMatch src={image} />
           </div>
         );
       })}
-    </MarqueeSlider>
-  </MarqueeStyle>
+    </EdgeSliderSlider>
+  </EdgeSliderStyle>
 );
 
-export default Marquee;
+export default EdgeSlider;

@@ -27,15 +27,45 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 const LocationHero = ({ cities, pageContext }) => {
-  const countyState = pageContext.isCounty
-    ? pageContext.name + ', ' + pageContext.parentState.name
-    : pageContext.name;
+  // Check our County names if they contain 'County'
+  const countyClean = countyName => {
+    if (countyName.toLowerCase().includes('county')) {
+      return countyName;
+    } else {
+      return countyName + ' County';
+    }
+  };
 
-  const programsSlug = pageContext.isCounty
-    ? slugify(pageContext.parentState.name.toLowerCase()) +
-      '/' +
-      slugify(pageContext.name.toLowerCase())
-    : slugify(pageContext.name.toLowerCase());
+  // Create page name
+  const contextualPageName = () => {
+    if (pageContext != false) {
+      if (pageContext.isCounty == true) {
+        return (
+          countyClean(pageContext.name) + ', ' + pageContext.parentState.name
+        );
+      } else if (pageContext.isCostCode == true) {
+        return pageContext.cost_code_name + ', ' + pageContext.parentState.name;
+      } else {
+        return pageContext.name;
+      }
+    } else {
+      return 'a place near you';
+    }
+  };
+
+  // Create slugs
+  const programsSlug =
+    pageContext.isCounty == true
+      ? slugify(pageContext.parentState.name.toLowerCase()) +
+        '/' +
+        slugify(pageContext.cost_code_name.name.toLowerCase()) +
+        '/' +
+        slugify(pageContext.name.toLowerCase())
+      : pageContext.isCostCode == true
+      ? slugify(pageContext.parentState.name.toLowerCase()) +
+        '/' +
+        slugify(pageContext.cost_code_name.toLowerCase())
+      : slugify(pageContext.name.toLowerCase());
 
   return (
     <Hero>
@@ -72,7 +102,7 @@ const LocationHero = ({ cities, pageContext }) => {
           <Hero.Heading>
             STEM Education &amp;
             <br />
-            Engineering in <span>{countyState}</span>
+            Engineering in <span>{contextualPageName()}</span>
           </Hero.Heading>
           <Box mr={1} display="inline-block">
             <Btn

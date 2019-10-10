@@ -23,8 +23,7 @@ import CourseSplitLinks from 'sections/CourseSplitLinks';
 
 // Helpers
 import slugify from 'helpers/slugify';
-
-import ContentOverlayButton from 'components/library/ContentOverlay';
+import locationMatch from 'helpers/LocationMatch';
 
 // Styles
 import {
@@ -62,8 +61,30 @@ const HeroProps = {
 // Render Page
 const Course = ({ pageContext }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Create our slugs
+  const pageSlug =
+    slugify(pageContext.locationMeta.state.name) +
+    '/' +
+    slugify(pageContext.locationMeta.county.cost_code_name) +
+    '/' +
+    slugify(pageContext.locationMeta.county.name) +
+    '/';
+
+  // Check our County names if they contain 'County'
+  const countyClean = countyName => {
+    if (
+      countyName.toLowerCase().includes('county') ||
+      countyName.toLowerCase().includes('district')
+    ) {
+      return countyName;
+    } else {
+      return countyName + ' County';
+    }
+  };
+
   // console.log('pageContext:');
-  // console.log(pageContext);
+  console.log(pageContext);
   // console.log('data:');
   // console.log(data);
   // console.log(locationMatch(pageContext.county_id, pageContext.state_id, pageContext.locationMeta.state.name));
@@ -71,48 +92,71 @@ const Course = ({ pageContext }) => {
   return (
     <Layout {...ThemeProps}>
       <HeroContainer {...HeroProps}>
-        <Hero
-          as="article"
-          pb={[4, 3]}
-          px={[1, 1, 0]}
-        >
+        <Hero as="article" pb={[4, 3]} px={[1, 1, 0]}>
           <Hero.Avatar>
             <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
           </Hero.Avatar>
           <Hero.Tags as="ul">
             <li>
-              <Link to={'/programs'}>programs</Link>
+              <Link
+                to={'/programs/' + slugify(pageContext.locationMeta.state.name)}
+              >
+                {pageContext.locationMeta.state.name}
+              </Link>
             </li>
+
+            {pageContext.locationMeta.county.cost_code_name !=
+            pageContext.locationMeta.state.name ? (
+              <li>
+                <Link
+                  to={
+                    '/programs/' +
+                    slugify(pageContext.locationMeta.state.name) +
+                    '/' +
+                    slugify(pageContext.locationMeta.county.cost_code_name)
+                  }
+                >
+                  {pageContext.locationMeta.county.cost_code_name}
+                </Link>
+              </li>
+            ) : (
+              false
+            )}
+
+            {pageContext.locationMeta.county.cost_code_name !=
+              pageContext.locationMeta.county.name ||
+            pageContext.locationMeta.county.name !=
+              pageContext.locationMeta.state.name ? (
+              <li>
+                <Link to={'/programs/' + pageSlug}>
+                  {countyClean(pageContext.locationMeta.county.name)}
+                </Link>
+              </li>
+            ) : (
+              false
+            )}
+
             <li>
               <Link
-                to={
-                  '/' +
-                  slugify(pageContext.category_group_name.toLowerCase()) +
-                  '/' +
-                  slugify(pageContext.category_group_name.toLowerCase())
-                }
+                to={'/' + pageSlug + slugify(pageContext.category_group_name)}
               >
                 {pageContext.category_group_name}
               </Link>
             </li>
+
             <li>
               <Link
-                to={
-                  '/' +
-                  slugify(pageContext.category_group_name.toLowerCase()) +
-                  '/' +
-                  pageContext.course_type_group
-                }
+                to={'/' + pageSlug + slugify(pageContext.course_type_group)}
               >
                 {pageContext.course_type_group}
               </Link>
             </li>
+
             <li>
               <Link
                 to={
                   '/' +
-                  slugify(pageContext.category_group_name.toLowerCase()) +
-                  '/' +
+                  pageSlug +
                   'ages-' +
                   pageContext.age_range_start +
                   '-' +
@@ -296,7 +340,13 @@ const Course = ({ pageContext }) => {
         </CourseFooter.Course>
       </CourseFooter>
 
-      <CourseSplitLinks pageContext={pageContext} themeProps={ThemeProps} />
+      <CourseSplitLinks
+        countyName={pageContext.locationMeta.county.name}
+        stateName={pageContext.locationMeta.state.name}
+        costCodeName={pageContext.locationMeta.county.cost_code_name}
+        pageContext={pageContext}
+        themeProps={ThemeProps}
+      />
     </Layout>
   );
 };

@@ -15,6 +15,8 @@ import { Helmet } from 'react-helmet'; // For Slick Styles
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
+import CenteredTitle from 'components/library/Elements/CenteredTitle';
+import Team from 'components/library/Elements/Team';
 import ImgMatch from 'components/core/ImgMatch';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
@@ -76,28 +78,10 @@ const Partners = styled.div`
   }
   .slick-slider {
     padding: calc(${Root.Size} / 2) 0 ${Root.Size} 0;
-    .item {
-      height: 16.66vw;
-      max-height: calc(${Root.Size} * 4);
-
-      .gatsby-image-wrapper {
-        background-color: ${Theme.Color.White};
-        margin: calc(${Root.Size} / 10);
-        height: 100%;
-        border-radius: ${Theme.Base.Geometry.Radius};
-        img {
-          position: relative;
-          width: 80% !important;
-          height: 80% !important;
-          left: 10% !important;
-          top: 10% !important;
-        }
-      }
-    }
   }
 `;
 
-const Team = styled.div`
+const TeamSection = styled.div`
   display: flex;
   flex-direction: row;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
@@ -114,47 +98,7 @@ const Team = styled.div`
     .h3 {
       font-weight: 700;
       padding-bottom: calc(${Root.Size} / 4);
-    }
-  }
-
-  .right {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      justify-content: center;
-      padding-top: calc(${Root.Size} / 2);
-    }
-
-    .member {
-      text-align: center;
-      p {
-        font-weight: 700;
-        color: ${Theme.Color.Dino};
-        padding-bottom: 0;
-        line-height: 1;
-
-        &:last-of-type {
-          color: ${Theme.Color.Sunset};
-        }
-      }
-
-      .gatsby-image-wrapper {
-        border-radius: calc(${Root.Size} / 8);
-        margin: 0 calc(${Root.Size} / 12) calc(${Root.Size} / 6)
-          calc(${Root.Size} / 12);
-        width: calc(${Root.Size} * 2.25);
-        height: calc(${Root.Size} * 3);
-      }
-
-      .social {
-        a {
-          svg {
-            height: calc(${Root.Size} / 2);
-            width: calc(${Root.Size} / 2);
-          }
-        }
-      }
+      white-space: nowrap;
     }
   }
 `;
@@ -294,10 +238,7 @@ const TopCarousel = styled.div`
   }
 `;
 
-const CenteredTitle = styled.div`
-  text-align: center;
-  color: ${Theme.Color.Blush};
-  font-weight: 700;
+const Centered = styled(CenteredTitle)`
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     padding-bottom: ${Root.Size};
   }
@@ -350,7 +291,6 @@ const FooterExt = styled.div`
 `;
 
 const Carousel = styled.div`
-  padding-top: calc(${Root.Size});
   background: linear-gradient(
     to top,
     ${Theme.Color.Nova} 75%,
@@ -377,8 +317,8 @@ const WhoPage = ({ SliderSettings }) => {
   return (
     <Layout {...ThemeProps}>
       <SplitHero {...HeroProps}>
-        <h2>Join a team of creative problem solvers &amp; creators</h2>
-        <h6>We are passionate specialists in STEM Education.</h6>
+        <h2>Passionate industry leaders in STEM Education since 1997</h2>
+        <h6>Lorem ipsum dolor sit amet, consectetur a.</h6>
       </SplitHero>
       <Box css={{ position: 'relative', height: 0 }}>
         <SubNav />
@@ -390,9 +330,18 @@ const WhoPage = ({ SliderSettings }) => {
         noPaddingTop
         noInner
       >
-        <Carousel>
-          <Marquee />
-        </Carousel>
+        <Marquee
+          images={[
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+          ]}
+          BgLinear={Theme.Color.Nova}
+        />
       </BasicSection>
       <BasicSection
         BgColor={Theme.Color.Nova}
@@ -425,9 +374,10 @@ const WhoPage = ({ SliderSettings }) => {
         TextColor={Theme.Color.Dino}
       >
         <BasicInner>
-          <CenteredTitle>
-            <div className="headline">Our Story</div>
-          </CenteredTitle>
+          <Centered
+            Class="headline"
+            Title="Our Story"
+          />
         </BasicInner>
         <BasicInner noPaddingRight>
           <EdgeImageWithText
@@ -479,7 +429,7 @@ const WhoPage = ({ SliderSettings }) => {
         BorderTop={Theme.Color.Clay}
       >
         <BasicInner wideWidth>
-          <Team>
+          <TeamSection>
             <div className="left">
               <div className="h3 txt-clr-dino">Our Team</div>
               <Btn
@@ -489,42 +439,23 @@ const WhoPage = ({ SliderSettings }) => {
                 Destination="/"
               />
             </div>
-            <div className="right">
-              <div className="member">
-                <ImgMatch src="intro-smiles.jpg" />
-                <p>Tim Bowen</p>
-                <p>President</p>
-                <div className="social">
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                </div>
-              </div>
-
-              <div className="member">
-                <ImgMatch src="intro-smiles.jpg" />
-                <p>Tim Bowen</p>
-                <p>President</p>
-                <div className="social">
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                  <a href="/" aria-label="test">
-                    <svg></svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Team>
+            <Team 
+              members={[
+                {name: "Alisha", image: "intro-smiles.jpg", title:"employee", socialIcon1:"facebook", socialLink1:"/"},
+                {name: "Binh", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Kylie", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Matt", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Pete", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Meeko", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Laxalt", image: "intro-smiles.jpg", title:"employee"},
+                {name: "McIver", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Bob", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Ted", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Joe", image: "intro-smiles.jpg", title:"employee"},
+                {name: "Tim", image: "intro-smiles.jpg", title:"employee"},
+              ]}
+            />
+          </TeamSection>
         </BasicInner>
       </BasicSection>
       <BasicSection
@@ -534,7 +465,17 @@ const WhoPage = ({ SliderSettings }) => {
       >
         <Partners>
           <div className="h3">Our Partners</div>
-          <Marquee />
+          <Marquee
+            images={[
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+            ]}
+            SquareFormat
+          />
           <BasicInner>
             <div className="h3 txt-clr-dino">
               Interested in Play-Well for your organization?
@@ -556,12 +497,23 @@ const WhoPage = ({ SliderSettings }) => {
       >
         <BasicInner>
           <LegoList
-            TitleOne="Creative Collaboration"
-            TitleTwo="New Perspectives"
-            TitleThree="Staff Morale"
-            TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
-            TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution."
-            TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."
+            blocks={[
+              {
+                title: 'Creative Collaboration',
+                text: 'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                legoColor: 'orange',
+              },
+              {
+                title: 'New Perspectives',
+                text: 'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                legoColor: 'purple',
+              },
+              {
+                title: 'Staff Morale',
+                text: 'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                legoColor: 'blue',
+              },
+            ]}
           />
         </BasicInner>
       </BasicSection>

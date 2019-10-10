@@ -31,13 +31,25 @@ export const BasicSectionStyle = styled.div`
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     padding: calc(${Root.Grid.Gutter.Top}) 0 calc(${Root.Grid.Gutter.Bottom}) 0;
   }
+  ${props => props.BgLinear ? `
+    .linear-background {
+      position: absolute;
+      top: 1px;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient( to bottom, ` + props.BgLinear + ` 75%, ` + props.BgColor + ` 75% );
+    }
+  `
+  : null};
+
   ${props =>
     props.BorderTop || props.BorderMiddle
       ? `
     background-image: linear-gradient(to right, ` +
         Theme.Color.Clay +
         ` 50%, rgba(255,255,255,0) 0%);
-    background-position: bottom;
+    background-position: top;
     background-size: 10px 1px;
     background-repeat: repeat-x;
   `
