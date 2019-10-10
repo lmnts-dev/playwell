@@ -1,4 +1,4 @@
-// <LocationSplitLinks /> section:
+// <CourseSplitLinks /> section:
 // todo: whats new link slug
 
 // Imports
@@ -20,7 +20,7 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const LocationSplitLinks = ({
+const CourseSplitLinks = ({
   pageContext,
   themeProps,
   stateName,
