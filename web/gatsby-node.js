@@ -326,6 +326,7 @@ exports.createPages = ({ graphql, actions }) => {
         component: slash(locationsTemplate),
         context: {
           isCounty: false,
+          isCostCode: true,
           id: state.node.state_id,
           abbrev: state.node.abbrev,
           name: state.node.name,
@@ -339,6 +340,7 @@ exports.createPages = ({ graphql, actions }) => {
       _.each(state.node.counties, county => {
         // Build our slugified strings for pretty URLs.
         let countySlug = slugify(county.name);
+        let costCodeSlug = slugify(county.cost_code_name);
 
         // Pass Filtered County Manager Array
         const filteredCountyManagers = cost_code => {
@@ -351,10 +353,34 @@ exports.createPages = ({ graphql, actions }) => {
 
         //  Create our Counties Pages
         createPage({
-          path: `/states/${stateSlug}/${countySlug}`,
+          path: `/states/${stateSlug}/${costCodeSlug}/${countySlug}`,
           component: slash(locationsTemplate),
           context: {
             isCounty: true,
+            isCostCode: false,
+            cost_code: county.cost_code,
+            cost_code_name: county.cost_code_name,
+            county_id: county.county_id,
+            name: county.name,
+            managers: filteredCountyManagers(county.cost_code),
+            parentState: {
+              id: state.node.state_id,
+              abbrev: state.node.abbrev,
+              name: state.node.name,
+              playwell_state_id: state.node.playwell_state_id,
+              counties: state.node.counties,
+              managers: filteredStateManagers(state.node.playwell_state_id),
+            },
+          },
+        });
+
+        //  Create our Cost Code Pages
+        createPage({
+          path: `/states/${stateSlug}/${costCodeSlug}`,
+          component: slash(locationsTemplate),
+          context: {
+            isCounty: false,
+            isCostCode: true,
             cost_code: county.cost_code,
             cost_code_name: county.cost_code_name,
             county_id: county.county_id,

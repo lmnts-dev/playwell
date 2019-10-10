@@ -389,6 +389,7 @@ class ResultRow extends PureComponent {
   }
 }
 
+// Simple Course Hero Display Component
 const CourseHeroContent = ({ mapWidth, mapZedIndex, geoData }) => {
   return (
     <CourseHeroContentStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
@@ -408,6 +409,7 @@ const CourseHeroContent = ({ mapWidth, mapZedIndex, geoData }) => {
   );
 };
 
+// Full Wrapper 
 export const CourseHero = ({
   BgMatch,
   BgQuery,

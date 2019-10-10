@@ -27,15 +27,25 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 const LocationHero = ({ cities, pageContext }) => {
-  const countyState = pageContext.isCounty
-    ? pageContext.name + ', ' + pageContext.parentState.name
-    : pageContext.name;
+  const countyState =
+    pageContext.isCounty == true
+      ? pageContext.name + ', ' + pageContext.parentState.name
+      : pageContext.isCostCode == true
+      ? pageContext.cost_code_name + ', ' + pageContext.parentState.name
+      : pageContext.name;
 
-  const programsSlug = pageContext.isCounty
-    ? slugify(pageContext.parentState.name.toLowerCase()) +
-      '/' +
-      slugify(pageContext.name.toLowerCase())
-    : slugify(pageContext.name.toLowerCase());
+  const programsSlug =
+    pageContext.isCounty == true
+      ? slugify(pageContext.parentState.name.toLowerCase()) +
+        '/' +
+        slugify(pageContext.cost_code_name.name.toLowerCase()) +
+        '/' +
+        slugify(pageContext.name.toLowerCase())
+      : pageContext.isCostCode == true
+      ? slugify(pageContext.parentState.name.toLowerCase()) +
+        '/' +
+        slugify(pageContext.cost_code_name.toLowerCase())
+      : slugify(pageContext.name.toLowerCase());
 
   return (
     <Hero>

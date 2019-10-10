@@ -101,6 +101,9 @@ const ProgramsPage = props => {
         `}
         render={data => (
           <CourseListings
+            stateId={''}
+            countyId={''}
+            costCodeId={''}
             courseData={data}
             geoData={data.allPlayWellStates}
             mapWidth={mapWidth}

@@ -48,8 +48,8 @@ const ThemeProps = {
 // Render Page
 const LocationDetail = ({ pageContext }) => {
   // For Debugging Purposes only
-  console.log(pageContext);
-  console.log(pageContext.managers.manager);
+  // console.log(pageContext);
+  // console.log(pageContext.managers.manager);
 
   // Build Page
   return (
@@ -73,12 +73,23 @@ const LocationDetail = ({ pageContext }) => {
 
       <Section bg="White">
         <LegoList
-          TitleOne="Creative Collaboration"
-          TitleTwo="New Perspectives"
-          TitleThree="Staff Morale"
-          TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
-          TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution."
-          TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."
+          blocks={[
+            {
+              title: 'Creative Collaboration',
+              text:
+                'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+            },
+            {
+              title: 'New Perspectives',
+              text:
+                'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+            },
+            {
+              title: 'Creative Collaboration',
+              text:
+                'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+            },
+          ]}
         />
       </Section>
 
