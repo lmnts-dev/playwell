@@ -47,7 +47,7 @@ Container.Inner = styled(Box)`
   width: 100%;
   max-width: ${props => (props.fullWidth ? '100%' : Theme.Base.Grid.SiteWidth)};
   margin: 0 auto;
-  overflow-x: visible;
+  /* overflow-x: visible; */
   position: relative;
   padding-right: ${props => (props.fullWidth ? '0' : Root.Grid.Gutter.Right)};
   padding-left: ${props => (props.fullWidth ? '0' : Root.Grid.Gutter.Left)};

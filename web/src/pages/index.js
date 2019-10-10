@@ -11,6 +11,8 @@ import React from 'react';
 import Layout from 'components/core/Layout';
 import Section from 'components/library/Elements/Section';
 import Spacer from 'components/library/Spacer';
+import ImgMatch from 'components/core/ImgMatch';
+import { Box, Flex, Text } from 'components/library/Elements';
 
 // Sections
 import HomeHero from 'sections/HomeHero';
@@ -21,7 +23,7 @@ import HomePrograms from 'sections/HomePrograms';
 import HomeBetterFuture from 'sections/HomeBetterFuture';
 
 // Styles
-import {} from './styles.scss';
+import { Decorator } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -45,6 +47,18 @@ const HomePage = ({ bgColor, textColor }) => (
     <HomeIntro />
     <HomeCommunity slides={CommunitySlides} />
     <HomeBetterFuture themeProps={ThemeProps} />
+    <Decorator
+      css={css`
+        position: relative;
+      `}
+    >
+      <div className="decorator__better-future decorator__better-future--top">
+        <ImgMatch src="cloud-big.png" AltText="Cloud" />
+      </div>
+      <div className="decorator__better-future decorator__better-future--bottom">
+        <ImgMatch src="cloud-big.png" AltText="Cloud" />
+      </div>
+    </Decorator>
     <Section />
     <HomeIntro />
     <HomePrograms />

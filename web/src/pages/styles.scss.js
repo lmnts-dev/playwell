@@ -20,11 +20,12 @@ import { Base } from 'constants/styles/Base';
 
 export const Decorator = styled(Box)`
   /* overflow: hidden; */
-  z-index: 2;
+  z-index: 9999;
 
   .decorator__hero {
     position: absolute;
     top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
+    z-index: 999;
 
     &--top {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
@@ -90,6 +91,7 @@ export const Decorator = styled(Box)`
   .decorator__footer {
     position: absolute;
     /* top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1); */
+    z-index: 999;
 
     &--top {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * -2.5);
@@ -119,6 +121,27 @@ export const Decorator = styled(Box)`
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
 
         width: 400px;
+      }
+    }
+  }
+
+  .decorator__better-future {
+    position: absolute;
+    z-index: 999;
+
+    &--top {
+      bottom: calc(${Theme.Root.Size} * 2);
+      right: -100px;
+      width: 140px;
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        right: -120px;
+        width: 200px;
+      }
+
+      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+        right: -170px;
+        width: 340px;
       }
     }
   }
