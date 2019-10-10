@@ -21,7 +21,7 @@ const ImageAccordian = ({
   <ImageAccordianStyle className="image-accordian">
     <div className="text">
     <input type="checkbox" />
-    <Icon Name="carat" />
+    <Icon Name="carat" className="ico ico-carat"/>
     <div className="h5">{Header}</div>
     <p>
         {Paragraph}

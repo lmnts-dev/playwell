@@ -13,15 +13,28 @@ import { Base } from 'constants/styles/Base';
 
 const ImageAccordianStyle = styled.div`
   color: ${Theme.Color.White};
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 
   .text {
     background-color: ${Theme.Color.Nova};
     padding: calc(${Root.Size} / 2);
     position: relative;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: ${Root.Size};
+        padding: 0;
+        padding-top: calc(${Root.Size} * 1.5);
+    }
 
     .h5 {
       font-weight: 700;
       line-height: 0.8 !important;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        transform: rotate(90deg);
+        transform-origin: 50% 45%;
+      }
     }
 
     p {
@@ -38,7 +51,10 @@ const ImageAccordianStyle = styled.div`
       right: 0;
       height: calc(${Root.Size} / 2);
       width: calc(${Root.Size} / 2);
-      margin: calc(${Root.Size} / 2.5) calc(${Root.Size} / 2.5) 0 0;
+      margin: calc(${Root.Size} / 4);
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        margin: calc(${Root.Size} / 2.5) calc(${Root.Size} / 4) 0 calc(${Root.Size} / 4);
+      }
     }
 
     .ico {
@@ -64,6 +80,10 @@ const ImageAccordianStyle = styled.div`
   .image {
     padding-top: 160%;
     position: relative;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        flex: 100;
+        padding-top: 40%;
+    }
 
     .gatsby-image-wrapper {
       position: absolute !important;

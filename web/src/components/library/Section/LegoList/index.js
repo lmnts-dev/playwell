@@ -19,35 +19,19 @@ import LegoListStyles from './styles.scss';
 //////////////////////////////////////////////////////////////////////
 
 export const LegoList = ({
-  TitleOne,
-  TitleTwo,
-  TitleThree,
-  TextOne,
-  TextTwo,
-  TextThree,
-  ImageOne,
-  ImageTwo,
-  ImageThree,
+  blocks,
 }) => (
   <LegoListStyles>
-    <div className="item">
-      {ImageOne && <ImgMatch src={ImageOne} />}
-      {!ImageOne && <Icon Name="basicLego" Color="orange" />}
-      <div className="h6">{TitleOne}</div>
-      <p>{TextOne}</p>
-    </div>
-    <div className="item">
-      {ImageTwo && <ImgMatch src={ImageTwo} />}
-      {!ImageTwo && <Icon Name="basicLego" Color="purple" />}
-      <div className="h6">{TitleTwo}</div>
-      <p>{TextTwo}</p>
-    </div>
-    <div className="item">
-      {ImageThree && <ImgMatch src={ImageThree} />}
-      {!ImageThree && <Icon Name="basicLego" Color="blue" />}
-      <div className="h6">{TitleThree}</div>
-      <p>{TextThree}</p>
-    </div>
+    {blocks.map((block, index) => {
+        return (
+          <div className="item">
+            {block.image && <ImgMatch src={block.image} />}
+            {!block.image && <Icon Name="basicLego" Color={ block.legoColor ? block.legoColor : null } />}
+            <div className="h6">{block.title}</div>
+            <p>{block.text}</p>
+          </div>
+        );
+    })}
   </LegoListStyles>
 );
 

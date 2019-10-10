@@ -14,9 +14,11 @@ import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import ImageAccordian from 'components/library/ImageAccordian';
+import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import ImgMatch from 'components/core/ImgMatch';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
+import EdgeSlider from 'components/library/Section/EdgeSlider';
 import Marquee from 'components/library/Section/Marquee';
 import LegoList from 'components/library/Section/LegoList';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
@@ -97,13 +99,6 @@ const SimpleTextWithImage = styled.div`
   }
 `;
 
-const CenteredTitle = styled.div`
-  text-align: center;
-  font-weight: 700;
-  max-width: ${props => (props.MaxWidth ? props.MaxWidth : '100%')};
-  margin: 0 auto;
-`;
-
 const CurveAndAngle = styled.div`
   position: relative;
   width: 100vw;
@@ -138,12 +133,14 @@ const AccordianFeature = styled.div`
   ul {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-bottom: calc(${Root.Size} / 3);
 
     li {
       font-weight: 700;
       padding: calc(${Root.Size} / 6);
+      white-space: nowrap;
 
       &:first-of-type {
         padding-left: 0;
@@ -155,6 +152,9 @@ const AccordianFeature = styled.div`
 
       a {
         color: ${Theme.Color.Clay};
+        @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+          font-size: 1rem;
+        }
 
         &:visited {
           color: ${Theme.Color.Clay};
@@ -168,12 +168,18 @@ const AccordianFeature = styled.div`
     flex-direction: row;
     position: relative;
     width: 100%;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      display: block;
+    }
 
     .image-accordian {
       flex: 1;
 
       &:nth-of-type(2) {
         margin: 0 calc(${Root.Size} / 2);
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          margin: calc(${Root.Size} / 4) 0;
+        }
       }
     }
   }
@@ -194,21 +200,40 @@ const SplitTextBoxes = styled.div`
     ${Theme.Color.Eggplant} 50%,
     ${Theme.Color.Sunset} 50%
   );
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    background: linear-gradient(
+      to bottom,
+      ${Theme.Color.Eggplant} 50%,
+      ${Theme.Color.Sunset} 50%
+    );
+  }
 
   .basic-inner {
     display: flex;
     flex-direction: row;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      display: block;
+    }
 
     .container {
       flex: 1;
       padding: calc(${Root.Size} * 2) 0;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding: calc(${Root.Size}) 0;
+      }
 
       &:first-of-type {
         padding-right: calc(${Root.Size} * 2);
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          padding-right: 0;
+        }
       }
 
       &:last-of-type {
         padding-left: calc(${Root.Size} * 2);
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          padding-left: 0;
+        }
       }
 
       .h6,
@@ -241,9 +266,12 @@ const WhoHowPage = () => {
         BorderTop={Theme.Color.White}
       >
         <BasicInner>
-          <CenteredTitle MaxWidth="500px">
-            <div className="h3">Lorem ipsum dolar sit amet, consectetur a.</div>
-          </CenteredTitle>
+          <CenteredTitle
+            MaxWidth="500px"
+            Title="Lorem ipsum dolar sit amet, consectetur a."
+            Class="h3"
+            TextColor={Theme.Color.White}
+          />
         </BasicInner>
       </BasicSection>
 
@@ -255,12 +283,23 @@ const WhoHowPage = () => {
       >
         <BasicInner>
           <LegoList
-            TitleOne="Creative Collaboration"
-            TitleTwo="New Perspectives"
-            TitleThree="Staff Morale"
-            TextOne="A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best."
-            TextTwo="A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution."
-            TextThree="A rejuvenated staff who rediscovers what they find fun about their job and their organization."
+            blocks={[
+              {
+                title: 'Creative Collaboration',
+                text: 'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                legoColor: 'orange',
+              },
+              {
+                title: 'New Perspectives',
+                text: 'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                legoColor: 'purple',
+              },
+              {
+                title: 'Staff Morale',
+                text: 'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                legoColor: 'blue',
+              },
+            ]}
           />
         </BasicInner>
       </BasicSection>
@@ -301,9 +340,11 @@ const WhoHowPage = () => {
 
       <BasicSection BgColor={Theme.Color.Blush} TextColor={Theme.Color.Nova}>
         <BasicInner>
-          <CenteredTitle>
-            <div className="headline">Our Programs</div>
-          </CenteredTitle>
+          <CenteredTitle
+            Title="Our Programs"
+            Class="headline"
+            TextColor={Theme.Color.Nova}
+          />
         </BasicInner>
       </BasicSection>
 
@@ -369,9 +410,7 @@ const WhoHowPage = () => {
         noPaddingTop
       >
         <BasicInner>
-          <CenteredTitle>
-            <div className="headline">Our Process</div>
-          </CenteredTitle>
+          <CenteredTitle Title="Our Process" Class="headline" />
         </BasicInner>
       </BasicSection>
 
@@ -379,7 +418,6 @@ const WhoHowPage = () => {
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
         noPaddingTop
-        noPaddingBottom
       >
         <BasicInner noPaddingLeft noPaddingRight>
           <ImageWithTextBlock
@@ -414,19 +452,66 @@ const WhoHowPage = () => {
 
       <BasicSection
         BgColor={Theme.Color.Background}
+        BorderTop={Theme.Color.Clay}
+        noPaddingTop
+      />
+
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        BgLinear={Theme.Color.White}
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner noPaddingRight>
+          <EdgeSlider
+            images={[
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+            ]}
+            titles={[
+              'Intro Into STEM',
+              'Robotics',
+              'Engineering',
+              'Gaming',
+              'Building',
+            ]}
+            caption="It's not always one size fits all"
+            title="Our Curriculums"
+          />
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection
+        BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
       >
         <BasicInner>
           <LegoList
-            TitleOne="Benefit Two"
-            TitleTwo="Benefit Two"
-            TitleThree="Benefit Two"
-            TextOne='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
-            TextTwo='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
-            TextThree='Through LEGO&reg; inspired classes sparking "Aha!" moments, we help kids grasp fundamental principles of engineering and physics'
-            ImageOne="graph.png"
-            ImageTwo="graph.png"
-            ImageThree="graph.png"
+            blocks={[
+              {
+                title: 'Creative Collaboration',
+                text:
+                  'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                legoColor: 'orange',
+                image: 'graph.png',
+              },
+              {
+                title: 'New Perspectives',
+                text:
+                  'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                legoColor: 'purple',
+                image: 'graph.png',
+              },
+              {
+                title: 'Staff Morale',
+                text:
+                  'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                legoColor: 'blue',
+                image: 'graph.png',
+              },
+            ]}
           />
         </BasicInner>
       </BasicSection>
@@ -435,6 +520,7 @@ const WhoHowPage = () => {
         noPaddingRight
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
+        noPaddingBottom
       >
         <BasicInner noPaddingRight>
           <EdgeImageWithText
@@ -446,11 +532,22 @@ const WhoHowPage = () => {
             ButtonDest="/"
           />
         </BasicInner>
+        <Marquee
+          images={[
+            'brandmark.png',
+            'brandmark.png',
+            'brandmark.png',
+            'brandmark.png',
+            'brandmark.png',
+            'brandmark.png',
+          ]}
+          SquareFormat
+        />
       </BasicSection>
 
       <BasicSection
         BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Whitet}
+        TextColor={Theme.Color.White}
       >
         <SplitTextBoxes>
           <BasicInner>
