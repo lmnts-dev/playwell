@@ -19,8 +19,12 @@ import Section from 'components/library/Elements/Section';
 
 // Sections
 import QuestionsCallout from 'sections/QuestionsCallout';
+<<<<<<< HEAD
 import LocationSplitLinks from 'sections/LocationSplitLinks';
 import ContentOverlayButton from 'components/library/ContentOverlay';
+=======
+import CourseSplitLinks from 'sections/CourseSplitLinks';
+>>>>>>> ae69b73274ee29c2379b810709a740500daed7af
 
 // Helpers
 import slugify from 'helpers/slugify';

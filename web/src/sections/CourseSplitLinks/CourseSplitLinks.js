@@ -75,7 +75,7 @@ const LocationSplitLinks = ({
   );
 };
 
-export default LocationSplitLinks;
+export default CourseSplitLinks;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

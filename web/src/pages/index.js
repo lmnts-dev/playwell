@@ -45,6 +45,8 @@ const HomePage = ({ bgColor, textColor }) => (
     <HomeIntro />
     <HomeCommunity slides={CommunitySlides} />
     <HomeBetterFuture themeProps={ThemeProps} />
+    <Section />
+    <HomeIntro />
     <HomePrograms />
     <LocationPlayZone />
   </Layout>
