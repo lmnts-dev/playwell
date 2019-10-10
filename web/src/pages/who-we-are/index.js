@@ -68,17 +68,13 @@ const ThemeProps = {
 const Partners = styled.div`
   text-align: center;
 
-  .h3 {
-    font-weight: 700;
-    &.txt-clr-dino {
-      color: ${Theme.Color.Dino};
-      max-width: calc(${Root.Size} * 9);
-      margin: 0 auto;
-      padding-bottom: calc(${Root.Size} / 3);
-    }
-  }
   .slick-slider {
-    padding: calc(${Root.Size} / 2) 0 ${Root.Size} 0;
+    padding-bottom: ${Root.Size};
+    padding-top: calc(${Root.Size} / 2);
+  }
+
+  .btn-inner {
+    margin-top: calc(${Root.Size} / 3);
   }
 `;
 
@@ -103,8 +99,6 @@ const TeamSection = styled.div`
     }
   }
 `;
-
-
 
 const TopCarousel = styled.div`
   position: relative;
@@ -165,12 +159,6 @@ const TopCarousel = styled.div`
     path {
       fill: ${Theme.Color.Background};
     }
-  }
-`;
-
-const Centered = styled(CenteredTitle)`
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    padding-bottom: ${Root.Size};
   }
 `;
 
@@ -282,10 +270,7 @@ const WhoPage = ({ SliderSettings }) => {
         TextColor={Theme.Color.Dino}
       >
         <BasicInner>
-          <Centered
-            Class="headline"
-            Title="Our Story"
-          />
+          <CenteredTitle Class="headline" Title="Our Story" />
         </BasicInner>
         <BasicInner noPaddingRight>
           <EdgeImageWithText
@@ -357,13 +342,20 @@ const WhoPage = ({ SliderSettings }) => {
           </TeamSection>
         </BasicInner>
       </BasicSection>
+
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
         BorderTop={Theme.Color.Clay}
       >
         <Partners>
-          <div className="h3">Our Partners</div>
+          <BasicInner>
+            <CenteredTitle 
+              Title="Our Partners"
+              Class="h3"
+              TextColor={Theme.Color.Sunset}
+            />
+          </BasicInner>
           <Marquee
             images={[
               'brandmark.png',
@@ -376,9 +368,12 @@ const WhoPage = ({ SliderSettings }) => {
             SquareFormat
           />
           <BasicInner>
-            <div className="h3 txt-clr-dino">
-              Interested in Play-Well for your organization?
-            </div>
+            <CenteredTitle 
+              Title="Interested in Play-Well for your organization?"
+              Class="h3"
+              TextColor={Theme.Color.Dino}
+              MaxWidth="600px"
+            />
             <Btn
               Label="Partnerships"
               BgColor={Theme.Color.Nova}

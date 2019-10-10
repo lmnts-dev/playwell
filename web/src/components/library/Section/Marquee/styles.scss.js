@@ -21,7 +21,6 @@ import { Base } from 'constants/styles/Base';
 //////////////////////////////////////////////////////////////////////
 
 const MarqueeStyle = styled.div`
-  padding-top: calc(${Root.Size});
   ${props => props.BgLinear ? `
     background: linear-gradient( to top, ` + props.BgLinear + ` 75%, ${Theme.Color.Background} 75% );
   `

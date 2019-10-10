@@ -12,10 +12,10 @@ import styled from 'styled-components';
 // Components
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
-import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
 import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 import Marquee from 'components/library/Section/Marquee';
+import TextOverImage from 'components/library/Section/TextOverImage';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import GiantTextBlock from 'components/library/Section/GiantTextBlock';
 import LegoList from 'components/library/Section/LegoList';
@@ -64,58 +64,6 @@ const ThemeProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const Carousel = styled.div`
-  padding-top: calc(${Root.Size});
-  position: relative;
-`;
-
-const TextBlock = styled.div`
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  padding: calc(${Root.Size} * 2) 0 calc(${Root.Size} * 1.5) 0;
-
-  .h3 {
-    font-weight: 700;
-    max-width: calc(${Root.Size} * 10);
-    margin: 0 auto;
-    padding-bottom: calc(${Root.Size} / 4);
-  }
-
-  > div {
-    z-index: 2;
-    position: relative;
-  }
-
-  .background-image {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-
-    &:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: ${Theme.Color.Eggplant};
-      opacity: 0.3;
-      z-index: 2;
-    }
-
-    .gatsby-image-wrapper {
-      height: 100%;
-      z-index: 1;
-    }
-  }
-`;
-
 // Render Page
 const WhoWhyPage = () => {
   return (
@@ -134,22 +82,12 @@ const WhoWhyPage = () => {
         noPaddingBottom
         BorderBottomVertical
       >
-        <TextBlock>
-          <div className="background-image">
-            <ImgMatch src="intro-smiles.jpg" />
-          </div>
-          <BasicInner>
-            <div className="h3">
-              Combining the elements of fun, challenge, and learning since 1997
-            </div>
-            <Btn
-              Label="Our Story"
-              BgColor={Theme.Color.Sky}
-              TextColor={Theme.Color.White}
-              Destination="/"
-            />
-          </BasicInner>
-        </TextBlock>
+        <TextOverImage
+          Image="intro-smiles.jpg"
+          Header="Combining the elements of fun, challenge, and learning since 1997"
+          ButtonText="Our Story"
+          ButtonDest="/"
+        />
       </BasicSection>
 
       <BasicSection BgColor={Theme.Color.Background} BorderTopVertical>
@@ -203,7 +141,6 @@ const WhoWhyPage = () => {
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
-        noPaddingBottom
       >
         <BasicInner wideWidth>
           <GiantTextBlock
@@ -218,21 +155,19 @@ const WhoWhyPage = () => {
         </BasicInner>
       </BasicSection>
 
-      <BasicSection BgColor={Theme.Color.Background} noPaddingTop BorderMiddle>
-        <Carousel>
-          <Marquee
-            images={[
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-            ]}
-            Shadow
-          />
-        </Carousel>
+      <BasicSection BgColor={Theme.Color.Background} BorderMiddle>
+        <Marquee
+          images={[
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+          ]}
+          Shadow
+        />
       </BasicSection>
 
       <BasicSection
