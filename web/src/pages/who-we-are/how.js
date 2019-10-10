@@ -20,6 +20,7 @@ import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 import EdgeSlider from 'components/library/Section/EdgeSlider';
 import Marquee from 'components/library/Section/Marquee';
+import SplitTextBoxes from 'components/library/Section/SplitTextBoxes';
 import LegoList from 'components/library/Section/LegoList';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
@@ -193,60 +194,7 @@ const AccordianFeature = styled.div`
   }
 `;
 
-const SplitTextBoxes = styled.div`
-  width: 100%;
-  background: linear-gradient(
-    to right,
-    ${Theme.Color.Eggplant} 50%,
-    ${Theme.Color.Sunset} 50%
-  );
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    background: linear-gradient(
-      to bottom,
-      ${Theme.Color.Eggplant} 50%,
-      ${Theme.Color.Sunset} 50%
-    );
-  }
 
-  .basic-inner {
-    display: flex;
-    flex-direction: row;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      display: block;
-    }
-
-    .container {
-      flex: 1;
-      padding: calc(${Root.Size} * 2) 0;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding: calc(${Root.Size}) 0;
-      }
-
-      &:first-of-type {
-        padding-right: calc(${Root.Size} * 2);
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          padding-right: 0;
-        }
-      }
-
-      &:last-of-type {
-        padding-left: calc(${Root.Size} * 2);
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          padding-left: 0;
-        }
-      }
-
-      .h6,
-      .h3 {
-        font-weight: 700;
-      }
-
-      .h3 {
-        padding: calc(${Root.Size} / 8) 0;
-      }
-    }
-  }
-`;
 
 // Render Page
 const WhoHowPage = () => {
@@ -549,42 +497,10 @@ const WhoHowPage = () => {
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.White}
       >
-        <SplitTextBoxes>
-          <BasicInner>
-            <div className="container">
-              <div className="h6">Playing anywhere</div>
-              <div className="h3">Find a program near you</div>
-              <p className="p-lg">
-                Our assessments measured three goals including: students's
-                knowledge of STEM terms or concepts, ability to generalize
-                information, and increasing positive feeling towards STEM
-                subjects.
-              </p>
-              <Btn
-                Label="Expore Programs"
-                BgColor={Theme.Color.Nova}
-                TextColor={Theme.Color.White}
-                Destination="/"
-              />
-            </div>
-            <div className="container">
-              <div className="h6">Do it Yourself</div>
-              <div className="h3">Host Your Own Program</div>
-              <p className="p-lg">
-                Our assessments measured three goals including: students's
-                knowledge of STEM terms or concepts, ability to generalize
-                information, and increasing positive feeling towards STEM
-                subjects.
-              </p>
-              <Btn
-                Label="Learn How"
-                BgColor={Theme.Color.Nova}
-                TextColor={Theme.Color.White}
-                Destination="/"
-              />
-            </div>
-          </BasicInner>
-        </SplitTextBoxes>
+        <SplitTextBoxes
+          FirstBlock={ {caption:"Playing anywhere", header:"Find a program near you", buttonDest:"/", buttonText:"Expore Programs", paragraph:"Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects."}}
+          SecondBlock={ {caption:"Do it Yourself", header:"Host Your Own Program", buttonDest:"/", buttonText:"Learn How", paragraph:"Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects."}}
+        />
       </BasicSection>
     </Layout>
   );

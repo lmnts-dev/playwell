@@ -63,10 +63,8 @@ const ThemeProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-
-
 // Render Page
-const WhoWhyPage = () => {
+const WhoCareersPage = () => {
   return (
     <Layout {...ThemeProps}>
       <SplitHero {...HeroProps}>
@@ -267,7 +265,7 @@ const WhoWhyPage = () => {
   );
 };
 
-export default WhoWhyPage;
+export default WhoCareersPage;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
