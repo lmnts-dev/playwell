@@ -15,7 +15,7 @@ import ImgMatch from 'components/core/ImgMatch';
 import { Icon } from 'components/library/Icons';
 
 // Styles
-import { Container, EdgeImageWithTextStyle } from './styles.scss';
+import { Container } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
