@@ -11,13 +11,7 @@ import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
 
 // Keyframe
-import {
-  FadeIn,
-  FadeOut,
-  SlideUp,
-  SlideToRight,
-  SlideToLeft,
-} from 'components/core/Transition/Keyframes';
+import { SlideUp } from 'components/core/Transition/Keyframes';
 
 // Helpers
 import hexToRGB from 'helpers/hexToRGB';
@@ -117,9 +111,13 @@ export const SearchBarStyle = styled.div`
       border-radius: calc(${Root.Size} / 2) calc(${Root.Size} / 2) 0 0;
     }
 
-    /* &:hover {
-    transform: scale(1.01);
-  } */
+    &:focus-within {
+      .inner {
+        &:before {
+          opacity: 1;
+        }
+      }
+    }
 
     .inner {
       display: flex;
@@ -131,11 +129,25 @@ export const SearchBarStyle = styled.div`
       line-height: 0;
       position: relative;
 
+      &:before {
+        content: 'Select one below';
+        position: absolute;
+        right: ${Root.Size};
+        top: 56%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        color: ${Theme.Color.Ocean};
+        opacity: 0;
+        transition: all .5s ease;
+      }
+
       .ico {
         position: relative;
         font-size: calc(${Root.Size} / 2);
         color: ${Theme.Color.Nova};
       }
+
+      
 
       input {
         height: ${searchBarHeight};
@@ -150,19 +162,6 @@ export const SearchBarStyle = styled.div`
         position: relative;
         left: 5px;
         top: 3px;
-
-        &:focus,
-        &:active {
-          &:before {
-            content: 'Select one below';
-            position: absolute;
-            right: ${Root.Size};
-            top: 50%;
-            transform: translateY(-50%);
-            font-weight: bold;
-            color: ${Theme.Color.Ocean};
-          }
-        }
       }
     }
   }
@@ -210,11 +209,22 @@ export const SearchBarStyle = styled.div`
           bottom: 0;
           background: ${hexToRGB(Theme.Color.Ocean, 0.18)};
         }
+
+        .results-sub {
+          li {
+            a {
+              padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} * .8);
+            }
+          }
+          &:before {
+            left: 30px;
+          }
+        }
       }
 
       li {
         text-align: left;
-        background: white;
+        /* background: white; */
         width: 100%;
         font-weight: bold;
         display: flex;
@@ -265,7 +275,7 @@ export const SearchBarStyle = styled.div`
           color: ${Theme.Color.Ocean};
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: flex-start;
           flex: 1;
           height: calc(${Root.Size} * 0.8);
           padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
@@ -275,9 +285,22 @@ export const SearchBarStyle = styled.div`
             background: ${hexToRGB(Theme.Color.Ocean, 0.18)};
           }
 
+          &.top-level {
+            color: ${Theme.Color.Deepsea};
+          }
+
           span {
             position: relative;
             top: 3px;
+
+            &.breadcrumb {
+              font-weight: 100;
+              font-size: .8rem;
+              text-transform: uppercase;
+              display: flex;
+              padding-right: 20px;
+              color: ${hexToRGB(Theme.Color.Black, 0.4)};
+            }
           }
         }
 

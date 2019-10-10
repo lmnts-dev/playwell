@@ -322,7 +322,7 @@ exports.createPages = ({ graphql, actions }) => {
 
       //  Create our State Pages
       createPage({
-        path: `/states/${stateSlug}`,
+        path: `/locations/${stateSlug}`,
         component: slash(locationsTemplate),
         context: {
           isCounty: false,
@@ -353,7 +353,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         //  Create our Counties Pages
         createPage({
-          path: `/states/${stateSlug}/${costCodeSlug}/${countySlug}`,
+          path: `/locations/${stateSlug}/${costCodeSlug}/${countySlug}`,
           component: slash(locationsTemplate),
           context: {
             isCounty: true,
@@ -376,7 +376,7 @@ exports.createPages = ({ graphql, actions }) => {
 
         //  Create our Cost Code Pages
         createPage({
-          path: `/states/${stateSlug}/${costCodeSlug}`,
+          path: `/locations/${stateSlug}/${costCodeSlug}`,
           component: slash(locationsTemplate),
           context: {
             isCounty: false,

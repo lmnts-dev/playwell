@@ -10,6 +10,7 @@ import { Link } from 'gatsby';
 
 // Helpers
 import HeroContainer from '../../Hero/HeroContainer';
+import _ from 'lodash';
 
 // Styles
 import {
@@ -149,18 +150,48 @@ class SearchBar extends PureComponent {
       });
 
       /*
+      // Clean our Cost Code Names, make them iterable. and
+      // return true if it is inside of the new array
+      */
+
+      // Create empty array
+      const searchSafeCostCodes = [];
+
+      // Iterate through Counties and add to said array
+      const cleanCostCodes = () => {
+        //  Convert each county name to lowercase
+        location.node.counties.forEach((county, idx) => {
+          searchSafeCostCodes.push(county.cost_code_name.toLowerCase());
+        });
+      };
+
+      // Run above function synchronously
+      cleanCostCodes();
+
+      // Iterate through cleaned array with clean query and return truthy
+      // or falsy if it exists
+      const isCostCodeMatch = searchSafeCostCodes.filter(costCode => {
+        if (costCode.includes(searchSafeQuery)) {
+          return true;
+        }
+      });
+
+      /*
       // Return our filtered results
       */
 
       if (searchSafeName.includes(searchSafeQuery)) {
         return location;
-      } else if (isCountyMatch.length > 0) {
+      } else if (isCountyMatch.length > 0 || isCostCodeMatch.length) {
         return location;
       }
 
       // For Debugging only.
       // console.log('searchSafeCounties:');
       // console.log(searchSafeCounties);
+
+      // console.log(isCostCodeMatch.length > 0 ? true : false);
+      // console.log(isCostCodeMatch);
 
       // console.log('isCountyMatch:');
       // console.log(isCountyMatch);
@@ -224,6 +255,7 @@ const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
 
             return (
               <ResultRow
+                parentLocation={result.node.name}
                 slugString={slugString}
                 searchSafeQuery={searchSafeQuery}
                 key={idx}
@@ -289,6 +321,7 @@ class ResultRow extends PureComponent {
     const slugString = this.props.slugString;
     const queryActive = this.props.queryActive;
     const searchSafeQuery = this.props.searchSafeQuery;
+    const parentLocation = this.props.parentLocation;
 
     // Logic to show/hide rows on search.
     const showRows = () => {
@@ -315,16 +348,67 @@ class ResultRow extends PureComponent {
     // console.log('this.state.rowExpanded: ' + this.state.rowExpanded);
     // console.log('showRows: ' + showRows());
 
-    // Filter our counties by searchSafeQuery
-    const filteredCounties = result.node.counties.filter(county => {
-      if (county.name.toLowerCase().includes(searchSafeQuery)) {
+    // Filter our counties & cost_codes by searchSafeQuery
+    const filteredCountiesAndCostCodes = result.node.counties.filter(county => {
+      if (
+        county.name.toLowerCase().includes(searchSafeQuery) ||
+        county.cost_code_name.toLowerCase().includes(searchSafeQuery)
+      ) {
         return county;
       }
     });
 
-    // For Debugging Purposes:
-    // console.log('filteredCounties:');
-    // console.log(filteredCounties);
+    /**
+     * Group our Counties by Cost Code
+     */
+
+    // Our groupBy function.
+    const groupBy = key => array =>
+      array.reduce((objectsByKeyValue, obj) => {
+        const value = obj[key];
+        objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
+        return objectsByKeyValue;
+      }, {});
+
+    // Our groupByCostCode function
+    const groupByCostCode = groupBy('cost_code_name');
+
+    // Create our usable & iterable Cost Code Groups
+    const costCodeGroups = () => {
+      // Our group key-value pairs of cost codes & counties. Not iteratable.
+      let costCodeGroups = groupByCostCode(filteredCountiesAndCostCodes);
+
+      // Our entries array of said key-value pairs. Iterable, but illegible.
+      let costCodeEntries = Object.entries(costCodeGroups);
+
+      // Our remapping of the above illegible array into something usaable
+      let costCodeMapping = costCodeEntries.map((costCode, idx) => {
+        // Remap Our Conties
+        let costCodeCounties = costCode[1].map((county, idxx) => {
+          return county;
+        });
+
+        // Our proper array to be used.
+        return {
+          cost_code_name: costCode[0],
+          counties: costCodeCounties,
+        };
+      });
+
+      return costCodeMapping;
+    };
+
+    // Our variable for Cost Codes to iterate through.
+    const costCodes = costCodeGroups();
+
+    /**
+     * For Debugging Purposes
+     */
+    console.log('filteredCountiesAndCostCodes:');
+    console.log(filteredCountiesAndCostCodes);
+
+    console.log('costCodeGroups():');
+    console.log(costCodeGroups());
 
     return (
       <li>
@@ -335,12 +419,12 @@ class ResultRow extends PureComponent {
               : 'results-row results-sub-visible'
           }
         >
-          <Link to={slugString}>
+          <Link className="top-level" to={slugString}>
             <span>{result.node.name}</span>
           </Link>
 
-          {/* Show/hide action button if counties available */}
-          {filteredCounties.length > 0 ? (
+          {/* Show/hide action button if Cost Codes available */}
+          {filteredCountiesAndCostCodes.length > 0 ? (
             <span
               className="result-action"
               onClick={this.toggleRow}
@@ -355,8 +439,8 @@ class ResultRow extends PureComponent {
           )}
         </div>
 
-        {/* Show Counties if availabe */}
-        {filteredCounties.length > 0 ? (
+        {/* Show Cost Codes if availabe */}
+        {filteredCountiesAndCostCodes.length > 0 ? (
           <ul
             className={
               showRows() == false
@@ -364,21 +448,33 @@ class ResultRow extends PureComponent {
                 : 'results-sub'
             }
           >
-            {/* Map Counties */}
-            {filteredCounties.map((county, idxx) => {
+            {/* Map Cost Codes */}
+            {costCodes.map((costCode, idxx) => {
               // Build our slugified strings for pretty URLs.
-              let countySlug = slugify(county.name);
-              let costCodeSlug = slugify(county.cost_code_name);
-              let countySlugString =
-                slugString + '/' + costCodeSlug + '/' + countySlug + '/';
+              let costCodeSlug = slugify(costCode.cost_code_name);
+              let costCodeSlugString = slugString + '/' + costCodeSlug;
 
               return (
                 <li key={idxx}>
                   <div className="results-row">
-                    <Link to={countySlugString}>
-                      <span>{county.name}</span>
+                    <Link to={costCodeSlugString}>
+                      <span>{costCode.cost_code_name}</span>
                     </Link>
                   </div>
+                  <ul className="results-sub">
+                    {/* Map our counties. */}
+                    {costCode.counties.map((county, idxxx) => {
+                      return (
+                        <li key={idxxx}>
+                          <div className="results-row">
+                            <Link to={costCodeSlugString}>
+                              <span>{county.name}</span>
+                            </Link>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </li>
               );
             })}
@@ -403,12 +499,21 @@ const CourseHeroContent = ({ mapWidth, mapZedIndex, geoData, pageContext }) => {
   };
 
   // Create page name
-  const countyState =
-    pageContext.isCounty == true
-      ? countyClean(pageContext.name) + ', ' + pageContext.parentState.name
-      : pageContext.isCostCode == true
-      ? pageContext.cost_code_name + ', ' + pageContext.parentState.name
-      : pageContext.name;
+  const contextualPageName = () => {
+    if (pageContext != false) {
+      if (pageContext.isCounty == true) {
+        return (
+          countyClean(pageContext.name) + ', ' + pageContext.parentState.name
+        );
+      } else if (pageContext.isCostCode == true) {
+        return pageContext.cost_code_name + ', ' + pageContext.parentState.name;
+      } else {
+        return pageContext.name;
+      }
+    } else {
+      return 'Brooklyn, NYC';
+    }
+  };
 
   return (
     <CourseHeroContentStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
@@ -419,11 +524,7 @@ const CourseHeroContent = ({ mapWidth, mapZedIndex, geoData, pageContext }) => {
         <span className="location h2">
           <span className="inline">
             <Icon Name="map-marker-alt" fas />
-            {pageContext != undefined ? (
-              <span>{countyState}</span>
-            ) : (
-              <span>Brooklyn, NYC</span>
-            )}
+            {contextualPageName()}
           </span>
         </span>
       </h1>

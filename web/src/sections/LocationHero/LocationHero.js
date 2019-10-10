@@ -37,12 +37,21 @@ const LocationHero = ({ cities, pageContext }) => {
   };
 
   // Create page name
-  const countyState =
-    pageContext.isCounty == true
-      ? countyClean(pageContext.name) + ', ' + pageContext.parentState.name
-      : pageContext.isCostCode == true
-      ? pageContext.cost_code_name + ', ' + pageContext.parentState.name
-      : pageContext.name;
+  const contextualPageName = () => {
+    if (pageContext != false) {
+      if (pageContext.isCounty == true) {
+        return (
+          countyClean(pageContext.name) + ', ' + pageContext.parentState.name
+        );
+      } else if (pageContext.isCostCode == true) {
+        return pageContext.cost_code_name + ', ' + pageContext.parentState.name;
+      } else {
+        return pageContext.name;
+      }
+    } else {
+      return 'a place near you';
+    }
+  };
 
   // Create slugs
   const programsSlug =
@@ -93,7 +102,7 @@ const LocationHero = ({ cities, pageContext }) => {
           <Hero.Heading>
             STEM Education &amp;
             <br />
-            Engineering in <span>{countyState}</span>
+            Engineering in <span>{contextualPageName()}</span>
           </Hero.Heading>
           <Box mr={1} display="inline-block">
             <Btn
