@@ -20,7 +20,7 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const LocationSplitLinks = ({ pageContext, themeProps }) => {
+const CourseSplitLinks = ({ pageContext, themeProps }) => {
   // Build our slugified strings for pretty URLs.
   let stateSlug = slugify(pageContext.locationMeta.state.name);
   let countySlug = slugify(pageContext.locationMeta.county.name);
@@ -29,6 +29,7 @@ const LocationSplitLinks = ({ pageContext, themeProps }) => {
   // Our pretty URL
   let whatsNewLink = `/programs/${stateSlug}/${countySlug}`;
 
+  // County / State conditional
   const countyState = pageContext.locationMeta.county.name
     ? pageContext.locationMeta.county.name +
       ', ' +
@@ -57,7 +58,7 @@ const LocationSplitLinks = ({ pageContext, themeProps }) => {
   );
 };
 
-export default LocationSplitLinks;
+export default CourseSplitLinks;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

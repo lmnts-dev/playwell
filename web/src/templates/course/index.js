@@ -19,7 +19,7 @@ import Section from 'components/library/Elements/Section';
 
 // Sections
 import QuestionsCallout from 'sections/QuestionsCallout';
-import LocationSplitLinks from 'sections/LocationSplitLinks';
+import CourseSplitLinks from 'sections/CourseSplitLinks';
 
 // Helpers
 import slugify from 'helpers/slugify';
@@ -296,7 +296,7 @@ const Course = ({ pageContext }) => {
         </CourseFooter.Course>
       </CourseFooter>
 
-      <LocationSplitLinks pageContext={pageContext} themeProps={ThemeProps} />
+      <CourseSplitLinks pageContext={pageContext} themeProps={ThemeProps} />
     </Layout>
   );
 };

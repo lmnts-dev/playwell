@@ -12,9 +12,10 @@ import { Link } from 'gatsby';
 import { Box, Flex, Text } from 'components/library/Elements';
 import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
+import { Icon } from 'components/library/Icons';
 
 // Styles
-import { Container } from './styles.scss';
+import { Container, EdgeImageWithTextStyle } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -31,12 +32,18 @@ const HomeBetterFuture = ({ themeProps }) => {
       textAlign="left"
     >
       <Container.Inner>
-        <Container.Image width={[1, 1, 6 / 10]}>
-          <figure>
-            <ImgMatch src="placeholder.jpeg" AltText="Hero Alt" />
-          </figure>
+        <Container.Image width={[1, 1, 4 / 10, 4 / 10, 6 / 10]}>
+          <Icon Name="swoop" />
+          <div className="image">
+            <ImgMatch
+              objectFit="contain"
+              objectPosition="100% 50%"
+              src="sailboat.png"
+            />
+            <Icon Name="swoop" />
+          </div>
         </Container.Image>
-        <Box width={[1, 1, 4 / 10]} pr={10}>
+        <Box width={[1, 1, 6 / 10, 6 / 10, 4 / 10]} pr={10}>
           <Text className="h6" fontWeight={600} mb={1}>
             The Importance of STEM Education
           </Text>
