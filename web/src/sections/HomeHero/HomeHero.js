@@ -62,6 +62,8 @@ const HeroProps = {
   textAlign: 'center',
   withMask: true,
   fullWidth: true,
+  curveBg: Theme.Color.Deepsea,
+  sliceBg: Theme.Color.Background,
 };
 
 const settings = {
