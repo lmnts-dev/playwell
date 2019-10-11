@@ -40,7 +40,7 @@ const HeroProps = {
 };
 
 // Render Page
-const ContactPage = ({ bgColor, textColor }) => (
+const ContactPage = () => (
   <Layout {...ThemeProps}>
     <Main>
       <Decorator>

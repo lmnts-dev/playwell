@@ -28,33 +28,22 @@ export const Contact = styled(Box)`
   margin: 0 auto;
   max-width: 70vw;
   position: relative;
-  padding-right: ${props => (props.fullWidth ? '0' : Root.Grid.Gutter.Right)};
-  padding-left: ${props => (props.fullWidth ? '0' : Root.Grid.Gutter.Left)};
+  padding-right: ${Root.Grid.Gutter.Right};
+  padding-left: ${Root.Grid.Gutter.Left};
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-    padding-right: ${props =>
-      props.fullWidth
-        ? '0'
-        : `calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 0.25)`};
-    padding-left: ${props =>
-      props.fullWidth
-        ? '0'
-        : `calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 0.25)`};
+    padding-right: calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 0.25);
+    padding-left: calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 0.25);
   }
 
   @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
-    padding-right: ${props =>
-      props.fullWidth
-        ? '0'
-        : `calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 1)`};
-    padding-left: ${props =>
-      props.fullWidth
-        ? '0'
-        : `calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 1)`};
+    padding-right: calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 1);
+    padding-left: calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 1);
   }
 `;
 
-Contact.Title = styled(Flex)`
+Contact.Title = styled.div`
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
