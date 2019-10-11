@@ -45,15 +45,15 @@ BtnStyle.Inner = styled.span`
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  padding: 0 ${Theme.Base.Size.Sm};
+  padding: 0 calc(${Theme.Base.Size.Sm} * .8);
   ${props =>
     props.IconPosition == 'left'
-      ? 'padding-left: calc(' + Theme.Base.Size.Sm + '* 2.1);'
-      : null}
+      ? 'padding-left: calc(' + Theme.Base.Size.Sm + '*1.2);'
+      : false}
   ${props =>
     props.IconPosition == 'right'
-      ? 'padding-right: calc(' + Theme.Base.Size.Sm + '* 2.1);'
-      : null}
+      ? 'padding-right: calc(' + Theme.Base.Size.Sm + '*1.2);'
+      : false}
   border-radius: 999px;
   cursor: pointer;
   font-size: 1rem;

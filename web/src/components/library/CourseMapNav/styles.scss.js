@@ -31,6 +31,10 @@ export const CourseMapNavStyle = styled.div`
   display: flex;
   flex-direction: column;
 
+  @media (max-width: ${Theme.Base.Media.Width.Md}) {
+    display: none;
+  }
+
   .inner {
     max-width: ${Root.Site.Width};
     width: 100%;

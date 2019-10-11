@@ -30,7 +30,7 @@ Container.Image = styled.div`
   overflow: hidden;
   position: absolute;
   right: 0;
-  top: -200px;
+  top: -300px;
 
   .img {
     width: 587px;

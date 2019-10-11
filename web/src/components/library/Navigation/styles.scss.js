@@ -25,7 +25,7 @@ export const NavigationStyle = styled.nav`
   top: 0px;
   left: 0px;
   right: 0px;
-  z-index: 50;
+  z-index: 700;
   display: flex;
   justify-content: center;
   transform: translateY(0%);

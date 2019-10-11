@@ -311,17 +311,28 @@ exports.createPages = ({ graphql, actions }) => {
       // Build our slugified strings for pretty URLs.
       let stateSlug = slugify(state.node.name);
 
+      // Pass Filtered State Manager Array
+      const filteredStateManagers = state_id => {
+        let filteredManagers = result.data.allPlayWellManagers.edges.filter(
+          manager => manager.node.state_id == state_id
+        );
+
+        return filteredManagers;
+      };
+
       //  Create our State Pages
       createPage({
-        path: `/states/${stateSlug}`,
+        path: `/locations/${stateSlug}`,
         component: slash(locationsTemplate),
         context: {
           isCounty: false,
+          isCostCode: false,
           id: state.node.state_id,
           abbrev: state.node.abbrev,
           name: state.node.name,
           playwell_state_id: state.node.playwell_state_id,
           counties: state.node.counties,
+          managers: filteredStateManagers(state.node.playwell_state_id),
         },
       });
 
@@ -329,23 +340,158 @@ exports.createPages = ({ graphql, actions }) => {
       _.each(state.node.counties, county => {
         // Build our slugified strings for pretty URLs.
         let countySlug = slugify(county.name);
+        let costCodeSlug = slugify(county.cost_code_name);
+
+        // Pass Filtered County Manager Array
+        const filteredCountyManagers = cost_code => {
+          let filteredManagers = result.data.allPlayWellManagers.edges.filter(
+            manager => manager.node.cost_code == cost_code
+          );
+
+          return filteredManagers;
+        };
 
         //  Create our Counties Pages
         createPage({
-          path: `/states/${stateSlug}/${countySlug}`,
+          path: `/locations/${stateSlug}/${costCodeSlug}/${countySlug}`,
           component: slash(locationsTemplate),
           context: {
             isCounty: true,
+            isCostCode: false,
             cost_code: county.cost_code,
             cost_code_name: county.cost_code_name,
             county_id: county.county_id,
             name: county.name,
+            managers: filteredCountyManagers(county.cost_code),
             parentState: {
               id: state.node.state_id,
               abbrev: state.node.abbrev,
               name: state.node.name,
               playwell_state_id: state.node.playwell_state_id,
               counties: state.node.counties,
+              managers: filteredStateManagers(state.node.playwell_state_id),
+            },
+          },
+        });
+
+        //  Create our Cost Code Pages
+        createPage({
+          path: `/locations/${stateSlug}/${costCodeSlug}`,
+          component: slash(locationsTemplate),
+          context: {
+            isCounty: false,
+            isCostCode: true,
+            cost_code: county.cost_code,
+            cost_code_name: county.cost_code_name,
+            county_id: county.county_id,
+            name: county.name,
+            managers: filteredCountyManagers(county.cost_code),
+            parentState: {
+              id: state.node.state_id,
+              abbrev: state.node.abbrev,
+              name: state.node.name,
+              playwell_state_id: state.node.playwell_state_id,
+              counties: state.node.counties,
+              managers: filteredStateManagers(state.node.playwell_state_id),
+            },
+          },
+        });
+      });
+    });
+
+    ////////////////////////////////////////////////////////////////////////////////////
+    // Create Program Landing Pages
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    // Define Our Programs Template
+    const programsTemplate = path.resolve(`src/templates/Programs/index.js`);
+
+    // Create Pages
+    _.each(result.data.allPlayWellStates.edges, state => {
+      // Build our slugified strings for pretty URLs.
+      let stateSlug = slugify(state.node.name);
+
+      // Pass Filtered State Manager Array
+      const filteredStateManagers = state_id => {
+        let filteredManagers = result.data.allPlayWellManagers.edges.filter(
+          manager => manager.node.state_id == state_id
+        );
+
+        return filteredManagers;
+      };
+
+      //  Create our State Pages
+      createPage({
+        path: `/programs/${stateSlug}`,
+        component: slash(programsTemplate),
+        context: {
+          isCounty: false,
+          isCostCode: false,
+          abbrev: state.node.abbrev,
+          name: state.node.name,
+          playwell_state_id: state.node.playwell_state_id,
+          counties: state.node.counties,
+          managers: filteredStateManagers(state.node.playwell_state_id),
+        },
+      });
+
+      // Loop through each state's respective Counties data
+      _.each(state.node.counties, county => {
+        // Build our slugified strings for pretty URLs.
+        let countySlug = slugify(county.name);
+        let costCodeSlug = slugify(county.cost_code_name);
+
+        // Pass Filtered County Manager Array
+        const filteredCountyManagers = cost_code => {
+          let filteredManagers = result.data.allPlayWellManagers.edges.filter(
+            manager => manager.node.cost_code == cost_code
+          );
+
+          return filteredManagers;
+        };
+
+        //  Create our Counties Pages
+        createPage({
+          path: `/programs/${stateSlug}/${costCodeSlug}/${countySlug}`,
+          component: slash(programsTemplate),
+          context: {
+            isCounty: true,
+            isCostCode: false,
+            cost_code: county.cost_code,
+            cost_code_name: county.cost_code_name,
+            county_id: county.county_id,
+            name: county.name,
+            managers: filteredCountyManagers(county.cost_code),
+            parentState: {
+              id: state.node.state_id,
+              abbrev: state.node.abbrev,
+              name: state.node.name,
+              playwell_state_id: state.node.playwell_state_id,
+              counties: state.node.counties,
+              managers: filteredStateManagers(state.node.playwell_state_id),
+            },
+          },
+        });
+
+        //  Create our Cost Code Pages
+        createPage({
+          path: `/programs/${stateSlug}/${costCodeSlug}`,
+          component: slash(programsTemplate),
+          context: {
+            isCounty: false,
+            isCostCode: true,
+            cost_code: county.cost_code,
+            cost_code_name: county.cost_code_name,
+            county_id: county.county_id,
+            name: county.name,
+            managers: filteredCountyManagers(county.cost_code),
+            parentState: {
+              id: state.node.state_id,
+              abbrev: state.node.abbrev,
+              name: state.node.name,
+              playwell_state_id: state.node.playwell_state_id,
+              counties: state.node.counties,
+              managers: filteredStateManagers(state.node.playwell_state_id),
             },
           },
         });

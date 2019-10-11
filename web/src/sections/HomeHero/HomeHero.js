@@ -28,7 +28,7 @@ import {
 } from './styles.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Decorator } from '../../pages/HomePage/styles.scss';
+import { Decorator } from '../../pages/styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -61,6 +61,7 @@ const HeroProps = {
   color: 'White',
   textAlign: 'center',
   withMask: true,
+  fullWidth: true,
 };
 
 const settings = {
@@ -76,7 +77,7 @@ const settings = {
 // Render Page
 const HomeHero = ({ bgColor, textColor, slides }) => {
   return (
-    <HeroContainer {...HeroProps} fullWidth>
+    <HeroContainer {...HeroProps}>
       <Decorator>
         <div className="decorator__hero decorator__hero--top">
           <ImgMatch
@@ -92,13 +93,13 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
             style={{ zIndex: '-10' }}
           />
         </div>
-        <div className="decorator__hero decorator__hero--volcano">
+        {/* <div className="decorator__hero decorator__hero--volcano">
           <ImgMatch
             src="volcano.png"
             AltText="Cloud"
             style={{ zIndex: '-10' }}
           />
-        </div>
+        </div> */}
       </Decorator>
       <SliderContainer
         width={[1, 1, 1, 1, 6 / 10]}

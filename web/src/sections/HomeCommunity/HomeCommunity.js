@@ -12,6 +12,7 @@ import { Link } from 'gatsby';
 import { Box, Flex, Text } from 'components/library/Elements';
 import Btn from 'components/library/Btn';
 import Slider from 'react-slick';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Styles
 import { Community, SliderContainer } from './styles.scss';
@@ -45,7 +46,7 @@ const settings = {
 // Render Page
 const HomeCommunity = ({ slides }) => {
   return (
-    <Community fullWidth={true}>
+    <Community pt={0} fullWidth>
       <Text as="h3" color="Sunset">
         People Who've
         <br />
@@ -56,15 +57,19 @@ const HomeCommunity = ({ slides }) => {
           {slides.map(slide => (
             <Box key={slide.index}>
               <Box mx={1}>
-                <Box className="slick-inner" p={2}>
-                  <Box py="90px" />
-                  <ul>
-                    {slide.tags.map(tags => (
-                      <li key={tags.id}>{tags.tag}</li>
-                    ))}
-                  </ul>
-                  <span className="slide-header">{slide.header}</span>
-                  <p className="slide-detail">{slide.detail}</p>
+                <Box className="slick-inner">
+                  <Box>
+                    {/* <ImgMatch src="intro-smiles.jpg" AltText="Hero Alt" /> */}
+                  </Box>
+                  <Box p={2}>
+                    <ul>
+                      {slide.tags.map(tags => (
+                        <li key={tags.id}>{tags.tag}</li>
+                      ))}
+                    </ul>
+                    <span className="slide-header">{slide.header}</span>
+                    <p className="slide-detail">{slide.detail}</p>
+                  </Box>
                 </Box>
               </Box>
             </Box>

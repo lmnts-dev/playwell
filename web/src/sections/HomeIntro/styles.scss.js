@@ -1,4 +1,4 @@
-// Homepage Styles:
+// <HomeIntro /> Styles:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -22,12 +22,12 @@ export const Intro = styled(Section)``;
 
 Intro.Inner = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
 `;
 
 Intro.Image = styled(Box)`
-  clip-path: circle(39%);
+  clip-path: circle(50%);
 
   figure {
     margin: 0;

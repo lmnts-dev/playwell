@@ -89,214 +89,168 @@ const Projects = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  
+
   .project {
-      width: 30%;
-      margin-right: 5%;
-      text-align: center;
-      margin-top: calc(${Root.Size} / 1.5);
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        width: 45%;
-      }
-      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-        width: 80%;
-        margin: 0 auto !important;
-      }
+    width: 30%;
+    margin-right: 5%;
+    text-align: center;
+    margin-top: calc(${Root.Size} / 1.5);
 
-      .h6, .tag {
-          font-weight: 700;
-      }
-
-      .h6 {
-        padding: calc(${Root.Size} / 2) 0 calc(${Root.Size} / 3) 0;
-      }
-
-      p {
-        padding-bottom: calc(${Root.Size} / 5);
-      }
-
-      .tags {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: center;
-
-        .tag {
-            font-size: 12px;
-            color: ${Theme.Color.Nova};
-            padding: 0 calc(${Root.Size} / 8);
-            white-space: nowrap;
-        }
-      }
-
-      &:nth-of-type(3n) {
-        margin-right: 0;
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-            margin-right: 5%;
-        }
-      }
-
-      &:nth-of-type(2n) {
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-            margin-right: 0;
-        }
-      }
-
-      &:last-of-type {
-        margin-right: 0 !important;
-      }
-
-      .gatsby-image-wrapper {
-          padding-top: 100%;
-          height: 0;
-          border-radius: calc(${Root.Size} / 10);
-          filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.4)});
-      }
-  }
-`
-const Timeline = styled.div`
-
-    .h3, .time {
-        font-weight: 700;
+    .h6,
+    .tag {
+      font-weight: 700;
     }
 
-  .time {
-      font-size: 100px;
-      color: ${Theme.Color.Blush};
-      span {
-          font-size: 41px;
+    .h6 {
+      padding: calc(${Root.Size} / 2) 0 calc(${Root.Size} / 3) 0;
+    }
+
+    p {
+      padding-bottom: calc(${Root.Size} / 5);
+    }
+
+    .tags {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .tag {
+        font-size: 12px;
+        color: ${Theme.Color.Nova};
+        padding: 0 calc(${Root.Size} / 8);
       }
+    }
+
+    &:nth-of-type(3n) {
+      margin-right: 0;
+    }
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    .gatsby-image-wrapper {
+      padding-top: 100%;
+      height: 0;
+      border-radius: calc(${Root.Size} / 10);
+      filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.4)});
+    }
+  }
+`;
+const Timeline = styled.div`
+  .h3,
+  .time {
+    font-weight: 700;
+  }
+
+  .time {
+    font-size: 100px;
+    color: ${Theme.Color.Blush};
+    span {
+      font-size: 41px;
+    }
   }
 
   .h3 {
-      color: ${Theme.Color.Sunset};
+    color: ${Theme.Color.Sunset};
   }
-`
+`;
 
 const Questions = styled.div`
+  .h3 {
+    font-weight: 700;
+    padding-bottom: calc(${Root.Size} / 2);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    a {
+      min-width: 40%;
+      flex: 1;
+      margin-bottom: calc(${Root.Size} / 10);
+      padding: calc(${Root.Size} / 2);
+      font-weight: 700;
+      color: ${Theme.Color.White};
+      border-radius: calc(${Root.Size} / 10);
+
+      &:nth-of-type(2n - 1) {
+        margin-right: calc(${Root.Size} / 10);
+      }
+
+      &:nth-of-type(5n - 4) {
+        background-color: ${Theme.Color.Ocean};
+      }
+
+      &:nth-of-type(5n - 3) {
+        background-color: ${Theme.Color.Eggplant};
+      }
+
+      &:nth-of-type(5n - 2) {
+        background-color: ${Theme.Color.Sunlight};
+      }
+      &:nth-of-type(5n - 1) {
+        background-color: ${Theme.Color.Deepsea};
+      }
+      &:nth-of-type(5n) {
+        background-color: ${Theme.Color.Nova};
+      }
+    }
+  }
+`;
+
+const PartyForm = styled.div`
+  max-width: calc(${Root.Size} * 11);
+  margin: 0 auto;
+
+  .centered {
+    text-align: center;
     .h3 {
-        font-weight: 700;
-        padding-bottom: calc(${Root.Size} / 2);
+      font-weight: 700;
+      padding-bottom: calc(${Root.Size} / 4);
     }
+  }
 
-    .container {
-       column-count: 2;
-       
-       a {
-         min-width: 40%;
-         display: block;
-         flex: 1;
-         margin-bottom: calc(${Root.Size} / 10);
-         padding: calc(${Root.Size} / 2);
-         font-weight: 700;
-         color: ${Theme.Color.White};
-         border-radius: calc(${Root.Size} / 10);
-
-         &:nth-of-type(5n - 4){
-             background-color: ${Theme.Color.Ocean};
-         }
-
-         &:nth-of-type(5n - 3){
-            background-color: ${Theme.Color.Eggplant};
-         }
-
-         &:nth-of-type(5n - 2){
-            background-color: ${Theme.Color.Sunlight};
-         }
-         &:nth-of-type(5n - 1){
-            background-color: ${Theme.Color.Deepsea};
-         }
-         &:nth-of-type(5n){
-            background-color: ${Theme.Color.Nova};
-         }
-       }
-    }
-`
-
-
-const HideOverFlow = styled.div`
-    overflow: hidden;
-    width: 100vw;
-`
+  from {
+    padding: ${Root.Size};
+  }
+`;
 
 // Render Page
 const Parties = () => {
   return (
     <Layout {...ThemeProps}>
-      <HideOverFlow>
-        <SplitHero {...HeroProps}>
-          <h2>Let Us Engineer Your Child's Party</h2>
-          <h6>
-            Some of the most memorable and fun experiences kid's have together
-            are at birthday parties.
-          </h6>
-        </SplitHero>
-        <Box css={{ position: 'relative', height: 0 }}>
-          <SubNav />
-        </Box>
+      <SplitHero {...HeroProps}>
+        <h2>Let Us Engineer Your Child's Party</h2>
+        <h6>
+          Some of the most memorable and fun experiences kid's have together are
+          at birthday parties.
+        </h6>
+      </SplitHero>
+      <Box css={{ position: 'relative', height: 0 }}>
+        <SubNav />
+      </Box>
 
-        <BasicSection
-          BgColor={Theme.Color.Ocean}
-          TextColor={Theme.Color.White}
-          noPaddingBottom
-          noInner
-        >
-          <DeepseaTextBlock>
-            <BasicInner>
-              <div className="text-block">
-                <div className="headline txt-clr-deepsea">
-                  Well Supplied Fun
-                </div>
-                <p className="h3">
-                  At a Play-Well party, you provide the kids and we bring over
-                  20,000 pieces of LEGO and awesome project ideas!
-                </p>
-              </div>
-            </BasicInner>
-          </DeepseaTextBlock>
-        </BasicSection>
-
-        <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Ocean}>
-          <CurveAndAngle
-            CurveColor={Theme.Color.Deepsea}
-            AngleColor={Theme.Color.Background}
-            Clouds="1"
-            AbsoluteImages={[
-              {
-                src: 'sailboat.png',
-                width: '40vw',
-                right: '-10vw',
-                bottom: '0',
-              },
-              {
-                src: 'plant-wavy-1.png',
-                width: '12vw',
-                right: '45vw',
-                bottom: '180px',
-              },
-              {
-                src: 'plant-wavy-2.png',
-                width: '14vw',
-                right: '56vw',
-                bottom: '180px',
-              },
-              {
-                src: 'plant-gears.png',
-                width: '40vw',
-                right: '75vw',
-                bottom: '10px',
-                flip: true,
-              },
-              {
-                src: 'clouds.png',
-                width: '30vw',
-                right: '75vw',
-                bottom: '90%',
-              },
-            ]}
-          />
-        </BasicSection>
-      </HideOverFlow>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+      >
+        <BasicInner>
+          <GiantTextBlock giantText="Well Supplied Fun" />
+        </BasicInner>
+      </BasicSection>
+      <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Ocean}>
+        <CurveAndAngle>
+          <FooterCurveSlice bgColor={Theme.Color.Deepsea} />
+          <FooterAngleSlice bgColor={Theme.Color.Background} />
+          <div className="absolute-image">
+            <ImgMatch src="sailboat.png" />
+          </div>
+        </CurveAndAngle>
+      </BasicSection>
 
       <BasicSection
         BgColor={Theme.Color.Background}
@@ -340,7 +294,7 @@ const Parties = () => {
         </BasicInner>
       </BasicSection>
 
-      {/*<BasicSection
+      <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
         BorderTop={Theme.Color.Nova}
@@ -359,7 +313,7 @@ const Parties = () => {
             </div>
           </Questions>
         </BasicInner>
-      </BasicSection>*/}
+      </BasicSection>
 
       <BasicSection
         BgColor={Theme.Color.Background}
@@ -367,20 +321,36 @@ const Parties = () => {
         noPaddingTop
       >
         <BasicInner>
-          <CenteredTitle
-            Title="Are you ready to plan a Party with Play-Well?"
-            Class="h3"
-            TextColor={Theme.Color.Dino}
-            MaxWidth="700px"
-            PaddingBottom="30px"
-          >
-            <Btn
-              Label="Request a Party"
-              BgColor={Theme.Color.Nova}
-              TextColor={Theme.Color.White}
-              Destination="/"
-            />
-          </CenteredTitle>
+          <PartyForm>
+            <div className="centered">
+              <div className="h3">
+                Thank you for your interest in Play-Well parties!
+              </div>
+              <p className="p-lg">
+                Please provide us with information about your preferred party
+                date and location. We will let you know if we can do a party at
+                your location on the date requested. To view pricing for your
+                area, please choose your location.
+              </p>
+            </div>
+            <form>
+              {/*<input type="text" placeholder="First Name"/>
+                        <input type="text" placeholder="Last Name"/>
+                        <select></select>
+                        <input type="text" placeholder="City"/>
+                        <textarea placeholder="Comments, questions, etc."/>
+                        <input type="email" placeholder="Your email address"/>
+                        <input />
+                        <label>How did you hear about us?</label>
+                        <input type="radio">From a Play-Well Instuctor</input> */}
+              <button type="submit">Submit Request</button>
+            </form>
+            <p className="centered p-lg">
+              Once you've submitted your request, you should receive an email
+              with more information in 1-2 minutes. If you don't see it in your
+              inbox, please check your promotions or spam folder.
+            </p>
+          </PartyForm>
         </BasicInner>
       </BasicSection>
     </Layout>

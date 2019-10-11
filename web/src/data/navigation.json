@@ -21,7 +21,7 @@
                 "focus": true
               },
               {
-                "route": "/programs/special-events",
+                "route": "/",
                 "label": "Special Events",
                 "focus": false
               },
@@ -265,7 +265,7 @@
         },
         {
           "label": "Special Events",
-          "route": "/programs/special-events"
+          "route": "/"
         },
         {
           "label": "Who We Are",

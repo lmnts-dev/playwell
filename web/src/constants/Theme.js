@@ -20,6 +20,10 @@ export const Theme = {
   // General Site Information & Keywords
   Site: Settings,
 
+  // For Programs Pages
+  mapWidth: '400px',
+  mapZedIndex: 5,
+
   // Fonts throughout the app.
   Font: Font,
 

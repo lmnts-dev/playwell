@@ -70,78 +70,80 @@ Scroll.Line = styled.div`
 `;
 
 export const Decorator = styled(Box)`
-  /* overflow: hidden; */
   z-index: 9;
 
-  .decorator__hero {
-    position: absolute;
-    top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
+  .decorator {
 
-    &--top {
+    &__hero {
+      position: absolute;
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
-      right: -100px;
-      width: 140px;
 
-      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-        right: -120px;
-        width: 200px;
+      &--top {
+        top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
+        right: -100px;
+        width: 140px;
+
+        @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+          right: -120px;
+          width: 200px;
+        }
+
+        @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+          right: -170px;
+          width: 340px;
+        }
       }
 
-      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
-        right: -170px;
-        width: 340px;
-      }
-    }
+      &--bottom {
+        top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 3.3);
+        right: -40px;
+        width: 120px;
 
-    &--bottom {
-      top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 3.3);
-      right: -40px;
-      width: 120px;
+        @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+          right: -70px;
+          width: 200px;
+        }
 
-      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-        right: -70px;
-        width: 200px;
-      }
-
-      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
-        right: -30px;
-        width: 310px;
-      }
-    }
-  }
-
-  .decorator__footer {
-    position: absolute;
-    /* top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1); */
-
-    &--top {
-      top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * -2.5);
-      left: -95px;
-      width: 140px;
-
-      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-        left: -120px;
-        width: 200px;
-      }
-
-      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
-        left: -25px;
-        width: 180px;
+        @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+          right: -30px;
+          width: 310px;
+        }
       }
     }
 
-    &--bottom {
-      left: 50%;
-      width: 400px;
+    &__footer {
+      position: absolute;
+      /* top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1); */
 
-      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+      &--top {
+        top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * -2.5);
+        left: -95px;
+        width: 140px;
 
+        @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+          left: -120px;
+          width: 200px;
+        }
+
+        @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+          left: -25px;
+          width: 180px;
+        }
+      }
+
+      &--bottom {
+        left: 50%;
         width: 400px;
-      }
 
-      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+        @media (min-width: ${Base.Media.Width.Md + 'px'}) {
 
-        width: 400px;
+          width: 400px;
+        }
+
+        @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+
+          width: 400px;
+        }
       }
     }
   }

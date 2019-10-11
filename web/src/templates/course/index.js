@@ -1,5 +1,6 @@
 // Course.js:
 // This is the course detail page data template.
+// todo: section consolidation and cleanup/refactor
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -13,16 +14,16 @@ import Layout from 'components/core/Layout';
 import HeroContainer from 'components/library/Hero/HeroContainer';
 import Btn from 'components/library/Btn';
 import { Icon } from 'components/library/Icons';
-import ImgQuery from 'components/core/ImgQuery';
+import ImgMatch from 'components/core/ImgMatch';
 import Section from 'components/library/Elements/Section';
 
 // Sections
 import QuestionsCallout from 'sections/QuestionsCallout';
+import CourseSplitLinks from 'sections/CourseSplitLinks';
 
 // Helpers
 import slugify from 'helpers/slugify';
-
-import ContentOverlayButton from 'components/library/ContentOverlay';
+import locationMatch from 'helpers/LocationMatch';
 
 // Styles
 import {
@@ -47,74 +48,115 @@ import { Theme, Root } from 'constants/Theme';
 const ThemeProps = {
   BgColor: Theme.Color.Sky,
   PrimaryColor: Theme.Color.White,
-  SecondaryColor: Theme.Color.Primary,
+  SecondaryColor: Theme.Color.Deepsea,
   TertiaryColor: Theme.Color.Primary,
 };
 
 const HeroProps = {
-  bg: 'Sky',
-  color: 'White',
+  bg: ThemeProps.BgColor,
+  color: ThemeProps.PrimaryColor,
   textAlign: 'center',
 };
 
 // Render Page
-const Course = ({ pageContext, data }) => {
+const Course = ({ pageContext }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  console.log('pageContext:');
-  console.log(pageContext);
 
+  // Create our slugs
+  const pageSlug =
+    slugify(pageContext.locationMeta.state.name) +
+    '/' +
+    slugify(pageContext.locationMeta.county.cost_code_name) +
+    '/' +
+    slugify(pageContext.locationMeta.county.name) +
+    '/';
+
+  // Check our County names if they contain 'County'
+  const countyClean = countyName => {
+    if (
+      countyName.toLowerCase().includes('county') ||
+      countyName.toLowerCase().includes('district')
+    ) {
+      return countyName;
+    } else {
+      return countyName + ' County';
+    }
+  };
+
+  // console.log('pageContext:');
+  console.log(pageContext);
   // console.log('data:');
   // console.log(data);
-
-  // console.log(locationMatch(pageContext.county_id, pageContext.state_id));
+  // console.log(locationMatch(pageContext.county_id, pageContext.state_id, pageContext.locationMeta.state.name));
 
   return (
     <Layout {...ThemeProps}>
       <HeroContainer {...HeroProps}>
-        <Flex
-          as="article"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          maxWidth={Theme.Base.Grid.SiteWidth}
-          m="0 auto"
-          pb={[4, 3]}
-          px={[1, 1, 0]}
-        >
+        <Hero as="article" pb={[4, 3]} px={[1, 1, 0]}>
           <Hero.Avatar>
-            {/* <ImgQuery src={CalloutBg} AltText="Avatar" /> */}
+            <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
           </Hero.Avatar>
           <Hero.Tags as="ul">
             <li>
               <Link
-                to={
-                  '/' +
-                  slugify(pageContext.category_group_name.toLowerCase()) +
-                  '/' +
-                  pageContext.category_group_name
-                }
+                to={'/programs/' + slugify(pageContext.locationMeta.state.name)}
+              >
+                {pageContext.locationMeta.state.name}
+              </Link>
+            </li>
+
+            {pageContext.locationMeta.county.cost_code_name !=
+            pageContext.locationMeta.state.name ? (
+              <li>
+                <Link
+                  to={
+                    '/programs/' +
+                    slugify(pageContext.locationMeta.state.name) +
+                    '/' +
+                    slugify(pageContext.locationMeta.county.cost_code_name)
+                  }
+                >
+                  {pageContext.locationMeta.county.cost_code_name}
+                </Link>
+              </li>
+            ) : (
+              false
+            )}
+
+            {pageContext.locationMeta.county.cost_code_name !=
+              pageContext.locationMeta.county.name ||
+            pageContext.locationMeta.county.name !=
+              pageContext.locationMeta.state.name ? (
+              <li>
+                <Link to={'/programs/' + pageSlug}>
+                  {countyClean(pageContext.locationMeta.county.name)}
+                </Link>
+              </li>
+            ) : (
+              false
+            )}
+
+            <li>
+              <Link
+                to={'/' + pageSlug + slugify(pageContext.category_group_name)}
               >
                 {pageContext.category_group_name}
               </Link>
             </li>
+
             <li>
               <Link
-                to={
-                  '/' +
-                  slugify(pageContext.category_group_name.toLowerCase()) +
-                  '/' +
-                  pageContext.course_type_group
-                }
+                to={'/' + pageSlug + slugify(pageContext.course_type_group)}
               >
                 {pageContext.course_type_group}
               </Link>
             </li>
+
             <li>
               <Link
                 to={
                   '/' +
-                  slugify(pageContext.category_group_name.toLowerCase()) +
-                  '/' +
+                  pageSlug +
                   'ages-' +
                   pageContext.age_range_start +
                   '-' +
@@ -152,7 +194,7 @@ const Course = ({ pageContext, data }) => {
           <Hero.Tags as="ul">
             <li>more</li>
           </Hero.Tags>
-        </Flex>
+        </Hero>
       </HeroContainer>
 
       <Spacer>
@@ -245,24 +287,28 @@ const Course = ({ pageContext, data }) => {
           mx="auto"
           className={isExpanded ? 'expanded' : 'collapsed'}
         >
-          <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[1, 1, 0]}>
-            <Text as="p" color="Galaxy" textAlign="center" pb={0}>
-              Room
-              <br />
-              <Text as="span" color="Nova">
-                {pageContext.room && pageContext.room}
+          {pageContext.room && (
+            <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[2, 2, 6]}>
+              <Text as="p" color="Galaxy" textAlign="center" pb={0}>
+                Room
+                <br />
+                <Text as="span" color="Nova">
+                  {pageContext.room}
+                </Text>
               </Text>
-            </Text>
-          </Box>
-          <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[1, 1, 0]}>
-            <Text as="p" color="Galaxy" textAlign="center" pb={0}>
-              Level
-              <br />
-              <Text as="span" color="Nova">
-                {pageContext.age_range_display && pageContext.age_range_display}
+            </Box>
+          )}
+          {pageContext.age_range_display && (
+            <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[3, 3, 6]}>
+              <Text as="p" color="Galaxy" textAlign="center" pb={0}>
+                Level
+                <br />
+                <Text as="span" color="Nova">
+                  {pageContext.age_range_display}
+                </Text>
               </Text>
-            </Text>
-          </Box>
+            </Box>
+          )}
         </Drawer>
       </Section>
 
@@ -274,17 +320,17 @@ const Course = ({ pageContext, data }) => {
 
       <QuestionsCallout />
 
-      <CourseFooter as="section" bg="Sky" px={1} pt={8}>
+      <CourseFooter bg="Sky" color="White">
         <CourseFooter.Course as="article" m="0 auto">
-          <Text as="span" fontSize={4}>
+          <Text className="h5" fontWeight="400" mb={1}>
             Let's play!
           </Text>
-          <Text as="h3" mt={1}>
+          <Text as="h3" mb={1}>
             {pageContext.course_type_name}
           </Text>
-          <Hero.Date as="p" fontSize={[0, 1, 3]} mt={[1, 1, 0]} mb={1}>
+          <Text className="h4" as="p" color="Deepsea" fontWeight="400">
             {pageContext.date_time_display}
-          </Hero.Date>
+          </Text>
           <Btn
             Label="Enroll Now"
             Destination="/"
@@ -292,43 +338,15 @@ const Course = ({ pageContext, data }) => {
             TextColor={props => props.theme.Color.White}
           />
         </CourseFooter.Course>
-        <CourseFooter.Explore as="article" width={1} mt={8}>
-          <CourseFooter.Explore.Link
-            width={[1, 1, 1 / 2]}
-            px={[1, 1, 3, 8]}
-            pb={[2, 2, 0]}
-          >
-            <CourseFooter.Explore.Arrow>
-              <Icon Name="nextArrow" />
-            </CourseFooter.Explore.Arrow>
-            <Box>
-              <Text as="span" fontSize={2} mt={1} color="Deepsea">
-                Keep exploring
-              </Text>
-              <Text as="h4" mt={1}>
-                Keep exploring our programs.
-              </Text>
-            </Box>
-          </CourseFooter.Explore.Link>
-          <CourseFooter.Explore.Link
-            width={[1, 1, 1 / 2]}
-            px={[1, 1, 3, 8]}
-            pt={[2, 2, 0]}
-          >
-            <Box>
-              <Text as="span" fontSize={2} mt={1} color="Deepsea">
-                What's new?
-              </Text>
-              <Text as="h4" mt={1}>
-                See what else is happening in Arizona.
-              </Text>
-            </Box>
-            <CourseFooter.Explore.Arrow>
-              <Icon Name="nextArrow" />
-            </CourseFooter.Explore.Arrow>
-          </CourseFooter.Explore.Link>
-        </CourseFooter.Explore>
       </CourseFooter>
+
+      <CourseSplitLinks
+        countyName={pageContext.locationMeta.county.name}
+        stateName={pageContext.locationMeta.state.name}
+        costCodeName={pageContext.locationMeta.county.cost_code_name}
+        pageContext={pageContext}
+        themeProps={ThemeProps}
+      />
     </Layout>
   );
 };

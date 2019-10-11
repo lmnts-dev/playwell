@@ -28,20 +28,14 @@ const HomeIntro = () => {
   return (
     <Intro pt={0} textAlign="left" indent>
       <Intro.Inner>
-        <Box width={[1 / 2]} pr={10}>
-          <Text as="span" color="Galaxy" fontSize={[1, 2, 2]} mb={1}>
+        <Box width={[1, 1, 1 / 2]} pr={[0, 0, Root.Grid.Indent.X]}>
+          <Text className="h6" color="Galaxy" fontWeight={600} mb={1}>
             Taking our imagination up a level
           </Text>
-          <Text as="h2" color="Sunset">
+          <Text as="h2" className="h1" fontWeight={600} color="Sunset">
             Creativity, confidence &amp; collaboration.
-          </Text>{' '}
-          <Text
-            as="p"
-            color="Galaxy"
-            fontSize={[0, 1, 1]}
-            mt={[1, 1, 0]}
-            mb={1}
-          >
+          </Text>
+          <Text as="p" color="Galaxy">
             Through LEGO® inspired classes sparking “Aha!” moments, we help kids
             grasp fundamental principles of engineering and physics. The
             experience boosts their confidence, creativity and ability to
@@ -54,9 +48,9 @@ const HomeIntro = () => {
             TextColor={Theme.Color.White}
           />
         </Box>
-        <Intro.Image width={[1 / 2]}>
+        <Intro.Image width={[1, 1, 4 / 10]}>
           <figure>
-            <ImgMatch src="intro-smiles.jpg" AltText="Hero Alt" />
+            <ImgMatch src="home-intro.jpg" AltText="Hero Alt" />
           </figure>
         </Intro.Image>
       </Intro.Inner>

@@ -8,23 +8,27 @@ import styled from 'styled-components';
 
 // Components
 import Btn from 'components/library/Btn';
+import { Box, Flex, Text } from 'components/library/Elements';
+import Section from 'components/library/Elements/Section';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
-import { Box, Flex, Text } from 'components/library/Elements';
-import Section from 'components/library/Elements/Section';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
+export const Main = styled.main`
+  overflow: hidden;
+`;
+
 export const Decorator = styled(Box)`
-  /* overflow: hidden; */
-  z-index: 2;
+  position: relative;
 
   .decorator__hero {
     position: absolute;
     top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
+    z-index: 4;
 
     &--top {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
@@ -90,6 +94,7 @@ export const Decorator = styled(Box)`
   .decorator__footer {
     position: absolute;
     /* top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1); */
+    z-index: 4;
 
     &--top {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * -2.5);
@@ -119,6 +124,43 @@ export const Decorator = styled(Box)`
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
 
         width: 400px;
+      }
+    }
+  }
+
+  .decorator__better-future {
+    position: absolute;
+    z-index: 4;
+
+    &--top {
+      bottom: calc(${Theme.Root.Size} * 1.6);
+      right: -130px;
+      width: 200px;
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        right: -190px;
+        width: 300px;
+      }
+
+      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+        right: -230px;
+        width: 340px;
+      }
+    }
+
+    &--bottom {
+      bottom: calc(${Theme.Root.Size} * -0.8);
+      right: -20px;
+      width: 200px;
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        right: -20px;
+        width: 300px;
+      }
+
+      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+        right: -30px;
+        width: 340px;
       }
     }
   }

@@ -46,111 +46,88 @@ const ThemeProps = {
 };
 
 // Render Page
-const LocationDetail = ({ pageContext }) => (
-  <Layout {...ThemeProps}>
-    <LocationHero name={pageContext.name} />
+const LocationDetail = ({ pageContext }) => {
+  // For Debugging Purposes only
+  // console.log(pageContext);
+  // console.log(pageContext.managers.manager);
 
-    <Section bg="Dino" pt={0} pb={0} fullWidth>
-      <ImgMatch
-        src="locations-hero.jpg"
-        AltText="STEM Education &amp; Engineering in"
-      />
-    </Section>
+  // Build Page
+  return (
+    <Layout {...ThemeProps}>
+      <LocationHero pageContext={pageContext} />
 
-    <SpacerCentered />
+      <Section pt={0} pb={0} fullWidth>
+        <ImgMatch
+          src="locations-hero.jpg"
+          AltText="STEM Education &amp; Engineering in"
+        />
+      </Section>
 
-    <LocationIntro />
-    <LocationSplitSection />
-    <LocationCoordinators cities={Cities} />
-    {/* <LocationEvents /> */}
+      <SpacerCentered />
 
-    <Section bg="White">
-      <LegoList />
-    </Section>
+      <LocationIntro pageContext={pageContext} />
+      <LocationSplitSection />
+      <LocationCoordinators pageContext={pageContext} id="coordinators" />
 
-    <Quote color="Sunset">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra
-      enim sed magna vestibulum, nec imperdiet orci egestas. Sed in magna
-      sapien.
-    </Quote>
+      {/* <LocationEvents /> */}
 
-    <LocationPrograms />
+      <Section bg="White">
+        <LegoList
+          blocks={[
+            {
+              title: 'Creative Collaboration',
+              text:
+                'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+            },
+            {
+              title: 'New Perspectives',
+              text:
+                'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+            },
+            {
+              title: 'Creative Collaboration',
+              text:
+                'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+            },
+          ]}
+        />
+      </Section>
 
-    <Scroll>
-      <Scroll.Positioner>
-        <span>Play</span>
-        <Scroll.Line />
-      </Scroll.Positioner>
-    </Scroll>
+      <Quote color="Sunset">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla viverra
+        enim sed magna vestibulum, nec imperdiet orci egestas. Sed in magna
+        sapien.
+      </Quote>
 
-    <Decorator
-      css={css`
-        position: relative;
-      `}
-    >
-      <div className="decorator__footer decorator__footer--top">
-        <ImgMatch src="cloud-small.png" AltText="Cloud" />
-      </div>
-    </Decorator>
+      <LocationPrograms />
 
-    <LocationPlayZone />
+      <Scroll>
+        <Scroll.Positioner>
+          <span>Play</span>
+          <Scroll.Line />
+        </Scroll.Positioner>
+      </Scroll>
 
-    {/* <Decorator>
+      <Decorator
+        css={css`
+          position: relative;
+        `}
+      >
+        <div className="decorator__footer decorator__footer--top">
+          <ImgMatch src="cloud-small.png" AltText="Cloud" />
+        </div>
+      </Decorator>
+
+      <LocationPlayZone />
+
+      {/* <Decorator>
       <div className="decorator__footer decorator__footer--bottom">
         <ImgMatch src="volcano.png" AltText="Cloud" />
       </div>
     </Decorator> */}
-  </Layout>
-);
-
-// Data
-const Cities = [
-  {
-    id: 0,
-    city: 'Apache Junction',
-    state: 'arizona',
-    role: 'manager',
-    name: 'Jennifer Gaona',
-    email: 'jen@gaonoa.com',
-    phone: '+1 123 456 7890',
-  },
-  {
-    id: 1,
-    city: 'Avondale',
-    state: 'arizona',
-    role: 'manager',
-    name: 'Jennifer Gaona',
-    email: 'jen@gaonoa.com',
-    phone: '+1 123 456 7890',
-  },
-  {
-    id: 2,
-    city: 'Benson',
-    state: 'arizona',
-    role: 'manager',
-    name: 'Jennifer Gaona',
-    email: 'jen@gaonoa.com',
-    phone: '+1 123 456 7890',
-  },
-  {
-    id: 3,
-    city: 'Buckeye',
-    state: 'arizona',
-    role: 'manager',
-    name: 'Jennifer Gaona',
-    email: 'jen@gaonoa.com',
-    phone: '+1 123 456 7890',
-  },
-  {
-    id: 4,
-    city: 'Carefree',
-    state: 'arizona',
-    role: 'manager',
-    name: 'Jennifer Gaona',
-    email: 'jen@gaonoa.com',
-    phone: '+1 123 456 7890',
-  },
-];
+    </Layout>
+  );
+};
 
 export default LocationDetail;
 

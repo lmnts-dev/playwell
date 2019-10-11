@@ -173,6 +173,9 @@ class NavigationBar extends PureComponent {
                 BorderWidth="1px"
                 BorderColor={Theme.Color.Primary}
                 TextColor={Theme.Color.Primary}
+                IconClass="map-marker-alt"
+                IconPosition="left"
+                IconFas
               />
               <Btn
                 Label="Let's Play"
