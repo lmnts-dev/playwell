@@ -22,6 +22,7 @@ export const Container = styled(Flex)`
   background-size: cover;
   background-position: center center;
   position: relative;
+  width: 100%;
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     padding-left: ${props => (props.indent ? `calc(${Root.Size} * 1)` : '0')};

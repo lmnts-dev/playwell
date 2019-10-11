@@ -93,13 +93,13 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
             style={{ zIndex: '-10' }}
           />
         </div>
-        <div className="decorator__hero decorator__hero--volcano">
+        {/* <div className="decorator__hero decorator__hero--volcano">
           <ImgMatch
             src="volcano.png"
             AltText="Cloud"
             style={{ zIndex: '-10' }}
           />
-        </div>
+        </div> */}
       </Decorator>
       <SliderContainer
         width={[1, 1, 1, 1, 6 / 10]}

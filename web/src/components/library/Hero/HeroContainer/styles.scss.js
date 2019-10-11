@@ -25,7 +25,7 @@ export const Container = styled(Flex)`
   min-height: ${props => (props.withMask == true ? heroHeight : '70vh')};
   text-align: ${props => props.textAlign};
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
 
   .feature-image {
     position: relative;

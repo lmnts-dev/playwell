@@ -18,12 +18,13 @@ import { Box, Flex, Text } from 'components/library/Elements';
 import HomeHero from 'sections/HomeHero';
 import HomeIntro from 'sections/HomeIntro';
 import HomeCommunity from 'sections/HomeCommunity';
-import LocationPlayZone from 'sections/LocationPlayZone';
 import HomePrograms from 'sections/HomePrograms';
+import HomeImpact from 'sections/HomeImpact';
 import HomeBetterFuture from 'sections/HomeBetterFuture';
+import LocationPlayZone from 'sections/LocationPlayZone';
 
 // Styles
-import { Decorator } from './styles.scss';
+import { Decorator, Main } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -42,27 +43,24 @@ const ThemeProps = {
 // Render Page
 const HomePage = ({ bgColor, textColor }) => (
   <Layout {...ThemeProps}>
-    <HomeHero slides={HeroSlides} />
-    <Spacer indent>Scroll</Spacer>
-    <HomeIntro />
-    <HomeCommunity slides={CommunitySlides} />
-    <HomeBetterFuture themeProps={ThemeProps} />
-    <Decorator
-      css={css`
-        position: relative;
-      `}
-    >
-      <div className="decorator__better-future decorator__better-future--top">
-        <ImgMatch src="cloud-big.png" AltText="Cloud" />
-      </div>
-      <div className="decorator__better-future decorator__better-future--bottom">
-        <ImgMatch src="cloud-big.png" AltText="Cloud" />
-      </div>
-    </Decorator>
-    <Section />
-    <HomeIntro />
-    <HomePrograms />
-    <LocationPlayZone />
+    <Main>
+      <HomeHero slides={HeroSlides} />
+      <Spacer indent>Scroll</Spacer>
+      <HomeIntro />
+      <HomeCommunity slides={CommunitySlides} />
+      <HomeBetterFuture themeProps={ThemeProps} />
+      <Decorator>
+        <div className="decorator__better-future decorator__better-future--top">
+          <ImgMatch src="cloud-big.png" AltText="Cloud" />
+        </div>
+        <div className="decorator__better-future decorator__better-future--bottom">
+          <ImgMatch src="cloud-big.png" AltText="Cloud" />
+        </div>
+      </Decorator>
+      <HomeImpact />
+      <HomePrograms />
+      <LocationPlayZone />
+    </Main>
   </Layout>
 );
 

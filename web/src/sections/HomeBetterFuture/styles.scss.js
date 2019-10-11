@@ -30,7 +30,7 @@ Container.Image = styled(Box)`
 
   .image {
     height: calc(${Root.Size} * 12);
-    margin-right: calc(${Root.Size} / 2);
+    margin-right: calc(${Root.Size} * 4);
     flex-shrink: 20;
     position: relative;
 
@@ -66,7 +66,7 @@ Container.Image = styled(Box)`
       picture {
 
         img {
-          transform: scaleX(-1);
+          /* transform: scaleX(-1); */
         }
       }
 
@@ -82,9 +82,9 @@ Container.Image = styled(Box)`
   .ico-swoop {
     position: absolute;
     height: calc(100% + calc(${Root.Size} / 2));
-    left: calc(calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 2)) * -1);
+    left: calc(calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 2)) * -1.5);
     top: calc(${Root.Size} * -1);
-    width: calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 4));
+    width: calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 6));
     transform: rotate(180deg) translateX(0);
 
     svg {

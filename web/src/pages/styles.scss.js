@@ -18,14 +18,17 @@ import { Base } from 'constants/styles/Base';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
+export const Main = styled.main`
+  overflow: hidden;
+`;
+
 export const Decorator = styled(Box)`
-  /* overflow: hidden; */
-  z-index: 9999;
+  position: relative;
 
   .decorator__hero {
     position: absolute;
     top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
-    z-index: 999;
+    z-index: 4;
 
     &--top {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
@@ -91,7 +94,7 @@ export const Decorator = styled(Box)`
   .decorator__footer {
     position: absolute;
     /* top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1); */
-    z-index: 999;
+    z-index: 4;
 
     &--top {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * -2.5);
@@ -127,20 +130,36 @@ export const Decorator = styled(Box)`
 
   .decorator__better-future {
     position: absolute;
-    z-index: 999;
+    z-index: 4;
 
     &--top {
-      bottom: calc(${Theme.Root.Size} * 2);
-      right: -100px;
-      width: 140px;
+      bottom: calc(${Theme.Root.Size} * 1.6);
+      right: -130px;
+      width: 200px;
 
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-        right: -120px;
-        width: 200px;
+        right: -190px;
+        width: 300px;
       }
 
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
-        right: -170px;
+        right: -230px;
+        width: 340px;
+      }
+    }
+
+    &--bottom {
+      bottom: calc(${Theme.Root.Size} * -0.8);
+      right: -20px;
+      width: 200px;
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        right: -20px;
+        width: 300px;
+      }
+
+      @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+        right: -30px;
         width: 340px;
       }
     }

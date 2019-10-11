@@ -1,5 +1,5 @@
-// Course.js:
-// This is the course detail page data template.
+// <QuestionsCallout /> section:
+// 
 
 // Imports
 //////////////////////////////////////////////////////////////////////
