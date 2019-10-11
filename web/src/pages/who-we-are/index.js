@@ -201,6 +201,7 @@ const WhoPage = ({ SliderSettings }) => {
           BgLinear={Theme.Color.Nova}
         />
       </BasicSection>
+      
       <BasicSection
         BgColor={Theme.Color.Nova}
         TextColor={Theme.Color.White}

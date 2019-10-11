@@ -36,28 +36,28 @@ export const CurveAndAngleStyle = styled.div`
     height: calc(100% - ${Root.Size});
     z-index: 1;
   }
+`;
 
-  .absolute-image {
-    position: absolute;
-    width: 25vw;
-    height: 25vw;
-    bottom: 0;
-    right: 2vw;
-  }
-  
-  .clouds {
+export const AbsoluteImage = styled.div`
+  position: absolute;
+  width: ${props => (props.width ? props.width : '25vw')};
+  height: ${props => (props.width ? props.width : '25vw')};
+  bottom: ${props => (props.bottom ? props.bottom : '0')};
+  right: ${props => (props.right ? props.right : '2vw')};
+  transform: rotate(${props => (props.rotate ? props.rotate : '0deg')}) scaleX(${props => (props.flip ? '-1' : '1')});
+`;
+
+
+export const CloudStyle = styled.div`
     width: 30vw;
     position: absolute !important;
     z-index: 3;
     bottom: 0;
-    left: -5vw;
+    left: ${props => ((props.Clouds == '1') ? '-12vw' : '-5vw')};
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       width: calc(${Root.Size} * 6);
       left: calc(${Root.Size} * -1);
     }
-  }
-  
 `;
-
 //////////////////////////////////////////////////////////////////////
 // End Styles

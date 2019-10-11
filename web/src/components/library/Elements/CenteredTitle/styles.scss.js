@@ -27,6 +27,10 @@ const CenteredTitleStyle = styled.div`
     position: relative;
   }
 
+  .title {
+    padding-bottom: ${props => props.PaddingBottom ? props.PaddingBottom : 0};
+  }
+
   .absolute-image {
     position: absolute;
     bottom: calc(${Root.Size} * -4);

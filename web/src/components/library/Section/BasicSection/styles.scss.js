@@ -22,7 +22,6 @@ import { Base } from 'constants/styles/Base';
 export const BasicSectionStyle = styled.div`
   width: 100%;
   margin: 0;
-  overflow: hidden;
   position: relative;
   background: ${props => (props.BgColor ? props.BgColor : Theme.Color.Primary)};
   color: ${props => (props.TextColor ? props.TextColor : Theme.Color.White)};

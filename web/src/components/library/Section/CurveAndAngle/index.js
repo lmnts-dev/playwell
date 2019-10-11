@@ -16,7 +16,7 @@ import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngle
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 
 // Styles
-import { CurveAndAngleStyle } from './styles.scss';
+import { CurveAndAngleStyle, AbsoluteImage, CloudStyle } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -35,16 +35,16 @@ export const CurveAndAngle = ({
     {AbsoluteImages && 
       AbsoluteImages.map((image, index) => {
         return (
-          <div className="absolute-image" width={image.width} right={image.right} bottom={image.bottom}>
+          <AbsoluteImage width={image.width} right={image.right} bottom={image.bottom} rotate={image.rotate} flip={image.flip}>
             <ImgMatch src={image.src} />
-          </div>
+          </AbsoluteImage>
         )
       })
     }
     {Clouds &&
-      <div className="clouds">
+      <CloudStyle className="clouds" Clouds={Clouds}>
         <ImgMatch src="clouds.png" />
-      </div>
+      </CloudStyle>
     }
   </CurveAndAngleStyle>
 );

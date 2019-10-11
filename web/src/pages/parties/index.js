@@ -13,16 +13,9 @@ import styled from 'styled-components';
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
-import ImageAccordian from 'components/library/ImageAccordian';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import ImgMatch from 'components/core/ImgMatch';
-import GiantTextBlock from 'components/library/Section/GiantTextBlock';
-import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
-import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
-import EdgeSlider from 'components/library/Section/EdgeSlider';
-import Marquee from 'components/library/Section/Marquee';
-import LegoList from 'components/library/Section/LegoList';
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
+import CurveAndAngle from 'components/library/Section/CurveAndAngle';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 import {
   BasicSection,
@@ -67,36 +60,29 @@ const HeroProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const CurveAndAngle = styled.div`
+const DeepseaTextBlock = styled.div`
   position: relative;
-  width: 100vw;
-  height: 30vw;
 
-  .footer-angle-slice {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 85%;
-    z-index: 2;
-  }
+  .text-block {
+    text-align: center;
+    max-width: calc(${Root.Size} * 17);
+    margin: 0 auto;
 
-  .footer-curve-slice {
-    width: 100%;
-    height: calc(100% - ${Root.Size});
-    z-index: 1;
-    margin-bottom: calc(${Root.Size});
-  }
+    .txt-clr-deepsea {
+      color: ${Theme.Color.Deepsea};
+    }
 
-  .absolute-image {
-    position: absolute;
-    width: 25vw;
-    height: 25vw;
-    bottom: 0;
-    right: 2vw;
+    .h1,
+    p {
+      font-weight: bold;
+    }
+
+    p {
+      padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0 calc(${Root.Size} * 1.5);
+      line-height: 1.2;
+    }
   }
 `;
-
 
 const Projects = styled.div`
   display: flex;
@@ -176,22 +162,17 @@ const Questions = styled.div`
     }
 
     .container {
-       display: flex;
-       flex-direction: row;
-       flex-wrap: wrap;
+       column-count: 2;
        
        a {
          min-width: 40%;
+         display: block;
          flex: 1;
          margin-bottom: calc(${Root.Size} / 10);
          padding: calc(${Root.Size} / 2);
          font-weight: 700;
          color: ${Theme.Color.White};
          border-radius: calc(${Root.Size} / 10);
-
-         &:nth-of-type(2n - 1){
-             margin-right: calc(${Root.Size} / 10);
-         }
 
          &:nth-of-type(5n - 4){
              background-color: ${Theme.Color.Ocean};
@@ -214,137 +195,176 @@ const Questions = styled.div`
     }
 `
 
-const PartyForm = styled.div`
-    max-width: calc(${Root.Size} * 11);
-    margin: 0 auto;
 
-    .centered {
-        text-align: center;
-        .h3 {
-            font-weight: 700;
-            padding-bottom: calc(${Root.Size} / 4);
-        }
-    }
-
-    from {
-        padding: ${Root.Size};
-    }
-`;
+const HideOverFlow = styled.div`
+    overflow: hidden;
+    width: 100vw;
+`
 
 // Render Page
 const Parties = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps}>
-        <h2>Let Us Engineer Your Child's Party</h2>
-        <h6>Some of the most memorable and fun experiences kid's have together are at birthday parties.</h6>
-      </SplitHero>
-      <Box css={{ position: 'relative', height: 0 }}>
-        <SubNav />
-      </Box>
+      <HideOverFlow>
+        <SplitHero {...HeroProps}>
+          <h2>Let Us Engineer Your Child's Party</h2>
+          <h6>
+            Some of the most memorable and fun experiences kid's have together
+            are at birthday parties.
+          </h6>
+        </SplitHero>
+        <Box css={{ position: 'relative', height: 0 }}>
+          <SubNav />
+        </Box>
+
+        <BasicSection
+          BgColor={Theme.Color.Ocean}
+          TextColor={Theme.Color.White}
+          noPaddingBottom
+          noInner
+        >
+          <DeepseaTextBlock>
+            <BasicInner>
+              <div className="text-block">
+                <div className="headline txt-clr-deepsea">
+                  Well Supplied Fun
+                </div>
+                <p className="h3">
+                  At a Play-Well party, you provide the kids and we bring over
+                  20,000 pieces of LEGO and awesome project ideas!
+                </p>
+              </div>
+            </BasicInner>
+          </DeepseaTextBlock>
+        </BasicSection>
+
+        <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Ocean}>
+          <CurveAndAngle
+            CurveColor={Theme.Color.Deepsea}
+            AngleColor={Theme.Color.Background}
+            Clouds="1"
+            AbsoluteImages={[
+              {
+                src: 'sailboat.png',
+                width: '40vw',
+                right: '-10vw',
+                bottom: '0',
+              },
+              {
+                src: 'plant-wavy-1.png',
+                width: '12vw',
+                right: '45vw',
+                bottom: '180px',
+              },
+              {
+                src: 'plant-wavy-2.png',
+                width: '14vw',
+                right: '56vw',
+                bottom: '180px',
+              },
+              {
+                src: 'plant-gears.png',
+                width: '40vw',
+                right: '75vw',
+                bottom: '10px',
+                flip: true,
+              },
+              {
+                src: 'clouds.png',
+                width: '30vw',
+                right: '75vw',
+                bottom: '90%',
+              },
+            ]}
+          />
+        </BasicSection>
+      </HideOverFlow>
 
       <BasicSection
-        BgColor={Theme.Color.Ocean}
-        TextColor={Theme.Color.White}
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
         noPaddingTop
-        noPaddingBottom
       >
         <BasicInner>
-          <GiantTextBlock
-            giantText="Well Supplied Fun"
-          />
-        </BasicInner>
-      </BasicSection>
-      <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Ocean}>
-        <CurveAndAngle>
-          <FooterCurveSlice bgColor={Theme.Color.Deepsea} />
-          <FooterAngleSlice bgColor={Theme.Color.Background} />
-          <div className="absolute-image">
-            <ImgMatch src="sailboat.png" />
-          </div>
-        </CurveAndAngle>
-      </BasicSection>
-
-      <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino} noPaddingTop>
-        <BasicInner>
-          <CenteredTitle
-            Title="Our Projects"
-            Class="headline"
-          />
+          <CenteredTitle Title="Our Projects" Class="headline" />
           <Projects>
-          {Array.from(Array(5), (e, i) => {
-            return (
-              <div className="project">
-                  <ImgMatch src="intro-smiles.jpg"/>
+            {Array.from(Array(5), (e, i) => {
+              return (
+                <div className="project">
+                  <ImgMatch src="intro-smiles.jpg" />
                   <div className="h6">Race Car</div>
                   <p>Competitive Racing</p>
                   <div className="tags">
-                      <div className="tag">Ages 5+</div>
-                      <div className="tag">Vehicle</div>
-                      <div className="tag">Mechanics</div>
+                    <div className="tag">Ages 5+</div>
+                    <div className="tag">Vehicle</div>
+                    <div className="tag">Mechanics</div>
                   </div>
-              </div>
-            )
-          })}
+                </div>
+              );
+            })}
           </Projects>
         </BasicInner>
       </BasicSection>
 
       <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino}>
         <BasicInner>
-          <CenteredTitle
-            Title="How We Party"
-            Class="headline"
-          />
+          <CenteredTitle Title="How We Party" Class="headline" />
           <Timeline>
             <div className="time">
-                15<span>min</span>
+              15<span>min</span>
             </div>
             <div className="h3">Before Party</div>
-            <p className="p-lg">A Play-Well instructor will arrive before the party is scheduled to start to set up.</p>
+            <p className="p-lg">
+              A Play-Well instructor will arrive before the party is scheduled
+              to start to set up.
+            </p>
           </Timeline>
         </BasicInner>
       </BasicSection>
 
-      <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino} BorderTop={Theme.Color.Nova}>
-          <BasicInner>
-              <Questions>
-                <div className="h3">FAQs for Parties</div>
-                <div className="container">
-                    {Array.from(Array(8), (e, i) => {
-                        return (
-                            <a className="h4" href="/">What is the process for booking a party?</a>
-                        )
-                    })}
-                </div>
-              </Questions>
-          </BasicInner>
-      </BasicSection>
+      {/*<BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+        BorderTop={Theme.Color.Nova}
+      >
+        <BasicInner>
+          <Questions>
+            <div className="h3">FAQs for Parties</div>
+            <div className="container">
+              {Array.from(Array(8), (e, i) => {
+                return (
+                  <a className="h4" href="/">
+                    What is the process for booking a party?
+                  </a>
+                );
+              })}
+            </div>
+          </Questions>
+        </BasicInner>
+      </BasicSection>*/}
 
-      <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino} noPaddingTop>
-          <BasicInner>
-              <PartyForm>
-                    <div className="centered">
-                        <div className="h3">Thank you for your interest in Play-Well parties!</div>
-                        <p className="p-lg">Please provide us with information about your preferred party date and location. We will let you know if we can do a party at your location on the date requested. To view pricing for your area, please choose your location.</p>
-                    </div>
-                    <form>
-                        {/*<input type="text" placeholder="First Name"/>
-                        <input type="text" placeholder="Last Name"/>
-                        <select></select>
-                        <input type="text" placeholder="City"/>
-                        <textarea placeholder="Comments, questions, etc."/>
-                        <input type="email" placeholder="Your email address"/>
-                        <input />
-                        <label>How did you hear about us?</label>
-                        <input type="radio">From a Play-Well Instuctor</input> */}
-                        <button type="submit">Submit Request</button>
-                    </form>
-                    <p className="centered p-lg">Once you've submitted your request, you should receive an email with more information in 1-2 minutes. If you don't see it in your inbox, please check your promotions or spam folder.</p>
-              </PartyForm>
-          </BasicInner>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+      >
+        <BasicInner>
+          <CenteredTitle
+            Title="Are you ready to plan a Party with Play-Well?"
+            Class="h3"
+            TextColor={Theme.Color.Dino}
+            MaxWidth="700px"
+            PaddingBottom="30px"
+          >
+            <Btn
+              Label="Request a Party"
+              BgColor={Theme.Color.Nova}
+              TextColor={Theme.Color.White}
+              Destination="/"
+            />
+          </CenteredTitle>
+        </BasicInner>
       </BasicSection>
-
     </Layout>
   );
 };
