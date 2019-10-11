@@ -28,7 +28,7 @@ export const LocationFilter = ({ courseData }) => {
       <ListingsFiltersStyle.Item>
         <span className="filter-inner">
           <span>{label}</span>
-          <Icon Name="carat" />
+          <Icon Name="carat" className="ico-carat" />
         </span>
         <ListingsFiltersStyle.FilterList className="list">
           <ul>

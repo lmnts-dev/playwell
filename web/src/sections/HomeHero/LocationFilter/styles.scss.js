@@ -54,14 +54,16 @@ ListingsFiltersStyle.Item = styled.button`
   flex: 1;
   cursor: pointer;
 
-  .ico {
-    color: ${Theme.Color.White};
-    fill: ${Theme.Color.White};
+  .ico-carat {
     position: relative;
     top: -2px;
     right: -4px;
-    transform: rotate(90deg);
+    transform: rotate(90deg) scale(0.5);
     transform-origin: center center;
+
+    polygon, svg, g {
+      fill: ${Theme.Color.White};
+    }
   }
 
   &:hover {

@@ -34,7 +34,7 @@ import { Theme, Root } from 'constants/Theme';
 
 // Props
 const ThemeProps = {
-  BgColor: Theme.Color.Ocean,
+  BgColor: Theme.Color.Background,
   PrimaryColor: Theme.Color.White,
   SecondaryColor: Theme.Color.Primary,
   TertiaryColor: Theme.Color.Nova,
