@@ -167,6 +167,9 @@ export const Typography = createGlobalStyle`
   }
   h6, .h6 {
     font-size: 1.5rem;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      font-size: 1.1rem;
+    }
   }
 
   .headline {
