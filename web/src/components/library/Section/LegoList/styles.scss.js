@@ -28,11 +28,8 @@ const LegoListStyles = styled.div`
 
   .item {
     text-align: center;
-    margin-right: calc(${Root.Size});
+    margin-right: 5%;
     flex: 1;
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      margin-right: calc(${Root.Size} / 2);
-    }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       margin-right: 0;
       margin-bottom: calc(${Root.Size} / 2);
@@ -47,12 +44,12 @@ const LegoListStyles = styled.div`
       width: 50%;
       height: auto;
       display: block;
-      margin-left: 30%;
-      margin-right: 20%;
-      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-        width: 70%;
-        margin-left: 20%;
-        margin-right: 10%;
+      margin: 0 auto;
+      padding-left: 10%;
+      max-width: calc(${Root.Size} * 3);
+      svg {
+        width: 100% !important;
+        height: auto !important
       }
     }
 

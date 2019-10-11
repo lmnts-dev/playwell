@@ -104,25 +104,37 @@ export const BasicInnerStyle = styled.div`
   margin: 0 auto;
   position: relative;
   max-width: ${Root.Site.Width};
-  padding: 0 calc(${Root.Grid.Gutter.Right});
+  padding: 0 220px;
 
-  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-    padding: 0 calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 0.25) 0
-      calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 0.25);
+  @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+    padding: 0 95px;
   }
 
-  @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
-    padding: 0 calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 1) 0
-      calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 1);
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    padding: 0 45px;
   }
 
-  ${props =>
-    props.wideWidth
-      ? `
-     padding: 0 calc(${Root.Grid.Gutter.Right}) !important;
-  };
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding: 0 25px;
+  }
+
+
+
+  ${props => props.wideWidth ? `
+    padding: 0 60px;
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      padding: 0 45px;
+    }
+  
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      padding: 0 30px;
+    }
+  
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      padding: 0 15px;
+    }
   `
-      : null};
+    : null};
   ${props => (props.noPaddingLeft ? 'padding-left: 0 !important;' : null)};
   ${props => (props.noPaddingRight ? 'padding-right: 0 !important;' : null)};
 `;

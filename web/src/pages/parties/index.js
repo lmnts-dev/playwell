@@ -95,6 +95,13 @@ const Projects = styled.div`
       margin-right: 5%;
       text-align: center;
       margin-top: calc(${Root.Size} / 1.5);
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 45%;
+      }
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        width: 80%;
+        margin: 0 auto !important;
+      }
 
       .h6, .tag {
           font-weight: 700;
@@ -111,21 +118,32 @@ const Projects = styled.div`
       .tags {
           display: flex;
           flex-direction: row;
+          flex-wrap: wrap;
           justify-content: center;
 
         .tag {
             font-size: 12px;
             color: ${Theme.Color.Nova};
             padding: 0 calc(${Root.Size} / 8);
+            white-space: nowrap;
         }
       }
 
       &:nth-of-type(3n) {
         margin-right: 0;
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            margin-right: 5%;
+        }
+      }
+
+      &:nth-of-type(2n) {
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            margin-right: 0;
+        }
       }
 
       &:last-of-type {
-        margin-right: 0;
+        margin-right: 0 !important;
       }
 
       .gatsby-image-wrapper {

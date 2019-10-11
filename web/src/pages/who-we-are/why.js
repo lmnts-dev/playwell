@@ -64,6 +64,11 @@ const ThemeProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+const OverflowHidden = styled.div`
+  width: 100vw;
+  overflow: hidden;
+`
+
 // Render Page
 const WhoWhyPage = () => {
   return (
@@ -138,22 +143,24 @@ const WhoWhyPage = () => {
         </BasicInner>
       </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Sunset}
-      >
-        <BasicInner wideWidth>
-          <GiantTextBlock
-            Number="04"
-            topText="Encourage the qualities of"
-            giantText="Inquisitiveness Self Reliance &amp; Self Confidence"
-            bottomText="in children &amp; in everybody."
-          />
-          <div className="absolute-image">
-            <ImgMatch src="gears.png" />
-          </div>
-        </BasicInner>
-      </BasicSection>
+      <OverflowHidden>
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Sunset}
+        >
+          <BasicInner wideWidth>
+            <GiantTextBlock
+              Number="04"
+              topText="Encourage the qualities of"
+              giantText="Inquisitiveness Self Reliance &amp; Self Confidence"
+              bottomText="in children &amp; in everybody."
+            />
+            <div className="absolute-image">
+              <ImgMatch src="gears.png" />
+            </div>
+          </BasicInner>
+        </BasicSection>
+      </OverflowHidden>
 
       <BasicSection BgColor={Theme.Color.Background} BorderMiddle>
         <Marquee

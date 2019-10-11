@@ -86,8 +86,12 @@ const TeamSection = styled.div`
   }
 
   .left {
-    padding-right: calc(${Root.Size});
+    padding-right: calc(${Root.Size} * 1.5);
     padding-top: calc(${Root.Size} * 1.5);
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      padding-top: ${Root.Size};
+    }
+
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       padding: 0;
     }
@@ -96,6 +100,10 @@ const TeamSection = styled.div`
       padding-bottom: calc(${Root.Size} / 4);
       white-space: nowrap;
     }
+  }
+
+  .left ~ div {
+    flex: 100;
   }
 `;
 
@@ -257,7 +265,7 @@ const WhoPage = ({ SliderSettings }) => {
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
       >
-        <BasicInner noPaddingLeft noPaddingRight>
+        <BasicInner wideWidth noPaddingLeft>
           <ImageWithTextCard
             Image="intro-smiles.jpg"
             Caption="Constant Improvement"

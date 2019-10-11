@@ -24,7 +24,14 @@ import hexToRGB from 'helpers/hexToRGB';
 
 const CenterSliderStyle = styled.div`
   .slick-slider {
-    padding: 0 calc(${Root.Size} * 2);
+    padding: 0 10%;
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      padding: 0 ${Root.Size};
+    }
+
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      padding: calc(${Root.Size} * 1.5) 0 0 0;
+    }
 
     .slick-arrow {
       position: absolute;
@@ -35,6 +42,9 @@ const CenterSliderStyle = styled.div`
       height: calc(${Root.Size} / 1.10);
       width: calc(${Root.Size} / 1.10);
       transition-duration: 0.5s;
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        top: calc(${Root.Size} / 4);
+      }
 
       &:hover {
         background-color: ${hexToRGB(Theme.Color.Eggplant, .1)};

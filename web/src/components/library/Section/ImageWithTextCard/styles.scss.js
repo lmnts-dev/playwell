@@ -15,7 +15,6 @@ export const ImageWithTextCardStyle = styled.div`
   position: relative;
   display: flex;
   flex-direction: row;
-  margin-right: calc(${Root.Grid.Gutter.Right});
   margin-bottom: calc(${Root.Size} * 1.25);
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     display: block;
