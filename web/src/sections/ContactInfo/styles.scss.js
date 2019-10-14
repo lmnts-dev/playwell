@@ -51,6 +51,7 @@ Container.Inner = styled.div`
 export const ArrowLink = styled(Link)`
   color: ${Theme.Color.Sunlight};
   font-size: 1.2rem;
+  line-height: 1.4;
   font-weight: 600;
 
   span {
@@ -84,7 +85,15 @@ export const ArrowLink = styled(Link)`
 `;
 
 export const Newsletter = styled(Box)`
-  padding-left: calc(${Root.Size});
+  margin-top: calc(${Root.Size} * 1);
+
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+    padding-left: calc(${Root.Size} * 1.5);
+    margin-top: 0;
+  }
+
+  @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+  }
 
   form {
     display: flex;
@@ -119,6 +128,19 @@ export const Newsletter = styled(Box)`
       cursor: pointer;
       flex-grow: 1;
     }
+  }
+`;
+
+export const Offices = styled(Box)``;
+
+export const Team = styled(Box)`
+  margin-top: calc(${Root.Size} * 1);
+
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+    margin-top: 0;
+  }
+
+  @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
   }
 `;
 

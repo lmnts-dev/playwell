@@ -55,7 +55,7 @@ const ContactHero = ({ pageContext }) => {
             </Box>
             <Box width={[1 / 2]} textAlign="right">
               <Hero.Faq>
-                <span>Frequently Asked Questions</span>
+                <span className="faq" />
                 <span className="arrow">
                   <Icon Name="carat" />
                 </span>

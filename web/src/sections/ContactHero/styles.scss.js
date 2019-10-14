@@ -19,12 +19,11 @@ import { Base } from 'constants/styles/Base';
 
 export const Hero = styled(Box)`
   margin: 0 auto;
-  max-width: 70vw;
+  width: 100%;
   position: relative;
-  padding-right: ${Root.Grid.Gutter.Right};
-  padding-left: ${Root.Grid.Gutter.Left};
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+    max-width: 70vw;
     padding-right: calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 0.25);
     padding-left: calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 0.25);
   }
@@ -52,6 +51,16 @@ Hero.Faq = styled(Link)`
   color: ${Theme.Color.Ocean};
   font-size: 1.2rem;
   font-weight: 600;
+
+  .faq {
+    &:before {
+      content: 'FAQ';
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        content: 'Frequently Asked Questions';
+      }
+    }
+  }
 
   .arrow {
     margin-left: calc(${Root.Size} / 6);
@@ -90,8 +99,8 @@ export const Decorator = styled(Box)`
 
     &--top {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
-      left: -130px;
-      width: 240px;
+      left: -120px;
+      width: 200px;
 
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         left: -190px;
@@ -105,9 +114,9 @@ export const Decorator = styled(Box)`
     }
 
     &--bottom {
-      top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 3.2);
-      left: -265px;
-      width: 300px;
+      top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 2.6);
+      left: -170px;
+      width: 200px;
 
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         left: -305px;
@@ -126,11 +135,12 @@ export const Decorator = styled(Box)`
     top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
 
     &--top {
-      top: 46vh;
-      right: -240px;
-      width: 300px;
+      top: 49vh;
+      right: -140px;
+      width: 180px;
 
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        top: 46vh;
         right: -280px;
         width: 340px;
       }
@@ -143,8 +153,8 @@ export const Decorator = styled(Box)`
 
     &--bottom {
       top: 60vh;
-      right: -100px;
-      width: 240px;
+      right: -140px;
+      width: 200px;
 
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         right: -160px;
