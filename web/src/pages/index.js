@@ -41,7 +41,7 @@ const ThemeProps = {
 };
 
 // Render Page
-const HomePage = ({ bgColor, textColor }) => (
+const HomePage = () => (
   <Layout {...ThemeProps}>
     <Main>
       <HomeHero slides={HeroSlides} />
