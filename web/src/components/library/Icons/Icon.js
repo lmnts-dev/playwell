@@ -14,6 +14,7 @@ import IconStyle from './styles.scss';
 // Icon Files
 import Carat from './SVG/Carat';
 import Gear from './SVG/Gear';
+import Pin from './SVG/Pin';
 import BasicLego from './SVG/BasicLego';
 import Intercom from './SVG/Intercom';
 import NextArrow from './SVG/NextArrow';
@@ -28,6 +29,12 @@ export const Icon = props => {
       return (
         <IconStyle className={'ico ' + props.className ? props.className : 'ico' }>
           <Carat />
+        </IconStyle>
+      );
+    case 'pin':
+      return (
+        <IconStyle className=" ico ico-pin">
+          <Pin />
         </IconStyle>
       );
     case 'gear':
