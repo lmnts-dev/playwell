@@ -31,6 +31,11 @@ export const ListingsFiltersStyle = styled.div`
   align-items: stretch;
   justify-content: space-between;
   /* border-bottom: 1px solid ${Theme.Color.Gray}; */
+  margin-left: calc(${Theme.Base.Size.Lg} / 4);
+
+  span {
+    text-align: left;
+  }
 
   ul {
     flex: 1;
@@ -66,9 +71,19 @@ ListingsFiltersStyle.Item = styled.button`
     }
   }
 
+  .ico-pin {
+    margin-right: calc(${Theme.Base.Size.Lg} / 8);
+  }
+
   &:hover {
     color: ${Theme.Color.Warmsky};
     background-color: ${Theme.Color.White};
+
+    .ico-pin {
+      svg, path, polygon, g {
+        fill: ${Theme.Color.Ocean};
+      }
+    }
 
     .list {
       transform: translate(0%, 0%);
@@ -86,12 +101,17 @@ ListingsFiltersStyle.Item = styled.button`
     display: flex;
     flex: 1;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     position: relative;
     top: 4px;
     width: 100%;
     text-align: center;
-    padding: 0 calc(${Root.Size} / 3);
+    padding: 0;
+    
+
+    span:nth-of-type(2){
+      flex: 50;
+    }
   }
 `;
 

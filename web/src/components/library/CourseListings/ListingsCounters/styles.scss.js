@@ -53,7 +53,7 @@ ListingsCountersStyle.Item = styled.button`
   text-align: center;
   display: flex;
   cursor: pointer;
-  margin-right: calc(${Root.Size} / 4);
+  margin-right: ${Base.Size.Sm / 4 + 'px'};
   background-color: ${props =>
     props.btnTheme.bgColor ? props.btnTheme.bgColor : Theme.Color.Blush};
   transition: all .25s ease;

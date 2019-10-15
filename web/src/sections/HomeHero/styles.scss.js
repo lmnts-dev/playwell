@@ -27,6 +27,101 @@ import {
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
+export const AbsoluteDecor = styled.div`
+position: absolute;
+width: 100%;
+height: 0 !important;
+padding-top: 100%;
+bottom: 0;
+left: 0;
+
+.decor-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  height: auto;
+
+  .ico {
+    width: 100%;
+    height: auto;
+  }
+
+  &.absolute-cloud-big {
+    width: 20%;
+    right: -6%;
+    left: auto;
+    bottom: 40%;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+
+    }
+  }
+
+  &.absolute-cloud-small {
+    width: 12%;
+    left: -2%;
+    bottom: 32%;
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      left: -5%;
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      bottom: 48%;
+    }
+  }
+
+  &.absolute-waterfall {
+    width: 35%;
+    left: auto;
+    right: 1%;
+    bottom: 6%;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+     // right: -1%;
+    }
+  }
+
+  &.absolute-volcano {
+    width: 22%;
+    left: 40%;
+  }
+
+  &.absolute-ladder {
+    width: 4%;
+    left: auto;
+    right: 10.5%;
+    bottom: 31%;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+
+    }
+  }
+
+  &.absolute-legos {
+    width: 13%;
+    left: 61%;
+    bottom: -2%;
+  }
+
+  &.absolute-lego {
+    width: 6%;
+    left: 58%;
+    bottom: 19%;
+  }
+
+  &.absolute-gears {
+    width: 30%;
+    left: auto;
+    right: -1%;
+    transform: scaleX(-1);
+  }
+
+  &.absolute-lego-ladder {
+    width: 38%;
+    left: 32%;
+    bottom: -17%;
+    transform: scaleX(-1);
+  }
+}
+`;
+
 export const Item = styled.div`
   background-color: ${props => props.BgColor ? props.BgColor : Theme.Color.White };
   color: ${props => props.TextColor ? props.TextColor : Theme.Color.White };
@@ -42,12 +137,32 @@ export const Item = styled.div`
     bottom: 0;
   }
 
+  .bg-image {
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: ${Theme.Color.Eggplant};
+      opacity: 0.3;
+      z-index: 2;
+    }
+  }
+
   .text {
     width: calc(${Theme.Base.Size.Lg} * 11);
     pointer-events: none;
     padding-bottom: 30vw;
+    position: relative;
+    z-index: 10;
     @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
       padding-bottom: 485px; //which is 30vw at sitewidth
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      width: calc(${Theme.Base.Size.Lg} * 8);
+      margin-left: calc(${Theme.Base.Size.Lg} * 1);
     }
 
     .h6 {
@@ -61,10 +176,6 @@ export const Item = styled.div`
 
     a, button, .btn {
       pointer-events: all;
-    }
-
-    .btn-inner {
-      margin-top: calc(${Theme.Base.Size.Lg} / 2);
     }
   }
 
@@ -143,6 +254,9 @@ export const HeroContainer = styled.div`
         @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
           left: calc(calc(${Theme.Base.Size.Lg} * 11) + 100px);
         }
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          left: calc(calc(${Theme.Base.Size.Lg} * 8) + 100px);
+        }
 
         &:before {
           left: calc(${Theme.Base.Size.Lg} / 4.5);
@@ -173,16 +287,23 @@ export const HeroContainer = styled.div`
 export const Actions = styled(Flex)`
   position: relative;
   padding-top: calc(${Theme.Base.Size.Lg} / 2);
+  
+
+  .hero-btn {
+    margin-top: 0;
+  }
 
   a {
     text-decoration: none;
+
     &:hover {
-      text-decoration: none;
+      text-decoration: none !important;
     }
   }
 `;
 
 export const HeroBtn = styled.button`
+  margin-top: calc(${Theme.Base.Size.Lg} / 2);
   background-color: ${props =>
     props.bgColor ? props.bgColor : Theme.Color.Nova};
   border: 0;
