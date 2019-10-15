@@ -18,10 +18,6 @@ import { Base } from 'constants/styles/Base';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Main = styled.main`
-  overflow: hidden;
-`;
-
 export const Decorator = styled(Box)`
   position: relative;
 

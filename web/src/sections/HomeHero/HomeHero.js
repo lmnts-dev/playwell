@@ -52,6 +52,8 @@ const HeroProps = {
   withMask: true,
   fullWidth: true,
   className: "hero-slider",
+  curveBg: Theme.Color.Deepsea,
+  sliceBg: Theme.Color.Background,
 };
 
 const settings = {

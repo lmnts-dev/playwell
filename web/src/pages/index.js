@@ -6,6 +6,7 @@
 
 // Core
 import React from 'react';
+import styled from 'styled-components';
 
 // Components
 import Layout from 'components/core/Layout';
@@ -24,7 +25,7 @@ import HomeBetterFuture from 'sections/HomeBetterFuture';
 import LocationPlayZone from 'sections/LocationPlayZone';
 
 // Styles
-import { Decorator, Main } from './styles.scss';
+import { Decorator } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -41,7 +42,7 @@ const ThemeProps = {
 };
 
 // Render Page
-const HomePage = ({ bgColor, textColor }) => (
+const HomePage = () => (
   <Layout {...ThemeProps}>
     <Main>
       <HomeHero slides={HeroSlides} />
@@ -63,6 +64,12 @@ const HomePage = ({ bgColor, textColor }) => (
     </Main>
   </Layout>
 );
+
+
+// Styles
+const Main = styled.main`
+  overflow: hidden;
+`;
 
 // Data
 const HeroSlides = [
