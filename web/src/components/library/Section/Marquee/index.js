@@ -38,7 +38,7 @@ class MarqueeSlider extends React.Component {
     const settings = {
       speed: 5000,
       autoplay: true,
-      autoplaySpeed: 5000,
+      autoplaySpeed: 0,
       centerMode: true,
       cssEase: 'linear',
       slidesToShow: 5,
