@@ -11,11 +11,14 @@ import ImgMatch from 'components/core/ImgMatch';
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import HeroContainer from 'components/library/Hero/HeroContainer';
-import Btn from 'components/library/Btn';
+import { ContactManager } from 'components/library/ContactManager';
 import { Icon } from 'components/library/Icons';
 
 // Styles
 import { Hero, Decorator } from './styles.scss';
+
+// Data
+import { DataFetch } from 'hooks/DataFetch';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -31,6 +34,12 @@ const HeroProps = {
 };
 
 const ContactHero = ({ pageContext }) => {
+  // Use our hook's data as source
+  const fetchedData = DataFetch();
+
+  // For debugging only.
+  // console.log(fetchedData);
+
   return (
     <>
       <Decorator>
@@ -66,6 +75,17 @@ const ContactHero = ({ pageContext }) => {
             If you have specific qustions about Play-Well programs in your
             geographic area, please contact the manager for your area below.
           </Text>
+
+          <ContactManager
+            stateId={''}
+            countyId={''}
+            costCodeId={''}
+            pageContext={false}
+            courseData={fetchedData}
+            geoData={fetchedData.allPlayWellStates}
+            mapWidth={Theme.mapWidth}
+            mapZedIndex={Theme.mapZedIndex}
+          />
         </Hero>
       </HeroContainer>
     </>

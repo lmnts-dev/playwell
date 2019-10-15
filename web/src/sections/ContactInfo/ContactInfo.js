@@ -51,19 +51,19 @@ const ContactInfo = ({ pageContext }) => {
           </ArrowLink>
           <Flex mt={1}>
             <Box width={1 / 3}>
-              <Text className="p-lg" fontWeight={500}>
+              <Text className="p-lg">
                 Phone
               </Text>
               <p className="p-sm">415.578.2746</p>
             </Box>
             <Box width={1 / 3}>
-              <Text className="p-lg" fontWeight={500}>
+              <Text className="p-lg">
                 Fax
               </Text>
               <p className="p-sm">415.5460.5108</p>
             </Box>
             <Box width={1 / 3}>
-              <Text className="p-lg" fontWeight={500}>
+              <Text className="p-lg">
                 FEIN #
               </Text>
               <p className="p-sm">68-0415940</p>

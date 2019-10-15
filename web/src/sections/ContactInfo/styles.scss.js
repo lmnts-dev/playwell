@@ -142,6 +142,10 @@ export const Team = styled(Box)`
 
   @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
   }
+
+  .p-lg {
+    font-weight: 500;
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////
