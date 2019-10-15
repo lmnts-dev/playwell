@@ -6,13 +6,13 @@
 
 // Core
 import React from 'react';
-import ImgMatch from 'components/core/ImgMatch';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import HeroContainer from 'components/library/Hero/HeroContainer';
 import { Icon } from 'components/library/Icons';
 import { ContactManager } from 'components/library/ContactManager';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Styles
 import { Hero, Decorator } from './styles.scss';

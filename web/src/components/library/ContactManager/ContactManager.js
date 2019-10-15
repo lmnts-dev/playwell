@@ -16,11 +16,14 @@ import {
   CourseHeroStyle,
   SearchBarStyle,
   CourseHeroContentStyle,
+  Article,
 } from './styles.scss';
 
 // Components
 import { Box, Flex } from 'components/library/Elements';
 import { Icon } from 'components/library/Icons';
+import Accordion from 'components/library/Accordion';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Helpers
 import slugify from 'helpers/slugify';
@@ -117,32 +120,21 @@ class SearchBar extends PureComponent {
     const searchSafeQuery = this.state.query.toLowerCase();
 
     // Create our Results array
-    const results = this.props.states.edges.filter(location => {
+    const results = this.props.managers.edges.filter(managers => {
       // Clean our Location's name
-      const searchSafeName = location.node.name.toLowerCase();
+      const searchSafeName = managers.node.state.toLowerCase();
+      // const stateId = location.node.playwell_state_id.toLowerCase();
 
       /*
       // Return our filtered results
       */
 
       if (searchSafeName.includes(searchSafeQuery)) {
-        return location;
+        return managers;
       }
-      
 
-      // For Debugging only.
-      // console.log('searchSafeCounties:');
-      // console.log(searchSafeCounties);
-
-      // console.log(isCostCodeMatch.length > 0 ? true : false);
-      // console.log(isCostCodeMatch);
-
-      // console.log('isCountyMatch:');
-      // console.log(isCountyMatch);
-
-      console.log('searchSafeName: ' + searchSafeName);
-      console.log('searchSafeQuery: ' + searchSafeQuery);
-      console.log('filteredManagers:');
+      // console.log('searchSafeName: ' + searchSafeName);
+      // console.log('searchSafeQuery: ' + searchSafeQuery);
     });
 
     // For Debugging only.
@@ -170,20 +162,77 @@ class SearchBar extends PureComponent {
           </div>
         </div>
 
-        {/* {this.state.resultsActive == true ? (
+        {this.state.resultsActive == true ? (
           <SearchBarResults
             className="search-results-wrapper"
             results={results}
-            searchSafeQuery={searchSafeQuery}
-            queryActive={this.state.queryActive}
           />
         ) : (
           false
-        )} */}
+        )}
       </SearchBarStyle>
     );
   }
 }
+
+// Our Search Bar Results
+const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
+  return (
+    <>
+      {/* Map all availabe locations */}
+      {results.length > 0 ? (
+        results.map((result, idx) => {
+          return (
+            <Accordion key={result.node.id} title={result.node.cost_code_name}>
+              <Article>
+                <Article.Figure>
+                  <ImgMatch
+                    src="avatar-yoda.jpg"
+                    AltText="PlayWell program state coordinator"
+                  />
+                </Article.Figure>
+                <Article.Info>
+                  <Flex flexWrap="wrap">
+                    <Article.Info.Details>
+                      {result.node.state} <span>{result.node.cost_code}</span>
+                    </Article.Info.Details>
+                    <Article.Info.Name fontSize="1.6rem">
+                      {result.node.manager}
+                    </Article.Info.Name>
+                    <Article.Info.Contact>
+                      <span>
+                        <a href={'mailto:' + result.node.email}>
+                          {result.node.email}
+                        </a>
+                      </span>
+                      <span>
+                        <a href={'tel:' + result.node.cell_number}>
+                          {result.node.cell_number}
+                        </a>
+                      </span>
+                      <span>
+                        <a href="/">More</a>
+                      </span>
+                    </Article.Info.Contact>
+                  </Flex>
+                </Article.Info>
+              </Article>
+            </Accordion>
+          );
+        })
+      ) : (
+        <li>
+          <div className="results-row">
+            <div className="no-results">
+              <Icon Name="sad-cry" fas />
+              <span className="label">No results found.</span>
+            </div>
+          </div>
+        </li>
+      )}
+    </>
+  );
+};
 
 // Simple Course Hero Display Component
 const CourseHeroContent = ({ states, managers }) => {
