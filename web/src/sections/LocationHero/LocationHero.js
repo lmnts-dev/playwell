@@ -15,7 +15,7 @@ import Btn from 'components/library/Btn';
 
 // Styles
 import { Hero } from './styles.scss';
-import { Decorator } from '../../pages/location-detail/styles.scss';
+import { Decorator } from '../../templates/Location/styles.scss';
 
 // Helpers
 import slugify from 'helpers/slugify';
