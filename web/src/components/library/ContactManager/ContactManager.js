@@ -17,13 +17,15 @@ import { Icon } from 'components/library/Icons';
 import { Box, Flex } from 'components/library/Elements';
 import { ClientCard } from './ClientCard';
 import { CourseHero } from './CourseHero';
+import ImgMatch from 'components/core/ImgMatch';
+import Accordion from 'components/library/Accordion';
 
 // Helpers
 import slugify from 'helpers/slugify';
 import locationMatch from 'helpers/LocationMatch';
 
 // Styles
-import { CourseListingsStyle, ListingsResultsStyle } from './styles.scss';
+import { CourseListingsStyle, ListingsResultsStyle, Article } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -188,10 +190,10 @@ class ListingsResults extends PureComponent {
     /**
      * For Debugging Purposes Only:
      * */
-    console.log('pageContext:');
-    console.log(pageContext);
-    console.log('filteredCourseDataByToggle():');
-    console.log(filteredCourseDataByToggle());
+    // console.log('pageContext:');
+    // console.log(pageContext);
+    // console.log('filteredCourseDataByToggle():');
+    // console.log(filteredCourseDataByToggle());
 
     return (
       <FilteredResults
@@ -213,6 +215,51 @@ const ListingsWrapper = ({ courseData, children }) => {
   );
 };
 
+// The wrapper around our listings.
+const ManagerListings = ({ pageContext }) => {
+  return (
+    <Box width={[1, 1, 1 / 2, 6 / 10]}>
+      {pageContext.managers.map(manager => (
+        <Accordion key={manager.node.id} title={manager.node.cost_code_name}>
+          <Article>
+            <Article.Figure>
+              <ImgMatch
+                src="avatar-yoda.jpg"
+                AltText="PlayWell program state coordinator"
+              />
+            </Article.Figure>
+            <Article.Info>
+              <Flex flexWrap="wrap">
+                <Article.Info.Details>
+                  {manager.node.state} <span>{manager.node.cost_code}</span>
+                </Article.Info.Details>
+                <Article.Info.Name fontSize="1.6rem">
+                  {manager.node.manager}
+                </Article.Info.Name>
+                <Article.Info.Contact>
+                  <span>
+                    <a href={'mailto:' + manager.node.email}>
+                      {manager.node.email}
+                    </a>
+                  </span>
+                  <span>
+                    <a href={'tel:' + manager.node.cell_number}>
+                      {manager.node.cell_number}
+                    </a>
+                  </span>
+                  <span>
+                    <a href="/">More</a>
+                  </span>
+                </Article.Info.Contact>
+              </Flex>
+            </Article.Info>
+          </Article>
+        </Accordion>
+      ))}
+    </Box>
+  );
+};
+
 // The page itself.
 export const ContactManager = ({
   courseData,
@@ -227,9 +274,11 @@ export const ContactManager = ({
   /**
    *  For Debugging Purposes Only:
    * */
-  console.log('stateId: ' + stateId);
-  console.log('countyId: ' + countyId);
-  console.log('costCodeId: ' + costCodeId);
+  // console.log('stateId: ' + stateId);
+  // console.log('countyId: ' + countyId);
+  // console.log('costCodeId: ' + costCodeId);
+
+  // console.log(pageContext);
 
   return (
     <>
@@ -246,13 +295,7 @@ export const ContactManager = ({
         pageContext={pageContext}
       />
       <ListingsWrapper>
-        <ListingsResults
-          courseData={courseData}
-          stateId={stateId}
-          countyId={countyId}
-          costCodeId={costCodeId}
-          pageContext={pageContext}
-        />
+        <ManagerListings pageContext={pageContext} />
       </ListingsWrapper>
     </>
   );

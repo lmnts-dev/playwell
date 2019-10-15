@@ -33,13 +33,7 @@ const HeroProps = {
   textAlign: 'left',
 };
 
-const ContactHero = ({ pageContext }) => {
-  // Use our hook's data as source
-  const fetchedData = DataFetch();
-
-  // For debugging only.
-  // console.log(fetchedData);
-
+const ContactHero = ({ pageContext, fetchedData }) => {
   return (
     <>
       <Decorator>
@@ -75,12 +69,12 @@ const ContactHero = ({ pageContext }) => {
             If you have specific qustions about Play-Well programs in your
             geographic area, please contact the manager for your area below.
           </Text>
-
+        
           <ContactManager
             stateId={''}
             countyId={''}
             costCodeId={''}
-            pageContext={false}
+            pageContext={pageContext}
             courseData={fetchedData}
             geoData={fetchedData.allPlayWellStates}
             mapWidth={Theme.mapWidth}
