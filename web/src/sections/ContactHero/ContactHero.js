@@ -69,17 +69,6 @@ const ContactHero = ({ pageContext, fetchedData }) => {
             If you have specific qustions about Play-Well programs in your
             geographic area, please contact the manager for your area below.
           </Text>
-        
-          <ContactManager
-            stateId={''}
-            countyId={''}
-            costCodeId={''}
-            pageContext={pageContext}
-            courseData={fetchedData}
-            geoData={fetchedData.allPlayWellStates}
-            mapWidth={Theme.mapWidth}
-            mapZedIndex={Theme.mapZedIndex}
-          />
         </Hero>
       </HeroContainer>
     </>
