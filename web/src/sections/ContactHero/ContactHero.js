@@ -11,8 +11,8 @@ import ImgMatch from 'components/core/ImgMatch';
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import HeroContainer from 'components/library/Hero/HeroContainer';
-import { ContactManager } from 'components/library/ContactManager';
 import { Icon } from 'components/library/Icons';
+import { ContactManager } from 'components/library/ContactManager';
 
 // Styles
 import { Hero, Decorator } from './styles.scss';
@@ -33,7 +33,7 @@ const HeroProps = {
   textAlign: 'left',
 };
 
-const ContactHero = ({ pageContext, fetchedData }) => {
+const ContactHero = ({ managers, states }) => {
   return (
     <>
       <Decorator>
@@ -70,6 +70,7 @@ const ContactHero = ({ pageContext, fetchedData }) => {
             geographic area, please contact the manager for your area below.
           </Text>
         </Hero>
+        <ContactManager states={states} managers={managers} />
       </HeroContainer>
     </>
   );
@@ -79,3 +80,21 @@ export default ContactHero;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
+
+// Constant, library
+var libraries = [
+  { name: 'Backbone.js', url: 'https://documentcloud.github.io/backbone/' },
+  { name: 'AngularJS', url: 'https://angularjs.org/' },
+  { name: 'jQuery', url: 'https://jquery.com/' },
+  { name: 'Prototype', url: 'http://www.prototypejs.org/' },
+  { name: 'React', url: 'https://facebook.github.io/react/' },
+  { name: 'Ember', url: 'http://emberjs.com/' },
+  { name: 'Knockout.js', url: 'https://knockoutjs.com/' },
+  { name: 'Dojo', url: 'http://dojotoolkit.org/' },
+  { name: 'Mootools', url: 'http://mootools.net/' },
+  { name: 'Underscore', url: 'https://documentcloud.github.io/underscore/' },
+  { name: 'Lodash', url: 'http://lodash.com/' },
+  { name: 'Moment', url: 'https://momentjs.com/' },
+  { name: 'Express', url: 'http://expressjs.com/' },
+  { name: 'Koa', url: 'http://koajs.com/' },
+];

@@ -40,11 +40,13 @@ const ContactPage = ({ pageContext }) => {
 
   // For debugging only.
   console.log(fetchedData);
+  // console.log('pageContext:');
+  // console.log(pageContext);
 
   return (
     <Layout {...ThemeProps}>
       <Main>
-        <ContactHero fetchedData={fetchedData} pageContext={false} />
+        <ContactHero states={fetchedData.allPlayWellStates} managers={fetchedData.allPlayWellManagers} />
         <ContactInfo />
       </Main>
     </Layout>
