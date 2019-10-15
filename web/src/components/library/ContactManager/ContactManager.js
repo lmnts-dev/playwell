@@ -188,10 +188,10 @@ class ListingsResults extends PureComponent {
     /**
      * For Debugging Purposes Only:
      * */
-    // console.log('pageContext:');
-    // console.log(pageContext);
-    // console.log('filteredCourseDataByToggle():');
-    // console.log(filteredCourseDataByToggle());
+    console.log('pageContext:');
+    console.log(pageContext);
+    console.log('filteredCourseDataByToggle():');
+    console.log(filteredCourseDataByToggle());
 
     return (
       <FilteredResults

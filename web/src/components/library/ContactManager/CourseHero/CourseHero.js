@@ -216,12 +216,12 @@ class SearchBar extends PureComponent {
           }
         >
           <div className="inner">
-            {/* <Icon Name="map-marker-alt" fas /> */}
+            <Icon Name="search" fas />
             <input
-              placeholder="Or search by another location..."
+              placeholder="Enter State..."
               onChange={this.handleInputChange}
             />
-            <Icon Name="search" fas />
+            {/* <Icon Name="search" fas /> */}
           </div>
         </div>
 
@@ -239,7 +239,7 @@ class SearchBar extends PureComponent {
     );
   }
 }
-
+ 
 // Our Search Bar Results
 const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
   return (
@@ -249,7 +249,7 @@ const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
         {results.length > 0 ? (
           results.map((result, idx) => {
             // Build our slugified strings for pretty URLs.
-            const rootSlug = '/programs/';
+            const rootSlug = '/contact/';
             const stateSlug = slugify(result.node.name);
             const slugString = rootSlug + stateSlug + '/';
 
