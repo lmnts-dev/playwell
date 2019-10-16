@@ -29,6 +29,16 @@ export const SplitHeroStyle = styled.div`
   max-height: calc(${Theme.Base.Size.Lg} * 18);
   padding-top: calc(${Theme.Base.Size.Lg} * 1.5);
   position: relative;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: block;
+    padding-right: calc(${Theme.Base.Size.Lg} * .75);
+    height: auto;
+    min-height: 0;
+    max-height: none;
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding-right: calc(${Theme.Base.Size.Lg} / 2);
+  }
 
   .text {
     flex: 3;
@@ -38,6 +48,12 @@ export const SplitHeroStyle = styled.div`
     margin-right: calc(${Theme.Base.Size.Lg} * 1.5);
     position: relative;
     z-index: 2;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      margin-right: calc(${Theme.Base.Size.Lg} * .75);
+    }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      margin-right: 0;
+    }
   }
   .arrow, .flex-spacer {
     flex-grow: 20;
@@ -45,13 +61,18 @@ export const SplitHeroStyle = styled.div`
 
   .arrow {
     position: relative;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      height: calc(${Theme.Base.Size.Lg} * 1.5);
+      margin-bottom: calc(${Theme.Base.Size.Lg} / 3);
+    }
 
     &:after {
       content: "\\2023";
       position: absolute;
       bottom: 0;
       left: 0;
-      transform: rotate(90deg) translate(5px, -4px);
+      transform: rotate(90deg) translateY(18%);
+      transform-origin: 0% 100%;
       color: ${Theme.Color.Nova};
       font-size: 30px;
     }
@@ -75,6 +96,16 @@ export const SplitHeroStyle = styled.div`
   .imagery {
     flex: 2;
     margin-right: ${Theme.Base.Size.Lg};
+    position: relative;
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      margin-right: calc(${Theme.Base.Size.Lg} * .75);
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      height: calc(${Theme.Base.Size.Lg} * 6);
+    }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      margin-right: 0;
+    }
 
     .gatsby-image-wrapper {
       width: 100%;
@@ -90,10 +121,20 @@ export const SplitHeroStyle = styled.div`
     width: 100%;
     justify-content: space-between;
     margin-top: 10%;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      margin: calc(${Theme.Base.Size.Lg} / 4) 0;
+    }
 
     a {
       font-weight: 700;
       color: ${Theme.Color.Nova};
+      text-transform: capitalize;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        font-size: 1.5rem;
+      }
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        font-size: 1.2rem;
+      }
     }
   }
 `;
