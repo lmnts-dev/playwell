@@ -9,6 +9,7 @@ import styled from 'styled-components';
 // Constants
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
+import CurveAndAngle from 'components/library/Section/CurveAndAngle';
 
 // Keyframes
 import { FadeIn, FadeOut } from 'components/core/Transition/Keyframes';
@@ -19,68 +20,64 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-let footerHeight = '80vh';
-let footerMinHeight = '800px';
+export const CurveAndAngleWithPadding = styled(CurveAndAngle)`
+  &.curve-and-angle {
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    //  padding-bottom: calc(${Theme.Base.Size.Lg});
+
+      .footer-curve-slice {
+     //   margin-bottom: calc(${Theme.Base.Size.Lg});
+      }
+    }
+  }
+`;
 
 export const FooterStyle = styled.footer`
   width: 100%;
-  position: relative;
-  height: ${footerHeight};
+  position: absolute;
+  bottom: 0;
+  left: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  z-index: 20;
-
-  .footer-curve-slice,
-  .footer-angle-slice {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: ${footerHeight};
-    min-height: ${footerMinHeight};
-    z-index: -1;
-  }
+  z-index: 3;
 
   .footer-curve-slice {
-    opacity: 0.05;
+    //TODO create prop for a transparent curve
+    //opacity: 0.05;
   }
 
-  .inner {
-    max-width: ${Root.Site.Width};
+  .basic-inner {
     width: 100%;
-    margin: 0 auto;
-    padding-left: ${Root.Grid.Gutter.Left};
-    padding-right: ${Root.Grid.Gutter.Right};
-    position: relative;
-    display: flex;
+
+    .brandmark-container {
+      width: calc(${Root.Size} * 2.7);
+      height: calc(${Root.Size} * 2.7);
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        width: calc(${Theme.Base.Size.Lg} * 2);
+        height: calc(${Theme.Base.Size.Lg} * 2);
+        margin-bottom: calc(${Root.Size} / 2);
+      }
+
+      a, svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
 
     .content {
       display: flex;
-      width: 50%;
-      justify-content: space-between;
+      flex-direction: row;
       align-items: flex-end;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        width: 100%;
+      margin-left: calc(${Root.Size} * 2.7);
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        margin-left: 0;
       }
 
       .col {
-        padding: calc(${Root.Size} * 2) calc(${Root.Size} / 4);
-
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          &:first-of-type {
-            position: absolute;
-            bottom: 100%;
-            left: 0;
-            width: calc(${Theme.Base.Size.Lg} * 3);
-          }
-        }
-
-        .brandmark {
-          width: calc(${Root.Size} * 2.7);
-          height: calc(${Root.Size} * 2.7);
-          margin-bottom: calc(${Root.Size} * 4);
+        padding: 0 calc(${Root.Size}) calc(${Root.Size} * 2) calc(${Root.Size} / 4);
+        
+        @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+          padding-right: calc(${Root.Size} / 2);
+          padding-bottom: calc(${Root.Size} * 1.5);
         }
 
         ul {
@@ -133,6 +130,25 @@ export const FooterStyle = styled.footer`
                 padding: calc(${Root.Size} / 8);
                 background-color: none;
                 border-radius: 50%;
+                @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+                  padding: calc(${Root.Size} / 12);
+                }
+                @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+                  display: none; //TODO show this, but this font awesome thing is driving me insane
+                  .ico {
+                    width: calc(${Theme.Base.Size.Lg} / 2) !important;
+                    height: calc(${Theme.Base.Size.Lg} / 2) !important;
+                    * {
+                      width: 100%;
+                      height: 100%;
+                    }
+                    .fas::before {
+                      width: calc(${Theme.Base.Size.Lg} / 2) !important;
+                      height: calc(${Theme.Base.Size.Lg} / 2) !important;
+                    }
+
+                  }
+                }
 
                 &:before {
                   display: none;
@@ -146,7 +162,7 @@ export const FooterStyle = styled.footer`
 
               &:last-of-type {
                 a {
-                  padding-bottom: 0;
+                  padding-bottom: 0 !important;
                 }
               }
             }
