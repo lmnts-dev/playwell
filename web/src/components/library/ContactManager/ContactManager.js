@@ -10,6 +10,7 @@ import { Link } from 'gatsby';
 
 // Helpers
 import _ from 'lodash';
+import locationMatch from 'helpers/LocationMatch';
 
 // Styles
 import {
@@ -55,7 +56,7 @@ class SearchBar extends PureComponent {
   // Mounted state
   componentDidMount() {
     // Listen for click events to show/hide results
-    document.addEventListener('mousedown', this.handleSearchResultsToggle);
+    document.addEventListener('keypress', this.handleSearchResultsToggle);
 
     // Assign State
     this.state = {
@@ -68,7 +69,7 @@ class SearchBar extends PureComponent {
   // Unmounted state
   componentWillUnmount() {
     // Remove listener for click events to show/hide results
-    document.removeEventListener('mousedown', this.handleSearchResultsToggle);
+    document.removeEventListener('keypress', this.handleSearchResultsToggle);
 
     // De-assign State
     this.state = {
@@ -101,7 +102,7 @@ class SearchBar extends PureComponent {
       });
     }
 
-    document.addEventListener('mousedown', this.handleSearchResultsToggle);
+    document.addEventListener('keypress', this.handleSearchResultsToggle);
   }
 
   // Handle our query updates
@@ -127,80 +128,83 @@ class SearchBar extends PureComponent {
     const stateEdges = this.props.data.allPlayWellStates.edges;
 
     // Create our Results array
-    const results = managerEdges.filter(managers => {
+    const results = stateEdges.filter(location => {
       // Clean our Location's name
-      const searchSafeName = managers.node.state.toLowerCase();
+      const searchSafeName = location.node.name.toLowerCase();
 
-      // /*
-      // // Clean our county names, make them iterable. and
-      // // return true if it is inside of the new array
-      // */
+      /*
+      // Clean our county names, make them iterable. and
+      // return true if it is inside of the new array
+      */
 
-      // // Create empty array
-      // const searchSafeCounties = [];
+      // Create empty array
+      const searchSafeCounties = [];
 
-      // // Iterate through Counties and add to said array
-      // const cleanCountyNames = () => {
-      //   //  Convert each county name to lowercase
-      //   stateEdges.forEach((state, idx) => {
-      //     searchSafeCounties.push(state.node.counties.name.toLowerCase());
-      //   });
-      // };
+      // Iterate through Counties and add to said array
+      const cleanCountyNames = () => {
+        //  Convert each county name to lowercase
+        location.node.counties.forEach((county, idx) => {
+          searchSafeCounties.push(county.name.toLowerCase());
+        });
+      };
 
-      // const cleanCountyNames = () => {
-      //   //  Convert each county name to lowercase
-      //   stateEdges.node.counties.forEach((county, idx) => {
-      //     searchSafeCounties.push(county.name.toLowerCase());
-      //   });
-      // };
+      // Run above function synchronously
+      cleanCountyNames();
 
-      // // Run above function synchronously
-      // cleanCountyNames();
+      // Iterate through cleaned array with clean query and return truthy
+      // or falsy if it exists
+      const isCountyMatch = searchSafeCounties.filter(county => {
+        if (county.includes(searchSafeQuery)) {
+          return true;
+        }
+      });
 
-      // // Iterate through cleaned array with clean query and return truthy
-      // // or falsy if it exists
-      // const isCountyMatch = searchSafeCounties.filter(county => {
-      //   if (county.includes(searchSafeQuery)) {
-      //     return true;
-      //   }
-      // });
+      /*
+      // Clean our Cost Code Names, make them iterable. and
+      // return true if it is inside of the new array
+      */
 
-      // /*
-      // // Clean our Cost Code Names, make them iterable. and
-      // // return true if it is inside of the new array
-      // */
+      // Create empty array
+      const searchSafeCostCodes = [];
 
-      // // Create empty array
-      // const searchSafeCostCodes = [];
+      // Iterate through Counties and add to said array
+      const cleanCostCodes = () => {
+        //  Convert each county name to lowercase
+        location.node.counties.forEach((county, idx) => {
+          searchSafeCostCodes.push(county.cost_code_name.toLowerCase());
+        });
+      };
 
-      // // Iterate through Counties and add to said array
-      // const cleanCostCodes = () => {
-      //   //  Convert each county name to lowercase
-      //   stateEdges.forEach((state, idx) => {
-      //     searchSafeCostCodes.push(
-      //       state.node.counties.cost_code_name.toLowerCase()
-      //     );
-      //   });
-      // };
+      // Run above function synchronously
+      cleanCostCodes();
 
-      // // Run above function synchronously
-      // cleanCostCodes();
-
-      // // Iterate through cleaned array with clean query and return truthy
-      // // or falsy if it exists
-      // const isCostCodeMatch = searchSafeCostCodes.filter(costCode => {
-      //   if (costCode.includes(searchSafeQuery)) {
-      //     return true;
-      //   }
-      // });
+      // Iterate through cleaned array with clean query and return truthy
+      // or falsy if it exists
+      const isCostCodeMatch = searchSafeCostCodes.filter(costCode => {
+        if (costCode.includes(searchSafeQuery)) {
+          return true;
+        }
+      });
 
       /*
       // Return our filtered results
       */
 
       if (searchSafeName.includes(searchSafeQuery)) {
-        return managers;
+        return location;
+      } else if (isCountyMatch.length > 0 || isCostCodeMatch.length) {
+        return location;
       }
+
+      // For Debugging only.
+      // console.log('searchSafeCounties:');
+      // console.log(searchSafeCounties);
+
+      // console.log(isCostCodeMatch.length > 0 ? true : false);
+      // console.log(isCostCodeMatch);
+
+      // console.log('isCountyMatch:');
+      // console.log(isCountyMatch);
 
       // console.log('searchSafeName: ' + searchSafeName);
       // console.log('searchSafeQuery: ' + searchSafeQuery);
@@ -235,6 +239,7 @@ class SearchBar extends PureComponent {
           <SearchBarResults
             className="search-results-wrapper"
             results={results}
+            managerEdges={managerEdges}
           />
         ) : (
           false
@@ -245,57 +250,68 @@ class SearchBar extends PureComponent {
 }
 
 // Our Search Bar Results
-const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
+const SearchBarResults = ({ results, managerEdges }) => {
   return (
     <>
       {/* Map all availabe locations */}
       {results.length > 0 ? (
         results.map((result, idx) => {
+          let locationMetaResults = locationMatch(
+            managerEdges,
+            result.node.playwell_state_id,
+          );
+
+          // const manager = locationMetaResults.state
+
+          console.log('manager:');
+          console.log(result.node.playwell_state_id);
+
           return (
-            <Accordion
-              key={result.node.id}
-              title={result.node.cost_code_name}
-              chevronColor={Theme.Color.White}
-              color={hexToRGB(Theme.Color.White, 0.7)}
-              colorActive={Theme.Color.Whtie}
-              borderColor={Theme.Color.Galaxy}
-            >
-              <Box pl={40}>
-                <Article>
-                  <Article.Figure>
-                    <ImgMatch
-                      src="avatar-yoda.jpg"
-                      AltText="PlayWell program state coordinator"
-                    />
-                  </Article.Figure>
-                  <Article.Info>
-                    <Flex flexWrap="wrap">
-                      <Article.Info.Details>
-                        {result.node.state} <span>{result.node.cost_code}</span>
-                      </Article.Info.Details>
-                      <Article.Info.Name fontSize="1.6rem">
-                        {result.node.manager}
-                      </Article.Info.Name>
-                      <Article.Info.Contact>
-                        <span>
-                          <a href={'mailto:' + result.node.email}>
-                            {result.node.email}
-                          </a>
-                        </span>
-                        <span>
-                          <a href={'tel:' + result.node.cell_number}>
-                            {result.node.cell_number}
-                          </a>
-                        </span>
-                        <span>
-                          <a href="/">More</a>
-                        </span>
-                      </Article.Info.Contact>
-                    </Flex>
-                  </Article.Info>
-                </Article>
-              </Box>
-            </Accordion>
+            <></>
+            // <Accordion
+            //   key={manager.id}
+            //   title={manager.cost_code_name}
+            //   chevronColor={Theme.Color.White}
+            //   color={hexToRGB(Theme.Color.White, 0.7)}
+            //   colorActive={Theme.Color.Whtie}
+            //   borderColor={Theme.Color.Galaxy}
+            // >
+            //   <Box pl={40}>
+            //     <Article>
+            //       <Article.Figure>
+            //         <ImgMatch
+            //           src="avatar-yoda.jpg"
+            //           AltText="PlayWell program state coordinator"
+            //         />
+            //       </Article.Figure>
+            //       <Article.Info>
+            //         <Flex flexWrap="wrap">
+            //           <Article.Info.Details>
+            //             {manager.state} <span>{manager.cost_code}</span>
+            //           </Article.Info.Details>
+            //           <Article.Info.Name fontSize="1.6rem">
+            //             {manager.manager}
+            //           </Article.Info.Name>
+            //           <Article.Info.Contact>
+            //             <span>
+            //               <a href={'mailto:' + manager.email}>
+            //                 {manager.email}
+            //               </a>
+            //             </span>
+            //             <span>
+            //               <a href={'tel:' + manager.cell_number}>
+            //                 {manager.cell_number}
+            //               </a>
+            //             </span>
+            //             <span>
+            //               <a href="/">More</a>
+            //             </span>
+            //           </Article.Info.Contact>
+            //         </Flex>
+            //       </Article.Info>
+            //     </Article>
+            //   </Box>
+            // </Accordion>
           );
         })
       ) : (
