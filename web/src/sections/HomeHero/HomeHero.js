@@ -52,6 +52,8 @@ const HeroProps = {
   withMask: true,
   fullWidth: true,
   className: 'hero-slider',
+  curveBg: Theme.Color.Deepsea,
+  sliceBg: Theme.Color.Background,
 };
 
 const settings = {
@@ -65,13 +67,18 @@ const settings = {
 };
 
 class MySlider extends Slider {
-  componentDidMount() {
+  updateSlideHeights() {
     var sliderHeight = $('.hero-slider')
       .find('.slick-track')
       .css('height');
     $('.hero-slider')
       .find('.slick-slide .item')
       .css('height', sliderHeight);
+  }
+
+  componentDidMount() {
+    this.updateSlideHeights();
+    window.addEventListener('resize', this.updateSlideHeights());
   }
 }
 

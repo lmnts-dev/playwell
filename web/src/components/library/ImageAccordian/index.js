@@ -20,15 +20,15 @@ const ImageAccordian = ({
 }) => (
   <ImageAccordianStyle className="image-accordian">
     <div className="text">
-    <input type="checkbox" />
-    <Icon Name="carat" className="ico ico-carat"/>
-    <div className="h5">{Header}</div>
-    <p>
-        {Paragraph}
-    </p>
+      <input type="checkbox" />
+      <Icon Name="carat" className="ico ico-carat"/>
+      <div className="h5">{Header}</div>
+      <p>
+          {Paragraph}
+      </p>
     </div>
     <div className="image">
-    <ImgMatch src={Image} />
+      <ImgMatch src={Image} />
     </div>
   </ImageAccordianStyle>
 );

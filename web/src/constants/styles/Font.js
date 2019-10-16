@@ -184,6 +184,9 @@ export const Typography = createGlobalStyle`
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       font-size: 4rem;
     }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      font-size: 3.5rem;
+    }
   }
 
   h1, h2, h3, h4, h5, h6, p { padding-bottom: calc(var(--Size) / 3.5); }

@@ -23,9 +23,10 @@ export const CenteredTitle = ({
   TextColor,
   MaxWidth,
   PaddingBottom,
+  className,
   children,
 }) => (
-  <CenteredTitleStyle TextColor={TextColor} MaxWidth={MaxWidth} PaddingBottom={PaddingBottom}>
+  <CenteredTitleStyle className={className} TextColor={TextColor} MaxWidth={MaxWidth} PaddingBottom={PaddingBottom}>
     <div className={Class + ' title'}>{Title}</div>
     {children}
   </CenteredTitleStyle>

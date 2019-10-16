@@ -45,6 +45,9 @@ const CenteredTitleStyle = styled.div`
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       bottom: 0;
     }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      display: none;
+    }
 
     .ico-swoop {
       width: 100%;

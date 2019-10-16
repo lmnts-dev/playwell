@@ -27,9 +27,10 @@ export const GiantTextBlock = ({
   buttonDest,
   headerText,
   Number,
+  className,
   children
 }) => (
-  <GiantTextBlockStyle>
+  <GiantTextBlockStyle className={className}>
     {children}
     { Number && <BlockNumber className="h1">{Number}</BlockNumber> }
     { headerText && <BlockNumber className="h1-alt">{headerText}</BlockNumber> }

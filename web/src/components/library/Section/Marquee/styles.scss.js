@@ -36,20 +36,19 @@ const MarqueeStyle = styled.div`
     : null};
 
     .item {
-      ${props => props.SquareFormat ? `
-        height: 16.66vw;
-        max-height: calc(${Root.Size} * 4);
-      `
-      : null};
+      padding: calc(${Root.Size} / 6);
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding: 1vw;
+      }
+
       .gatsby-image-wrapper {
         border-radius: calc(${Root.Size} / 8);
+        height: 0 !important;
         ${props => props.SquareFormat ? `
-          background-color: ${Theme.Color.White};
-          margin: calc(${Root.Size} / 10);
-          height: 100%;
+          background-color: ${Theme.Color.White};         
+          padding-top: 100%;
         ` : `
-          height: 25vw;
-          max-height: calc(${Root.Size} * 7);
+          padding-top: 140%;
         `};
         
 
@@ -57,12 +56,12 @@ const MarqueeStyle = styled.div`
           ${props => props.SquareFormat ? `
             position: relative;
             width: 80% !important;
+            object-fit: contain !important;
             height: 80% !important;
             left: 10% !important;
             top: 10% !important;
           ` : `
-            border-radius: ${Theme.Base.Geometry.Radius};
-            margin-left: calc(${Root.Size} / 8);
+            border-radius: calc(${Root.Size} / 8);
           `};
         }
       }

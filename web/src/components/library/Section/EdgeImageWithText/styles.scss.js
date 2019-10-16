@@ -69,7 +69,12 @@ export const EdgeImageWithTextStyle = styled.div`
     max-width: calc(${Root.Size} * 7);
     margin-right: calc(${Root.Size});
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      max-width: none;
+      max-width: calc(${Root.Size} * 13);
+      text-align: center;
+      margin: 0 auto;
+    }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      margin-right: calc(${Root.Size} / 2);
     }
 
     .h2,
@@ -110,6 +115,11 @@ export const EdgeImageWithTextStyle = styled.div`
           width: 100%;
         }
       }
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        width: auto;
+        left: 50%;
+        right: -25%;
+      }
     }
 
     .gatsby-image-wrapper {
@@ -119,6 +129,7 @@ export const EdgeImageWithTextStyle = styled.div`
 
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         width: 50vw;
+        min-width: calc(${Theme.Base.Size.Lg} * 5);
       }
       > div {
         height: 100%;

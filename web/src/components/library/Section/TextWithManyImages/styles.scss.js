@@ -34,6 +34,7 @@ export const TextWithManyImagesStyle = styled.div`
     }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       padding: calc(${Root.Size}) calc(${Root.Size}) calc(${Root.Size}) 0;
+      max-width: calc(${Theme.Base.Size.Lg} * 10);
     }
   }
 
@@ -42,8 +43,11 @@ export const TextWithManyImagesStyle = styled.div`
     display: flex;
     flex-direction: row;
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      margin-right: calc(${Theme.Base.Size.Lg} * .75);
       height: 50vw;
-      max-height: calc(${Root.Size} * 6);
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      margin-right: calc(${Theme.Base.Size.Lg} / 2);
     }
 
     > .gatsby-image-wrapper {
@@ -80,7 +84,7 @@ export const TextWithManyImagesStyle = styled.div`
         position: absolute !important;
         top: 0;
         left: 0;
-        height: 50%;
+        height: calc(50% - 2px);
 
         &:first-of-type {
           margin-bottom: 4px;
@@ -88,7 +92,7 @@ export const TextWithManyImagesStyle = styled.div`
 
         &:last-of-type {
           margin-top: 4px;
-          top: 50%;
+          top: calc(50% - 2px);
         }
       }
     }

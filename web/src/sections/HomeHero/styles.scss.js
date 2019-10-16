@@ -28,104 +28,99 @@ import {
 //////////////////////////////////////////////////////////////////////
 
 export const AbsoluteDecor = styled.div`
-position: absolute;
-width: 100%;
-height: 0 !important;
-padding-top: 100%;
-bottom: 0;
-left: 0;
-
-.decor-container {
   position: absolute;
+  width: 100%;
+  height: 0 !important;
+  padding-top: 100%;
   bottom: 0;
   left: 0;
-  z-index: 10;
-  height: auto;
+  max-width: ${Root.Site.Width};
+  @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+    padding-top: ${Root.Site.Width};
+    margin: 0 calc(50vw - calc(${Root.Site.Width} / 2));
+  }
 
-  .ico {
-    width: 100%;
+  .decor-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
     height: auto;
-  }
 
-  &.absolute-cloud-big {
-    width: 20%;
-    right: -6%;
-    left: auto;
-    bottom: 40%;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    .ico {
+      width: 100%;
+      height: auto;
+    }
 
+    &.absolute-cloud-big {
+      width: 20%;
+      right: -6%;
+      left: auto;
+      bottom: 40%;
+    }
+
+    &.absolute-cloud-small {
+      width: 12%;
+      left: -2%;
+      bottom: 32%;
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        left: -5%;
+      }
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        bottom: 48%;
+      }
+    }
+
+    &.absolute-waterfall {
+      width: 35%;
+      left: auto;
+      right: 1%;
+      bottom: 6%;
+    }
+
+    &.absolute-volcano {
+      width: 22%;
+      left: 40%;
+    }
+
+    &.absolute-ladder {
+      width: 4%;
+      left: auto;
+      right: 10.5%;
+      bottom: 31%;
+    }
+
+    &.absolute-legos {
+      width: 13%;
+      left: 61%;
+      bottom: -2%;
+    }
+
+    &.absolute-lego {
+      width: 6%;
+      left: 58%;
+      bottom: 19%;
+    }
+
+    &.absolute-gears {
+      width: 30%;
+      left: auto;
+      right: -1%;
+      transform: scaleX(-1);
+    }
+
+    &.absolute-lego-ladder {
+      width: 38%;
+      left: 32%;
+      bottom: -17%;
+      transform: scaleX(-1);
     }
   }
-
-  &.absolute-cloud-small {
-    width: 12%;
-    left: -2%;
-    bottom: 32%;
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      left: -5%;
-    }
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      bottom: 48%;
-    }
-  }
-
-  &.absolute-waterfall {
-    width: 35%;
-    left: auto;
-    right: 1%;
-    bottom: 6%;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-     // right: -1%;
-    }
-  }
-
-  &.absolute-volcano {
-    width: 22%;
-    left: 40%;
-  }
-
-  &.absolute-ladder {
-    width: 4%;
-    left: auto;
-    right: 10.5%;
-    bottom: 31%;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-
-    }
-  }
-
-  &.absolute-legos {
-    width: 13%;
-    left: 61%;
-    bottom: -2%;
-  }
-
-  &.absolute-lego {
-    width: 6%;
-    left: 58%;
-    bottom: 19%;
-  }
-
-  &.absolute-gears {
-    width: 30%;
-    left: auto;
-    right: -1%;
-    transform: scaleX(-1);
-  }
-
-  &.absolute-lego-ladder {
-    width: 38%;
-    left: 32%;
-    bottom: -17%;
-    transform: scaleX(-1);
-  }
-}
 `;
 
 export const Item = styled.div`
   background-color: ${props => props.BgColor ? props.BgColor : Theme.Color.White };
   color: ${props => props.TextColor ? props.TextColor : Theme.Color.White };
-  min-height: 70vh;
   padding-top: calc(${Theme.Base.Size.Lg} * 3);
   position: relative;
 

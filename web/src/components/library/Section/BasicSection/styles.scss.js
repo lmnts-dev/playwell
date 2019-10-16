@@ -25,10 +25,12 @@ export const BasicSectionStyle = styled.div`
   position: relative;
   background: ${props => (props.BgColor ? props.BgColor : Theme.Color.Primary)};
   color: ${props => (props.TextColor ? props.TextColor : Theme.Color.White)};
-  padding: calc(${Root.Grid.Gutter.Top} * 4) 0
-    calc(${Root.Grid.Gutter.Bottom} * 4) 0;
+  padding: ${Theme.Base.Size.Lg} 0 ${Theme.Base.Size.Lg} 0;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    padding: calc(${Root.Grid.Gutter.Top}) 0 calc(${Root.Grid.Gutter.Bottom}) 0;
+    padding: calc(${Theme.Base.Size.Lg} * .75) 0 calc(${Theme.Base.Size.Lg} * .75) 0;
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding: calc(${Theme.Base.Size.Lg} / 2) 0 calc(${Theme.Base.Size.Lg} / 2) 0;
   }
   ${props => props.BgLinear ? `
     .linear-background {

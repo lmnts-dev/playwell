@@ -58,6 +58,9 @@ export const GiantTextBlockStyle = styled.div`
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
       top: calc(${Root.Size} * -2.5);
     }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      display: none;
+    }
   }
 
   .btn .btn-inner {
