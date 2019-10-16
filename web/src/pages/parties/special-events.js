@@ -68,21 +68,20 @@ const ThemeProps = {
 const WhoWhyPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps}>
+      <SplitHero {...HeroProps} subNav={['parties', 'special events']}>
         <h2>Helping Kids and Adults Understand Through Play</h2>
-        <h6>For the past 10 years, we have introduced play into Fortune 500 Companies Take Your Kids to Work Days.</h6>
+        <h6>
+          For the past 10 years, we have introduced play into Fortune 500
+          Companies Take Your Kids to Work Days.
+        </h6>
       </SplitHero>
-      <Box css={{ position: 'relative', height: 0 }}>
-        <SubNav />
-      </Box>
 
       <BasicSection BgColor={Theme.Color.White}>
         <BasicInner>
           <CenteredTitle
             Title="Special Events"
             Class="headline"
-          >
-          </CenteredTitle>
+          ></CenteredTitle>
         </BasicInner>
       </BasicSection>
 
@@ -103,8 +102,7 @@ const WhoWhyPage = () => {
             Image="intro-smiles.jpg"
             Header="Engineers at heart"
             Paragraph="We are play engineers at heart, so we love helping kids to understand through play what their parents do at work, or enabling families to build something out of LEGO® materials that they once thought impossible."
-          >
-          </ImageWithTextBlock>
+          ></ImageWithTextBlock>
         </BasicInner>
       </BasicSection>
 
@@ -113,11 +111,11 @@ const WhoWhyPage = () => {
         TextColor={Theme.Color.Sunset}
       >
         <BasicInner>
-            <CenteredTitle
-                Title="Our Special Events Partners"
-                Class="h3"
-                TextColor={Theme.Color.Sunset}
-            />
+          <CenteredTitle
+            Title="Our Special Events Partners"
+            Class="h3"
+            TextColor={Theme.Color.Sunset}
+          />
         </BasicInner>
         <Marquee
           images={[
@@ -132,8 +130,6 @@ const WhoWhyPage = () => {
           Shadow
         />
       </BasicSection>
-
-
     </Layout>
   );
 };

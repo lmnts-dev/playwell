@@ -222,16 +222,20 @@ const PartyForm = styled.div`
 const Parties = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps}>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          'parties',
+          'special events',
+        ]}
+      >
         <h2>Let Us Engineer Your Child's Party</h2>
         <h6>
           Some of the most memorable and fun experiences kid's have together are
           at birthday parties.
         </h6>
       </SplitHero>
-      <Box css={{ position: 'relative', height: 0 }}>
-        <SubNav />
-      </Box>
+
 
       <BasicSection
         BgColor={Theme.Color.Background}

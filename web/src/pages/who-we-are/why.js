@@ -82,13 +82,11 @@ const GiantTextBlock = styled(GiantText)`
 const WhoWhyPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps}>
+      <SplitHero {...HeroProps} subNav={['who', 'how', 'why', 'careers']}>
         <h2>We provide opportunities for creative expression</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
       </SplitHero>
-      <Box css={{ position: 'relative', height: 0 }}>
-        <SubNav />
-      </Box>
+
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.White}
