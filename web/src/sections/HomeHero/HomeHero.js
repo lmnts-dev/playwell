@@ -66,6 +66,7 @@ const settings = {
   arrows: true,
 };
 
+/*
 class MySlider extends Slider {
   updateSlideHeights() {
     var sliderHeight =$(".hero-slider").find(".slick-track").css("height");
@@ -77,6 +78,7 @@ class MySlider extends Slider {
     window.addEventListener('resize', this.updateSlideHeights() );
   }
 }
+*/
 
 // Render Page
 const HomeHero = ({ bgColor, textColor, slides }) => {
