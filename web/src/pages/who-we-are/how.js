@@ -72,6 +72,9 @@ const SimpleTextWithImage = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: block;
+  }
 
   .image,
   .text {
@@ -80,13 +83,29 @@ const SimpleTextWithImage = styled.div`
 
   .image {
     padding-left: calc(${Root.Size});
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      max-width: calc(${Root.Size} * 13);
+      padding-left: 0;
+      margin: 0 auto;
+      width: 40%;
+      min-width: calc(${Root.Size} * 6);
+      padding-top: calc(${Theme.Base.Size.Lg} / 2);
+    }
   }
 
   .text {
     padding-right: calc(${Root.Size});
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      padding-right: 0;
+    }
 
     > * {
       max-width: calc(${Root.Size} * 7.5);
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        max-width: calc(${Root.Size} * 13);
+        text-align: center;
+        margin: 0 auto;
+      }
     }
   }
 
@@ -108,11 +127,18 @@ const AccordianFeature = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     padding-bottom: calc(${Root.Size} / 3);
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      display: block;
+      text-align: center;
+    }
 
     li {
       font-weight: 700;
       padding: calc(${Root.Size} / 6);
       white-space: nowrap;
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        padding: calc(${Root.Size} / 6) 0;
+      }
 
       &:first-of-type {
         padding-left: 0;
@@ -165,6 +191,10 @@ const AccordianFeature = styled.div`
   }
 `;
 
+const OverflowHidden = styled.div`
+  width: 100vw;
+  overflow: hidden;
+`
 
 
 // Render Page
@@ -331,41 +361,43 @@ const WhoHowPage = () => {
         </BasicInner>
       </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Sunset}
-        noPaddingTop
-      >
-        <BasicInner noPaddingLeft noPaddingRight>
-          <ImageWithTextBlock
-            Image="intro-smiles.jpg"
-            Header="Build problem-solving skills"
-            Number="01"
-            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien."
-          />
-          <ImageWithTextBlock
-            reversedOrder
-            Image="intro-smiles.jpg"
-            Header="Provide an opportunity for creative expression"
-            Number="06"
-            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien."
-          >
-            <Icon Name="gear" />
-          </ImageWithTextBlock>
-          <ImageWithTextBlock
-            Image="intro-smiles.jpg"
-            Header="Foster a greater appreciation of how things work"
-            Number="03"
-            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien."
-          />
-        </BasicInner>
-      </BasicSection>
+      <OverflowHidden>
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Sunset}
+          noPaddingTop
+        >
+          <BasicInner noPaddingLeft noPaddingRight>
+            <ImageWithTextBlock
+              Image="intro-smiles.jpg"
+              Header="Build problem-solving skills"
+              Number="01"
+              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+                egestas. Sed in magna sapien."
+            />
+            <ImageWithTextBlock
+              reversedOrder
+              Image="intro-smiles.jpg"
+              Header="Provide an opportunity for creative expression"
+              Number="06"
+              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+                egestas. Sed in magna sapien."
+            >
+              <Icon Name="gear" />
+            </ImageWithTextBlock>
+            <ImageWithTextBlock
+              Image="intro-smiles.jpg"
+              Header="Foster a greater appreciation of how things work"
+              Number="03"
+              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+                egestas. Sed in magna sapien."
+            />
+          </BasicInner>
+        </BasicSection>
+      </OverflowHidden>
 
       <BasicSection
         BgColor={Theme.Color.Background}
@@ -433,34 +465,36 @@ const WhoHowPage = () => {
         </BasicInner>
       </BasicSection>
 
-      <BasicSection
-        noPaddingRight
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Dino}
-        noPaddingBottom
-      >
-        <BasicInner noPaddingRight>
-          <EdgeImageWithText
-            Caption="Would you like to Play with us?"
-            Header="Purposeful Play is for Adults too"
-            Image="gears.png"
-            Paragraph="Partnering with Play-Well for your company could bring new waves of innovation and problem solving to your team an opportunity to bring educational activities to your event, or any way you need to play."
-            ButtonText="Get In Touch"
-            ButtonDest="/"
+      <OverflowHidden>
+        <BasicSection
+          noPaddingRight
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Dino}
+          noPaddingBottom
+        >
+          <BasicInner noPaddingRight>
+            <EdgeImageWithText
+              Caption="Would you like to Play with us?"
+              Header="Purposeful Play is for Adults too"
+              Image="gears.png"
+              Paragraph="Partnering with Play-Well for your company could bring new waves of innovation and problem solving to your team an opportunity to bring educational activities to your event, or any way you need to play."
+              ButtonText="Get In Touch"
+              ButtonDest="/"
+            />
+          </BasicInner>
+          <Marquee
+            images={[
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+              'brandmark.png',
+            ]}
+            SquareFormat
           />
-        </BasicInner>
-        <Marquee
-          images={[
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
-          ]}
-          SquareFormat
-        />
-      </BasicSection>
+        </BasicSection>
+      </OverflowHidden>
 
       <BasicSection
         BgColor={Theme.Color.Background}

@@ -29,13 +29,26 @@ const EdgeSliderStyle = styled.div`
     font-weight: 700;
   }
 
+  .h5 {
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      font-size: 17.6px;
+      white-space: nowrap;
+    }
+  }
+
   .h3 {
     padding-top: calc(${Root.Size} / 6);
     color: ${Theme.Color.Sunset};
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      margin-bottom: calc(${Theme.Base.Size.Lg});
+    }
   }
 
   .h6, .h3 {
     margin-right: calc(${Root.Size} * 3.25);
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      margin-right: calc(${Theme.Base.Size.Lg} / 2);
+    }
   }
 
   .slick-slider {
@@ -60,6 +73,10 @@ const EdgeSliderStyle = styled.div`
       width: calc(${Root.Size});
       border: 1px solid ${Theme.Color.Dino};
       transition-duration: .5s;
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        left: 0;
+        right: auto;
+      }
 
       &.slick-disabled {
         opacity: .2;
@@ -96,22 +113,28 @@ const EdgeSliderStyle = styled.div`
           border-left-color: transparent;
           border-bottom-color: transparent;
         }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          left: calc(${Root.Size} * 1.25);
+        }
       }
     }
 
     .item {
       text-align: center;
+      padding: calc(${Root.Size} / 6);
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding: 1vw;
+      }
 
       .gatsby-image-wrapper {
         display: block !important;
-        padding-top: 60%;
-        max-height: calc(${Root.Size} * 7);
+        padding-top: 140%;
+        height: 0 !important;
         border-radius: calc(${Root.Size} / 8);
         margin-top calc(${Root.Size} / 4);
 
         img {
           border-radius: calc(${Root.Size} / 8);
-          margin-left: calc(${Root.Size} / 4);
         }
       }
     }

@@ -48,9 +48,7 @@ const MarqueeStyle = styled.div`
           background-color: ${Theme.Color.White};         
           padding-top: 100%;
         ` : `
-          
           padding-top: 140%;
-          max-height: calc(${Root.Size} * 7);
         `};
         
 
