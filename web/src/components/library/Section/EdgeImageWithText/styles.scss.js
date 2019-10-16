@@ -70,6 +70,10 @@ export const EdgeImageWithTextStyle = styled.div`
     margin-right: calc(${Root.Size});
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       max-width: none;
+      text-align: center;
+    }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      margin-right: calc(${Root.Size} / 2);
     }
 
     .h2,
@@ -110,6 +114,11 @@ export const EdgeImageWithTextStyle = styled.div`
           width: 100%;
         }
       }
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        width: auto;
+        left: 50%;
+        right: -25%;
+      }
     }
 
     .gatsby-image-wrapper {
@@ -119,6 +128,7 @@ export const EdgeImageWithTextStyle = styled.div`
 
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         width: 50vw;
+        min-width: calc(${Theme.Base.Size.Lg} * 5);
       }
       > div {
         height: 100%;

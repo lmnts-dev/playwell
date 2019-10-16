@@ -41,7 +41,7 @@ class MarqueeSlider extends React.Component {
       autoplaySpeed: 0,
       centerMode: true,
       cssEase: 'linear',
-      slidesToShow: 5,
+      slidesToShow: 4,
       slidesToScroll: 1,
       variableWidth: false,
       infinite: true,
@@ -50,12 +50,24 @@ class MarqueeSlider extends React.Component {
       buttons: false,
       responsive: [
         {
-          breakpoint: Base.Media.Width.Lg + 'px',
+          breakpoint: Base.Media.Width.Lg,
           settings: {
             slidesToShow: 3,
-          },
+          }
         },
-      ],
+        {
+          breakpoint: Base.Media.Width.Md,
+          settings: {
+            slidesToShow: 2,
+          }
+        },
+        {
+          breakpoint: Base.Media.Width.Sm,
+          settings: {
+            slidesToShow: 1.5,
+          }
+        }
+      ]
     };
 
     return (

@@ -15,7 +15,7 @@ import { Helmet } from 'react-helmet'; // For Slick Styles
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
-import CenteredTitle from 'components/library/Elements/CenteredTitle';
+import Centered from 'components/library/Elements/CenteredTitle';
 import Team from 'components/library/Elements/Team';
 import ImgMatch from 'components/core/ImgMatch';
 import {
@@ -43,7 +43,7 @@ const HeroProps = {
   color: Theme.Color.Primary,
   flexDirection: 'row',
   BgAlt: 'Placeholder Image Alt',
-  playButton: false,
+  playButton: true,
   playButtonBg: Theme.Color.Nova,
   gear: false,
   textAlign: 'left',
@@ -128,6 +128,13 @@ const ClayTextBlock = styled.div`
       padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0
         calc(${Root.Size} * 1.5);
       line-height: 1.2;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding: calc(${Root.Size} / 6) calc(${Root.Size}) 0
+        calc(${Root.Size});
+      }
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        padding: calc(${Root.Size} / 6) calc(${Root.Size} / 4) 0 calc(${Root.Size} / 4);
+      }
     }
   }
 `;
@@ -178,6 +185,14 @@ const FooterExt = styled.div`
   }
 `;
 
+const CenteredTitle = styled(Centered)`
+  &.our-story {
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      padding-bottom: calc(${Theme.Base.Size.Lg} / 2);
+    }
+  }
+`
+
 // Render Page
 const WhoPage = ({ SliderSettings }) => {
   return (
@@ -217,7 +232,6 @@ const WhoPage = ({ SliderSettings }) => {
         noInner
       >
         <ClayTextBlock>
-          <BasicInner>
             <div className="text-block">
               <div className="headline txt-clr-clay">Play comes first.</div>
               <p className="h3">
@@ -226,7 +240,6 @@ const WhoPage = ({ SliderSettings }) => {
                 Sed in magna sapien.
               </p>
             </div>
-          </BasicInner>
         </ClayTextBlock>
       </BasicSection>
 
@@ -244,7 +257,7 @@ const WhoPage = ({ SliderSettings }) => {
         TextColor={Theme.Color.Dino}
       >
         <BasicInner>
-          <CenteredTitle Class="headline" Title="Our Story" />
+          <CenteredTitle className="our-story" Class="headline" Title="Our Story" />
         </BasicInner>
         <BasicInner noPaddingRight>
           <EdgeImageWithText

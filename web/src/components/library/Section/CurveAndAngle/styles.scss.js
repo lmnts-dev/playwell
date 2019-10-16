@@ -21,7 +21,7 @@ export const CurveAndAngleStyle = styled.div`
   position: relative;
   width: 100vw;
   height: 30vw;
-
+  
   .footer-angle-slice {
     position: absolute;
     bottom: 0;
@@ -32,9 +32,10 @@ export const CurveAndAngleStyle = styled.div`
   }
 
   .footer-curve-slice {
-    width: 100%;
-    height: calc(100% - ${Root.Size});
+    width: 100vw;
+    height: 30vw;
     z-index: 1;
+    padding-bottom: 5vw;
   }
 `;
 
@@ -58,6 +59,11 @@ export const CloudStyle = styled.div`
       width: calc(${Root.Size} * 6);
       left: calc(${Root.Size} * -1);
     }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      width: 40vw;
+      left: -5vw;
+    }
+    
 `;
 //////////////////////////////////////////////////////////////////////
 // End Styles
