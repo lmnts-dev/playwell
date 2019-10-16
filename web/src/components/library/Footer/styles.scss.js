@@ -8,6 +8,7 @@ import styled from 'styled-components';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
+import { Base } from 'constants/styles/Base';
 
 // Keyframes
 import { FadeIn, FadeOut } from 'components/core/Transition/Keyframes';
@@ -60,9 +61,21 @@ export const FooterStyle = styled.footer`
       width: 50%;
       justify-content: space-between;
       align-items: flex-end;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 100%;
+      }
 
       .col {
         padding: calc(${Root.Size} * 2) calc(${Root.Size} / 4);
+
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          &:first-of-type {
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            width: calc(${Theme.Base.Size.Lg} * 3);
+          }
+        }
 
         .brandmark {
           width: calc(${Root.Size} * 2.7);
@@ -83,6 +96,7 @@ export const FooterStyle = styled.footer`
               color: ${Theme.Color.Primary};
               position: relative;
               text-decoration: none;
+              white-space: nowrap;
 
               &:before {
                 content: '';
@@ -127,6 +141,12 @@ export const FooterStyle = styled.footer`
                 &:hover {
                   background: ${Theme.Color.Cream};
                   transform: scale(1.2);
+                }
+              }
+
+              &:last-of-type {
+                a {
+                  padding-bottom: 0;
                 }
               }
             }

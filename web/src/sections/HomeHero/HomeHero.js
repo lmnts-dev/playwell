@@ -84,7 +84,7 @@ class MySlider extends Slider {
 const HomeHero = ({ bgColor, textColor, slides }) => {
   return (
     <HeroContainer {...HeroProps}>
-      <MySlider {...settings}>
+      <Slider {...settings}>
         <Item
           className="item"
           BgColor={Theme.Color.Ocean}
@@ -188,7 +188,7 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
             <FooterCurveSlice bgColor={Theme.Color.Dino} />
           </div>
         </Item>
-      </MySlider>
+      </Slider>
       <div className="absolute-angle">
         <FooterAngleSlice bgColor={Theme.Color.Background} />
       </div>
