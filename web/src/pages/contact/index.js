@@ -19,6 +19,9 @@ import ContactInfo from 'sections/ContactInfo';
 // Constants
 import { Theme, Root } from 'constants/Theme';
 
+// Data
+import { DataFetch } from 'hooks/DataFetch';
+
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
@@ -31,14 +34,24 @@ const ThemeProps = {
 };
 
 // Render Page
-const ContactPage = () => (
-  <Layout {...ThemeProps}>
-    <Main>
-      <ContactHero />
-      <ContactInfo />
-    </Main>
-  </Layout>
-);
+const ContactPage = ({ pageContext }) => {
+  // Use our hook's data as source
+  const fetchedData = DataFetch();
+
+  // For debugging only.
+  console.log(fetchedData);
+  // console.log('pageContext:');
+  // console.log(pageContext);
+
+  return (
+    <Layout {...ThemeProps}>
+      <Main>
+        <ContactHero data={fetchedData} />
+        <ContactInfo />
+      </Main>
+    </Layout>
+  );
+};
 
 const Main = styled.main`
   overflow: hidden;

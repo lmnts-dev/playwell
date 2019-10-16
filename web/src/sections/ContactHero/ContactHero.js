@@ -6,13 +6,13 @@
 
 // Core
 import React from 'react';
-import ImgMatch from 'components/core/ImgMatch';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import HeroContainer from 'components/library/Hero/HeroContainer';
-import { ContactManager } from 'components/library/ContactManager';
 import { Icon } from 'components/library/Icons';
+import { ContactManager } from 'components/library/ContactManager';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Styles
 import { Hero, Decorator } from './styles.scss';
@@ -33,7 +33,7 @@ const HeroProps = {
   textAlign: 'left',
 };
 
-const ContactHero = ({ pageContext, fetchedData }) => {
+const ContactHero = ({ data }) => {
   return (
     <>
       <Decorator>
@@ -69,17 +69,7 @@ const ContactHero = ({ pageContext, fetchedData }) => {
             If you have specific qustions about Play-Well programs in your
             geographic area, please contact the manager for your area below.
           </Text>
-        
-          <ContactManager
-            stateId={''}
-            countyId={''}
-            costCodeId={''}
-            pageContext={pageContext}
-            courseData={fetchedData}
-            geoData={fetchedData.allPlayWellStates}
-            mapWidth={Theme.mapWidth}
-            mapZedIndex={Theme.mapZedIndex}
-          />
+          <ContactManager data={data} />
         </Hero>
       </HeroContainer>
     </>

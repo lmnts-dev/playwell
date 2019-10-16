@@ -1,5 +1,5 @@
-// Course Map Nav Component:
-// This is component to browse courses on the Programs page.
+// SplitHero Component:
+// Hero with 50/50 split and directional layout
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -8,298 +8,329 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
 
-// Constants
-import { Base } from 'constants/styles/Base';
-import { Theme, Root } from 'constants/Theme';
+// Helpers
+import _ from 'lodash';
+
+// Styles
+import {
+  CourseHeroStyle,
+  SearchBarStyle,
+  CourseHeroContentStyle,
+  Article,
+} from './styles.scss';
 
 // Components
-import { Icon } from 'components/library/Icons';
 import { Box, Flex } from 'components/library/Elements';
-import { ClientCard } from './ClientCard';
-import { CourseHero } from './CourseHero';
-import ImgMatch from 'components/core/ImgMatch';
+import { Icon } from 'components/library/Icons';
 import Accordion from 'components/library/Accordion';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Helpers
 import slugify from 'helpers/slugify';
-import locationMatch from 'helpers/LocationMatch';
+import hexToRGB from 'helpers/hexToRGB';
 
-// Styles
-import { CourseListingsStyle, ListingsResultsStyle, Article } from './styles.scss';
+// Constants
+import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-// Our Filtered Results component
-class FilteredResults extends PureComponent {
+// Our Search Bar
+class SearchBar extends PureComponent {
   constructor(props) {
     super(props);
 
-    // Initial state of filtered results
+    // Assign initial state
     this.state = {
-      filtered: [],
+      query: '',
+      resultsActive: false,
+      queryActive: false,
+    };
+
+    // Bind our functions
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSearchResultsToggle = this.handleSearchResultsToggle.bind(this);
+  }
+
+  // Mounted state
+  componentDidMount() {
+    // Listen for click events to show/hide results
+    document.addEventListener('mousedown', this.handleSearchResultsToggle);
+
+    // Assign State
+    this.state = {
+      query: '',
+      resultsActive: false,
+      queryActive: false,
     };
   }
 
-  render() {
-    // Define our data variables
-    let results = this.props.results;
-    let stateEdges = this.props.stateEdges;
+  // Unmounted state
+  componentWillUnmount() {
+    // Remove listener for click events to show/hide results
+    document.removeEventListener('mousedown', this.handleSearchResultsToggle);
 
-    // For Debugging only
-    // console.log(stateEdges);
-    // console.log(results);
-
-    // Show our listings
-    return (
-      <ListingsResultsStyle>
-        {results.map((client, idx) => {
-          // Get our Location Meta Data for this Client
-          let locationMetaResults = locationMatch(
-            stateEdges,
-            client.node.county_id,
-            client.node.state_id
-          );
-
-          // Build our slugified strings for pretty URLs.
-          let stateSlug = slugify(locationMetaResults.state.name);
-          let countySlug = slugify(locationMetaResults.county.name);
-
-          // console.log(client);
-          if (client.node.courses.length > 0) {
-            // Return our cards
-            return (
-              <ClientCard
-                key={idx}
-                clientData={client}
-                locationMetaResults={locationMetaResults}
-                stateSlug={stateSlug}
-                countySlug={countySlug}
-              />
-            );
-          } else {
-            return;
-          }
-        }, this)}
-      </ListingsResultsStyle>
-    );
-  }
-}
-
-// Our Listing Results
-class ListingsResults extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    // Initial State
+    // De-assign State
     this.state = {
-      lat: [],
-      lng: [],
-      zoom: [],
-      categoryFilter: '',
-      ageMin: 0,
-      startDate: '',
-      courseType: '',
-      results: [],
+      query: '',
+      resultsActive: false,
+      queryActive: false,
     };
-
-    // Bind search query function
-    this.toggleCategoryFilter = this.toggleCategoryFilter.bind(this);
   }
 
-  // Our Function to Toggle Categories
-  toggleCategoryFilter(context) {
-    if (this.state.categoryFilter == context) {
+  // Assign Ref to search bar
+  // searchWrapperRef(node) {
+  //   this.searchWrapperRef = node;
+  // }
+
+  // Function to listen for mouse clicks to show/hide results bar
+  handleSearchResultsToggle(event) {
+    // If the click is outside of the input, hide results
+    if (
+      this.refs.searchInputWrapper &&
+      !this.refs.searchInputWrapper.contains(event.target)
+    ) {
       this.setState({
-        categoryFilter: '',
+        resultsActive: false,
+      });
+    }
+    // If the click is inside of the input, show results
+    else {
+      this.setState({
+        resultsActive: true,
+      });
+    }
+
+    document.addEventListener('mousedown', this.handleSearchResultsToggle);
+  }
+
+  // Handle our query updates
+  handleInputChange = query => {
+    if (query.target.value.length != '') {
+      this.setState({
+        query: query.target.value,
+        queryActive: true,
       });
     } else {
       this.setState({
-        categoryFilter: context,
+        query: '',
+        queryActive: false,
       });
     }
-  }
+  };
 
   render() {
-    // Source Data
-    const courseData = this.props.courseData;
-    const stateEdges = this.props.courseData.allPlayWellStates.edges;
-    const pageContext = this.props.pageContext;
+    // Clean our queries
+    const searchSafeQuery = this.state.query.toLowerCase();
 
-    // Our Filters
-    const stateId = this.props.stateId;
-    const countyId = this.props.countyId;
-    const costCodeId = this.props.costCodeId;
+    const managerEdges = this.props.data.allPlayWellManagers.edges;
+    const stateEdges = this.props.data.allPlayWellStates.edges;
 
-    // Filter Categories
-    const categoryFilter = this.state.categoryFilter;
-    const geoFilteredCourseData = courseData.allPlayWellClient.edges
-      .map((node, idx) => {
-        return {
-          node: {
-            client_id: node.node.id,
-            client_location_name: node.node.client_location_name,
-            courses: node.node.courses,
-            display_address: node.node.display_address,
-            county_id: node.node.county_id,
-            state_id: node.node.state_id,
-            geocode_address: node.node.geocode_address,
-            id: node.node.location_id,
-            location_lat: node.node.location_lat,
-            location_lng: node.node.location_lng,
-            public_note: node.node.public_note,
-            key: idx,
-          },
-        };
-      }, this)
-      .filter(client => {
-        if (
-          client.node.state_id == stateId ||
-          client.node.county_id == countyId
-        ) {
-          return client;
-        }
-      }, this);
+    // Create our Results array
+    const results = managerEdges.filter(managers => {
+      // Clean our Location's name
+      const searchSafeName = managers.node.state.toLowerCase();
 
-    const filteredCourseDataByToggle = queryString =>
-      geoFilteredCourseData.map((node, idx) => {
-        return {
-          node: {
-            client_id: node.node.id,
-            client_location_name: node.node.client_location_name,
-            courses: node.node.courses.filter((course, idxx) => {
-              // Define our query
-              const filter = queryString;
+      // /*
+      // // Clean our county names, make them iterable. and
+      // // return true if it is inside of the new array
+      // */
 
-              // Set up the conditions
-              return course.category_group_name.includes(filter);
-            }, this),
-            display_address: node.node.display_address,
-            county_id: node.node.county_id,
-            state_id: node.node.state_id,
-            geocode_address: node.node.geocode_address,
-            id: node.node.location_id,
-            location_lat: node.node.location_lat,
-            location_lng: node.node.location_lng,
-            public_note: node.node.public_note,
-            key: idx,
-          },
-        };
-      }, this);
+      // // Create empty array
+      // const searchSafeCounties = [];
 
-    /**
-     * For Debugging Purposes Only:
-     * */
-    // console.log('pageContext:');
-    // console.log(pageContext);
-    // console.log('filteredCourseDataByToggle():');
-    // console.log(filteredCourseDataByToggle());
+      // // Iterate through Counties and add to said array
+      // const cleanCountyNames = () => {
+      //   //  Convert each county name to lowercase
+      //   stateEdges.forEach((state, idx) => {
+      //     searchSafeCounties.push(state.node.counties.name.toLowerCase());
+      //   });
+      // };
+
+      // const cleanCountyNames = () => {
+      //   //  Convert each county name to lowercase
+      //   stateEdges.node.counties.forEach((county, idx) => {
+      //     searchSafeCounties.push(county.name.toLowerCase());
+      //   });
+      // };
+
+      // // Run above function synchronously
+      // cleanCountyNames();
+
+      // // Iterate through cleaned array with clean query and return truthy
+      // // or falsy if it exists
+      // const isCountyMatch = searchSafeCounties.filter(county => {
+      //   if (county.includes(searchSafeQuery)) {
+      //     return true;
+      //   }
+      // });
+
+      // /*
+      // // Clean our Cost Code Names, make them iterable. and
+      // // return true if it is inside of the new array
+      // */
+
+      // // Create empty array
+      // const searchSafeCostCodes = [];
+
+      // // Iterate through Counties and add to said array
+      // const cleanCostCodes = () => {
+      //   //  Convert each county name to lowercase
+      //   stateEdges.forEach((state, idx) => {
+      //     searchSafeCostCodes.push(
+      //       state.node.counties.cost_code_name.toLowerCase()
+      //     );
+      //   });
+      // };
+
+      // // Run above function synchronously
+      // cleanCostCodes();
+
+      // // Iterate through cleaned array with clean query and return truthy
+      // // or falsy if it exists
+      // const isCostCodeMatch = searchSafeCostCodes.filter(costCode => {
+      //   if (costCode.includes(searchSafeQuery)) {
+      //     return true;
+      //   }
+      // });
+
+      /*
+      // Return our filtered results
+      */
+
+      if (searchSafeName.includes(searchSafeQuery)) {
+        return managers;
+      }
+
+      // console.log('searchSafeName: ' + searchSafeName);
+      // console.log('searchSafeQuery: ' + searchSafeQuery);
+    });
+
+    // For Debugging only.
+    console.log('results:');
+    console.log(results);
+    // console.log('resultsSample:');
+    // console.log(resultsSample);
 
     return (
-      <FilteredResults
-        results={filteredCourseDataByToggle(categoryFilter)}
-        stateEdges={stateEdges}
-      />
+      <SearchBarStyle ref="searchInputWrapper">
+        <div
+          className={
+            this.state.resultsActive == true
+              ? 'search-bar results-visible'
+              : 'search-bar'
+          }
+        >
+          <div className="inner">
+            <Icon Name="search" fas />
+            <input
+              placeholder="Enter State..."
+              onChange={this.handleInputChange}
+            />
+            {/* <Icon Name="search" fas /> */}
+          </div>
+        </div>
+
+        {this.state.resultsActive == true ? (
+          <SearchBarResults
+            className="search-results-wrapper"
+            results={results}
+          />
+        ) : (
+          false
+        )}
+      </SearchBarStyle>
     );
   }
 }
 
-// The wrapper around our listings.
-const ListingsWrapper = ({ courseData, children }) => {
-  return (
-    <CourseListingsStyle>
-      <div className="listings-inner">
-        <div className="listings">{children}</div>
-      </div>
-    </CourseListingsStyle>
-  );
-};
-
-// The wrapper around our listings.
-const ManagerListings = ({ pageContext }) => {
-  return (
-    <Box width={[1, 1, 1 / 2, 6 / 10]}>
-      {pageContext.managers.map(manager => (
-        <Accordion key={manager.node.id} title={manager.node.cost_code_name}>
-          <Article>
-            <Article.Figure>
-              <ImgMatch
-                src="avatar-yoda.jpg"
-                AltText="PlayWell program state coordinator"
-              />
-            </Article.Figure>
-            <Article.Info>
-              <Flex flexWrap="wrap">
-                <Article.Info.Details>
-                  {manager.node.state} <span>{manager.node.cost_code}</span>
-                </Article.Info.Details>
-                <Article.Info.Name fontSize="1.6rem">
-                  {manager.node.manager}
-                </Article.Info.Name>
-                <Article.Info.Contact>
-                  <span>
-                    <a href={'mailto:' + manager.node.email}>
-                      {manager.node.email}
-                    </a>
-                  </span>
-                  <span>
-                    <a href={'tel:' + manager.node.cell_number}>
-                      {manager.node.cell_number}
-                    </a>
-                  </span>
-                  <span>
-                    <a href="/">More</a>
-                  </span>
-                </Article.Info.Contact>
-              </Flex>
-            </Article.Info>
-          </Article>
-        </Accordion>
-      ))}
-    </Box>
-  );
-};
-
-// The page itself.
-export const ContactManager = ({
-  courseData,
-  mapWidth,
-  mapZedIndex,
-  geoData,
-  stateId,
-  countyId,
-  costCodeId,
-  pageContext,
-}) => {
-  /**
-   *  For Debugging Purposes Only:
-   * */
-  // console.log('stateId: ' + stateId);
-  // console.log('countyId: ' + countyId);
-  // console.log('costCodeId: ' + costCodeId);
-
-  // console.log(pageContext);
-
+// Our Search Bar Results
+const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
   return (
     <>
-      <CourseHero
-        bg={Theme.Color.Galaxy}
-        color="White"
-        flexDirection="row"
-        mapWidth={mapWidth}
-        mapZedIndex={mapZedIndex}
-        geoData={geoData}
-        stateId={stateId}
-        countyId={countyId}
-        costCodeId={costCodeId}
-        pageContext={pageContext}
-      />
-      <ListingsWrapper>
-        <ManagerListings pageContext={pageContext} />
-      </ListingsWrapper>
+      {/* Map all availabe locations */}
+      {results.length > 0 ? (
+        results.map((result, idx) => {
+          return (
+            <Accordion
+              key={result.node.id}
+              title={result.node.cost_code_name}
+              chevronColor={Theme.Color.White}
+              color={hexToRGB(Theme.Color.White, 0.7)}
+              colorActive={Theme.Color.Whtie}
+              borderColor={Theme.Color.Galaxy}
+            >
+              <Box pl={40}>
+                <Article>
+                  <Article.Figure>
+                    <ImgMatch
+                      src="avatar-yoda.jpg"
+                      AltText="PlayWell program state coordinator"
+                    />
+                  </Article.Figure>
+                  <Article.Info>
+                    <Flex flexWrap="wrap">
+                      <Article.Info.Details>
+                        {result.node.state} <span>{result.node.cost_code}</span>
+                      </Article.Info.Details>
+                      <Article.Info.Name fontSize="1.6rem">
+                        {result.node.manager}
+                      </Article.Info.Name>
+                      <Article.Info.Contact>
+                        <span>
+                          <a href={'mailto:' + result.node.email}>
+                            {result.node.email}
+                          </a>
+                        </span>
+                        <span>
+                          <a href={'tel:' + result.node.cell_number}>
+                            {result.node.cell_number}
+                          </a>
+                        </span>
+                        <span>
+                          <a href="/">More</a>
+                        </span>
+                      </Article.Info.Contact>
+                    </Flex>
+                  </Article.Info>
+                </Article>
+              </Box>
+            </Accordion>
+          );
+        })
+      ) : (
+        <li>
+          <div className="results-row">
+            <div className="no-results">
+              <Icon Name="sad-cry" fas />
+              <span className="label">No results found.</span>
+            </div>
+          </div>
+        </li>
+      )}
     </>
   );
 };
+
+// Simple Course Hero Display Component
+const CourseHeroContent = ({ data }) => {
+  return <SearchBar data={data} />;
+};
+
+// Full Wrapper
+export const ContactManager = ({
+  BgMatch,
+  BgQuery,
+  BgAlt,
+  color,
+  px,
+  bg,
+  data,
+}) => (
+  <CourseHeroStyle bg={bg}>
+    <CourseHeroContent data={data} />
+  </CourseHeroStyle>
+);
 
 //////////////////////////////////////////////////////////////////////
 // End Component
