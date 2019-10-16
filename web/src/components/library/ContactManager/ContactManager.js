@@ -128,36 +128,36 @@ class SearchBar extends PureComponent {
     const stateEdges = this.props.data.allPlayWellStates.edges;
 
     // Create our Results array
-    const results = stateEdges.filter(location => {
+    const results = managerEdges.filter(location => {
       // Clean our Location's name
-      const searchSafeName = location.node.name.toLowerCase();
+      const searchSafeName = location.node.state.toLowerCase();
 
       /*
       // Clean our county names, make them iterable. and
       // return true if it is inside of the new array
       */
 
-      // Create empty array
-      const searchSafeCounties = [];
+      // // Create empty array
+      // const searchSafeCounties = [];
 
-      // Iterate through Counties and add to said array
-      const cleanCountyNames = () => {
-        //  Convert each county name to lowercase
-        location.node.counties.forEach((county, idx) => {
-          searchSafeCounties.push(county.name.toLowerCase());
-        });
-      };
+      // // Iterate through Counties and add to said array
+      // const cleanCountyNames = () => {
+      //   //  Convert each county name to lowercase
+      //   location.node.counties.forEach((county, idx) => {
+      //     searchSafeCounties.push(county.name.toLowerCase());
+      //   });
+      // };
 
-      // Run above function synchronously
-      cleanCountyNames();
+      // // Run above function synchronously
+      // cleanCountyNames();
 
-      // Iterate through cleaned array with clean query and return truthy
-      // or falsy if it exists
-      const isCountyMatch = searchSafeCounties.filter(county => {
-        if (county.includes(searchSafeQuery)) {
-          return true;
-        }
-      });
+      // // Iterate through cleaned array with clean query and return truthy
+      // // or falsy if it exists
+      // const isCountyMatch = searchSafeCounties.filter(county => {
+      //   if (county.includes(searchSafeQuery)) {
+      //     return true;
+      //   }
+      // });
 
       /*
       // Clean our Cost Code Names, make them iterable. and
@@ -170,9 +170,7 @@ class SearchBar extends PureComponent {
       // Iterate through Counties and add to said array
       const cleanCostCodes = () => {
         //  Convert each county name to lowercase
-        location.node.counties.forEach((county, idx) => {
-          searchSafeCostCodes.push(county.cost_code_name.toLowerCase());
-        });
+        searchSafeCostCodes.push(location.node.cost_code_name.toLowerCase());
       };
 
       // Run above function synchronously
@@ -192,7 +190,7 @@ class SearchBar extends PureComponent {
 
       if (searchSafeName.includes(searchSafeQuery)) {
         return location;
-      } else if (isCountyMatch.length > 0 || isCostCodeMatch.length) {
+      } else if (isCostCodeMatch.length > 0) {
         return location;
       }
 
