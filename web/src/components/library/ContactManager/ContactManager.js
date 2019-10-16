@@ -239,7 +239,6 @@ class SearchBar extends PureComponent {
           <SearchBarResults
             className="search-results-wrapper"
             results={results}
-            managerEdges={managerEdges}
           />
         ) : (
           false
@@ -250,68 +249,57 @@ class SearchBar extends PureComponent {
 }
 
 // Our Search Bar Results
-const SearchBarResults = ({ results, managerEdges }) => {
+const SearchBarResults = ({ results }) => {
   return (
     <>
       {/* Map all availabe locations */}
       {results.length > 0 ? (
         results.map((result, idx) => {
-          let locationMetaResults = locationMatch(
-            managerEdges,
-            result.node.playwell_state_id,
-          );
-
-          // const manager = locationMetaResults.state
-
-          console.log('manager:');
-          console.log(result.node.playwell_state_id);
-
           return (
-            <></>
-            // <Accordion
-            //   key={manager.id}
-            //   title={manager.cost_code_name}
-            //   chevronColor={Theme.Color.White}
-            //   color={hexToRGB(Theme.Color.White, 0.7)}
-            //   colorActive={Theme.Color.Whtie}
-            //   borderColor={Theme.Color.Galaxy}
-            // >
-            //   <Box pl={40}>
-            //     <Article>
-            //       <Article.Figure>
-            //         <ImgMatch
-            //           src="avatar-yoda.jpg"
-            //           AltText="PlayWell program state coordinator"
-            //         />
-            //       </Article.Figure>
-            //       <Article.Info>
-            //         <Flex flexWrap="wrap">
-            //           <Article.Info.Details>
-            //             {manager.state} <span>{manager.cost_code}</span>
-            //           </Article.Info.Details>
-            //           <Article.Info.Name fontSize="1.6rem">
-            //             {manager.manager}
-            //           </Article.Info.Name>
-            //           <Article.Info.Contact>
-            //             <span>
-            //               <a href={'mailto:' + manager.email}>
-            //                 {manager.email}
-            //               </a>
-            //             </span>
-            //             <span>
-            //               <a href={'tel:' + manager.cell_number}>
-            //                 {manager.cell_number}
-            //               </a>
-            //             </span>
-            //             <span>
-            //               <a href="/">More</a>
-            //             </span>
-            //           </Article.Info.Contact>
-            //         </Flex>
-            //       </Article.Info>
-            //     </Article>
-            //   </Box>
-            // </Accordion>
+            <Accordion
+              key={result.node.id}
+              title={result.node.cost_code_name}
+              chevronColor={Theme.Color.White}
+              color={hexToRGB(Theme.Color.White, 0.7)}
+              colorActive={Theme.Color.Whtie}
+              borderColor={Theme.Color.Galaxy}
+            >
+              <Box pl={40}>
+                <Article>
+                  <Article.Figure>
+                    <ImgMatch
+                      src="avatar-yoda.jpg"
+                      AltText="PlayWell program state coordinator"
+                    />
+                  </Article.Figure>
+                  <Article.Info>
+                    <Flex flexWrap="wrap">
+                      <Article.Info.Details>
+                        {result.node.state} <span>{result.node.cost_code}</span>
+                      </Article.Info.Details>
+                      <Article.Info.Name fontSize="1.6rem">
+                        {result.node.manager}
+                      </Article.Info.Name>
+                      <Article.Info.Contact>
+                        <span>
+                          <a href={'mailto:' + result.node.email}>
+                            {result.node.email}
+                          </a>
+                        </span>
+                        <span>
+                          <a href={'tel:' + result.node.cell_number}>
+                            {result.node.cell_number}
+                          </a>
+                        </span>
+                        <span>
+                          <a href="/">More</a>
+                        </span>
+                      </Article.Info.Contact>
+                    </Flex>
+                  </Article.Info>
+                </Article>
+              </Box>
+            </Accordion>
           );
         })
       ) : (
