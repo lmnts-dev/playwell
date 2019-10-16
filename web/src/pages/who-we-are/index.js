@@ -193,6 +193,11 @@ const CenteredTitle = styled(Centered)`
   }
 `
 
+const OverflowHidden = styled.div`
+  width: 100vw;
+  overflow: hidden;
+`
+
 // Render Page
 const WhoPage = ({ SliderSettings }) => {
   return (
@@ -251,49 +256,54 @@ const WhoPage = ({ SliderSettings }) => {
         />
       </BasicSection>
 
-      <BasicSection
-        noPaddingRight
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Dino}
-      >
-        <BasicInner>
-          <CenteredTitle className="our-story" Class="headline" Title="Our Story" />
-        </BasicInner>
-        <BasicInner noPaddingRight>
-          <EdgeImageWithText
-            Caption="Tremendous learning mediums"
-            Header="Inspiring Play Since 1997"
-            Image="gears.png"
-            Paragraph="Play-Well TEKnologies was founded by Tim Bowen in 1997.
-            Introduced to the LEGO® building system in 1996 and recognizing
-            it to be both a popular play medium and a tremendous learning
-            medium, Tim began to develop projects which drew on his
-            professional experience and combined the elements of fun,
-            challenge, and learning."
-          />
-        </BasicInner>
-      </BasicSection>
+      <OverflowHidden>
+        <BasicSection
+          noPaddingRight
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Dino}
+        >
+          <BasicInner>
+            <CenteredTitle className="our-story" Class="headline" Title="Our Story" />
+          </BasicInner>
+          <BasicInner noPaddingRight>
+            <EdgeImageWithText
+              Caption="Tremendous learning mediums"
+              Header="Inspiring Play Since 1997"
+              Image="gears.png"
+              Paragraph="Play-Well TEKnologies was founded by Tim Bowen in 1997.
+              Introduced to the LEGO® building system in 1996 and recognizing
+              it to be both a popular play medium and a tremendous learning
+              medium, Tim began to develop projects which drew on his
+              professional experience and combined the elements of fun,
+              challenge, and learning."
+            />
+          </BasicInner>
+        </BasicSection>
+      </OverflowHidden>
 
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Dino}
-      >
-        <BasicInner wideWidth noPaddingLeft>
-          <ImageWithTextCard
-            Image="intro-smiles.jpg"
-            Caption="Constant Improvement"
-            Header="From local to nationwide."
-            Paragraph="He began operating a summer camp program in 1997, followed by
-                after school enrichment classes in 1998. With steady growth of
-                the company, project development is now undertaken by a staff of
-                instructors bent on constantly improving the programs."
-            ButtonText="Our Values"
-            ButtonDest="/"
-          >
-            <Icon Name="gear" />
-          </ImageWithTextCard>
-        </BasicInner>
-      </BasicSection>
+      <OverflowHidden>
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Dino}
+        >
+          <BasicInner wideWidth noPaddingLeft>
+            <ImageWithTextCard
+              Image="intro-smiles.jpg"
+              Caption="Constant Improvement"
+              Header="From local to nationwide."
+              Paragraph="He began operating a summer camp program in 1997, followed by
+                  after school enrichment classes in 1998. With steady growth of
+                  the company, project development is now undertaken by a staff of
+                  instructors bent on constantly improving the programs."
+              ButtonText="Our Values"
+              ButtonDest="/"
+            >
+              <Icon Name="gear" />
+            </ImageWithTextCard>
+          </BasicInner>
+        </BasicSection>
+      </OverflowHidden>
+
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}

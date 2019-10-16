@@ -52,11 +52,23 @@ class MarqueeSlider extends React.Component {
         {
           breakpoint: Base.Media.Width.Lg,
           settings: {
+            slidesToShow: 3.5,
+          }
+        },
+        {
+          breakpoint: (Base.Media.Width.Md + ((Base.Media.Width.Lg - Base.Media.Width.Md) / 2)),
+          settings: {
             slidesToShow: 3,
           }
         },
         {
           breakpoint: Base.Media.Width.Md,
+          settings: {
+            slidesToShow: 2.5,
+          }
+        },
+        {
+          breakpoint: (Base.Media.Width.Sm + ((Base.Media.Width.Md - Base.Media.Width.Sm) / 2)),
           settings: {
             slidesToShow: 2,
           }

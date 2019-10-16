@@ -17,7 +17,7 @@ import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 import Marquee from 'components/library/Section/Marquee';
 import TextOverImage from 'components/library/Section/TextOverImage';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
-import GiantTextBlock from 'components/library/Section/GiantTextBlock';
+import GiantText from 'components/library/Section/GiantTextBlock';
 import LegoList from 'components/library/Section/LegoList';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
@@ -69,6 +69,15 @@ const OverflowHidden = styled.div`
   overflow: hidden;
 `
 
+const GiantTextBlock = styled(GiantText)`
+  &.wide-word {
+    .headline {
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        font-size: 12vw;
+    }
+  }
+`
+
 // Render Page
 const WhoWhyPage = () => {
   return (
@@ -106,42 +115,44 @@ const WhoWhyPage = () => {
         </BasicInner>
       </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Sunset}
-        noPaddingTop
-        noPaddingBottom
-      >
-        <BasicInner noPaddingLeft noPaddingRight>
-          <ImageWithTextBlock
-            Image="intro-smiles.jpg"
-            Header="Build problem-solving skills"
-            Number="01"
-            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien."
-          />
-          <ImageWithTextBlock
-            reversedOrder
-            Image="intro-smiles.jpg"
-            Header="Provide an opportunity for creative expression"
-            Number="06"
-            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien."
-          >
-            <Icon Name="gear" />
-          </ImageWithTextBlock>
-          <ImageWithTextBlock
-            Image="intro-smiles.jpg"
-            Header="Foster a greater appreciation of how things work"
-            Number="03"
-            Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Nulla viverra enim sed magna vestibulum, nec imperdiet orci
-              egestas. Sed in magna sapien."
-          />
-        </BasicInner>
-      </BasicSection>
+      <OverflowHidden>
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Sunset}
+          noPaddingTop
+          noPaddingBottom
+        >
+          <BasicInner noPaddingLeft noPaddingRight>
+            <ImageWithTextBlock
+              Image="intro-smiles.jpg"
+              Header="Build problem-solving skills"
+              Number="01"
+              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+                egestas. Sed in magna sapien."
+            />
+            <ImageWithTextBlock
+              reversedOrder
+              Image="intro-smiles.jpg"
+              Header="Provide an opportunity for creative expression"
+              Number="06"
+              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+                egestas. Sed in magna sapien."
+            >
+              <Icon Name="gear" />
+            </ImageWithTextBlock>
+            <ImageWithTextBlock
+              Image="intro-smiles.jpg"
+              Header="Foster a greater appreciation of how things work"
+              Number="03"
+              Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Nulla viverra enim sed magna vestibulum, nec imperdiet orci
+                egestas. Sed in magna sapien."
+            />
+          </BasicInner>
+        </BasicSection>
+      </OverflowHidden>
 
       <OverflowHidden>
         <BasicSection
@@ -150,6 +161,7 @@ const WhoWhyPage = () => {
         >
           <BasicInner wideWidth>
             <GiantTextBlock
+              className="wide-word"
               Number="04"
               topText="Encourage the qualities of"
               giantText="Inquisitiveness Self Reliance &amp; Self Confidence"
