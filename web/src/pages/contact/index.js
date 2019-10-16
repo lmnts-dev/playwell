@@ -46,7 +46,7 @@ const ContactPage = ({ pageContext }) => {
   return (
     <Layout {...ThemeProps}>
       <Main>
-        <ContactHero states={fetchedData.allPlayWellStates} managers={fetchedData.allPlayWellManagers} />
+        <ContactHero data={fetchedData} />
         <ContactInfo />
       </Main>
     </Layout>
