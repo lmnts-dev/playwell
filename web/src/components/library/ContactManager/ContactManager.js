@@ -178,11 +178,9 @@ class SearchBar extends PureComponent {
 
       // Iterate through cleaned array with clean query and return truthy
       // or falsy if it exists
-      const isCostCodeMatch = searchSafeCostCodes.filter(costCode => {
-        if (costCode.includes(searchSafeQuery)) {
-          return true;
-        }
-      });
+      const isCostCodeMatch = searchSafeCostCodes.filter(costCode =>
+        costCode.includes(searchSafeQuery)
+      );
 
       /*
       // Return our filtered results

@@ -33,14 +33,14 @@ class Footer extends PureComponent {
 
   render() {
     function noFooter() {
-      if (location.pathname == '/contact') {
+      if (typeof window !== 'undefined' && location.pathname == '/contact') {
         return 'hide';
       }
-    };
+    }
 
     // console.log('noFooter:');
     // console.log(noFooter());
-    
+
     // Column limit of Nav links before starting new column
     let navLimit = 5;
     return (
