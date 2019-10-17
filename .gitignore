@@ -21,6 +21,6 @@ yarn-error.log*
 
 .cache/
 build
-public
-public/
-public/static
+# public
+# public/
+# public/static
