@@ -10,6 +10,7 @@ import { Link } from 'gatsby';
 
 // Helpers
 import _ from 'lodash';
+import locationMatch from 'helpers/LocationMatch';
 
 // Styles
 import {
@@ -55,7 +56,7 @@ class SearchBar extends PureComponent {
   // Mounted state
   componentDidMount() {
     // Listen for click events to show/hide results
-    document.addEventListener('mousedown', this.handleSearchResultsToggle);
+    document.addEventListener('keypress', this.handleSearchResultsToggle);
 
     // Assign State
     this.state = {
@@ -68,7 +69,7 @@ class SearchBar extends PureComponent {
   // Unmounted state
   componentWillUnmount() {
     // Remove listener for click events to show/hide results
-    document.removeEventListener('mousedown', this.handleSearchResultsToggle);
+    document.removeEventListener('keypress', this.handleSearchResultsToggle);
 
     // De-assign State
     this.state = {
@@ -101,7 +102,7 @@ class SearchBar extends PureComponent {
       });
     }
 
-    document.addEventListener('mousedown', this.handleSearchResultsToggle);
+    document.addEventListener('keypress', this.handleSearchResultsToggle);
   }
 
   // Handle our query updates
@@ -127,14 +128,14 @@ class SearchBar extends PureComponent {
     const stateEdges = this.props.data.allPlayWellStates.edges;
 
     // Create our Results array
-    const results = managerEdges.filter(managers => {
+    const results = managerEdges.filter(location => {
       // Clean our Location's name
-      const searchSafeName = managers.node.state.toLowerCase();
+      const searchSafeName = location.node.state.toLowerCase();
 
-      // /*
-      // // Clean our county names, make them iterable. and
-      // // return true if it is inside of the new array
-      // */
+      /*
+      // Clean our county names, make them iterable. and
+      // return true if it is inside of the new array
+      */
 
       // // Create empty array
       // const searchSafeCounties = [];
@@ -142,14 +143,7 @@ class SearchBar extends PureComponent {
       // // Iterate through Counties and add to said array
       // const cleanCountyNames = () => {
       //   //  Convert each county name to lowercase
-      //   stateEdges.forEach((state, idx) => {
-      //     searchSafeCounties.push(state.node.counties.name.toLowerCase());
-      //   });
-      // };
-
-      // const cleanCountyNames = () => {
-      //   //  Convert each county name to lowercase
-      //   stateEdges.node.counties.forEach((county, idx) => {
+      //   location.node.counties.forEach((county, idx) => {
       //     searchSafeCounties.push(county.name.toLowerCase());
       //   });
       // };
@@ -165,42 +159,50 @@ class SearchBar extends PureComponent {
       //   }
       // });
 
-      // /*
-      // // Clean our Cost Code Names, make them iterable. and
-      // // return true if it is inside of the new array
-      // */
+      /*
+      // Clean our Cost Code Names, make them iterable. and
+      // return true if it is inside of the new array
+      */
 
-      // // Create empty array
-      // const searchSafeCostCodes = [];
+      // Create empty array
+      const searchSafeCostCodes = [];
 
-      // // Iterate through Counties and add to said array
-      // const cleanCostCodes = () => {
-      //   //  Convert each county name to lowercase
-      //   stateEdges.forEach((state, idx) => {
-      //     searchSafeCostCodes.push(
-      //       state.node.counties.cost_code_name.toLowerCase()
-      //     );
-      //   });
-      // };
+      // Iterate through Counties and add to said array
+      const cleanCostCodes = () => {
+        //  Convert each county name to lowercase
+        searchSafeCostCodes.push(location.node.cost_code_name.toLowerCase());
+      };
 
-      // // Run above function synchronously
-      // cleanCostCodes();
+      // Run above function synchronously
+      cleanCostCodes();
 
-      // // Iterate through cleaned array with clean query and return truthy
-      // // or falsy if it exists
-      // const isCostCodeMatch = searchSafeCostCodes.filter(costCode => {
-      //   if (costCode.includes(searchSafeQuery)) {
-      //     return true;
-      //   }
-      // });
+      // Iterate through cleaned array with clean query and return truthy
+      // or falsy if it exists
+      const isCostCodeMatch = searchSafeCostCodes.filter(costCode => {
+        if (costCode.includes(searchSafeQuery)) {
+          return true;
+        }
+      });
 
       /*
       // Return our filtered results
       */
 
       if (searchSafeName.includes(searchSafeQuery)) {
-        return managers;
+        return location;
+      } else if (isCostCodeMatch.length > 0) {
+        return location;
       }
+
+      // For Debugging only.
+      // console.log('searchSafeCounties:');
+      // console.log(searchSafeCounties);
+
+      // console.log(isCostCodeMatch.length > 0 ? true : false);
+      // console.log(isCostCodeMatch);
+
+      // console.log('isCountyMatch:');
+      // console.log(isCountyMatch);
 
       // console.log('searchSafeName: ' + searchSafeName);
       // console.log('searchSafeQuery: ' + searchSafeQuery);
@@ -245,7 +247,7 @@ class SearchBar extends PureComponent {
 }
 
 // Our Search Bar Results
-const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
+const SearchBarResults = ({ results }) => {
   return (
     <>
       {/* Map all availabe locations */}
