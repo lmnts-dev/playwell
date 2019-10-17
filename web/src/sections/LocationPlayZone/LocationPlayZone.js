@@ -15,7 +15,6 @@ import ImgMatch from 'components/core/ImgMatch';
 
 // Styles
 import { Container } from './styles.scss';
-import { Decorator } from '../../pages/location-detail/styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -40,7 +39,7 @@ const LocationPlayZone = () => (
         activities to feed your imagination.
       </Text>
       <Btn
-        Label="Play Center"
+        Label="Play Zone"
         Destination="/menu"
         BgColor={Theme.Color.Primary}
         TextColor={Theme.Color.White}

@@ -22,6 +22,7 @@ export const Container = styled(Flex)`
   background-size: cover;
   background-position: center center;
   position: relative;
+  width: 100%;
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     padding-left: ${props => (props.indent ? `calc(${Root.Size} * 1)` : '0')};
@@ -47,7 +48,7 @@ Container.Inner = styled(Box)`
   width: 100%;
   max-width: ${props => (props.fullWidth ? '100%' : Theme.Base.Grid.SiteWidth)};
   margin: 0 auto;
-  overflow-x: visible;
+  /* overflow-x: visible; */
   position: relative;
   padding-right: ${props => (props.fullWidth ? '0' : Root.Grid.Gutter.Right)};
   padding-left: ${props => (props.fullWidth ? '0' : Root.Grid.Gutter.Left)};

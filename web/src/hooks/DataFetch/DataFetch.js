@@ -80,9 +80,13 @@ export const DataFetch = () => {
         edges {
           node {
             id
+            cell_number
             cost_code
-            state_id
+            cost_code_name
+            email
             manager
+            state
+            state_id
           }
         }
       }

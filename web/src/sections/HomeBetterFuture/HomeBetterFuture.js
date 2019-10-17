@@ -15,7 +15,7 @@ import ImgMatch from 'components/core/ImgMatch';
 import { Icon } from 'components/library/Icons';
 
 // Styles
-import { Container, EdgeImageWithTextStyle } from './styles.scss';
+import { Container } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -30,6 +30,7 @@ const HomeBetterFuture = ({ themeProps }) => {
       bg={themeProps.BgColor}
       color={themeProps.PrimaryColor}
       textAlign="left"
+      overflow="hidden"
     >
       <Container.Inner>
         <Container.Image width={[1, 1, 4 / 10, 4 / 10, 6 / 10]}>
@@ -65,7 +66,7 @@ const HomeBetterFuture = ({ themeProps }) => {
             External
             Label="What We Do"
             BgColor={themeProps.TertiaryColor}
-            TextColor={Theme.Color.White}
+            TextColor={themeProps.PrimaryColor}
           />
         </Box>
       </Container.Inner>

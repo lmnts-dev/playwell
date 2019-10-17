@@ -25,10 +25,10 @@ import {
   Actions,
   HeroBtn,
   Mask,
+  Decorator,
 } from './styles.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Decorator } from '../../pages/styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -62,6 +62,8 @@ const HeroProps = {
   textAlign: 'center',
   withMask: true,
   fullWidth: true,
+  curveBg: Theme.Color.Deepsea,
+  sliceBg: Theme.Color.Background,
 };
 
 const settings = {
@@ -93,13 +95,13 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
             style={{ zIndex: '-10' }}
           />
         </div>
-        <div className="decorator__hero decorator__hero--volcano">
+        {/* <div className="decorator__hero decorator__hero--volcano">
           <ImgMatch
             src="volcano.png"
             AltText="Cloud"
             style={{ zIndex: '-10' }}
           />
-        </div>
+        </div> */}
       </Decorator>
       <SliderContainer
         width={[1, 1, 1, 1, 6 / 10]}

@@ -1,4 +1,4 @@
-// <LocationPlayCenter /> Styles:
+// <HomeImpact /> Styles:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -9,6 +9,7 @@ import styled from 'styled-components';
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import Section from 'components/library/Elements/Section';
+import Btn from 'components/library/Btn';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -17,23 +18,19 @@ import { Base } from 'constants/styles/Base';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Container = styled(Section)`
-  position: relative;
+export const Container = styled(Section)``;
+
+Container.Inner = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 `;
 
-Container.Overflow = styled.div`
-  overflow: hidden;
-`;
+Container.Image = styled(Box)`
+  /* clip-path: circle(50%); */
 
-Container.Image = styled.div`
-  width: 547px;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: -300px;
-
-  .img {
-    width: 587px;
+  figure {
+    margin: 0;
   }
 `;
 
