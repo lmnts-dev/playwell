@@ -14,16 +14,20 @@ import { Base } from 'constants/styles/Base';
 import { Theme, Root } from 'constants/Theme';
 
 // Styles
-import { FooterStyle } from './styles.scss';
+import { FooterStyle, CurveAndAngleWithPadding } from './styles.scss';
 
 // Components
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
-import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
+import {
+  BasicSection,
+  BasicInner,
+} from 'components/library/Section/BasicSection';
 import { Icon } from 'components/library/Icons';
 import { Brandmark } from 'components/core/Branding/Brandmark';
 
+
 // Begin Component
 //////////////////////////////////////////////////////////////////////
+
 
 export const Footer = ({ navQuery }) => {
   // Column limit of Nav links before starting new column
@@ -32,80 +36,87 @@ export const Footer = ({ navQuery }) => {
   return (
     // Query our Navigation data so we can adjust our Footer styles
     // based on Top Level Pages vs Sub Level Pages.
-    <FooterStyle>
-      <FooterCurveSlice bgColor={Theme.Color.Black} />
-      <FooterAngleSlice />
-      <div className="inner">
-        <div className="content">
-          <div className="col">
+    <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Background}>
+      <CurveAndAngleWithPadding
+        Tall
+        CurveColor={Theme.Color.Blush}
+        AngleColor={Theme.Color.White}
+        className="curve-and-angle"
+      />
+
+      <FooterStyle>
+        <BasicInner wideWidth>
+          <div className="brandmark-container">
             <Link to="/">
               <Brandmark animate />
             </Link>
           </div>
-          <div className="col">
-            <ul>
-              {navQuery.footerNav.linkList.map((link, idx) => {
-                if (idx < navLimit) {
-                  return (
-                    <li key={idx}>
-                      <Link to={link.route}>{link.label}</Link>
-                    </li>
-                  );
-                }
-              })}
-            </ul>
-          </div>
-          <div className="col">
-            <ul>
-              {navQuery.footerNav.linkList.map((link, idx) => {
-                if (idx > navLimit) {
-                  return (
-                    <li key={idx}>
-                      <Link to={link.route}>{link.label}</Link>
-                    </li>
-                  );
-                }
-              })}
-            </ul>
-          </div>
-          <div className="col">
-            <ul className="social">
-              <li>
-                <a
-                  href={'https://www.facebook.com/sharer.php?u='}
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                >
-                  <Icon Name="facebook" Color={Theme.Color.Primary} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={
-                    'https://twitter.com/intent/tweet?url=&text=Test&via=Test&hashtags=Test'
+          <div className="content">
+            <div className="col">
+              <ul>
+                {navQuery.footerNav.linkList.map((link, idx) => {
+                  if (idx < navLimit) {
+                    return (
+                      <li key={idx}>
+                        <Link to={link.route}>{link.label}</Link>
+                      </li>
+                    );
                   }
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                >
-                  <Icon Name="twitter" Color={Theme.Color.Primary} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={
-                    'https://www.linkedin.com/shareArticle?mini=true&url=&title=Test&summary=Test&source=Test'
+                })}
+              </ul>
+            </div>
+            <div className="col">
+              <ul>
+                {navQuery.footerNav.linkList.map((link, idx) => {
+                  if (idx > navLimit) {
+                    return (
+                      <li key={idx}>
+                        <Link to={link.route}>{link.label}</Link>
+                      </li>
+                    );
                   }
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                >
-                  <Icon Name="linkedin" Color={Theme.Color.Primary} />
-                </a>
-              </li>
-            </ul>
+                })}
+              </ul>
+            </div>
+            <div className="col">
+              <ul className="social">
+                <li>
+                  <a
+                    href={'https://www.facebook.com/sharer.php?u='}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    <Icon Name="facebook" Color={Theme.Color.Primary} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={
+                      'https://twitter.com/intent/tweet?url=&text=Test&via=Test&hashtags=Test'
+                    }
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    <Icon Name="twitter" Color={Theme.Color.Primary} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={
+                      'https://www.linkedin.com/shareArticle?mini=true&url=&title=Test&summary=Test&source=Test'
+                    }
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    <Icon Name="linkedin" Color={Theme.Color.Primary} />
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </div>
-    </FooterStyle>
+        </BasicInner>
+      </FooterStyle>
+    </BasicSection>
   );
 };
 

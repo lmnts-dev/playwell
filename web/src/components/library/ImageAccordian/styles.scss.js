@@ -18,6 +18,8 @@ const ImageAccordianStyle = styled.div`
     background-color: ${Theme.Color.Nova};
     padding: calc(${Root.Size} / 2);
     position: relative;
+    border-top-left-radius: calc(${Root.Size} / 8);
+    border-top-right-radius: calc(${Root.Size} / 8);
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       padding: calc(${Root.Size} / 3);
     }
@@ -74,8 +76,8 @@ const ImageAccordianStyle = styled.div`
     padding-top: 160%;
     position: relative;
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        flex: 100;
-        padding-top: 40%;
+      flex: 100;
+      padding-top: 40%;
     }
 
     .gatsby-image-wrapper {

@@ -25,10 +25,12 @@ export const CurveAndAngle = ({
   CurveColor,
   AngleColor,
   Clouds,
+  Tall,
+  className,
   AbsoluteImages,
   children
 }) => (
-  <CurveAndAngleStyle>
+  <CurveAndAngleStyle Tall={Tall} className={className}>
     {children}
     <FooterCurveSlice bgColor={CurveColor} />
     <FooterAngleSlice bgColor={AngleColor} />

@@ -20,7 +20,7 @@ import { Base } from 'constants/styles/Base';
 export const CurveAndAngleStyle = styled.div`
   position: relative;
   width: 100vw;
-  height: 30vw;
+  height: ${props => props.Tall ? '50vw' : '30vw'};
   
   .footer-angle-slice {
     position: absolute;
@@ -33,7 +33,7 @@ export const CurveAndAngleStyle = styled.div`
 
   .footer-curve-slice {
     width: 100vw;
-    height: 30vw;
+    height: ${props => props.Tall ? '50vw' : '30vw'};
     z-index: 1;
     padding-bottom: 5vw;
   }
