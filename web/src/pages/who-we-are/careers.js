@@ -67,13 +67,10 @@ const ThemeProps = {
 const WhoCareersPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps}>
+      <SplitHero {...HeroProps} subNav={['who', 'how', 'why', 'careers']}>
         <h2>We provide opportunities for creative expression</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
       </SplitHero>
-      <Box css={{ position: 'relative', height: 0 }}>
-        <SubNav />
-      </Box>
 
       <BasicSection
         BgColor={Theme.Color.Background}
@@ -201,18 +198,18 @@ const WhoCareersPage = () => {
       </BasicSection>
 
       <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
-          <Marquee
-            images={[
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-            ]}
-            Shadow
-          />
+        <Marquee
+          images={[
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+            'intro-smiles.jpg',
+          ]}
+          Shadow
+        />
       </BasicSection>
 
       <BasicSection
@@ -257,7 +254,11 @@ const WhoCareersPage = () => {
             Text="We do this in the context of fun-filled engineering and
               architectural projects, activities that both the children and the
               instructors enjoy."
-            Images={[ "intro-smiles.jpg", "intro-smiles.jpg", "intro-smiles.jpg" ]}
+            Images={[
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+              'intro-smiles.jpg',
+            ]}
           />
         </BasicInner>
       </BasicSection>

@@ -18,6 +18,7 @@ import ContactInfo from 'sections/ContactInfo';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
+import { Base } from 'constants/styles/Base';
 
 // Data
 import { DataFetch } from 'hooks/DataFetch';

@@ -201,13 +201,18 @@ const OverflowHidden = styled.div`
 const WhoHowPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps}>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          'who',
+          'how',
+          'why',
+          'careers',
+        ]}
+      >
         <h2>Join a team of creative problem solvers &amp; creators</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
       </SplitHero>
-      <Box css={{ position: 'relative', height: 0 }}>
-        <SubNav />
-      </Box>
 
       <BasicSection
         BgColor={Theme.Color.Lilac}

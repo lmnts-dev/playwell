@@ -202,13 +202,18 @@ const OverflowHidden = styled.div`
 const WhoPage = ({ SliderSettings }) => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps}>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          'who',
+          'how',
+          'why',
+          'careers',
+        ]}
+      >
         <h2>Passionate industry leaders in STEM Education since 1997</h2>
         <h6>Lorem ipsum dolor sit amet, consectetur a.</h6>
       </SplitHero>
-      <Box css={{ position: 'relative', height: 0 }}>
-        <SubNav />
-      </Box>
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
@@ -229,7 +234,7 @@ const WhoPage = ({ SliderSettings }) => {
           BgLinear={Theme.Color.Nova}
         />
       </BasicSection>
-      
+
       <BasicSection
         BgColor={Theme.Color.Nova}
         TextColor={Theme.Color.White}
@@ -237,14 +242,14 @@ const WhoPage = ({ SliderSettings }) => {
         noInner
       >
         <ClayTextBlock>
-            <div className="text-block">
-              <div className="headline txt-clr-clay">Play comes first.</div>
-              <p className="h3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-                viverra enim sed magna vestibulum, nec imperdiet orci egestas.
-                Sed in magna sapien.
-              </p>
-            </div>
+          <div className="text-block">
+            <div className="headline txt-clr-clay">Play comes first.</div>
+            <p className="h3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+              viverra enim sed magna vestibulum, nec imperdiet orci egestas. Sed
+              in magna sapien.
+            </p>
+          </div>
         </ClayTextBlock>
       </BasicSection>
 
@@ -263,7 +268,11 @@ const WhoPage = ({ SliderSettings }) => {
           TextColor={Theme.Color.Dino}
         >
           <BasicInner>
-            <CenteredTitle className="our-story" Class="headline" Title="Our Story" />
+            <CenteredTitle
+              className="our-story"
+              Class="headline"
+              Title="Our Story"
+            />
           </BasicInner>
           <BasicInner noPaddingRight>
             <EdgeImageWithText
