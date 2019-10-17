@@ -21,7 +21,9 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const AccordionContainer = styled.div``;
+export const AccordionContainer = styled.div`
+  width: 100%;
+`;
 
 AccordionContainer.Inner = styled.div`
   display: flex;
@@ -37,23 +39,23 @@ AccordionContainer.Icon = styled(Icon)`
   transition: transform 0.3s ease;
 
   svg {
-    fill: ${Theme.Color.Nova};
+    fill: ${p => p.chevronColor};
   }
 `;
 
 AccordionContainer.Accordion = styled.button`
   align-items: center;
   background: transparent;
-  color: ${hexToRGB(Theme.Color.Dino, 0.7)};
+  color: ${p => p.color};
   cursor: pointer;
   display: flex;
   border: none;
   outline: none;
-  padding: calc(${Root.Size} / 2) calc(${Root.Size} / 3);
+  padding: calc(${Root.Size} / 3) calc(${Root.Size} / 4);
   transition: background-color 0.6s ease;
 
-  @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
-    padding: calc(${Root.Size} / 3) calc(${Root.Size} / 4);
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+    padding: calc(${Root.Size} / 2) calc(${Root.Size} / 3);
   }
 
   &:last-child {
@@ -61,14 +63,14 @@ AccordionContainer.Accordion = styled.button`
   }
 
   &.active {
-    color: ${Theme.Color.Dino};
+    color: ${p => p.colorActive};
   }
 `;
 
 AccordionContainer.Content = styled(Box)`
   overflow: hidden;
   transition: max-height 0.6s ease;
-  border-bottom: 1px solid ${hexToRGB(Theme.Color.Sunlight, 0.5)};
+  border-bottom: 1px solid ${p => p.borderColor};
 `;
 
 AccordionContainer.Content.Inner = styled.div`

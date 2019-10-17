@@ -15,7 +15,6 @@ import ImgMatch from 'components/core/ImgMatch';
 
 // Styles
 import { Container } from './styles.scss';
-import { Decorator } from '../../pages/styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';

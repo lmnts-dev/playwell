@@ -49,7 +49,7 @@ class FilteredResults extends PureComponent {
 
     // For Debugging only
     // console.log(stateEdges);
-    // console.log(results);
+    console.log(results);
 
     // Show our listings
     return (

@@ -30,6 +30,10 @@ export const FooterStyle = styled.footer`
   justify-content: flex-end;
   z-index: 20;
 
+  &.hide {
+    display: none;
+  }
+
   .footer-curve-slice,
   .footer-angle-slice {
     width: 100%;
