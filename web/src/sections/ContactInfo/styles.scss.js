@@ -47,7 +47,7 @@ Container.Inner = styled.div`
   }
 `;
 
-export const ArrowLink = styled(Link)`
+export const ArrowLink = styled.a`
   color: ${Theme.Color.Sunlight};
   font-size: 1.2rem;
   line-height: 1.4;

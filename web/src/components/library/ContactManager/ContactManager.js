@@ -224,12 +224,12 @@ class SearchBar extends PureComponent {
           }
         >
           <div className="inner">
-            <Icon Name="search" fas />
+            {/* <Icon Name="search" fas /> */}
             <input
               placeholder="Enter State..."
               onChange={this.handleInputChange}
             />
-            {/* <Icon Name="search" fas /> */}
+            <Icon Name="search" fas />
           </div>
         </div>
 
