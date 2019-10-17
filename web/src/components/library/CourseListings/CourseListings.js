@@ -62,6 +62,10 @@ class FilteredResults extends PureComponent {
             client.node.state_id
           );
 
+          {
+            console.log(locationMetaResults);
+          }
+
           // Build our slugified strings for pretty URLs.
           let stateSlug = slugify(locationMetaResults.state.name);
           let countySlug = slugify(locationMetaResults.county.name);

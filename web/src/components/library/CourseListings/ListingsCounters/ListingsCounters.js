@@ -10,8 +10,8 @@ import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
 
 // Constants
-import { Base } from 'constants/styles/Base';
-import { Theme, Root } from 'constants/Theme';
+// import { Base } from 'constants/styles/Base';
+// import { Theme, Root } from 'constants/Theme';
 
 // Components
 import { Icon } from 'components/library/Icons';
