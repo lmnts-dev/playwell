@@ -27,6 +27,7 @@ const ContactInfo = ({ pageContext }) => {
       bg={Theme.Color.Deepsea}
       color={Theme.Color.White}
       textAlign="left"
+      pb={[2, 'calc((--Size) / 2)']}
       fullWidth
     >
       <Container.Inner>
@@ -51,21 +52,15 @@ const ContactInfo = ({ pageContext }) => {
           </ArrowLink>
           <Flex mt={1}>
             <Box width={1 / 3}>
-              <Text className="p-lg">
-                Phone
-              </Text>
+              <Text className="p-lg">Phone</Text>
               <p className="p-sm">415.578.2746</p>
             </Box>
             <Box width={1 / 3}>
-              <Text className="p-lg">
-                Fax
-              </Text>
+              <Text className="p-lg">Fax</Text>
               <p className="p-sm">415.5460.5108</p>
             </Box>
             <Box width={1 / 3}>
-              <Text className="p-lg">
-                FEIN #
-              </Text>
+              <Text className="p-lg">FEIN #</Text>
               <p className="p-sm">68-0415940</p>
             </Box>
           </Flex>

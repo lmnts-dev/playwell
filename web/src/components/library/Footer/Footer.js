@@ -7,6 +7,7 @@
 // Core
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
+import styled, { createGlobalStyle } from 'styled-components';
 import Device from '../../core/DeviceQuery';
 
 // Constants
@@ -25,89 +26,105 @@ import { Brandmark } from 'components/core/Branding/Brandmark';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const Footer = ({ navQuery }) => {
-  // Column limit of Nav links before starting new column
-  let navLimit = 5;
+class Footer extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    // Query our Navigation data so we can adjust our Footer styles
-    // based on Top Level Pages vs Sub Level Pages.
-    <FooterStyle>
-      <FooterCurveSlice bgColor={Theme.Color.Black} />
-      <FooterAngleSlice />
-      <div className="inner">
-        <div className="content">
-          <div className="col">
-            <Link to="/">
-              <Brandmark animate />
-            </Link>
-          </div>
-          <div className="col">
-            <ul>
-              {navQuery.footerNav.linkList.map((link, idx) => {
-                if (idx < navLimit) {
-                  return (
-                    <li key={idx}>
-                      <Link to={link.route}>{link.label}</Link>
-                    </li>
-                  );
-                }
-              })}
-            </ul>
-          </div>
-          <div className="col">
-            <ul>
-              {navQuery.footerNav.linkList.map((link, idx) => {
-                if (idx > navLimit) {
-                  return (
-                    <li key={idx}>
-                      <Link to={link.route}>{link.label}</Link>
-                    </li>
-                  );
-                }
-              })}
-            </ul>
-          </div>
-          <div className="col">
-            <ul className="social">
-              <li>
-                <a
-                  href={'https://www.facebook.com/sharer.php?u='}
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                >
-                  <Icon Name="facebook" Color={Theme.Color.Primary} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={
-                    'https://twitter.com/intent/tweet?url=&text=Test&via=Test&hashtags=Test'
+  render() {
+    function noFooter() {
+      if (location.pathname == '/contact') {
+        return 'hide';
+      }
+    };
+
+    // console.log('noFooter:');
+    // console.log(noFooter());
+    
+    // Column limit of Nav links before starting new column
+    let navLimit = 5;
+    return (
+      // Query our Navigation data so we can adjust our Footer styles
+      // based on Top Level Pages vs Sub Level Pages.
+      <FooterStyle className={noFooter()}>
+        <FooterCurveSlice bgColor={Theme.Color.Black} />
+        <FooterAngleSlice />
+        <div className="inner">
+          <div className="content">
+            <div className="col">
+              <Link to="/">
+                <Brandmark animate />
+              </Link>
+            </div>
+            <div className="col">
+              <ul>
+                {this.props.navQuery.footerNav.linkList.map((link, idx) => {
+                  if (idx < navLimit) {
+                    return (
+                      <li key={idx}>
+                        <Link to={link.route}>{link.label}</Link>
+                      </li>
+                    );
                   }
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                >
-                  <Icon Name="twitter" Color={Theme.Color.Primary} />
-                </a>
-              </li>
-              <li>
-                <a
-                  href={
-                    'https://www.linkedin.com/shareArticle?mini=true&url=&title=Test&summary=Test&source=Test'
+                })}
+              </ul>
+            </div>
+            <div className="col">
+              <ul>
+                {this.props.navQuery.footerNav.linkList.map((link, idx) => {
+                  if (idx > navLimit) {
+                    return (
+                      <li key={idx}>
+                        <Link to={link.route}>{link.label}</Link>
+                      </li>
+                    );
                   }
-                  target="_blank"
-                  rel="nofollow noopener noreferrer"
-                >
-                  <Icon Name="linkedin" Color={Theme.Color.Primary} />
-                </a>
-              </li>
-            </ul>
+                })}
+              </ul>
+            </div>
+            <div className="col">
+              <ul className="social">
+                <li>
+                  <a
+                    href={'https://www.facebook.com/sharer.php?u='}
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    <Icon Name="facebook" Color={Theme.Color.Primary} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={
+                      'https://twitter.com/intent/tweet?url=&text=Test&via=Test&hashtags=Test'
+                    }
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    <Icon Name="twitter" Color={Theme.Color.Primary} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={
+                      'https://www.linkedin.com/shareArticle?mini=true&url=&title=Test&summary=Test&source=Test'
+                    }
+                    target="_blank"
+                    rel="nofollow noopener noreferrer"
+                  >
+                    <Icon Name="linkedin" Color={Theme.Color.Primary} />
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </FooterStyle>
-  );
-};
+      </FooterStyle>
+    );
+  }
+}
+
+export default Footer;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

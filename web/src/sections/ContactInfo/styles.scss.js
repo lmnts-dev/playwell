@@ -24,7 +24,6 @@ import hexToRGB from 'helpers/hexToRGB';
 export const Container = styled(Section)`
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
   }
-
   @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
   }
 `;
