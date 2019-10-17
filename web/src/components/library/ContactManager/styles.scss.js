@@ -105,15 +105,15 @@ export const SearchBarStyle = styled.div`
     width: 100%;
     background: ${Theme.Color.White};
     justify-content: space-between;
-    border-radius: calc(${Root.Size} / 2);
+    border-radius: calc(${Root.Size} / 8);
     transform: scale(1);
     transform-origin: center center;
     /* transition: ${Theme.Base.Transition.String}; */
     z-index: 400;
 
-    &.results-visible {
-      border-radius: calc(${Root.Size} / 2) calc(${Root.Size} / 2) 0 0;
-    }
+    /* &.results-visible {
+      border-radius: calc(${Root.Size} / 8) calc(${Root.Size} / 2) 0 0;
+    } */
 
     &:focus-within {
       .inner {
@@ -134,7 +134,7 @@ export const SearchBarStyle = styled.div`
       position: relative;
 
       &:before {
-        content: 'Select one below';
+        content: 'View contacts below';
         position: absolute;
         right: ${Root.Size};
         top: 56%;
@@ -380,6 +380,7 @@ export const Article = styled.div`
   background: ${Theme.Color.White};
   padding: calc(${Root.Size} / 2);
   width: 100%;
+  border-radius: calc(${Root.Size} / 8);
 
   @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
     padding: calc(${Root.Size} / 3);
@@ -389,26 +390,32 @@ export const Article = styled.div`
 Article.Info = styled.div`
   display: flex;
   padding-left: calc(${Root.Size} / 2);
-  width: 75%;
+  width: 85%;
+  position: relative;
+  left: -40px;
 
   @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
     padding-left: calc(${Root.Size} / 3);
-    width: 85%;
+    width: 75%;
   }
 `;
 
 Article.Figure = styled.figure`
   margin: 0;
-  width: 25%;
-  height: 25%;
+  width: 15%;
+  max-width: 140px;
+  height: 15%;
+  max-height: 140px;
+  position: relative;
+  left: -60px;
 
   @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
-    width: 15%;
-    height: 15%;
+    width: 25%;
+    height: 25%;
   }
 
   .gatsby-image-wrapper {
-    border-radius: calc(${Root.Radius} * 6);
+    border-radius: calc(${Root.Radius} * 10);
     overflow: hidden;
     width: 100%;
     height: 100%;

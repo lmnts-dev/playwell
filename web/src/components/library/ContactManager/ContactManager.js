@@ -10,6 +10,7 @@ import { Link } from 'gatsby';
 
 // Helpers
 import _ from 'lodash';
+import locationMatch from 'helpers/LocationMatch';
 
 // Styles
 import {
@@ -27,6 +28,10 @@ import ImgMatch from 'components/core/ImgMatch';
 
 // Helpers
 import slugify from 'helpers/slugify';
+import hexToRGB from 'helpers/hexToRGB';
+
+// Constants
+import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -51,7 +56,7 @@ class SearchBar extends PureComponent {
   // Mounted state
   componentDidMount() {
     // Listen for click events to show/hide results
-    document.addEventListener('mousedown', this.handleSearchResultsToggle);
+    document.addEventListener('keypress', this.handleSearchResultsToggle);
 
     // Assign State
     this.state = {
@@ -64,7 +69,7 @@ class SearchBar extends PureComponent {
   // Unmounted state
   componentWillUnmount() {
     // Remove listener for click events to show/hide results
-    document.removeEventListener('mousedown', this.handleSearchResultsToggle);
+    document.removeEventListener('keypress', this.handleSearchResultsToggle);
 
     // De-assign State
     this.state = {
@@ -97,7 +102,7 @@ class SearchBar extends PureComponent {
       });
     }
 
-    document.addEventListener('mousedown', this.handleSearchResultsToggle);
+    document.addEventListener('keypress', this.handleSearchResultsToggle);
   }
 
   // Handle our query updates
@@ -119,19 +124,85 @@ class SearchBar extends PureComponent {
     // Clean our queries
     const searchSafeQuery = this.state.query.toLowerCase();
 
+    const managerEdges = this.props.data.allPlayWellManagers.edges;
+    const stateEdges = this.props.data.allPlayWellStates.edges;
+
     // Create our Results array
-    const results = this.props.managers.edges.filter(managers => {
+    const results = managerEdges.filter(location => {
       // Clean our Location's name
-      const searchSafeName = managers.node.state.toLowerCase();
-      // const stateId = location.node.playwell_state_id.toLowerCase();
+      const searchSafeName = location.node.state.toLowerCase();
+
+      /*
+      // Clean our county names, make them iterable. and
+      // return true if it is inside of the new array
+      */
+
+      // // Create empty array
+      // const searchSafeCounties = [];
+
+      // // Iterate through Counties and add to said array
+      // const cleanCountyNames = () => {
+      //   //  Convert each county name to lowercase
+      //   location.node.counties.forEach((county, idx) => {
+      //     searchSafeCounties.push(county.name.toLowerCase());
+      //   });
+      // };
+
+      // // Run above function synchronously
+      // cleanCountyNames();
+
+      // // Iterate through cleaned array with clean query and return truthy
+      // // or falsy if it exists
+      // const isCountyMatch = searchSafeCounties.filter(county => {
+      //   if (county.includes(searchSafeQuery)) {
+      //     return true;
+      //   }
+      // });
+
+      /*
+      // Clean our Cost Code Names, make them iterable. and
+      // return true if it is inside of the new array
+      */
+
+      // Create empty array
+      const searchSafeCostCodes = [];
+
+      // Iterate through Counties and add to said array
+      const cleanCostCodes = () => {
+        //  Convert each county name to lowercase
+        searchSafeCostCodes.push(location.node.cost_code_name.toLowerCase());
+      };
+
+      // Run above function synchronously
+      cleanCostCodes();
+
+      // Iterate through cleaned array with clean query and return truthy
+      // or falsy if it exists
+      const isCostCodeMatch = searchSafeCostCodes.filter(costCode => {
+        if (costCode.includes(searchSafeQuery)) {
+          return true;
+        }
+      });
 
       /*
       // Return our filtered results
       */
 
       if (searchSafeName.includes(searchSafeQuery)) {
-        return managers;
+        return location;
+      } else if (isCostCodeMatch.length > 0) {
+        return location;
       }
+
+      // For Debugging only.
+      // console.log('searchSafeCounties:');
+      // console.log(searchSafeCounties);
+
+      // console.log(isCostCodeMatch.length > 0 ? true : false);
+      // console.log(isCostCodeMatch);
+
+      // console.log('isCountyMatch:');
+      // console.log(isCountyMatch);
 
       // console.log('searchSafeName: ' + searchSafeName);
       // console.log('searchSafeQuery: ' + searchSafeQuery);
@@ -153,9 +224,9 @@ class SearchBar extends PureComponent {
           }
         >
           <div className="inner">
-            {/* <Icon Name="map-marker-alt" fas /> */}
+            {/* <Icon Name="search" fas /> */}
             <input
-              placeholder="Or search by another location..."
+              placeholder="Enter State..."
               onChange={this.handleInputChange}
             />
             <Icon Name="search" fas />
@@ -176,47 +247,56 @@ class SearchBar extends PureComponent {
 }
 
 // Our Search Bar Results
-const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
+const SearchBarResults = ({ results }) => {
   return (
     <>
       {/* Map all availabe locations */}
       {results.length > 0 ? (
         results.map((result, idx) => {
           return (
-            <Accordion key={result.node.id} title={result.node.cost_code_name}>
-              <Article>
-                <Article.Figure>
-                  <ImgMatch
-                    src="avatar-yoda.jpg"
-                    AltText="PlayWell program state coordinator"
-                  />
-                </Article.Figure>
-                <Article.Info>
-                  <Flex flexWrap="wrap">
-                    <Article.Info.Details>
-                      {result.node.state} <span>{result.node.cost_code}</span>
-                    </Article.Info.Details>
-                    <Article.Info.Name fontSize="1.6rem">
-                      {result.node.manager}
-                    </Article.Info.Name>
-                    <Article.Info.Contact>
-                      <span>
-                        <a href={'mailto:' + result.node.email}>
-                          {result.node.email}
-                        </a>
-                      </span>
-                      <span>
-                        <a href={'tel:' + result.node.cell_number}>
-                          {result.node.cell_number}
-                        </a>
-                      </span>
-                      <span>
-                        <a href="/">More</a>
-                      </span>
-                    </Article.Info.Contact>
-                  </Flex>
-                </Article.Info>
-              </Article>
+            <Accordion
+              key={result.node.id}
+              title={result.node.cost_code_name}
+              chevronColor={Theme.Color.White}
+              color={hexToRGB(Theme.Color.White, 0.7)}
+              colorActive={Theme.Color.Whtie}
+              borderColor={Theme.Color.Galaxy}
+            >
+              <Box pl={40}>
+                <Article>
+                  <Article.Figure>
+                    <ImgMatch
+                      src="avatar-yoda.jpg"
+                      AltText="PlayWell program state coordinator"
+                    />
+                  </Article.Figure>
+                  <Article.Info>
+                    <Flex flexWrap="wrap">
+                      <Article.Info.Details>
+                        {result.node.state} <span>{result.node.cost_code}</span>
+                      </Article.Info.Details>
+                      <Article.Info.Name fontSize="1.6rem">
+                        {result.node.manager}
+                      </Article.Info.Name>
+                      <Article.Info.Contact>
+                        <span>
+                          <a href={'mailto:' + result.node.email}>
+                            {result.node.email}
+                          </a>
+                        </span>
+                        <span>
+                          <a href={'tel:' + result.node.cell_number}>
+                            {result.node.cell_number}
+                          </a>
+                        </span>
+                        <span>
+                          <a href="/">More</a>
+                        </span>
+                      </Article.Info.Contact>
+                    </Flex>
+                  </Article.Info>
+                </Article>
+              </Box>
             </Accordion>
           );
         })
@@ -235,8 +315,8 @@ const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
 };
 
 // Simple Course Hero Display Component
-const CourseHeroContent = ({ states, managers }) => {
-  return <SearchBar states={states} managers={managers} />;
+const CourseHeroContent = ({ data }) => {
+  return <SearchBar data={data} />;
 };
 
 // Full Wrapper
@@ -247,11 +327,10 @@ export const ContactManager = ({
   color,
   px,
   bg,
-  states,
-  managers,
+  data,
 }) => (
   <CourseHeroStyle bg={bg}>
-    <CourseHeroContent states={states} managers={managers} />
+    <CourseHeroContent data={data} />
   </CourseHeroStyle>
 );
 

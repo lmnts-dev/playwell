@@ -24,7 +24,6 @@ import hexToRGB from 'helpers/hexToRGB';
 export const Container = styled(Section)`
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
   }
-
   @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
   }
 `;
@@ -48,7 +47,7 @@ Container.Inner = styled.div`
   }
 `;
 
-export const ArrowLink = styled(Link)`
+export const ArrowLink = styled.a`
   color: ${Theme.Color.Sunlight};
   font-size: 1.2rem;
   line-height: 1.4;

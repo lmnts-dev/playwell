@@ -38,7 +38,7 @@ export const FooterStyle = styled.footer`
   bottom: 0;
   left: 0;
   display: flex;
-  z-index: 3;
+  z-index: 20;
 
   .footer-curve-slice {
     //TODO create prop for a transparent curve

@@ -41,7 +41,7 @@ Hero.Title = styled.div`
   align-items: center;
 `;
 
-Hero.Faq = styled(Link)`
+Hero.Faq = styled.a`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

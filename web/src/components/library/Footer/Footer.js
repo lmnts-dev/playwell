@@ -7,6 +7,7 @@
 // Core
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
+import styled, { createGlobalStyle } from 'styled-components';
 import Device from '../../core/DeviceQuery';
 
 // Constants
@@ -29,11 +30,24 @@ import { Brandmark } from 'components/core/Branding/Brandmark';
 //////////////////////////////////////////////////////////////////////
 
 
-export const Footer = ({ navQuery }) => {
-  // Column limit of Nav links before starting new column
-  let navLimit = 5;
+class Footer extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
+  render() {
+    function noFooter() {
+      if (location.pathname == '/contact') {
+        return 'hide';
+      }
+    };
+
+    // console.log('noFooter:');
+    // console.log(noFooter());
+    
+    // Column limit of Nav links before starting new column
+    let navLimit = 5;
+    return (
     // Query our Navigation data so we can adjust our Footer styles
     // based on Top Level Pages vs Sub Level Pages.
     <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Background}>
@@ -54,7 +68,7 @@ export const Footer = ({ navQuery }) => {
           <div className="content">
             <div className="col">
               <ul>
-                {navQuery.footerNav.linkList.map((link, idx) => {
+                {this.props.navQuery.footerNav.linkList.map((link, idx) => {
                   if (idx < navLimit) {
                     return (
                       <li key={idx}>
@@ -67,7 +81,7 @@ export const Footer = ({ navQuery }) => {
             </div>
             <div className="col">
               <ul>
-                {navQuery.footerNav.linkList.map((link, idx) => {
+                {this.props.navQuery.footerNav.linkList.map((link, idx) => {
                   if (idx > navLimit) {
                     return (
                       <li key={idx}>
@@ -118,7 +132,10 @@ export const Footer = ({ navQuery }) => {
       </FooterStyle>
     </BasicSection>
   );
+  }
 };
+
+export default Footer;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
