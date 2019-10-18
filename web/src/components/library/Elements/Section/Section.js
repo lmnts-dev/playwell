@@ -25,6 +25,8 @@ const Section = ({
   pt,
   pb,
   textAlign,
+  indent,
+  overflow
 }) => (
   <Container
     as="section"
@@ -37,10 +39,11 @@ const Section = ({
     pb={pb}
     bgImage={bgImage}
     textAlign={textAlign}
-    fullWidth={fullWidth}
+    indent={indent}
+    overflow={overflow}
   >
     {alpha && <Container.Overlay bg={bgOverlay} alpha={alpha} />}
-    <Container.Inner>{children}</Container.Inner>
+    <Container.Inner fullWidth={fullWidth}>{children}</Container.Inner>
   </Container>
 );
 
@@ -49,8 +52,8 @@ Section.defaultProps = {
   color: 'Text',
   pt: [4, 4, 8, 8],
   pb: [4, 4, 8, 8],
-  fullWidth: false,
   textAlign: 'center',
+  fullWidth: false,
 };
 
 export default Section;

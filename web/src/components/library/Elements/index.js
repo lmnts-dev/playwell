@@ -21,7 +21,10 @@ import {
   fontSize,
   fontWeight,
   lineHeight,
-  maxWidth
+  maxWidth,
+  display,
+  position,
+  overflow
 } from 'styled-system';
 
 import { Theme, Root } from 'constants/Theme';
@@ -40,6 +43,8 @@ export const Box = styled('div')`
   ${textAlign}
   ${maxWidth}
   ${fontSize}
+  ${display}
+  ${position}
 `;
 
 Box.displayName = 'Box';
@@ -55,6 +60,8 @@ export const Flex = styled('div')`
   ${maxWidth}
   ${width}
   ${fontSize}
+  ${textAlign}
+  ${overflow}
 `;
 
 Flex.displayName = 'Flex';
@@ -67,12 +74,14 @@ export const Button = styled('button')`
   ${space}
   ${width}
   ${color}
+  ${overflow}
 `;
 
 Button.displayName = 'Button';
 
 export const Text = styled('div')`
   box-sizing: border-box;
+  display: block;
   transition: all ${Theme.Base.Transition.Duration};
   ${space}
   ${color}
@@ -80,6 +89,8 @@ export const Text = styled('div')`
   ${fontSize}
   ${fontWeight}
   ${lineHeight}
+  ${maxWidth}
+  ${width}
 `;
 
 Box.displayName = 'Text';

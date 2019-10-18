@@ -20,6 +20,10 @@ export const Theme = {
   // General Site Information & Keywords
   Site: Settings,
 
+  // For Programs Pages
+  mapWidth: '400px',
+  mapZedIndex: 5,
+
   // Fonts throughout the app.
   Font: Font,
 
@@ -99,6 +103,21 @@ export const Theme = {
           Left: Base.Grid.Gutter.Sm.Left + 'px',
         },
       },
+
+      Indent: {
+        Lg: {
+          X: Base.Grid.Indent.Lg.X + 'px',
+          Y: Base.Grid.Indent.Lg.Y + 'px',
+        },
+        Md: {
+          X: Base.Grid.Indent.Md.X + 'px',
+          Y: Base.Grid.Indent.Md.Y + 'px',
+        },
+        Sm: {
+          X: Base.Grid.Indent.Sm.X + 'px',
+          Y: Base.Grid.Indent.Sm.Y + 'px',
+        },
+      },
     },
 
     // View Width (vw) Based Measurements
@@ -156,11 +175,20 @@ export const Theme = {
     Base.Media.Width.Sm + 'px',
     Base.Media.Width.Md + 'px',
     Base.Media.Width.Lg + 'px',
-    '1200px',3
+    '1200px',
+    3,
   ],
   colors: Color,
   fontSizes: [
-    "1rem", "1.2rem", "1.5rem", "1.8rem", "2rem", "2.5rem", "3rem",
+    '1rem',
+    '1.2rem',
+    '1.5rem',
+    '1.8rem',
+    '2rem',
+    '2.5rem',
+    '3rem',
+    '3.5rem',
+    '4rem',
   ],
   space: [
     '0',
@@ -218,6 +246,11 @@ export const Root = {
       Right: 'var(--GutterRight)',
       Bottom: 'var(--GutterBottom)',
       Left: 'var(--GutterLeft)',
+    },
+
+    Indent: {
+      X: 'var(--IndentX)',
+      Y: 'var(--IndentY)',
     },
   },
 

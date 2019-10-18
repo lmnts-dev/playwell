@@ -14,8 +14,10 @@ import IconStyle from './styles.scss';
 // Icon Files
 import Carat from './SVG/Carat';
 import Gear from './SVG/Gear';
+import BasicLego from './SVG/BasicLego';
 import Intercom from './SVG/Intercom';
-import Next from './SVG/Next';
+import NextArrow from './SVG/NextArrow';
+import Swoop from './SVG/Swoop';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -24,13 +26,13 @@ export const Icon = props => {
   switch (props.Name) {
     case 'carat':
       return (
-        <IconStyle className="ico">
+        <IconStyle className={'ico ' + props.className ? props.className : null}>
           <Carat />
         </IconStyle>
       );
     case 'gear':
       return (
-        <IconStyle className="ico">
+        <IconStyle className="ico ico-gear">
           <Gear />
         </IconStyle>
       );
@@ -40,10 +42,22 @@ export const Icon = props => {
           <Intercom />
         </IconStyle>
       );
-    case 'next':
+    case 'swoop':
+      return (
+        <IconStyle className="ico ico-swoop">
+          <Swoop />
+        </IconStyle>
+      );
+    case 'nextArrow':
       return (
         <IconStyle className="ico">
-          <Next />
+          <NextArrow />
+        </IconStyle>
+      );
+    case 'basicLego':
+      return (
+        <IconStyle className="ico ico-lego" legoColor={props.Color}>
+          <BasicLego />
         </IconStyle>
       );
     default:

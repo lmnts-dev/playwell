@@ -10,7 +10,7 @@ import { StaticQuery, graphql } from 'gatsby';
 // Components
 import ScrollWrapper from 'components/core/ScrollWrapper';
 import { Navigation } from 'components/library/Navigation/';
-import { Footer } from 'components/library/Footer';
+import Footer from 'components/library/Footer';
 
 // Data
 import { navDataTransformer } from 'components/library/Navigation/Data/';

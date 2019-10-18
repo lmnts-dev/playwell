@@ -8,7 +8,7 @@ export const Base = {
   Size: {
     Lg: 60,
     Md: 45,
-    Sm: 25,
+    Sm: 45,
   },
 
   // Root Element Measurement
@@ -21,9 +21,9 @@ export const Base = {
   // Responsive Breakpoints
   Media: {
     Width: {
-      Lg: 992, // px
-      Md: 769, // px
-      Sm: 376, // px
+      Lg: 1280, // px
+      Md: 1024, // px
+      Sm: 676, // px
     },
     Height: {
       Lg: 828, // px
@@ -70,8 +70,23 @@ export const Base = {
       Sm: {
         Top: 20, // px
         Bottom: 20, // px
-        Right: 25, // px
-        Left: 25, // px
+        Right: 15, // px
+        Left: 15, // px
+      },
+    },
+
+    Indent: {
+      Lg: {
+        X: 175, // px
+        Y: 20, // px
+      },
+      Md: {
+        X: 0, // px
+        Y: 10, // px
+      },
+      Sm: {
+        X: 0, // px
+        Y: 0, // px
       },
     },
   },

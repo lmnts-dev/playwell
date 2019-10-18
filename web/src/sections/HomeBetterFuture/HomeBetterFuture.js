@@ -1,0 +1,80 @@
+// <HomeBetterFuture /> component:
+// Building a better future homepage section
+
+// Imports
+//////////////////////////////////////////////////////////////////////
+
+// Core
+import React, { useState } from 'react';
+import { Link } from 'gatsby';
+
+// Components
+import { Box, Flex, Text } from 'components/library/Elements';
+import Btn from 'components/library/Btn';
+import ImgMatch from 'components/core/ImgMatch';
+import { Icon } from 'components/library/Icons';
+
+// Styles
+import { Container } from './styles.scss';
+
+// Constants
+import { Theme, Root } from 'constants/Theme';
+
+// Begin Component
+//////////////////////////////////////////////////////////////////////
+
+// Render Page
+const HomeBetterFuture = ({ themeProps }) => {
+  return (
+    <Container
+      bg={themeProps.BgColor}
+      color={themeProps.PrimaryColor}
+      textAlign="left"
+      overflow="hidden"
+    >
+      <Container.Inner>
+        <Container.Image width={[1, 1, 4 / 10, 4 / 10, 6 / 10]}>
+          <Icon Name="swoop" />
+          <div className="image">
+            <ImgMatch
+              objectFit="contain"
+              objectPosition="100% 50%"
+              src="sailboat.png"
+            />
+            <Icon Name="swoop" />
+          </div>
+        </Container.Image>
+        <Box width={[1, 1, 6 / 10, 6 / 10, 4 / 10]} pr={10}>
+          <Text className="h6" fontWeight={600} mb={1}>
+            The Importance of STEM Education
+          </Text>
+          <Text as="h2" className="h1" fontWeight={600}>
+            Building a Better Future
+          </Text>
+          <Text as="p">
+            STEM education creates critical thinkers, increases science
+            literacy, and enables the next generation of innovators. Innovation
+            leads to new products and processes that sustain our economy in an
+            ever increasing technologically driven society.
+          </Text>
+          <Text as="p">
+            Having activities that show real-life implication of STEM can pull
+            together the ideas presented in school and help to show how they
+            benefit our society and even our world as a whole
+          </Text>
+          <Btn
+            External
+            Label="What We Do"
+            BgColor={themeProps.TertiaryColor}
+            TextColor={themeProps.PrimaryColor}
+          />
+        </Box>
+      </Container.Inner>
+    </Container>
+  );
+};
+
+export default HomeBetterFuture;
+
+//////////////////////////////////////////////////////////////////////
+// End Component

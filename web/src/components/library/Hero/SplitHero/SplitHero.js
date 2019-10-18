@@ -25,17 +25,28 @@ import { Box, Flex } from 'components/library/Elements';
 
 const SplitHero = ({
   bg,
-  BgMatch,
-  BgQuery,
-  BgAlt,
+  bgMatch,
+  bgQuery,
+  bgAlt,
   children,
   color,
   flexDirection,
   gear,
   playButtonBg,
   px,
+  textAlign,
+  withMask,
+  heroHeight,
+  playButton,
 }) => (
-  <HeroContainer bg={bg} px={px} color={color}>
+  <HeroContainer
+    withMask={withMask}
+    bg={bg}
+    px={px}
+    color={color}
+    textAlign={textAlign}
+    heroHeight={heroHeight}
+  >
     <Flex
       width={1}
       flexWrap="wrap"
@@ -60,20 +71,22 @@ const SplitHero = ({
           width={1}
           py={300}
           bg={['white', 'indigo', 'blue', 'aqua', 'black']}
+          className='feature-image'
           css={{
             borderRadius: '60px 7px 7px 7px',
             position: 'relative',
             zIndex: 1,
+            overflow: 'hidden',
           }}
         >
-          {BgMatch ? (
+          {bgMatch ? (
             <div className="section-img">
-              <ImgMatch src={BgMatch} AltText={BgAlt} className="hero-img" />
+              <ImgMatch src={bgMatch} AltText={bgAlt} className="hero-img" />
             </div>
           ) : null}
-          {BgQuery ? (
+          {bgQuery ? (
             <div className="section-img">
-              <ImgQuery src={BgQuery} AltText={BgAlt} className="hero-img" />
+              <ImgQuery src={bgQuery} AltText={bgAlt} className="hero-img" />
             </div>
           ) : null}
         </Box>
@@ -82,7 +95,7 @@ const SplitHero = ({
             <GearRotator strokeColor={props => props.theme.Color.White} />
           </GearContainer>
         ) : null}
-        <PlayButton bg={playButtonBg} />
+        {playButton == true ? <PlayButton bg={playButtonBg} /> : false}
       </Box>
     </Flex>
   </HeroContainer>

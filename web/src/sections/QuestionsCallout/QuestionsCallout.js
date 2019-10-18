@@ -1,5 +1,5 @@
-// Course.js:
-// This is the course detail page data template.
+// <QuestionsCallout /> section:
+// 
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -29,12 +29,12 @@ import CalloutBg from './assets/cta__courses.jpg';
 const QuestionsCallout = () => {
   return (
     <Section
-      as="section"
       bg="Primary"
       bgImage={CalloutBg}
-      bgOverlay="Primary"
+      bgOverlay="Dino"
       alpha={0.8}
       color="white"
+      textAlign="center"
       pt={[6, 6, 8, 8]}
       pb={1}
     >
