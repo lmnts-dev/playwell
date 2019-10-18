@@ -158,6 +158,10 @@ export const Item = styled.div`
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       width: calc(${Theme.Base.Size.Lg} * 8);
       margin-left: calc(${Theme.Base.Size.Lg} * 1);
+      padding-bottom: 40vw;
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      padding-bottom: 50vw;
     }
 
     .h6 {
@@ -200,6 +204,20 @@ export const HeroContainer = styled.div`
     text-align: ${props => props.textAlign};
     @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
       margin-bottom: 145px;
+    }
+
+    .slick-slide {
+      height: auto;
+      > div, .item {
+        height: 100%;
+      }
+
+    }
+    .slick-track {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: stretch;
     }
 
     .slick-slide:not(.slick-active) {
