@@ -37,10 +37,17 @@ export const CurveAndAngle = ({
     {AbsoluteImages && 
       AbsoluteImages.map((image, index) => {
         return (
-          <AbsoluteImage width={image.width} right={image.right} bottom={image.bottom} rotate={image.rotate} flip={image.flip}>
+          <AbsoluteImage
+            width={image.width}
+            right={image.right}
+            bottom={image.bottom}
+            rotate={image.rotate}
+            flip={image.flip}
+            key={index}
+          >
             <ImgMatch src={image.src} />
           </AbsoluteImage>
-        )
+        );
       })
     }
     {Clouds &&

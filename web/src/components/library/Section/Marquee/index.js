@@ -110,7 +110,7 @@ const Marquee = ({ images, SquareFormat, Shadow, BgLinear }) => (
     <MarqueeSlider>
       {images.map((image, index) => {
         return (
-          <div className="item">
+          <div className="item" key={index}>
             <ImgMatch src={image} />
           </div>
         );

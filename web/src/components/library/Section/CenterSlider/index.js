@@ -79,7 +79,7 @@ const CenterSlider = ({ testimonials }) => (
     <CenterSliderSlider>
       {testimonials.map((testimonial, index) => {
         return (
-          <div className="item">
+          <div className="item" key={index}>
             <p className="p-lg quote">{testimonial.quote}</p>
             <div className="p-lg">{testimonial.name}</div>
             <p>{testimonial.title}</p>

@@ -35,7 +35,7 @@ export const ImageAccordianFeature = ({
       <ul>
         {Links.map((link, index) => {
           return (
-            <li>
+            <li key={index}>
               <a className="h6" href={link.dest}>
                 {link.label}
               </a>
@@ -50,8 +50,9 @@ export const ImageAccordianFeature = ({
             Header={accordian.header}
             Paragraph={accordian.paragraph}
             Image={accordian.image}
+            key={index}
           />
-          );
+        );
         })}
       </div>
     </BasicInner>

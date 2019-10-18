@@ -92,7 +92,7 @@ const EdgeSlider = ({ images, titles, caption, title }) => (
     <EdgeSliderSlider>
       {images.map((image, index) => {
         return (
-          <div className="item">
+          <div className="item" key={index}>
             <div className="h5">{titles[index]}</div>
             <ImgMatch src={image} />
           </div>

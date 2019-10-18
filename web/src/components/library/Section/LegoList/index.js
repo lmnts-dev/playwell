@@ -24,7 +24,7 @@ export const LegoList = ({
   <LegoListStyles>
     {blocks.map((block, index) => {
         return (
-          <div className="item">
+          <div className="item" key={index}>
             {block.image && <ImgMatch src={block.image} />}
             {!block.image && <Icon Name="basicLego" Color={ block.legoColor ? block.legoColor : false } />}
             <div className="h6">{block.title}</div>
