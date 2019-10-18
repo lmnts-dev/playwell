@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"componentChunkName":"component---src-templates-location-index-js","path":"/locations/delaware","webpackCompilationHash":"3086d85535a47d174142","result":{"pageContext":{"isCreatedByStatefulCreatePages":false,"isCounty":false,"isCostCode":false,"abbrev":"DE","name":"Delaware","playwell_state_id":"9","counties":[],"managers":[]}}}
-=======
-{"componentChunkName":"component---src-templates-location-index-js","path":"/locations/delaware","webpackCompilationHash":"","result":{"pageContext":{"isCreatedByStatefulCreatePages":false,"isCounty":false,"isCostCode":false,"abbrev":"DE","name":"Delaware","playwell_state_id":"9","counties":[],"managers":[]}}}
->>>>>>> a5933efad44cf271c86c997b47b7e16432de422b
+{"componentChunkName":"component---src-templates-location-index-js","path":"/locations/delaware","webpackCompilationHash":"922502a42a1b8d24038b","result":{"pageContext":{"isCreatedByStatefulCreatePages":false,"isCounty":false,"isCostCode":false,"abbrev":"DE","name":"Delaware","playwell_state_id":"9","counties":[],"managers":[]}}}

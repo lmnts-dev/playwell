@@ -16,7 +16,9 @@ import Btn from 'components/library/Btn';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import ImgMatch from 'components/core/ImgMatch';
 import CurveAndAngle from 'components/library/Section/CurveAndAngle';
+import GiantTextBlock from 'components/library/Section/GiantTextBlock';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
+import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import {
   BasicSection,
   BasicInner,
