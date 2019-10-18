@@ -27,6 +27,10 @@ const CenteredTitleStyle = styled.div`
     position: relative;
   }
 
+  .title {
+    padding-bottom: ${props => props.PaddingBottom ? props.PaddingBottom : 0};
+  }
+
   .absolute-image {
     position: absolute;
     bottom: calc(${Root.Size} * -4);
@@ -40,6 +44,9 @@ const CenteredTitleStyle = styled.div`
     }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       bottom: 0;
+    }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      display: none;
     }
 
     .ico-swoop {

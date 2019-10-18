@@ -13,16 +13,9 @@ import styled from 'styled-components';
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
-import ImageAccordian from 'components/library/ImageAccordian';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import ImgMatch from 'components/core/ImgMatch';
-import GiantTextBlock from 'components/library/Section/GiantTextBlock';
-import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
-import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
-import EdgeSlider from 'components/library/Section/EdgeSlider';
-import Marquee from 'components/library/Section/Marquee';
-import LegoList from 'components/library/Section/LegoList';
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
+import CurveAndAngle from 'components/library/Section/CurveAndAngle';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 import {
   BasicSection,
@@ -67,184 +60,26 @@ const HeroProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const SimpleTextWithImage = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  .image,
-  .text {
-    flex: 1;
-  }
-
-  .image {
-    padding-left: calc(${Root.Size});
-  }
-
-  .text {
-    padding-right: calc(${Root.Size});
-
-    > * {
-      max-width: calc(${Root.Size} * 7.5);
-    }
-  }
-
-  .h6,
-  .h2 {
-    font-weight: 700;
-  }
-
-  .h2 {
-    color: ${Theme.Color.Sunset};
-    padding: calc(${Root.Size} / 5) 0;
-  }
-`;
-
-const CurveAndAngle = styled.div`
+const DeepseaTextBlock = styled.div`
   position: relative;
-  width: 100vw;
-  height: 30vw;
 
-  .footer-angle-slice {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 85%;
-    z-index: 2;
-  }
+  .text-block {
+    text-align: center;
+    max-width: calc(${Root.Size} * 17);
+    margin: 0 auto;
 
-  .footer-curve-slice {
-    width: 100%;
-    height: calc(100% - ${Root.Size});
-    z-index: 1;
-    margin-bottom: calc(${Root.Size});
-  }
-
-  .absolute-image {
-    position: absolute;
-    width: 25vw;
-    height: 25vw;
-    bottom: 0;
-    right: 2vw;
-  }
-`;
-
-const AccordianFeature = styled.div`
-  ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-bottom: calc(${Root.Size} / 3);
-
-    li {
-      font-weight: 700;
-      padding: calc(${Root.Size} / 6);
-      white-space: nowrap;
-
-      &:first-of-type {
-        padding-left: 0;
-      }
-
-      &:last-of-type {
-        padding-right: 0;
-      }
-
-      a {
-        color: ${Theme.Color.Clay};
-        @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-          font-size: 1rem;
-        }
-
-        &:visited {
-          color: ${Theme.Color.Clay};
-        }
-      }
-    }
-  }
-
-  .container {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    width: 100%;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      display: block;
+    .txt-clr-deepsea {
+      color: ${Theme.Color.Deepsea};
     }
 
-    .image-accordian {
-      flex: 1;
-
-      &:nth-of-type(2) {
-        margin: 0 calc(${Root.Size} / 2);
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          margin: calc(${Root.Size} / 4) 0;
-        }
-      }
-    }
-  }
-
-  .footer-angle-slice {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 20vw;
-  }
-`;
-
-const SplitTextBoxes = styled.div`
-  width: 100%;
-  background: linear-gradient(
-    to right,
-    ${Theme.Color.Eggplant} 50%,
-    ${Theme.Color.Sunset} 50%
-  );
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    background: linear-gradient(
-      to bottom,
-      ${Theme.Color.Eggplant} 50%,
-      ${Theme.Color.Sunset} 50%
-    );
-  }
-
-  .basic-inner {
-    display: flex;
-    flex-direction: row;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      display: block;
+    .h1,
+    p {
+      font-weight: bold;
     }
 
-    .container {
-      flex: 1;
-      padding: calc(${Root.Size} * 2) 0;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding: calc(${Root.Size}) 0;
-      }
-
-      &:first-of-type {
-        padding-right: calc(${Root.Size} * 2);
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          padding-right: 0;
-        }
-      }
-
-      &:last-of-type {
-        padding-left: calc(${Root.Size} * 2);
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          padding-left: 0;
-        }
-      }
-
-      .h6,
-      .h3 {
-        font-weight: 700;
-      }
-
-      .h3 {
-        padding: calc(${Root.Size} / 8) 0;
-      }
+    p {
+      padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0 calc(${Root.Size} * 1.5);
+      line-height: 1.2;
     }
   }
 `;
@@ -387,22 +222,25 @@ const PartyForm = styled.div`
 const Parties = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps}>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          'parties',
+          'special events',
+        ]}
+      >
         <h2>Let Us Engineer Your Child's Party</h2>
         <h6>
           Some of the most memorable and fun experiences kid's have together are
           at birthday parties.
         </h6>
       </SplitHero>
-      <Box css={{ position: 'relative', height: 0 }}>
-        <SubNav />
-      </Box>
+
 
       <BasicSection
-        BgColor={Theme.Color.Ocean}
-        TextColor={Theme.Color.White}
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
         noPaddingTop
-        noPaddingBottom
       >
         <BasicInner>
           <GiantTextBlock giantText="Well Supplied Fun" />

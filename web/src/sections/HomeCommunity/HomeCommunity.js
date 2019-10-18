@@ -47,11 +47,6 @@ const settings = {
 const HomeCommunity = ({ slides }) => {
   return (
     <Community pt={0} fullWidth>
-      <Text as="h3" color="Sunset">
-        People Who've
-        <br />
-        Played Well With Us
-      </Text>
       <SliderContainer width={1}>
         <Slider {...settings}>
           {slides.map(slide => (

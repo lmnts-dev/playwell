@@ -8,6 +8,8 @@ import styled from 'styled-components';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
+import { Base } from 'constants/styles/Base';
+import CurveAndAngle from 'components/library/Section/CurveAndAngle';
 
 // Keyframes
 import { FadeIn, FadeOut } from 'components/core/Transition/Keyframes';
@@ -18,61 +20,73 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-let footerHeight = '80vh';
-let footerMinHeight = '800px';
+export const CurveAndAngleWithPadding = styled(CurveAndAngle)`
+  &.curve-and-angle {
+    z-index: 19;
+
+    .footer-curve-slice {
+      background-color: ${props => props.bgColor ? props.bgColor : Theme.Color.Background};
+    }
+  }
+`;
 
 export const FooterStyle = styled.footer`
   width: 100%;
-  position: relative;
-  height: ${footerHeight};
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  height: 100%;
   z-index: 20;
-
-  &.hide {
-    display: none;
+  position: relative;
+  background-color: ${Theme.Color.White};
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    padding-bottom: calc(${Theme.Base.Size.Lg} * 2);
   }
-
-  .footer-curve-slice,
-  .footer-angle-slice {
-    width: 100%;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: ${footerHeight};
-    min-height: ${footerMinHeight};
-    z-index: -1;
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding-bottom: calc(${Theme.Base.Size.Lg} * 4);
   }
 
   .footer-curve-slice {
-    opacity: 0.05;
+    //TODO create prop for a transparent curve
+    //opacity: 0.05;
   }
 
-  .inner {
-    max-width: ${Root.Site.Width};
+  .basic-inner {
     width: 100%;
-    margin: 0 auto;
-    padding-left: ${Root.Grid.Gutter.Left};
-    padding-right: ${Root.Grid.Gutter.Right};
-    position: relative;
-    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    .brandmark-container {
+      width: calc(${Root.Size} * 2.7);
+      height: calc(${Root.Size} * 2.7);
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        width: calc(${Theme.Base.Size.Lg} * 2);
+        height: calc(${Theme.Base.Size.Lg} * 2);
+        margin-bottom: calc(${Root.Size} / 2);
+      }
+
+      a, svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
 
     .content {
       display: flex;
-      width: 50%;
-      justify-content: space-between;
+      flex-direction: row;
       align-items: flex-end;
+      margin-left: calc(${Root.Size} * 2.7);
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        margin-left: 0;
+      }
 
       .col {
-        padding: calc(${Root.Size} * 2) calc(${Root.Size} / 4);
-
-        .brandmark {
-          width: calc(${Root.Size} * 2.7);
-          height: calc(${Root.Size} * 2.7);
-          margin-bottom: calc(${Root.Size} * 4);
+        padding: 0 calc(${Root.Size}) calc(${Root.Size} * 1.5) calc(${Root.Size} / 4);
+        
+        @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+          padding-right: calc(${Root.Size} / 2);
+          padding-bottom: calc(${Root.Size} * 1.5);
         }
+        
+
 
         ul {
           display: flex;
@@ -87,6 +101,10 @@ export const FooterStyle = styled.footer`
               color: ${Theme.Color.Primary};
               position: relative;
               text-decoration: none;
+              white-space: nowrap;
+              @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+                font-size: 14px;
+              }
 
               &:before {
                 content: '';
@@ -110,7 +128,13 @@ export const FooterStyle = styled.footer`
           }
 
           &.social {
+
             li {
+              margin-bottom: calc(${Theme.Base.Size.Lg} / 8);
+              @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+                margin-right: calc(${Theme.Base.Size.Lg} / 8);
+              }
+
               a {
                 font-weight: bold;
                 color: ${Theme.Color.Primary};
@@ -123,6 +147,23 @@ export const FooterStyle = styled.footer`
                 padding: calc(${Root.Size} / 8);
                 background-color: none;
                 border-radius: 50%;
+                width: calc(${Theme.Base.Size.Lg} / 2);
+                height: calc(${Theme.Base.Size.Lg} / 2);
+
+
+                span {
+                  height: 100%;
+                  width: 100%;
+
+                  svg {
+                    width: 100%;
+                    height: auto;
+                    
+                    path {
+                      fill: ${Theme.Color.Eggplant};
+                    }
+                  }
+                }
 
                 &:before {
                   display: none;
@@ -131,6 +172,12 @@ export const FooterStyle = styled.footer`
                 &:hover {
                   background: ${Theme.Color.Cream};
                   transform: scale(1.2);
+                }
+              }
+
+              &:last-of-type {
+                a {
+                  padding-bottom: 0 !important;
                 }
               }
             }

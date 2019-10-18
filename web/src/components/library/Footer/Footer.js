@@ -15,16 +15,20 @@ import { Base } from 'constants/styles/Base';
 import { Theme, Root } from 'constants/Theme';
 
 // Styles
-import { FooterStyle } from './styles.scss';
+import { FooterStyle, CurveAndAngleWithPadding } from './styles.scss';
 
 // Components
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
-import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
+import {
+  BasicSection,
+  BasicInner,
+} from 'components/library/Section/BasicSection';
 import { Icon } from 'components/library/Icons';
 import { Brandmark } from 'components/core/Branding/Brandmark';
 
+
 // Begin Component
 //////////////////////////////////////////////////////////////////////
+
 
 class Footer extends PureComponent {
   constructor(props) {
@@ -44,18 +48,24 @@ class Footer extends PureComponent {
     // Column limit of Nav links before starting new column
     let navLimit = 5;
     return (
-      // Query our Navigation data so we can adjust our Footer styles
-      // based on Top Level Pages vs Sub Level Pages.
-      <FooterStyle className={noFooter()}>
-        <FooterCurveSlice bgColor={Theme.Color.Black} />
-        <FooterAngleSlice />
-        <div className="inner">
+    // Query our Navigation data so we can adjust our Footer styles
+    // based on Top Level Pages vs Sub Level Pages.
+    <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Background}>
+      <CurveAndAngleWithPadding
+        Tall
+        CurveColor={Theme.Color.Blush}
+        AngleColor={Theme.Color.White}
+        className="curve-and-angle"
+      />
+
+      <FooterStyle>
+        <BasicInner wideWidth>
+          <div className="brandmark-container">
+            <Link to="/">
+              <Brandmark animate />
+            </Link>
+          </div>
           <div className="content">
-            <div className="col">
-              <Link to="/">
-                <Brandmark animate />
-              </Link>
-            </div>
             <div className="col">
               <ul>
                 {this.props.navQuery.footerNav.linkList.map((link, idx) => {
@@ -112,17 +122,18 @@ class Footer extends PureComponent {
                     target="_blank"
                     rel="nofollow noopener noreferrer"
                   >
-                    <Icon Name="linkedin" Color={Theme.Color.Primary} />
+                    <Icon Name="instagram" Color={Theme.Color.Primary} />
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-        </div>
+        </BasicInner>
       </FooterStyle>
-    );
+    </BasicSection>
+  );
   }
-}
+};
 
 export default Footer;
 

@@ -46,11 +46,23 @@ class EdgeSliderSlider extends React.Component {
       buttons: false,
       responsive: [
         {
-          breakpoint: Base.Media.Width.Lg + 'px',
+          breakpoint: Base.Media.Width.Md,
           settings: {
-            slidesToShow: 3,
+            slidesToShow: 3.2,
           },
         },
+        {
+          breakpoint: (Base.Media.Width.Sm + ((Base.Media.Width.Md - Base.Media.Width.Sm) / 2)),
+          settings: {
+            slidesToShow: 2.6,
+          }
+        },
+        {
+          breakpoint: Base.Media.Width.Sm,
+          settings: {
+            slidesToShow: 2,
+          }
+        }
       ],
     };
 
@@ -80,7 +92,7 @@ const EdgeSlider = ({ images, titles, caption, title }) => (
     <EdgeSliderSlider>
       {images.map((image, index) => {
         return (
-          <div className="item">
+          <div className="item" key={index}>
             <div className="h5">{titles[index]}</div>
             <ImgMatch src={image} />
           </div>

@@ -27,69 +27,301 @@ import {
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const SliderContainer = styled(Box)`
-  text-align: left;
-
-  .slick-slider {
-    margin-bottom: calc(${Root.Size} / 2);
-  }
-`;
-
-export const SliderArrow = styled(Box)`
-  cursor: pointer;
-  top: 50%;
-  transform: translate(0, -50%);
+export const AbsoluteDecor = styled.div`
   position: absolute;
-
-  svg {
-    transition: ${Theme.Base.Transition.String};
-    transform: rotate(180deg) translateX(0);
-    fill: ${Theme.Color.White};
+  width: 100%;
+  height: 0 !important;
+  padding-top: 100%;
+  bottom: 0;
+  left: 0;
+  max-width: ${Root.Site.Width};
+  @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+    padding-top: ${Root.Site.Width};
+    margin: 0 calc(50vw - calc(${Root.Site.Width} / 2));
   }
 
-  &:hover {
-    svg {
-      transform: rotate(180deg) translateX(40%);
-    }
-  }
+  .decor-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    height: auto;
 
-  &:active {
-  }
-
-  &.prev-slide {
-    left: calc(${Root.Size} * -1);
-  }
-
-  &.next-slide {
-    right: calc(${Root.Size} * -1);
-
-    svg {
-      transform: rotate(0deg) translateX(0);
+    .ico {
+      width: 100%;
+      height: auto;
     }
 
-    &:hover {
-      svg {
-        transform: rotate(0deg) translateX(40%);
+    &.absolute-cloud-big {
+      width: 20%;
+      right: -6%;
+      left: auto;
+      bottom: 40%;
+    }
+
+    &.absolute-cloud-small {
+      width: 12%;
+      left: -2%;
+      bottom: 32%;
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        left: -5%;
+      }
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        bottom: 48%;
       }
     }
 
-    &:active {
+    &.absolute-waterfall {
+      width: 35%;
+      left: auto;
+      right: 1%;
+      bottom: 6%;
+    }
+
+    &.absolute-volcano {
+      width: 22%;
+      left: 40%;
+    }
+
+    &.absolute-ladder {
+      width: 4%;
+      left: auto;
+      right: 10.5%;
+      bottom: 31%;
+    }
+
+    &.absolute-legos {
+      width: 13%;
+      left: 61%;
+      bottom: -2%;
+    }
+
+    &.absolute-lego {
+      width: 6%;
+      left: 58%;
+      bottom: 19%;
+    }
+
+    &.absolute-gears {
+      width: 30%;
+      left: auto;
+      right: -1%;
+      transform: scaleX(-1);
+    }
+
+    &.absolute-lego-ladder {
+      width: 38%;
+      left: 32%;
+      bottom: -17%;
+      transform: scaleX(-1);
     }
   }
 `;
 
+export const Item = styled.div`
+  background-color: ${props => props.BgColor ? props.BgColor : Theme.Color.White };
+  color: ${props => props.TextColor ? props.TextColor : Theme.Color.White };
+  padding-top: calc(${Theme.Base.Size.Lg} * 3);
+  position: relative;
+
+  .bg-image, .gatsby-image-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+  }
+
+  .bg-image {
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: ${Theme.Color.Eggplant};
+      opacity: 0.3;
+      z-index: 2;
+    }
+  }
+
+  .text {
+    width: calc(${Theme.Base.Size.Lg} * 11);
+    pointer-events: none;
+    padding-bottom: 30vw;
+    position: relative;
+    z-index: 10;
+    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+      padding-bottom: 485px; //which is 30vw at sitewidth
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      width: calc(${Theme.Base.Size.Lg} * 8);
+      margin: 0 calc(${Theme.Base.Size.Lg} * 1);
+      padding-bottom: 40vw;
+      width: auto;
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      padding-bottom: 50vw;
+    }
+
+    .h6 {
+      font-weight: 700;
+      color: ${props => props.SubTextColor ? props.SubTextColor : Theme.Color.White };
+    }
+
+    .h2, h2 {
+      padding-bottom: calc(${Theme.Base.Size.Lg} / 8);
+    }
+
+    a, button, .btn {
+      pointer-events: all;
+    }
+  }
+
+  .absolute-curve {
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    width: 100%;
+    height: 37vw;
+    max-height: 600px; //which is 37vw at sitewidth
+    pointer-events: none;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+`
+
+export const HeroContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+
+  .slick-slider {
+    margin-bottom: 9vw;
+    width: 100%;
+    text-align: ${props => props.textAlign};
+    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+      margin-bottom: 145px;
+    }
+
+    .slick-slide {
+      height: auto;
+      > div, .item {
+        height: 100%;
+      }
+
+    }
+    .slick-track {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: stretch;
+    }
+
+    .slick-slide:not(.slick-active) {
+      pointer-events: none;
+    }
+
+    .slick-arrow {
+      position: absolute;
+      top: calc(${Theme.Base.Size.Lg} * 4);
+      border-radius: 50%;
+      height: calc(${Theme.Base.Size.Lg});
+      width: calc(${Theme.Base.Size.Lg});
+      transition-duration: 0.5s;
+      z-index: 100;
+
+      &:before {
+        height: calc(${Theme.Base.Size.Lg} / 3);
+        width: calc(${Theme.Base.Size.Lg} / 3);
+        border: 1.5px solid ${Theme.Color.White};
+        content: '';
+        position: absolute;
+        top: calc(${Theme.Base.Size.Lg} / 3.5);
+        left: calc(${Theme.Base.Size.Lg} / 2.5);
+        transform: rotate(45deg);
+      }
+
+      &.slick-prev {
+        left: calc(calc(calc(100vw - ${Root.Site.Width}) / 2) + 130px);
+        @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
+          left: 130px;
+        }
+
+        @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+          left: 20px;
+        }
+        &:before {
+          border-right-color: transparent;
+          border-top-color: transparent;
+        }
+      }
+
+      &.slick-next {
+        left: calc(calc(calc(calc(100vw - ${Root.Site.Width}) / 2) + 240px) + calc(${Theme.Base.Size.Lg} * 11));
+        @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
+          left: calc(calc(${Theme.Base.Size.Lg} * 11) + 240px);
+        }
+        @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+          left: calc(calc(${Theme.Base.Size.Lg} * 11) + 100px);
+        }
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          left: calc(calc(${Theme.Base.Size.Lg} * 8) + 100px);
+        }
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          left: auto;
+          right: calc(${Theme.Base.Size.Lg} / 3);
+        }
+
+        &:before {
+          left: calc(${Theme.Base.Size.Lg} / 4.5);
+          border-left-color: transparent;
+          border-bottom-color: transparent;
+        }
+      }
+    }
+  }
+
+  .absolute-angle {
+    position: absolute;
+    width: 100%;
+    height: 40vw;
+    max-height: 650px; //which is 40vw at sitewidth
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+`;
+
+
 export const Actions = styled(Flex)`
   position: relative;
+  padding-top: calc(${Theme.Base.Size.Lg} / 2);
+  
+
+  .hero-btn {
+    margin-top: 0;
+  }
 
   a {
     text-decoration: none;
+
     &:hover {
-      text-decoration: none;
+      text-decoration: none !important;
     }
   }
 `;
 
 export const HeroBtn = styled.button`
+  margin-top: calc(${Theme.Base.Size.Lg} / 2);
   background-color: ${props =>
     props.bgColor ? props.bgColor : Theme.Color.Nova};
   border: 0;
@@ -105,7 +337,7 @@ export const HeroBtn = styled.button`
   line-height: 0;
   justify-content: center;
   align-items: center;
-  padding: 3px calc(${Root.Size} / 2) 0 calc(${Root.Size} / 2);
+  padding: 3px calc(${Theme.Base.Size.Lg} / 2) 0 calc(${Theme.Base.Size.Lg} / 2);
   margin-right: 1rem;
 
   &:hover {

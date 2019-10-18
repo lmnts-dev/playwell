@@ -30,6 +30,20 @@ const TeamStyle = styled.div`
     .member {
       text-align: center;
       margin-bottom: calc(${Root.Size} / 2);
+      padding-right: calc(${Root.Size} / 8);
+      width: 16.66%;
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        width: 20%;
+      }
+    
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 25%;
+      }
+    
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        width: 33.33%;
+      }
+
       p {
         font-weight: 700;
         color: ${Theme.Color.Dino};
@@ -44,9 +58,10 @@ const TeamStyle = styled.div`
       .gatsby-image-wrapper {
         border-radius: calc(${Root.Size} / 8);
         margin: 0 calc(${Root.Size} / 12) calc(${Root.Size} / 6)
-          calc(${Root.Size} / 12);
-        width: calc(${Root.Size} * 2.25);
-        height: calc(${Root.Size} * 3);
+        calc(${Root.Size} / 12);
+        width: 100%;
+        height: 0;
+        padding-top: 140%;
       }
 
       .social {
