@@ -80,19 +80,22 @@ const HomePage = () => (
         </BasicInner>
       </BasicSection>
 
-      <BasicInner>
-        <Centered
-          Title="People Who've Played Well with Us"
-          MaxWidth="400px"
-          TextColor={Theme.Color.Sunset}
-          Class="h3"
-          className="community"
-        />
-        <ImgMatch src="cloud-big.png" objectFit="contain" objectPosition="left center"/>
-      </BasicInner>
-
-      <HomeCommunity slides={CommunitySlides} />
-
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner>
+          <Centered
+            Title="People Who've Played Well with Us"
+            MaxWidth="400px"
+            TextColor={Theme.Color.Sunset}
+            Class="h3"
+            className="community"
+          />
+          <ImgMatch src="cloud-big.png" objectFit="contain" objectPosition="left center"/>
+        </BasicInner>
+        <HomeCommunity slides={CommunitySlides} />
+      </BasicSection>
 
       <BasicSection
         BgColor={Theme.Color.Ocean}
@@ -352,6 +355,7 @@ const CommunitySlides = [
   {
     index: 0,
     header: 'Building a coral reef out of Lego materials',
+    link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
     tags: [
@@ -376,6 +380,7 @@ const CommunitySlides = [
   {
     index: 1,
     header: 'Building a coral reef out of Lego materials',
+    link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
     tags: [
@@ -400,6 +405,7 @@ const CommunitySlides = [
   {
     index: 2,
     header: 'Building a coral reef out of Lego materials',
+    link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
     tags: [
@@ -424,6 +430,7 @@ const CommunitySlides = [
   {
     index: 3,
     header: 'Building a coral reef out of Lego materials',
+    link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
     tags: [

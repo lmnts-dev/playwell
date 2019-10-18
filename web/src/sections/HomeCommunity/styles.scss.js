@@ -21,63 +21,87 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Community = styled(Section)`
-  padding-right: 0;
-  padding-left: 0;
-`;
 
-export const SliderContainer = styled(Box)`
-  text-align: left;
-  margin-top: calc(${Root.Size} / 2);
+export const SliderContainer = styled.div`
+  text-align: center;
 
   .slick-slider {
-    margin-bottom: calc(${Root.Size} / 2);
-  }
+    margin: calc(${Theme.Base.Size.Lg} / 2) 0;
 
-  .slick-slide {
-    width: 530px;
-    height: 500px;
-    outline: none;
-    margin-top: calc(${Root.Size} / 2.5);
+    .item {
+      text-align: left;
+      padding: 0 calc(${Theme.Base.Size.Lg} / 8);
+      width: 35vw !important;
+      max-width: calc(${Theme.Base.Size.Lg} * 11);
+      position: relative;
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        width: 45vw !important;
+      }
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 80vw !important;
+      }
 
-    &:focus {
-      outline: none;
+      .gatsby-image-wrapper {
+        border-radius: calc(${Theme.Base.Size.Lg} / 8);
+        height: 0 !important;
+        padding-top: 50%;
+      }
+
+      .text {
+        display: block;
+        width: 100%;
+        padding: calc(${Theme.Base.Size.Lg} / 4) calc(${Theme.Base.Size.Lg} / 3) calc(${Theme.Base.Size.Lg} / 2) calc(${Theme.Base.Size.Lg} / 3);
+        border-bottom-left-radius: calc(${Theme.Base.Size.Lg} / 8);
+        border-bottom-right-radius: calc(${Theme.Base.Size.Lg} / 8);
+        margin-bottom: calc(${Theme.Base.Size.Lg} * .75);
+        transition-duration: .25s;
+
+        &:hover {
+          text-decoration: none !important;
+        }
+
+        .h6 {
+          font-weight: 700;
+          margin-bottom: calc(${Theme.Base.Size.Lg} / 8);
+        }
+
+        p {
+          padding-bottom: 0;
+        }
+
+        ul {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: row;
+          margin-bottom: calc(${Theme.Base.Size.Lg} / 4);
+      
+          li {
+            color: ${Theme.Color.Nova};
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-right: calc(${Root.Size} / 4);
+          }
+        }
+      }
+    }
+
+    .slick-current {
+      .item .text {
+        background-color: ${Theme.Color.White};
+        box-shadow: 0px 14px 27px ${hexToRGB('#510689', 0.2)};
+      }
+      .gatsby-image-wrapper {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
     }
   }
 
-  .slick-active {
-    .slick-inner {
-      background: ${Theme.Color.White};
-      box-shadow: 0px 14px 27px ${hexToRGB('#510689', 0.2)};
-      border-radius: calc(${Root.Radius} / 2);
-    }
+  .btn-inner {
+    margin-top: calc(${Theme.Base.Size.Lg} / 2);
   }
 
-  .slide-header {
-    display: block;
-    margin-bottom: calc(${Root.Size} / 2);
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: ${Theme.Color.Dino};
-  }
-
-  .slide-detail {
-    padding-bottom: 0;
-    color: ${Theme.Color.Dino};
-  }
-
-  ul {
-    width: 100%;
-    margin-bottom: calc(${Root.Size} / 2.5);
-
-    li {
-      color: ${Theme.Color.Nova};
-      font-size: 0.8rem;
-      font-weight: 500;
-      display: inline-block;
-      margin-right: calc(${Root.Size} / 4);
-    }
-  }
 
   .slick-dots {
     li {
