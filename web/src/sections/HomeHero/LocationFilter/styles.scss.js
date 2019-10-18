@@ -8,6 +8,7 @@ import styled from 'styled-components';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
+import { Base } from 'constants/styles/Base';
 
 // Keyframes
 import { FadeIn, FadeOut } from 'components/core/Transition/Keyframes';
@@ -29,6 +30,10 @@ export const ListingsFiltersStyle = styled.div`
   /* border-bottom: 1px solid ${Theme.Color.Gray}; */
   margin-left: calc(${Theme.Base.Size.Lg} / 4);
   height: calc(${Root.Button.Size} * 1.5);
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    margin-left: 0;
+    margin-top: calc(${Theme.Base.Size.Lg} / 8);
+  }
 
   span {
     text-align: left;
@@ -56,6 +61,12 @@ ListingsFiltersStyle.Item = styled.button`
   width: 100%;
   flex: 1;
   cursor: pointer;
+
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    border: 1px solid ${hexToRGB(Theme.Color.White, 0.4)};
+    border-radius: ${Theme.Base.Size.Lg};
+    width: auto;
+  }
 
   .ico-carat {
     position: relative;
