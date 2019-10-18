@@ -18,10 +18,9 @@ import { Box, Flex, Text } from 'components/library/Elements';
 // Sections
 import HomeHero from 'sections/HomeHero';
 import SimpleTextWithImage from 'components/library/Section/SimpleTextWithImage';
+import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 import ImageAccordianFeature from 'components/library/Section/ImageAccordianFeature';
 import HomeCommunity from 'sections/HomeCommunity';
-import HomePrograms from 'sections/HomePrograms';
-import HomeImpact from 'sections/HomeImpact';
 import HomeBetterFuture from 'sections/HomeBetterFuture';
 import LocationPlayZone from 'sections/LocationPlayZone';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
@@ -95,7 +94,24 @@ const HomePage = () => (
       <HomeCommunity slides={CommunitySlides} />
 
 
-        <HomeBetterFuture themeProps={ThemeProps} />
+      <BasicSection
+        BgColor={Theme.Color.Ocean}
+        TextColor={Theme.Color.White}
+      >
+        <BasicInner noPaddingLeft>
+          <EdgeImageWithText
+            Reversed
+            LightText
+            Caption="The Importance of STEM Education"
+            Header="Building a Better Future"
+            Image="sailboat.png"
+            Paragraph="STEM education creates critical thinkers, increases science literacy, and enables the next generation of innovators. Innovation leads to new products and processes that sustain our economy in an ever increasing technologically driven society."
+            Paragraph2="Having activities that show real-life implication of STEM can pull together the ideas presented in school and help to show how they benefit our society and even our world as a whole"
+            ButtonText="What We Do"
+            ButtonDest="/"
+          />
+        </BasicInner>
+      </BasicSection>
 
       <Decorator>
         <div className="decorator__better-future decorator__better-future--top">
