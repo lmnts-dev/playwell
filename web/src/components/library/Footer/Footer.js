@@ -122,7 +122,7 @@ class Footer extends PureComponent {
                     target="_blank"
                     rel="nofollow noopener noreferrer"
                   >
-                    <Icon Name="linkedin" Color={Theme.Color.Primary} />
+                    <Icon Name="instagram" Color={Theme.Color.Primary} />
                   </a>
                 </li>
               </ul>

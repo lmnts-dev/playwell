@@ -15,6 +15,9 @@ import IconStyle from './styles.scss';
 import Carat from './SVG/Carat';
 import Gear from './SVG/Gear';
 import Pin from './SVG/Pin';
+import Facebook from './SVG/Facebook';
+import Instagram from './SVG/Instagram';
+import Twitter from './SVG/Twitter';
 import BasicLego from './SVG/BasicLego';
 import Intercom from './SVG/Intercom';
 import NextArrow from './SVG/NextArrow';
@@ -65,6 +68,24 @@ export const Icon = props => {
       return (
         <IconStyle className="ico ico-lego" legoColor={props.Color}>
           <BasicLego />
+        </IconStyle>
+      );
+    case 'facebook':
+      return (
+        <IconStyle className="ico ico-facebook">
+          <Facebook />
+        </IconStyle>
+      );
+    case 'twitter':
+      return (
+        <IconStyle className="ico ico-twitter">
+          <Twitter />
+        </IconStyle>
+      );
+    case 'instagram':
+      return (
+        <IconStyle className="ico ico-instagram">
+          <Instagram />
         </IconStyle>
       );
     default:
