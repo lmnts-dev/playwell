@@ -27,7 +27,7 @@ import { Theme, Root } from 'constants/Theme';
 const HomeBetterFuture = ({ themeProps }) => {
   return (
     <Container
-      bg={themeProps.BgColor}
+      bg={Theme.Color.Ocean}
       color={themeProps.PrimaryColor}
       textAlign="left"
       overflow="hidden"

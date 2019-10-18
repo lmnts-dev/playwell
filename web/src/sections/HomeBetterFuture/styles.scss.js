@@ -19,16 +19,12 @@ import { Base } from 'constants/styles/Base';
 //////////////////////////////////////////////////////////////////////
 
 export const Container = styled(Section)``;
+  
 
 Container.Inner = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  color: ${Theme.Color.Dino};
-
-  h2 {
-    color: ${Theme.Color.Sunset};
-  }
 `;
 
 Container.Image = styled(Box)`

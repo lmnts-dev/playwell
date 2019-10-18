@@ -17,12 +17,18 @@ import { Box, Flex, Text } from 'components/library/Elements';
 
 // Sections
 import HomeHero from 'sections/HomeHero';
-import HomeIntro from 'sections/HomeIntro';
+import SimpleTextWithImage from 'components/library/Section/SimpleTextWithImage';
+import ImageAccordianFeature from 'components/library/Section/ImageAccordianFeature';
 import HomeCommunity from 'sections/HomeCommunity';
 import HomePrograms from 'sections/HomePrograms';
 import HomeImpact from 'sections/HomeImpact';
 import HomeBetterFuture from 'sections/HomeBetterFuture';
 import LocationPlayZone from 'sections/LocationPlayZone';
+import CenteredTitle from 'components/library/Elements/CenteredTitle';
+import {
+  BasicSection,
+  BasicInner,
+} from 'components/library/Section/BasicSection';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -39,15 +45,58 @@ const ThemeProps = {
   TertiaryColor: Theme.Color.Nova,
 };
 
+const Centered = styled(CenteredTitle)`
+  &.community {
+    ~.gatsby-image-wrapper {
+      height: 130%;
+      width: 100%;
+      position: absolute !important;
+      top: -30%;
+      left: -5%;
+    }
+  }
+`;
+
 // Render Page
 const HomePage = () => (
   <Layout {...ThemeProps}>
     <Main>
       <HomeHero slides={HeroSlides} Decorator={Decorator} />
       <Spacer indent>Scroll</Spacer>
-      <HomeIntro />
+
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+      >
+        <BasicInner>
+          <SimpleTextWithImage
+            Caption="Taking our imagination up a level"
+            Header="Creativity, Confidence &amp; Collaboration."
+            Paragraph="Through LEGO® inspired classes sparking “Aha!” moments, we help kids grasp fundamental principles of engineering and physics. The experience boosts their confidence, creativity and ability to collaborate."
+            Image="intro-smiles.png"
+            ButtonText="What We Do"
+            ButtonDest="/"
+          />
+        </BasicInner>
+      </BasicSection>
+
+      <BasicInner>
+        <Centered
+          Title="People Who've Played Well with Us"
+          MaxWidth="400px"
+          TextColor={Theme.Color.Sunset}
+          Class="h3"
+          className="community"
+        />
+        <ImgMatch src="cloud-big.png" objectFit="contain" objectPosition="left center"/>
+      </BasicInner>
+
       <HomeCommunity slides={CommunitySlides} />
-      <HomeBetterFuture themeProps={ThemeProps} />
+
+
+        <HomeBetterFuture themeProps={ThemeProps} />
+
       <Decorator>
         <div className="decorator__better-future decorator__better-future--top">
           <ImgMatch src="cloud-big.png" AltText="Cloud" />
@@ -56,8 +105,52 @@ const HomePage = () => (
           <ImgMatch src="cloud-big.png" AltText="Cloud" />
         </div>
       </Decorator>
-      <HomeImpact />
-      <HomePrograms />
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner>
+          <SimpleTextWithImage
+            Caption="Our impact on STEM Education"
+            Header="Children Learn While Playing"
+            Paragraph="Our assessments measured three goals including: student's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects. For example, the definition of gravity or friction, or that when two gears interlock their teeth its called meshing."
+            Image="graph.png"
+            ButtonText="How We Do It"
+            ButtonDest="/"
+          />
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection BgColor={Theme.Color.Blush}>
+        <BasicInner>
+          <Centered
+            Title="Our Programs"
+            TextColor={Theme.Color.Nova}
+            Class="h4"
+          />
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection
+        BgColor={Theme.Color.Blush}
+        TextColor={Theme.Color.Sunset}
+        noPaddingTop
+      >
+        <ImageAccordianFeature
+          Links={[
+            { link: '/', label: 'Robotics' }, 
+            { link: '/', label: 'Intro to STEM' }, 
+            { link: '/', label: 'Gaming' }, 
+            { link: '/', label: 'Advanced Engineering' }, 
+            { link: '/', label: 'Engineering Themes' }, 
+          ]}
+          Accordians={[
+            { header: 'Worshops', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' }, 
+            { header: 'Classes', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' },
+            { header: 'Camps', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' },
+          ]}
+        />
+      </BasicSection>
       <LocationPlayZone />
     </Main>
   </Layout>
@@ -71,6 +164,13 @@ const Main = styled.main`
 
 const Decorator = styled(Box)`
   position: relative;
+
+  .decorator__community {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 20%;
+  }
 
   .decorator__hero {
     position: absolute;

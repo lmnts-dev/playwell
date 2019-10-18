@@ -12,26 +12,21 @@ import styled from 'styled-components';
 // Components
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
-import Btn from 'components/library/Btn';
-import ImageAccordian from 'components/library/ImageAccordian';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
-import ImgMatch from 'components/core/ImgMatch';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 import EdgeSlider from 'components/library/Section/EdgeSlider';
 import Marquee from 'components/library/Section/Marquee';
+import ImageAccordianFeature from 'components/library/Section/ImageAccordianFeature';
 import CurveAndAngle from 'components/library/Section/CurveAndAngle';
 import SplitTextBoxes from 'components/library/Section/SplitTextBoxes';
 import LegoList from 'components/library/Section/LegoList';
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
-import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
+import SimpleTextWithImage from 'components/library/Section/SimpleTextWithImage';
 import {
   BasicSection,
   BasicInner,
 } from 'components/library/Section/BasicSection';
 import SplitHero from 'components/library/Hero/SplitHero';
-import { Box, Flex } from 'components/library/Elements';
-import SubNav from 'components/library/SubNav';
 
 // Styles
 
@@ -68,128 +63,7 @@ const HeroProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const SimpleTextWithImage = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    display: block;
-  }
 
-  .image,
-  .text {
-    flex: 1;
-  }
-
-  .image {
-    padding-left: calc(${Root.Size});
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      max-width: calc(${Root.Size} * 13);
-      padding-left: 0;
-      margin: 0 auto;
-      width: 40%;
-      min-width: calc(${Root.Size} * 6);
-      padding-top: calc(${Theme.Base.Size.Lg} / 2);
-    }
-  }
-
-  .text {
-    padding-right: calc(${Root.Size});
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      padding-right: 0;
-    }
-
-    > * {
-      max-width: calc(${Root.Size} * 7.5);
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        max-width: calc(${Root.Size} * 13);
-        text-align: center;
-        margin: 0 auto;
-      }
-    }
-  }
-
-  .h6,
-  .h2 {
-    font-weight: 700;
-  }
-
-  .h2 {
-    color: ${Theme.Color.Sunset};
-    padding: calc(${Root.Size} / 5) 0;
-  }
-`;
-
-const AccordianFeature = styled.div`
-  ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-bottom: calc(${Root.Size} / 3);
-    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-      display: block;
-      text-align: center;
-    }
-
-    li {
-      font-weight: 700;
-      padding: calc(${Root.Size} / 6);
-      white-space: nowrap;
-      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-        padding: calc(${Root.Size} / 6) 0;
-      }
-
-      &:first-of-type {
-        padding-left: 0;
-      }
-
-      &:last-of-type {
-        padding-right: 0;
-      }
-
-      a {
-        color: ${Theme.Color.Clay};
-        @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-          font-size: 1rem;
-        }
-
-        &:visited {
-          color: ${Theme.Color.Clay};
-        }
-      }
-    }
-  }
-
-  .container {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    width: 100%;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      display: block;
-    }
-
-    .image-accordian {
-      flex: 1;
-
-      &:nth-of-type(2) {
-        margin: 0 calc(${Root.Size} / 2);
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          margin: calc(${Root.Size} / 4) 0;
-        }
-      }
-    }
-  }
-
-  .footer-angle-slice {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 20vw;
-  }
-`;
 
 const OverflowHidden = styled.div`
   width: 100vw;
@@ -271,22 +145,16 @@ const WhoHowPage = () => {
         noPaddingTop
       >
         <BasicInner>
-          <SimpleTextWithImage>
-            <div className="text">
-              <div className="h6">Our Impact on STEM Comprehension</div>
-              <div className="h2">Children Learn While Playing</div>
-              <p className="p-lg">
-                Our assessment measured three goals including: students
-                knowledge of STEM terms or concepts, ability to generalize
-                information, and increasing positive feelings towards STEM
-                subjects. For example, the definition of gravity or friction, or
-                that when two gears interlock their teeth its called meshing.
-              </p>
-            </div>
-            <div className="image">
-              <ImgMatch src="graph.png" />
-            </div>
-          </SimpleTextWithImage>
+          <SimpleTextWithImage
+            Caption="Our Impact on STEM Comprehension"
+            Header="Children Learn While Playing"
+            Paragraph="Our assessment measured three goals including: students
+            knowledge of STEM terms or concepts, ability to generalize
+            information, and increasing positive feelings towards STEM
+            subjects. For example, the definition of gravity or friction, or
+            that when two gears interlock their teeth its called meshing."
+            Image="graph.png"
+          />
         </BasicInner>
       </BasicSection>
 
@@ -305,55 +173,20 @@ const WhoHowPage = () => {
         TextColor={Theme.Color.Clay}
         noPaddingTop
       >
-        <AccordianFeature>
-          <BasicInner wideWidth>
-            <ul>
-              <li>
-                <a className="h6" href="/">
-                  Robotics
-                </a>
-              </li>
-              <li>
-                <a className="h6" href="/">
-                  Intro to STEM
-                </a>
-              </li>
-              <li>
-                <a className="h6" href="/">
-                  Gaming
-                </a>
-              </li>
-              <li>
-                <a className="h6" href="/">
-                  Advanced Engineering
-                </a>
-              </li>
-              <li>
-                <a className="h6" href="/">
-                  Engineering Themes
-                </a>
-              </li>
-            </ul>
-            <div className="container">
-              <ImageAccordian
-                Header="Worshops"
-                Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                Image="intro-smiles.jpg"
-              />
-              <ImageAccordian
-                Header="Classes"
-                Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                Image="intro-smiles.jpg"
-              />
-              <ImageAccordian
-                Header="Camps"
-                Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                Image="intro-smiles.jpg"
-              />
-            </div>
-          </BasicInner>
-          <FooterAngleSlice bgColor={Theme.Color.Background} />
-        </AccordianFeature>
+        <ImageAccordianFeature
+          Links={[
+            { link: '/', label: 'Robotics' }, 
+            { link: '/', label: 'Intro to STEM' }, 
+            { link: '/', label: 'Gaming' }, 
+            { link: '/', label: 'Advanced Engineering' }, 
+            { link: '/', label: 'Engineering Themes' }, 
+          ]}
+          Accordians={[
+            { header: 'Worshops', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' }, 
+            { header: 'Classes', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' },
+            { header: 'Camps', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' },
+          ]}
+        />
       </BasicSection>
 
       <BasicSection
