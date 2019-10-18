@@ -302,10 +302,14 @@ export const HeroContainer = styled.div`
 `;
 
 
-export const Actions = styled(Flex)`
-  position: relative;
+export const Actions = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   padding-top: calc(${Theme.Base.Size.Lg} / 2);
-  
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    flex-direction: column;
+  }
 
   .hero-btn {
     margin-top: 0;
