@@ -69,6 +69,15 @@ export class CourseMapNav extends PureComponent {
     });
   }
 
+  // Unmounted state
+  componentWillUnmount() {
+    this.state = {
+      lat: 40.7088,
+      lng: -73.9888,
+      zoom: 10.6,
+    };
+  }
+
   render() {
     const mapWidth = this.props.mapWidth;
     const mapZedIndex = this.props.mapZedIndex;

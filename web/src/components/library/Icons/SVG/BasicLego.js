@@ -25,7 +25,7 @@ const BasicLego = props => (
         points="0.111501073 0.254018519 14.4487531 0.254018519 14.4487531 7.46865646 0.111501073 7.46865646"
       ></polygon>
     </defs>
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
       <g transform="translate(-258.000000, -6228.000000)">
         <g transform="translate(143.000000, 6228.000000)">
           <g transform="translate(115.000000, 0.000000)">

@@ -207,8 +207,8 @@ class SearchBar extends PureComponent {
     });
 
     // For Debugging only.
-    console.log('results:');
-    console.log(results);
+    // console.log('results:');
+    // console.log(results);
     // console.log('resultsSample:');
     // console.log(resultsSample);
 

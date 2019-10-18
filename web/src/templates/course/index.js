@@ -84,7 +84,7 @@ const Course = ({ pageContext }) => {
   };
 
   // console.log('pageContext:');
-  console.log(pageContext);
+  // console.log(pageContext);
   // console.log('data:');
   // console.log(data);
   // console.log(locationMatch(pageContext.county_id, pageContext.state_id, pageContext.locationMeta.state.name));
