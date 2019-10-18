@@ -157,8 +157,9 @@ export const Item = styled.div`
     }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       width: calc(${Theme.Base.Size.Lg} * 8);
-      margin-left: calc(${Theme.Base.Size.Lg} * 1);
+      margin: 0 calc(${Theme.Base.Size.Lg} * 1);
       padding-bottom: 40vw;
+      width: auto;
     }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       padding-bottom: 50vw;
@@ -269,6 +270,10 @@ export const HeroContainer = styled.div`
         }
         @media (max-width: ${Base.Media.Width.Md + 'px'}) {
           left: calc(calc(${Theme.Base.Size.Lg} * 8) + 100px);
+        }
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          left: auto;
+          right: calc(${Theme.Base.Size.Lg} / 3);
         }
 
         &:before {
