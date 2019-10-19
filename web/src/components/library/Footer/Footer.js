@@ -25,32 +25,26 @@ import {
 import { Icon } from 'components/library/Icons';
 import { Brandmark } from 'components/core/Branding/Brandmark';
 
-
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+export const Footer = ({ navQuery }) => {
+  // Column limit of Nav links before starting new column
+  let navLimit = 5;
 
-class Footer extends PureComponent {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    function noFooter() {
-      if (typeof window !== 'undefined' && location.pathname == '/contact') {
-        return 'hide';
-      }
-    }
-
-    // console.log('noFooter:');
-    // console.log(noFooter());
-
-    // Column limit of Nav links before starting new column
-    let navLimit = 5;
-    return (
+  return (
     // Query our Navigation data so we can adjust our Footer styles
     // based on Top Level Pages vs Sub Level Pages.
-    <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Background}>
+    <BasicSection
+      noPaddingTop
+      noPaddingBottom
+      BgColor={Theme.Color.Background}
+      className={
+        typeof window !== 'undefined' && location.pathname == '/contact'
+          ? 'hide'
+          : null
+      }
+    >
       <CurveAndAngleWithPadding
         Tall
         CurveColor={Theme.Color.Blush}
@@ -68,7 +62,7 @@ class Footer extends PureComponent {
           <div className="content">
             <div className="col">
               <ul>
-                {this.props.navQuery.footerNav.linkList.map((link, idx) => {
+                {navQuery.footerNav.linkList.map((link, idx) => {
                   if (idx < navLimit) {
                     return (
                       <li key={idx}>
@@ -81,7 +75,7 @@ class Footer extends PureComponent {
             </div>
             <div className="col">
               <ul>
-                {this.props.navQuery.footerNav.linkList.map((link, idx) => {
+                {navQuery.footerNav.linkList.map((link, idx) => {
                   if (idx > navLimit) {
                     return (
                       <li key={idx}>
@@ -132,7 +126,6 @@ class Footer extends PureComponent {
       </FooterStyle>
     </BasicSection>
   );
-  }
 };
 
 export default Footer;

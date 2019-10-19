@@ -44,8 +44,8 @@ export const FooterStyle = styled.footer`
   }
 
   .footer-curve-slice {
-    //TODO create prop for a transparent curve
-    //opacity: 0.05;
+    /* TODO create prop for a transparent curve */
+    /* opacity: 0.05; */
   }
 
   .basic-inner {
