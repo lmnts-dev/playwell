@@ -170,11 +170,73 @@ const HomePage = () => (
           ]}
         />
       </BasicSection>
-      <LocationPlayZone />
+
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+        noPaddingBottom
+      >
+        <BasicInner>
+          <SpecialSimpleTextWithImage
+            Caption="It starts with play"
+            Header="Build Your Own World of Opportunity"
+            Paragraph="Bring your kid over or bring out your inner kid with some of our online activities to feed your imagination."
+            Image="lego-ladder.png"
+            ButtonText="Play Zone"
+            ButtonDest="/"
+            className="overflow-image"
+          />
+        </BasicInner>
+      </BasicSection>
+
     </Main>
   </Layout>
 );
 
+const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
+  &.overflow-image {
+    align-items: stretch;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      flex-direction: column-reverse;
+      display: flex;
+    }
+
+    .text {
+      flex: 2;
+    }
+
+    .image {
+      flex: 1;
+      position relative;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 100%;
+        max-height: calc(${Theme.Base.Size.Lg} * 5);
+        height: 100vw;
+        position: static;
+      }
+      
+      .gatsby-image-wrapper {
+        position: absolute !important;
+        left: 0;
+        bottom: 0;
+        width: 50vw;
+        height: 200%;
+        bottom: -50%;
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          width: 100%;
+          height: 120%;
+          top: -120%;
+          bottom: 0;
+        }
+
+        img {
+          object-position: 0% 100% !important;
+        }
+      }
+    }
+  }
+`
 
 // Styles
 const Main = styled.main`
