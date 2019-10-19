@@ -47,7 +47,7 @@ const ThemeProps = {
 
 const Centered = styled(CenteredTitle)`
   &.community {
-    ~.gatsby-image-wrapper {
+    ~ .gatsby-image-wrapper {
       height: 130%;
       width: 100%;
       position: absolute !important;
@@ -89,13 +89,16 @@ const HomePage = () => (
           Class="h3"
           className="community"
         />
-        <ImgMatch src="cloud-big.png" objectFit="contain" objectPosition="left center"/>
+        <ImgMatch
+          src="cloud-big.png"
+          objectFit="contain"
+          objectPosition="left center"
+        />
       </BasicInner>
 
       <HomeCommunity slides={CommunitySlides} />
 
-
-        <HomeBetterFuture themeProps={ThemeProps} />
+      <HomeBetterFuture themeProps={ThemeProps} />
 
       <Decorator>
         <div className="decorator__better-future decorator__better-future--top">
@@ -121,6 +124,8 @@ const HomePage = () => (
         </BasicInner>
       </BasicSection>
 
+      <HomeImpact />
+
       <BasicSection BgColor={Theme.Color.Blush}>
         <BasicInner>
           <Centered
@@ -138,16 +143,31 @@ const HomePage = () => (
       >
         <ImageAccordianFeature
           Links={[
-            { link: '/', label: 'Robotics' }, 
-            { link: '/', label: 'Intro to STEM' }, 
-            { link: '/', label: 'Gaming' }, 
-            { link: '/', label: 'Advanced Engineering' }, 
-            { link: '/', label: 'Engineering Themes' }, 
+            { link: '/', label: 'Robotics' },
+            { link: '/', label: 'Intro to STEM' },
+            { link: '/', label: 'Gaming' },
+            { link: '/', label: 'Advanced Engineering' },
+            { link: '/', label: 'Engineering Themes' },
           ]}
           Accordians={[
-            { header: 'Worshops', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' }, 
-            { header: 'Classes', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' },
-            { header: 'Camps', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' },
+            {
+              header: 'Worshops',
+              paragraph:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              image: 'intro-smiles.jpg',
+            },
+            {
+              header: 'Classes',
+              paragraph:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              image: 'intro-smiles.jpg',
+            },
+            {
+              header: 'Camps',
+              paragraph:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              image: 'intro-smiles.jpg',
+            },
           ]}
         />
       </BasicSection>
@@ -155,7 +175,6 @@ const HomePage = () => (
     </Main>
   </Layout>
 );
-
 
 // Styles
 const Main = styled.main`

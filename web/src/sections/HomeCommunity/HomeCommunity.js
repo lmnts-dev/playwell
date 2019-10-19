@@ -53,9 +53,9 @@ const HomeCommunity = ({ slides }) => {
             <Box key={slide.index}>
               <Box mx={1}>
                 <Box className="slick-inner">
-                  <Box>
-                    {/* <ImgMatch src="intro-smiles.jpg" AltText="Hero Alt" /> */}
-                  </Box>
+                  <div className="img-container">
+                    <ImgMatch src="intro-smiles.jpg" AltText="Hero Alt" />
+                  </div>
                   <Box p={2}>
                     <ul>
                       {slide.tags.map(tags => (

@@ -30,6 +30,11 @@ export const SliderContainer = styled(Box)`
   text-align: left;
   margin-top: calc(${Root.Size} / 2);
 
+  .img-container {
+    max-height: 200px;
+    overflow: hidden;
+  }
+
   .slick-slider {
     margin-bottom: calc(${Root.Size} / 2);
   }
@@ -45,11 +50,15 @@ export const SliderContainer = styled(Box)`
     }
   }
 
+  .slick-inner {
+    border-radius: calc(${Root.Radius} / 2);
+    overflow: hidden;
+  }
+
   .slick-active {
     .slick-inner {
       background: ${Theme.Color.White};
       box-shadow: 0px 14px 27px ${hexToRGB('#510689', 0.2)};
-      border-radius: calc(${Root.Radius} / 2);
     }
   }
 

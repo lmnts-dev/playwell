@@ -40,7 +40,7 @@ export const Footer = ({ navQuery }) => {
       noPaddingBottom
       BgColor={Theme.Color.Background}
       className={
-        typeof window !== 'undefined' && location.pathname == '/contact'
+        typeof window !== 'undefined' && location.pathname === '/contact'
           ? 'hide'
           : null
       }
