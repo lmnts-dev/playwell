@@ -100,6 +100,10 @@ export const BasicSectionStyle = styled.div`
       z-index: 10;
     }`
       : null};
+    
+    &.hide {
+      display: none;
+    }
 `;
 
 export const BasicInnerStyle = styled.div`
