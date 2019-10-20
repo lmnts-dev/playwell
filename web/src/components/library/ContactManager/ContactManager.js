@@ -282,14 +282,14 @@ const SearchBarResults = ({ results }) => {
                             {result.node.email}
                           </a>
                         </span>
-                        <span>
+                        {/* <span>
                           <a href={'tel:' + result.node.cell_number}>
                             {result.node.cell_number}
                           </a>
-                        </span>
-                        <span>
+                        </span> */}
+                        {/* <span>
                           <a href="/">More</a>
-                        </span>
+                        </span> */}
                       </Article.Info.Contact>
                     </Flex>
                   </Article.Info>

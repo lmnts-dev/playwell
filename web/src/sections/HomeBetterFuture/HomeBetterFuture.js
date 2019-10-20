@@ -9,13 +9,15 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 
 // Components
-import { Box, Flex, Text } from 'components/library/Elements';
-import Btn from 'components/library/Btn';
-import ImgMatch from 'components/core/ImgMatch';
-import { Icon } from 'components/library/Icons';
+import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
+
+import {
+  BasicSection,
+  BasicInner,
+} from 'components/library/Section/BasicSection';
 
 // Styles
-import { Container } from './styles.scss';
+import { OverflowHidden } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -26,51 +28,29 @@ import { Theme, Root } from 'constants/Theme';
 // Render Page
 const HomeBetterFuture = ({ themeProps }) => {
   return (
-    <Container
-      bg={Theme.Color.Ocean}
-      color={themeProps.PrimaryColor}
-      textAlign="left"
-      overflow="hidden"
-    >
-      <Container.Inner>
-        <Container.Image width={[1, 1, 4 / 10, 4 / 10, 6 / 10]}>
-          <Icon Name="swoop" />
-          <div className="image">
-            <ImgMatch
-              objectFit="contain"
-              objectPosition="100% 50%"
-              src="sailboat.png"
-            />
-            <Icon Name="swoop" />
-          </div>
-        </Container.Image>
-        <Box width={[1, 1, 6 / 10, 6 / 10, 4 / 10]} pr={10}>
-          <Text className="h6" fontWeight={600} mb={1}>
-            The Importance of STEM Education
-          </Text>
-          <Text as="h2" className="h1" fontWeight={600}>
-            Building a Better Future
-          </Text>
-          <Text as="p">
-            STEM education creates critical thinkers, increases science
-            literacy, and enables the next generation of innovators. Innovation
-            leads to new products and processes that sustain our economy in an
-            ever increasing technologically driven society.
-          </Text>
-          <Text as="p">
-            Having activities that show real-life implication of STEM can pull
-            together the ideas presented in school and help to show how they
-            benefit our society and even our world as a whole
-          </Text>
-          <Btn
-            External
-            Label="What We Do"
-            BgColor={themeProps.TertiaryColor}
-            TextColor={themeProps.PrimaryColor}
+    <OverflowHidden>
+      <BasicSection
+        noPaddingRight
+        BgColor={Theme.Color.Ocean}
+        TextColor={Theme.Color.White}
+      >
+        <BasicInner noPaddingLeft>
+          <EdgeImageWithText
+            Caption="Tremendous learning mediums"
+            CaptionColor={Theme.Color.White}
+            Header="Inspiring Play Since 1997"
+            Image="sailboat.png"
+            Paragraph="Play-Well TEKnologies was founded by Tim Bowen in 1997.
+              Introduced to the LEGO® building system in 1996 and recognizing
+              it to be both a popular play medium and a tremendous learning
+              medium, Tim began to develop projects which drew on his
+              professional experience and combined the elements of fun,
+              challenge, and learning."
+            Reverse
           />
-        </Box>
-      </Container.Inner>
-    </Container>
+        </BasicInner>
+      </BasicSection>
+    </OverflowHidden>
   );
 };
 

@@ -23,16 +23,18 @@ import EdgeImageWithTextStyle from './styles.scss';
 export const EdgeImageWithText = ({
   Image,
   Caption,
+  CaptionColor,
   Header,
   Paragraph,
   ButtonText,
   ButtonDest,
+  Reverse,
 }) => (
-  <EdgeImageWithTextStyle>
+  <EdgeImageWithTextStyle Reverse={Reverse} CaptionColor={CaptionColor}>
     <Icon Name="swoop" />
     <div className="text">
       <div className="h6">{Caption}</div>
-      <div className="h2 txt-clr-sunset">{Header}</div>
+      <div className="h2">{Header}</div>
       <p className="p-lg">{Paragraph}</p>
       {ButtonText && ButtonDest && (
         <Btn
@@ -49,6 +51,10 @@ export const EdgeImageWithText = ({
     </div>
   </EdgeImageWithTextStyle>
 );
+
+EdgeImageWithText.defaultProps = {
+  CaptionColor: Theme.Color.Nova,
+}
 
 export default EdgeImageWithText;
 
