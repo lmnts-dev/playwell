@@ -35,7 +35,7 @@ export const EdgeImageWithText = ({
     <div className="text">
       <div className="h6">{Caption}</div>
       <div className="h2">{Header}</div>
-      <p className="p-lg">{Paragraph}</p>
+      <p className="p-lg" dangerouslySetInnerHTML={{__html: Paragraph}} />
       {ButtonText && ButtonDest && (
         <Btn
           Label={ButtonText}

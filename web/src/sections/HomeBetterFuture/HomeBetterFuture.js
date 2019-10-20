@@ -36,16 +36,11 @@ const HomeBetterFuture = ({ themeProps }) => {
       >
         <BasicInner noPaddingLeft>
           <EdgeImageWithText
-            Caption="Tremendous learning mediums"
+            Caption="The Importance of STEM Education"
             CaptionColor={Theme.Color.White}
-            Header="Inspiring Play Since 1997"
+            Header="Building a Better Future"
             Image="sailboat.png"
-            Paragraph="Play-Well TEKnologies was founded by Tim Bowen in 1997.
-              Introduced to the LEGO® building system in 1996 and recognizing
-              it to be both a popular play medium and a tremendous learning
-              medium, Tim began to develop projects which drew on his
-              professional experience and combined the elements of fun,
-              challenge, and learning."
+            Paragraph="STEM education creates critical thinkers, increases science literacy, and enables the next generation of innovators. Innovation leads to new products and processes that sustain our economy in an ever increasing technologically driven society. <br /><br /> Having activities that show real-life implication of STEM can pull together the ideas presented in school and help to show how they benefit our society and even our world as a whole"
             ButtonText="Programs"
             ButtonDest="/"
             Reverse
