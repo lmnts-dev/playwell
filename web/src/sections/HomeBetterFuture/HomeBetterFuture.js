@@ -46,6 +46,8 @@ const HomeBetterFuture = ({ themeProps }) => {
               medium, Tim began to develop projects which drew on his
               professional experience and combined the elements of fun,
               challenge, and learning."
+            ButtonText="Programs"
+            ButtonDest="/"
             Reverse
           />
         </BasicInner>

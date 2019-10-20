@@ -30,7 +30,7 @@ export const BasicSectionStyle = styled.div`
     padding: calc(${Theme.Base.Size.Lg} * .75) 0 calc(${Theme.Base.Size.Lg} * .75) 0;
   }
   @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-    padding: calc(${Theme.Base.Size.Lg} / 2) 0 calc(${Theme.Base.Size.Lg} / 2) 0;
+    padding: calc(${Theme.Base.Size.Lg} / 1) 0 calc(${Theme.Base.Size.Lg} / 1) 0;
   }
   ${props => props.BgLinear ? `
     .linear-background {
