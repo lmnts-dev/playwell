@@ -84,7 +84,7 @@ Container.Line = styled.div`
     transform: rotate(90deg) translateY(18%);
     transform-origin: 0% 100%;
     color: ${Theme.Color.Nova};
-    font-size: 30px;
+    font-size: 31px;
   }
 
   &:before {

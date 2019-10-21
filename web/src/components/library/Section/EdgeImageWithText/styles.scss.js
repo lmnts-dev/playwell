@@ -32,7 +32,7 @@ export const EdgeImageWithTextStyle = styled.div`
     height: calc(100% + calc(${Root.Size} * 2));
     ${p =>
       p.Reverse
-        ? `left: calc(calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 2)) * -1);`
+        ? `left: calc(calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 2)) * -1.5);`
         : `right: calc(calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 2)) * -1);`}
     top: calc(${Root.Size} * -1);
     width: calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 4));
