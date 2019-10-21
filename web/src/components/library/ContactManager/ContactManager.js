@@ -191,26 +191,7 @@ class SearchBar extends PureComponent {
       } else if (isCostCodeMatch.length > 0) {
         return location;
       }
-
-      // For Debugging only.
-      // console.log('searchSafeCounties:');
-      // console.log(searchSafeCounties);
-
-      // console.log(isCostCodeMatch.length > 0 ? true : false);
-      // console.log(isCostCodeMatch);
-
-      // console.log('isCountyMatch:');
-      // console.log(isCountyMatch);
-
-      // console.log('searchSafeName: ' + searchSafeName);
-      // console.log('searchSafeQuery: ' + searchSafeQuery);
     });
-
-    // For Debugging only.
-    // console.log('results:');
-    // console.log(results);
-    // console.log('resultsSample:');
-    // console.log(resultsSample);
 
     return (
       <SearchBarStyle ref="searchInputWrapper">

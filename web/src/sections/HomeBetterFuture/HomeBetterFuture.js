@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { Link } from 'gatsby';
 
 // Components
+import { Box, Flex, Text } from 'components/library/Elements';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 
 import {
@@ -34,18 +35,20 @@ const HomeBetterFuture = ({ themeProps }) => {
         BgColor={Theme.Color.Ocean}
         TextColor={Theme.Color.White}
       >
-        <BasicInner noPaddingLeft>
-          <EdgeImageWithText
-            Caption="The Importance of STEM Education"
-            CaptionColor={Theme.Color.White}
-            Header="Building a Better Future"
-            Image="sailboat.png"
-            Paragraph="STEM education creates critical thinkers, increases science literacy, and enables the next generation of innovators. Innovation leads to new products and processes that sustain our economy in an ever increasing technologically driven society. <br /><br /> Having activities that show real-life implication of STEM can pull together the ideas presented in school and help to show how they benefit our society and even our world as a whole"
-            ButtonText="Programs"
-            ButtonDest="/"
-            Reverse
-          />
-        </BasicInner>
+        <Box py={[0, `calc(${Root.Size})`]}>
+          <BasicInner noPaddingLeft>
+            <EdgeImageWithText
+              Caption="The Importance of STEM Education"
+              CaptionColor={Theme.Color.White}
+              Header="Building a Better Future"
+              Image="sailboat.png"
+              Paragraph="STEM education creates critical thinkers, increases science literacy, and enables the next generation of innovators. Innovation leads to new products and processes that sustain our economy in an ever increasing technologically driven society.<br /><br />Having activities that show real-life implication of STEM can pull together the ideas presented in school and help to show how they benefit our society and even our world as a whole"
+              ButtonText="Programs"
+              ButtonDest="/"
+              Reverse
+            />
+          </BasicInner>
+        </Box>
       </BasicSection>
     </OverflowHidden>
   );

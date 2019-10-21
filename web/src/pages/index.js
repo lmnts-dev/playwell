@@ -108,6 +108,7 @@ const HomePage = () => (
           <ImgMatch src="cloud-big.png" AltText="Cloud" />
         </div>
       </Decorator>
+      
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
