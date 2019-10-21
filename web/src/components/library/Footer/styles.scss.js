@@ -20,6 +20,10 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
+export const OverflowHidden = styled.div`
+  overflow: hidden;
+`;
+
 export const CurveAndAngleWithPadding = styled(CurveAndAngle)`
   &.curve-and-angle {
     z-index: 19;
