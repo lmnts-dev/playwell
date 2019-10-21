@@ -122,6 +122,9 @@ export const Typography = createGlobalStyle`
 
     &.lead {
       font-size: 1.4rem;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        font-size: 1.2rem;
+      }
     }
   }
 

@@ -104,7 +104,7 @@ const LocationHero = ({ cities, pageContext }) => {
             <br />
             Engineering in <span>{contextualPageName()}</span>
           </Hero.Heading>
-          <Box mr={1} display="inline-block">
+          <Box mr={1} mb={[1, 0]} display="inline-block">
             <Btn
               Destination={'/programs/' + programsSlug}
               Label="View Programs"

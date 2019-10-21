@@ -6,14 +6,9 @@
 // Core
 import styled from 'styled-components';
 
-// Helpers
-import {
-  SectionInnerStyle,
-  SectionContentStyle,
-} from './../../Section/styles.scss';
-
 // Constants
 import { Theme, Root } from 'constants/Theme';
+import { Base } from 'constants/styles/Base';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -26,40 +21,64 @@ const SplitSectionStyle = styled.div`
 SplitSectionStyle.Inner = styled.div`
   display: flex;
   flex-direction: ${props => (props.Flex ? props.Flex : 'row')};
+  flex-wrap: wrap;
   justify-content: center;
   position: relative;
+
+  @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+    flex-wrap: nowrap;
+  }
 
   .block {
     justify-content: center;
     align-items: center;
 
     &:first-child {
+      width: 100%;
       /* Change width of each block based on which 
       block is first depending on it's flex property: */
-      width: ${props =>
-        props.Flex
-          ? 'calc(50% + (' + Root.Grid.Gutter.Left + '/ 2))'
-          : 'calc(50% - (' + Root.Grid.Gutter.Left + '/ 2))'};
 
-      /* Add left padding to first block if it's a text
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        width: ${props =>
+          props.Flex
+            ? 'calc(50% + (' + Root.Grid.Gutter.Left + '/ 2))'
+            : 'calc(50% - (' + Root.Grid.Gutter.Left + '/ 2))'};
+
+        /* Add left padding to first block if it's a text
       block depending on it's flex property: */
-      ${props =>
-        props.Flex
-          ? null
-          : 'padding-left: calc(' +
-            Root.Grid.Gutter.Left +
-            ' + ' +
-            Root.Size +
-            ')'};
+        ${props =>
+          props.Flex
+            ? null
+            : 'padding-left: calc(' +
+              Root.Grid.Gutter.Left +
+              ' + ' +
+              Root.Size +
+              ')'}
+      }
     }
 
     &:last-child {
+      width: 100%;
       /* Change width of each block based on which 
       block is first depending on it's flex property: */
-      width: ${props =>
-        props.Flex
-          ? 'calc(50% + (' + Root.Grid.Gutter.Left + '/ 2))'
-          : 'calc(50% - (' + Root.Grid.Gutter.Left + '/ 2))'};
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        width: ${props =>
+          props.Flex
+            ? 'calc(50% + (' + Root.Grid.Gutter.Left + '/ 2))'
+            : 'calc(50% - (' + Root.Grid.Gutter.Left + '/ 2))'};
+
+        /* Add left padding to first block if it's a text
+      block depending on it's flex property: */
+        ${props =>
+          props.Flex
+            ? null
+            : 'padding-left: calc(' +
+              Root.Grid.Gutter.Left +
+              ' + ' +
+              Root.Size +
+              ')'}
+      }
     }
 
     .block-content {
@@ -69,7 +88,7 @@ SplitSectionStyle.Inner = styled.div`
 
     .block-img-wrap {
       width: 100%;
-      padding-bottom: 80%;
+      padding-bottom: 100%;
       overflow: hidden;
       position: relative;
 

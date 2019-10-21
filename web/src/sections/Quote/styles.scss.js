@@ -24,6 +24,7 @@ export const QuoteContainer = styled(Section)``;
 
 QuoteContainer.Quote = styled(Text)`
   position: relative;
+  font-weight: 600;
 
   &:before {
     content: '"';
@@ -31,10 +32,11 @@ QuoteContainer.Quote = styled(Text)`
     font-size: 3rem;
     position: absolute;
     top: -40px;
-    left: -20px;
+    left: -10px;
 
     @media (min-width: ${Base.Media.Width.Md + 'px'}) {
       font-size: 4rem;
+      left: -20px;
     }
   }
 
@@ -44,10 +46,11 @@ QuoteContainer.Quote = styled(Text)`
     font-size: 3rem;
     position: absolute;
     bottom: -60px;
-    right: -20px;
+    right: -10px;
 
     @media (min-width: ${Base.Media.Width.Md + 'px'}) {
       font-size: 4rem;
+      right: -20px;
     }
   }
 `;

@@ -15,7 +15,7 @@ import Section from 'components/library/Elements/Section';
 import Accordion from 'components/library/Accordion';
 
 // Styles
-import { Article } from './styles.scss';
+import { Title, Article } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -33,15 +33,15 @@ const LocationCoordinators = ({ pageContext }) => {
     <Section textAlign="left">
       {/* todo: make styled components */}
       <Flex flexWrap="wrap">
-        <Box
+        <Title
           width={[1, 1, 1 / 2, 4 / 10]}
           pr={[0, 0, 0, 'calc(var(--Size) * 2)']}
           pb={'var(--Size)'}
         >
-          <Text as="h2" color="Dino">
+          <span className="h2">
             Coordinators in {countyState}
-          </Text>
-        </Box>
+          </span>
+        </Title>
         <Box width={[1, 1, 1 / 2, 6 / 10]}>
           {pageContext.managers.map(manager => (
             <Accordion key={manager.node.id} title={manager.node.cost_code_name}>
@@ -64,12 +64,12 @@ const LocationCoordinators = ({ pageContext }) => {
                       <span>
                         <a href={'mailto:' + manager.node.email}>{manager.node.email}</a>
                       </span>
-                      <span>
+                      {/* <span>
                         <a href={'tel:' + manager.node.cell_number}>{manager.node.cell_number}</a>
                       </span>
                       <span>
                         <a href="/">More</a>
-                      </span>
+                      </span> */}
                     </Article.Info.Contact>
                   </Flex>
                 </Article.Info>

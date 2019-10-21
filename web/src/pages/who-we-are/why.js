@@ -67,16 +67,17 @@ const ThemeProps = {
 const OverflowHidden = styled.div`
   width: 100vw;
   overflow: hidden;
-`
+`;
 
 const GiantTextBlock = styled(GiantText)`
   &.wide-word {
     .headline {
       @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
         font-size: 12vw;
+      }
     }
   }
-`
+`;
 
 // Render Page
 const WhoWhyPage = () => {

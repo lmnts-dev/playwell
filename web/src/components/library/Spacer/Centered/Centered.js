@@ -6,7 +6,6 @@
 
 // Core
 import React from 'react';
-import { Link } from 'gatsby';
 
 // Styles
 import { Container } from './styles.scss';
@@ -19,8 +18,6 @@ const Centered = () => (
     <Container.Line />
   </Container>
 );
-
-Centered.defaultProps = {};
 
 export default Centered;
 
