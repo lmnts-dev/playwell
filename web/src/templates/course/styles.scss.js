@@ -6,11 +6,13 @@
 // Core
 import styled from 'styled-components';
 
+// Components
+import { Box, Flex, Text } from 'components/library/Elements';
+import Section from 'components/library/Elements/Section';
+
 // Constants
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
-import { Box, Flex, Text } from 'components/library/Elements';
-import Section from 'components/library/Elements/Section';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -38,38 +40,41 @@ Hero.Avatar = styled.div`
   }
 `;
 
-Hero.Headline = styled.h3``;
-
-Hero.Tags = styled(Flex)`
+Hero.Tags = styled.ul`
+  display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
   width: 100%;
-  max-width: calc(${props => props.theme.Root.Size} * 13);
+  max-width: ${Theme.Base.Grid.ReadingWidth};
 
   li {
-    color: ${p => p.theme.Color.Deepsea};
+    color: ${Theme.Color.Deepsea};
     text-transform: uppercase;
-    letter-spacing: calc(${props => props.theme.Root.Size} * 0.05);
-    font-weight: 500;
+    letter-spacing: calc(${Root.Size} * 0.05);
+    font-weight: 600;
     font-size: 0.8rem;
-    padding: 0 calc(${props => props.theme.Root.Rem} * 1);
-    margin-bottom: calc(${props => props.theme.Root.Rem} * 0.8);
+    padding: 0 calc(${Root.Size} / 6) calc(${Root.Size} / 3);
     text-align: center;
 
-    @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
+    @media (min-width: ${Base.Media.Width.Md + 'px'}) {
       font-size: 0.9rem;
-      padding: 0 calc(${props => props.theme.Root.Rem} * 0);
+      padding: 0 calc(${Root.Size} / 6) calc(${Root.Size} * 0);
     }
 
     a {
-      color: ${p => p.theme.Color.Deepsea};
+      color: ${Theme.Color.Deepsea};
     }
   }
 `;
 
-Hero.Date = styled(Text)`
-  color: ${p => p.theme.Color.Deepsea};
-  font-weight: 300;
+Hero.Headline = styled.h1`
+  padding: calc(${Root.Size} / 3) 0;
+`;
+
+Hero.Date = styled.span`
+  color: ${Theme.Color.Deepsea};
+  font-weight: 600;
+  padding-bottom: calc(${Root.Size} / 2);
 `;
 
 export const CalloutSection = styled(Flex)`
@@ -98,7 +103,7 @@ Spacer.Line = styled.span`
   height: 100px;
   position: absolute;
   bottom: -50px;
-  border-left: 1px dashed ${p => p.theme.Color.Primary};
+  border-left: 1px dashed ${Theme.Color.Primary};
   z-index: 9;
 `;
 
@@ -113,19 +118,19 @@ export const QuestionsNav = styled(Flex)`
   }
 
   li {
-    color: ${p => p.theme.Color.White};
+    color: ${Theme.Color.White};
     font-weight: 700;
     margin-bottom: 1rem;
-    padding: 0 calc(${props => props.theme.Root.Rem} * 0.8);
+    padding: 0 calc(${Theme.Root.Rem} * 0.8);
 
     a {
-      color: ${p => p.theme.Color.White};
+      color: ${Theme.Color.White};
     }
   }
 `;
 
 export const Toggle = styled(Box)`
-  background: ${p => p.theme.Color.White};
+  background: ${Theme.Color.White};
   border-top: 1px solid #eaeaea;
   cursor: pointer;
   text-align: center;
@@ -159,7 +164,7 @@ CourseFooter.Course = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: ${p => p.theme.Base.Grid.ReadingWidth};
+  max-width: ${Theme.Base.Grid.ReadingWidth};
 `;
 
 //////////////////////////////////////////////////////////////////////

@@ -55,7 +55,8 @@ const LocationCoordinators = ({ pageContext }) => {
                 <Article.Info>
                   <Flex flexWrap="wrap">
                     <Article.Info.Details>
-                      {manager.node.state} <span>{manager.node.cost_code}</span>
+                      {manager.node.state}
+                      {/* <span>{manager.node.cost_code}</span> */}
                     </Article.Info.Details>
                     <Article.Info.Name fontSize="1.6rem">
                       {manager.node.manager}

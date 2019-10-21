@@ -16,6 +16,7 @@ import Btn from 'components/library/Btn';
 import { Icon } from 'components/library/Icons';
 import ImgMatch from 'components/core/ImgMatch';
 import Section from 'components/library/Elements/Section';
+import SpacerCentered from 'components/library/Spacer/Centered';
 
 // Sections
 import QuestionsCallout from 'sections/QuestionsCallout';
@@ -96,7 +97,7 @@ const Course = ({ pageContext }) => {
           <Hero.Avatar>
             <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
           </Hero.Avatar>
-          <Hero.Tags as="ul">
+          <Hero.Tags>
             <li>
               <Link
                 to={'/programs/' + slugify(pageContext.locationMeta.state.name)}
@@ -168,10 +169,10 @@ const Course = ({ pageContext }) => {
             </li>
             {pageContext.room && <li> room {pageContext.room}</li>}
           </Hero.Tags>
-          <Text as="h3" mt={1}>
+          <Hero.Headline className="h3">
             {pageContext.course_type_name}
-          </Text>
-          <Hero.Date as="p" fontSize={[0, 1, 3]} mt={[1, 1, 0]} mb={1}>
+          </Hero.Headline>
+          <Hero.Date className="h5">
             {pageContext.date_time_display}
           </Hero.Date>
           {/* Content Overlay Modal Toggle */}
@@ -197,9 +198,7 @@ const Course = ({ pageContext }) => {
         </Hero>
       </HeroContainer>
 
-      <Spacer>
-        <Spacer.Line />
-      </Spacer>
+      <SpacerCentered />
 
       <Section bg="Cream" textAlign="center">
         <Flex
@@ -211,18 +210,16 @@ const Course = ({ pageContext }) => {
           m={'0 auto'}
           maxWidth={Theme.Base.Grid.ReadingWidth}
         >
-          <Text as="p" color="Nova" className="lead">
+          <Text as="p" className="lead" color="Nova" fontWeight={600}>
             {pageContext.date_time_display}
           </Text>
-          <Text as="p" color="Galaxy" className="lead">
+          <Text as="p" className="lead" color="Galaxy">
             {pageContext.course_type_long_description}
           </Text>
         </Flex>
       </Section>
 
-      <Spacer>
-        <Spacer.Line />
-      </Spacer>
+      <SpacerCentered />
 
       <Section
         bg="White"
