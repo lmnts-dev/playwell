@@ -22,6 +22,7 @@ export const EdgeImageWithTextStyle = styled.div`
   flex-direction: ${props => props.Reversed ? 'row-reverse' : 'row'};
   align-items: center;
   position: relative;
+  
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     display: block;
   }
@@ -33,6 +34,7 @@ export const EdgeImageWithTextStyle = styled.div`
     transform: scale(${props => props.Reversed ? '-1' : '1'});
     top: calc(${Root.Size} * -1);
     width: calc(50vw - calc(${Theme.Base.Grid.SiteWidth} / 4));
+    ${p => p.Reverse && 'transform: rotate(180deg) translateX(0);'}
     svg {
       height: 100%;
       width: 100%;
@@ -88,6 +90,7 @@ export const EdgeImageWithTextStyle = styled.div`
     }
 
     .h2 {
+      color: ${p => p.CaptionColor};
       padding: calc(${Root.Size} / 6) 0;
     }
   }
@@ -110,6 +113,7 @@ export const EdgeImageWithTextStyle = styled.div`
 
     .ico-swoop {
       display: none;
+      ${p => (p.Reverse ? `left: -3px;` : `right: 0;`)}
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         display: block;
         width: 50vw;

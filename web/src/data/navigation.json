@@ -73,38 +73,12 @@
             "activeColor": "Nova"
           },
           "subNav": {
-            "focusLinkList": [
-              {
-                "route": "/",
-                "label": "Locations Link",
-                "focus": true
-              },
-              {
-                "route": "/",
-                "label": "Locations Link",
-                "focus": false
-              },
-              {
-                "route": "/",
-                "label": "Locations Link",
-                "focus": false
-              },
-              {
-                "route": "/",
-                "label": "Locations Link",
-                "focus": false
-              }
-            ],
+            "focusLinkList": [],
             "minorLinkList": [
               {
                 "route": "",
                 "label": "Subhead",
                 "subhead": true
-              },
-              {
-                "route": "/",
-                "label": "Locations Link",
-                "subhead": false
               },
               {
                 "route": "/",

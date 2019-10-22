@@ -62,11 +62,36 @@ Scroll.Positioner = styled.div`
 `;
 
 Scroll.Line = styled.div`
-  border-left: 1px dashed ${p => p.theme.Color.Nova};
   display: block;
   width: 0;
   height: 160px;
   margin: 0 auto;
+
+  &:after {
+    content: "\\2023";
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 9px);
+    transform: rotate(90deg) translateY(18%);
+    transform-origin: 0% 100%;
+    color: ${Theme.Color.Nova};
+    font-size: 31px;
+  }
+
+  &:before {
+    position: absolute;
+    top: calc(${Theme.Base.Size.Lg} / 3);
+    bottom: 0;
+    width: 1px;
+    content: '';
+    background-image: linear-gradient(
+      ${Theme.Color.Nova} 40%,
+      rgba(255, 255, 255, 0) 0%
+    );
+    background-position: right;
+    background-size: 1px 10px;
+    background-repeat: repeat-y;
+  }
 `;
 
 export const Decorator = styled(Box)`

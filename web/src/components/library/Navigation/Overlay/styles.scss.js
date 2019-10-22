@@ -40,7 +40,7 @@ export const NavigationOverlayStyle = styled.nav`
   background: ${props =>
     props.theme.primaryColor
       ? hexToRGB(props.theme.primaryColor, 0.8)
-      : hexToRGB(Theme.Color.Ocean, 0.8)} };
+      : hexToRGB(Theme.Color.Ocean, 0.8)};
   top: 0px;
   bottom: 0px;
   left: 0px;

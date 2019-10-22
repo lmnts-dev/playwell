@@ -162,7 +162,7 @@ class NavigationBar extends PureComponent {
                 Label="Contact"
                 IconClass="question-circle"
                 IconPosition="left"
-                Destination="/"
+                Destination="/contact"
                 TextColor={Theme.Color.Primary}
                 IconFas
               />

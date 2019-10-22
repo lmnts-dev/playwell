@@ -35,7 +35,7 @@ const HomeImpact = () => {
           <Text as="h2" className="h1" fontWeight={600} color="Sunset">
             Children Learn While Playing
           </Text>
-          <Text as="p" color="Galaxy">
+          <Text as="p" className="p-lg" color="Galaxy">
             Our assessments measured three goals including: student's knowledge
             of STEM terms or concepts, ability to generalize information, and
             increasing positive feeling towards STEM subjects. For example, the

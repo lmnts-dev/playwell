@@ -20,6 +20,10 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
+export const OverflowHidden = styled.div`
+  overflow: hidden;
+`;
+
 export const CurveAndAngleWithPadding = styled(CurveAndAngle)`
   &.curve-and-angle {
     z-index: 19;
@@ -44,8 +48,8 @@ export const FooterStyle = styled.footer`
   }
 
   .footer-curve-slice {
-    //TODO create prop for a transparent curve
-    //opacity: 0.05;
+    /* TODO create prop for a transparent curve */
+    /* opacity: 0.05; */
   }
 
   .basic-inner {

@@ -88,8 +88,7 @@ export const BlockStyle = styled.div`
   }
 
   /* Width Multiple */
-    ${props =>
-      props.Width ? 'width: ' + props.Width * 100 + '%;' : 'flex: 1;'}
+  ${props => (props.Width ? 'width: ' + props.Width * 100 + '%;' : 'flex: 1;')}
   max-width: ${props =>
     props.maxWidth
       ? 'calc(' + Theme.Base.Grid.SiteWidth + ' * ' + props.maxWidth + ')'
@@ -98,20 +97,20 @@ export const BlockStyle = styled.div`
   /* Array-based Padding utilizing Css Variable Multiples. */
   ${props =>
     props.Padding
-      ? 'padding-top: calc(' + Root.Size + ' * ' + props.Padding[0] + ')'
-      : null};
+      ? 'padding-top: calc(' + Root.Size + ' * ' + props.Padding[0] + ');'
+      : null}
   ${props =>
     props.Padding
-      ? 'padding-right: calc(' + Root.Size + ' * ' + props.Padding[1] + ')'
-      : null};
+      ? 'padding-right: calc(' + Root.Size + ' * ' + props.Padding[1] + ');'
+      : null}
   ${props =>
     props.Padding
-      ? 'padding-bottom: calc(' + Root.Size + ' * ' + props.Padding[2] + ')'
-      : null};
+      ? 'padding-bottom: calc(' + Root.Size + ' * ' + props.Padding[2] + ');'
+      : null}
   ${props =>
     props.Padding
-      ? 'padding-left: calc(' + Root.Size + ' * ' + props.Padding[3] + ')'
-      : null};
+      ? 'padding-left: calc(' + Root.Size + ' * ' + props.Padding[3] + ');'
+      : null}
 `;
 
 export default BlockStyle;

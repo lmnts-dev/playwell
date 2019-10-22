@@ -27,7 +27,14 @@ export const BasicSectionStyle = styled.div`
   color: ${props => (props.TextColor ? props.TextColor : Theme.Color.White)};
   padding: calc(${Theme.Base.Size.Lg} * 1.25) 0 calc(${Theme.Base.Size.Lg} * 1.25) 0;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+<<<<<<< HEAD
     padding: calc(${Theme.Base.Size.Lg}) 0 calc(${Theme.Base.Size.Lg}) 0;
+=======
+    padding: calc(${Theme.Base.Size.Lg} * .75) 0 calc(${Theme.Base.Size.Lg} * .75) 0;
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding: calc(${Theme.Base.Size.Lg} / 1) 0 calc(${Theme.Base.Size.Lg} / 1) 0;
+>>>>>>> 689fcbd2492dd6e500f50e8c2925a0aa7c99065d
   }
 
   ${props => props.BgLinear ? `
@@ -98,6 +105,10 @@ export const BasicSectionStyle = styled.div`
       z-index: 10;
     }`
       : null};
+    
+    &.hide {
+      display: none;
+    }
 `;
 
 export const BasicInnerStyle = styled.div`

@@ -23,6 +23,7 @@ import EdgeImageWithTextStyle from './styles.scss';
 export const EdgeImageWithText = ({
   Image,
   Caption,
+  CaptionColor,
   Header,
   Paragraph,
   Paragraph2,
@@ -55,6 +56,10 @@ export const EdgeImageWithText = ({
     </div>
   </EdgeImageWithTextStyle>
 );
+
+EdgeImageWithText.defaultProps = {
+  CaptionColor: Theme.Color.Nova,
+}
 
 export default EdgeImageWithText;
 

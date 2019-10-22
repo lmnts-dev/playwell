@@ -27,6 +27,7 @@ export const BasicSection = ({
   noPaddingTop,
   BgLinear,
   children,
+  className,
 }) => (
   <BasicSectionStyle
     BgColor={BgColor}
@@ -38,6 +39,7 @@ export const BasicSection = ({
     BorderBottomVertical={BorderBottomVertical}
     noPaddingBottom={noPaddingBottom}
     noPaddingTop={noPaddingTop}
+    className={className}
   >
     { BgLinear && <span className="linear-background"/>}
     {children}

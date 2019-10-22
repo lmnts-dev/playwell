@@ -8,7 +8,7 @@ import React from 'react';
 //////////////////////////////////////////////////////////////////////
 
 const Next = () => (
-  <svg width="33" height="65" viewBox="0 0 65 33" version="1.1">
+  <svg width="33" height="65" viewBox="0 0 33 65" version="1.1">
     <g fillRule="evenodd">
       <g
         fillOpacity="0"

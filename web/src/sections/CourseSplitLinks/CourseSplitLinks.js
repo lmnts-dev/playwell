@@ -58,7 +58,7 @@ const CourseSplitLinks = ({
       <SplitLinks>
         <SplitLink
           title="Keep exploring"
-          message={'Keep exploring our programs in ' + countyStateString + '.'}
+          message={'Keep exploring programs in ' + countyStateString + '.'}
           to={programsLink}
           themeProps={themeProps}
           first

@@ -25,13 +25,6 @@ export const CourseFooter = styled(Flex)`
   text-align: left;
 `;
 
-CourseFooter.Course = styled(Flex)`
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-`;
-
 CourseFooter.Explore = styled(Flex)`
   text-align: left;
   align-items: center;
@@ -62,6 +55,23 @@ export const LinkContainer = styled(Flex)`
 
   a {
     text-decoration: none;
+  }
+
+  .arrow {
+    background: rgba(0, 0, 0, 0);
+
+    span {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: calc(${Root.Size} * 1);
+      height: calc(${Root.Size} * 2);
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        justify-content: ${p =>
+        p.first ? 'flex-start' : p.last ? 'flex-end' : 'center'};
+      }
+    }
   }
 
   svg {
@@ -113,18 +123,6 @@ export const LinkContainer = styled(Flex)`
       }
     }
   }
-`;
-
-LinkContainer.Arrow = styled(Box)`
-  background: rgba(0, 0, 0, 0);
-  /* cursor: pointer; */
-  transform: scale(2);
-  width: calc(${Root.Size} * 1);
-  height: calc(${Root.Size} * 1);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 //////////////////////////////////////////////////////////////////////

@@ -25,6 +25,11 @@ import hexToRGB from 'helpers/hexToRGB';
 export const SliderContainer = styled.div`
   text-align: center;
 
+  .img-container {
+    max-height: 200px;
+    overflow: hidden;
+  }
+
   .slick-slider {
     margin: calc(${Theme.Base.Size.Lg} / 2) 0;
 
