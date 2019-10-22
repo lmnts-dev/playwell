@@ -41,6 +41,12 @@ export const LocationFilterStyle = styled.section`
     background: ${props => (props.bg ? props.bg : Theme.Color.Black)};
   }
 
+  a {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
   h1 {
     .h1,
     .location {
@@ -77,18 +83,44 @@ export const LocationFilterStyle = styled.section`
   }
 `;
 
-// Hero Content
+// Arrow Link
 
-export const CourseHeroContentStyle = styled.div`
-  position: relative;
-  width: ${props =>
-    props.mapWidth ? 'calc(100% - ' + props.mapWidth + ')' : '100%'};
-  z-index: ${props => (props.mapZedIndex ? props.mapZedIndex + 1 : 5)};
-  overflow: visible;
-  z-index: 500;
+export const ArrowLink = styled.span`
+  color: ${Theme.Color.Lilac};
+  font-size: 0.9rem;
+  line-height: 1.4;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
 
-  @media (max-width: ${Theme.Base.Media.Width.Md}) {
-    width: 100%;
+  span {
+    height: 14px;
+  }
+
+  .arrow {
+    margin-left: calc(${Root.Size} / 6);
+
+    svg {
+      transform: translateX(0);
+      fill: ${Theme.Color.Lilac};
+      transition: ${Theme.Base.Transition.String};
+      height: 14px;
+    }
+
+    &:hover {
+      svg {
+        transform: translateX(20%);
+      }
+    }
+  }
+
+  &:hover {
+    .arrow {
+      svg {
+        transform: translateX(40%);
+      }
+    }
   }
 `;
 
@@ -134,24 +166,27 @@ export const SearchBarStyle = styled.div`
 
     .inner {
       display: flex;
-      width: 100%;
-      justify-content: space-between;
+      flex-direction: row;
+      justify-content: flex-start;
       align-items: center;
-      padding: 0 calc(${Root.Size} / 3);
-      height: calc(${searchBarHeight} / 1.5);
+      width: 100%;
+      height: calc(${searchBarHeight} / 1.7);
       line-height: 0;
+      padding: 0 calc(${Root.Size} / 7);
       position: relative;
 
       .ico {
         position: relative;
-        font-size: calc(${Root.Size} / 2.5);
-        color: ${Theme.Color.Nova};
+        font-size: calc(${Root.Size} / 3.5);
+        color: ${Theme.Color.Primary};
+        transform: scaleX(-1);
       }
 
       input {
-        height: ${searchBarHeight};
-        font-weight: bold;
-        font-size: 1.2rem;
+        color: ${Theme.Color.Nova};
+        height: calc((${searchBarHeight} / 1.7) - 4px);
+        font-weight: 600;
+        font-size: 1rem;
         line-height: 0;
         display: flex;
         flex: 1;
@@ -160,25 +195,31 @@ export const SearchBarStyle = styled.div`
         background: none;
         position: relative;
         left: 5px;
-        top: 3px;
+        top: 2px;
         width: 100%;
       }
     }
   }
 
   .search-results {
+    padding-top: calc(${Root.Size} / 7);
+
     li {
-      padding-top: calc(${Root.Size} / 8);
+      padding-top: calc(${Root.Size} / 7);
 
       a {
         color: ${Theme.Color.Lilac};
+        font-size: 1rem;
         font-weight: 600;
         text-decoration: none;
         transition: ${Theme.Base.Transition.String};
 
-        &:hover,
-        &:visited {
+        &:hover {
           color: ${Theme.Color.Sunset};
+        }
+
+        &:visited {
+          color: ${Theme.Color.Sunlight};
         }
       }
     }

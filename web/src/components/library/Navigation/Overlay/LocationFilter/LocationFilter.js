@@ -14,7 +14,7 @@ import slugify from 'helpers/slugify';
 import hexToRGB from 'helpers/hexToRGB';
 
 // Styles
-import { LocationFilterStyle, SearchBarStyle } from './styles.scss';
+import { LocationFilterStyle, SearchBarStyle, ArrowLink } from './styles.scss';
 
 // Components
 import { Box, Flex } from 'components/library/Elements';
@@ -37,7 +37,7 @@ class SearchBar extends PureComponent {
     // Assign initial state
     this.state = {
       query: '',
-      resultsActive: false,
+      resultsActive: true,
       queryActive: false,
     };
 
@@ -48,22 +48,16 @@ class SearchBar extends PureComponent {
 
   // Mounted state
   componentDidMount() {
-    // Listen for click events to show/hide results
-    document.addEventListener('mousedown', this.handleSearchResultsToggle);
-
     // Assign State
     this.state = {
       query: '',
-      resultsActive: false,
+      resultsActive: true,
       queryActive: false,
     };
   }
 
   // Unmounted state
   componentWillUnmount() {
-    // Remove listener for click events to show/hide results
-    document.removeEventListener('mousedown', this.handleSearchResultsToggle);
-
     // De-assign State
     this.state = {
       query: '',
@@ -71,11 +65,6 @@ class SearchBar extends PureComponent {
       queryActive: false,
     };
   }
-
-  // Assign Ref to search bar
-  // searchWrapperRef(node) {
-  //   this.searchWrapperRef = node;
-  // }
 
   // Function to listen for mouse clicks to show/hide results bar
   handleSearchResultsToggle(event) {
@@ -94,8 +83,6 @@ class SearchBar extends PureComponent {
         resultsActive: true,
       });
     }
-
-    document.addEventListener('mousedown', this.handleSearchResultsToggle);
   }
 
   // Handle our query updates
@@ -126,10 +113,39 @@ class SearchBar extends PureComponent {
       const searchSafeName = location.node.name.toLowerCase();
 
       /*
+      // Clean our Cost Code Names, make them iterable. and
+      // return true if it is inside of the new array
+      */
+
+      // Create empty array
+      const searchSafeCostCodes = [];
+
+      // Iterate through Counties and add to said array
+      const cleanCostCodes = () => {
+        //  Convert each county name to lowercase
+        location.node.counties.forEach((county, idx) => {
+          searchSafeCostCodes.push(county.cost_code_name.toLowerCase());
+        });
+      };
+
+      // Run above function synchronously
+      cleanCostCodes();
+
+      // Iterate through cleaned array with clean query and return truthy
+      // or falsy if it exists
+      const isCostCodeMatch = searchSafeCostCodes.filter(costCode => {
+        if (costCode.includes(searchSafeQuery)) {
+          return true;
+        }
+      });
+
+      /*
       // Return our filtered results
       */
 
       if (searchSafeName.includes(searchSafeQuery)) {
+        return location;
+      } else if (isCostCodeMatch.length > 0) {
         return location;
       }
     });
@@ -149,7 +165,7 @@ class SearchBar extends PureComponent {
           }
         >
           <div className="inner">
-            {/* <Icon Name="search" fas /> */}
+            <Icon Name="search" fas />
             <input
               placeholder="Enter State..."
               onChange={this.handleInputChange}
@@ -210,9 +226,7 @@ const SearchBarResults = ({ results, navOverlayToggle }) => {
 };
 
 // Simple Course Hero Display Component
-const CourseHeroContent = ({ data, navOverlayToggle }) => {
-  console.log('navToggle:');
-  console.log(navOverlayToggle);
+const LocationFilterSearchBar = ({ data, navOverlayToggle }) => {
   return <SearchBar data={data} navOverlayToggle={navOverlayToggle} />;
 };
 
@@ -234,7 +248,16 @@ export const LocationFilter = ({
 
   return (
     <LocationFilterStyle bg={bg}>
-      <CourseHeroContent
+      <Link>
+        <ArrowLink>
+          <span>Play-Well County Activity Center</span>
+          <span className="arrow">
+            <Icon Name="carat" />
+          </span>
+        </ArrowLink>
+      </Link>
+      <figure className="line-break" />
+      <LocationFilterSearchBar
         data={fetchedData}
         navOverlayToggle={navOverlayToggle}
       />
