@@ -14,21 +14,21 @@ import Section from 'components/library/Elements/Section';
 import Spacer from 'components/library/Spacer';
 import ImgMatch from 'components/core/ImgMatch';
 import { Box, Flex, Text } from 'components/library/Elements';
-
-// Sections
-import HomeHero from 'sections/HomeHero';
-import SimpleTextWithImage from 'components/library/Section/SimpleTextWithImage';
-import ImageAccordianFeature from 'components/library/Section/ImageAccordianFeature';
-import HomeCommunity from 'sections/HomeCommunity';
-import HomePrograms from 'sections/HomePrograms';
-import HomeImpact from 'sections/HomeImpact';
-import HomeBetterFuture from 'sections/HomeBetterFuture';
-import LocationPlayZone from 'sections/LocationPlayZone';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import {
   BasicSection,
   BasicInner,
 } from 'components/library/Section/BasicSection';
+import SimpleTextWithImage from 'components/library/Section/SimpleTextWithImage';
+import ImageAccordianFeature from 'components/library/Section/ImageAccordianFeature';
+
+// Sections
+import HomeHero from 'sections/HomeHero';
+import HomeCommunity from 'sections/HomeCommunity';
+import HomePrograms from 'sections/HomePrograms';
+import HomeImpact from 'sections/HomeImpact';
+import HomeBetterFuture from 'sections/HomeBetterFuture';
+import LocationPlayZone from 'sections/LocationPlayZone';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';

@@ -15,6 +15,8 @@ import ImgMatch from 'components/core/ImgMatch';
 import Section from 'components/library/Elements/Section';
 import { Box, Flex, Text } from 'components/library/Elements';
 import SpacerCentered from 'components/library/Spacer/Centered';
+import Spacer from 'components/library/Spacer';
+import LegoList from 'components/library/Section/LegoList';
 
 // Sections
 import LocationHero from 'sections/LocationHero';
@@ -26,10 +28,8 @@ import Quote from 'sections/Quote';
 import LocationIntro from 'sections/LocationIntro';
 import LocationPlayZone from 'sections/LocationPlayZone';
 
-import LegoList from 'components/library/Section/LegoList';
-
 // Styles
-import { Hero, Spacer, Intro, Scroll, Decorator } from './styles.scss';
+import { Hero, Intro, Scroll, Decorator } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';

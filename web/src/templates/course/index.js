@@ -12,8 +12,6 @@ import { Link } from 'gatsby';
 // Components
 import Layout from 'components/core/Layout';
 import HeroContainer from 'components/library/Hero/HeroContainer';
-import Btn from 'components/library/Btn';
-import { Icon } from 'components/library/Icons';
 import ImgMatch from 'components/core/ImgMatch';
 import Section from 'components/library/Elements/Section';
 import SpacerCentered from 'components/library/Spacer/Centered';
@@ -29,13 +27,9 @@ import locationMatch from 'helpers/LocationMatch';
 // Styles
 import {
   Hero,
-  Spacer,
-  QuestionsNav,
   Toggle,
   Drawer,
   CourseFooter,
-  Explore,
-  CalloutSection,
 } from './styles.scss';
 
 // Constants
@@ -309,7 +303,7 @@ const Course = ({ pageContext }) => {
       </Section>
 
       <Toggle py={1} onClick={() => setIsExpanded(!isExpanded)}>
-        <Text color={Theme.Color.Galaxy}>
+        <Text color={Theme.Color.Galaxy} fontWeight={500}>
           {isExpanded ? 'show less' : 'show more'}
         </Text>
       </Toggle>
