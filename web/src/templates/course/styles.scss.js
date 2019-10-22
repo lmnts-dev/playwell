@@ -9,6 +9,7 @@ import styled from 'styled-components';
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import Section from 'components/library/Elements/Section';
+import Btn from 'components/library/Btn';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -18,6 +19,7 @@ import { Base } from 'constants/styles/Base';
 //////////////////////////////////////////////////////////////////////
 
 export const Hero = styled(Flex)`
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -75,6 +77,42 @@ Hero.Date = styled.span`
   color: ${Theme.Color.Deepsea};
   font-weight: 600;
   padding-bottom: calc(${Root.Size} / 2);
+`;
+
+Hero.Btn = styled.button`
+  background-color: ${props =>
+    props.bgColor ? props.bgColor : Theme.Color.Nova};
+  border: 0;
+  border-radius: 999px;
+  color: ${props => (props.textColor ? props.textColor : Theme.Color.White)};
+  cursor: pointer;
+  outline: 0;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  position: relative;
+  height: calc(${Root.Button.Size} * 1.5);
+  line-height: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 4px calc(${Theme.Base.Size.Lg} * 1.5) 0;
+  margin-right: 1rem;
+
+  &:hover {
+    box-shadow: 0px 0px 0px 3px rgba(93, 99, 118, 0.2);
+    text-decoration: none;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .counter-inner {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 export const CalloutSection = styled(Flex)`
@@ -165,6 +203,52 @@ CourseFooter.Course = styled(Flex)`
   justify-content: center;
   align-items: center;
   max-width: ${Theme.Base.Grid.ReadingWidth};
+`;
+
+CourseFooter.Headline = styled.h2`
+  padding: 0 0 calc(${Root.Size} / 3);
+`;
+
+CourseFooter.Date = styled.span`
+  color: ${Theme.Color.Deepsea};
+  font-weight: 600;
+  padding-bottom: calc(${Root.Size} / 2);
+`;
+
+CourseFooter.Btn = styled.button`
+  background-color: ${props =>
+    props.bgColor ? props.bgColor : Theme.Color.Nova};
+  border: 0;
+  border-radius: 999px;
+  color: ${props => (props.textColor ? props.textColor : Theme.Color.White)};
+  cursor: pointer;
+  outline: 0;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  position: relative;
+  height: calc(${Root.Button.Size} * 1.5);
+  line-height: 0;
+  justify-content: center;
+  align-items: center;
+  padding: 4px calc(${Theme.Base.Size.Lg} * 1) 0;
+  margin-right: 1rem;
+
+  &:hover {
+    box-shadow: 0px 0px 0px 3px rgba(93, 99, 118, 0.2);
+    text-decoration: none;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .counter-inner {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    text-align: center;
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

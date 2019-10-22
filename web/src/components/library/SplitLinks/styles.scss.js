@@ -64,6 +64,23 @@ export const LinkContainer = styled(Flex)`
     text-decoration: none;
   }
 
+  .arrow {
+    background: rgba(0, 0, 0, 0);
+
+    span {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: calc(${Root.Size} * 1);
+      height: calc(${Root.Size} * 2);
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        justify-content: ${p =>
+        p.first ? 'flex-start' : p.last ? 'flex-end' : 'center'};
+      }
+    }
+  }
+
   svg {
     transition: ${Theme.Base.Transition.String};
     transform: rotate(180deg) translateX(0);
@@ -118,13 +135,21 @@ export const LinkContainer = styled(Flex)`
 LinkContainer.Arrow = styled(Box)`
   background: rgba(0, 0, 0, 0);
   /* cursor: pointer; */
-  transform: scale(2);
-  width: calc(${Root.Size} * 1);
-  height: calc(${Root.Size} * 1);
-  border-radius: 50%;
+  /* transform: scale(2); */
+  /* width: calc(${Root.Size} * 1);
+  height: calc(${Root.Size} * 2); */
   display: flex;
-  justify-content: center;
+  justify-content: ${p =>
+    p.first ? 'flex-start' : p.last ? 'flex-end' : 'center'};
   align-items: center;
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(${Root.Size} * 1);
+    height: calc(${Root.Size} * 2);
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

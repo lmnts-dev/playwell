@@ -25,9 +25,9 @@ Container.Line = styled.div`
   display: block;
   margin: 0 auto;
   position: absolute;
-  bottom: -70px;
+  bottom: -50px;
   width: 0;
-  height: 160px;
+  height: 120px;
   z-index: 9;
 
   &:before {

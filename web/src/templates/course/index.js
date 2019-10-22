@@ -93,7 +93,7 @@ const Course = ({ pageContext }) => {
   return (
     <Layout {...ThemeProps}>
       <HeroContainer {...HeroProps}>
-        <Hero as="article" pb={[4, 3]} px={[1, 1, 0]}>
+        <Hero as="article">
           <Hero.Avatar>
             <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
           </Hero.Avatar>
@@ -172,25 +172,24 @@ const Course = ({ pageContext }) => {
           <Hero.Headline className="h3">
             {pageContext.course_type_name}
           </Hero.Headline>
-          <Hero.Date className="h5">
-            {pageContext.date_time_display}
-          </Hero.Date>
+          <Hero.Date className="h5">{pageContext.date_time_display}</Hero.Date>
           {/* Content Overlay Modal Toggle */}
           {/* <ContentOverlayButton>toggle</ContentOverlayButton> */}
-          <Btn
-            External
-            Label="Enroll Now"
-            Size="Large"
-            Destination={pageContext.action_url}
-            BgColor={props => props.theme.Color.Nova}
-            TextColor={props => props.theme.Color.White}
-          />
+          <Link
+            href={pageContext.action_url}
+            target="_blank"
+            rel="nofollow noreferrer"
+          >
+            <Hero.Btn bgColor={Theme.Color.Nova} textColor={Theme.Color.White}>
+              Enroll Now
+            </Hero.Btn>
+          </Link>
           <Box my={2}>
-            <Text as="p" fontSize={[0, 0, '1.1rem']} lineHeight="1.4">
+            <p>
               {pageContext.client_location_name}
               <br />
               {pageContext.display_address}
-            </Text>
+            </p>
           </Box>
           <Hero.Tags as="ul">
             <li>more</li>
@@ -319,21 +318,22 @@ const Course = ({ pageContext }) => {
 
       <CourseFooter bg="Sky" color="White">
         <CourseFooter.Course as="article" m="0 auto">
-          <Text className="h5" fontWeight="400" mb={1}>
-            Let's play!
-          </Text>
-          <Text as="h3" mb={1}>
+          <h5>Let's play!</h5>
+          <CourseFooter.Headline>
             {pageContext.course_type_name}
-          </Text>
-          <Text className="h4" as="p" color="Deepsea" fontWeight="400">
+          </CourseFooter.Headline>
+          <CourseFooter.Date className="h5">
             {pageContext.date_time_display}
-          </Text>
-          <Btn
-            Label="Enroll Now"
-            Destination="/"
-            BgColor={props => props.theme.Color.Nova}
-            TextColor={props => props.theme.Color.White}
-          />
+          </CourseFooter.Date>
+          <Link
+            href={pageContext.action_url}
+            target="_blank"
+            rel="nofollow noreferrer"
+          >
+            <CourseFooter.Btn bgColor={Theme.Color.Nova} textColor={Theme.Color.White}>
+              Enroll Now
+            </CourseFooter.Btn>
+          </Link>
         </CourseFooter.Course>
       </CourseFooter>
 

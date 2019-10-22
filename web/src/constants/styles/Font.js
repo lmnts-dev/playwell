@@ -166,7 +166,7 @@ export const Typography = createGlobalStyle`
   h3, .h3 {
     font-size: 2.5rem;
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
   }
   h4, .h4 {
@@ -174,6 +174,9 @@ export const Typography = createGlobalStyle`
   }
   h5, .h5 {
     font-size: 1.75rem;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      font-size: 1rem;
+    }
   }
   h6, .h6 {
     font-size: 1.5rem;

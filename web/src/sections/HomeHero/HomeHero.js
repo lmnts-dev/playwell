@@ -107,7 +107,7 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
               </Actions>
             </div>
           </BasicInner>
-          <AbsoluteDecor >
+          <AbsoluteDecor>
             <div className="decor-container absolute-cloud-small">
               <ImgMatch src="cloud-small.png" />
             </div>
