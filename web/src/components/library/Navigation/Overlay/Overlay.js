@@ -138,7 +138,7 @@ export class NavigationOverlay extends PureComponent {
                     />
 
                     {navContext.label == 'Locations' ? (
-                      <LocationFilter />
+                      <LocationFilter navOverlayToggle={this.props.navOverlayToggle} />
                     ) : null}
                   </div>
                 </div>

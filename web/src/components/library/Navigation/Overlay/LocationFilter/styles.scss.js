@@ -176,7 +176,8 @@ export const SearchBarStyle = styled.div`
         text-decoration: none;
         transition: ${Theme.Base.Transition.String};
 
-        &:hover {
+        &:hover,
+        &:visited {
           color: ${Theme.Color.Sunset};
         }
       }

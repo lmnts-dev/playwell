@@ -116,7 +116,9 @@ class SearchBar extends PureComponent {
   render() {
     // Clean our queries
     const searchSafeQuery = this.state.query.toLowerCase();
+
     const stateEdges = this.props.data.allPlayWellStates.edges;
+    const navOverlayToggle = this.props.navOverlayToggle;
 
     // Create our Results array
     const results = stateEdges.filter(location => {
@@ -132,8 +134,10 @@ class SearchBar extends PureComponent {
       }
     });
 
-    console.log('results:');
-    console.log(results);
+    // console.log('results:');
+    // console.log(results);
+    // console.log('navToggle:');
+    // console.log(navOverlayToggle);
 
     return (
       <SearchBarStyle ref="searchInputWrapper">
@@ -156,6 +160,7 @@ class SearchBar extends PureComponent {
         {this.state.resultsActive == true ? (
           <SearchBarResults
             className="search-results-wrapper"
+            navOverlayToggle={navOverlayToggle}
             results={results}
           />
         ) : (
@@ -167,7 +172,7 @@ class SearchBar extends PureComponent {
 }
 
 // Our Search Bar Results
-const SearchBarResults = ({ results }) => {
+const SearchBarResults = ({ results, navOverlayToggle }) => {
   return (
     <ul className="search-results">
       {/* Map all availabe locations */}
@@ -178,7 +183,14 @@ const SearchBarResults = ({ results }) => {
               <Link
                 to={'/locations/' + slugify(result.node.name.toLowerCase())}
               >
-                {result.node.name}
+                <span
+                  onClick={navOverlayToggle}
+                  onKeyDown={navOverlayToggle}
+                  role="button"
+                  tabIndex="0"
+                >
+                  {result.node.name}
+                </span>
               </Link>
             </li>
           );
@@ -198,8 +210,10 @@ const SearchBarResults = ({ results }) => {
 };
 
 // Simple Course Hero Display Component
-const CourseHeroContent = ({ data }) => {
-  return <SearchBar data={data} />;
+const CourseHeroContent = ({ data, navOverlayToggle }) => {
+  console.log('navToggle:');
+  console.log(navOverlayToggle);
+  return <SearchBar data={data} navOverlayToggle={navOverlayToggle} />;
 };
 
 // Full Wrapper
@@ -211,15 +225,19 @@ export const LocationFilter = ({
   px,
   bg,
   data,
+  navOverlayToggle,
 }) => {
   // Use our hook's data as source
   const fetchedData = DataFetch();
-  console.log('fetchedData:');
-  console.log(fetchedData);
+  // console.log('fetchedData:');
+  // console.log(fetchedData);
 
   return (
     <LocationFilterStyle bg={bg}>
-      <CourseHeroContent data={fetchedData} />
+      <CourseHeroContent
+        data={fetchedData}
+        navOverlayToggle={navOverlayToggle}
+      />
     </LocationFilterStyle>
   );
 };
