@@ -141,6 +141,7 @@ export class NavigationOverlay extends PureComponent {
 
                     {navContext.label == 'Locations' && (
                       <LocationFilter
+                        bg={Theme.Color.White}
                         navOverlayToggle={this.props.navOverlayToggle}
                       />
                     )}
