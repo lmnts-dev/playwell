@@ -21,6 +21,7 @@ import { Btn } from 'components/library/Btn/';
 import { Icon } from 'components/library/Icons';
 import { FocusLinkList } from './FocusLinkList';
 import { MinorLinkList } from './MinorLinkList';
+import { LocationFilter } from './LocationFilter';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -108,7 +109,7 @@ export class NavigationOverlay extends PureComponent {
                         Label="Contact"
                         IconClassName="question-circle"
                         IconPosition="left"
-                        Destination="/"
+                        Destination="/contact"
                         TextColor={Theme.Color.Primary}
                         IconFas
                       />
@@ -128,6 +129,7 @@ export class NavigationOverlay extends PureComponent {
 
                     {/* Line Break */}
                     {/* TODO: Componentize */}
+
                     <figure className="line-break" />
 
                     <MinorLinkList
@@ -135,6 +137,9 @@ export class NavigationOverlay extends PureComponent {
                       linkList={navContext.subNav.minorLinkList}
                     />
 
+                    {navContext.label == 'Locations' ? (
+                      <LocationFilter />
+                    ) : null}
                   </div>
                 </div>
               </div>
