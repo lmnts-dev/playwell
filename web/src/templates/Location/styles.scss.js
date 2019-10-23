@@ -68,7 +68,7 @@ Scroll.Line = styled.div`
   margin: 0 auto;
 
   &:after {
-    content: "\\2023";
+    content: '\\2023';
     position: absolute;
     bottom: 0;
     left: calc(50% - 9px);

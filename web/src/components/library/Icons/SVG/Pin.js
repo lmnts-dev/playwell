@@ -9,7 +9,7 @@ import React from 'react';
 
 const Pin = () => (
     <svg width="16px" height="20px" viewBox="0 0 16 20">
-        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
             <g transform="translate(-470.000000, -395.000000)" fill="#FFF6EE">
                 <g transform="translate(470.000000, 395.000000)">
                     <g>

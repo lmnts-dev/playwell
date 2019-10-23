@@ -157,7 +157,7 @@ export const SearchBarStyle = styled.div`
         height: ${searchBarHeight};
         font-weight: bold;
         font-size: 1.2rem;
-        line-height: 0;
+        /* line-height: 0; */
         display: flex;
         flex: 1;
         border: 0;

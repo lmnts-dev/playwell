@@ -51,7 +51,7 @@ const HeroProps = {
   textAlign: 'left',
   withMask: true,
   fullWidth: true,
-  className: "hero-slider",
+  className: 'hero-slider',
   curveBg: Theme.Color.Deepsea,
   sliceBg: Theme.Color.Background,
 };
@@ -96,7 +96,8 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
               <div className="h6">Purposeful Play to Build a Better Future</div>
               <Actions>
                 <Link to="/programs">
-                  <HeroBtn className="hero-btn"
+                  <HeroBtn
+                    className="hero-btn"
                     bgColor={Theme.Color.Nova}
                     textColor={Theme.Color.White}
                   >
@@ -112,36 +113,42 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
               <ImgMatch src="cloud-small.png" />
             </div>
             <div className="decor-container absolute-cloud-big">
-              <ImgMatch src="cloud-big.png"/>
+              <ImgMatch src="cloud-big.png" />
             </div>
             <div className="decor-container absolute-waterfall">
-              <ImgMatch src="waterfall.png"/>
+              <ImgMatch src="waterfall.png" />
             </div>
             <div className="decor-container absolute-volcano">
-              <ImgMatch src="volcano.png"/>
+              <ImgMatch src="volcano.png" />
             </div>
             <div className="decor-container absolute-lego">
-              <Icon Name="basicLego" Color="orange"/>
+              <Icon Name="basicLego" Color="orange" />
             </div>
             <div className="decor-container absolute-ladder">
-              <ImgMatch src="ladder.png"/>
+              <ImgMatch src="ladder.png" />
             </div>
             <div className="decor-container absolute-legos">
-              <ImgMatch src="three-legos.png"/>
+              <ImgMatch src="three-legos.png" />
             </div>
           </AbsoluteDecor>
           <div className="absolute-curve">
             <FooterCurveSlice bgColor={Theme.Color.Deepsea} />
           </div>
         </Item>
-        <Item className="item" SubTextColor={Theme.Color.White} BgColor={Theme.Color.Eggplant}>
+        <Item
+          className="item"
+          SubTextColor={Theme.Color.White}
+          BgColor={Theme.Color.Eggplant}
+        >
           <div className="bg-image">
-            <ImgMatch src="boy-smiles.jpg"/>
+            <ImgMatch src="boy-smiles.jpg" />
           </div>
           <BasicInner>
             <div className="text">
               <h2>Find the perfect birthday for your future engineer.</h2>
-              <div className="h6">We supply the activity, instruction, and materials.</div>
+              <div className="h6">
+                We supply the activity, instruction, and materials.
+              </div>
               <Link to="/parties">
                 <HeroBtn
                   bgColor={Theme.Color.Nova}
@@ -152,20 +159,27 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
               </Link>
             </div>
           </BasicInner>
-          <AbsoluteDecor >
+          <AbsoluteDecor>
             <div className="decor-container absolute-gears">
-              <ImgMatch src="gears.png"/>
+              <ImgMatch src="gears.png" />
             </div>
           </AbsoluteDecor>
           <div className="absolute-curve">
             <FooterCurveSlice bgColor={Theme.Color.Dino} />
           </div>
         </Item>
-        <Item className="item" BgColor={Theme.Color.Sunset} SubTextColor={Theme.Color.Dino}>
+        <Item
+          className="item"
+          BgColor={Theme.Color.Sunset}
+          SubTextColor={Theme.Color.Dino}
+        >
           <BasicInner>
             <div className="text">
               <h2>Learning through play isn't just for kids.</h2>
-              <div className="h6">We believe that play reveals who you are, and who you are inspires your work.</div>
+              <div className="h6">
+                We believe that play reveals who you are, and who you are
+                inspires your work.
+              </div>
               <Link to="/">
                 <HeroBtn
                   bgColor={Theme.Color.Nova}
@@ -178,10 +192,10 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
           </BasicInner>
           <AbsoluteDecor>
             <div className="decor-container absolute-gears">
-              <ImgMatch src="gears.png"/>
+              <ImgMatch src="gears.png" />
             </div>
             <div className="absolute-lego-ladder">
-              <ImgMatch src="lego-ladder.png"/>
+              <ImgMatch src="lego-ladder.png" />
             </div>
           </AbsoluteDecor>
           <div className="absolute-curve">

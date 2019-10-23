@@ -1,5 +1,5 @@
 // <HomeImpact /> component:
-// 
+//
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -28,7 +28,11 @@ const HomeImpact = () => {
   return (
     <Container textAlign="left" indent>
       <Container.Inner>
-        <Box width={[1, 1, 1 / 2]} pr={[0, 0, Root.Grid.Indent.X]} pb={[Root.Size, Root.Size, 0]}>
+        <Box
+          width={[1, 1, 1 / 2]}
+          pr={[0, 0, Root.Grid.Indent.X]}
+          pb={[Root.Size, Root.Size, 0]}
+        >
           <Text className="h6" color="Galaxy" fontWeight={600} mb={1}>
             Our impact on STEM Education
           </Text>
