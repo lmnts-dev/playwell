@@ -352,10 +352,10 @@ SearchBarStyle.FilterList = styled.div`
   ul {
     background: ${Theme.Color.White};
     width: 100%;
-    height: 233px;
+    height: 210px;
     overflow: auto;
     margin-top: calc(${Root.Size} / 4);
-    box-shadow: inset 0 -10px 20px ${Theme.Color.White};
+    box-shadow: inset -12px -10px 15px ${Theme.Color.White};
 
     &::-webkit-scrollbar {
       border-radius: calc(${Root.Radius});

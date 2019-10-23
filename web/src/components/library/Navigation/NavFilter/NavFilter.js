@@ -198,19 +198,19 @@ class SearchBar extends PureComponent {
                 <>
                   <div className="search-container">
                     <span className="shadow"></span>
-                      <div className="inner">
-                        <Icon Name="search" fas />
-                        <input
-                          placeholder="Enter State..."
-                          onChange={this.handleInputChange}
-                        />
-                      </div>
-                      <ul className="search-results">
-                        <SearchBarResults
-                          className="search-results-wrapper"
-                          results={results}
-                        />
-                      </ul>
+                    <div className="inner">
+                      <Icon Name="search" fas />
+                      <input
+                        placeholder="Enter State..."
+                        onChange={this.handleInputChange}
+                      />
+                    </div>
+                    <ul className="search-results">
+                      <SearchBarResults
+                        className="search-results-wrapper"
+                        results={results}
+                      />
+                    </ul>
                   </div>
                 </>
               ) : (
