@@ -195,19 +195,24 @@ class SearchBar extends PureComponent {
             </span>
             <SearchBarStyle.FilterList className="list">
               {this.state.resultsActive == true ? (
-                <ul className="search-results">
-                  <div className="inner">
-                    <Icon Name="search" fas />
-                    <input
-                      placeholder="Enter State..."
-                      onChange={this.handleInputChange}
-                    />
+                <>
+                  <div className="search-container">
+                    <span className="shadow"></span>
+                      <div className="inner">
+                        <Icon Name="search" fas />
+                        <input
+                          placeholder="Enter State..."
+                          onChange={this.handleInputChange}
+                        />
+                      </div>
+                      <ul className="search-results">
+                        <SearchBarResults
+                          className="search-results-wrapper"
+                          results={results}
+                        />
+                      </ul>
                   </div>
-                  <SearchBarResults
-                    className="search-results-wrapper"
-                    results={results}
-                  />
-                </ul>
+                </>
               ) : (
                 false
               )}
