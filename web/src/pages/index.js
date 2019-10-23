@@ -10,25 +10,21 @@ import styled from 'styled-components';
 
 // Components
 import Layout from 'components/core/Layout';
-import Section from 'components/library/Elements/Section';
 import Spacer from 'components/library/Spacer';
 import ImgMatch from 'components/core/ImgMatch';
-import { Box, Flex, Text } from 'components/library/Elements';
+import { Box } from 'components/library/Elements';
+
+// Sections
+import HomeHero from 'sections/HomeHero';
+import SimpleTextWithImage from 'components/library/Section/SimpleTextWithImage';
+import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
+import ImageAccordianFeature from 'components/library/Section/ImageAccordianFeature';
+import HomeCommunity from 'sections/HomeCommunity';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import {
   BasicSection,
   BasicInner,
 } from 'components/library/Section/BasicSection';
-import SimpleTextWithImage from 'components/library/Section/SimpleTextWithImage';
-import ImageAccordianFeature from 'components/library/Section/ImageAccordianFeature';
-
-// Sections
-import HomeHero from 'sections/HomeHero';
-import HomeCommunity from 'sections/HomeCommunity';
-import HomePrograms from 'sections/HomePrograms';
-import HomeImpact from 'sections/HomeImpact';
-import HomeBetterFuture from 'sections/HomeBetterFuture';
-import LocationPlayZone from 'sections/LocationPlayZone';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -47,7 +43,7 @@ const ThemeProps = {
 
 const Centered = styled(CenteredTitle)`
   &.community {
-    ~ .gatsby-image-wrapper {
+    ~.gatsby-image-wrapper {
       height: 130%;
       width: 100%;
       position: absolute !important;
@@ -81,24 +77,41 @@ const HomePage = () => (
         </BasicInner>
       </BasicSection>
 
-      <BasicInner>
-        <Centered
-          Title="People Who've Played Well with Us"
-          MaxWidth="400px"
-          TextColor={Theme.Color.Sunset}
-          Class="h3"
-          className="community"
-        />
-        <ImgMatch
-          src="cloud-big.png"
-          objectFit="contain"
-          objectPosition="left center"
-        />
-      </BasicInner>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner>
+          <Centered
+            Title="People Who've Played Well with Us"
+            MaxWidth="400px"
+            TextColor={Theme.Color.Sunset}
+            Class="h3"
+            className="community"
+          />
+          <ImgMatch src="cloud-big.png" objectFit="contain" objectPosition="left center"/>
+        </BasicInner>
+        <HomeCommunity slides={CommunitySlides} />
+      </BasicSection>
 
-      <HomeCommunity slides={CommunitySlides} />
-
-      <HomeBetterFuture themeProps={ThemeProps} />
+      <BasicSection
+        BgColor={Theme.Color.Ocean}
+        TextColor={Theme.Color.White}
+      >
+        <BasicInner noPaddingLeft>
+          <EdgeImageWithText
+            Reversed
+            LightText
+            Caption="The Importance of STEM Education"
+            Header="Building a Better Future"
+            Image="sailboat.png"
+            Paragraph="STEM education creates critical thinkers, increases science literacy, and enables the next generation of innovators. Innovation leads to new products and processes that sustain our economy in an ever increasing technologically driven society."
+            Paragraph2="Having activities that show real-life implication of STEM can pull together the ideas presented in school and help to show how they benefit our society and even our world as a whole"
+            ButtonText="What We Do"
+            ButtonDest="/"
+          />
+        </BasicInner>
+      </BasicSection>
 
       <Decorator>
         <div className="decorator__better-future decorator__better-future--top">
@@ -108,7 +121,6 @@ const HomePage = () => (
           <ImgMatch src="cloud-big.png" AltText="Cloud" />
         </div>
       </Decorator>
-      
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
@@ -142,38 +154,83 @@ const HomePage = () => (
       >
         <ImageAccordianFeature
           Links={[
-            { link: '/', label: 'Robotics' },
-            { link: '/', label: 'Intro to STEM' },
-            { link: '/', label: 'Gaming' },
-            { link: '/', label: 'Advanced Engineering' },
-            { link: '/', label: 'Engineering Themes' },
+            { link: '/', label: 'Robotics' }, 
+            { link: '/', label: 'Intro to STEM' }, 
+            { link: '/', label: 'Gaming' }, 
+            { link: '/', label: 'Advanced Engineering' }, 
+            { link: '/', label: 'Engineering Themes' }, 
           ]}
           Accordians={[
-            {
-              header: 'Workshops',
-              paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-              image: 'intro-smiles.jpg',
-            },
-            {
-              header: 'Classes',
-              paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-              image: 'intro-smiles.jpg',
-            },
-            {
-              header: 'Camps',
-              paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-              image: 'intro-smiles.jpg',
-            },
+            { header: 'Worshops', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' }, 
+            { header: 'Classes', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' },
+            { header: 'Camps', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' },
           ]}
         />
       </BasicSection>
-      <LocationPlayZone />
+
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+        noPaddingBottom
+      >
+        <BasicInner>
+          <SpecialSimpleTextWithImage
+            Caption="It starts with play"
+            Header="Build Your Own World of Opportunity"
+            Paragraph="Bring your kid over or bring out your inner kid with some of our online activities to feed your imagination."
+            Image="lego-ladder.png"
+            ButtonText="Play Zone"
+            ButtonDest="/"
+            className="overflow-image"
+          />
+        </BasicInner>
+      </BasicSection>
+
     </Main>
   </Layout>
 );
+
+const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
+  &.overflow-image {
+    align-items: stretch;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      flex-direction: column-reverse;
+      display: flex;
+    }
+    .text {
+      flex: 2;
+    }
+    .image {
+      flex: 1;
+      position relative;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 100%;
+        max-height: calc(${Theme.Base.Size.Lg} * 5);
+        height: 100vw;
+        position: static;
+      }
+      
+      .gatsby-image-wrapper {
+        position: absolute !important;
+        left: 0;
+        bottom: 0;
+        width: 50vw;
+        height: 200%;
+        bottom: -50%;
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          width: 100%;
+          height: 120%;
+          top: -120%;
+          bottom: 0;
+        }
+        img {
+          object-position: 0% 100% !important;
+        }
+      }
+    }
+  }
+`
 
 // Styles
 const Main = styled.main`
@@ -182,147 +239,117 @@ const Main = styled.main`
 
 const Decorator = styled(Box)`
   position: relative;
-
   .decorator__community {
     left: 0;
     top: 0;
     position: absolute;
     width: 20%;
   }
-
   .decorator__hero {
     position: absolute;
     top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
     z-index: 4;
-
     &--top {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
       right: -100px;
       width: 140px;
-
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         right: -120px;
         width: 200px;
       }
-
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
         right: -170px;
         width: 340px;
       }
     }
-
     &--waterfall {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 3);
       
-
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         
       }
-
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
         right: 0;
         width: 600px;
       }
     }
-
     &--volcano {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 9);
       
-
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         
       }
-
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
         right: 35vw;
         width: 400px;
       }
     }
-
     &--left {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * -2.5);
       left: -95px;
       width: 140px;
-
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         left: -120px;
         width: 200px;
       }
-
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
         left: -70px;
         width: 180px;
       }
     }
   }
-
   .decorator__footer {
     position: absolute;
     /* top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1); */
     z-index: 4;
-
     &--top {
       top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * -2.5);
       left: -95px;
       width: 140px;
-
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         left: -120px;
         width: 200px;
       }
-
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
         left: -25px;
         width: 180px;
       }
     }
-
     &--bottom {
       left: 50%;
       width: 400px;
-
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-
         width: 400px;
       }
-
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
-
         width: 400px;
       }
     }
   }
-
   .decorator__better-future {
     position: absolute;
     z-index: 4;
-
     &--top {
       bottom: calc(${Theme.Root.Size} * 1.6);
       right: -130px;
       width: 200px;
-
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         right: -190px;
         width: 300px;
       }
-
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
         right: -230px;
         width: 340px;
       }
     }
-
     &--bottom {
       bottom: calc(${Theme.Root.Size} * -0.8);
       right: -20px;
       width: 200px;
-
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         right: -20px;
         width: 300px;
       }
-
       @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
         right: -30px;
         width: 340px;
@@ -354,6 +381,7 @@ const CommunitySlides = [
   {
     index: 0,
     header: 'Building a coral reef out of Lego materials',
+    link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
     tags: [
@@ -378,6 +406,7 @@ const CommunitySlides = [
   {
     index: 1,
     header: 'Building a coral reef out of Lego materials',
+    link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
     tags: [
@@ -402,6 +431,7 @@ const CommunitySlides = [
   {
     index: 2,
     header: 'Building a coral reef out of Lego materials',
+    link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
     tags: [
@@ -426,6 +456,7 @@ const CommunitySlides = [
   {
     index: 3,
     header: 'Building a coral reef out of Lego materials',
+    link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
     tags: [

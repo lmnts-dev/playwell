@@ -27,8 +27,9 @@ export const SimpleTextWithImage = ({
   Paragraph,
   ButtonText,
   ButtonDest,
+  className,
 }) => (
-  <SimpleTextWithImageStyle>
+  <SimpleTextWithImageStyle className={className}>
     <div className="text">
       <div className="h6">{Caption}</div>
       <div className="h2">{Header}</div>
@@ -45,7 +46,7 @@ export const SimpleTextWithImage = ({
       }
     </div>
     <div className="image">
-      <ImgMatch src={Image} />
+      <ImgMatch src={Image} objectFit="contain"/>
     </div>
   </SimpleTextWithImageStyle>
 );

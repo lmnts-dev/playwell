@@ -25,12 +25,7 @@ import slugify from 'helpers/slugify';
 import locationMatch from 'helpers/LocationMatch';
 
 // Styles
-import {
-  Hero,
-  Toggle,
-  Drawer,
-  CourseFooter,
-} from './styles.scss';
+import { Hero, Toggle, Drawer, CourseFooter } from './styles.scss';
 
 // Constants
 import { Box, Flex, Text } from 'components/library/Elements';
@@ -324,7 +319,10 @@ const Course = ({ pageContext }) => {
             target="_blank"
             rel="nofollow noreferrer"
           >
-            <CourseFooter.Btn bgColor={Theme.Color.Nova} textColor={Theme.Color.White}>
+            <CourseFooter.Btn
+              bgColor={Theme.Color.Nova}
+              textColor={Theme.Color.White}
+            >
               Enroll Now
             </CourseFooter.Btn>
           </Link>

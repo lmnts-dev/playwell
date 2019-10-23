@@ -6,23 +6,10 @@
 // Core
 import styled from 'styled-components';
 
-// Components
-import Btn from 'components/library/Btn';
-
 // Constants
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
 import { Box, Flex, Text } from 'components/library/Elements';
-
-// Keyframe
-import {
-  FadeIn,
-  FadeOut,
-  SlideUp,
-  SlideToRight,
-  SlideToLeft,
-  Rotate,
-} from 'components/core/Transition/Keyframes';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -119,12 +106,14 @@ export const AbsoluteDecor = styled.div`
 `;
 
 export const Item = styled.div`
-  background-color: ${props => props.BgColor ? props.BgColor : Theme.Color.White };
-  color: ${props => props.TextColor ? props.TextColor : Theme.Color.White };
+  background-color: ${props =>
+    props.BgColor ? props.BgColor : Theme.Color.White};
+  color: ${props => (props.TextColor ? props.TextColor : Theme.Color.White)};
   padding-top: calc(${Theme.Base.Size.Lg} * 3);
   position: relative;
 
-  .bg-image, .gatsby-image-wrapper {
+  .bg-image,
+  .gatsby-image-wrapper {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -164,17 +153,24 @@ export const Item = styled.div`
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       padding-bottom: 50vw;
     }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      margin: 0;
+    }
 
     .h6 {
       font-weight: 700;
-      color: ${props => props.SubTextColor ? props.SubTextColor : Theme.Color.White };
+      color: ${props =>
+        props.SubTextColor ? props.SubTextColor : Theme.Color.White};
     }
 
-    .h2, h2 {
+    .h2,
+    h2 {
       padding-bottom: calc(${Theme.Base.Size.Lg} / 8);
     }
 
-    a, button, .btn {
+    a,
+    button,
+    .btn {
       pointer-events: all;
     }
   }
@@ -193,7 +189,7 @@ export const Item = styled.div`
       width: 100%;
     }
   }
-`
+`;
 
 export const HeroContainer = styled.div`
   position: relative;
@@ -209,10 +205,10 @@ export const HeroContainer = styled.div`
 
     .slick-slide {
       height: auto;
-      > div, .item {
+      > div,
+      .item {
         height: 100%;
       }
-
     }
     .slick-track {
       display: flex;
@@ -234,6 +230,10 @@ export const HeroContainer = styled.div`
       transition-duration: 0.5s;
       z-index: 100;
 
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        top: calc(${Theme.Base.Size.Lg} * 2.5);
+      }
+
       &:before {
         height: calc(${Theme.Base.Size.Lg} / 3);
         width: calc(${Theme.Base.Size.Lg} / 3);
@@ -243,6 +243,10 @@ export const HeroContainer = styled.div`
         top: calc(${Theme.Base.Size.Lg} / 3.5);
         left: calc(${Theme.Base.Size.Lg} / 2.5);
         transform: rotate(45deg);
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          height: calc(${Theme.Base.Size.Lg} / 4);
+          width: calc(${Theme.Base.Size.Lg} / 4);
+        }
       }
 
       &.slick-prev {
@@ -254,6 +258,10 @@ export const HeroContainer = styled.div`
         @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
           left: 20px;
         }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          left: 0;
+        }
+
         &:before {
           border-right-color: transparent;
           border-top-color: transparent;
@@ -261,7 +269,10 @@ export const HeroContainer = styled.div`
       }
 
       &.slick-next {
-        left: calc(calc(calc(calc(100vw - ${Root.Site.Width}) / 2) + 240px) + calc(${Theme.Base.Size.Lg} * 11));
+        left: calc(
+          calc(calc(calc(100vw - ${Root.Site.Width}) / 2) + 240px) +
+            calc(${Theme.Base.Size.Lg} * 11)
+        );
         @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
           left: calc(calc(${Theme.Base.Size.Lg} * 11) + 240px);
         }
@@ -274,6 +285,9 @@ export const HeroContainer = styled.div`
         @media (max-width: ${Base.Media.Width.Md + 'px'}) {
           left: auto;
           right: calc(${Theme.Base.Size.Lg} / 3);
+        }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          left: calc(${Theme.Base.Size.Lg});
         }
 
         &:before {
@@ -302,10 +316,14 @@ export const HeroContainer = styled.div`
 `;
 
 
-export const Actions = styled(Flex)`
-  position: relative;
+export const Actions = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   padding-top: calc(${Theme.Base.Size.Lg} / 2);
-  
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    flex-direction: column;
+  }
 
   .hero-btn {
     margin-top: 0;

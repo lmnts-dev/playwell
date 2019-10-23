@@ -21,7 +21,7 @@ const TeamStyle = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: ${props => props.Justify ? props.Justify : "flex-start"};
+    justify-content: ${props => (props.Justify ? props.Justify : 'flex-start')};
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       justify-content: center;
       padding-top: calc(${Root.Size} / 2);
@@ -35,11 +35,11 @@ const TeamStyle = styled.div`
       @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
         width: 20%;
       }
-    
+
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         width: 25%;
       }
-    
+
       @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
         width: 33.33%;
       }
@@ -55,13 +55,24 @@ const TeamStyle = styled.div`
         }
       }
 
-      .gatsby-image-wrapper {
+      .image-container {
         border-radius: calc(${Root.Size} / 8);
         margin: 0 calc(${Root.Size} / 12) calc(${Root.Size} / 6)
-        calc(${Root.Size} / 12);
+          calc(${Root.Size} / 12);
         width: 100%;
         height: 0;
         padding-top: 140%;
+        position: relative;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-position: 50% 50%;
+          object-fit: cover;
+        }
       }
 
       .social {

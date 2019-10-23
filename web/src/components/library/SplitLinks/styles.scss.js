@@ -38,13 +38,13 @@ export const LinkContainer = styled(Flex)`
   flex-direction: row-reverse;
   justify-content: space-between;
   border-right: none;
-  border-bottom: 1px dashed ${p => p.theme.Color.White};
+  border-bottom: 1px dashed ${p => p.borderColor};
   padding: calc(${Root.Size} * 0.7) calc(${Root.Size} / 2) calc(${Root.Size});
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     flex-direction: row;
     justify-content: flex-end;
-    border-right: 1px dashed ${p => p.theme.Color.White};
+    border-right: 1px dashed ${p => p.borderColor};
     border-bottom: none;
     padding: 0 calc(${Root.Size} * 1.5);
   }
@@ -77,7 +77,7 @@ export const LinkContainer = styled(Flex)`
   svg {
     transition: ${Theme.Base.Transition.String};
     transform: rotate(180deg) translateX(0);
-    fill: ${Theme.Color.Primary};
+    stroke: ${p => p.arrowColor};
   }
 
   &:hover {
@@ -93,7 +93,7 @@ export const LinkContainer = styled(Flex)`
     svg {
       transition: ${Theme.Base.Transition.String};
       transform: rotate(0deg) translateX(0);
-      fill: ${Theme.Color.Primary};
+      stroke: ${p => p.arrowColor};
     }
 
     &:hover {

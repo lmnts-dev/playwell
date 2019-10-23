@@ -44,11 +44,11 @@ export const Footer = ({ navQuery }) => {
         noPaddingTop
         noPaddingBottom
         BgColor={Theme.Color.Background}
-        className={
-          typeof window !== 'undefined' && location.pathname === '/contact'
-            ? 'hide'
-            : null
-        }
+        //className={
+        //  typeof window !== 'undefined' && location.pathname === '/contact'
+        //    ? 'hide'
+        //    : null
+      //  }
       >
         <CurveAndAngleWithPadding
           Tall

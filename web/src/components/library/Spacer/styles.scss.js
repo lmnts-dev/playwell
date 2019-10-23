@@ -68,6 +68,12 @@ Container.Positioner = styled.div`
   position: relative;
   bottom: 160px;
   z-index: 9;
+  @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
+    bottom: 10vw;
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    bottom: 0;
+  }
 `;
 
 Container.Line = styled.div`
@@ -75,6 +81,9 @@ Container.Line = styled.div`
   width: 0;
   height: 160px;
   margin: 0 auto;
+  @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
+    height: 10vw;
+  }
 
   &:after {
     content: "\\2023";
