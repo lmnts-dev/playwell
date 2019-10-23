@@ -74,18 +74,7 @@
           },
           "subNav": {
             "focusLinkList": [],
-            "minorLinkList": [
-              {
-                "route": "",
-                "label": "Subhead",
-                "subhead": true
-              },
-              {
-                "route": "/",
-                "label": "Locations Link",
-                "subhead": false
-              }
-            ]
+            "minorLinkList": []
           }
         },
         {

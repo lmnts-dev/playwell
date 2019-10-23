@@ -22,7 +22,6 @@ import hexToRGB from 'helpers/hexToRGB';
 export const LocationFilterStyle = styled.section`
   position: relative;
   padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
-  background: ${Theme.Color.White};
   /* List fade gradient */
   /* background: linear-gradient(
     0deg,
@@ -32,13 +31,14 @@ export const LocationFilterStyle = styled.section`
 
   &:before {
     content: '';
-    position: absolute;
+    position: relative;
     left: 0;
     right: 0;
     bottom: 0;
     top: 0;
     z-index: -1;
-    background: ${props => (props.bg ? props.bg : Theme.Color.White)};
+    /* background: ${props => (props.bg ? props.bg : Theme.Color.Black)}; */
+    background: transparent;
   }
 
   a {
@@ -134,7 +134,6 @@ export const SearchBarStyle = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   position: relative;
-  background: ${Theme.Color.White};
 
   .search-bar,
   .search-results {
@@ -144,7 +143,6 @@ export const SearchBarStyle = styled.div`
   .search-bar {
     display: flex;
     width: 100%;
-    background: ${Theme.Color.Blush};
     justify-content: space-between;
     border-radius: calc(${Root.Size} / 8);
     transform: scale(1);
@@ -155,6 +153,12 @@ export const SearchBarStyle = styled.div`
     /* &.results-visible {
       border-radius: calc(${Root.Size} / 8) calc(${Root.Size} / 2) 0 0;
     } */
+
+    &.btn {
+      &:hover {
+        background: ${Theme.Color.White};
+      }
+    }
 
     &:focus-within {
       .inner {
@@ -174,6 +178,8 @@ export const SearchBarStyle = styled.div`
       line-height: 0;
       padding: 0 calc(${Root.Size} / 7);
       position: relative;
+      border: 1px solid ${hexToRGB(Theme.Color.Lilac, 0.2)};
+      border-radius: calc(${Root.Radius} / 2);
 
       .ico {
         position: relative;
@@ -205,12 +211,147 @@ export const SearchBarStyle = styled.div`
       }
     }
   }
+`;
 
-  .search-results {
-    padding-top: calc(${Root.Size} / 7);
+SearchBarStyle.Item = styled.button`
+  position: relative;
+  color: ${Theme.Color.White};
+  background: transparent;
+  border: 0;
+  border: 1px solid ${Theme.Color.White};
+  outline: 0;
+  font-weight: bold;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex: 1;
+  cursor: pointer;
+  border-radius: 999px;
+
+  .ico-carat {
+    position: relative;
+    top: -2px;
+    right: -4px;
+    transform: rotate(90deg) scale(0.5);
+    transform-origin: center center;
+
+    polygon,
+    svg,
+    g {
+      fill: ${Theme.Color.White};
+    }
+  }
+
+  .ico-pin {
+    margin-right: calc(${Theme.Base.Size.Lg} / 8);
+    position: relative;
+    top: -3px;
+  }
+
+  &:hover {
+    color: ${Theme.Color.Warmsky};
+    background-color: ${Theme.Color.White};
+
+    .ico-pin {
+      svg,
+      path,
+      polygon,
+      g {
+        fill: ${Theme.Color.Ocean};
+      }
+    }
+
+    .list {
+      transform: translate(0%, 0%);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: all;
+    }
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .filter-inner {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    top: 4px;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+
+    span:nth-of-type(2) {
+      flex: 50;
+    }
+  }
+`;
+
+SearchBarStyle.FilterList = styled.div`
+  position: absolute;
+  top: 99%;
+  /* left: 0; */
+  right: 0;
+  width: 260px;
+  transform: translate(0, 20%);
+  background: ${Theme.Color.White};
+  box-shadow: 0 12px 44px 0 ${hexToRGB(Theme.Color.Galaxy, 0.11)};
+  border-radius: calc(${Root.Radius} / 2);
+  z-index: 20;
+  overflow: hidden;
+  transition: ${Theme.Base.Transition.String};
+  opacity: 0;
+  visiblity: hidden;
+  pointer-events: none;
+
+  .search-container {
+    padding: calc(${Root.Size} / 4) calc(${Root.Size} / 3);
+    box-sizing: border-box;
+
+    .inner {
+      box-shadow: 0 10px 20px ${Theme.Color.White};
+    }
+  }
+
+  ul {
+    background: ${Theme.Color.White};
+    width: 100%;
+    height: 210px;
+    overflow: auto;
+    margin-top: calc(${Root.Size} / 4);
+    box-shadow: inset -12px -10px 15px ${Theme.Color.White};
+
+    &::-webkit-scrollbar {
+      border-radius: calc(${Root.Radius});
+      width: calc(${Root.Size} / 6);
+    }
+    
+    &::-webkit-scrollbar-track {
+      border-radius: calc(${Root.Radius});
+      background: ${hexToRGB(Theme.Color.Primary, 0.2)};
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      border-radius: calc(${Root.Radius});
+      background-color: ${Theme.Color.Primary};
+      outline: 1px solid slategrey;
+    }
 
     li {
-      padding-top: calc(${Root.Size} / 7);
+      display: flex;
+      align-items: center;
+      text-align: left;
+      cursor: pointer;
+      padding: calc(${Root.Size} / 9) 0;
+      color: ${Theme.Color.Warmsky};
+
+      &:hover {
+        background-color: ${hexToRGB(Theme.Color.Ocean, 0.06)};
+        color: ${Theme.Color.Ocean};
+      }
 
       a {
         color: ${Theme.Color.Lilac};

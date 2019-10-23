@@ -21,6 +21,7 @@ import { Theme, Root } from 'constants/Theme';
 import { Brandmark } from 'components/core/Branding/Brandmark';
 import { Btn } from 'components/library/Btn/';
 import { NavigationOverlay } from 'components/library/Navigation/Overlay/';
+import { NavFilter } from './NavFilter';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -166,17 +167,7 @@ class NavigationBar extends PureComponent {
                 TextColor={Theme.Color.Primary}
                 IconFas
               />
-              <Btn
-                Label="Brooklyn, NYC"
-                Destination="/"
-                BorderStyle="solid"
-                BorderWidth="1px"
-                BorderColor={Theme.Color.Primary}
-                TextColor={Theme.Color.Primary}
-                IconClass="map-marker-alt"
-                IconPosition="left"
-                IconFas
-              />
+              <NavFilter navOverlayToggle={this.navOverlayToggle.bind(this)} />
               <Btn
                 Label="Let's Play"
                 Destination="/"
