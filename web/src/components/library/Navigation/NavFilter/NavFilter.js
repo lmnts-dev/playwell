@@ -33,7 +33,7 @@ class SearchBar extends PureComponent {
     // Assign initial state
     this.state = {
       query: '',
-      resultsActive: false,
+      resultsActive: true,
       queryActive: false,
     };
 
@@ -44,8 +44,6 @@ class SearchBar extends PureComponent {
 
   // Mounted state
   componentDidMount() {
-    // Listen for click events to show/hide results
-    document.addEventListener('mouseover', this.handleSearchResultsToggle);
 
     // Assign State
     this.state = {
@@ -57,14 +55,12 @@ class SearchBar extends PureComponent {
 
   // Unmounted state
   componentWillUnmount() {
-    // Remove listener for click events to show/hide results
-    document.removeEventListener('mouseover', this.handleSearchResultsToggle);
 
     // De-assign State
     this.state = {
       query: '',
-      resultsActive: false,
-      queryActive: false,
+      resultsActive: true,
+      queryActive: true,
     };
   }
 
@@ -86,7 +82,7 @@ class SearchBar extends PureComponent {
       });
     }
 
-    document.addEventListener('mouseover', this.handleSearchResultsToggle);
+    // document.addEventListener('mouseover', this.handleSearchResultsToggle);
   }
 
   // Handle our query updates
@@ -206,13 +202,11 @@ const SearchBarResults = ({ results }) => {
       {results.length > 0 ? (
         results.map((result, idx) => {
           return (
-            <li key={idx}>
-              <Link
-                to={'/locations/' + slugify(result.node.name.toLowerCase())}
-              >
+            <Link to={'/locations/' + slugify(result.node.name.toLowerCase())} key={idx}>
+              <li>
                 <span>{result.node.name}</span>
-              </Link>
-            </li>
+              </li>
+            </Link>
           );
         })
       ) : (

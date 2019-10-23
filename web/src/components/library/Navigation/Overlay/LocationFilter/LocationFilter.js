@@ -173,7 +173,6 @@ class SearchBar extends PureComponent {
             />
           </div>
         </div>
-
         {this.state.resultsActive == true ? (
           <SearchBarResults
             className="search-results-wrapper"
@@ -182,7 +181,7 @@ class SearchBar extends PureComponent {
           />
         ) : (
           false
-        )};
+        )}
       </SearchBarStyle>
     );
   }
