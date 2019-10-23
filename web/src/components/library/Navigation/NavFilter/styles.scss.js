@@ -292,7 +292,7 @@ SearchBarStyle.Item = styled.button`
 
 SearchBarStyle.FilterList = styled.div`
   position: absolute;
-  top: 99%;
+  top: 130%;
   /* left: 0; */
   right: 0;
   width: 260px;
@@ -301,11 +301,28 @@ SearchBarStyle.FilterList = styled.div`
   box-shadow: 0 12px 44px 0 ${hexToRGB(Theme.Color.Galaxy, 0.11)};
   border-radius: calc(${Root.Radius} / 2);
   z-index: 20;
-  overflow: hidden;
+  /* overflow: hidden; */
   transition: ${Theme.Base.Transition.String};
   opacity: 0;
   visiblity: hidden;
   pointer-events: none;
+
+  .carat {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: -6px;
+    margin-right: 1.2rem;
+
+    .arrow-up {
+      width: 0;
+      height: 0;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+
+      border-bottom: 7px solid ${Theme.Color.White};
+    }
+  }
 
   .search-container {
     padding: calc(${Root.Size} / 4) calc(${Root.Size} / 3);
@@ -328,12 +345,12 @@ SearchBarStyle.FilterList = styled.div`
       border-radius: calc(${Root.Radius});
       width: calc(${Root.Size} / 6);
     }
-    
+
     &::-webkit-scrollbar-track {
       border-radius: calc(${Root.Radius});
       background: ${hexToRGB(Theme.Color.Primary, 0.2)};
     }
-    
+
     &::-webkit-scrollbar-thumb {
       border-radius: calc(${Root.Radius});
       background-color: ${Theme.Color.Primary};

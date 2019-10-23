@@ -208,6 +208,24 @@ export const SearchBarStyle = styled.div`
 
   .search-results {
     padding-top: calc(${Root.Size} / 7);
+    /* max-height: 500px;
+    overflow: auto; */
+
+    &::-webkit-scrollbar {
+      border-radius: calc(${Root.Radius});
+      width: calc(${Root.Size} / 6);
+    }
+    
+    &::-webkit-scrollbar-track {
+      border-radius: calc(${Root.Radius});
+      background: ${hexToRGB(Theme.Color.Primary, 0.2)};
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      border-radius: calc(${Root.Radius});
+      background-color: ${Theme.Color.Primary};
+      outline: 1px solid slategrey;
+    }
 
     li {
       padding-top: calc(${Root.Size} / 7);

@@ -194,10 +194,12 @@ class SearchBar extends PureComponent {
               <Icon Name="carat" className="ico-carat" />
             </span>
             <SearchBarStyle.FilterList className="list">
+              <div className="carat">
+                <div className="arrow-up" />
+              </div>
               {this.state.resultsActive == true ? (
                 <>
                   <div className="search-container">
-                    <span className="shadow"></span>
                     <div className="inner">
                       <Icon Name="search" fas />
                       <input
