@@ -178,7 +178,7 @@ export const SearchBarStyle = styled.div`
       line-height: 0;
       padding: 0 calc(${Root.Size} / 7);
       position: relative;
-      border: 1px solid ${hexToRGB(Theme.Color.Lilac, 0.11)};
+      border: 1px solid ${hexToRGB(Theme.Color.Lilac, 0.2)};
       border-radius: calc(${Root.Radius} / 2);
 
       .ico {
@@ -307,39 +307,6 @@ SearchBarStyle.FilterList = styled.div`
   visiblity: hidden;
   pointer-events: none;
 
-  /* .search-results {
-    padding-top: calc(${Root.Size} / 7);
-    background: ${Theme.Color.White};
-    height: calc(${Root.Size} * 3);
-    overflow: auto;
-
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    li {
-      padding-top: calc(${Root.Size} / 7);
-
-      a {
-        color: ${Theme.Color.Lilac};
-        font-size: 1rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: ${Theme.Base.Transition.String};
-
-        &:hover {
-          color: ${Theme.Color.Sunset};
-        }
-
-        &:visited {
-          color: ${Theme.Color.Sunlight};
-        }
-      }
-    }
-  } */
-
   .search-container {
     padding: calc(${Root.Size} / 4) calc(${Root.Size} / 3);
     box-sizing: border-box;
@@ -397,9 +364,9 @@ SearchBarStyle.FilterList = styled.div`
           color: ${Theme.Color.Sunset};
         }
 
-        /* &:visited {
+        &:visited {
           color: ${Theme.Color.Sunlight};
-        } */
+        }
       }
     }
   }

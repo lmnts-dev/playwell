@@ -51,7 +51,7 @@ class SearchBar extends PureComponent {
   // Mounted state
   componentDidMount() {
     // Listen for click events to show/hide results
-    document.addEventListener('mousedown', this.handleSearchResultsToggle);
+    document.addEventListener('mouseover', this.handleSearchResultsToggle);
 
     // Assign State
     this.state = {
@@ -64,7 +64,7 @@ class SearchBar extends PureComponent {
   // Unmounted state
   componentWillUnmount() {
     // Remove listener for click events to show/hide results
-    document.removeEventListener('mousedown', this.handleSearchResultsToggle);
+    document.removeEventListener('mouseover', this.handleSearchResultsToggle);
 
     // De-assign State
     this.state = {
@@ -92,7 +92,7 @@ class SearchBar extends PureComponent {
       });
     }
 
-    document.addEventListener('mousedown', this.handleSearchResultsToggle);
+    document.addEventListener('mouseover', this.handleSearchResultsToggle);
   }
 
   // Handle our query updates
