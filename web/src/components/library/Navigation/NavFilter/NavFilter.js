@@ -12,18 +12,12 @@ import { Link } from 'gatsby';
 // Helpers
 import _ from 'lodash';
 import slugify from 'helpers/slugify';
-import hexToRGB from 'helpers/hexToRGB';
 
 // Styles
-import { LocationFilterStyle, SearchBarStyle, ArrowLink } from './styles.scss';
+import { NavFilterStyle, SearchBarStyle } from './styles.scss';
 
 // Components
-import { Box, Flex } from 'components/library/Elements';
 import { Icon } from 'components/library/Icons';
-import { Btn } from 'components/library/Btn/';
-
-// Constants
-import { Theme, Root } from 'constants/Theme';
 
 // Data
 import { DataFetch } from 'hooks/DataFetch';
@@ -113,9 +107,7 @@ class SearchBar extends PureComponent {
   render() {
     // Clean our queries
     const searchSafeQuery = this.state.query.toLowerCase();
-
     const stateEdges = this.props.data.allPlayWellStates.edges;
-    const navOverlayToggle = this.props.navOverlayToggle;
 
     // Create our Results array
     const results = stateEdges.filter(location => {
@@ -160,11 +152,6 @@ class SearchBar extends PureComponent {
       }
     });
 
-    // console.log('results:');
-    // console.log(results);
-    // console.log('navToggle:');
-    // console.log(navOverlayToggle);
-
     return (
       <SearchBarStyle ref="searchInputWrapper">
         <div
@@ -174,20 +161,7 @@ class SearchBar extends PureComponent {
               : 'search-bar'
           }
         >
-          {/* <Btn
-            Label="Brooklyn, NYC"
-            Destination="/"
-            onClick={this.handleInputChange}
-            onFocus={this.handleInputChange}
-            BorderStyle="solid"
-            BorderWidth="1px"
-            BorderColor={Theme.Color.Primary}
-            TextColor={Theme.Color.Primary}
-            IconClass="map-marker-alt"
-            IconPosition="left"
-            IconFas
-          /> */}
-          <SearchBarStyle.Item>
+          <SearchBarStyle.Button>
             <span className="filter-inner">
               <Icon Name="pin" />
               <span>Brooklyn, NYC</span>
@@ -198,28 +172,26 @@ class SearchBar extends PureComponent {
                 <div className="arrow-up" />
               </div>
               {this.state.resultsActive == true ? (
-                <>
-                  <div className="search-container">
-                    <div className="inner">
-                      <Icon Name="search" fas />
-                      <input
-                        placeholder="Enter State..."
-                        onChange={this.handleInputChange}
-                      />
-                    </div>
-                    <ul className="search-results">
-                      <SearchBarResults
-                        className="search-results-wrapper"
-                        results={results}
-                      />
-                    </ul>
+                <div className="search-container">
+                  <div className="inner">
+                    <Icon Name="search" fas />
+                    <input
+                      placeholder="Enter State..."
+                      onChange={this.handleInputChange}
+                    />
                   </div>
-                </>
+                  <ul className="search-results">
+                    <SearchBarResults
+                      className="search-results-wrapper"
+                      results={results}
+                    />
+                  </ul>
+                </div>
               ) : (
                 false
               )}
             </SearchBarStyle.FilterList>
-          </SearchBarStyle.Item>
+          </SearchBarStyle.Button>
         </div>
       </SearchBarStyle>
     );
@@ -258,30 +230,19 @@ const SearchBarResults = ({ results }) => {
 };
 
 // Simple Course Hero Display Component
-const LocationFilterSearchBar = ({ data }) => {
+const NavFilterSearchBar = ({ data }) => {
   return <SearchBar data={data} />;
 };
 
 // Full Wrapper
-export const NavFilter = ({
-  BgMatch,
-  BgQuery,
-  BgAlt,
-  color,
-  px,
-  bg,
-  data,
-  navOverlayToggle,
-}) => {
+export const NavFilter = ({ bg }) => {
   // Use our hook's data as source
   const fetchedData = DataFetch();
-  // console.log('fetchedData:');
-  // console.log(fetchedData);
 
   return (
-    <LocationFilterStyle bg={bg}>
-      <LocationFilterSearchBar data={fetchedData} />
-    </LocationFilterStyle>
+    <NavFilterStyle bg={bg}>
+      <NavFilterSearchBar data={fetchedData} />
+    </NavFilterStyle>
   );
 };
 

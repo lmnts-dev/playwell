@@ -19,7 +19,7 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const LocationFilterStyle = styled.section`
+export const NavFilterStyle = styled.section`
   position: relative;
   padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
   /* List fade gradient */
@@ -213,7 +213,7 @@ export const SearchBarStyle = styled.div`
   }
 `;
 
-SearchBarStyle.Item = styled.button`
+SearchBarStyle.Button = styled.button`
   position: relative;
   color: ${Theme.Color.White};
   background: transparent;
@@ -364,6 +364,31 @@ SearchBarStyle.FilterList = styled.div`
       cursor: pointer;
       padding: calc(${Root.Size} / 9) 0;
       color: ${Theme.Color.Warmsky};
+
+      .no-results {
+        padding: calc(${Root.Size} / 1.5) calc(${Root.Size} / 2) ${Root.Size}
+          calc(${Root.Size} / 2);
+
+        width: 100%;
+        color: ${hexToRGB(Theme.Color.Ocean, 0.6)};
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .ico {
+          margin-bottom: ${Root.Size};
+          i {
+            font-size: 2rem;
+            color: ${Theme.Color.Ocean};
+            border-radius: 50%;
+            background: ${hexToRGB(Theme.Color.Ocean, 0.18)};
+            padding: calc(${Root.Size} / 4);
+          }
+        }
+        .label {
+          font-size: 1.4rem;
+        }
+      }
 
       &:hover {
         background-color: ${hexToRGB(Theme.Color.Ocean, 0.06)};

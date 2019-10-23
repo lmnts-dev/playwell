@@ -182,7 +182,7 @@ class SearchBar extends PureComponent {
           />
         ) : (
           false
-        )}
+        )};
       </SearchBarStyle>
     );
   }
