@@ -57,7 +57,7 @@ const SplitHero = ({
             <div className="sub-nav">
               {subNav.map((nav, index) => {
                 return (
-                  <a className="h5" href={"/who-we-are/" + nav }>
+                  <a className="h5" href={"/who-we-are/" + nav } key={index}>
                     {nav}
                   </a>
                 );
