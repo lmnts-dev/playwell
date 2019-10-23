@@ -363,7 +363,28 @@ SearchBarStyle.FilterList = styled.div`
       text-align: left;
       cursor: pointer;
       padding: calc(${Root.Size} / 9) 0;
-      color: ${Theme.Color.Warmsky};
+      transition: ${Theme.Base.Transition.String};
+
+      &:hover {
+        background-color: ${hexToRGB(Theme.Color.Ocean, 0.06)};
+        color: ${Theme.Color.Sunset};
+      }
+
+      a {
+        color: ${Theme.Color.Lilac};
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: ${Theme.Base.Transition.String};
+
+        &:hover {
+          color: ${Theme.Color.Sunset};
+        }
+
+        &:visited {
+          color: ${Theme.Color.Sunlight};
+        }
+      }
 
       .no-results {
         padding: calc(${Root.Size} / 1.5) calc(${Root.Size} / 2) ${Root.Size}
@@ -387,27 +408,6 @@ SearchBarStyle.FilterList = styled.div`
         }
         .label {
           font-size: 1.4rem;
-        }
-      }
-
-      &:hover {
-        background-color: ${hexToRGB(Theme.Color.Ocean, 0.06)};
-        color: ${Theme.Color.Ocean};
-      }
-
-      a {
-        color: ${Theme.Color.Lilac};
-        font-size: 1rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: ${Theme.Base.Transition.String};
-
-        &:hover {
-          color: ${Theme.Color.Sunset};
-        }
-
-        &:visited {
-          color: ${Theme.Color.Sunlight};
         }
       }
     }
