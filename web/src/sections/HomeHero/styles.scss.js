@@ -153,6 +153,9 @@ export const Item = styled.div`
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       padding-bottom: 50vw;
     }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      margin: 0;
+    }
 
     .h6 {
       font-weight: 700;
@@ -227,6 +230,10 @@ export const HeroContainer = styled.div`
       transition-duration: 0.5s;
       z-index: 100;
 
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        top: calc(${Theme.Base.Size.Lg} * 2.5);
+      }
+
       &:before {
         height: calc(${Theme.Base.Size.Lg} / 3);
         width: calc(${Theme.Base.Size.Lg} / 3);
@@ -236,6 +243,10 @@ export const HeroContainer = styled.div`
         top: calc(${Theme.Base.Size.Lg} / 3.5);
         left: calc(${Theme.Base.Size.Lg} / 2.5);
         transform: rotate(45deg);
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          height: calc(${Theme.Base.Size.Lg} / 4);
+          width: calc(${Theme.Base.Size.Lg} / 4);
+        }
       }
 
       &.slick-prev {
@@ -247,6 +258,10 @@ export const HeroContainer = styled.div`
         @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
           left: 20px;
         }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          left: 0;
+        }
+
         &:before {
           border-right-color: transparent;
           border-top-color: transparent;
@@ -270,6 +285,9 @@ export const HeroContainer = styled.div`
         @media (max-width: ${Base.Media.Width.Md + 'px'}) {
           left: auto;
           right: calc(${Theme.Base.Size.Lg} / 3);
+        }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          left: calc(${Theme.Base.Size.Lg});
         }
 
         &:before {
@@ -297,9 +315,15 @@ export const HeroContainer = styled.div`
   }
 `;
 
-export const Actions = styled(Flex)`
-  position: relative;
+
+export const Actions = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
   padding-top: calc(${Theme.Base.Size.Lg} / 2);
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    flex-direction: column;
+  }
 
   .hero-btn {
     margin-top: 0;

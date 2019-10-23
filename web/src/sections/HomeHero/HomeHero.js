@@ -94,7 +94,7 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
             <div className="text">
               <h2>People are natural engineers. We help kids realize it.</h2>
               <div className="h6">Purposeful Play to Build a Better Future</div>
-              <Actions width={[1, 1, 1, 7 / 10]}>
+              <Actions>
                 <Link to="/programs">
                   <HeroBtn
                     className="hero-btn"

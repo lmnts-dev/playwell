@@ -46,6 +46,7 @@ align-items: center;
   padding-right: calc(${Root.Size});
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     padding-right: 0;
+    text-align: center;
   }
 
   > * {
