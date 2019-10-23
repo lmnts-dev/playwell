@@ -1,6 +1,6 @@
-// <LocationFilter /> Component:
+// <NavFilter /> Component:
 // Navigation location search
-// todo: Activity Center slug, componentize for reuse
+// todo: Componentize for reuse
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -12,17 +12,12 @@ import { Link } from 'gatsby';
 // Helpers
 import _ from 'lodash';
 import slugify from 'helpers/slugify';
-import hexToRGB from 'helpers/hexToRGB';
 
 // Styles
-import { LocationFilterStyle, SearchBarStyle, ArrowLink } from './styles.scss';
+import { NavFilterStyle, SearchBarStyle } from './styles.scss';
 
 // Components
-import { Box, Flex } from 'components/library/Elements';
 import { Icon } from 'components/library/Icons';
-
-// Constants
-import { Theme, Root } from 'constants/Theme';
 
 // Data
 import { DataFetch } from 'hooks/DataFetch';
@@ -38,7 +33,7 @@ class SearchBar extends PureComponent {
     // Assign initial state
     this.state = {
       query: '',
-      resultsActive: true,
+      resultsActive: false,
       queryActive: false,
     };
 
@@ -49,16 +44,22 @@ class SearchBar extends PureComponent {
 
   // Mounted state
   componentDidMount() {
+    // Listen for click events to show/hide results
+    document.addEventListener('mouseover', this.handleSearchResultsToggle);
+
     // Assign State
     this.state = {
       query: '',
-      resultsActive: true,
+      resultsActive: false,
       queryActive: false,
     };
   }
 
   // Unmounted state
   componentWillUnmount() {
+    // Remove listener for click events to show/hide results
+    document.removeEventListener('mouseover', this.handleSearchResultsToggle);
+
     // De-assign State
     this.state = {
       query: '',
@@ -84,6 +85,8 @@ class SearchBar extends PureComponent {
         resultsActive: true,
       });
     }
+
+    document.addEventListener('mouseover', this.handleSearchResultsToggle);
   }
 
   // Handle our query updates
@@ -104,9 +107,7 @@ class SearchBar extends PureComponent {
   render() {
     // Clean our queries
     const searchSafeQuery = this.state.query.toLowerCase();
-
     const stateEdges = this.props.data.allPlayWellStates.edges;
-    const navOverlayToggle = this.props.navOverlayToggle;
 
     // Create our Results array
     const results = stateEdges.filter(location => {
@@ -151,11 +152,6 @@ class SearchBar extends PureComponent {
       }
     });
 
-    // console.log('results:');
-    // console.log(results);
-    // console.log('navToggle:');
-    // console.log(navOverlayToggle);
-
     return (
       <SearchBarStyle ref="searchInputWrapper">
         <div
@@ -165,49 +161,56 @@ class SearchBar extends PureComponent {
               : 'search-bar'
           }
         >
-          <div className="inner">
-            <Icon Name="search" fas />
-            <input
-              placeholder="Enter State..."
-              onChange={this.handleInputChange}
-            />
-          </div>
+          <SearchBarStyle.Button>
+            <span className="filter-inner">
+              <Icon Name="pin" />
+              <span>Brooklyn, NYC</span>
+              <Icon Name="carat" className="ico-carat" />
+            </span>
+            <SearchBarStyle.FilterList className="list">
+              <div className="carat">
+                <div className="arrow-up" />
+              </div>
+              {this.state.resultsActive == true ? (
+                <div className="search-container">
+                  <div className="inner">
+                    <Icon Name="search" fas />
+                    <input
+                      placeholder="Enter State..."
+                      onChange={this.handleInputChange}
+                    />
+                  </div>
+                  <ul className="search-results">
+                    <SearchBarResults
+                      className="search-results-wrapper"
+                      results={results}
+                    />
+                  </ul>
+                </div>
+              ) : (
+                false
+              )}
+            </SearchBarStyle.FilterList>
+          </SearchBarStyle.Button>
         </div>
-
-        {this.state.resultsActive == true ? (
-          <SearchBarResults
-            className="search-results-wrapper"
-            navOverlayToggle={navOverlayToggle}
-            results={results}
-          />
-        ) : (
-          false
-        )};
       </SearchBarStyle>
     );
   }
 }
 
 // Our Search Bar Results
-const SearchBarResults = ({ results, navOverlayToggle }) => {
+const SearchBarResults = ({ results }) => {
   return (
-    <ul className="search-results">
+    <>
       {/* Map all availabe locations */}
       {results.length > 0 ? (
         results.map((result, idx) => {
           return (
-            <li>
+            <li key={idx}>
               <Link
                 to={'/locations/' + slugify(result.node.name.toLowerCase())}
               >
-                <span
-                  onClick={navOverlayToggle}
-                  onKeyDown={navOverlayToggle}
-                  role="button"
-                  tabIndex="0"
-                >
-                  {result.node.name}
-                </span>
+                <span>{result.node.name}</span>
               </Link>
             </li>
           );
@@ -222,47 +225,24 @@ const SearchBarResults = ({ results, navOverlayToggle }) => {
           </div>
         </li>
       )}
-    </ul>
+    </>
   );
 };
 
 // Simple Course Hero Display Component
-const LocationFilterSearchBar = ({ data, navOverlayToggle }) => {
-  return <SearchBar data={data} navOverlayToggle={navOverlayToggle} />;
+const NavFilterSearchBar = ({ data }) => {
+  return <SearchBar data={data} />;
 };
 
 // Full Wrapper
-export const LocationFilter = ({
-  BgMatch,
-  BgQuery,
-  BgAlt,
-  color,
-  px,
-  bg,
-  data,
-  navOverlayToggle,
-}) => {
+export const NavFilter = ({ bg }) => {
   // Use our hook's data as source
   const fetchedData = DataFetch();
-  // console.log('fetchedData:');
-  // console.log(fetchedData);
 
   return (
-    <LocationFilterStyle bg={bg}>
-      <Link>
-        <ArrowLink>
-          <span>Play-Well County Activity Center</span>
-          <span className="arrow">
-            <Icon Name="carat" />
-          </span>
-        </ArrowLink>
-      </Link>
-      <figure className="line-break" />
-      <LocationFilterSearchBar
-        data={fetchedData}
-        navOverlayToggle={navOverlayToggle}
-      />
-    </LocationFilterStyle>
+    <NavFilterStyle bg={bg}>
+      <NavFilterSearchBar data={fetchedData} />
+    </NavFilterStyle>
   );
 };
 

@@ -130,16 +130,21 @@ export class NavigationOverlay extends PureComponent {
                     {/* Line Break */}
                     {/* TODO: Componentize */}
 
-                    <figure className="line-break" />
+                    {navContext.label !== 'Locations' && (
+                      <figure className="line-break" />
+                    )}
 
                     <MinorLinkList
                       navOverlayToggle={this.props.navOverlayToggle}
                       linkList={navContext.subNav.minorLinkList}
                     />
 
-                    {navContext.label == 'Locations' ? (
-                      <LocationFilter />
-                    ) : null}
+                    {navContext.label == 'Locations' && (
+                      <LocationFilter
+                        bg={Theme.Color.White}
+                        navOverlayToggle={this.props.navOverlayToggle}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
