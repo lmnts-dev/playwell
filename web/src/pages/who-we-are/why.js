@@ -96,7 +96,7 @@ const WhoWhyPage = () => {
         BorderBottomVertical
       >
         <TextOverImage
-          Image="intro-smiles.jpg"
+          Image="lego-bin.jpg"
           Header="Combining the elements of fun, challenge, and learning since 1997"
           ButtonText="Our Story"
           ButtonDest="/"
@@ -123,7 +123,7 @@ const WhoWhyPage = () => {
         >
           <BasicInner noPaddingLeft noPaddingRight>
             <ImageWithTextBlock
-              Image="intro-smiles.jpg"
+              Image="boy-2.jpg"
               Header="Build problem-solving skills"
               Number="01"
               Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -132,7 +132,7 @@ const WhoWhyPage = () => {
             />
             <ImageWithTextBlock
               reversedOrder
-              Image="intro-smiles.jpg"
+              Image="boy-1.jpg"
               Header="Provide an opportunity for creative expression"
               Number="06"
               Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -142,7 +142,7 @@ const WhoWhyPage = () => {
               <Icon Name="gear" />
             </ImageWithTextBlock>
             <ImageWithTextBlock
-              Image="intro-smiles.jpg"
+              Image="girls-1.jpg"
               Header="Foster a greater appreciation of how things work"
               Number="03"
               Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -176,13 +176,12 @@ const WhoWhyPage = () => {
       <BasicSection BgColor={Theme.Color.Background} BorderMiddle>
         <Marquee
           images={[
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
+            'random-1.jpg',
+            'random-2.jpg',
+            'random-3.jpg',
+            'random-4.jpg',
+            'random-5.jpg',
+            'random-6.jpg',
           ]}
           Shadow
         />
@@ -231,9 +230,9 @@ const WhoWhyPage = () => {
               architectural projects, activities that both the children and the
               instructors enjoy."
             Images={[
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
+              'kids-1.jpg',
+              'lego-head.png',
+              'boy-3.png',
             ]}
           />
         </BasicInner>

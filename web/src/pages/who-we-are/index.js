@@ -202,15 +202,7 @@ const OverflowHidden = styled.div`
 const WhoPage = ({ SliderSettings }) => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero
-        {...HeroProps}
-        subNav={[
-          'who',
-          'how',
-          'why',
-          'careers',
-        ]}
-      >
+      <SplitHero {...HeroProps} subNav={['who', 'how', 'why', 'careers']}>
         <h2>Passionate industry leaders in STEM Education since 1997</h2>
         <h6>Lorem ipsum dolor sit amet, consectetur a.</h6>
       </SplitHero>
@@ -223,13 +215,12 @@ const WhoPage = ({ SliderSettings }) => {
       >
         <Marquee
           images={[
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
+            'random-1.jpg',
+            'random-2.jpg',
+            'random-3.jpg',
+            'random-4.jpg',
+            'random-5.jpg',
+            'random-6.jpg',
           ]}
           BgLinear={Theme.Color.Nova}
         />
@@ -297,7 +288,7 @@ const WhoPage = ({ SliderSettings }) => {
         >
           <BasicInner wideWidth noPaddingLeft>
             <ImageWithTextCard
-              Image="intro-smiles.jpg"
+              Image="boy-smiles.jpg"
               Caption="Constant Improvement"
               Header="From local to nationwide."
               Paragraph="He began operating a summer camp program in 1997, followed by
@@ -329,36 +320,7 @@ const WhoPage = ({ SliderSettings }) => {
                 Destination="/"
               />
             </div>
-            <Team
-              members={[
-                {
-                  name: 'Alisha',
-                  image: 'intro-smiles.jpg',
-                  title: 'employee',
-                  socialIcon1: 'facebook',
-                  socialLink1: '/',
-                },
-                { name: 'Binh', image: 'intro-smiles.jpg', title: 'employee' },
-                { name: 'Kylie', image: 'intro-smiles.jpg', title: 'employee' },
-                { name: 'Matt', image: 'intro-smiles.jpg', title: 'employee' },
-                { name: 'Pete', image: 'intro-smiles.jpg', title: 'employee' },
-                { name: 'Meeko', image: 'intro-smiles.jpg', title: 'employee' },
-                {
-                  name: 'Laxalt',
-                  image: 'intro-smiles.jpg',
-                  title: 'employee',
-                },
-                {
-                  name: 'McIver',
-                  image: 'intro-smiles.jpg',
-                  title: 'employee',
-                },
-                { name: 'Bob', image: 'intro-smiles.jpg', title: 'employee' },
-                { name: 'Ted', image: 'intro-smiles.jpg', title: 'employee' },
-                { name: 'Joe', image: 'intro-smiles.jpg', title: 'employee' },
-                { name: 'Tim', image: 'intro-smiles.jpg', title: 'employee' },
-              ]}
-            />
+            <Team />
           </TeamSection>
         </BasicInner>
       </BasicSection>
@@ -378,12 +340,11 @@ const WhoPage = ({ SliderSettings }) => {
           </BasicInner>
           <Marquee
             images={[
-              'brandmark.png',
-              'brandmark.png',
-              'brandmark.png',
-              'brandmark.png',
-              'brandmark.png',
-              'brandmark.png',
+              'google.png',
+              'clorox.png',
+              'pixar.jpeg',
+              'microsoft.png',
+              'visa.png',
             ]}
             SquareFormat
           />
