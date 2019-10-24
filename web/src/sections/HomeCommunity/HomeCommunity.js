@@ -50,7 +50,7 @@ const HomeCommunity = ({ slides }) => {
           {slides.map(slide => (
             <div className="item" key={slide.index}>
               <a className="image" href={slide.link} aria-label="View Project">
-                <ImgMatch src="intro-smiles.jpg"/>
+                <ImgMatch src="boy-4.jpg"/>
               </a>
               <a href={slide.link} aria-label="View Project" className="text">
                 <ul>

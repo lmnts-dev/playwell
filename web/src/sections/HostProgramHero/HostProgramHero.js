@@ -52,8 +52,8 @@ const HostProgramHero = ({ cities, pageContext }) => {
         'homeschool classes',
       ]}
     >
-      <h2>We provide opportunities for creative expression</h2>
-      <h6>We are passionate specialists in STEM Education.</h6>
+      <h2>Hosting a Play-Well Program</h2>
+      <h6>We offer many options for hosting your programs at your location or at one of our activity centers.</h6>
       <Btn
       BgColor={Theme.Color.Nova}
         Label="Get in Touch"

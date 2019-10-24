@@ -12,6 +12,7 @@ import Img from 'gatsby-image';
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import SplitSection from 'components/library/Section/SplitSection';
+import Btn from 'components/library/Btn';
 
 // Elements
 import Block from 'components/library/Block';
@@ -54,6 +55,12 @@ const HostProgramHow = () => (
           area manager to get a class proposal summary outlining our curriculum,
           teaching methodology and class fees.
         </Text>
+        <Btn
+          Label="Learn More"
+          BgColor={Theme.Color.Nova}
+          TextColor={Theme.Color.White}
+          Destination="/"
+        />
       </Block>
     </SplitSection>
   </>

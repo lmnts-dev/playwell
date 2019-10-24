@@ -107,7 +107,7 @@ const HomePage = () => (
             Image="sailboat.png"
             Paragraph="STEM education creates critical thinkers, increases science literacy, and enables the next generation of innovators. Innovation leads to new products and processes that sustain our economy in an ever increasing technologically driven society."
             Paragraph2="Having activities that show real-life implication of STEM can pull together the ideas presented in school and help to show how they benefit our society and even our world as a whole"
-            ButtonText="What We Do"
+            ButtonText="Programs"
             ButtonDest="/"
           />
         </BasicInner>
@@ -142,7 +142,7 @@ const HomePage = () => (
           <Centered
             Title="Our Programs"
             TextColor={Theme.Color.Nova}
-            Class="h4"
+            Class="h3"
           />
         </BasicInner>
       </BasicSection>
@@ -161,9 +161,9 @@ const HomePage = () => (
             { link: '/', label: 'Engineering Themes' }, 
           ]}
           Accordians={[
-            { header: 'Worshops', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' }, 
-            { header: 'Classes', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' },
-            { header: 'Camps', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'intro-smiles.jpg' },
+            { header: 'Worshops', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'girl-3.jpg' }, 
+            { header: 'Classes', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'girl-2.jpg' },
+            { header: 'Camps', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'girl-1.jpg' },
           ]}
         />
       </BasicSection>
@@ -380,7 +380,7 @@ const HeroSlides = [
 const CommunitySlides = [
   {
     index: 0,
-    header: 'Building a coral reef out of Lego materials',
+    header: 'Building a Coral Reef out of Lego® materials',
     link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
@@ -405,7 +405,7 @@ const CommunitySlides = [
   },
   {
     index: 1,
-    header: 'Building a coral reef out of Lego materials',
+    header: 'Building a Coral Reef out of Lego® materials',
     link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
@@ -430,7 +430,7 @@ const CommunitySlides = [
   },
   {
     index: 2,
-    header: 'Building a coral reef out of Lego materials',
+    header: 'Building a Coral Reef out of Lego® materials',
     link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
@@ -455,7 +455,7 @@ const CommunitySlides = [
   },
   {
     index: 3,
-    header: 'Building a coral reef out of Lego materials',
+    header: 'Building a Coral Reef out of Lego® materials',
     link: '/',
     detail:
       'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
