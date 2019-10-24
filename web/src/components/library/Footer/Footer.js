@@ -14,6 +14,9 @@ import Device from '../../core/DeviceQuery';
 import { Base } from 'constants/styles/Base';
 import { Theme, Root } from 'constants/Theme';
 
+// Helpers
+import hexToRGB from 'helpers/hexToRGB';
+
 // Styles
 import {
   FooterStyle,
@@ -43,17 +46,18 @@ export const Footer = ({ navQuery }) => {
       <BasicSection
         noPaddingTop
         noPaddingBottom
-        BgColor={Theme.Color.Background}
-        //className={
-        //  typeof window !== 'undefined' && location.pathname === '/contact'
-        //    ? 'hide'
-        //    : null
-      //  }
+        BgColor={'transparent'}
+        className={
+         typeof window !== 'undefined' && location.pathname === '/contact'
+           ? 'hide'
+           : null
+       }
       >
         <CurveAndAngleWithPadding
           Tall
-          CurveColor={Theme.Color.Blush}
+          CurveColor={hexToRGB(Theme.Color.Black, 0.1)}
           AngleColor={Theme.Color.White}
+          bgColor="transparent"
           className="curve-and-angle"
         />
 
