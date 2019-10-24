@@ -73,7 +73,7 @@ export const SplitHeroStyle = styled.div`
       left: 0;
       transform: rotate(90deg) translateY(18%);
       transform-origin: 0% 100%;
-      color: ${Theme.Color.Nova};
+      color: ${p => p.arrowColor};
       font-size: 30px;
     }
 
@@ -84,7 +84,7 @@ export const SplitHeroStyle = styled.div`
       width: 10px;
       content: '';
       background-image: linear-gradient(
-        ${Theme.Color.Nova} 40%,
+        ${p => p.arrowColor} 40%,
         rgba(255, 255, 255, 0) 0%
       );
       background-position: right;

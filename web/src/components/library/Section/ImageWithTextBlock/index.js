@@ -34,7 +34,7 @@ export const ImageWithTextBlock = ({
     <div className="text">
       <div className="container">
         <BlockNumber className="h1">{Number}</BlockNumber>
-        <div className="h4">{Header}</div>
+        <div className="h3">{Header}</div>
         <p className="p-lg">{Paragraph}</p>
       </div>
     </div>

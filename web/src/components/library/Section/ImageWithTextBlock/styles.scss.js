@@ -74,7 +74,7 @@ export const ImageWithTextBlockStyles = styled.div`
       justify-content: center;
       height: 100%;
       padding: ${Root.Size} calc(${Root.Size} * 1.5);
-      max-width: calc(${Root.Size} * 9);
+      max-width: calc(${Root.Size} * 10);
       @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
         padding: calc(${Root.Size} * 0.5);
       }
@@ -82,8 +82,9 @@ export const ImageWithTextBlockStyles = styled.div`
         max-width: none;
       }
 
-      .h4 {
+      .h3 {
         font-weight: 700;
+        padding-bottom: calc(${Root.Size} / 3.5);
       }
 
       p {

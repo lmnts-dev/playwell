@@ -7,9 +7,6 @@
 // Core
 import React from 'react';
 
-// Helpers
-import HeroContainer from '../HeroContainer';
-
 // Styles
 import { GearContainer, SplitHeroStyle } from './styles.scss';
 
@@ -25,10 +22,17 @@ import {
   BasicInner,
 } from 'components/library/Section/BasicSection';
 
+// Constants
+import { Theme, Root } from 'constants/Theme';
+
+// Helpers
+import HeroContainer from '../HeroContainer';
+
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
 const SplitHero = ({
+  arrowColor,
   bg,
   bgMatch,
   bgQuery,
@@ -48,7 +52,7 @@ const SplitHero = ({
 }) => (
   <BasicSection BgColor={bg} TextColor={color}>
     <BasicInner noPaddingRight>
-      <SplitHeroStyle subNavColor={subNavColor}>
+      <SplitHeroStyle subNavColor={subNavColor} arrowColor={arrowColor}>
         <div className="text">
           <div className="flex-spacer"></div>
           <div className="children">{children}</div>
@@ -66,7 +70,7 @@ const SplitHero = ({
           }
         </div>
         <div className="imagery">
-          <ImgMatch src="intro-smiles.jpg" />
+          <ImgMatch src={bgMatch} />
           {gear ? (
             <GearContainer>
               <GearRotator strokeColor={props => props.theme.Color.White} />
@@ -82,6 +86,8 @@ const SplitHero = ({
 SplitHero.defaultProps = {
   flexDirection: 'row',
   playButtonBg: 'Nova',
+  bgMatch: 'intro-smiles.jpg',
+  arrowColor: Theme.Color.White,
 };
 
 export default SplitHero;
