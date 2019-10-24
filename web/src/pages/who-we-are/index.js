@@ -202,15 +202,7 @@ const OverflowHidden = styled.div`
 const WhoPage = ({ SliderSettings }) => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero
-        {...HeroProps}
-        subNav={[
-          'who',
-          'how',
-          'why',
-          'careers',
-        ]}
-      >
+      <SplitHero {...HeroProps} subNav={['who', 'how', 'why', 'careers']}>
         <h2>Passionate industry leaders in STEM Education since 1997</h2>
         <h6>Lorem ipsum dolor sit amet, consectetur a.</h6>
       </SplitHero>
@@ -223,13 +215,12 @@ const WhoPage = ({ SliderSettings }) => {
       >
         <Marquee
           images={[
-            'hug.png',
-            'kids-fall.png',
-            'sitting.png',
-            'water.png',
-            'kids-path.png',
-            'hug.png',
-            'kids-fall.png',
+            'random-1.jpg',
+            'random-2.jpg',
+            'random-3.jpg',
+            'random-4.jpg',
+            'random-5.jpg',
+            'random-6.jpg',
           ]}
           BgLinear={Theme.Color.Nova}
         />
