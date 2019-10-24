@@ -1,6 +1,6 @@
 // <NavFilter /> Component:
 // Navigation location search
-// todo: Componentize for reuse
+// todo: Componentize for reuse, naming/cleanup for <SearchBarStyle.Button>
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -18,6 +18,10 @@ import { NavFilterStyle, SearchBarStyle } from './styles.scss';
 
 // Components
 import { Icon } from 'components/library/Icons';
+import Btn from 'components/library/Btn';
+
+// Constants
+import { Theme } from 'constants/Theme';
 
 // Data
 import { DataFetch } from 'hooks/DataFetch';
@@ -44,7 +48,6 @@ class SearchBar extends PureComponent {
 
   // Mounted state
   componentDidMount() {
-
     // Assign State
     this.state = {
       query: '',
@@ -55,7 +58,6 @@ class SearchBar extends PureComponent {
 
   // Unmounted state
   componentWillUnmount() {
-
     // De-assign State
     this.state = {
       query: '',
@@ -158,11 +160,17 @@ class SearchBar extends PureComponent {
           }
         >
           <SearchBarStyle.Button>
-            <span className="filter-inner">
-              <Icon Name="pin" />
-              <span>Brooklyn, NYC</span>
-              <Icon Name="carat" className="ico-carat" />
-            </span>
+            <Btn
+              Label="Brooklyn, NYC"
+              Destination="/"
+              BorderStyle="solid"
+              BorderWidth="1px"
+              BorderColor={Theme.Color.Primary}
+              TextColor={Theme.Color.Primary}
+              IconClass="map-marker-alt"
+              IconPosition="left"
+              IconFas
+            />
             <SearchBarStyle.FilterList className="list">
               <div className="carat">
                 <div className="arrow-up" />
@@ -202,7 +210,10 @@ const SearchBarResults = ({ results }) => {
       {results.length > 0 ? (
         results.map((result, idx) => {
           return (
-            <Link to={'/locations/' + slugify(result.node.name.toLowerCase())} key={idx}>
+            <Link
+              to={'/locations/' + slugify(result.node.name.toLowerCase())}
+              key={idx}
+            >
               <li>
                 <span>{result.node.name}</span>
               </li>

@@ -213,8 +213,8 @@ export const SearchBarStyle = styled.div`
   }
 `;
 
-SearchBarStyle.Button = styled.button`
-  position: relative;
+SearchBarStyle.Button = styled.div`
+  /* position: relative;
   color: ${Theme.Color.White};
   background: transparent;
   border: 0;
@@ -226,7 +226,7 @@ SearchBarStyle.Button = styled.button`
   display: flex;
   flex: 1;
   cursor: pointer;
-  border-radius: 999px;
+  border-radius: 999px; */
 
   .ico-carat {
     position: relative;
@@ -249,9 +249,6 @@ SearchBarStyle.Button = styled.button`
   }
 
   &:hover {
-    color: ${Theme.Color.Warmsky};
-    background-color: ${Theme.Color.White};
-
     .ico-pin {
       svg,
       path,
@@ -274,16 +271,6 @@ SearchBarStyle.Button = styled.button`
   }
 
   .filter-inner {
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    top: 4px;
-    width: 100%;
-    text-align: center;
-    padding: 0;
-
     span:nth-of-type(2) {
       flex: 50;
     }

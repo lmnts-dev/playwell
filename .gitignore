@@ -21,3 +21,4 @@ yarn-error.log*
 
 .cache/
 build
+/web/public
