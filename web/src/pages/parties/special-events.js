@@ -29,7 +29,8 @@ import { Box, Flex } from 'components/library/Elements';
 import SubNav from 'components/library/SubNav';
 import SplitHero from 'components/library/Hero/SplitHero';
 
-// Styles
+// Sections
+import SpecialEventsSplitLinks from 'sections/SpecialEventsSplitLinks';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -54,9 +55,9 @@ const HeroProps = {
 };
 
 const ThemeProps = {
-  BgColor: Theme.Color.Cream,
-  PrimaryColor: 'unset',
-  SecondaryColor: Theme.Color.Primary,
+  BgColor: Theme.Color.Ocean,
+  PrimaryColor: Theme.Color.White,
+  SecondaryColor: Theme.Color.Dino,
   TertiaryColor: Theme.Color.Primary,
 };
 
@@ -138,6 +139,8 @@ const WhoWhyPage = () => {
           Shadow
         />
       </BasicSection>
+
+      <SpecialEventsSplitLinks themeProps={ThemeProps} />
     </Layout>
   );
 };
