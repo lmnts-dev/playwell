@@ -128,12 +128,11 @@ const WhoWhyPage = () => {
         </BasicInner>
         <Marquee
           images={[
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
+            'visa.png',
+            'microsoft.png',
+            'clorox.png',
+            'google.png',
+            'pixar.jpeg',
           ]}
           SquareFormat
           Shadow
