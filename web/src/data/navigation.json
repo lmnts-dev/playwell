@@ -142,29 +142,69 @@
             "focusLinkList": [
               {
                 "route": "/",
-                "label": "Parties Link",
+                "label": "Projects",
                 "focus": true
               },
               {
                 "route": "/",
-                "label": "Parties Link",
+                "label": "Find Materials",
                 "focus": false
               }
             ],
             "minorLinkList": [
               {
                 "route": "",
-                "label": "Subhead",
+                "label": "Learn more",
                 "subhead": true
               },
               {
                 "route": "/",
-                "label": "Parties Link",
+                "label": "Birthday Parties",
                 "subhead": false
               },
               {
                 "route": "/",
-                "label": "Parties Link",
+                "label": "Team Building",
+                "subhead": false
+              },
+              {
+                "route": "/host-your-own",
+                "label": "Host Your Own",
+                "subhead": false
+              },
+              {
+                "route": "",
+                "label": "Play-Well isn't just for kids...",
+                "subhead": true
+              },
+              {
+                "route": "/",
+                "label": "Partnerships",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "Organizations",
+                "subhead": false
+              },
+              {
+                "route": "/special-events",
+                "label": "Special Events",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "Employers",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "Non-Profits",
+                "subhead": false
+              },
+              {
+                "route": "/",
+                "label": "Sports Teams",
                 "subhead": false
               }
             ]

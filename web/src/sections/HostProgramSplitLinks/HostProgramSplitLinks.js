@@ -57,16 +57,16 @@ const HostProgramSplitLinks = ({
     <Section bg={themeProps.BgColor}>
       <SplitLinks>
         <SplitLink
-          title="Keep exploring"
-          message={'Keep exploring programs in'}
+          title="Visit our activity center"
+          message="The Play-Well Marin Activity Center"
           // message={'Keep exploring programs in ' + countyStateString + '.'}
           to={'/'}
           themeProps={themeProps}
           first
         />
         <SplitLink
-          title="What's new?"
-          message={'See what else is happening in'}
+          title="Need help with a special event?"
+          message="Learn about what we do and reqest an event"
           to={'/'}
           themeProps={themeProps}
           last
