@@ -43,16 +43,17 @@ const SplitHero = ({
   playButtonBg,
   subNavColor,
   subNav,
+  reversed,
   playButton,
 }) => (
   <BasicSection BgColor={bg} TextColor={color}>
-    <BasicInner noPaddingRight>
-      <SplitHeroStyle subNavColor={subNavColor} arrowColor={arrowColor}>
+    <BasicInner noPaddingRight={!reversed} noPaddingLeft={reversed}>
+      <SplitHeroStyle subNavColor={subNavColor} arrowColor={arrowColor} reversed={reversed}>
         <div className="text">
           <div className="flex-spacer"></div>
           <div className="children">{children}</div>
           <div className="arrow"></div>
-          {subNav &&
+          {(subNav && !reversed) &&
             <div className="sub-nav">
               {subNav.map((nav, index) => {
                 return (
@@ -71,9 +72,20 @@ const SplitHero = ({
               <GearRotator strokeColor={gearStroke ? gearStroke : 'transparent'} fill={gearFill}/>
             </GearContainer>
           ) : null}
-          {playButton == true ? <PlayButton bg={playButtonBg} /> : false}
+          {playButton && <PlayButton bg={playButtonBg} reversed={reversed}/>}
         </div>
       </SplitHeroStyle>
+        {(subNav && reversed) &&
+          <div className="sub-nav padding-left">
+            {subNav.map((nav, index) => {
+              return (
+                <a className={"h5 " + (nav.active ? 'link-active' : '')} href={nav.link} key={index}>
+                  {nav.label}
+                </a>
+              );
+            })}
+          </div>
+        }
     </BasicInner>
   </BasicSection>
 );
