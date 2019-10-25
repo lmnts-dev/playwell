@@ -83,8 +83,8 @@ const WhoHowPage = () => {
           { label: 'careers', link: '/who-we-are/careers' },
         ]}
       >
-        <h2>Join a team of creative problem solvers &amp; creators</h2>
-        <h6>We are passionate specialists in STEM Education.</h6>
+        <h2>How STEM Enrichment p aves the way for our beliefs</h2>
+        <h6>Lorem ipsum dolor sit amet, consectetur a.</h6>
       </SplitHero>
 
       <BasicSection
