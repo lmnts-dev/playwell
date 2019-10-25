@@ -241,9 +241,9 @@ export const SearchBarStyle = styled.div`
           color: ${Theme.Color.Sunset};
         }
 
-        &:visited {
+        /* &:visited {
           color: ${Theme.Color.Sunlight};
-        }
+        } */
       }
     }
   }
