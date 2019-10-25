@@ -54,11 +54,13 @@ export class NavigationOverlay extends PureComponent {
     let navContext = this.props.navContext;
     let navFadingOut = this.props.navFadingOut;
 
+    console.log('minorlinks:');
+    console.log(navContext);
+
     // If the overlay is hidden...
     if (navOverlayVisible == false) {
       return null;
     }
-
     // If the overlay is visible...
     else {
       return (
