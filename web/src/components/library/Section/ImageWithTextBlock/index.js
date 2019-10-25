@@ -9,8 +9,10 @@
 import React from 'react';
 import ImgMatch from 'components/core/ImgMatch';
 import { Icon } from 'components/library/Icons';
+import Btn from 'components/library/Btn';
 
 // Constants
+import { Theme, Root } from 'constants/Theme';
 
 // Styles
 import { ImageWithTextBlockStyles, BlockNumber } from './styles.scss';
@@ -25,6 +27,8 @@ export const ImageWithTextBlock = ({
   Header,
   Paragraph,
   children,
+  ButtonText,
+  ButtonDest
 }) => (
   <ImageWithTextBlockStyles reversedOrder={reversedOrder}>
     {children}
@@ -34,9 +38,17 @@ export const ImageWithTextBlock = ({
     <div className="text">
       <div className="container">
         <BlockNumber className="h1">{Number}</BlockNumber>
-        <div className="h4">{Header}</div>
+        <div className="h3">{Header}</div>
         <p className="p-lg">{Paragraph}</p>
       </div>
+      {/*(ButtonText && ButtonDest) &&
+        <Btn
+          Label={ButtonText}
+          BgColor={Theme.Color.Nova}
+          TextColor={Theme.Color.White}
+          Destination={ButtonDest}
+        />
+      */}
     </div>
   </ImageWithTextBlockStyles>
 );

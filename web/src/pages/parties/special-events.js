@@ -29,7 +29,8 @@ import { Box, Flex } from 'components/library/Elements';
 import SubNav from 'components/library/SubNav';
 import SplitHero from 'components/library/Hero/SplitHero';
 
-// Styles
+// Sections
+import SpecialEventsSplitLinks from 'sections/SpecialEventsSplitLinks';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -50,30 +51,36 @@ const HeroProps = {
   textAlign: 'left',
   withMask: false,
   heroHeight: 'auto',
-  bgMatch: 'team.jpg',
+  bgMatch: 'happy-adult.jpg',
 };
 
 const ThemeProps = {
-  BgColor: Theme.Color.Cream,
-  PrimaryColor: 'unset',
-  SecondaryColor: Theme.Color.Primary,
+  BgColor: Theme.Color.Ocean,
+  PrimaryColor: Theme.Color.White,
+  SecondaryColor: Theme.Color.Dino,
   TertiaryColor: Theme.Color.Primary,
 };
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-
 // Render Page
 const WhoWhyPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps} subNav={['parties', 'special events']}>
-        <h2>Helping Kids and Adults Understand Through Play</h2>
-        <h6>
-          For the past 10 years, we have introduced play into Fortune 500
-          Companies Take Your Kids to Work Days.
-        </h6>
+      <SplitHero {...HeroProps} subNav={['birthday parties', 'special events']}>
+        <Box pr={[4, 8, 14]}>
+          <h2>Helping Kids and Adults Understand Through Play</h2>
+          <h6>
+            For the past 10 years, we have introduced play into Fortune 500
+            Companies Take Your Kids to Work Days.
+          </h6>
+          <Btn
+            Label="Request a Special Event"
+            BgColor={Theme.Color.Nova}
+            TextColor={Theme.Color.White}
+          />
+        </Box>
       </SplitHero>
 
       <BasicSection BgColor={Theme.Color.White}>
@@ -81,6 +88,7 @@ const WhoWhyPage = () => {
           <CenteredTitle
             Title="Special Events"
             Class="headline"
+            PaddingBottom={`calc(${Root.Size} / 3.5)`}
           ></CenteredTitle>
         </BasicInner>
       </BasicSection>
@@ -93,13 +101,13 @@ const WhoWhyPage = () => {
       >
         <BasicInner noPaddingLeft noPaddingRight noPaddingBottom>
           <ImageWithTextBlock
-            Image="intro-smiles.jpg"
+            Image="kids-adult-playing.jpg"
             Header="Play at work"
             Paragraph="We have run our LEGO-Inspired STEM Activations for companies around the country, giving kids a chance to experience a fun-filled day at their parents' workplace."
           />
           <ImageWithTextBlock
             reversedOrder
-            Image="intro-smiles.jpg"
+            Image="kids-lego-boxes.jpg"
             Header="Engineers at heart"
             Paragraph="We are play engineers at heart, so we love helping kids to understand through play what their parents do at work, or enabling families to build something out of LEGO® materials that they once thought impossible."
           ></ImageWithTextBlock>
@@ -119,17 +127,18 @@ const WhoWhyPage = () => {
         </BasicInner>
         <Marquee
           images={[
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
-            'brandmark.png',
+            'visa.png',
+            'microsoft.png',
+            'clorox.png',
+            'google.png',
+            'pixar.jpeg',
           ]}
           SquareFormat
           Shadow
         />
       </BasicSection>
+
+      <SpecialEventsSplitLinks themeProps={ThemeProps} />
     </Layout>
   );
 };

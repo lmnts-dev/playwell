@@ -156,7 +156,7 @@ const Course = ({ pageContext }) => {
                 ages {pageContext.age_range_start}-{pageContext.age_range_end}
               </Link>
             </li>
-            {pageContext.room && <li> room {pageContext.room}</li>}
+            {pageContext.room && <li>{pageContext.room}</li>}
           </Hero.Tags>
           <Hero.Headline className="h3">
             {pageContext.course_type_name}
@@ -164,7 +164,7 @@ const Course = ({ pageContext }) => {
           <Hero.Date className="h5">{pageContext.date_time_display}</Hero.Date>
           {/* Content Overlay Modal Toggle */}
           {/* <ContentOverlayButton>toggle</ContentOverlayButton> */}
-          <Link
+          <a
             href={pageContext.action_url}
             target="_blank"
             rel="nofollow noreferrer"
@@ -172,7 +172,7 @@ const Course = ({ pageContext }) => {
             <Hero.Btn bgColor={Theme.Color.Nova} textColor={Theme.Color.White}>
               Enroll Now
             </Hero.Btn>
-          </Link>
+          </a>
           <Box my={2}>
             <p>
               {pageContext.client_location_name}
@@ -314,7 +314,7 @@ const Course = ({ pageContext }) => {
           <CourseFooter.Date className="h5">
             {pageContext.date_time_display}
           </CourseFooter.Date>
-          <Link
+          <a
             href={pageContext.action_url}
             target="_blank"
             rel="nofollow noreferrer"
@@ -325,7 +325,7 @@ const Course = ({ pageContext }) => {
             >
               Enroll Now
             </CourseFooter.Btn>
-          </Link>
+          </a>
         </CourseFooter.Course>
       </CourseFooter>
 

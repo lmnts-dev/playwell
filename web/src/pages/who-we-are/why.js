@@ -43,15 +43,12 @@ import { Base } from 'constants/styles/Base';
 const HeroProps = {
   bg: Theme.Color.Cream,
   color: Theme.Color.Primary,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
-  playButton: false,
-  playButtonBg: Theme.Color.Nova,
-  gear: false,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
-  bgMatch: 'team.jpg',
+  playButton: true,
+  playButtonBg: Theme.Color.Ocean,
+  gear: true,
+  gearFill: Theme.Color.Sunset,
+  subNavColor: Theme.Color.Nova,
+  arrowColor: Theme.Color.Nova,
 };
 
 const ThemeProps = {
@@ -83,7 +80,15 @@ const GiantTextBlock = styled(GiantText)`
 const WhoWhyPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps} subNav={['who', 'how', 'why', 'careers']}>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          { label: 'who', link: '/who-we-are/who' },
+          { label: 'why', active: true, link: '/who-we-are/why' },
+          { label: 'how', link: '/who-we-are/how' },
+          { label: 'careers', link: '/who-we-are/careers' },
+        ]}
+      >
         <h2>We provide opportunities for creative expression</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
       </SplitHero>
@@ -96,7 +101,7 @@ const WhoWhyPage = () => {
         BorderBottomVertical
       >
         <TextOverImage
-          Image="intro-smiles.jpg"
+          Image="lego-bin.jpg"
           Header="Combining the elements of fun, challenge, and learning since 1997"
           ButtonText="Our Story"
           ButtonDest="/"
@@ -123,7 +128,7 @@ const WhoWhyPage = () => {
         >
           <BasicInner noPaddingLeft noPaddingRight>
             <ImageWithTextBlock
-              Image="intro-smiles.jpg"
+              Image="boy-2.jpg"
               Header="Build problem-solving skills"
               Number="01"
               Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -132,7 +137,7 @@ const WhoWhyPage = () => {
             />
             <ImageWithTextBlock
               reversedOrder
-              Image="intro-smiles.jpg"
+              Image="boy-1.jpg"
               Header="Provide an opportunity for creative expression"
               Number="06"
               Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -142,7 +147,7 @@ const WhoWhyPage = () => {
               <Icon Name="gear" />
             </ImageWithTextBlock>
             <ImageWithTextBlock
-              Image="intro-smiles.jpg"
+              Image="girls-1.jpg"
               Header="Foster a greater appreciation of how things work"
               Number="03"
               Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -176,13 +181,12 @@ const WhoWhyPage = () => {
       <BasicSection BgColor={Theme.Color.Background} BorderMiddle>
         <Marquee
           images={[
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
+            'random-1.jpg',
+            'random-2.jpg',
+            'random-3.jpg',
+            'random-4.jpg',
+            'random-5.jpg',
+            'random-6.jpg',
           ]}
           Shadow
         />
@@ -230,11 +234,7 @@ const WhoWhyPage = () => {
             Text="We do this in the context of fun-filled engineering and
               architectural projects, activities that both the children and the
               instructors enjoy."
-            Images={[
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-            ]}
+            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
           />
         </BasicInner>
       </BasicSection>

@@ -20,11 +20,4 @@ yarn-debug.log*
 yarn-error.log*
 
 .cache/
-<<<<<<< HEAD
-# build
-# public
-# public/
-# public/static
-=======
-build
->>>>>>> 860af83dabe757eada45a89ca8880f2bf6a4f678
+/web/public

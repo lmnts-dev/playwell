@@ -29,6 +29,7 @@ import { Theme, Root } from 'constants/Theme';
 
 // Props
 const HeroProps = {
+  arrowColor: Theme.Color.Nova,
   bg: Theme.Color.Cream,
   color: Theme.Color.Primary,
   flexDirection: 'row',
@@ -39,7 +40,7 @@ const HeroProps = {
   textAlign: 'left',
   withMask: false,
   heroHeight: 'auto',
-  bgMatch: 'team.jpg',
+  bgMatch: 'happy-adult.jpg',
 };
 
 const HostProgramHero = ({ cities, pageContext }) => {
@@ -52,10 +53,13 @@ const HostProgramHero = ({ cities, pageContext }) => {
         'homeschool classes',
       ]}
     >
-      <h2>We provide opportunities for creative expression</h2>
-      <h6>We are passionate specialists in STEM Education.</h6>
+      <h2>Hosting a Play-Well Program</h2>
+      <h6>
+        We offer many options for hosting your programs at your location or at
+        one of our activity centers.
+      </h6>
       <Btn
-      BgColor={Theme.Color.Nova}
+        BgColor={Theme.Color.Nova}
         Label="Get in Touch"
         Destination="/contact"
         TextColor={Theme.Color.White}

@@ -39,7 +39,7 @@ export const EdgeImageWithTextStyle = styled.div`
       height: 100%;
       width: 100%;
       path {
-        fill: ${Theme.Color.Galaxy};
+        fill: ${props => props.Reversed ? Theme.Color.Deepsea : Theme.Color.Galaxy};
       }
     }
 

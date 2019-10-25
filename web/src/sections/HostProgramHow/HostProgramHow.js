@@ -5,18 +5,13 @@
 //////////////////////////////////////////////////////////////////////
 
 // Core
-import React, { useState } from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import React from 'react';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import SplitSection from 'components/library/Section/SplitSection';
-
-// Elements
+import Btn from 'components/library/Btn';
 import Block from 'components/library/Block';
-
-// Styles
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -54,6 +49,12 @@ const HostProgramHow = () => (
           area manager to get a class proposal summary outlining our curriculum,
           teaching methodology and class fees.
         </Text>
+        <Btn
+          Label="Learn More"
+          BgColor={Theme.Color.Nova}
+          TextColor={Theme.Color.White}
+          Destination="/"
+        />
       </Block>
     </SplitSection>
   </>

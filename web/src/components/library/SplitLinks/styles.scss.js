@@ -91,9 +91,7 @@ export const LinkContainer = styled(Flex)`
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     svg {
-      transition: ${Theme.Base.Transition.String};
       transform: rotate(0deg) translateX(0);
-      stroke: ${p => p.arrowColor};
     }
 
     &:hover {
