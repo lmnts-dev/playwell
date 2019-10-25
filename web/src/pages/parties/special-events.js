@@ -43,15 +43,11 @@ import { Base } from 'constants/styles/Base';
 const HeroProps = {
   bg: Theme.Color.Ocean,
   color: Theme.Color.White,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
-  playButton: false,
+  playButton: true,
   playButtonBg: Theme.Color.Nova,
-  gear: false,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
-  bgMatch: 'happy-adult.jpg',
+  gear: true,
+  gearFill: Theme.Color.Dino,
+  subNavColor: Theme.Color.White,
 };
 
 const ThemeProps = {
@@ -68,7 +64,13 @@ const ThemeProps = {
 const WhoWhyPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps} subNav={['birthday parties', 'special events']}>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          { label: 'birthday parties', link: '/parties/birthday-parties' },
+          { label: 'special events', active: true, link: '/parties/special-events' },
+        ]}
+      >
         <Box pr={[4, 8, 14]}>
           <h2>Helping Kids and Adults Understand Through Play</h2>
           <h6>
