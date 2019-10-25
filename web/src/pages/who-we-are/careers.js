@@ -40,21 +40,17 @@ import { Base } from 'constants/styles/Base';
 
 // Props
 const HeroProps = {
-  bg: Theme.Color.Cream,
-  color: Theme.Color.Primary,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
-  playButton: false,
-  playButtonBg: Theme.Color.Nova,
-  gear: false,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
-  bgMatch: 'team.jpg',
+  bg: Theme.Color.Sky,
+  color: Theme.Color.White,
+  playButton: true,
+  gear: true,
+  gearFill: Theme.Color.Dino,
+  subNavColor: Theme.Color.White,
+  arrowColor: Theme.Color.Nova,
 };
 
 const ThemeProps = {
-  BgColor: Theme.Color.Cream,
+  BgColor: Theme.Color.Sky,
   PrimaryColor: 'unset',
   SecondaryColor: Theme.Color.Primary,
   TertiaryColor: Theme.Color.Primary,
@@ -67,9 +63,23 @@ const ThemeProps = {
 const WhoCareersPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps} subNav={['who', 'how', 'why', 'careers']}>
-        <h2>We provide opportunities for creative expression</h2>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          { label: 'who', link: '/who-we-are/who' },
+          { label: 'why', link: '/who-we-are/why' },
+          { label: 'how', link: '/who-we-are/how' },
+          { label: 'careers', active: true, link: '/who-we-are/careers' },
+        ]}
+      >
+        <h2>Join a Team of creative problem solvers &amp; creators</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
+        <Btn
+          Label="View Listings"
+          BgColor={Theme.Color.Dino}
+          TextColor={Theme.Color.White}
+          Destination="/"
+        />
       </SplitHero>
 
       <BasicSection
@@ -103,29 +113,7 @@ const WhoCareersPage = () => {
 
       <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
         <BasicInner>
-          <Team
-            members={[
-              {
-                name: 'Alisha',
-                image: 'intro-smiles.jpg',
-                title: 'employee',
-                socialIcon1: 'facebook',
-                socialLink1: '/',
-              },
-              { name: 'Binh', image: 'intro-smiles.jpg', title: 'employee' },
-              { name: 'Kylie', image: 'intro-smiles.jpg', title: 'employee' },
-              { name: 'Matt', image: 'intro-smiles.jpg', title: 'employee' },
-              { name: 'Pete', image: 'intro-smiles.jpg', title: 'employee' },
-              { name: 'Meeko', image: 'intro-smiles.jpg', title: 'employee' },
-              { name: 'Laxalt', image: 'intro-smiles.jpg', title: 'employee' },
-              { name: 'McIver', image: 'intro-smiles.jpg', title: 'employee' },
-              { name: 'Bob', image: 'intro-smiles.jpg', title: 'employee' },
-              { name: 'Ted', image: 'intro-smiles.jpg', title: 'employee' },
-              { name: 'Joe', image: 'intro-smiles.jpg', title: 'employee' },
-              { name: 'Tim', image: 'intro-smiles.jpg', title: 'employee' },
-            ]}
-            Justify="center"
-          />
+          <Team />
         </BasicInner>
       </BasicSection>
 
@@ -200,13 +188,12 @@ const WhoCareersPage = () => {
       <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
         <Marquee
           images={[
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
+            'random-1.jpg',
+            'random-2.jpg',
+            'random-3.jpg',
+            'random-4.jpg',
+            'random-5.jpg',
+            'random-6.jpg',
           ]}
           Shadow
         />
@@ -254,11 +241,7 @@ const WhoCareersPage = () => {
             Text="We do this in the context of fun-filled engineering and
               architectural projects, activities that both the children and the
               instructors enjoy."
-            Images={[
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-            ]}
+            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
           />
         </BasicInner>
       </BasicSection>

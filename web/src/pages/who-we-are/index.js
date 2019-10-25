@@ -41,15 +41,11 @@ import { Base } from 'constants/styles/Base';
 const HeroProps = {
   bg: Theme.Color.Cream,
   color: Theme.Color.Primary,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
   playButton: true,
   playButtonBg: Theme.Color.Nova,
   gear: false,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
-  bgMatch: 'team.jpg',
+  subNavColor: Theme.Color.Nova,
+  arrowColor: Theme.Color.Nova,
 };
 
 const ThemeProps = {
@@ -202,7 +198,15 @@ const OverflowHidden = styled.div`
 const WhoPage = ({ SliderSettings }) => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps} subNav={['who', 'how', 'why', 'careers']}>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          { label: 'who', active: true, link: '/who-we-are/who' },
+          { label: 'why', link: '/who-we-are/why' },
+          { label: 'how', link: '/who-we-are/how' },
+          { label: 'careers', link: '/who-we-are/careers' },
+        ]}
+      >
         <h2>Passionate industry leaders in STEM Education since 1997</h2>
         <h6>Lorem ipsum dolor sit amet, consectetur a.</h6>
       </SplitHero>

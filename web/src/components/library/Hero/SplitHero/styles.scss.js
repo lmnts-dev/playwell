@@ -59,6 +59,12 @@ export const SplitHeroStyle = styled.div`
     flex-grow: 20;
   }
 
+  .children {
+    .btn-inner {
+      margin-bottom: calc(${Theme.Base.Size.Lg} / 3);
+    }
+  }
+
   .arrow {
     position: relative;
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
@@ -73,7 +79,7 @@ export const SplitHeroStyle = styled.div`
       left: 0;
       transform: rotate(90deg) translateY(18%);
       transform-origin: 0% 100%;
-      color: ${p => p.arrowColor};
+      color: ${props => props.arrowColor ? props.arrowColor : Theme.Color.Nova};
       font-size: 30px;
     }
 
@@ -84,7 +90,7 @@ export const SplitHeroStyle = styled.div`
       width: 10px;
       content: '';
       background-image: linear-gradient(
-        ${p => p.arrowColor} 40%,
+        ${props => props.arrowColor ? props.arrowColor : Theme.Color.Nova} 40%,
         rgba(255, 255, 255, 0) 0%
       );
       background-position: right;
@@ -108,6 +114,8 @@ export const SplitHeroStyle = styled.div`
     }
 
     .gatsby-image-wrapper {
+      z-index: 1;
+      position: relative;
       width: 100%;
       height: 100%;
       border-radius: calc(${Theme.Base.Size.Lg} / 10);
@@ -127,8 +135,19 @@ export const SplitHeroStyle = styled.div`
 
     a {
       font-weight: 700;
-      color: ${Theme.Color.Nova};
       text-transform: capitalize;
+      opacity: .5;
+      transition-duration: .5s;
+      ${props => props.subNavColor ? 'color: ' + props.subNavColor : ''};
+
+      &.link-active {
+        opacity: 1;
+        color: ${Theme.Color.Nova};
+      }
+
+      &:hover {
+        opacity: 1;
+      }
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         font-size: 1.5rem;
       }

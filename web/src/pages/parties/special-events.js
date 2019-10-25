@@ -68,7 +68,7 @@ const ThemeProps = {
 const WhoWhyPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps}>
+      <SplitHero {...HeroProps} subNav={['birthday parties', 'special events']}>
         <Box pr={[4, 8, 14]}>
           <h2>Helping Kids and Adults Understand Through Play</h2>
           <h6>
