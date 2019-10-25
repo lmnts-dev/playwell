@@ -11,12 +11,13 @@ import styled from 'styled-components';
 // Components
 import Layout from 'components/core/Layout';
 import { Box, Flex, Text } from 'components/library/Elements';
+import Section from 'components/library/Elements/Section';
 
 // Sections
 import AfterSchoolEnrichmentHero from 'sections/AfterSchoolEnrichmentHero';
 import AfterSchoolClasses from 'sections/AfterSchoolClasses';
 import AfterSchoolOverview from 'sections/AfterSchoolOverview';
-import HostProgramSplitLinks from 'sections/HostProgramSplitLinks';
+import AfterSchoolContact from 'sections/AfterSchoolContact';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -51,8 +52,13 @@ const AfterSchoolEnrichmentPage = () => {
       <Main>
         <AfterSchoolEnrichmentHero />
         <AfterSchoolClasses />
+
+        <Section bg="Background" pt={14} pb={14}>
+          <Text color="Primary" fontSize="4rem" fontWeight={600}>Testimonials</Text>
+        </Section>
+
         <AfterSchoolOverview />
-        <HostProgramSplitLinks themeProps={ThemeProps} />
+        <AfterSchoolContact />
       </Main>
     </Layout>
   );
