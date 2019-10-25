@@ -1,4 +1,4 @@
-// <LocationCoordinators /> section:
+// <AfterSchoolEnrichmentHero /> section:
 // Location detail template coordinator accordion
 
 // Imports
@@ -16,7 +16,6 @@ import SplitHero from 'components/library/Hero/SplitHero';
 
 // Styles
 import { Hero } from './styles.scss';
-import { Decorator } from '../../templates/Location/styles.scss';
 
 // Helpers
 import slugify from 'helpers/slugify';
@@ -30,45 +29,40 @@ import { Theme, Root } from 'constants/Theme';
 // Props
 const HeroProps = {
   arrowColor: Theme.Color.Nova,
-  bg: Theme.Color.Cream,
-  color: Theme.Color.Primary,
+  bg: Theme.Color.White,
+  color: Theme.Color.Dino,
   flexDirection: 'row',
   BgAlt: 'Placeholder Image Alt',
-  playButton: false,
-  playButtonBg: Theme.Color.Nova,
+  playButton: true,
+  playButtonBg: Theme.Color.Ocean,
   gear: false,
   textAlign: 'left',
   withMask: false,
   heroHeight: 'auto',
-  bgMatch: 'happy-adult.jpg',
+  bgMatch: 'kid-remote-control.jpg',
 };
 
-const HostProgramHero = ({ cities, pageContext }) => {
+const AfterSchoolEnrichmentHero = () => {
   return (
-    <SplitHero
-      {...HeroProps}
-      subNav={[
-        'after school programs',
-        'recreation centers',
-        'homeschool classes',
-      ]}
-    >
-      <h2>Hosting a Play-Well Program</h2>
-      <h6>
-        We offer many options for hosting your programs at your location or at
-        one of our activity centers.
-      </h6>
-      <Btn
-        BgColor={Theme.Color.Nova}
-        Label="Get in Touch"
-        Destination="/contact"
-        TextColor={Theme.Color.White}
-      />
+    <SplitHero {...HeroProps}>
+      <Box pr={[4, 8, 14]}>
+        <Text as="h2" color="Primary">Play-Well After School Enrichment</Text>
+        <h6>
+          In our Engineering with LEGO&reg; enrichment program, take on real
+          life engineering challenges.
+        </h6>
+        <Btn
+          BgColor={Theme.Color.Nova}
+          Label="Request Info"
+          Destination="/contact"
+          TextColor={Theme.Color.White}
+        />
+      </Box>
     </SplitHero>
   );
 };
 
-export default HostProgramHero;
+export default AfterSchoolEnrichmentHero;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

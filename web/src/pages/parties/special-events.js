@@ -45,9 +45,9 @@ const HeroProps = {
   color: Theme.Color.White,
   flexDirection: 'row',
   BgAlt: 'Placeholder Image Alt',
-  playButton: true,
+  playButton: false,
   playButtonBg: Theme.Color.Nova,
-  gear: true,
+  gear: false,
   textAlign: 'left',
   withMask: false,
   heroHeight: 'auto',
@@ -75,13 +75,11 @@ const WhoWhyPage = () => {
             For the past 10 years, we have introduced play into Fortune 500
             Companies Take Your Kids to Work Days.
           </h6>
-          <Box pb={2}>
-            <Btn
-              Label="Request a Special Event"
-              BgColor={Theme.Color.Nova}
-              TextColor={Theme.Color.White}
-            />
-          </Box>
+          <Btn
+            Label="Request a Special Event"
+            BgColor={Theme.Color.Nova}
+            TextColor={Theme.Color.White}
+          />
         </Box>
       </SplitHero>
 

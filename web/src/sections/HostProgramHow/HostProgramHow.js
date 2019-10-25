@@ -5,19 +5,13 @@
 //////////////////////////////////////////////////////////////////////
 
 // Core
-import React, { useState } from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import React from 'react';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import SplitSection from 'components/library/Section/SplitSection';
 import Btn from 'components/library/Btn';
-
-// Elements
 import Block from 'components/library/Block';
-
-// Styles
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
