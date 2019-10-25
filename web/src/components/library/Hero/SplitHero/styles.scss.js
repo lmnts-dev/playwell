@@ -104,7 +104,7 @@ export const SplitHeroStyle = styled.div`
   }
 
   .imagery {
-    flex: ${props => (!props.reversed && props.wideImage) ? '4' : '2'};
+    flex: ${props => (!props.reversed && props.wideImage) ? '5' : '2'};
     margin-right: calc(${Theme.Base.Size.Lg} * ${props => props.reversed ? '1.5' : '1'});
     position: relative;
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
