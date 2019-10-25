@@ -53,6 +53,7 @@ export class NavigationOverlay extends PureComponent {
     let navOverlayVisible = this.props.navOverlayVisible;
     let navContext = this.props.navContext;
     let navFadingOut = this.props.navFadingOut;
+    let focusedMenu = this.props.focusedMenu;
 
     // If the overlay is hidden...
     if (navOverlayVisible == false) {
@@ -66,7 +67,7 @@ export class NavigationOverlay extends PureComponent {
         // based on Top Level Pages vs Sub Level Pages
         <NavigationOverlayStyle
           theme={navContext.theme}
-          className={navFadingOut == true ? 'nav-fadeout' : undefined}
+          className={(navFadingOut && 'nav-fadeout ') + (focusedMenu && 'focused-menu')}
         >
           <NavigationOverlayStyle.Inner>
             <NavigationOverlayStyle.Sub

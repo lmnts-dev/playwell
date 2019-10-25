@@ -9,6 +9,7 @@ import styled, { css, keyframes } from 'styled-components';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
+import { Base } from 'constants/styles/Base';
 
 // Keyframe
 import {
@@ -48,6 +49,12 @@ export const NavigationOverlayStyle = styled.nav`
   z-index: 800;
   display: flex;
   flex-direction: column;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+  background: ${props =>
+    props.theme.primaryColor
+      ? props.theme.primaryColor
+      : Theme.Color.Ocean};
+  }
 
   &.nav-hidden {
     visibility: hidden;
@@ -97,6 +104,9 @@ NavigationOverlayStyle.Sub = styled.div`
       flex-wrap: nowrap;
       align-items: center;
       justify-content: space-between;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        display: none;
+      }
 
       .top-main {
         display: flex;
@@ -142,10 +152,16 @@ NavigationOverlayStyle.Sub = styled.div`
       display: flex;
       flex-wrap: nowrap;
       flex: 1;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        display: block;
+      }
 
       .col-heading {
         width: ${Root.Size};
         ${FadeIn};
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          width: 100%;
+        }
 
         span {
           font-size: 7vh;
@@ -157,10 +173,16 @@ NavigationOverlayStyle.Sub = styled.div`
           left: 80%;
           white-space: nowrap;
           pointer-events: none;
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            font-size: 1rem !important;
+            transform: none !important;
+            left: 0 !important;
+            text-align: center;
+          }  
           color: ${props =>
             props.theme.primaryColor
               ? hexToRGB(props.theme.primaryColor, 0.8)
-              : hexToRGB(Theme.Color.Ocean, 0.8)} };
+              : hexToRGB(Theme.Color.Ocean, 0.8)} };  
         }
       }
 
@@ -359,6 +381,9 @@ NavigationOverlayStyle.Main = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      flex-direction: column-reverse;
+    }
 
     .top,
     .bottom {
@@ -367,6 +392,9 @@ NavigationOverlayStyle.Main = styled.div`
       font-size: 5vw;
       font-weight: bold;
       color: ${Theme.Color.White};
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        justify-content: flex-start;
+      }
 
       li {
         text-align: right;
@@ -376,6 +404,9 @@ NavigationOverlayStyle.Main = styled.div`
         transform: translateX(0);
         transition: ${Theme.Base.Transition.String};
         ${cascadeSlideUp(10)};
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          text-align: left;
+        }
 
         a {
           text-decoration: none;
@@ -403,10 +434,20 @@ NavigationOverlayStyle.Main = styled.div`
           background: ${Theme.Color.White};
           transform: translateX(calc(100% + (${Root.Size} * 1.5)));
           transition: ${Theme.Base.Transition.String};
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            content: none;
+          }
         }
 
         &:hover {
           transform: translateX(calc((${Root.Size} / 2) * -1));
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            transform: none;
+            color: ${props =>
+              props.theme.activeColor
+                ? props.theme.activeColor
+                : Theme.Color.Galaxy};
+          }
         }
 
         &.active {
@@ -416,6 +457,10 @@ NavigationOverlayStyle.Main = styled.div`
             props.theme.activeColor
               ? props.theme.activeColor
               : Theme.Color.Galaxy};
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            transform: none;
+            color: ${Theme.Color.White};
+          }
 
           a {
             text-decoration: none;
@@ -424,6 +469,9 @@ NavigationOverlayStyle.Main = styled.div`
               props.theme.activeColor
                 ? props.theme.activeColor
                 : Theme.Color.Galaxy};
+            @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+              color: ${Theme.Color.White};
+            }
           }
 
           &:after {
@@ -439,6 +487,9 @@ NavigationOverlayStyle.Main = styled.div`
                 : Theme.Color.Galaxy};
             transform: translateX(calc(100% + (${Root.Size} * 1.5)));
             transition: all 0s ease;
+            @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+              content: none;
+            }
           }
         }
       }
@@ -447,11 +498,17 @@ NavigationOverlayStyle.Main = styled.div`
     .top {
       flex-direction: column;
       align-items: flex-end;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        align-items: flex-start;
+      }
 
       .overlay-icon {
         display: flex;
         align-items: center;
         justify-content: center;
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          display: none;
+        }
 
         .ico {
           width: 17vh;
