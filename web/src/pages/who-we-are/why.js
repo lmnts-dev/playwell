@@ -43,15 +43,12 @@ import { Base } from 'constants/styles/Base';
 const HeroProps = {
   bg: Theme.Color.Cream,
   color: Theme.Color.Primary,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
-  playButton: false,
-  playButtonBg: Theme.Color.Nova,
-  gear: false,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
-  bgMatch: 'team.jpg',
+  playButton: true,
+  playButtonBg: Theme.Color.Ocean,
+  gear: true,
+  gearFill: Theme.Color.Sunset,
+  subNavColor: Theme.Color.Nova,
+  arrowColor: Theme.Color.Nova,
 };
 
 const ThemeProps = {
@@ -83,7 +80,15 @@ const GiantTextBlock = styled(GiantText)`
 const WhoWhyPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps} subNav={['who', 'how', 'why', 'careers']}>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          { label: 'who', link: '/who-we-are/who' },
+          { label: 'why', active: true, link: '/who-we-are/why' },
+          { label: 'how', link: '/who-we-are/how' },
+          { label: 'careers', link: '/who-we-are/careers' },
+        ]}
+      >
         <h2>We provide opportunities for creative expression</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
       </SplitHero>
@@ -229,11 +234,7 @@ const WhoWhyPage = () => {
             Text="We do this in the context of fun-filled engineering and
               architectural projects, activities that both the children and the
               instructors enjoy."
-            Images={[
-              'kids-1.jpg',
-              'lego-head.png',
-              'boy-3.png',
-            ]}
+            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
           />
         </BasicInner>
       </BasicSection>

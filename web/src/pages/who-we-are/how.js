@@ -51,13 +51,12 @@ const ThemeProps = {
 const HeroProps = {
   bg: Theme.Color.Lilac,
   color: Theme.Color.White,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
+  playButton: true,
   playButtonBg: Theme.Color.Nova,
   gear: true,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
+  gearStroke: Theme.Color.White,
+  subNavColor: Theme.Color.White,
+  arrowColor: Theme.Color.White,
 };
 
 // Begin Component
@@ -75,7 +74,15 @@ const OverflowHidden = styled.div`
 const WhoHowPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps} subNav={['who', 'how', 'why', 'careers']}>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          { label: 'who', link: '/who-we-are/who' },
+          { label: 'why', link: '/who-we-are/why' },
+          { label: 'how', active: true, link: '/who-we-are/how' },
+          { label: 'careers', link: '/who-we-are/careers' },
+        ]}
+      >
         <h2>Join a team of creative problem solvers &amp; creators</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
       </SplitHero>

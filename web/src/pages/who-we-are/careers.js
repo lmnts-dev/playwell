@@ -42,15 +42,11 @@ import { Base } from 'constants/styles/Base';
 const HeroProps = {
   bg: Theme.Color.Sky,
   color: Theme.Color.White,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
-  playButton: false,
-  playButtonBg: Theme.Color.Nova,
-  gear: false,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
-  bgMatch: 'team.jpg',
+  playButton: true,
+  gear: true,
+  gearFill: Theme.Color.Dino,
+  subNavColor: Theme.Color.White,
+  arrowColor: Theme.Color.Nova,
 };
 
 const ThemeProps = {
@@ -67,7 +63,15 @@ const ThemeProps = {
 const WhoCareersPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps} subNav={['who', 'how', 'why', 'careers']}>
+      <SplitHero
+        {...HeroProps}
+        subNav={[
+          { label: 'who', link: '/who-we-are/who' },
+          { label: 'why', link: '/who-we-are/why' },
+          { label: 'how', link: '/who-we-are/how' },
+          { label: 'careers', active: true, link: '/who-we-are/careers' },
+        ]}
+      >
         <h2>Join a Team of creative problem solvers &amp; creators</h2>
         <h6>We are passionate specialists in STEM Education.</h6>
         <Btn

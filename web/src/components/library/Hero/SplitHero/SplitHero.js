@@ -30,25 +30,20 @@ import {
 
 const SplitHero = ({
   bg,
-  bgMatch,
-  bgQuery,
-  bgAlt,
   children,
   color,
-  flexDirection,
   gear,
+  gearFill,
+  gearStroke,
   playButtonBg,
+  arrowColor,
   subNavColor,
   subNav,
-  px,
-  textAlign,
-  withMask,
-  heroHeight,
   playButton,
 }) => (
   <BasicSection BgColor={bg} TextColor={color}>
     <BasicInner noPaddingRight>
-      <SplitHeroStyle subNavColor={subNavColor}>
+      <SplitHeroStyle subNavColor={subNavColor} arrowColor={arrowColor}>
         <div className="text">
           <div className="flex-spacer"></div>
           <div className="children">{children}</div>
@@ -57,8 +52,8 @@ const SplitHero = ({
             <div className="sub-nav">
               {subNav.map((nav, index) => {
                 return (
-                  <a className="h5" href={"/who-we-are/" + nav } key={index}>
-                    {nav}
+                  <a className={"h5 " + (nav.active ? 'link-active' : '')} href={nav.link} key={index}>
+                    {nav.label}
                   </a>
                 );
               })}
@@ -69,7 +64,7 @@ const SplitHero = ({
           <ImgMatch src="intro-smiles.jpg" />
           {gear ? (
             <GearContainer>
-              <GearRotator strokeColor={props => props.theme.Color.White} />
+              <GearRotator strokeColor={gearStroke ? gearStroke : 'transparent'} fill={gearFill}/>
             </GearContainer>
           ) : null}
           {playButton == true ? <PlayButton bg={playButtonBg} /> : false}
