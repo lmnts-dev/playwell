@@ -1,4 +1,5 @@
 // <AfterSchoolContact /> section:
+// todo: form validation
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -10,8 +11,9 @@ import ImgMatch from 'components/core/ImgMatch';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
-import Btn from 'components/library/Btn';
 import Section from 'components/library/Elements/Section';
+import Btn from 'components/library/Btn';
+import { Icon } from 'components/library/Icons';
 
 // Styles
 import { Form } from './styles.scss';
@@ -24,7 +26,7 @@ import { Theme, Root } from 'constants/Theme';
 
 const AfterSchoolContact = () => {
   return (
-    <Section bg="Background">
+    <Section bg={Theme.Color.Background}>
       <Form
         name="after-school-contact"
         method="post"
@@ -39,8 +41,8 @@ const AfterSchoolContact = () => {
         />
         <legend className="h3">Bring our programs to your school</legend>
         <fieldset>
-          <div className="flex">
-            <Box width={[1, 1 / 2, 4 / 10]}>
+          <div className="form-group">
+            <Box width={[1, 1 / 2, 4 / 10]} className="form-group__box">
               <label htmlFor="firstName">
                 First Name:{' '}
                 <abbr title="required" aria-label="required">
@@ -52,10 +54,11 @@ const AfterSchoolContact = () => {
                 name="firstName"
                 id="firstName"
                 placeholder="First Name"
+                required
               />
             </Box>
 
-            <Box width={[1, 1 / 2, 6 / 10]}>
+            <Box width={[1, 1 / 2, 6 / 10]} className="form-group__box">
               <label htmlFor="lastName">
                 Last Name:{' '}
                 <abbr title="required" aria-label="required">
@@ -67,6 +70,7 @@ const AfterSchoolContact = () => {
                 name="lastName"
                 id="lastName"
                 placeholder="Last name"
+                required
               />
             </Box>
           </div>
@@ -103,47 +107,81 @@ const AfterSchoolContact = () => {
               name="email"
               id="email"
               placeholder="Your email"
+              required
             />
           </Box>
 
-          <div className="flex">
-            <Box width={[1, 1 / 2, 4 / 10]}>
+          <div className="form-group">
+            <Box width={[1, 1 / 2, 4 / 10]} className="form-group__box">
               <label htmlFor="phone">Phone:</label>
-              <input type="tel" name="phone" id="phone" />
+              <input
+                type="tel"
+                name="phone"
+                id="phone"
+                placeholder="(___) ___-____"
+                pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
+                maxlength="12"
+              />
             </Box>
 
-            <Box width={[1, 1 / 2, 1 / 2]}>
+            <Box
+              width={[1, 1 / 2, 1 / 2]}
+              className="form-group__box form-group__box--select"
+            >
               <label htmlFor="eventType">Type of Event:</label>
               <select name="eventType" id="eventType">
+                <option value={null}>Type of Event</option>
                 <option value="event">Event</option>
                 <option value="event">Event</option>
                 <option value="event">Event</option>
               </select>
+              <span className="carat">
+                <Icon Name="carat" className="ico-carat" />
+              </span>
             </Box>
           </div>
 
-          <div className="flex">
-            <Box width={[1, 1 / 2, 4 / 10]}>
+          <div className="form-group">
+            <Box width={[1, 1 / 2, 4 / 10]} className="form-group__box">
               <label htmlFor="city">City:</label>
               <input type="text" name="city" id="city" placeholder="City" />
             </Box>
 
-            <Box width={[1, 1 / 2, 4 / 10]}>
+            <Box
+              width={[1, 1 / 2, 4 / 10]}
+              className="form-group__box form-group__box--select"
+            >
               <label htmlFor="state">State:</label>
               <select name="state" id="state">
+                <option value={null}>State</option>
                 <option value="state">State</option>
                 <option value="state">State</option>
                 <option value="state">State</option>
               </select>
+              <span className="carat">
+                <Icon Name="carat" className="ico-carat" />
+              </span>
             </Box>
           </div>
 
-          <div>
-            <span className="p-lg">How would you like us to respond?</span>
-            <input type="radio" name="email" value="email" /> <span>email</span>
+          <div className="radio-group">
+            <span className="p-lg form-heading">
+              How would you like us to respond?
+            </span>
+
+            <label htmlFor="email-or-phone">
+              email
+              <input type="radio" name="email-or-phone" value="email" />
+              <span className="checkmark" />
+            </label>
+
             <span>OR</span>
-            <input type="radio" name="phone" value="phone" />
-            <span>phone</span>
+
+            <label htmlFor="email-or-phone">
+              phone
+              <input type="radio" name="email-or-phone" value="phone" />
+              <span className="checkmark" />
+            </label>
           </div>
 
           <Btn
@@ -152,6 +190,13 @@ const AfterSchoolContact = () => {
             Label="Submit Request"
             Destination="/"
           />
+
+          <div className="footnote">
+            <p className="p-lg">
+              Once you've submitted your request, we will respond to your
+              inquiry by email
+            </p>
+          </div>
         </fieldset>
       </Form>
     </Section>
