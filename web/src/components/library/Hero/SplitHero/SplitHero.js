@@ -40,6 +40,7 @@ const SplitHero = ({
   gear,
   gearFill,
   gearStroke,
+  wideImage,
   playButtonBg,
   subNavColor,
   subNav,
@@ -48,7 +49,7 @@ const SplitHero = ({
 }) => (
   <BasicSection BgColor={bg} TextColor={color}>
     <BasicInner noPaddingRight={!reversed} noPaddingLeft={reversed}>
-      <SplitHeroStyle subNavColor={subNavColor} arrowColor={arrowColor} reversed={reversed}>
+      <SplitHeroStyle subNavColor={subNavColor} arrowColor={arrowColor} reversed={reversed} wideImage={wideImage}>
         <div className="text">
           <div className="flex-spacer"></div>
           <div className="children">{children}</div>

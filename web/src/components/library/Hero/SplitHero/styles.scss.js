@@ -104,7 +104,7 @@ export const SplitHeroStyle = styled.div`
   }
 
   .imagery {
-    flex: 2;
+    flex: ${props => (!props.reversed && props.wideImage) ? '4' : '2'};
     margin-right: calc(${Theme.Base.Size.Lg} * ${props => props.reversed ? '1.5' : '1'});
     position: relative;
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
@@ -123,8 +123,8 @@ export const SplitHeroStyle = styled.div`
       width: 100%;
       height: 100%;
       border-radius: calc(${Theme.Base.Size.Lg} ${props => props.reversed ? '* 0' : '/ 10'});
-      border-top-left-radius: calc(${Theme.Base.Size.Lg} ${props => props.reversed ? '* 0' : '* 0.75'});
-      border-top-right-radius: calc(${Theme.Base.Size.Lg} ${props => props.reversed ? '* 0.75' : '* 0'});
+      border-top-left-radius: calc(${Theme.Base.Size.Lg} ${props => (props.reversed || props.wideImage) ? '* 0' : '* 0.75'});
+      border-top-right-radius: calc(${Theme.Base.Size.Lg} ${props => (props.reversed || props.wideImage) ? '* 0.75' : '* 0'});
     }
   }
 

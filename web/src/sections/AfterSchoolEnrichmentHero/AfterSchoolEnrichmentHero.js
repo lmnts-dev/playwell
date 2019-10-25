@@ -30,34 +30,26 @@ import { Theme, Root } from 'constants/Theme';
 const HeroProps = {
   arrowColor: Theme.Color.Nova,
   bg: Theme.Color.White,
-  color: Theme.Color.Dino,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
+  color: Theme.Color.Eggplant,
   playButton: true,
   playButtonBg: Theme.Color.Ocean,
   gear: false,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
-  bgMatch: 'kid-remote-control.jpg',
+  wideImage: true,
 };
 
 const AfterSchoolEnrichmentHero = () => {
   return (
     <SplitHero {...HeroProps}>
-      <Box pr={[4, 8, 14]}>
-        <Text as="h2" color="Primary">Play-Well After School Enrichment</Text>
-        <h6>
-          In our Engineering with LEGO&reg; enrichment program, take on real
-          life engineering challenges.
-        </h6>
-        <Btn
-          BgColor={Theme.Color.Nova}
-          Label="Request Info"
-          Destination="/contact"
-          TextColor={Theme.Color.White}
-        />
-      </Box>
+      <h2>How STEM Enrichment paves the way for our beliefs</h2>
+      <h6 className="txt-clr-dino">
+        Lorem ipsum dolor sit amet, consectetur a.
+      </h6>
+      <Btn
+        BgColor={Theme.Color.Nova}
+        Label="Request Info"
+        Destination="/contact"
+        TextColor={Theme.Color.White}
+      />
     </SplitHero>
   );
 };
