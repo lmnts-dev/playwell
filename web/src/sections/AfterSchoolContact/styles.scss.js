@@ -108,7 +108,7 @@ export const Form = styled.form`
     textarea,
     select {
       background: ${Theme.Color.Blush};
-      color: ${Theme.Color.Dino};
+      color: ${Theme.Color.Primary};
       font-size: 1.2rem;
       font-weight: 500;
       line-height: 2.5;

@@ -48,6 +48,7 @@ const wrapPageElement = ({ element, props }) => {
                           route
                         }
                         minorLinkList {
+                          route
                           label
                           subhead
                         }
