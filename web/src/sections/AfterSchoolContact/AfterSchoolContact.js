@@ -120,7 +120,7 @@ const AfterSchoolContact = () => {
                 id="phone"
                 placeholder="(___) ___-____"
                 pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
-                maxlength="12"
+                maxLength="12"
               />
             </Box>
 
