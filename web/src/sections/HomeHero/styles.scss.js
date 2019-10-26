@@ -336,6 +336,11 @@ export const Actions = styled.div`
       text-decoration: none !important;
     }
   }
+
+  /* Ew. Just temporary. */
+  section div div div .btn-inner {
+    height: calc(var(--ButtonSize) * 1.5);
+  }
 `;
 
 export const HeroBtn = styled.button`

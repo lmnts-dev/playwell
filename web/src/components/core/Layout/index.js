@@ -6,7 +6,6 @@
 
 // Core
 import React from 'react';
-import { createGlobalStyle } from 'styled-components';
 
 // Vendor
 import { StaticQuery, graphql } from 'gatsby';
@@ -26,9 +25,9 @@ import SiteGrid from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-if (typeof window !== "undefined") {
+if (typeof window !== 'undefined') {
   // eslint-disable-next-line global-require
-  require("smooth-scroll")('a[href*="#"]')
+  require('smooth-scroll')('a[href*="#"]');
 }
 
 const Layout = ({

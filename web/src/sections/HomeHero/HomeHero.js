@@ -19,6 +19,7 @@ import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngle
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 // import HeroContainer from 'components/library/Hero/HeroContainer';
 import { LocationFilter } from './LocationFilter';
+import { NavFilter } from 'components/library/Navigation/NavFilter';
 import { BasicInner } from 'components/library/Section/BasicSection';
 
 // Vendor
@@ -104,7 +105,7 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
                     Explore Courses
                   </HeroBtn>
                 </Link>
-                <LocationFilter />
+                <NavFilter />
               </Actions>
             </div>
           </BasicInner>

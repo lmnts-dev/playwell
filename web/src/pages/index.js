@@ -43,7 +43,7 @@ const ThemeProps = {
 
 const Centered = styled(CenteredTitle)`
   &.community {
-    ~.gatsby-image-wrapper {
+    ~ .gatsby-image-wrapper {
       height: 130%;
       width: 100%;
       position: absolute !important;
@@ -89,15 +89,16 @@ const HomePage = () => (
             Class="h3"
             className="community"
           />
-          <ImgMatch src="cloud-big.png" objectFit="contain" objectPosition="left center"/>
+          <ImgMatch
+            src="cloud-big.png"
+            objectFit="contain"
+            objectPosition="left center"
+          />
         </BasicInner>
         <HomeCommunity slides={CommunitySlides} />
       </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Ocean}
-        TextColor={Theme.Color.White}
-      >
+      <BasicSection BgColor={Theme.Color.Ocean} TextColor={Theme.Color.White}>
         <BasicInner noPaddingLeft>
           <EdgeImageWithText
             Reversed
@@ -154,25 +155,38 @@ const HomePage = () => (
       >
         <ImageAccordianFeature
           Links={[
-            { link: '/', label: 'Robotics' }, 
-            { link: '/', label: 'Intro to STEM' }, 
-            { link: '/', label: 'Gaming' }, 
-            { link: '/', label: 'Advanced Engineering' }, 
-            { link: '/', label: 'Engineering Themes' }, 
+            { link: '/', label: 'Robotics' },
+            { link: '/', label: 'Intro to STEM' },
+            { link: '/', label: 'Gaming' },
+            { link: '/', label: 'Advanced Engineering' },
+            { link: '/', label: 'Engineering Themes' },
           ]}
           Accordians={[
-            { header: 'Worshops', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'girl-3.jpg' }, 
-            { header: 'Classes', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'girl-2.jpg' },
-            { header: 'Camps', paragraph: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', image:'girl-1.jpg' },
+            {
+              header: 'Worshops',
+              paragraph:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              image: 'girl-3.jpg',
+            },
+            {
+              header: 'Classes',
+              paragraph:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              image: 'girl-2.jpg',
+            },
+            {
+              header: 'Camps',
+              paragraph:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              image: 'girl-1.jpg',
+            },
           ]}
         />
       </BasicSection>
-
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
         noPaddingTop
-        noPaddingBottom
       >
         <BasicInner>
           <SpecialSimpleTextWithImage
@@ -186,10 +200,14 @@ const HomePage = () => (
           />
         </BasicInner>
       </BasicSection>
-
     </Main>
   </Layout>
 );
+
+// Styles
+const Main = styled.main`
+
+`;
 
 const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
   &.overflow-image {
@@ -203,7 +221,7 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
     }
     .image {
       flex: 1;
-      position relative;
+      position: relative;
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         width: 100%;
         max-height: calc(${Theme.Base.Size.Lg} * 5);
@@ -230,11 +248,6 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
       }
     }
   }
-`
-
-// Styles
-const Main = styled.main`
-  overflow: hidden;
 `;
 
 const Decorator = styled(Box)`

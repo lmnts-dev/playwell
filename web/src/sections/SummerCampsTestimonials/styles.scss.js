@@ -24,27 +24,34 @@ export const Container = styled.div`
   margin: 0 auto;
   position: relative;
   max-width: calc(${Root.Size} * 11);
+
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     max-width: calc(${Root.Size} * 12);
   }
+
   @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
     max-width: calc(${Root.Size} * 15);
   }
+
   span {
     width: 100%;
     display: block;
   }
+
   .headline {
     color: ${Theme.Color.Blush};
     /* padding: calc(${Root.Size} / 4) 0; */
   }
+
   .lead {
     color: ${Theme.Color.Sunset};
     padding-bottom: calc(var(--Size) / 3.5);
+
     @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
       font-size: 1.75rem;
     }
   }
+
   ul {
     padding-bottom: calc(var(--Size) / 3.5);
     
@@ -54,12 +61,15 @@ export const Container = styled.div`
         transition: ${Theme.Base.Transition.String};
         /* text-decoration: none !important; */
         font-size: 2.5rem;
+
         @media (min-width: ${Base.Media.Width.Md + 'px'}) {
           font-size: 4rem;
         }
+
         @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
           font-size: 5rem;
         }
+
         &:hover {
           /* color: ${hexToRGB(Theme.Color.Primary, 0.7)}; */
         }

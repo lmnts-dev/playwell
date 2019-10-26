@@ -36,7 +36,7 @@ const HeroProps = {
   playButtonBg: Theme.Color.Nova,
   gear: false,
   subNavColor: Theme.Color.Eggplant,
-  bgMatch: 'happy-adult.jpg',
+  bgMatch: 'group-girls.jpg',
 };
 
 const HostProgramHero = ({ cities, pageContext }) => {

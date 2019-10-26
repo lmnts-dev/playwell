@@ -35,9 +35,9 @@ const Main = styled.main`
 // Props
 const ThemeProps = {
   BgColor: Theme.Color.Background,
-  PrimaryColor: Theme.Color.Lilac,
+  PrimaryColor: Theme.Color.Primary,
   SecondaryColor: Theme.Color.Dino,
-  TertiaryColor: Theme.Color.Nova,
+  TertiaryColor: Theme.Color.Lilac,
 };
 
 // Render Page
