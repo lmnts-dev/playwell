@@ -21,7 +21,7 @@
                 "focus": true
               },
               {
-                "route": "/host-your-own",
+                "route": "/programs/host-a-program",
                 "label": "Host a program",
                 "focus": false
               }
