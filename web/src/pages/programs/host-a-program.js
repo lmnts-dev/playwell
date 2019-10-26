@@ -41,7 +41,7 @@ const ThemeProps = {
 };
 
 // Render Page
-const HostYourOwnPage = () => {
+const HostProgramPage = () => {
   // Use our hook's data as source
   // const fetchedData = DataFetch();
 
@@ -56,7 +56,7 @@ const HostYourOwnPage = () => {
   );
 };
 
-export default HostYourOwnPage;
+export default HostProgramPage;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

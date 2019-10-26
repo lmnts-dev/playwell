@@ -1,4 +1,4 @@
-// <AfterSchoolEnrichmentHero /> section:
+// <AfterSchoolHero /> section:
 // Location detail template coordinator accordion
 
 // Imports
@@ -35,9 +35,10 @@ const HeroProps = {
   playButtonBg: Theme.Color.Ocean,
   gear: false,
   wideImage: true,
+  bgMatch: 'kid-remote-control.jpg',
 };
 
-const AfterSchoolEnrichmentHero = () => {
+const AfterSchoolHero = () => {
   return (
     <SplitHero {...HeroProps}>
       <h2>Play-Well After School Enrichment</h2>
@@ -52,7 +53,7 @@ const AfterSchoolEnrichmentHero = () => {
   );
 };
 
-export default AfterSchoolEnrichmentHero;
+export default AfterSchoolHero;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

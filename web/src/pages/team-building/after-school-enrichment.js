@@ -14,7 +14,7 @@ import { Box, Flex, Text } from 'components/library/Elements';
 import Section from 'components/library/Elements/Section';
 
 // Sections
-import AfterSchoolEnrichmentHero from 'sections/AfterSchoolEnrichmentHero';
+import AfterSchoolHero from 'sections/AfterSchoolHero';
 import AfterSchoolClasses from 'sections/AfterSchoolClasses';
 import AfterSchoolOverview from 'sections/AfterSchoolOverview';
 import AfterSchoolContact from 'sections/AfterSchoolContact';
@@ -50,7 +50,7 @@ const AfterSchoolEnrichmentPage = () => {
   return (
     <Layout {...ThemeProps}>
       <Main>
-        <AfterSchoolEnrichmentHero />
+        <AfterSchoolHero />
         <AfterSchoolClasses />
 
         <Section bg="Background" pt={14} pb={14}>

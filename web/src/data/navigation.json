@@ -17,49 +17,69 @@
             "focusLinkList": [
               {
                 "route": "/programs",
-                "label": "View All Programs",
+                "label": "Find a program",
                 "focus": true
               },
               {
-                "route": "/",
-                "label": "Special Events",
-                "focus": false
-              },
-              {
-                "route": "/",
-                "label": "Programs Link",
-                "focus": false
-              },
-              {
-                "route": "/",
-                "label": "Programs Link",
-                "focus": false
-              },
-              {
-                "route": "/",
-                "label": "Programs Link",
+                "route": "/host-your-own",
+                "label": "Host a program",
                 "focus": false
               }
             ],
             "minorLinkList": [
               {
                 "route": "",
-                "label": "Subhead",
+                "label": "Learn more",
                 "subhead": true
               },
               {
-                "route": "/",
-                "label": "Programs Link",
+                "route": "/parties/birthday-parties",
+                "label": "Birthday Parties",
                 "subhead": false
               },
               {
-                "route": "/",
-                "label": "Programs Link",
+                "route": "/programs/summer-camps",
+                "label": "Summer Camps",
                 "subhead": false
               },
               {
-                "route": "/",
-                "label": "Programs Link",
+                "route": "/parties/special-events",
+                "label": "Special Events",
+                "subhead": false
+              },
+              {
+                "route": "/team-building/after-school-enrichment",
+                "label": "After School Enrichment",
+                "subhead": false
+              },
+              {
+                "route": "/programs/our-curriculum",
+                "label": "Our Curriculums",
+                "subhead": false
+              },
+              {
+                "route": "",
+                "label": "Play-Well isn't just for kids...",
+                "subhead": true
+              },
+              {
+                "route": "/team-building",
+                "label": "Team Building",
+                "subhead": false
+              },
+              {
+                "route": "/team-building/organizations",
+                "label": "Organizations",
+                "subhead": false
+              },
+              {
+                "route": "/team-building/sports-teams",
+                "label": "Sports Teams",
+                "subhead": false
+              },
+              {
+                "route": "/team-building/non-profits",
+                "label": "Non-Profits",
                 "subhead": false
               }
             ]
@@ -158,17 +178,17 @@
                 "subhead": true
               },
               {
-                "route": "/",
+                "route": "/parties/birthday-parties",
                 "label": "Birthday Parties",
                 "subhead": false
               },
               {
-                "route": "/",
+                "route": "/team-building",
                 "label": "Team Building",
                 "subhead": false
               },
               {
-                "route": "/host-your-own",
+                "route": "/programs/host-a-program",
                 "label": "Host Your Own",
                 "subhead": false
               },
@@ -183,12 +203,12 @@
                 "subhead": false
               },
               {
-                "route": "/",
+                "route": "/team-building/organizations",
                 "label": "Organizations",
                 "subhead": false
               },
               {
-                "route": "/special-events",
+                "route": "/parties/special-events",
                 "label": "Special Events",
                 "subhead": false
               },
@@ -198,12 +218,12 @@
                 "subhead": false
               },
               {
-                "route": "/",
+                "route": "/team-building/non-profits",
                 "label": "Non-Profits",
                 "subhead": false
               },
               {
-                "route": "/",
+                "route": "/team-building/sports-teams",
                 "label": "Sports Teams",
                 "subhead": false
               }

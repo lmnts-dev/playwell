@@ -53,8 +53,6 @@ const ThemeProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-
-
 // Render Page
 const TeamBuilding = () => {
   return (
