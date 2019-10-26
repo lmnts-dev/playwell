@@ -4,6 +4,7 @@
 
 // Core
 import React from 'react';
+import styled from 'styled-components';
 import Transition from 'components/core/Transition';
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -17,6 +18,10 @@ import { navDataTransformer } from 'components/library/Navigation/Data/';
 
 // Begin Helper
 //////////////////////////////////////////////////////////////////////
+
+const Main = styled.main`
+  overflow: hidden;
+`;
 
 const wrapPageElement = ({ element, props }) => {
   return (
@@ -66,11 +71,11 @@ const wrapPageElement = ({ element, props }) => {
         }
       `}
       render={data => (
-        <>
+        <Main>
           <Navigation navQuery={navDataTransformer(data)} {...props} />
           <Transition {...props}>{element}</Transition>
           <Footer navQuery={navDataTransformer(data)} {...props} />
-        </>
+        </Main>
       )}
     />
   );

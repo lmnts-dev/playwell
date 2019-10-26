@@ -183,27 +183,31 @@ const HomePage = () => (
           ]}
         />
       </BasicSection>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+      >
+        <BasicInner>
+          <SpecialSimpleTextWithImage
+            Caption="It starts with play"
+            Header="Build Your Own World of Opportunity"
+            Paragraph="Bring your kid over or bring out your inner kid with some of our online activities to feed your imagination."
+            Image="lego-ladder.png"
+            ButtonText="Play Zone"
+            ButtonDest="/"
+            className="overflow-image"
+          />
+        </BasicInner>
+      </BasicSection>
     </Main>
-    <BasicSection
-      BgColor={Theme.Color.Background}
-      TextColor={Theme.Color.Dino}
-      noPaddingTop
-      noPaddingBottom
-    >
-      <BasicInner>
-        <SpecialSimpleTextWithImage
-          Caption="It starts with play"
-          Header="Build Your Own World of Opportunity"
-          Paragraph="Bring your kid over or bring out your inner kid with some of our online activities to feed your imagination."
-          Image="lego-ladder.png"
-          ButtonText="Play Zone"
-          ButtonDest="/"
-          className="overflow-image"
-        />
-      </BasicInner>
-    </BasicSection>
   </Layout>
 );
+
+// Styles
+const Main = styled.main`
+
+`;
 
 const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
   &.overflow-image {
@@ -217,7 +221,7 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
     }
     .image {
       flex: 1;
-      position relative;
+      position: relative;
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         width: 100%;
         max-height: calc(${Theme.Base.Size.Lg} * 5);
@@ -244,11 +248,6 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
       }
     }
   }
-`;
-
-// Styles
-const Main = styled.main`
-  overflow-x: hidden;
 `;
 
 const Decorator = styled(Box)`

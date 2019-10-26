@@ -287,7 +287,7 @@ SearchBarStyle.FilterList = styled.div`
   background: ${Theme.Color.White};
   box-shadow: 0 12px 44px 0 ${hexToRGB(Theme.Color.Galaxy, 0.11)};
   border-radius: calc(${Root.Radius} / 2);
-  z-index: 20;
+  z-index: 9999999;
   /* overflow: hidden; */
   transition: ${Theme.Base.Transition.String};
   opacity: 0;

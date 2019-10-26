@@ -14,13 +14,6 @@ import Section from 'components/library/Elements/Section';
 
 import CenterSlider from 'components/library/Section/CenterSlider';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
-import Marquee from 'components/library/Section/Marquee';
-import CurveAndAngle from 'components/library/Section/CurveAndAngle';
-import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
-import ImgMatch from 'components/core/ImgMatch';
-import LegoList from 'components/library/Section/LegoList';
-import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 
 import {
   BasicSection,
@@ -31,7 +24,7 @@ import {
 import SummerCampsHero from 'sections/SummerCampsHero';
 import SummerCampsCulture from 'sections/SummerCampsCulture';
 import SummerCampsSplitLinks from 'sections/SummerCampsSplitLinks';
-import AfterSchoolContact from 'sections/AfterSchoolContact';
+import SummerCampsTestimonials from 'sections/SummerCampsTestimonials';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -51,7 +44,7 @@ const Main = styled.main`
 // Props
 const ThemeProps = {
   BgColor: Theme.Color.Background,
-  PrimaryColor: Theme.Color.Primary,
+  PrimaryColor: Theme.Color.White,
   SecondaryColor: Theme.Color.Dino,
   TertiaryColor: Theme.Color.Sunset,
 };
@@ -67,58 +60,7 @@ const SummerCampsPage = () => {
         <SummerCampsHero />
         <SummerCampsCulture />
 
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          BorderTop={Theme.Color.Clay}
-        >
-          <BasicInner>
-            <CenteredTitle
-              Title="Testimonials"
-              Class="h2"
-              TextColor={Theme.Color.Eggplant}
-              MaxWidth="500px"
-            />
-            <CenterSlider
-              testimonials={[
-                {
-                  name: 'Alisha',
-                  quote:
-                    'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                  title: 'Recent Applicant',
-                  image: 'intro-smiles.jpg',
-                },
-                {
-                  name: 'Binh',
-                  quote:
-                    'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                  title: 'Recent Applicant',
-                  image: 'intro-smiles.jpg',
-                },
-                {
-                  name: 'Kylie',
-                  quote:
-                    'Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                  title: 'Recent Applicant',
-                  image: 'intro-smiles.jpg',
-                },
-                {
-                  name: 'Matt',
-                  quote:
-                    'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                  title: 'Recent Applicant',
-                  image: 'intro-smiles.jpg',
-                },
-                {
-                  name: 'Pete',
-                  quote:
-                    'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                  title: 'Recent Applicant',
-                  image: 'intro-smiles.jpg',
-                },
-              ]}
-            />
-          </BasicInner>
-        </BasicSection>
+        <SummerCampsTestimonials />
 
         <Section bg="Blush">
           <Text as="h6" color="Galaxy">

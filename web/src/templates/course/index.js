@@ -39,7 +39,7 @@ const ThemeProps = {
   BgColor: Theme.Color.Sky,
   PrimaryColor: Theme.Color.White,
   SecondaryColor: Theme.Color.Deepsea,
-  TertiaryColor: Theme.Color.Primary,
+  TertiaryColor: Theme.Color.White,
 };
 
 const HeroProps = {
@@ -86,7 +86,7 @@ const Course = ({ pageContext }) => {
           <Hero.Avatar>
             <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
           </Hero.Avatar>
-          <Hero.Tags>
+          <ul className="hero-tags">
             <li>
               <Link
                 to={'/programs/' + slugify(pageContext.locationMeta.state.name)}
@@ -157,7 +157,7 @@ const Course = ({ pageContext }) => {
               </Link>
             </li>
             {pageContext.room && <li>{pageContext.room}</li>}
-          </Hero.Tags>
+          </ul>
           <Hero.Headline className="h3">
             {pageContext.course_type_name}
           </Hero.Headline>
@@ -166,12 +166,11 @@ const Course = ({ pageContext }) => {
           {/* <ContentOverlayButton>toggle</ContentOverlayButton> */}
           <a
             href={pageContext.action_url}
+            className="btn"
             target="_blank"
             rel="nofollow noreferrer"
           >
-            <Hero.Btn bgColor={Theme.Color.Nova} textColor={Theme.Color.White}>
-              Enroll Now
-            </Hero.Btn>
+            Enroll Now
           </a>
           <Box my={2}>
             <p>
@@ -180,9 +179,9 @@ const Course = ({ pageContext }) => {
               {pageContext.display_address}
             </p>
           </Box>
-          <Hero.Tags as="ul">
+          <ul className="hero-tags">
             <li>more</li>
-          </Hero.Tags>
+          </ul>
         </Hero>
       </HeroContainer>
 
@@ -305,29 +304,23 @@ const Course = ({ pageContext }) => {
 
       <QuestionsCallout />
 
-      <CourseFooter bg="Sky" color="White">
-        <CourseFooter.Course as="article" m="0 auto">
-          <h5>Let's play!</h5>
-          <CourseFooter.Headline>
-            {pageContext.course_type_name}
-          </CourseFooter.Headline>
-          <CourseFooter.Date className="h5">
-            {pageContext.date_time_display}
-          </CourseFooter.Date>
-          <a
-            href={pageContext.action_url}
-            target="_blank"
-            rel="nofollow noreferrer"
-          >
-            <CourseFooter.Btn
-              bgColor={Theme.Color.Nova}
-              textColor={Theme.Color.White}
+      <Section bg="Sky" color="White">
+        <CourseFooter>
+          <div className="course">
+            <h5>Let's play!</h5>
+            <h2>{pageContext.course_type_name}</h2>
+            <span className="h5">{pageContext.date_time_display}</span>
+            <a
+              href={pageContext.action_url}
+              className="btn"
+              target="_blank"
+              rel="nofollow noreferrer"
             >
               Enroll Now
-            </CourseFooter.Btn>
-          </a>
-        </CourseFooter.Course>
-      </CourseFooter>
+            </a>
+          </div>
+        </CourseFooter>
+      </Section>
 
       <CourseSplitLinks
         countyName={pageContext.locationMeta.county.name}

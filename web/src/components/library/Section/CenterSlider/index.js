@@ -12,6 +12,7 @@ import { Link } from 'gatsby';
 import ImgMatch from 'components/core/ImgMatch';
 
 // Constants
+import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
 
 // Styles
@@ -74,8 +75,8 @@ class CenterSliderSlider extends React.Component {
 }
 
 // The SubLevel Page Itself
-const CenterSlider = ({ testimonials }) => (
-  <CenterSliderStyle>
+const CenterSlider = ({ testimonials, Color }) => (
+  <CenterSliderStyle Color={Color}>
     <CenterSliderSlider>
       {testimonials.map((testimonial, index) => {
         return (
@@ -89,5 +90,9 @@ const CenterSlider = ({ testimonials }) => (
     </CenterSliderSlider>
   </CenterSliderStyle>
 );
+
+CenterSlider.defaultProps = {
+  Color: Theme.Color.Primary,
+}
 
 export default CenterSlider;
