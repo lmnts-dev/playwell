@@ -279,7 +279,7 @@ SearchBarStyle.Button = styled.div`
 
 SearchBarStyle.FilterList = styled.div`
   position: absolute;
-  top: 130%;
+  top: 115%;
   /* left: 0; */
   right: 0;
   width: 260px;
@@ -353,7 +353,7 @@ SearchBarStyle.FilterList = styled.div`
       transition: ${Theme.Base.Transition.String};
 
       &:hover {
-        background-color: ${hexToRGB(Theme.Color.Ocean, 0.06)};
+        /* background-color: ${hexToRGB(Theme.Color.Ocean, 0.06)}; */
         color: ${Theme.Color.Sunset};
       }
 
@@ -368,9 +368,9 @@ SearchBarStyle.FilterList = styled.div`
           color: ${Theme.Color.Sunset};
         }
 
-        &:visited {
+        /* &:visited {
           color: ${Theme.Color.Sunlight};
-        }
+        } */
       }
 
       .no-results {
