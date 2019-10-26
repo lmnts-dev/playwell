@@ -1,4 +1,4 @@
-// <SummeCampsHero /> section:
+// <TeamBuildingHero /> section:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -26,43 +26,57 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 // Props
-const HeroProps = {
+const HeroPropss = {
   arrowColor: Theme.Color.Nova,
-  bg: Theme.Color.Nova,
-  color: Theme.Color.White,
+  bg: Theme.Color.White,
+  color: Theme.Color.Eggplant,
   playButton: true,
-  playButtonBg: Theme.Color.Primary,
+  playButtonBg: Theme.Color.Ocean,
   gear: false,
-  bgMatch: 'kid-machine.jpg',
+  wideImage: true,
+  bgMatch: 'team-containers.jpg',
   reversed: true,
 };
 
-const SummeCampsHero = () => {
+// Props
+const HeroProps = {
+  bg: Theme.Color.White,
+  bgMatch: 'team-containers.jpg',
+  color: Theme.Color.Primary,
+  playButton: true,
+  playButtonBg: Theme.Color.Ocean,
+  gear: false,
+  reversed: true,
+  subNavColor: Theme.Color.Nova,
+  arrowColor: Theme.Color.Nova,
+};
+
+const TeamBuildingHero = () => {
   return (
     <SplitHero
       {...HeroProps}
       subNav={[
-        { label: 'Summer Camps', active: true, link: '/programs/summer-camps' },
-        { label: 'Workshops', link: '/programs/workshops' },
-        { label: 'Classes', link: '/programs/classes' },
+        { label: 'team building', active: true, link: '/team-building' },
+        { label: 'organizations', link: '/team-building/organizations' },
+        { label: 'sports teams', link: '/team-building/sports-teams' },
+        { label: 'non-profits', link: '/team-building/non-profits' },
       ]}
     >
       <h2>Teams Come Together by Playing Well</h2>
       <h6 className="txt-clr-dino">
-        We believe that play reveals who you are, and who you are inpires your
+        We believe that play reveals who you are, and who you are inspires your
         work.
       </h6>
       <Btn
-        BgColor={Theme.Color.Primary}
-        Label="Camps near you"
-        Destination="/contact"
+        Label="Request Team Building Info"
+        BgColor={Theme.Color.Nova}
         TextColor={Theme.Color.White}
       />
     </SplitHero>
   );
 };
 
-export default SummeCampsHero;
+export default TeamBuildingHero;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
