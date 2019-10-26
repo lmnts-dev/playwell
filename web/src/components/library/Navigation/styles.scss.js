@@ -14,6 +14,7 @@ import { FadeIn, SlideUp } from 'components/core/Transition/Keyframes';
 
 // Helpers
 import hexToRGB from 'helpers/hexToRGB';
+import { Base } from 'constants/styles/Base';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -103,6 +104,9 @@ NavigationStyle.Primary = styled.div`
     transform: scale(1);
     transform-origin: center center;
     transition: ${Theme.Base.Transition.String};
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      height: calc(${Theme.Base.Size.Lg} * 1.25);
+    }
   }
 
   /* The Linklist */
@@ -111,6 +115,9 @@ NavigationStyle.Primary = styled.div`
     display: flex;
     flex-direction: row;
     padding-left: calc(${Root.Size} / 2);
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      display: none;
+    }
 
     /* The links themselves */
     li {
@@ -126,6 +133,7 @@ NavigationStyle.Primary = styled.div`
         display: inline-flex;
         align-items: center;
         padding: 0 calc(${Root.Size} / 4);
+        white-space: nowrap;
 
         &:hover {
           background-color: rgba(0, 0, 0, 0.02);
@@ -151,6 +159,9 @@ NavigationStyle.Secondary = styled.div`
   align-items: center;
   justify-content: flex-end;
   flex: 1;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: none;
+  }
 
   .btn {
     margin-left: calc(${Root.Size} / 4);
@@ -161,6 +172,40 @@ NavigationStyle.Secondary = styled.div`
 export const NavigationBodyPadding = createGlobalStyle`
   body {
     /* padding-top: calc(${Root.Nav.Size} * 1.5); */
+  }
+`;
+
+NavigationStyle.Mobile = styled.div`
+  display none;
+
+  @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+    display: block;
+  }
+
+  .hamburger {
+    border: none;
+    width: calc(${Theme.Base.Size.Lg} / 3);
+    height: 1px;
+    background-color: ${Theme.Color.Eggplant};
+    position: relative;
+    margin: calc(${Theme.Base.Size.Lg} / 4) 0 calc(${Theme.Base.Size.Lg} / 4) calc(${Theme.Base.Size.Lg});
+
+    &:before, &:after {
+      position: absolute;
+      content: '';
+      height: 1px;
+      width: 100%;
+      left: 0;
+      background-color: ${Theme.Color.Eggplant};
+    }
+
+    &:before {
+      top: calc(${Theme.Base.Size.Lg} / 8);
+    }
+
+    &:after {
+      bottom: calc(${Theme.Base.Size.Lg} / 8);
+    }
   }
 `;
 

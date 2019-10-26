@@ -32,14 +32,10 @@ const HeroProps = {
   arrowColor: Theme.Color.Nova,
   bg: Theme.Color.Cream,
   color: Theme.Color.Primary,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
   playButton: false,
   playButtonBg: Theme.Color.Nova,
   gear: false,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
+  subNavColor: Theme.Color.Eggplant,
   bgMatch: 'happy-adult.jpg',
 };
 
@@ -48,9 +44,9 @@ const HostProgramHero = ({ cities, pageContext }) => {
     <SplitHero
       {...HeroProps}
       subNav={[
-        'after school programs',
-        'recreation centers',
-        'homeschool classes',
+        { label: 'after school programs', active: true, link: '/host-a-program' },
+        { label: 'recreation centers', link: '/recreation-centers' },
+        { label: 'homeschool classes', link: '/homeschool-classes' },
       ]}
     >
       <h2>Hosting a Play-Well Program</h2>

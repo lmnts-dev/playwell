@@ -9,6 +9,7 @@ import styled, { css, keyframes } from 'styled-components';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
+import { Base } from 'constants/styles/Base';
 
 // Keyframe
 import {
@@ -31,6 +32,73 @@ import hexToRGB from 'helpers/hexToRGB';
 export const navFadeOutDuration = 1000; // milliseconds
 export const navFadeOutDurationString = navFadeOutDuration / 1000 + 's'; // for use in css animations
 
+export const MobileNavigationOverlayStyle = styled.div`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 801;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+  padding: calc(${Theme.Base.Size.Lg} / 2);
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    display: flex;
+  }
+
+  .mobile-fixed {
+    display: flex;
+    flex-direction: row;
+    pointer-events: all;
+
+    &.mobile-fixed-top {
+      justify-content: flex-end;
+
+      .exit {
+        width: calc(${Theme.Base.Size.Lg} / 2);
+        height: calc(${Theme.Base.Size.Lg} / 2);
+        position: relative;
+
+        &.dark-theme {
+          &:before, &:after {
+            background-color: ${Theme.Color.Eggplant};
+          }
+        }
+
+        &:before, &:after {
+          position: absolute;
+          content: '';
+          height: 1px;
+          width: 135%;
+          left: 0;
+          background-color: ${Theme.Color.White};
+        }
+
+        &:before {
+          top: 0;
+          transform: rotate(45deg);
+          transform-origin: top left;
+        }
+
+        &:after {
+          bottom: 0;
+          transform: rotate(-45deg);
+          transform-origin: bottom left;
+        }
+      }
+    }
+    &.mobile-fixed-bottom {
+      svg {
+        height: calc(${Theme.Base.Size.Lg} / 2);
+        width: auto;
+        fill: ${Theme.Color.White};
+      }
+    }
+  }
+`;
+
 export const NavigationOverlayStyle = styled.nav`
   position: fixed;
   width: 100vw;
@@ -48,6 +116,18 @@ export const NavigationOverlayStyle = styled.nav`
   z-index: 800;
   display: flex;
   flex-direction: column;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    background: ${props =>
+      props.theme.primaryColor
+        ? props.theme.primaryColor
+        : Theme.Color.Ocean};
+    width: 200vw;
+    transform: translateX(-50%);
+
+    &.focused-menu {
+      transform: translateX(0%);
+    }
+  }
 
   &.nav-hidden {
     visibility: hidden;
@@ -64,6 +144,7 @@ export const NavigationOverlayStyle = styled.nav`
   &.nav-fadeout {
     animation: ${FadeOut} ${navFadeOutDurationString} ease 0s 1 normal forwards;
   }
+
 `;
 
 NavigationOverlayStyle.Inner = styled.div`
@@ -86,81 +167,102 @@ NavigationOverlayStyle.Sub = styled.div`
     calc(${Root.Size} / 2);
   max-height: 100vh;
   overflow-y: auto;
-
-  .inner {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-
-    .top {
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    width: 50%;
+    min-width: none;
+    padding: calc(${Root.Size}) calc(${Root.Size} / 6) calc(${Root.Size} / 2)
+    calc(${Root.Size} / 2);
+  }
+    .inner {
+      flex: 1;
       display: flex;
-      flex-wrap: nowrap;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
 
-      .top-main {
+      .top {
         display: flex;
+        flex-wrap: nowrap;
         align-items: center;
         justify-content: space-between;
-
-        .brandmark {
-          margin-left: calc(${Root.Size} / 2);
-        }
-      }
-
-      .overlay-close {
-        background: rgba(0, 0, 0, 0);
-        transform: scale(1.5);
-        width: ${Root.Size};
-        height: ${Root.Size};
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-
-        svg {
-          transition: ${Theme.Base.Transition.String};
-          transform: rotate(-180deg) translateX(0);
-          fill: ${Theme.Color.Primary};
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          display: none;
         }
 
-        &:hover {
-          background: ${Theme.Color.Cream};
-          svg {
-            transform: rotate(-180deg) translateX(20%);
+        .top-main {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .brandmark {
+            margin-left: calc(${Root.Size} / 2);
           }
         }
 
-        &:active {
-          background: ${Theme.Color.Blush};
+        .overlay-close {
+          background: rgba(0, 0, 0, 0);
+          transform: scale(1.5);
+          width: ${Root.Size};
+          height: ${Root.Size};
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+
+          svg {
+            transition: ${Theme.Base.Transition.String};
+            transform: rotate(-180deg) translateX(0);
+            fill: ${Theme.Color.Primary};
+          }
+
+          &:hover {
+            background: ${Theme.Color.Cream};
+            svg {
+              transform: rotate(-180deg) translateX(20%);
+            }
+          }
+
+          &:active {
+            background: ${Theme.Color.Blush};
+          }
         }
       }
-    }
 
-    .bottom {
-      display: flex;
-      flex-wrap: nowrap;
-      flex: 1;
-
-      .col-heading {
-        width: ${Root.Size};
-        ${FadeIn};
-
-        span {
-          font-size: 7vh;
-          font-weight: bold;
-          position: relative;
+      .bottom {
+        display: flex;
+        flex-wrap: nowrap;
+        flex: 1;
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
           display: block;
-          transform-origin: top left;
-          transform: rotate(90deg) translateX(calc(${Root.Size} / 2));
-          left: 80%;
-          white-space: nowrap;
-          pointer-events: none;
-          color: ${props =>
-            props.theme.primaryColor
-              ? hexToRGB(props.theme.primaryColor, 0.8)
-              : hexToRGB(Theme.Color.Ocean, 0.8)} };
+        }
+
+        .col-heading {
+          width: ${Root.Size};
+          ${FadeIn};
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            width: 100%;
+          }
+
+          span {
+            font-size: 7vh;
+            font-weight: bold;
+            position: relative;
+            display: block;
+            transform-origin: top left;
+            transform: rotate(90deg) translateX(calc(${Root.Size} / 2));
+            left: 80%;
+            white-space: nowrap;
+            pointer-events: none;
+            @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+              font-size: 1rem !important;
+              transform: none !important;
+              left: 0 !important;
+              text-align: center;
+            }
+            color: ${props =>
+              props.theme.primaryColor
+                ? hexToRGB(props.theme.primaryColor, 0.8)
+                : hexToRGB(Theme.Color.Ocean, 0.8)};
+          }
         }
       }
 
@@ -353,12 +455,18 @@ NavigationOverlayStyle.Main = styled.div`
   display: flex;
   flex-direction: column;
   padding: calc(${Root.Size} / 1.25) calc(${Root.Size} * 1.5);
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    padding: calc(${Theme.Base.Size.Lg} * 2.5) calc(${Theme.Base.Size.Lg} * 1) calc(${Theme.Base.Size.Lg} * 2) calc(${Theme.Base.Size.Lg} * 1);
+  }
 
   .inner {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      flex-direction: column-reverse;
+    }
 
     .top,
     .bottom {
@@ -367,6 +475,9 @@ NavigationOverlayStyle.Main = styled.div`
       font-size: 5vw;
       font-weight: bold;
       color: ${Theme.Color.White};
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        justify-content: flex-start;
+      }
 
       li {
         text-align: right;
@@ -376,6 +487,9 @@ NavigationOverlayStyle.Main = styled.div`
         transform: translateX(0);
         transition: ${Theme.Base.Transition.String};
         ${cascadeSlideUp(10)};
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          text-align: left;
+        }
 
         a {
           text-decoration: none;
@@ -403,10 +517,20 @@ NavigationOverlayStyle.Main = styled.div`
           background: ${Theme.Color.White};
           transform: translateX(calc(100% + (${Root.Size} * 1.5)));
           transition: ${Theme.Base.Transition.String};
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            content: none;
+          }
         }
 
         &:hover {
           transform: translateX(calc((${Root.Size} / 2) * -1));
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            transform: none;
+            color: ${props =>
+              props.theme.activeColor
+                ? props.theme.activeColor
+                : Theme.Color.Galaxy};
+          }
         }
 
         &.active {
@@ -416,6 +540,10 @@ NavigationOverlayStyle.Main = styled.div`
             props.theme.activeColor
               ? props.theme.activeColor
               : Theme.Color.Galaxy};
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            transform: none;
+            color: ${Theme.Color.White};
+          }
 
           a {
             text-decoration: none;
@@ -424,6 +552,9 @@ NavigationOverlayStyle.Main = styled.div`
               props.theme.activeColor
                 ? props.theme.activeColor
                 : Theme.Color.Galaxy};
+            @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+              color: ${Theme.Color.White};
+            }
           }
 
           &:after {
@@ -439,6 +570,9 @@ NavigationOverlayStyle.Main = styled.div`
                 : Theme.Color.Galaxy};
             transform: translateX(calc(100% + (${Root.Size} * 1.5)));
             transition: all 0s ease;
+            @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+              content: none;
+            }
           }
         }
       }
@@ -447,11 +581,17 @@ NavigationOverlayStyle.Main = styled.div`
     .top {
       flex-direction: column;
       align-items: flex-end;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        align-items: flex-start;
+      }
 
       .overlay-icon {
         display: flex;
         align-items: center;
         justify-content: center;
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          display: none;
+        }
 
         .ico {
           width: 17vh;
