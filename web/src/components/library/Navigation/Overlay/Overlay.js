@@ -58,10 +58,6 @@ export class NavigationOverlay extends PureComponent {
     let navFadingOut = this.props.navFadingOut;
     let navFocused = this.props.navFocused;
 
-    // console.log('beer');
-    // console.log(navFocused);
-    // console.log(navFadingOut);
-
     // If the overlay is hidden...
     if (navOverlayVisible == false) {
       return null;

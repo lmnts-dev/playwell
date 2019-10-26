@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"componentChunkName":"component---src-templates-programs-index-js","path":"/programs/delaware","webpackCompilationHash":"640e96ce323cffc067f7","result":{"pageContext":{"isCreatedByStatefulCreatePages":false,"isCounty":false,"isCostCode":false,"abbrev":"DE","name":"Delaware","playwell_state_id":"9","counties":[],"managers":[]}}}
+=======
+{"componentChunkName":"component---src-templates-programs-index-js","path":"/programs/delaware","webpackCompilationHash":"e5f715d540994167b2db","result":{"pageContext":{"isCreatedByStatefulCreatePages":false,"isCounty":false,"isCostCode":false,"abbrev":"DE","name":"Delaware","playwell_state_id":"9","counties":[],"managers":[]}}}
+>>>>>>> 8c431d77a5989551a9a7f4df62326b63d7486b6c

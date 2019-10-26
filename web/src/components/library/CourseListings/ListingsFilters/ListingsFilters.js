@@ -25,7 +25,7 @@ export const ListingsFilters = ({ courseData }) => {
   // The Items
   const ListingsFiltersItem = ({ label, items }) => {
     return (
-      <ListingsFiltersStyle.Item onClick={() => console.log(items)}>
+      <ListingsFiltersStyle.Item>
         <span className="filter-inner">
           <span>{label}</span>
           <Icon Name="carat" />
