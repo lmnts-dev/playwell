@@ -165,8 +165,8 @@ class SearchBar extends PureComponent {
               Destination="/"
               BorderStyle="solid"
               BorderWidth="1px"
-              BorderColor={Theme.Color.Primary}
-              TextColor={Theme.Color.Primary}
+              BorderColor={Theme.Color.White}
+              TextColor={Theme.Color.White}
               IconClass="map-marker-alt"
               IconPosition="left"
               IconFas
