@@ -95,7 +95,7 @@ const AfterSchoolContact = () => {
             />
           </div>
 
-          <Box width={[1, 8 / 10, 8 / 10]}>
+          <Box width={1}>
             <label htmlFor="email">
               Email:
               <abbr title="required" aria-label="required">
@@ -120,12 +120,12 @@ const AfterSchoolContact = () => {
                 id="phone"
                 placeholder="(___) ___-____"
                 pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
-                maxlength="12"
+                maxLength="12"
               />
             </Box>
 
             <Box
-              width={[1, 1 / 2, 1 / 2]}
+              width={[1, 1 / 2, 6 / 10]}
               className="form-group__box form-group__box--select"
             >
               <label htmlFor="eventType">Type of Event:</label>
@@ -142,13 +142,13 @@ const AfterSchoolContact = () => {
           </div>
 
           <div className="form-group">
-            <Box width={[1, 1 / 2, 4 / 10]} className="form-group__box">
+            <Box width={[1, 1 / 2, 1 / 2]} className="form-group__box">
               <label htmlFor="city">City:</label>
               <input type="text" name="city" id="city" placeholder="City" />
             </Box>
 
             <Box
-              width={[1, 1 / 2, 4 / 10]}
+              width={[1, 1 / 2, 1 / 2]}
               className="form-group__box form-group__box--select"
             >
               <label htmlFor="state">State:</label>

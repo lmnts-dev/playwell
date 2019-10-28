@@ -38,6 +38,7 @@ import { Base } from 'constants/styles/Base';
 // Props
 const HeroProps = {
   bg: Theme.Color.White,
+  bgMatch: 'kids-lake.jpg',
   color: Theme.Color.Primary,
   playButton: true,
   playButtonBg: Theme.Color.Ocean,

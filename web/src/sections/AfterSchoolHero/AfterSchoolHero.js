@@ -1,4 +1,4 @@
-// <LocationCoordinators /> section:
+// <AfterSchoolHero /> section:
 // Location detail template coordinator accordion
 
 // Imports
@@ -16,7 +16,6 @@ import SplitHero from 'components/library/Hero/SplitHero';
 
 // Styles
 import { Hero } from './styles.scss';
-import { Decorator } from '../../templates/Location/styles.scss';
 
 // Helpers
 import slugify from 'helpers/slugify';
@@ -30,33 +29,23 @@ import { Theme, Root } from 'constants/Theme';
 // Props
 const HeroProps = {
   arrowColor: Theme.Color.Nova,
-  bg: Theme.Color.Cream,
-  color: Theme.Color.Primary,
-  playButton: false,
-  playButtonBg: Theme.Color.Nova,
+  bg: Theme.Color.White,
+  color: Theme.Color.Eggplant,
+  playButton: true,
+  playButtonBg: Theme.Color.Ocean,
   gear: false,
-  subNavColor: Theme.Color.Eggplant,
-  bgMatch: 'group-girls.jpg',
+  wideImage: true,
+  bgMatch: 'kid-remote-control.jpg',
 };
 
-const HostProgramHero = ({ cities, pageContext }) => {
+const AfterSchoolHero = () => {
   return (
-    <SplitHero
-      {...HeroProps}
-      subNav={[
-        { label: 'after school programs', active: true, link: '/host-a-program' },
-        { label: 'recreation centers', link: '/recreation-centers' },
-        { label: 'homeschool classes', link: '/homeschool-classes' },
-      ]}
-    >
-      <h2>Hosting a Play-Well Program</h2>
-      <h6>
-        We offer many options for hosting your programs at your location or at
-        one of our activity centers.
-      </h6>
+    <SplitHero {...HeroProps}>
+      <h2>Play-Well After School Enrichment</h2>
+      <h6 className="txt-clr-dino">In our Engineering with LEGO® enrichment program, take on real-life engineering challenges</h6>
       <Btn
         BgColor={Theme.Color.Nova}
-        Label="Get in Touch"
+        Label="Request Info"
         Destination="/contact"
         TextColor={Theme.Color.White}
       />
@@ -64,7 +53,7 @@ const HostProgramHero = ({ cities, pageContext }) => {
   );
 };
 
-export default HostProgramHero;
+export default AfterSchoolHero;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

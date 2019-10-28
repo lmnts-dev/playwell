@@ -1,5 +1,4 @@
-// <LocationCoordinators /> section:
-// Location detail template coordinator accordion
+// <SummeCampsHero /> section:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -16,7 +15,6 @@ import SplitHero from 'components/library/Hero/SplitHero';
 
 // Styles
 import { Hero } from './styles.scss';
-import { Decorator } from '../../templates/Location/styles.scss';
 
 // Helpers
 import slugify from 'helpers/slugify';
@@ -30,33 +28,33 @@ import { Theme, Root } from 'constants/Theme';
 // Props
 const HeroProps = {
   arrowColor: Theme.Color.Nova,
-  bg: Theme.Color.Cream,
-  color: Theme.Color.Primary,
-  playButton: false,
-  playButtonBg: Theme.Color.Nova,
+  bg: Theme.Color.Nova,
+  color: Theme.Color.White,
+  playButton: true,
+  playButtonBg: Theme.Color.Primary,
   gear: false,
-  subNavColor: Theme.Color.Eggplant,
-  bgMatch: 'group-girls.jpg',
+  bgMatch: 'kid-machine.jpg',
+  reversed: true,
 };
 
-const HostProgramHero = ({ cities, pageContext }) => {
+const SummeCampsHero = () => {
   return (
     <SplitHero
       {...HeroProps}
       subNav={[
-        { label: 'after school programs', active: true, link: '/host-a-program' },
-        { label: 'recreation centers', link: '/recreation-centers' },
-        { label: 'homeschool classes', link: '/homeschool-classes' },
+        { label: 'Summer Camps', active: true, link: '/programs/summer-camps' },
+        { label: 'Workshops', link: '/programs/workshops' },
+        { label: 'Classes', link: '/programs/classes' },
       ]}
     >
-      <h2>Hosting a Play-Well Program</h2>
-      <h6>
-        We offer many options for hosting your programs at your location or at
-        one of our activity centers.
+      <h2>Teams Come Together by Playing Well</h2>
+      <h6 className="txt-clr-dino">
+        We believe that play reveals who you are, and who you are inpires your
+        work.
       </h6>
       <Btn
-        BgColor={Theme.Color.Nova}
-        Label="Get in Touch"
+        BgColor={Theme.Color.Primary}
+        Label="Camps near you"
         Destination="/contact"
         TextColor={Theme.Color.White}
       />
@@ -64,7 +62,7 @@ const HostProgramHero = ({ cities, pageContext }) => {
   );
 };
 
-export default HostProgramHero;
+export default SummeCampsHero;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

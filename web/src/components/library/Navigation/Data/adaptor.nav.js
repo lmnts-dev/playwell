@@ -19,33 +19,37 @@ export const navDataTransformer = sourceData => {
   let sourceNode = sourceData.allDataJson.edges[0].node.nav;
 
   // Primary navigation map
-  let primaryNavMap = sourceNode.primaryNav.linkList.map((link, idx) => {
+  if ( sourceNode ){
+    let primaryNavMap = sourceNode.primaryNav.linkList.map((link, idx) => {
 
-    return {
-      route: link.route,
-      label: link.label,
-      theme: {
-        primaryColor: ColorMatch(link.theme.primaryColor),
-        activeColor: ColorMatch(link.theme.activeColor),
-      },
-      // Sidebar
-      subNav: {
-        // Focus Link List
-        focusLinkList: link.subNav.focusLinkList,
+      return {
+        route: link.route,
+        label: link.label,
+        theme: {
+          primaryColor: ColorMatch(link.theme.primaryColor),
+          activeColor: ColorMatch(link.theme.activeColor),
+        },
+        // Sidebar
+        subNav: {
+          // Focus Link List
+          focusLinkList: link.subNav.focusLinkList,
 
-        // Minor Link List
-        minorLinkList: link.subNav.minorLinkList,
-      },
-    };
-  });
+          // Minor Link List
+          minorLinkList: link.subNav.minorLinkList,
+        },
+      };
+    });
+  }
 
   // Footer navigation map
-  let footerNavMap = sourceNode.footerNav.linkList.map((link, idx) => {
-    return {
-      label: link.label,
-      route: link.route,
-    };
-  });
+  if ( sourceNode ){
+    let footerNavMap = sourceNode.footerNav.linkList.map((link, idx) => {
+      return {
+        label: link.label,
+        route: link.route,
+      };
+    });
+  }
 
   // Our final data map
   let navDataMap = {

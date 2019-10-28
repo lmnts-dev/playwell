@@ -165,8 +165,8 @@ class SearchBar extends PureComponent {
               Destination="/"
               BorderStyle="solid"
               BorderWidth="1px"
-              BorderColor={Theme.Color.Primary}
-              TextColor={Theme.Color.Primary}
+              BorderColor={Theme.Color.White}
+              TextColor={Theme.Color.White}
               IconClass="map-marker-alt"
               IconPosition="left"
               IconFas
@@ -210,14 +210,14 @@ const SearchBarResults = ({ results }) => {
       {results.length > 0 ? (
         results.map((result, idx) => {
           return (
-            <Link
-              to={'/locations/' + slugify(result.node.name.toLowerCase())}
-              key={idx}
-            >
-              <li>
+            <li>
+              <Link
+                to={'/locations/' + slugify(result.node.name.toLowerCase())}
+                key={idx}
+              >
                 <span>{result.node.name}</span>
-              </li>
-            </Link>
+              </Link>
+            </li>
           );
         })
       ) : (

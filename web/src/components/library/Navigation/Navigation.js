@@ -180,7 +180,7 @@ class NavigationBar extends PureComponent {
                 TextColor={Theme.Color.Primary}
                 IconFas
               />
-              <NavFilter navOverlayToggle={this.navOverlayToggle.bind(this)} />
+              <NavFilter />
               <Btn
                 Label="Let's Play"
                 Destination="/"

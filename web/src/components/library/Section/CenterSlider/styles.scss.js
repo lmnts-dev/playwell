@@ -23,6 +23,8 @@ import hexToRGB from 'helpers/hexToRGB';
 //////////////////////////////////////////////////////////////////////
 
 const CenterSliderStyle = styled.div`
+  color: ${p => p.Color};
+
   .slick-slider {
     padding: 0 10%;
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
@@ -39,21 +41,21 @@ const CenterSliderStyle = styled.div`
       left: auto;
       right: 0;
       border-radius: 50%;
-      height: calc(${Root.Size} / 1.10);
-      width: calc(${Root.Size} / 1.10);
+      height: calc(${Root.Size} / 1.1);
+      width: calc(${Root.Size} / 1.1);
       transition-duration: 0.5s;
       @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
         top: calc(${Root.Size} / 4);
       }
 
       &:hover {
-        background-color: ${hexToRGB(Theme.Color.Eggplant, .1)};
+        background-color: ${p => hexToRGB(p.Color, 0.1)};
       }
 
       &:before {
         height: calc(${Root.Size} / 4);
         width: calc(${Root.Size} / 4);
-        border: 1.5px solid ${Theme.Color.Dino};
+        border: 1.5px solid ${p => p.Color};
         content: '';
         position: absolute;
         top: calc(${Root.Size} / 3.5);

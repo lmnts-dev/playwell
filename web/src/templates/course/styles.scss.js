@@ -25,6 +25,69 @@ export const Hero = styled(Flex)`
   align-items: center;
   margin: 0 auto;
   max-width: ${Base.Grid.SiteWidth};
+
+  .hero-tags {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: ${Theme.Base.Grid.ReadingWidth};
+
+    li {
+      color: ${Theme.Color.Deepsea};
+      text-transform: uppercase;
+      letter-spacing: calc(${Root.Size} * 0.05);
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0 calc(${Root.Size} / 6) calc(${Root.Size} / 3);
+      text-align: center;
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        font-size: 0.9rem;
+        padding: 0 calc(${Root.Size} / 6) calc(${Root.Size} * 0);
+      }
+
+      a {
+        color: ${Theme.Color.Deepsea};
+      }
+    }
+  }
+
+  .btn {
+    background-color: ${props =>
+      props.bgColor ? props.bgColor : Theme.Color.Nova};
+    border: 0;
+    border-radius: 999px;
+    color: ${props => (props.textColor ? props.textColor : Theme.Color.White)};
+    cursor: pointer;
+    outline: 0;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    position: relative;
+    height: calc(${Root.Button.Size} * 1.5);
+    line-height: 0;
+    justify-content: center;
+    align-items: center;
+    padding: 4px calc(${Theme.Base.Size.Lg} * 1.5) 0;
+    margin-right: 1rem;
+
+    &:hover {
+      box-shadow: 0px 0px 0px 3px rgba(93, 99, 118, 0.2);
+      text-decoration: none;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .counter-inner {
+      position: relative;
+      top: 0px;
+      width: 100%;
+      text-align: center;
+    }
+  }
 `;
 
 Hero.Avatar = styled.div`
@@ -42,33 +105,6 @@ Hero.Avatar = styled.div`
   }
 `;
 
-Hero.Tags = styled.ul`
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: ${Theme.Base.Grid.ReadingWidth};
-
-  li {
-    color: ${Theme.Color.Deepsea};
-    text-transform: uppercase;
-    letter-spacing: calc(${Root.Size} * 0.05);
-    font-weight: 600;
-    font-size: 0.8rem;
-    padding: 0 calc(${Root.Size} / 6) calc(${Root.Size} / 3);
-    text-align: center;
-
-    @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-      font-size: 0.9rem;
-      padding: 0 calc(${Root.Size} / 6) calc(${Root.Size} * 0);
-    }
-
-    a {
-      color: ${Theme.Color.Deepsea};
-    }
-  }
-`;
-
 Hero.Headline = styled.h1`
   padding: calc(${Root.Size} / 3) 0;
 `;
@@ -77,42 +113,6 @@ Hero.Date = styled.span`
   color: ${Theme.Color.Deepsea};
   font-weight: 600;
   padding-bottom: calc(${Root.Size} / 2);
-`;
-
-Hero.Btn = styled.button`
-  background-color: ${props =>
-    props.bgColor ? props.bgColor : Theme.Color.Nova};
-  border: 0;
-  border-radius: 999px;
-  color: ${props => (props.textColor ? props.textColor : Theme.Color.White)};
-  cursor: pointer;
-  outline: 0;
-  font-weight: bold;
-  text-align: center;
-  display: flex;
-  position: relative;
-  height: calc(${Root.Button.Size} * 1.5);
-  line-height: 0;
-  justify-content: center;
-  align-items: center;
-  padding: 4px calc(${Theme.Base.Size.Lg} * 1.5) 0;
-  margin-right: 1rem;
-
-  &:hover {
-    box-shadow: 0px 0px 0px 3px rgba(93, 99, 118, 0.2);
-    text-decoration: none;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  .counter-inner {
-    position: relative;
-    top: 0px;
-    width: 100%;
-    text-align: center;
-  }
 `;
 
 export const CalloutSection = styled(Flex)`
@@ -192,17 +192,66 @@ export const Drawer = styled(Flex)`
   }
 `;
 
-export const CourseFooter = styled(Section)`
+export const CourseFooter = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-`;
 
-CourseFooter.Course = styled(Flex)`
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: ${Theme.Base.Grid.ReadingWidth};
+  .course {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    max-width: ${Theme.Base.Grid.ReadingWidth};
+
+    h2 {
+      padding: 0 0 calc(${Root.Size} / 3);
+    }
+
+    .h5 {
+      color: ${Theme.Color.Deepsea};
+      font-weight: 600;
+      padding-bottom: calc(${Root.Size} / 2);
+    }
+
+    .btn {
+      background-color: ${props =>
+        props.bgColor ? props.bgColor : Theme.Color.Nova};
+      border: 0;
+      border-radius: 999px;
+      color: ${props =>
+        props.textColor ? props.textColor : Theme.Color.White};
+      cursor: pointer;
+      outline: 0;
+      font-weight: bold;
+      text-align: center;
+      display: flex;
+      position: relative;
+      height: calc(${Root.Button.Size} * 1.5);
+      line-height: 0;
+      justify-content: center;
+      align-items: center;
+      padding: 4px calc(${Theme.Base.Size.Lg} * 1.5) 0;
+      margin-right: 1rem;
+
+      &:hover {
+        box-shadow: 0px 0px 0px 3px rgba(93, 99, 118, 0.2);
+        text-decoration: none;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      .counter-inner {
+        position: relative;
+        top: 0px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
 `;
 
 CourseFooter.Headline = styled.h2`

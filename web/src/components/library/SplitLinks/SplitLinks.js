@@ -27,8 +27,8 @@ export const SplitLink = ({ title, message, first, last, to, themeProps }) => (
     width={[1, 1, 1 / 2]}
     first={first}
     last={last}
-    borderColor={themeProps.PrimaryColor}
-    arrowColor={themeProps.PrimaryColor}
+    borderColor={themeProps.TertiaryColor}
+    arrowColor={themeProps.TertiaryColor}
   >
     {first && (
       <div className="arrow">
@@ -50,7 +50,7 @@ export const SplitLink = ({ title, message, first, last, to, themeProps }) => (
         className="h4"
         fontWeight="600"
         lineHeight={[1.2, 1.4]}
-        color={themeProps.PrimaryColor}
+        color={themeProps.TertiaryColor}
       >
         {message}
       </Text>
