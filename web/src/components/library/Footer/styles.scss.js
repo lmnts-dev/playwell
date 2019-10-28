@@ -20,33 +20,43 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
+export const OverflowHidden = styled.div`
+  overflow: hidden;
+`;
+
 export const CurveAndAngleWithPadding = styled(CurveAndAngle)`
   &.curve-and-angle {
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    //  padding-bottom: calc(${Theme.Base.Size.Lg});
+    z-index: 19;
 
-      .footer-curve-slice {
-     //   margin-bottom: calc(${Theme.Base.Size.Lg});
-      }
+    .footer-curve-slice {
+      background-color: ${props => props.bgColor ? props.bgColor : Theme.Color.Background};
     }
   }
 `;
 
 export const FooterStyle = styled.footer`
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  z-index: 3;
+  height: 100%;
+  z-index: 20;
+  position: relative;
+  background-color: ${Theme.Color.White};
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    padding-bottom: calc(${Theme.Base.Size.Lg} * 2);
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding-bottom: calc(${Theme.Base.Size.Lg} * 4);
+  }
 
   .footer-curve-slice {
-    //TODO create prop for a transparent curve
-    //opacity: 0.05;
+    /* TODO create prop for a transparent curve */
+    /* opacity: 0.05; */
   }
 
   .basic-inner {
     width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 
     .brandmark-container {
       width: calc(${Root.Size} * 2.7);
@@ -73,12 +83,14 @@ export const FooterStyle = styled.footer`
       }
 
       .col {
-        padding: 0 calc(${Root.Size}) calc(${Root.Size} * 2) calc(${Root.Size} / 4);
+        padding: 0 calc(${Root.Size}) calc(${Root.Size} * 1.5) calc(${Root.Size} / 4);
         
         @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
           padding-right: calc(${Root.Size} / 2);
           padding-bottom: calc(${Root.Size} * 1.5);
         }
+        
+
 
         ul {
           display: flex;
@@ -94,6 +106,9 @@ export const FooterStyle = styled.footer`
               position: relative;
               text-decoration: none;
               white-space: nowrap;
+              @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+                font-size: 14px;
+              }
 
               &:before {
                 content: '';
@@ -117,7 +132,13 @@ export const FooterStyle = styled.footer`
           }
 
           &.social {
+
             li {
+              margin-bottom: calc(${Theme.Base.Size.Lg} / 8);
+              @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+                margin-right: calc(${Theme.Base.Size.Lg} / 8);
+              }
+
               a {
                 font-weight: bold;
                 color: ${Theme.Color.Primary};
@@ -130,23 +151,21 @@ export const FooterStyle = styled.footer`
                 padding: calc(${Root.Size} / 8);
                 background-color: none;
                 border-radius: 50%;
-                @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-                  padding: calc(${Root.Size} / 12);
-                }
-                @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-                  display: none; //TODO show this, but this font awesome thing is driving me insane
-                  .ico {
-                    width: calc(${Theme.Base.Size.Lg} / 2) !important;
-                    height: calc(${Theme.Base.Size.Lg} / 2) !important;
-                    * {
-                      width: 100%;
-                      height: 100%;
-                    }
-                    .fas::before {
-                      width: calc(${Theme.Base.Size.Lg} / 2) !important;
-                      height: calc(${Theme.Base.Size.Lg} / 2) !important;
-                    }
+                width: calc(${Theme.Base.Size.Lg} / 2);
+                height: calc(${Theme.Base.Size.Lg} / 2);
 
+
+                span {
+                  height: 100%;
+                  width: 100%;
+
+                  svg {
+                    width: 100%;
+                    height: auto;
+                    
+                    path {
+                      fill: ${Theme.Color.Eggplant};
+                    }
                   }
                 }
 

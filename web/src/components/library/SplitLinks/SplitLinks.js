@@ -1,6 +1,6 @@
 // <SplitLinks /> component:
 // Pre-footer animated arrow split links
-// todo: arrow height for cleaner central rotation
+// todo: naming, stroke color prop
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -23,18 +23,24 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 export const SplitLink = ({ title, message, first, last, to, themeProps }) => (
-  <LinkContainer width={[1, 1, 1 / 2]}>
+  <LinkContainer
+    width={[1, 1, 1 / 2]}
+    first={first}
+    last={last}
+    borderColor={themeProps.TertiaryColor}
+    arrowColor={themeProps.TertiaryColor}
+  >
     {first && (
-      <LinkContainer.Arrow>
+      <div className="arrow">
         <Icon Name="nextArrow" />
-      </LinkContainer.Arrow>
+      </div>
     )}
     <Link to={to}>
       <Text
         as="span"
         className="h6"
         fontWeight="600"
-        mt={1}
+        lineHeight={[1.5]}
         color={themeProps.SecondaryColor}
       >
         {title}
@@ -43,16 +49,16 @@ export const SplitLink = ({ title, message, first, last, to, themeProps }) => (
         as="span"
         className="h4"
         fontWeight="600"
-        mt={1}
-        color={themeProps.PrimaryColor}
+        lineHeight={[1.2, 1.4]}
+        color={themeProps.TertiaryColor}
       >
         {message}
       </Text>
     </Link>
     {last && (
-      <LinkContainer.Arrow>
+      <div className="arrow">
         <Icon Name="nextArrow" />
-      </LinkContainer.Arrow>
+      </div>
     )}
   </LinkContainer>
 );

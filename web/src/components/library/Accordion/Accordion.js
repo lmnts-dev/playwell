@@ -85,7 +85,7 @@ const Accordion = ({
 Accordion.defaultProps = {
   chevronColor: Theme.Color.Nova,
   color: hexToRGB(Theme.Color.Dino, 0.7),
-  colorActive: Theme.Color.White,
+  colorActive: Theme.Color.Dino,
   borderColor: hexToRGB(Theme.Color.Sunlight, 0.5),
 };
 

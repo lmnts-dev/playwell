@@ -18,6 +18,7 @@ import ContactInfo from 'sections/ContactInfo';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
+import { Base } from 'constants/styles/Base';
 
 // Data
 import { DataFetch } from 'hooks/DataFetch';
@@ -34,14 +35,12 @@ const ThemeProps = {
 };
 
 // Render Page
-const ContactPage = ({ pageContext }) => {
+const ContactPage = () => {
   // Use our hook's data as source
   const fetchedData = DataFetch();
 
   // For debugging only.
-  console.log(fetchedData);
-  // console.log('pageContext:');
-  // console.log(pageContext);
+  // console.log(fetchedData);
 
   return (
     <Layout {...ThemeProps}>
@@ -55,7 +54,6 @@ const ContactPage = ({ pageContext }) => {
 
 const Main = styled.main`
   overflow: hidden;
-  padding-bottom: ${Root.Size};
 `;
 
 export default ContactPage;

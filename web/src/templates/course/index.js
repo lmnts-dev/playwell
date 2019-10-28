@@ -12,10 +12,9 @@ import { Link } from 'gatsby';
 // Components
 import Layout from 'components/core/Layout';
 import HeroContainer from 'components/library/Hero/HeroContainer';
-import Btn from 'components/library/Btn';
-import { Icon } from 'components/library/Icons';
 import ImgMatch from 'components/core/ImgMatch';
 import Section from 'components/library/Elements/Section';
+import SpacerCentered from 'components/library/Spacer/Centered';
 
 // Sections
 import QuestionsCallout from 'sections/QuestionsCallout';
@@ -26,16 +25,7 @@ import slugify from 'helpers/slugify';
 import locationMatch from 'helpers/LocationMatch';
 
 // Styles
-import {
-  Hero,
-  Spacer,
-  QuestionsNav,
-  Toggle,
-  Drawer,
-  CourseFooter,
-  Explore,
-  CalloutSection,
-} from './styles.scss';
+import { Hero, Toggle, Drawer, CourseFooter } from './styles.scss';
 
 // Constants
 import { Box, Flex, Text } from 'components/library/Elements';
@@ -49,7 +39,7 @@ const ThemeProps = {
   BgColor: Theme.Color.Sky,
   PrimaryColor: Theme.Color.White,
   SecondaryColor: Theme.Color.Deepsea,
-  TertiaryColor: Theme.Color.Primary,
+  TertiaryColor: Theme.Color.White,
 };
 
 const HeroProps = {
@@ -84,7 +74,7 @@ const Course = ({ pageContext }) => {
   };
 
   // console.log('pageContext:');
-  console.log(pageContext);
+  // console.log(pageContext);
   // console.log('data:');
   // console.log(data);
   // console.log(locationMatch(pageContext.county_id, pageContext.state_id, pageContext.locationMeta.state.name));
@@ -92,11 +82,11 @@ const Course = ({ pageContext }) => {
   return (
     <Layout {...ThemeProps}>
       <HeroContainer {...HeroProps}>
-        <Hero as="article" pb={[4, 3]} px={[1, 1, 0]}>
+        <Hero as="article">
           <Hero.Avatar>
             <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
           </Hero.Avatar>
-          <Hero.Tags as="ul">
+          <ul className="hero-tags">
             <li>
               <Link
                 to={'/programs/' + slugify(pageContext.locationMeta.state.name)}
@@ -166,40 +156,36 @@ const Course = ({ pageContext }) => {
                 ages {pageContext.age_range_start}-{pageContext.age_range_end}
               </Link>
             </li>
-            {pageContext.room && <li> room {pageContext.room}</li>}
-          </Hero.Tags>
-          <Text as="h3" mt={1}>
+            {pageContext.room && <li>{pageContext.room}</li>}
+          </ul>
+          <Hero.Headline className="h3">
             {pageContext.course_type_name}
-          </Text>
-          <Hero.Date as="p" fontSize={[0, 1, 3]} mt={[1, 1, 0]} mb={1}>
-            {pageContext.date_time_display}
-          </Hero.Date>
+          </Hero.Headline>
+          <Hero.Date className="h5">{pageContext.date_time_display}</Hero.Date>
           {/* Content Overlay Modal Toggle */}
           {/* <ContentOverlayButton>toggle</ContentOverlayButton> */}
-          <Btn
-            External
-            Label="Enroll Now"
-            Size="Large"
-            Destination={pageContext.action_url}
-            BgColor={props => props.theme.Color.Nova}
-            TextColor={props => props.theme.Color.White}
-          />
+          <a
+            href={pageContext.action_url}
+            className="btn"
+            target="_blank"
+            rel="nofollow noreferrer"
+          >
+            Enroll Now
+          </a>
           <Box my={2}>
-            <Text as="p" fontSize={[0, 0, '1.1rem']} lineHeight="1.4">
+            <p>
               {pageContext.client_location_name}
               <br />
               {pageContext.display_address}
-            </Text>
+            </p>
           </Box>
-          <Hero.Tags as="ul">
+          <ul className="hero-tags">
             <li>more</li>
-          </Hero.Tags>
+          </ul>
         </Hero>
       </HeroContainer>
 
-      <Spacer>
-        <Spacer.Line />
-      </Spacer>
+      <SpacerCentered />
 
       <Section bg="Cream" textAlign="center">
         <Flex
@@ -211,18 +197,16 @@ const Course = ({ pageContext }) => {
           m={'0 auto'}
           maxWidth={Theme.Base.Grid.ReadingWidth}
         >
-          <Text as="p" color="Nova" className="lead">
+          <Text as="p" className="lead" color="Nova" fontWeight={600}>
             {pageContext.date_time_display}
           </Text>
-          <Text as="p" color="Galaxy" className="lead">
+          <Text as="p" className="lead" color="Galaxy">
             {pageContext.course_type_long_description}
           </Text>
         </Flex>
       </Section>
 
-      <Spacer>
-        <Spacer.Line />
-      </Spacer>
+      <SpacerCentered />
 
       <Section
         bg="White"
@@ -313,32 +297,30 @@ const Course = ({ pageContext }) => {
       </Section>
 
       <Toggle py={1} onClick={() => setIsExpanded(!isExpanded)}>
-        <Text color={Theme.Color.Galaxy}>
+        <Text color={Theme.Color.Galaxy} fontWeight={500}>
           {isExpanded ? 'show less' : 'show more'}
         </Text>
       </Toggle>
 
       <QuestionsCallout />
 
-      <CourseFooter bg="Sky" color="White">
-        <CourseFooter.Course as="article" m="0 auto">
-          <Text className="h5" fontWeight="400" mb={1}>
-            Let's play!
-          </Text>
-          <Text as="h3" mb={1}>
-            {pageContext.course_type_name}
-          </Text>
-          <Text className="h4" as="p" color="Deepsea" fontWeight="400">
-            {pageContext.date_time_display}
-          </Text>
-          <Btn
-            Label="Enroll Now"
-            Destination="/"
-            BgColor={props => props.theme.Color.Nova}
-            TextColor={props => props.theme.Color.White}
-          />
-        </CourseFooter.Course>
-      </CourseFooter>
+      <Section bg="Sky" color="White">
+        <CourseFooter>
+          <div className="course">
+            <h5>Let's play!</h5>
+            <h2>{pageContext.course_type_name}</h2>
+            <span className="h5">{pageContext.date_time_display}</span>
+            <a
+              href={pageContext.action_url}
+              className="btn"
+              target="_blank"
+              rel="nofollow noreferrer"
+            >
+              Enroll Now
+            </a>
+          </div>
+        </CourseFooter>
+      </Section>
 
       <CourseSplitLinks
         countyName={pageContext.locationMeta.county.name}

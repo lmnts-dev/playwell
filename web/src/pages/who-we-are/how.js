@@ -12,26 +12,21 @@ import styled from 'styled-components';
 // Components
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
-import Btn from 'components/library/Btn';
-import ImageAccordian from 'components/library/ImageAccordian';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
-import ImgMatch from 'components/core/ImgMatch';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 import EdgeSlider from 'components/library/Section/EdgeSlider';
 import Marquee from 'components/library/Section/Marquee';
+import ImageAccordianFeature from 'components/library/Section/ImageAccordianFeature';
 import CurveAndAngle from 'components/library/Section/CurveAndAngle';
 import SplitTextBoxes from 'components/library/Section/SplitTextBoxes';
 import LegoList from 'components/library/Section/LegoList';
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
-import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
+import SimpleTextWithImage from 'components/library/Section/SimpleTextWithImage';
 import {
   BasicSection,
   BasicInner,
 } from 'components/library/Section/BasicSection';
 import SplitHero from 'components/library/Hero/SplitHero';
-import { Box, Flex } from 'components/library/Elements';
-import SubNav from 'components/library/SubNav';
 
 // Styles
 
@@ -56,140 +51,18 @@ const ThemeProps = {
 const HeroProps = {
   bg: Theme.Color.Lilac,
   color: Theme.Color.White,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
+  playButton: true,
   playButtonBg: Theme.Color.Nova,
   gear: true,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
+  gearStroke: Theme.Color.White,
+  subNavColor: Theme.Color.White,
+  arrowColor: Theme.Color.White,
 };
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const SimpleTextWithImage = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    display: block;
-  }
 
-  .image,
-  .text {
-    flex: 1;
-  }
-
-  .image {
-    padding-left: calc(${Root.Size});
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      max-width: calc(${Root.Size} * 13);
-      padding-left: 0;
-      margin: 0 auto;
-      width: 40%;
-      min-width: calc(${Root.Size} * 6);
-      padding-top: calc(${Theme.Base.Size.Lg} / 2);
-    }
-  }
-
-  .text {
-    padding-right: calc(${Root.Size});
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      padding-right: 0;
-    }
-
-    > * {
-      max-width: calc(${Root.Size} * 7.5);
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        max-width: calc(${Root.Size} * 13);
-        text-align: center;
-        margin: 0 auto;
-      }
-    }
-  }
-
-  .h6,
-  .h2 {
-    font-weight: 700;
-  }
-
-  .h2 {
-    color: ${Theme.Color.Sunset};
-    padding: calc(${Root.Size} / 5) 0;
-  }
-`;
-
-const AccordianFeature = styled.div`
-  ul {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-bottom: calc(${Root.Size} / 3);
-    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-      display: block;
-      text-align: center;
-    }
-
-    li {
-      font-weight: 700;
-      padding: calc(${Root.Size} / 6);
-      white-space: nowrap;
-      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-        padding: calc(${Root.Size} / 6) 0;
-      }
-
-      &:first-of-type {
-        padding-left: 0;
-      }
-
-      &:last-of-type {
-        padding-right: 0;
-      }
-
-      a {
-        color: ${Theme.Color.Clay};
-        @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-          font-size: 1rem;
-        }
-
-        &:visited {
-          color: ${Theme.Color.Clay};
-        }
-      }
-    }
-  }
-
-  .container {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    width: 100%;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      display: block;
-    }
-
-    .image-accordian {
-      flex: 1;
-
-      &:nth-of-type(2) {
-        margin: 0 calc(${Root.Size} / 2);
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          margin: calc(${Root.Size} / 4) 0;
-        }
-      }
-    }
-  }
-
-  .footer-angle-slice {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 20vw;
-  }
-`;
 
 const OverflowHidden = styled.div`
   width: 100vw;
@@ -204,14 +77,14 @@ const WhoHowPage = () => {
       <SplitHero
         {...HeroProps}
         subNav={[
-          'who',
-          'how',
-          'why',
-          'careers',
+          { label: 'who', link: '/who-we-are/who' },
+          { label: 'why', link: '/who-we-are/why' },
+          { label: 'how', active: true, link: '/who-we-are/how' },
+          { label: 'careers', link: '/who-we-are/careers' },
         ]}
       >
-        <h2>Join a team of creative problem solvers &amp; creators</h2>
-        <h6>We are passionate specialists in STEM Education.</h6>
+        <h2>How STEM Enrichment p aves the way for our beliefs</h2>
+        <h6>Lorem ipsum dolor sit amet, consectetur a.</h6>
       </SplitHero>
 
       <BasicSection
@@ -240,17 +113,20 @@ const WhoHowPage = () => {
             blocks={[
               {
                 title: 'Creative Collaboration',
-                text: 'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                text:
+                  'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
                 legoColor: 'orange',
               },
               {
                 title: 'New Perspectives',
-                text: 'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                text:
+                  'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
                 legoColor: 'purple',
               },
               {
                 title: 'Staff Morale',
-                text: 'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                text:
+                  'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
                 legoColor: 'blue',
               },
             ]}
@@ -261,7 +137,9 @@ const WhoHowPage = () => {
         <CurveAndAngle
           CurveColor={Theme.Color.Dino}
           AngleColor={Theme.Color.Background}
-          AbsoluteImages={[{ src:"gears.png", width:"25vw", right:"2vw", bottom:"0" }]}
+          AbsoluteImages={[
+            { src: 'gears.png', width: '25vw', right: '2vw', bottom: '0' },
+          ]}
         />
       </BasicSection>
 
@@ -271,22 +149,16 @@ const WhoHowPage = () => {
         noPaddingTop
       >
         <BasicInner>
-          <SimpleTextWithImage>
-            <div className="text">
-              <div className="h6">Our Impact on STEM Comprehension</div>
-              <div className="h2">Children Learn While Playing</div>
-              <p className="p-lg">
-                Our assessment measured three goals including: students
-                knowledge of STEM terms or concepts, ability to generalize
-                information, and increasing positive feelings towards STEM
-                subjects. For example, the definition of gravity or friction, or
-                that when two gears interlock their teeth its called meshing.
-              </p>
-            </div>
-            <div className="image">
-              <ImgMatch src="graph.png" />
-            </div>
-          </SimpleTextWithImage>
+          <SimpleTextWithImage
+            Caption="Our Impact on STEM Comprehension"
+            Header="Children Learn While Playing"
+            Paragraph="Our assessment measured three goals including: students
+            knowledge of STEM terms or concepts, ability to generalize
+            information, and increasing positive feelings towards STEM
+            subjects. For example, the definition of gravity or friction, or
+            that when two gears interlock their teeth its called meshing."
+            Image="graph.png"
+          />
         </BasicInner>
       </BasicSection>
 
@@ -305,55 +177,35 @@ const WhoHowPage = () => {
         TextColor={Theme.Color.Clay}
         noPaddingTop
       >
-        <AccordianFeature>
-          <BasicInner wideWidth>
-            <ul>
-              <li>
-                <a className="h6" href="/">
-                  Robotics
-                </a>
-              </li>
-              <li>
-                <a className="h6" href="/">
-                  Intro to STEM
-                </a>
-              </li>
-              <li>
-                <a className="h6" href="/">
-                  Gaming
-                </a>
-              </li>
-              <li>
-                <a className="h6" href="/">
-                  Advanced Engineering
-                </a>
-              </li>
-              <li>
-                <a className="h6" href="/">
-                  Engineering Themes
-                </a>
-              </li>
-            </ul>
-            <div className="container">
-              <ImageAccordian
-                Header="Worshops"
-                Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                Image="intro-smiles.jpg"
-              />
-              <ImageAccordian
-                Header="Classes"
-                Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                Image="intro-smiles.jpg"
-              />
-              <ImageAccordian
-                Header="Camps"
-                Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                Image="intro-smiles.jpg"
-              />
-            </div>
-          </BasicInner>
-          <FooterAngleSlice bgColor={Theme.Color.Background} />
-        </AccordianFeature>
+        <ImageAccordianFeature
+          Links={[
+            { link: '/', label: 'Robotics' },
+            { link: '/', label: 'Intro to STEM' },
+            { link: '/', label: 'Gaming' },
+            { link: '/', label: 'Advanced Engineering' },
+            { link: '/', label: 'Engineering Themes' },
+          ]}
+          Accordians={[
+            {
+              header: 'Worshops',
+              paragraph:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              image: 'girl-3.jpg',
+            },
+            {
+              header: 'Classes',
+              paragraph:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              image: 'girl-2.jpg',
+            },
+            {
+              header: 'Camps',
+              paragraph:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+              image: 'girl-1.jpg',
+            },
+          ]}
+        />
       </BasicSection>
 
       <BasicSection
@@ -374,7 +226,7 @@ const WhoHowPage = () => {
         >
           <BasicInner noPaddingLeft noPaddingRight>
             <ImageWithTextBlock
-              Image="intro-smiles.jpg"
+              Image="boy-2.jpg"
               Header="Build problem-solving skills"
               Number="01"
               Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -383,7 +235,7 @@ const WhoHowPage = () => {
             />
             <ImageWithTextBlock
               reversedOrder
-              Image="intro-smiles.jpg"
+              Image="boy-1.jpg"
               Header="Provide an opportunity for creative expression"
               Number="06"
               Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -393,7 +245,7 @@ const WhoHowPage = () => {
               <Icon Name="gear" />
             </ImageWithTextBlock>
             <ImageWithTextBlock
-              Image="intro-smiles.jpg"
+              Image="girls-1.jpg"
               Header="Foster a greater appreciation of how things work"
               Number="03"
               Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -418,11 +270,11 @@ const WhoHowPage = () => {
         <BasicInner noPaddingRight>
           <EdgeSlider
             images={[
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
-              'intro-smiles.jpg',
+              'random-1.jpg',
+              'random-2.jpg',
+              'random-3.jpg',
+              'random-4.jpg',
+              'random-5.jpg',
             ]}
             titles={[
               'Intro Into STEM',
@@ -445,24 +297,21 @@ const WhoHowPage = () => {
           <LegoList
             blocks={[
               {
-                title: 'Creative Collaboration',
+                title: 'Benefit Two',
                 text:
-                  'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
-                legoColor: 'orange',
+                  'Through LEGO® inspired classes sparking “Aha!” moments, we help kids grasp fundamental principles of engineering and physics.',
                 image: 'graph.png',
               },
               {
-                title: 'New Perspectives',
+                title: 'Benefit Two',
                 text:
-                  'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
-                legoColor: 'purple',
+                  'Through LEGO® inspired classes sparking “Aha!” moments, we help kids grasp fundamental principles of engineering and physics.',
                 image: 'graph.png',
               },
               {
-                title: 'Staff Morale',
+                title: 'Benefit Two',
                 text:
-                  'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
-                legoColor: 'blue',
+                  'Through LEGO® inspired classes sparking “Aha!” moments, we help kids grasp fundamental principles of engineering and physics.',
                 image: 'graph.png',
               },
             ]}
@@ -489,12 +338,11 @@ const WhoHowPage = () => {
           </BasicInner>
           <Marquee
             images={[
-              'brandmark.png',
-              'brandmark.png',
-              'brandmark.png',
-              'brandmark.png',
-              'brandmark.png',
-              'brandmark.png',
+              'google.png',
+              'clorox.png',
+              'pixar.jpeg',
+              'microsoft.png',
+              'visa.png',
             ]}
             SquareFormat
           />
@@ -506,8 +354,22 @@ const WhoHowPage = () => {
         TextColor={Theme.Color.White}
       >
         <SplitTextBoxes
-          FirstBlock={ {caption:"Playing anywhere", header:"Find a program near you", buttonDest:"/", buttonText:"Expore Programs", paragraph:"Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects."}}
-          SecondBlock={ {caption:"Do it Yourself", header:"Host Your Own Program", buttonDest:"/", buttonText:"Learn How", paragraph:"Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects."}}
+          FirstBlock={{
+            caption: 'Playing anywhere',
+            header: 'Find a program near you',
+            buttonDest: '/',
+            buttonText: 'Expore Programs',
+            paragraph:
+              "Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.",
+          }}
+          SecondBlock={{
+            caption: 'Do it Yourself',
+            header: 'Host Your Own Program',
+            buttonDest: '/',
+            buttonText: 'Learn How',
+            paragraph:
+              "Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.",
+          }}
         />
       </BasicSection>
     </Layout>

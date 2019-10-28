@@ -20,7 +20,3 @@ yarn-debug.log*
 yarn-error.log*
 
 .cache/
-build
-public
-public/
-public/static

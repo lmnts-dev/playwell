@@ -7,9 +7,6 @@
 // Core
 import React from 'react';
 
-// Helpers
-import HeroContainer from '../HeroContainer';
-
 // Styles
 import { GearContainer, SplitHeroStyle } from './styles.scss';
 
@@ -25,40 +22,44 @@ import {
   BasicInner,
 } from 'components/library/Section/BasicSection';
 
+// Constants
+import { Theme, Root } from 'constants/Theme';
+
+// Helpers
+import HeroContainer from '../HeroContainer';
+
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
 const SplitHero = ({
+  arrowColor,
   bg,
   bgMatch,
-  bgQuery,
-  bgAlt,
   children,
   color,
-  flexDirection,
   gear,
+  gearFill,
+  gearStroke,
+  wideImage,
   playButtonBg,
   subNavColor,
   subNav,
-  px,
-  textAlign,
-  withMask,
-  heroHeight,
+  reversed,
   playButton,
 }) => (
   <BasicSection BgColor={bg} TextColor={color}>
-    <BasicInner noPaddingRight>
-      <SplitHeroStyle subNavColor={subNavColor}>
+    <BasicInner noPaddingRight={!reversed} noPaddingLeft={reversed}>
+      <SplitHeroStyle subNavColor={subNavColor} arrowColor={arrowColor} reversed={reversed} wideImage={wideImage}>
         <div className="text">
           <div className="flex-spacer"></div>
           <div className="children">{children}</div>
           <div className="arrow"></div>
-          {subNav &&
+          {(subNav && !reversed) &&
             <div className="sub-nav">
               {subNav.map((nav, index) => {
                 return (
-                  <a className="h5" href={"/who-we-are/" + nav }>
-                    {nav}
+                  <a className={"h5 " + (nav.active ? 'link-active' : '')} href={nav.link} key={index}>
+                    {nav.label}
                   </a>
                 );
               })}
@@ -66,15 +67,26 @@ const SplitHero = ({
           }
         </div>
         <div className="imagery">
-          <ImgMatch src="intro-smiles.jpg" />
+          <ImgMatch src={bgMatch} />
           {gear ? (
             <GearContainer>
-              <GearRotator strokeColor={props => props.theme.Color.White} />
+              <GearRotator strokeColor={gearStroke ? gearStroke : 'transparent'} fill={gearFill}/>
             </GearContainer>
           ) : null}
-          {playButton == true ? <PlayButton bg={playButtonBg} /> : false}
+          {playButton && <PlayButton bg={playButtonBg} reversed={reversed}/>}
         </div>
       </SplitHeroStyle>
+        {(subNav && reversed) &&
+          <div className="sub-nav padding-left">
+            {subNav.map((nav, index) => {
+              return (
+                <a className={"h5 " + (nav.active ? 'link-active' : '')} href={nav.link} key={index}>
+                  {nav.label}
+                </a>
+              );
+            })}
+          </div>
+        }
     </BasicInner>
   </BasicSection>
 );
@@ -82,6 +94,8 @@ const SplitHero = ({
 SplitHero.defaultProps = {
   flexDirection: 'row',
   playButtonBg: 'Nova',
+  bgMatch: 'intro-smiles.jpg',
+  arrowColor: Theme.Color.White,
 };
 
 export default SplitHero;

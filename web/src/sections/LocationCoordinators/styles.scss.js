@@ -16,6 +16,18 @@ import { Base } from 'constants/styles/Base';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
+export const Title = styled(Box)`
+  span {
+    color: ${Theme.Color.Dino};
+    font-weight: 600;
+
+    @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
+      position: sticky;
+      top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
+    }
+  }
+`;
+
 export const Article = styled.div`
   display: flex;
   flex-wrap: wrap;

@@ -49,7 +49,7 @@ class FilteredResults extends PureComponent {
 
     // For Debugging only
     // console.log(stateEdges);
-    console.log(results);
+    // console.log(results);
 
     // Show our listings
     return (
@@ -245,9 +245,9 @@ export const CourseListings = ({
   /**
    *  For Debugging Purposes Only:
    * */
-  console.log('stateId: ' + stateId);
-  console.log('countyId: ' + countyId);
-  console.log('costCodeId: ' + costCodeId);
+  // console.log('stateId: ' + stateId);
+  // console.log('countyId: ' + countyId);
+  // console.log('costCodeId: ' + costCodeId);
 
   return (
     <main>

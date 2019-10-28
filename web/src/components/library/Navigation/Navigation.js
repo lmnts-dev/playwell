@@ -21,6 +21,7 @@ import { Theme, Root } from 'constants/Theme';
 import { Brandmark } from 'components/core/Branding/Brandmark';
 import { Btn } from 'components/library/Btn/';
 import { NavigationOverlay } from 'components/library/Navigation/Overlay/';
+import { NavFilter } from './NavFilter';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -38,11 +39,13 @@ class NavigationBar extends PureComponent {
       navScrollClass: 'top',
       navOverlayVisible: false,
       navFadingOut: false,
+      navFocused: false,
     };
 
     // Bind base functions to change transition state for
     // collapsing menu hero on scroll.
     this.handleScroll = this.handleScroll.bind(this);
+
 
     // Bind our click event to open up Navigation Overlays.
     this.navOverlayToggle = this.navOverlayToggle.bind(this);
@@ -59,6 +62,8 @@ class NavigationBar extends PureComponent {
     this.state = {
       navOverlayVisible: false,
       navFadingOut: false,
+      navMobile: window.innerWidth < 1024,
+      navFocused: false,
     };
   }
 
@@ -70,6 +75,8 @@ class NavigationBar extends PureComponent {
     this.state = {
       navOverlayVisible: false,
       navFadingOut: false,
+      navMobile: window.innerWidth < 1024,
+      navFocused: false,
     };
   }
 
@@ -83,6 +90,7 @@ class NavigationBar extends PureComponent {
     }
   }
 
+
   // Function to toggle NavigationOverlay.
   navOverlayToggle(idx) {
     // If currently hidden...
@@ -95,6 +103,7 @@ class NavigationBar extends PureComponent {
       // Set state for NavigationOverlay to fade out.
       this.setState({
         navFadingOut: true,
+        navFocused: false,
       });
 
       // Timer to remove NavigationOverlay from the DOM.
@@ -113,6 +122,11 @@ class NavigationBar extends PureComponent {
     this.setState({
       navContext: this.props.navQuery.primaryNav.linkList[idx],
     });
+    if ( this.state.navFocused == false ){
+      this.setState({
+        navFocused: true,
+      });
+    }
   }
 
   render() {
@@ -162,21 +176,11 @@ class NavigationBar extends PureComponent {
                 Label="Contact"
                 IconClass="question-circle"
                 IconPosition="left"
-                Destination="/"
+                Destination="/contact"
                 TextColor={Theme.Color.Primary}
                 IconFas
               />
-              <Btn
-                Label="Brooklyn, NYC"
-                Destination="/"
-                BorderStyle="solid"
-                BorderWidth="1px"
-                BorderColor={Theme.Color.Primary}
-                TextColor={Theme.Color.Primary}
-                IconClass="map-marker-alt"
-                IconPosition="left"
-                IconFas
-              />
+              <NavFilter />
               <Btn
                 Label="Let's Play"
                 Destination="/"
@@ -184,6 +188,14 @@ class NavigationBar extends PureComponent {
                 TextColor={Theme.Color.White}
               />
             </NavigationStyle.Secondary>
+            <NavigationStyle.Mobile>
+              <button
+                onClick={() => this.navOverlayToggle(0)}
+                onKeyDown={() => this.navOverlayToggle(0)}
+                className="hamburger"
+              >
+              </button>
+            </NavigationStyle.Mobile>
           </NavigationStyle.Inner>
         </NavigationStyle>
 
@@ -191,6 +203,7 @@ class NavigationBar extends PureComponent {
         <NavigationOverlay
           navData={this.props.navQuery}
           navContext={this.state.navContext}
+          navFocused={this.state.navFocused}
           navOverlayVisible={this.state.navOverlayVisible}
           navOverlayToggle={this.navOverlayToggle.bind(this)}
           navContextUpdate={this.navContextUpdate.bind(this)}

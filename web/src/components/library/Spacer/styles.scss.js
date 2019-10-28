@@ -68,14 +68,48 @@ Container.Positioner = styled.div`
   position: relative;
   bottom: 160px;
   z-index: 9;
+  @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
+    bottom: 10vw;
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    bottom: 0;
+  }
 `;
 
 Container.Line = styled.div`
-  border-left: 1px dashed ${p => p.theme.Color.Primary};
   display: block;
   width: 0;
   height: 160px;
   margin: 0 auto;
+  @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
+    height: 10vw;
+  }
+
+  &:after {
+    content: "\\2023";
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 9px);
+    transform: rotate(90deg) translateY(18%);
+    transform-origin: 0% 100%;
+    color: ${Theme.Color.Nova};
+    font-size: 31px;
+  }
+
+  &:before {
+    position: absolute;
+    top: calc(${Theme.Base.Size.Lg} / 3);
+    bottom: 0;
+    width: 1px;
+    content: '';
+    background-image: linear-gradient(
+      ${Theme.Color.Nova} 40%,
+      rgba(255, 255, 255, 0) 0%
+    );
+    background-position: right;
+    background-size: 1px 10px;
+    background-repeat: repeat-y;
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

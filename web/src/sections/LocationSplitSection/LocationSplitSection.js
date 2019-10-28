@@ -12,9 +12,7 @@ import Img from 'gatsby-image';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
-import Btn from 'components/library/Btn';
 import SplitSection from 'components/library/Section/SplitSection';
-import ImgMatch from 'components/core/ImgMatch';
 
 // Elements
 import Block from 'components/library/Block';
@@ -30,86 +28,63 @@ import { Theme, Root } from 'constants/Theme';
 // Render Page
 const LocationSplitSection = () => (
   <>
-    <SplitSection Flex="row-reverse">
+    <SplitSection Flex="row">
+      <Block
+        Style="centered"
+        BgColor={Theme.Color.White}
+        BgMatch="do-it-yourself.jpg"
+        BgAlt="Our Awesome Alt Tag"
+        Width={0.5}
+        JustifyContent="center"
+      />
       <Block
         Padding={[2, 2, 2, 2]}
         Width={0.5}
         BgColor={Theme.Color.White}
         TextColor={Theme.Color.Nightsky}
       >
-        <Text
-          as="span"
-          color="Galaxy"
-          fontSize={[1, 2, 2]}
-          fontWeight={700}
-          mb={1}
-        >
+        <Text as="h6" color="Galaxy">
           Do it yourself
         </Text>
         <Text as="h2" color="Sunset">
           Host Your Own Program
         </Text>{' '}
-        <Text as="p" color="Galaxy" fontSize={[0, 1, 1]} mt={[1, 1, 0]} mb={1}>
+        <Text as="p" className="p-lg" color="Galaxy">
           Through LEGO® inspired classes sparking “Aha!” moments, we help kids
           grasp fundamental principles of engineering and physics. The
           experience boosts their confidence, creativity and ability to
           collaborate.
         </Text>
-        <Btn
-          Label="View Our Menu"
-          Destination="/menu"
-          BgColor={Theme.Color.Primary}
-          TextColor={Theme.Color.White}
-        />
       </Block>
+    </SplitSection>
+
+    <SplitSection Flex="row-reverse">
       <Block
         Style="centered"
         BgColor={Theme.Color.White}
-        BgMatch="placeholder.jpeg"
+        BgMatch="power-of-play.jpg"
         BgAlt="Our Awesome Alt Tag"
         Width={0.5}
       />
-    </SplitSection>
-
-    <SplitSection Flex="row">
       <Block
         Padding={[2, 2, 2, 2]}
         Width={0.5}
         BgColor={Theme.Color.White}
         TextColor={Theme.Color.Nightsky}
       >
-        <Text
-          as="span"
-          color="Galaxy"
-          fontSize={[1, 2, 2]}
-          fontWeight={700}
-          mb={1}
-        >
+        <Text as="h6" color="Galaxy">
           Playing since 1997
         </Text>
         <Text as="h2" color="Sunset">
           Creativity, confidence &amp; collaboration.
         </Text>{' '}
-        <Text as="p" color="Galaxy" fontSize={[0, 1, 1]} mt={[1, 1, 0]} mb={1}>
+        <Text as="p" className="p-lg" color="Galaxy">
           Through LEGO® inspired classes sparking “Aha!” moments, we help kids
           grasp fundamental principles of engineering and physics. The
           experience boosts their confidence, creativity and ability to
           collaborate.
         </Text>
-        <Btn
-          Label="View Our Menu"
-          Destination="/menu"
-          BgColor={Theme.Color.Primary}
-          TextColor={Theme.Color.White}
-        />
       </Block>
-      <Block
-        Style="centered"
-        BgColor={Theme.Color.White}
-        BgMatch="placeholder.jpeg"
-        BgAlt="Our Awesome Alt Tag"
-        Width={0.5}
-      />
     </SplitSection>
   </>
 );

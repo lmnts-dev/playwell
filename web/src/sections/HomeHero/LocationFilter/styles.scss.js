@@ -8,6 +8,7 @@ import styled from 'styled-components';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
+import { Base } from 'constants/styles/Base';
 
 // Keyframes
 import { FadeIn, FadeOut } from 'components/core/Transition/Keyframes';
@@ -25,13 +26,14 @@ import { BtnStyle } from 'components/library/Btn/styles.scss';
 
 export const ListingsFiltersStyle = styled.div`
   position: relative;
-  height: calc(${Root.Size} / 1.1);
-  display: flex;
-  flex-grow: 1;
-  align-items: stretch;
-  justify-content: space-between;
+  flex: 30;
   /* border-bottom: 1px solid ${Theme.Color.Gray}; */
   margin-left: calc(${Theme.Base.Size.Lg} / 4);
+  height: calc(${Root.Button.Size} * 1.5);
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    margin-left: 0;
+    margin-top: calc(${Theme.Base.Size.Lg} / 8);
+  }
 
   span {
     text-align: left;
@@ -56,8 +58,15 @@ ListingsFiltersStyle.Item = styled.button`
   text-align: center;
   justify-content: center;
   display: flex;
+  width: 100%;
   flex: 1;
   cursor: pointer;
+
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    border: 1px solid ${hexToRGB(Theme.Color.White, 0.4)};
+    border-radius: ${Theme.Base.Size.Lg};
+    width: auto;
+  }
 
   .ico-carat {
     position: relative;
@@ -66,7 +75,9 @@ ListingsFiltersStyle.Item = styled.button`
     transform: rotate(90deg) scale(0.5);
     transform-origin: center center;
 
-    polygon, svg, g {
+    polygon,
+    svg,
+    g {
       fill: ${Theme.Color.White};
     }
   }
@@ -80,7 +91,10 @@ ListingsFiltersStyle.Item = styled.button`
     background-color: ${Theme.Color.White};
 
     .ico-pin {
-      svg, path, polygon, g {
+      svg,
+      path,
+      polygon,
+      g {
         fill: ${Theme.Color.Ocean};
       }
     }
@@ -107,9 +121,15 @@ ListingsFiltersStyle.Item = styled.button`
     width: 100%;
     text-align: center;
     padding: 0;
-    
+    height: calc(${Root.Button.Size} * 1.5);
 
-    span:nth-of-type(2){
+    .ico-pin {
+      height: calc(${Theme.Base.Size.Lg} / 3);
+      width: calc(${Theme.Base.Size.Lg} / 3);
+      padding: 0;
+    }
+
+    span:nth-of-type(2) {
       flex: 50;
     }
   }

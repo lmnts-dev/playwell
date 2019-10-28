@@ -16,7 +16,9 @@ import Btn from 'components/library/Btn';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import ImgMatch from 'components/core/ImgMatch';
 import CurveAndAngle from 'components/library/Section/CurveAndAngle';
+import GiantTextBlock from 'components/library/Section/GiantTextBlock';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
+import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import {
   BasicSection,
   BasicInner,
@@ -222,20 +224,13 @@ const PartyForm = styled.div`
 const Parties = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero
-        {...HeroProps}
-        subNav={[
-          'parties',
-          'special events',
-        ]}
-      >
+      <SplitHero {...HeroProps} subNav={['birthday parties', 'special events']}>
         <h2>Let Us Engineer Your Child's Party</h2>
         <h6>
           Some of the most memorable and fun experiences kid's have together are
           at birthday parties.
         </h6>
       </SplitHero>
-
 
       <BasicSection
         BgColor={Theme.Color.Background}
@@ -264,16 +259,20 @@ const Parties = () => {
         <BasicInner>
           <CenteredTitle Title="Our Projects" Class="headline" />
           <Projects>
-            {Array.from(Array(5), (e, i) => {
+            {ProjectsList.map((project, index) => {
               return (
-                <div className="project">
-                  <ImgMatch src="intro-smiles.jpg" />
-                  <div className="h6">Race Car</div>
-                  <p>Competitive Racing</p>
+                <div className="project" key={index}>
+                  <ImgMatch src={project.image} />
+                  <div className="h6">{project.title}</div>
+                  <p>{project.description}</p>
                   <div className="tags">
-                    <div className="tag">Ages 5+</div>
-                    <div className="tag">Vehicle</div>
-                    <div className="tag">Mechanics</div>
+                    {project.tags.map((tag, index) => {
+                      return (
+                        <div className="tag" key={index + '-tag'}>
+                          {tag}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               );
@@ -298,7 +297,7 @@ const Parties = () => {
         </BasicInner>
       </BasicSection>
 
-      <BasicSection
+      {/*<BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
         BorderTop={Theme.Color.Nova}
@@ -317,7 +316,7 @@ const Parties = () => {
             </div>
           </Questions>
         </BasicInner>
-      </BasicSection>
+      </BasicSection>*/}
 
       <BasicSection
         BgColor={Theme.Color.Background}
@@ -365,3 +364,47 @@ export default Parties;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
+
+
+const ProjectsList = [
+  {
+    title: 'Race Car',
+    image: 'project-1.jpg',
+    link: '/',
+    description:
+      'Competitive racing',
+    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
+  },
+  {
+    title: 'Off Roader',
+    image: 'project-2.jpg',
+    link: '/',
+    description:
+      'Traverse obstacle course',
+    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
+  },    
+  {
+    title: 'Parade Float',
+    image: 'project-3.jpg',
+    link: '/',
+    description:
+      'Creative build and play',
+    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
+  },
+  {
+    title: 'Merry Go Round',
+    image: 'project-1.jpg',
+    link: '/',
+    description:
+      'Creative build and play',
+    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
+  },  
+  {
+    title: 'Battlerack',
+    image: 'project-2.jpg',
+    link: '/',
+    description:
+      'Competitive jousting',
+    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
+  }
+];

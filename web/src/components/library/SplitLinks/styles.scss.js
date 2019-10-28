@@ -25,13 +25,6 @@ export const CourseFooter = styled(Flex)`
   text-align: left;
 `;
 
-CourseFooter.Course = styled(Flex)`
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-`;
-
 CourseFooter.Explore = styled(Flex)`
   text-align: left;
   align-items: center;
@@ -45,13 +38,13 @@ export const LinkContainer = styled(Flex)`
   flex-direction: row-reverse;
   justify-content: space-between;
   border-right: none;
-  border-bottom: 1px dashed ${p => p.theme.Color.White};
+  border-bottom: 1px dashed ${p => p.borderColor};
   padding: calc(${Root.Size} * 0.7) calc(${Root.Size} / 2) calc(${Root.Size});
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     flex-direction: row;
     justify-content: flex-end;
-    border-right: 1px dashed ${p => p.theme.Color.White};
+    border-right: 1px dashed ${p => p.borderColor};
     border-bottom: none;
     padding: 0 calc(${Root.Size} * 1.5);
   }
@@ -64,10 +57,27 @@ export const LinkContainer = styled(Flex)`
     text-decoration: none;
   }
 
+  .arrow {
+    background: rgba(0, 0, 0, 0);
+
+    span {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: calc(${Root.Size} * 1);
+      height: calc(${Root.Size} * 2);
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        justify-content: ${p =>
+        p.first ? 'flex-start' : p.last ? 'flex-end' : 'center'};
+      }
+    }
+  }
+
   svg {
     transition: ${Theme.Base.Transition.String};
     transform: rotate(180deg) translateX(0);
-    fill: ${Theme.Color.Primary};
+    stroke: ${p => p.arrowColor};
   }
 
   &:hover {
@@ -81,9 +91,7 @@ export const LinkContainer = styled(Flex)`
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {
     svg {
-      transition: ${Theme.Base.Transition.String};
       transform: rotate(0deg) translateX(0);
-      fill: ${Theme.Color.Primary};
     }
 
     &:hover {
@@ -113,18 +121,6 @@ export const LinkContainer = styled(Flex)`
       }
     }
   }
-`;
-
-LinkContainer.Arrow = styled(Box)`
-  background: rgba(0, 0, 0, 0);
-  /* cursor: pointer; */
-  transform: scale(2);
-  width: calc(${Root.Size} * 1);
-  height: calc(${Root.Size} * 1);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 //////////////////////////////////////////////////////////////////////

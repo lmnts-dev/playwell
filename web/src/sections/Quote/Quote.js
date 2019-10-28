@@ -24,8 +24,8 @@ const Quote = ({ color, children }) => {
   // Render page
   return (
     <QuoteContainer>
-      <Box px={[0, '10%', '14%', '16%', '20%']}>
-        <QuoteContainer.Quote as="h2" color={color} pb={0}>
+      <Box px={['10%', '14%', '16%', '20%']}>
+        <QuoteContainer.Quote className="h2" color={color}>
           {children}
         </QuoteContainer.Quote>
       </Box>

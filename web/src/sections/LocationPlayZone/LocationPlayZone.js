@@ -15,7 +15,6 @@ import ImgMatch from 'components/core/ImgMatch';
 
 // Styles
 import { Container } from './styles.scss';
-import { Decorator } from '../../pages/styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -36,7 +35,7 @@ const LocationPlayZone = () => (
         Build Your Own World of Opportunity
       </Text>
       <Text as="p" color="Galaxy" fontSize={[0, 1, 1]} mt={[1, 1, 0]} mb={1}>
-        Bring yourkid over or fring out your inner kid with some of our online
+        Bring your kid over or bring out your inner kid with some of our online
         activities to feed your imagination.
       </Text>
       <Btn

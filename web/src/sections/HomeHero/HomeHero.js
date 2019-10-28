@@ -19,6 +19,7 @@ import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngle
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 // import HeroContainer from 'components/library/Hero/HeroContainer';
 import { LocationFilter } from './LocationFilter';
+import { NavFilter } from 'components/library/Navigation/NavFilter';
 import { BasicInner } from 'components/library/Section/BasicSection';
 
 // Vendor
@@ -33,10 +34,10 @@ import {
   HeroBtn,
   Mask,
   Item,
+  Decorator,
 } from './styles.scss';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Decorator } from '../../pages/styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -98,7 +99,7 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
             <div className="text">
               <h2>People are natural engineers. We help kids realize it.</h2>
               <div className="h6">Purposeful Play to Build a Better Future</div>
-              <Actions width={[1, 1, 1, 7 / 10]}>
+              <Actions>
                 <Link to="/programs">
                   <HeroBtn
                     className="hero-btn"
@@ -108,7 +109,7 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
                     Explore Courses
                   </HeroBtn>
                 </Link>
-                <LocationFilter />
+                <NavFilter />
               </Actions>
             </div>
           </BasicInner>
