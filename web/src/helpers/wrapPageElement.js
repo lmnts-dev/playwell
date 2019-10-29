@@ -19,7 +19,7 @@ import { navDataTransformer } from 'components/library/Navigation/Data/';
 // Begin Helper
 //////////////////////////////////////////////////////////////////////
 
-const Main = styled.main`
+const Main = styled.div`
   overflow: hidden;
 `;
 
