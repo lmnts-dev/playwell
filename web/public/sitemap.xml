@@ -1003,8 +1003,8 @@
 <url> <loc>https://play-well-staging.netlify.com/locations/pennsylvania/pennsylvania-ne/bucks-country</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/pennsylvania/pennsylvania-se/bucks-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/pennsylvania/pennsylvania-se</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/locations/pennsylvania/pennsylvania-se/chester-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/pennsylvania/pennsylvania-ne/chester-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/locations/pennsylvania/pennsylvania-se/chester-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/pennsylvania/pennsylvania-se/dauphin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/pennsylvania/pennsylvania-ne/delaware-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/pennsylvania/pennsylvania-se/delaware-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -1479,8 +1479,8 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/pennsylvania/pennsylvania-ne/bucks-country</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/pennsylvania/pennsylvania-se/bucks-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/pennsylvania/pennsylvania-se</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/pennsylvania/pennsylvania-se/chester-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/pennsylvania/pennsylvania-ne/chester-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/pennsylvania/pennsylvania-se/chester-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/pennsylvania/pennsylvania-se/dauphin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/pennsylvania/pennsylvania-ne/delaware-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/pennsylvania/pennsylvania-se/delaware-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
