@@ -51,11 +51,11 @@ BtnStyle.Inner = styled.span`
       : `0 calc(${Theme.Base.Size.Sm} * .8)`};
   ${props =>
     props.IconPosition == 'left'
-      ? 'padding-left: calc(' + Theme.Base.Size.Sm + '*1);'
+      ? 'padding-left: calc(' + Theme.Base.Size.Sm + '*1.2);'
       : false}
   ${props =>
     props.IconPosition == 'right'
-      ? 'padding-right: calc(' + Theme.Base.Size.Sm + '*1);'
+      ? 'padding-right: calc(' + Theme.Base.Size.Sm + '*1.2);'
       : false}
   border-radius: 999px;
   cursor: pointer;

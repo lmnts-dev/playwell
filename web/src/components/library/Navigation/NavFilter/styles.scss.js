@@ -223,15 +223,6 @@ SearchBarStyle.Button = styled.div`
   }
 
   &:hover {
-    .ico-pin {
-      svg,
-      path,
-      polygon,
-      g {
-        fill: ${Theme.Color.Ocean};
-      }
-    }
-
     .list {
       transform: translate(0%, 0%);
       opacity: 1;
@@ -323,7 +314,6 @@ SearchBarStyle.FilterList = styled.div`
       align-items: center;
       text-align: left;
       cursor: pointer;
-      padding: calc(${Root.Size} / 9) 0;
       transition: ${Theme.Base.Transition.String};
 
       &:hover {
@@ -335,6 +325,7 @@ SearchBarStyle.FilterList = styled.div`
         color: ${Theme.Color.Lilac};
         font-size: 1rem;
         font-weight: 600;
+        padding: calc(${Root.Size} / 9) 0;
         text-decoration: none;
         transition: ${Theme.Base.Transition.String};
 
