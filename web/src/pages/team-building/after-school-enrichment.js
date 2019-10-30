@@ -54,7 +54,9 @@ const AfterSchoolEnrichmentPage = () => {
         <AfterSchoolClasses />
 
         <Section bg="Background" pt={14} pb={14}>
-          <Text color="Primary" fontSize="4rem" fontWeight={600}>Testimonials</Text>
+          <Text color="Primary" fontSize="4rem" fontWeight={600}>
+            Testimonials
+          </Text>
         </Section>
 
         <AfterSchoolOverview />

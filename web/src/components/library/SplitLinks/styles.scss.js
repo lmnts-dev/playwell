@@ -69,7 +69,7 @@ export const LinkContainer = styled(Flex)`
 
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         justify-content: ${p =>
-        p.first ? 'flex-start' : p.last ? 'flex-end' : 'center'};
+          p.first ? 'flex-start' : p.last ? 'flex-end' : 'center'};
       }
     }
   }

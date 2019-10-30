@@ -65,7 +65,9 @@ const SummerCampsCulture = () => {
             Program Overview
           </Text>
           <Text as="h2" color="Sunset">
-            Dream it. Build it.<br />Wreck it. Repeat.
+            Dream it. Build it.
+            <br />
+            Wreck it. Repeat.
           </Text>{' '}
           <Text as="p" className="p-lg" color="Galaxy">
             Kids are already naturally gifted creators. Then they get added

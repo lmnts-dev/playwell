@@ -68,7 +68,11 @@ const WhoWhyPage = () => {
         {...HeroProps}
         subNav={[
           { label: 'birthday parties', link: '/parties/birthday-parties' },
-          { label: 'special events', active: true, link: '/parties/special-events' },
+          {
+            label: 'special events',
+            active: true,
+            link: '/parties/special-events',
+          },
         ]}
       >
         <Box pr={[4, 8, 14]}>

@@ -80,7 +80,8 @@ const DeepseaTextBlock = styled.div`
     }
 
     p {
-      padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0 calc(${Root.Size} * 1.5);
+      padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0
+        calc(${Root.Size} * 1.5);
       line-height: 1.2;
     }
   }
@@ -365,46 +366,40 @@ export default Parties;
 //////////////////////////////////////////////////////////////////////
 // End Component
 
-
 const ProjectsList = [
   {
     title: 'Race Car',
     image: 'project-1.jpg',
     link: '/',
-    description:
-      'Competitive racing',
-    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
+    description: 'Competitive racing',
+    tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
   },
   {
     title: 'Off Roader',
     image: 'project-2.jpg',
     link: '/',
-    description:
-      'Traverse obstacle course',
-    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
-  },    
+    description: 'Traverse obstacle course',
+    tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
+  },
   {
     title: 'Parade Float',
     image: 'project-3.jpg',
     link: '/',
-    description:
-      'Creative build and play',
-    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
+    description: 'Creative build and play',
+    tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
   },
   {
     title: 'Merry Go Round',
     image: 'project-1.jpg',
     link: '/',
-    description:
-      'Creative build and play',
-    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
-  },  
+    description: 'Creative build and play',
+    tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
+  },
   {
     title: 'Battlerack',
     image: 'project-2.jpg',
     link: '/',
-    description:
-      'Competitive jousting',
-    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
-  }
+    description: 'Competitive jousting',
+    tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
+  },
 ];

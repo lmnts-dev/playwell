@@ -11,9 +11,7 @@ import WhoPage from './index.js';
 
 // Render Page
 const Who = ({ SliderSettings }) => {
-  return (
-    <WhoPage/>
-  )
+  return <WhoPage />;
 };
 
 export default Who;

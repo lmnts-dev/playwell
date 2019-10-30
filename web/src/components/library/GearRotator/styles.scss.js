@@ -27,7 +27,7 @@ export const Rotator = styled(Box)`
     svg {
       fill: ${props => props.fill};
       stroke: ${props => props.strokeColor};
-      stroke-width: .5px;
+      stroke-width: 0.5px;
       stroke-dashoffset: 5px;
       stroke-dasharray: 5px;
       transition: all 60s ease;

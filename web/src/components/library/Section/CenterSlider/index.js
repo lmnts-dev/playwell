@@ -93,6 +93,6 @@ const CenterSlider = ({ testimonials, Color }) => (
 
 CenterSlider.defaultProps = {
   Color: Theme.Color.Primary,
-}
+};
 
 export default CenterSlider;

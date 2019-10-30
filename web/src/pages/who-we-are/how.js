@@ -62,13 +62,10 @@ const HeroProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-
-
 const OverflowHidden = styled.div`
   width: 100vw;
   overflow: hidden;
-`
-
+`;
 
 // Render Page
 const WhoHowPage = () => {
@@ -359,16 +356,14 @@ const WhoHowPage = () => {
             header: 'Find a program near you',
             buttonDest: '/',
             buttonText: 'Expore Programs',
-            paragraph:
-              "Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.",
+            paragraph: 'Our assessments measured three goals including: student\'s knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.',
           }}
           SecondBlock={{
             caption: 'Do it Yourself',
             header: 'Host Your Own Program',
             buttonDest: '/',
             buttonText: 'Learn How',
-            paragraph:
-              "Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.",
+            paragraph: 'Our assessments measured three goals including: student\'s knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.',
           }}
         />
       </BasicSection>

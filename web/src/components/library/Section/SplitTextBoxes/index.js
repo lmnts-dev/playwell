@@ -20,41 +20,34 @@ import { SplitTextBoxesStyle, BlockNumber } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const SplitTextBoxes = ({
-  FirstBlock,
-  SecondBlock
-}) => (
+export const SplitTextBoxes = ({ FirstBlock, SecondBlock }) => (
   <SplitTextBoxesStyle>
     <BasicInner>
       <div className="container">
         <div className="h6">{FirstBlock.caption}</div>
         <div className="h3">{FirstBlock.header}</div>
-        <p className="p-lg">
-          {FirstBlock.paragraph}
-        </p>
-        {(FirstBlock.buttonDest && FirstBlock.buttonText) &&
+        <p className="p-lg">{FirstBlock.paragraph}</p>
+        {FirstBlock.buttonDest && FirstBlock.buttonText && (
           <Btn
             Label={FirstBlock.buttonText}
             BgColor={Theme.Color.Nova}
             TextColor={Theme.Color.White}
             Destination={FirstBlock.buttonDest}
           />
-        }
+        )}
       </div>
       <div className="container">
         <div className="h6">{SecondBlock.caption}</div>
         <div className="h3">{SecondBlock.header}</div>
-        <p className="p-lg">
-          {SecondBlock.paragraph}
-        </p>
-        {(SecondBlock.buttonDest && SecondBlock.buttonText) &&
+        <p className="p-lg">{SecondBlock.paragraph}</p>
+        {SecondBlock.buttonDest && SecondBlock.buttonText && (
           <Btn
             Label={SecondBlock.buttonText}
             BgColor={Theme.Color.Nova}
             TextColor={Theme.Color.White}
             Destination={SecondBlock.buttonDest}
           />
-        }
+        )}
       </div>
     </BasicInner>
   </SplitTextBoxesStyle>

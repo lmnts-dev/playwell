@@ -26,10 +26,7 @@ import ImageAccordianFeatureStyle from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const ImageAccordianFeature = ({
-  Links,
-  Accordians,
-}) => (
+export const ImageAccordianFeature = ({ Links, Accordians }) => (
   <ImageAccordianFeatureStyle>
     <BasicInner wideWidth>
       <ul>
@@ -44,15 +41,15 @@ export const ImageAccordianFeature = ({
         })}
       </ul>
       <div className="container">
-      {Accordians.map((accordian, index) => {
-        return (
-          <ImageAccordian
-            Header={accordian.header}
-            Paragraph={accordian.paragraph}
-            Image={accordian.image}
-            key={index}
-          />
-        );
+        {Accordians.map((accordian, index) => {
+          return (
+            <ImageAccordian
+              Header={accordian.header}
+              Paragraph={accordian.paragraph}
+              Image={accordian.image}
+              key={index}
+            />
+          );
         })}
       </div>
     </BasicInner>

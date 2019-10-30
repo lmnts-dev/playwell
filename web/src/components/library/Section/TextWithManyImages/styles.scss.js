@@ -43,7 +43,7 @@ export const TextWithManyImagesStyle = styled.div`
     display: flex;
     flex-direction: row;
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      margin-right: calc(${Theme.Base.Size.Lg} * .75);
+      margin-right: calc(${Theme.Base.Size.Lg} * 0.75);
       height: 50vw;
     }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {

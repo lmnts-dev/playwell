@@ -315,7 +315,6 @@ export const HeroContainer = styled.div`
   }
 `;
 
-
 export const Actions = styled.div`
   display: flex;
   flex-direction: row;

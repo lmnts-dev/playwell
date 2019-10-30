@@ -18,19 +18,22 @@ import LegoListStyles from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const LegoList = ({
-  blocks,
-}) => (
+export const LegoList = ({ blocks }) => (
   <LegoListStyles>
     {blocks.map((block, index) => {
-        return (
-          <div className="item" key={index}>
-            {block.image && <ImgMatch src={block.image} />}
-            {!block.image && <Icon Name="basicLego" Color={ block.legoColor ? block.legoColor : false } />}
-            <div className="h6">{block.title}</div>
-            <p>{block.text}</p>
-          </div>
-        );
+      return (
+        <div className="item" key={index}>
+          {block.image && <ImgMatch src={block.image} />}
+          {!block.image && (
+            <Icon
+              Name="basicLego"
+              Color={block.legoColor ? block.legoColor : false}
+            />
+          )}
+          <div className="h6">{block.title}</div>
+          <p>{block.text}</p>
+        </div>
+      );
     })}
   </LegoListStyles>
 );

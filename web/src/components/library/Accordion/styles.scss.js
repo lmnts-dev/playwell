@@ -75,7 +75,7 @@ AccordionContainer.Content = styled(Box)`
 
 AccordionContainer.Content.Inner = styled.div`
   border-radius: calc(${Root.Radius} / 3);
-  margin-bottom: calc(${Root.Size} / 3 );
+  margin-bottom: calc(${Root.Size} / 3);
 `;
 
 //////////////////////////////////////////////////////////////////////

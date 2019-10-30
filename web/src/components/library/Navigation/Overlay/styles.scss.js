@@ -44,8 +44,16 @@ export const MobileNavigationOverlayStyle = styled.div`
   justify-content: space-between;
   pointer-events: none;
   padding: calc(${Theme.Base.Size.Lg} / 2);
+  align-items: flex-end;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     display: flex;
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding: calc(${Theme.Base.Size.Lg} / 3);
+  }
+
+  &.nav-fadeout {
+    animation: ${FadeOut} ${navFadeOutDurationString} ease 0s 1 normal forwards;
   }
 
   .mobile-fixed {
@@ -54,12 +62,19 @@ export const MobileNavigationOverlayStyle = styled.div`
     pointer-events: all;
 
     &.mobile-fixed-top {
-      justify-content: flex-end;
+      display: block;
+      width: calc(${Theme.Base.Size.Lg} / 2);
+      height: calc(${Theme.Base.Size.Lg} / 2);
 
       .exit {
         width: calc(${Theme.Base.Size.Lg} / 2);
         height: calc(${Theme.Base.Size.Lg} / 2);
         position: relative;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
 
         &.dark-theme {
           &:before, &:after {
@@ -90,10 +105,16 @@ export const MobileNavigationOverlayStyle = styled.div`
       }
     }
     &.mobile-fixed-bottom {
+      width: 100%;
+      overflow: auto;
+
       svg {
         height: calc(${Theme.Base.Size.Lg} / 2);
         width: auto;
         fill: ${Theme.Color.White};
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          height: calc(${Theme.Base.Size.Lg} / 4);
+        }
       }
     }
   }
@@ -169,10 +190,14 @@ NavigationOverlayStyle.Sub = styled.div`
   overflow-y: auto;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     width: 50%;
-    min-width: none;
+    min-width: 0;
     padding: calc(${Root.Size}) calc(${Root.Size} / 6) calc(${Root.Size} / 2)
     calc(${Root.Size} / 2);
   }
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    padding-top: calc(${Root.Size} / 1.5); 
+  }
+
     .inner {
       flex: 1;
       display: flex;
@@ -264,6 +289,35 @@ NavigationOverlayStyle.Sub = styled.div`
                 : hexToRGB(Theme.Color.Ocean, 0.8)};
           }
         }
+
+        .mobile-back {
+          display: none;
+          position: absolute;
+          top: calc(${Theme.Base.Size.Lg} / 3);
+          left 0:
+          margin: calc(${Theme.Base.Size.Lg} / 2) 0;
+          transform: rotate(180deg);
+          cursor: pointer;
+
+          &:focus {
+            outline: none;
+          }
+
+          span {
+            justify-content: flex-end;
+            height: calc(${Theme.Base.Size.Lg} / 2);
+            width: calc(${Theme.Base.Size.Lg} / 2);
+
+            svg {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            display: block;
+          }
+        }
       }
 
       .col-list {
@@ -273,6 +327,9 @@ NavigationOverlayStyle.Sub = styled.div`
         border-radius: 5px;
         padding: calc(${Root.Size} / 2) 0 0 0;
         ${FadeIn};
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          padding-top: ${Root.Size};
+        }
 
         /* Large Focus Link List */
 
@@ -310,6 +367,10 @@ NavigationOverlayStyle.Sub = styled.div`
                 align-items: center;
                 justify-content: space-between;
                 padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
+
+                &:focus {
+                  outline: none;
+                }
 
                 /* Stupid font repositioning to center it */
                 .label {
@@ -389,6 +450,9 @@ NavigationOverlayStyle.Sub = styled.div`
               align-items: center;
               justify-content: space-between;
               padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
+              &:focus {
+                outline: none;
+              }
 
               /* Stupid font repositioning to center it */
               .label {
@@ -456,7 +520,12 @@ NavigationOverlayStyle.Main = styled.div`
   flex-direction: column;
   padding: calc(${Root.Size} / 1.25) calc(${Root.Size} * 1.5);
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    padding: calc(${Theme.Base.Size.Lg} * 2.5) calc(${Theme.Base.Size.Lg} * 1) calc(${Theme.Base.Size.Lg} * 2) calc(${Theme.Base.Size.Lg} * 1);
+    padding: ${Theme.Base.Size.Lg} ${Theme.Base.Size.Lg}
+      calc(${Theme.Base.Size.Lg} * 2) ${Theme.Base.Size.Lg};
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding: calc(${Theme.Base.Size.Lg} / 2) calc(${Theme.Base.Size.Lg} / 2)
+      calc(${Theme.Base.Size.Lg}) calc(${Theme.Base.Size.Lg} / 2);
   }
 
   .inner {
@@ -468,6 +537,19 @@ NavigationOverlayStyle.Main = styled.div`
       flex-direction: column-reverse;
     }
 
+    .mobile-brandmark {
+      display: none;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        display: block;
+      }
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        height: calc(${Theme.Base.Size.Lg});
+        svg {
+          height: 100%;
+          width: auto;
+        }
+      }
+    }
     .top,
     .bottom {
       display: flex;
@@ -498,13 +580,25 @@ NavigationOverlayStyle.Main = styled.div`
 
         .nav-item {
           display: block;
-          overflow: hidden;
+        //  overflow: hidden;
+
+          &:focus {
+            outline: none;
+          }
         }
 
         svg {
-          transform: scale(1.4) translateY(-5px);
+          transform: scale(1.4) translate(10px, -5px);
           transform-origin: center center;
           fill: ${Theme.Color.White};
+
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            transform: scale(1);
+          }
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            height: 4vw;
+            width: auto;
+          }
         }
 
         &:before {
@@ -526,10 +620,11 @@ NavigationOverlayStyle.Main = styled.div`
           transform: translateX(calc((${Root.Size} / 2) * -1));
           @media (max-width: ${Base.Media.Width.Md + 'px'}) {
             transform: none;
+            transition-duration: 0.25s !important;
             color: ${props =>
               props.theme.activeColor
                 ? props.theme.activeColor
-                : Theme.Color.Galaxy};
+                : Theme.Color.Galaxy} !important;
           }
         }
 
@@ -615,8 +710,17 @@ NavigationOverlayStyle.Main = styled.div`
       }
     }
 
+    .bottom {
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        flex: 10;
+      }
+    }
+
     .top {
       padding-bottom: ${Root.Size};
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        padding-bottom: calc(${Theme.Base.Size.Lg} / 2);
+      }
     }
   }
 `;

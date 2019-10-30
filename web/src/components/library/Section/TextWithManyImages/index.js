@@ -18,14 +18,9 @@ import { TextWithManyImagesStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const TextWithManyImages = ({
-  Images,
-  Text,
-}) => (
+export const TextWithManyImages = ({ Images, Text }) => (
   <TextWithManyImagesStyle>
-    <div className="text h4">
-      {Text}
-    </div>
+    <div className="text h4">{Text}</div>
     <div className="images">
       <ImgMatch src={Images[0]} />
       <div className="column">

@@ -44,9 +44,19 @@ const HostProgramHero = ({ cities, pageContext }) => {
     <SplitHero
       {...HeroProps}
       subNav={[
-        { label: 'after school programs', active: true, link: '/host-a-program' },
-        { label: 'recreation centers', link: '/recreation-centers' },
-        { label: 'homeschool classes', link: '/homeschool-classes' },
+        {
+          label: 'after school programs',
+          active: true,
+          link: '/host-a-program',
+        },
+        {
+          label: 'recreation centers',
+          link: '/recreation-centers',
+        },
+        {
+          label: 'homeschool classes',
+          link: '/homeschool-classes',
+        },
       ]}
     >
       <h2>Hosting a Play-Well Program</h2>

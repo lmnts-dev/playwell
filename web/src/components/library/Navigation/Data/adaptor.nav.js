@@ -20,7 +20,6 @@ export const navDataTransformer = sourceData => {
 
   // Primary navigation map
   let primaryNavMap = sourceNode.primaryNav.linkList.map((link, idx) => {
-
     return {
       route: link.route,
       label: link.label,

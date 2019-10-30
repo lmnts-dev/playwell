@@ -205,9 +205,7 @@ const HomePage = () => (
 );
 
 // Styles
-const Main = styled.main`
-
-`;
+const Main = styled.main``;
 
 const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
   &.overflow-image {
@@ -228,7 +226,7 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
         height: 100vw;
         position: static;
       }
-      
+
       .gatsby-image-wrapper {
         position: absolute !important;
         left: 0;

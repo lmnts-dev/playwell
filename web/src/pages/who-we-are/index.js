@@ -125,11 +125,11 @@ const ClayTextBlock = styled.div`
         calc(${Root.Size} * 1.5);
       line-height: 1.2;
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding: calc(${Root.Size} / 6) calc(${Root.Size}) 0
-        calc(${Root.Size});
+        padding: calc(${Root.Size} / 6) calc(${Root.Size}) 0 calc(${Root.Size});
       }
       @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-        padding: calc(${Root.Size} / 6) calc(${Root.Size} / 4) 0 calc(${Root.Size} / 4);
+        padding: calc(${Root.Size} / 6) calc(${Root.Size} / 4) 0
+          calc(${Root.Size} / 4);
       }
     }
   }
@@ -187,12 +187,12 @@ const CenteredTitle = styled(Centered)`
       padding-bottom: calc(${Theme.Base.Size.Lg} / 2);
     }
   }
-`
+`;
 
 const OverflowHidden = styled.div`
   width: 100vw;
   overflow: hidden;
-`
+`;
 
 // Render Page
 const WhoPage = ({ SliderSettings }) => {

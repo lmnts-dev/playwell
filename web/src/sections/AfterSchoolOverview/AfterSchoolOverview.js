@@ -48,7 +48,11 @@ const AfterSchoolOverview = () => {
             Program Overview
           </Text>{' '}
           <Text as="p" className="p-lg" color="Galaxy">
-          Our enrichment program is a multi-session course for elementary or middle school students. Classes typically meet once per week before or after school for an entire quarter (Fall/Winter/Spring). Session duration is generally 90-minutes. Varying session length and class timing may be negotiated with your local Area Manager.
+            Our enrichment program is a multi-session course for elementary or
+            middle school students. Classes typically meet once per week before
+            or after school for an entire quarter (Fall/Winter/Spring). Session
+            duration is generally 90-minutes. Varying session length and class
+            timing may be negotiated with your local Area Manager.
           </Text>
         </Block>
       </SplitSection>
@@ -74,7 +78,11 @@ const AfterSchoolOverview = () => {
             Program Overview
           </Text>{' '}
           <Text as="p" className="p-lg" color="Galaxy">
-          Our enrichment program is a multi-session course for elementary or middle school students. Classes typically meet once per week before or after school for an entire quarter (Fall/Winter/Spring). Session duration is generally 90-minutes. Varying session length and class timing may be negotiated with your local Area Manager.
+            Our enrichment program is a multi-session course for elementary or
+            middle school students. Classes typically meet once per week before
+            or after school for an entire quarter (Fall/Winter/Spring). Session
+            duration is generally 90-minutes. Varying session length and class
+            timing may be negotiated with your local Area Manager.
           </Text>
         </Block>
       </SplitSection>
@@ -100,7 +108,11 @@ const AfterSchoolOverview = () => {
             Program Overview
           </Text>{' '}
           <Text as="p" className="p-lg" color="Galaxy">
-          Our enrichment program is a multi-session course for elementary or middle school students. Classes typically meet once per week before or after school for an entire quarter (Fall/Winter/Spring). Session duration is generally 90-minutes. Varying session length and class timing may be negotiated with your local Area Manager.
+            Our enrichment program is a multi-session course for elementary or
+            middle school students. Classes typically meet once per week before
+            or after school for an entire quarter (Fall/Winter/Spring). Session
+            duration is generally 90-minutes. Varying session length and class
+            timing may be negotiated with your local Area Manager.
           </Text>
         </Block>
       </SplitSection>

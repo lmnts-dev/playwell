@@ -68,10 +68,12 @@ export class NavigationOverlay extends PureComponent {
         // Query our Navigation data so we can adjust our Navigation styles
         // based on Top Level Pages vs Sub Level Pages
         <>
-          <MobileNavigationOverlayStyle>
+          <MobileNavigationOverlayStyle
+            className={(navFadingOut && ' nav-fadeout ')}
+          >
             <div className="mobile-fixed mobile-fixed-top">
               <div
-                className={" exit " + (navFocused && ' dark-theme ')}
+                className={' exit ' + (navFocused && ' dark-theme ')}
                 onClick={this.props.navOverlayToggle}
                 onKeyDown={this.props.navOverlayToggle}
                 role="button"
@@ -167,6 +169,15 @@ export class NavigationOverlay extends PureComponent {
                     <div className="col-heading">
                       <span>{navContext.label}</span>
                     </div>
+                    <div
+                      className="mobile-back"
+                      onClick={this.props.navOverlayBack}
+                      onKeyDown={this.props.navOverlayBack}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <Icon Name="carat" />
+                    </div>
 
                     <div className="col-list">
                       <FocusLinkList
@@ -250,6 +261,11 @@ export class NavigationOverlay extends PureComponent {
                         </span>
                       </li>
                     </ul>
+                  </div>
+                  <div className="mobile-brandmark">
+                    <Link to="/">
+                      <Brandmark />
+                    </Link>
                   </div>
                 </div>
               </NavigationOverlayStyle.Main>

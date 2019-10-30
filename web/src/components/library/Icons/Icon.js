@@ -30,7 +30,9 @@ export const Icon = props => {
   switch (props.Name) {
     case 'carat':
       return (
-        <IconStyle className={'ico ' + props.className ? props.className : 'ico' }>
+        <IconStyle
+          className={'ico ' + props.className ? props.className : 'ico'}
+        >
           <Carat />
         </IconStyle>
       );

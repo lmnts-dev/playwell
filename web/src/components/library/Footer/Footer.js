@@ -48,10 +48,10 @@ export const Footer = ({ navQuery }) => {
         noPaddingBottom
         BgColor={'transparent'}
         className={
-         typeof window !== 'undefined' && location.pathname === '/contact'
-           ? 'hide'
-           : null
-       }
+          typeof window !== 'undefined' && location.pathname === '/contact'
+            ? 'hide'
+            : null
+        }
       >
         <CurveAndAngleWithPadding
           Tall

@@ -30,7 +30,7 @@ export const EdgeImageWithText = ({
   ButtonText,
   ButtonDest,
   Reversed,
-  LightText
+  LightText,
 }) => (
   <EdgeImageWithTextStyle Reversed={Reversed} LightText={LightText}>
     <Icon Name="swoop" />
@@ -38,9 +38,7 @@ export const EdgeImageWithText = ({
       <div className="h6">{Caption}</div>
       <div className="h2 txt-clr-sunset">{Header}</div>
       <p className="p-lg">{Paragraph}</p>
-      {Paragraph2 && 
-        <p className="p-lg">{Paragraph2}</p>
-      }
+      {Paragraph2 && <p className="p-lg">{Paragraph2}</p>}
       {ButtonText && ButtonDest && (
         <Btn
           Label={ButtonText}
@@ -51,7 +49,11 @@ export const EdgeImageWithText = ({
       )}
     </div>
     <div className="image">
-      <ImgMatch objectFit="contain" objectPosition={Reversed ? '0% 50%' : '100% 50%'} src={Image} />
+      <ImgMatch
+        objectFit="contain"
+        objectPosition={Reversed ? '0% 50%' : '100% 50%'}
+        src={Image}
+      />
       <Icon Name="swoop" />
     </div>
   </EdgeImageWithTextStyle>
@@ -59,7 +61,7 @@ export const EdgeImageWithText = ({
 
 EdgeImageWithText.defaultProps = {
   CaptionColor: Theme.Color.Nova,
-}
+};
 
 export default EdgeImageWithText;
 
