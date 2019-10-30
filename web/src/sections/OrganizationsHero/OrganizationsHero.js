@@ -1,5 +1,4 @@
-// <AfterSchoolHero /> section:
-// Location detail template coordinator accordion
+// <OrganizationsHero /> section:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -28,25 +27,39 @@ import { Theme, Root } from 'constants/Theme';
 
 // Props
 const HeroProps = {
-  arrowColor: Theme.Color.Nova,
   bg: Theme.Color.White,
-  color: Theme.Color.Eggplant,
+  bgMatch: 'team-containers.jpg',
+  color: Theme.Color.Primary,
   playButton: false,
   playButtonBg: Theme.Color.Ocean,
   gear: false,
-  wideImage: true,
-  bgMatch: 'kid-remote-control.jpg',
+  reversed: true,
+  subNavColor: Theme.Color.Nova,
+  arrowColor: Theme.Color.Nova,
 };
 
-const AfterSchoolHero = () => {
+const OrganizationsHero = () => {
   return (
-    <SplitHero {...HeroProps}>
-      <h2>Play-Well After School Enrichment</h2>
-      <h6 className="txt-clr-dino">In our Engineering with LEGO® enrichment program, take on real-life engineering challenges</h6>
+    <SplitHero
+      {...HeroProps}
+      subNav={[
+        { label: 'team building', link: '/team-building' },
+        {
+          label: 'organizations',
+          active: true,
+          link: '/team-building/organizations',
+        },
+        { label: 'sports teams', link: '/team-building/sports-teams' },
+        { label: 'non-profits', link: '/team-building/non-profits' },
+      ]}
+    >
+      <h2>Bring purposeful play to your organization</h2>
+      <h6 className="txt-clr-dino">
+        We have partnered with boy scouts, girl scouts, and other organizations.
+      </h6>
       <Btn
-        BgColor={Theme.Color.Nova}
         Label="Request Info"
-        Destination="/contact"
+        BgColor={Theme.Color.Nova}
         TextColor={Theme.Color.White}
         Size="large"
       />
@@ -54,7 +67,7 @@ const AfterSchoolHero = () => {
   );
 };
 
-export default AfterSchoolHero;
+export default OrganizationsHero;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

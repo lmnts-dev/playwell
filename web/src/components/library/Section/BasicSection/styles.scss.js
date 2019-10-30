@@ -49,7 +49,7 @@ export const BasicSectionStyle = styled.div`
     props.BorderTop || props.BorderMiddle
       ? `
     background-image: linear-gradient(to right, ` +
-    props.BorderTop +
+        props.BorderTop +
         ` 50%, rgba(255,255,255,0) 0%);
     background-position: top;
     background-size: 10px 1px;

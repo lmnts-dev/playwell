@@ -1,24 +1,15 @@
-// <AfterSchoolHero /> section:
-// Location detail template coordinator accordion
+// <NonProfitsHero /> section:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
 
 // Core
 import React from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
-import ImgMatch from 'components/core/ImgMatch';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import Btn from 'components/library/Btn';
 import SplitHero from 'components/library/Hero/SplitHero';
-
-// Styles
-import { Hero } from './styles.scss';
-
-// Helpers
-import slugify from 'helpers/slugify';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -28,25 +19,37 @@ import { Theme, Root } from 'constants/Theme';
 
 // Props
 const HeroProps = {
-  arrowColor: Theme.Color.Nova,
   bg: Theme.Color.White,
-  color: Theme.Color.Eggplant,
+  bgMatch: 'team-containers.jpg',
+  color: Theme.Color.Primary,
   playButton: false,
   playButtonBg: Theme.Color.Ocean,
   gear: false,
-  wideImage: true,
-  bgMatch: 'kid-remote-control.jpg',
+  reversed: true,
+  subNavColor: Theme.Color.Nova,
+  arrowColor: Theme.Color.Nova,
 };
 
-const AfterSchoolHero = () => {
+const NonProfitsHero = () => {
   return (
-    <SplitHero {...HeroProps}>
-      <h2>Play-Well After School Enrichment</h2>
-      <h6 className="txt-clr-dino">In our Engineering with LEGO® enrichment program, take on real-life engineering challenges</h6>
+    <SplitHero
+      {...HeroProps}
+      subNav={[
+        { label: 'team building', link: '/team-building' },
+        { label: 'organizations', link: '/team-building/organizations' },
+        { label: 'sports teams', link: '/team-building/sports-teams' },
+        {
+          label: 'non-profits',
+          active: true,
+          link: '/team-building/non-profits',
+        },
+      ]}
+    >
+      <h2>We partner with non-profits</h2>
+      <h6>Educational programs for underserved communities</h6>
       <Btn
+        Label="Get in Touch"
         BgColor={Theme.Color.Nova}
-        Label="Request Info"
-        Destination="/contact"
         TextColor={Theme.Color.White}
         Size="large"
       />
@@ -54,7 +57,7 @@ const AfterSchoolHero = () => {
   );
 };
 
-export default AfterSchoolHero;
+export default NonProfitsHero;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
