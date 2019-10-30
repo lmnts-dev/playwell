@@ -28,7 +28,6 @@
             ],
             "minorLinkList": [
               {
-                "route": "",
                 "label": "Learn more",
                 "subhead": true
               },
@@ -58,7 +57,6 @@
                 "subhead": false
               },
               {
-                "route": "",
                 "label": "Play-Well isn't just for kids...",
                 "subhead": true
               },
@@ -119,7 +117,6 @@
             ],
             "minorLinkList": [
               {
-                "route": "",
                 "label": "Learn more",
                 "subhead": true
               },
@@ -173,7 +170,6 @@
             ],
             "minorLinkList": [
               {
-                "route": "",
                 "label": "Play-Well isn't just for kids...",
                 "subhead": true
               },
@@ -227,7 +223,6 @@
             ],
             "minorLinkList": [
               {
-                "route": "",
                 "label": "Subhead",
                 "subhead": true
               },
