@@ -126,109 +126,109 @@ const TeamBuilding = () => {
 
       <TeamBuildingCulture />
 
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Sunset}
-        >
-          <BasicInner>
-            <CenteredTitle
-              Title={null}
-              Class="h3"
-              TextColor={Theme.Color.Sunset}
-            />
-          </BasicInner>
-          <Marquee
-            images={[
-              'visa.png',
-              'microsoft.png',
-              'clorox.png',
-              'google.png',
-              'pixar.jpeg',
-            ]}
-            SquareFormat
-            Shadow
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Sunset}
+      >
+        <BasicInner>
+          <CenteredTitle
+            Title={null}
+            Class="h3"
+            TextColor={Theme.Color.Sunset}
           />
-        </BasicSection>
+        </BasicInner>
+        <Marquee
+          images={[
+            'visa.png',
+            'microsoft.png',
+            'clorox.png',
+            'google.png',
+            'pixar.jpeg',
+          ]}
+          SquareFormat
+          Shadow
+        />
+      </BasicSection>
 
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Primary}
-        >
-          <BasicInner>
-            <CenteredTitle Title="Well Supplied Fun" Class="headline" />
-            <Box textAlign="center" width={'80%'} m={'0 auto'}>
-              <h3>
-                We bring tens of thousands of pieces of LEGO&reg;, a customized
-                organizational play challenge that fits your organization's
-                goals, and experienced organizational play facilitators who are
-                all about play.
-              </h3>
-              <Text as="p" className="h3" fontWeight={600}>
-                You bring the people. Together, we solve problems through play.
-              </Text>
-            </Box>
-          </BasicInner>
-        </BasicSection>
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Primary}
+      >
+        <BasicInner>
+          <CenteredTitle Title="Well Supplied Fun" Class="headline" />
+          <Box textAlign="center" width={'80%'} m={'0 auto'}>
+            <h3>
+              We bring tens of thousands of pieces of LEGO&reg;, a customized
+              organizational play challenge that fits your organization's goals,
+              and experienced organizational play facilitators who are all about
+              play.
+            </h3>
+            <Text as="p" className="h3" fontWeight={600}>
+              You bring the people. Together, we solve problems through play.
+            </Text>
+          </Box>
+        </BasicInner>
+      </BasicSection>
 
-        <BasicSection
-          noPaddingTop
-          noPaddingBottom
-          BgColor={Theme.Color.Background}
-        >
-          <CurveAndAngle>
-            <FooterCurveSlice bgColor={Theme.Color.Ocean} />
-            <FooterAngleSlice bgColor={Theme.Color.Background} />
-            <div className="absolute-image">
-              <ImgMatch src="sailboat.png" />
-            </div>
-          </CurveAndAngle>
-        </BasicSection>
+      {/* <BasicSection
+        noPaddingTop
+        noPaddingBottom
+        BgColor={Theme.Color.Background}
+      >
+        <CurveAndAngle>
+          <FooterCurveSlice bgColor={Theme.Color.Ocean} />
+          <FooterAngleSlice bgColor={Theme.Color.Background} />
+          <div className="absolute-image">
+            <ImgMatch src="sailboat.png" />
+          </div>
+        </CurveAndAngle>
+      </BasicSection> */}
 
-        <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino}>
-          <BasicInner>
-            <CenteredTitle Title="The Outcome" Class="headline" />
-            <Box pt={Root.Size}>
-              <LegoList
-                blocks={[
-                  {
-                    title: 'Creative Collaboration',
-                    text:
-                      'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
-                    legoColor: 'orange',
-                  },
-                  {
-                    title: 'New Perspectives',
-                    text:
-                      'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
-                    legoColor: 'purple',
-                  },
-                  {
-                    title: 'Staff Morale',
-                    text:
-                      'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
-                    legoColor: 'blue',
-                  },
-                ]}
-              />
-            </Box>
-          </BasicInner>
-        </BasicSection>
-
-        <BasicSection
-          BgColor={Theme.Color.Blush}
-          TextColor={Theme.Color.Dino}
-          noPaddingTop
-          noPaddingBottom
-        >
-          <BasicInner noPaddingRight>
-            <TextWithManyImages
-              Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
-              Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+      <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino}>
+        <BasicInner>
+          <CenteredTitle Title="The Outcome" Class="headline" />
+          <Box pt={Root.Size}>
+            <LegoList
+              blocks={[
+                {
+                  title: 'Creative Collaboration',
+                  text:
+                    'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                  legoColor: 'orange',
+                },
+                {
+                  title: 'New Perspectives',
+                  text:
+                    'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                  legoColor: 'purple',
+                },
+                {
+                  title: 'Staff Morale',
+                  text:
+                    'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                  legoColor: 'blue',
+                },
+              ]}
             />
-          </BasicInner>
-        </BasicSection>
+          </Box>
+        </BasicInner>
+      </BasicSection>
 
-        <TeamBuildingSplitLinks themeProps={ThemeProps} />
+      <BasicSection
+        BgColor={Theme.Color.Blush}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+        noPaddingBottom
+      >
+        <BasicInner noPaddingRight>
+          <TextWithManyImages
+            Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
+            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+          />
+        </BasicInner>
+      </BasicSection>
+
+      <TeamBuildingSplitLinks themeProps={ThemeProps} />
     </Layout>
   );
 };

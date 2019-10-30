@@ -29,13 +29,13 @@ import { Theme, Root } from 'constants/Theme';
 
 // Props
 const HeroProps = {
-  arrowColor: Theme.Color.Nova,
+  arrow: false,
   bg: Theme.Color.Cream,
   color: Theme.Color.Primary,
   playButton: false,
   playButtonBg: Theme.Color.Nova,
   gear: false,
-  subNavColor: Theme.Color.Eggplant,
+  subNavColor: Theme.Color.Primary,
   bgMatch: 'group-girls.jpg',
 };
 
@@ -59,6 +59,7 @@ const HostProgramHero = ({ cities, pageContext }) => {
         Label="Get in Touch"
         Destination="/contact"
         TextColor={Theme.Color.White}
+        Size="large"
       />
     </SplitHero>
   );

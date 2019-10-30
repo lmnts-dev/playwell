@@ -38,10 +38,10 @@ const HostProgramHow = () => (
         TextColor={Theme.Color.Nightsky}
       >
         <Text as="h6" color="Galaxy">
-          How can I bring a Play-Well Enrichment Class to my school?
+          How can I bring a Play-Well<br />Enrichment Class to my school?
         </Text>
-        <Text as="h2" color="Sunset">
-          After School Programs
+        <Text className="h2" color="Sunset">
+          After School<br />Programs
         </Text>{' '}
         <Text as="p" className="p-lg" color="Galaxy">
           Mention our Engineering FUNdamentals classes to your PTA/PTO
@@ -54,6 +54,8 @@ const HostProgramHow = () => (
           BgColor={Theme.Color.Nova}
           TextColor={Theme.Color.White}
           Destination="/"
+          className="btn--large"
+          Size="large"
         />
       </Block>
     </SplitSection>

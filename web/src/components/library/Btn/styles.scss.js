@@ -45,7 +45,10 @@ BtnStyle.Inner = styled.span`
   align-items: center;
   justify-content: center;
   white-space: nowrap;
-  padding: 0 calc(${Theme.Base.Size.Sm} * .8);
+  padding: ${p =>
+    p.Size == 'large'
+      ? `calc(${Root.Size} / 2.6) calc(${Root.Size} / 1.4)`
+      : `0 calc(${Theme.Base.Size.Sm} * .8)`};
   ${props =>
     props.IconPosition == 'left'
       ? 'padding-left: calc(' + Theme.Base.Size.Sm + '*1.2);'

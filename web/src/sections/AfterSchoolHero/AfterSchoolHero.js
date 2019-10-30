@@ -48,6 +48,7 @@ const AfterSchoolHero = () => {
         Label="Request Info"
         Destination="/contact"
         TextColor={Theme.Color.White}
+        Size="large"
       />
     </SplitHero>
   );
