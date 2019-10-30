@@ -66,7 +66,7 @@ align-items: center;
 
 .h2 {
   color: ${Theme.Color.Sunset};
-  padding: calc(${Root.Size} / 5) 0;
+  /* padding: calc(${Root.Size} / 5) 0; */
 }
 `;
 

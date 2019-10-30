@@ -119,6 +119,7 @@ export const Typography = createGlobalStyle`
     font-weight: 500;
     line-height: 1.4;
     letter-spacing: -0.2px;
+    padding-bottom: calc(var(--Size) / 3.5);
 
     &.lead {
       font-size: 1.4rem;
@@ -143,12 +144,13 @@ export const Typography = createGlobalStyle`
   }
 
   /* Header Styles */
-  h1, h2, h3, h4, h5, h6, .headline {
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .headline {
     font-family: ${Font.Header};
     line-height: 1.1;
     padding: 0;
     margin: 0;
     letter-spacing: -0.2px;
+    padding-bottom: calc(var(--Size) / 3.5); 
   }
 
   h1, .h1 {
@@ -195,5 +197,5 @@ export const Typography = createGlobalStyle`
     }
   }
 
-  h1, h2, h3, h4, h5, h6, p { padding-bottom: calc(var(--Size) / 3.5); }
+  /* h1, h2, h3, h4, h5, h6, p { padding-bottom: calc(var(--Size) / 3.5); } */
 `;

@@ -129,6 +129,7 @@ const TeamBuilding = () => {
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
+        BorderTop={Theme.Color.Clay}
       >
         <BasicInner>
           <CenteredTitle

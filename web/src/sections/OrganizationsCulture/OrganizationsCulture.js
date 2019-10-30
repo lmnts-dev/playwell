@@ -34,7 +34,7 @@ const OrganizationsCulture = () => {
         <Block
           Style="centered"
           BgColor={Theme.Color.White}
-          BgMatch="adults-outdoor.jpg"
+          BgMatch="lady-group.jpg"
           BgAlt="Our Awesome Alt Tag"
           Width={0.5}
           JustifyContent="center"
@@ -45,10 +45,10 @@ const OrganizationsCulture = () => {
           BgColor={Theme.Color.White}
           TextColor={Theme.Color.Nightsky}
         >
-          <Text as="h6" color="Galaxy">
+          <Text className="h6" color="Galaxy">
             Establishing a culture of play
           </Text>
-          <Text as="h2" color="Sunset">
+          <Text className="h2" color="Sunset">
             Solve Problems and Explore
           </Text>{' '}
           <Text as="p" className="p-lg" color="Galaxy">

@@ -28,7 +28,7 @@ import { Theme, Root } from 'constants/Theme';
 // Props
 const HeroProps = {
   bg: Theme.Color.White,
-  bgMatch: 'team-containers.jpg',
+  bgMatch: 'baby-biljetter.jpg',
   color: Theme.Color.Primary,
   playButton: false,
   playButtonBg: Theme.Color.Ocean,
