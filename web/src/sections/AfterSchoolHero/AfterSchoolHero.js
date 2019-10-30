@@ -31,7 +31,7 @@ const HeroProps = {
   arrowColor: Theme.Color.Nova,
   bg: Theme.Color.White,
   color: Theme.Color.Eggplant,
-  playButton: true,
+  playButton: false,
   playButtonBg: Theme.Color.Ocean,
   gear: false,
   wideImage: true,
@@ -51,6 +51,7 @@ const AfterSchoolHero = () => {
         Label="Request Info"
         Destination="/contact"
         TextColor={Theme.Color.White}
+        Size="large"
       />
     </SplitHero>
   );

@@ -61,13 +61,14 @@ export const Container = styled.div`
         transition: ${Theme.Base.Transition.String};
         /* text-decoration: none !important; */
         font-size: 2.5rem;
+        line-height: 1.2;
 
-        @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
           font-size: 4rem;
         }
 
-        @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
-          font-size: 5rem;
+        @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+          font-size: 4.5rem;
         }
 
         &:hover {

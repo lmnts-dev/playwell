@@ -44,7 +44,7 @@ const AfterSchoolOverview = () => {
           <Text as="h6" color="Galaxy">
             Multi-session course
           </Text>
-          <Text as="h2" color="Sunset">
+          <Text className="h1" color="Sunset">
             Program Overview
           </Text>{' '}
           <Text as="p" className="p-lg" color="Galaxy">
@@ -74,7 +74,7 @@ const AfterSchoolOverview = () => {
           <Text as="h6" color="Galaxy">
             Multi-session course
           </Text>
-          <Text as="h2" color="Sunset">
+          <Text className="h1" color="Sunset">
             Program Overview
           </Text>{' '}
           <Text as="p" className="p-lg" color="Galaxy">
@@ -104,7 +104,7 @@ const AfterSchoolOverview = () => {
           <Text as="h6" color="Galaxy">
             Multi-session course
           </Text>
-          <Text as="h2" color="Sunset">
+          <Text className="h1" color="Sunset">
             Program Overview
           </Text>{' '}
           <Text as="p" className="p-lg" color="Galaxy">

@@ -159,8 +159,8 @@ class SearchBar extends PureComponent {
               : 'search-bar'
           }
         >
-          <SearchBarStyle.Button>
-            <Btn
+          <SearchBarStyle.Button className="btn">
+            {/* <Btn
               Label="Brooklyn, NYC"
               Destination="/"
               BorderStyle="solid"
@@ -170,7 +170,16 @@ class SearchBar extends PureComponent {
               IconClass="map-marker-alt"
               IconPosition="left"
               IconFas
-            />
+            /> */}
+            <div className="btn-inner btn-border">
+              <span className="ico-pin">
+                <Icon className="ico-pin" Name="map-marker-alt" fas />
+              </span>
+              <span className="location">Brooklyn, NYC</span>
+              <span className="ico-carat">
+                <Icon Name="carat" />
+              </span>
+            </div>
             <SearchBarStyle.FilterList className="list">
               <div className="carat">
                 <div className="arrow-up" />

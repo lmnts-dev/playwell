@@ -66,7 +66,7 @@ const OverflowHidden = styled.div`
 //////////////////////////////////////////////////////////////////////
 
 // Render Page
-const TeamBuilding = () => {
+const SportsTeamsPage = () => {
   return (
     <Layout {...ThemeProps}>
       <SplitHero
@@ -221,7 +221,7 @@ const TeamBuilding = () => {
   );
 };
 
-export default TeamBuilding;
+export default SportsTeamsPage;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

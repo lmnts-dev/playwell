@@ -97,7 +97,7 @@ export const EdgeImageWithTextStyle = styled.div`
 
     .h2 {
       color: ${p => p.CaptionColor};
-      padding: calc(${Root.Size} / 6) 0;
+      /* padding: calc(${Root.Size} / 6) 0; */
     }
   }
 

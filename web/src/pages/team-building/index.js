@@ -129,6 +129,7 @@ const TeamBuilding = () => {
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Sunset}
+        BorderTop={Theme.Color.Clay}
       >
         <BasicInner>
           <CenteredTitle
@@ -170,7 +171,7 @@ const TeamBuilding = () => {
         </BasicInner>
       </BasicSection>
 
-      <BasicSection
+      {/* <BasicSection
         noPaddingTop
         noPaddingBottom
         BgColor={Theme.Color.Background}
@@ -182,7 +183,7 @@ const TeamBuilding = () => {
             <ImgMatch src="sailboat.png" />
           </div>
         </CurveAndAngle>
-      </BasicSection>
+      </BasicSection> */}
 
       <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino}>
         <BasicInner>

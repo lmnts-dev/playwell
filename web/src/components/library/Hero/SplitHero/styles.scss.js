@@ -173,7 +173,7 @@ export const SplitHeroStyle = styled.div`
 
       &.link-active {
         opacity: 1;
-        color: ${Theme.Color.Nova};
+        /* color: ${Theme.Color.Nova}; */
       }
 
       &:hover {

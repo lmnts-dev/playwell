@@ -11,23 +11,17 @@ import styled from 'styled-components';
 
 // Components
 import Layout from 'components/core/Layout';
-import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
-import ImgMatch from 'components/core/ImgMatch';
 import Marquee from 'components/library/Section/Marquee';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
-import GiantTextBlock from 'components/library/Section/GiantTextBlock';
-import LegoList from 'components/library/Section/LegoList';
 import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
-import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
 import {
   BasicSection,
   BasicInner,
 } from 'components/library/Section/BasicSection';
-import { Box, Flex } from 'components/library/Elements';
-import SubNav from 'components/library/SubNav';
+import { Box, Text } from 'components/library/Elements';
 import SplitHero from 'components/library/Hero/SplitHero';
+import ContactForm from 'components/library/Forms/ContactForm';
 
 // Sections
 import SpecialEventsSplitLinks from 'sections/SpecialEventsSplitLinks';
@@ -43,7 +37,7 @@ import { Base } from 'constants/styles/Base';
 const HeroProps = {
   bg: Theme.Color.Ocean,
   color: Theme.Color.White,
-  playButton: true,
+  playButton: false,
   playButtonBg: Theme.Color.Nova,
   gear: true,
   gearFill: Theme.Color.Dino,
@@ -51,7 +45,7 @@ const HeroProps = {
 };
 
 const ThemeProps = {
-  BgColor: Theme.Color.Ocean,
+  BgColor: Theme.Color.Background,
   PrimaryColor: Theme.Color.White,
   SecondaryColor: Theme.Color.Dino,
   TertiaryColor: Theme.Color.Primary,
@@ -61,7 +55,7 @@ const ThemeProps = {
 //////////////////////////////////////////////////////////////////////
 
 // Render Page
-const WhoWhyPage = () => {
+const SpecialEventsPage = () => {
   return (
     <Layout {...ThemeProps}>
       <SplitHero
@@ -85,6 +79,7 @@ const WhoWhyPage = () => {
             Label="Request a Special Event"
             BgColor={Theme.Color.Nova}
             TextColor={Theme.Color.White}
+            Size="large"
           />
         </Box>
       </SplitHero>
@@ -125,11 +120,13 @@ const WhoWhyPage = () => {
         TextColor={Theme.Color.Sunset}
       >
         <BasicInner>
-          <CenteredTitle
-            Title="Our Special Events Partners"
-            Class="h3"
-            TextColor={Theme.Color.Sunset}
-          />
+          <Box py={2}>
+            <CenteredTitle
+              Title="Our Special Events Partners"
+              Class="h3"
+              TextColor={Theme.Color.Sunset}
+            />
+          </Box>
         </BasicInner>
         <Marquee
           images={[
@@ -144,12 +141,27 @@ const WhoWhyPage = () => {
         />
       </BasicSection>
 
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner>
+          <Box textAlign="center">
+            <ContactForm
+              formName="special-events-contact"
+              title="Want us to participate in your next special event?"
+              footnote="Once you've submitted your request, you should receive an email with more info in 1-2 minutes. If you don't see it in your inbox, please check your spam promotions or spam folder."
+            />
+          </Box>
+        </BasicInner>
+      </BasicSection>
+
       <SpecialEventsSplitLinks themeProps={ThemeProps} />
     </Layout>
   );
 };
 
-export default WhoWhyPage;
+export default SpecialEventsPage;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

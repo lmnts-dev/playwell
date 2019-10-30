@@ -32,6 +32,7 @@ import HeroContainer from '../HeroContainer';
 //////////////////////////////////////////////////////////////////////
 
 const SplitHero = ({
+  arrow,
   arrowColor,
   bg,
   bgMatch,
@@ -58,7 +59,7 @@ const SplitHero = ({
         <div className="text">
           <div className="flex-spacer"></div>
           <div className="children">{children}</div>
-          <div className="arrow"></div>
+          {arrow && <div className="arrow"></div>}
           {subNav && !reversed && (
             <div className="sub-nav">
               {subNav.map((nav, index) => {
@@ -111,6 +112,7 @@ SplitHero.defaultProps = {
   flexDirection: 'row',
   playButtonBg: 'Nova',
   bgMatch: 'intro-smiles.jpg',
+  arrow: true,
   arrowColor: Theme.Color.White,
 };
 

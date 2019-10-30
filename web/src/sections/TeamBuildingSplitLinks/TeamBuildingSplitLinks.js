@@ -54,7 +54,7 @@ const TeamBuildingSplitLinks = ({
   //   : stateName;
 
   return (
-    <Section bg={themeProps.BgColor}>
+    <Section bg={themeProps.BgColor} pb={0}>
       <SplitLinks>
         <SplitLink
           title="Adults need purposeful play too"

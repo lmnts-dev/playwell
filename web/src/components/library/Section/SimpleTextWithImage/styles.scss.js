@@ -66,7 +66,7 @@ export const SimpleTextWithImageStyle = styled.div`
 
   .h2 {
     color: ${Theme.Color.Sunset};
-    padding: calc(${Root.Size} / 5) 0;
+  /*  padding: calc(${Root.Size} / 5) 0; */
   }
 `;
 

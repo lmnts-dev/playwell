@@ -29,6 +29,12 @@ SplitSectionStyle.Inner = styled.div`
     flex-wrap: nowrap;
   }
 
+  .h1,
+  .h2 {
+    font-weight: 600;
+    padding-bottom: calc(${Root.Size} / 3.5);
+  }
+
   .block {
     justify-content: center;
     align-items: center;
