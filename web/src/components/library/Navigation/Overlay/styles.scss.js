@@ -337,7 +337,7 @@ NavigationOverlayStyle.Sub = styled.div`
 
             a,
             svg {
-              color: ${Theme.Color.Sunlight};
+              color: ${Theme.Color.Sunset};
               fill: ${Theme.Color.Sunlight};
             }
 
@@ -398,7 +398,7 @@ NavigationOverlayStyle.Sub = styled.div`
 
             &.minor-link-subhead {
               font-size: calc(${Root.Size} / 4);
-              color: ${Theme.Color.Lilac};
+              color: ${Theme.Color.Sunlight};
               font-weight: bold;
               pointer-events: none;
               padding-top: calc(${Root.Size} / 2);
@@ -437,7 +437,7 @@ NavigationOverlayStyle.Sub = styled.div`
 
             a,
             svg {
-              color: ${Theme.Color.Galaxy};
+              color: ${Theme.Color.Primary};
               fill: ${Theme.Color.Galaxy};
             }
           }

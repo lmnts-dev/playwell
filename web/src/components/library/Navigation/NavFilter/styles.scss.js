@@ -19,7 +19,7 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const NavFilterStyle = styled.section`
+export const NavFilterStyle = styled.div`
   position: relative;
   padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
   /* List fade gradient */
@@ -78,47 +78,6 @@ export const NavFilterStyle = styled.section`
         font-size: calc(${Root.Size} / 1.5);
         margin-right: calc(${Root.Size} / 4);
         color: ${Theme.Color.Nova};
-      }
-    }
-  }
-`;
-
-// Arrow Link
-
-export const ArrowLink = styled.span`
-  color: ${Theme.Color.Lilac};
-  font-size: 0.9rem;
-  line-height: 1.4;
-  font-weight: 600;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-
-  span {
-    height: 14px;
-  }
-
-  .arrow {
-    margin-left: calc(${Root.Size} / 6);
-
-    svg {
-      transform: translateX(0);
-      fill: ${Theme.Color.Lilac};
-      transition: ${Theme.Base.Transition.String};
-      height: 14px;
-    }
-
-    &:hover {
-      svg {
-        transform: translateX(20%);
-      }
-    }
-  }
-
-  &:hover {
-    .arrow {
-      svg {
-        transform: translateX(40%);
       }
     }
   }
@@ -214,11 +173,9 @@ export const SearchBarStyle = styled.div`
 `;
 
 SearchBarStyle.Button = styled.div`
-  /* position: relative;
-  color: ${Theme.Color.White};
+  position: relative;
+  /* color: ${Theme.Color.White}; */
   background: transparent;
-  border: 0;
-  border: 1px solid ${Theme.Color.White};
   outline: 0;
   font-weight: bold;
   text-align: center;
@@ -226,14 +183,26 @@ SearchBarStyle.Button = styled.div`
   display: flex;
   flex: 1;
   cursor: pointer;
-  border-radius: 999px; */
+
+  .btn-inner {
+    display: flex;
+    border-radius: 999px;
+    border: 1px solid;
+    padding: 1px calc(${Root.Size} / 8);
+  }
+
+  .location {
+    display: flex;
+    align-items: center;
+    top: 2px;
+    position: relative;
+  }
 
   .ico-carat {
     position: relative;
-    top: -2px;
-    right: -4px;
     transform: rotate(90deg) scale(0.5);
     transform-origin: center center;
+    margin-left: calc(${Root.Size} / 6);
 
     polygon,
     svg,
@@ -243,9 +212,14 @@ SearchBarStyle.Button = styled.div`
   }
 
   .ico-pin {
-    margin-right: calc(${Theme.Base.Size.Lg} / 8);
+    margin-right: calc(${Root.Size} / 6);
+    transform: scale(0.7);
     position: relative;
-    top: -3px;
+    top: 1px;
+
+    span {
+      color: ${Theme.Color.White};
+    }
   }
 
   &:hover {
