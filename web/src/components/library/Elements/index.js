@@ -81,6 +81,7 @@ Button.displayName = 'Button';
 
 export const Text = styled('div')`
   box-sizing: border-box;
+  font-weight: 600;
   display: block;
   transition: all ${Theme.Base.Transition.Duration};
   ${space}

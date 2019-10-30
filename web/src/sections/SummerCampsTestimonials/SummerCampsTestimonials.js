@@ -29,7 +29,7 @@ import { Theme, Root } from 'constants/Theme';
 
 const SummerCampsTestimonials = () => {
   return (
-    <BasicSection BgColor={Theme.Color.Background} BorderTop={Theme.Color.Clay}>
+    <BasicSection BgColor={Theme.Color.White}>
       <BasicInner>
         <CenteredTitle
           Title="Testimonials"

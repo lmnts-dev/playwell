@@ -25,6 +25,7 @@ import SummerCampsHero from 'sections/SummerCampsHero';
 import SummerCampsCulture from 'sections/SummerCampsCulture';
 import SummerCampsSplitLinks from 'sections/SummerCampsSplitLinks';
 import SummerCampsTestimonials from 'sections/SummerCampsTestimonials';
+import SummerCampsNewsletter from 'sections/SummerCampsNewsletter';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -59,21 +60,8 @@ const SummerCampsPage = () => {
       <Main>
         <SummerCampsHero />
         <SummerCampsCulture />
-
         <SummerCampsTestimonials />
-
-        <Section bg="Blush">
-          <Text as="h6" color="Galaxy">
-            Let's be Pen Pals
-          </Text>
-          <Text as="h2" color="Sunset">
-            Join Our Newsletter
-          </Text>
-          <Text as="p" className="p-lg" color="Galaxy">
-            — email input —
-          </Text>
-        </Section>
-
+        <SummerCampsNewsletter />
         <SummerCampsSplitLinks themeProps={ThemeProps} />
         {/* <AfterSchoolContact /> */}
       </Main>
