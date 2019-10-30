@@ -62,12 +62,14 @@ export const MobileNavigationOverlayStyle = styled.div`
         position: relative;
 
         &.dark-theme {
-          &:before, &:after {
+          &:before,
+          &:after {
             background-color: ${Theme.Color.Eggplant};
           }
         }
 
-        &:before, &:after {
+        &:before,
+        &:after {
           position: absolute;
           content: '';
           height: 1px;
@@ -118,9 +120,7 @@ export const NavigationOverlayStyle = styled.nav`
   flex-direction: column;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     background: ${props =>
-      props.theme.primaryColor
-        ? props.theme.primaryColor
-        : Theme.Color.Ocean};
+      props.theme.primaryColor ? props.theme.primaryColor : Theme.Color.Ocean};
     width: 200vw;
     transform: translateX(-50%);
 
@@ -144,7 +144,6 @@ export const NavigationOverlayStyle = styled.nav`
   &.nav-fadeout {
     animation: ${FadeOut} ${navFadeOutDurationString} ease 0s 1 normal forwards;
   }
-
 `;
 
 NavigationOverlayStyle.Inner = styled.div`
@@ -338,7 +337,7 @@ NavigationOverlayStyle.Sub = styled.div`
 
             a,
             svg {
-              color: ${Theme.Color.Sunlight};
+              color: ${Theme.Color.Sunset};
               fill: ${Theme.Color.Sunlight};
             }
 
@@ -376,7 +375,7 @@ NavigationOverlayStyle.Sub = styled.div`
           flex-direction: column;
 
           li {
-            margin-bottom: calc(${Root.Size} / 8);
+            /* margin-bottom: calc(${Root.Size} / 8); */
             display: flex;
             align-items: stretch;
             justify-content: space-between;
@@ -399,9 +398,11 @@ NavigationOverlayStyle.Sub = styled.div`
 
             &.minor-link-subhead {
               font-size: calc(${Root.Size} / 4);
-              color: ${Theme.Color.Lilac};
+              color: ${Theme.Color.Sunlight};
               font-weight: bold;
               pointer-events: none;
+              padding-top: calc(${Root.Size} / 2);
+              padding-bottom: calc(${Root.Size} / 4);
             }
 
             a {
@@ -410,7 +411,7 @@ NavigationOverlayStyle.Sub = styled.div`
               align-items: stretch;
               justify-content: space-between;
               font-weight: bold;
-              font-size: calc(${Root.Size} / 3);
+              font-size: calc(${Root.Size} / 3.2);
               text-decoration: none;
               background: ${Theme.Color.White};
               padding: calc(${Root.Size} / 6) 0;
@@ -436,7 +437,7 @@ NavigationOverlayStyle.Sub = styled.div`
 
             a,
             svg {
-              color: ${Theme.Color.Galaxy};
+              color: ${Theme.Color.Primary};
               fill: ${Theme.Color.Galaxy};
             }
           }
@@ -456,7 +457,8 @@ NavigationOverlayStyle.Main = styled.div`
   flex-direction: column;
   padding: calc(${Root.Size} / 1.25) calc(${Root.Size} * 1.5);
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    padding: calc(${Theme.Base.Size.Lg} * 2.5) calc(${Theme.Base.Size.Lg} * 1) calc(${Theme.Base.Size.Lg} * 2) calc(${Theme.Base.Size.Lg} * 1);
+    padding: calc(${Theme.Base.Size.Lg} * 2.5) calc(${Theme.Base.Size.Lg} * 1)
+      calc(${Theme.Base.Size.Lg} * 2) calc(${Theme.Base.Size.Lg} * 1);
   }
 
   .inner {

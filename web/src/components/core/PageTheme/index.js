@@ -42,7 +42,7 @@ export const PageThemeStyle = createGlobalStyle`
                     ? props.PrimaryColor != 'unset'
                       ? props.PrimaryColor
                       : false
-                    : false}
+                    : false};
               }
             }
           }
@@ -57,7 +57,7 @@ export const PageThemeStyle = createGlobalStyle`
                     ? props.PrimaryColor != 'unset'
                       ? props.PrimaryColor
                       : false
-                    : false}
+                    : false};
               }
 
               &.btn-border {
@@ -66,7 +66,7 @@ export const PageThemeStyle = createGlobalStyle`
                     ? props.PrimaryColor != 'unset'
                       ? props.PrimaryColor
                       : false
-                    : false}
+                    : false};
               }
             }
           }
