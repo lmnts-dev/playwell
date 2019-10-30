@@ -15,6 +15,8 @@ import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import ImgMatch from 'components/core/ImgMatch';
+import Section from 'components/library/Elements/Section';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import CurveAndAngle from 'components/library/Section/CurveAndAngle';
 import GiantTextBlock from 'components/library/Section/GiantTextBlock';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
@@ -357,6 +359,26 @@ const Parties = () => {
           </PartyForm>
         </BasicInner>
       </BasicSection>
+
+      <Section bg={ThemeProps.BgColor} pb={0}>
+        <SplitLinks>
+          <SplitLink
+            title="Adults need purposeful play too."
+            message="View our team building opportunities"
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/"
+            themeProps={ThemeProps}
+            first
+          />
+          <SplitLink
+            title="Need help with a special Event?"
+            message="Learn about our partnerships"
+            to="/"
+            themeProps={ThemeProps}
+            last
+          />
+        </SplitLinks>
+      </Section>
     </Layout>
   );
 };

@@ -32,6 +32,16 @@ export const CurveAndAngleWithPadding = styled(CurveAndAngle)`
       background-color: ${props =>
         props.bgColor ? props.bgColor : Theme.Color.Background};
     }
+
+    .volcano {
+      position: absolute !important;
+      width: 30%;
+      bottom: 90px;
+      right: 19%;
+      @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+        width: calc(${Theme.Base.Size.Lg} * 7.2);
+      }
+    }
   }
 `;
 

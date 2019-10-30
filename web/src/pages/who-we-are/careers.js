@@ -14,6 +14,8 @@ import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import ImgMatch from 'components/core/ImgMatch';
+import Section from 'components/library/Elements/Section';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import Marquee from 'components/library/Section/Marquee';
 import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 import Team from 'components/library/Elements/Team';
@@ -245,6 +247,26 @@ const WhoCareersPage = () => {
           />
         </BasicInner>
       </BasicSection>
+
+      <Section bg={ThemeProps.BgColor} pb={0}>
+        <SplitLinks>
+          <SplitLink
+            title="Keep reading."
+            message="Learn about Our Values &amp; why we do what we do."
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/"
+            themeProps={ThemeProps}
+            first
+          />
+          <SplitLink
+            title="Here ye, here ye."
+            message="Check out our News &amp; Press page."
+            to="/"
+            themeProps={ThemeProps}
+            last
+          />
+        </SplitLinks>
+      </Section>
     </Layout>
   );
 };

@@ -16,6 +16,8 @@ import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import Centered from 'components/library/Elements/CenteredTitle';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
+import Section from 'components/library/Elements/Section';
 import Team from 'components/library/Elements/Team';
 import ImgMatch from 'components/core/ImgMatch';
 import {
@@ -240,9 +242,10 @@ const WhoPage = ({ SliderSettings }) => {
           <div className="text-block">
             <div className="headline txt-clr-clay">Play comes first.</div>
             <p className="h3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              viverra enim sed magna vestibulum, nec imperdiet orci egestas. Sed
-              in magna sapien.
+              "Play is the highest form of research". - Albert Einstein Through
+              playing with LEGO® materials, we inspire children to solve
+              problems, we spark their curiosity and we facilitate deep
+              learning.
             </p>
           </div>
         </ClayTextBlock>
@@ -292,10 +295,10 @@ const WhoPage = ({ SliderSettings }) => {
         >
           <BasicInner wideWidth noPaddingLeft>
             <ImageWithTextCard
-              Image="boy-smiles.jpg"
+              Image="girl-4.png"
               Caption="Constant Improvement"
               Header="From local to nationwide."
-              Paragraph="He began operating a summer camp program in 1997, followed by
+              Paragraph="Tim began operating a summer camp program in 1997, followed by
                   after school enrichment classes in 1998. With steady growth of
                   the company, project development is now undertaken by a staff of
                   instructors bent on constantly improving the programs."
@@ -400,25 +403,25 @@ const WhoPage = ({ SliderSettings }) => {
         </BasicInner>
       </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Eggplant}
-      >
-        <BasicInner>
-          <FooterExt>
-            <div className="left">
-              <div className="h5">Looking to join our team?</div>
-              <div className="h3">Check out our Jobs &amp; Careers page.</div>
-            </div>
-            <div className="right">
-              <div className="h5">Keep Reading.</div>
-              <div className="h3">
-                Learn about out Values &amp; why we do what we do.
-              </div>
-            </div>
-          </FooterExt>
-        </BasicInner>
-      </BasicSection>
+      <Section bg={ThemeProps.BgColor} pb={0}>
+        <SplitLinks>
+          <SplitLink
+            title="Looking to join our team?"
+            message="Check out our Jobs &amp; Careers page."
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/"
+            themeProps={ThemeProps}
+            first
+          />
+          <SplitLink
+            title="Keep reading."
+            message="Learn about Our Values &amp; why we do what we do."
+            to="/"
+            themeProps={ThemeProps}
+            last
+          />
+        </SplitLinks>
+      </Section>
     </Layout>
   );
 };
