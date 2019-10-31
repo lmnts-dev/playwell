@@ -62,6 +62,11 @@ const HeroProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+
+export const OverflowHidden = styled.div`
+  overflow: hidden;
+`;
+
 const DeepseaTextBlock = styled.div`
   position: relative;
   text-align: center;
@@ -76,6 +81,13 @@ const DeepseaTextBlock = styled.div`
   .h2 {
     font-size: 114px;
     color: ${Theme.Color.Deepsea};
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      font-size: 4rem;
+      padding-top: calc(${Root.Size});
+    }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      padding-top: 0;
+    }
   }
 
   p {
@@ -83,6 +95,12 @@ const DeepseaTextBlock = styled.div`
       calc(${Root.Size} * 1.5);
     line-height: 1.2;
     font-size: 44px;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      font-size: 24px;
+    }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      padding: calc(${Root.Size} / 6) 0 calc(${Root.Size} * 1.5) 0;
+    }
   }
 `;
 
@@ -97,6 +115,13 @@ const Projects = styled.div`
     margin-right: 5%;
     text-align: center;
     margin-top: calc(${Root.Size} / 1.5);
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      width: 47.5%;
+    }
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      width: 100%;
+      margin-right: 0 !important;
+    }
 
     .h6,
     .tag {
@@ -108,27 +133,39 @@ const Projects = styled.div`
     }
 
     p {
-      padding-bottom: calc(${Root.Size} / 5);
+      padding-bottom: calc(${Root.Size} / 7);
     }
 
     .tags {
       display: flex;
       flex-direction: row;
       justify-content: center;
+      flex-wrap: wrap;
 
       .tag {
         font-size: 12px;
         color: ${Theme.Color.Nova};
         padding: 0 calc(${Root.Size} / 8);
+        white-space: nowrap;
+        margin-top: calc(${Root.Size} / 8);
       }
     }
 
     &:nth-of-type(3n) {
       margin-right: 0;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        margin-right: 5%;
+      }
+    }
+
+    &:nth-of-type(2n) {
+      @media (max-width: ${Base.Media.Width.Md + 'px'});
+        margin-right: 0;
+      }
     }
 
     &:last-of-type {
-      margin-right: 0;
+      margin-right: 0 !important;
     }
 
     .gatsby-image-wrapper {
@@ -164,6 +201,9 @@ const Timeline = styled.div`
       top: 0;
       left: 0;
     }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      display: none;
+    }
   }
 
   .text {
@@ -175,6 +215,26 @@ const Timeline = styled.div`
       padding-left: calc(${Theme.Base.Size.Lg} * 0.75);
       margin-left: calc(${Theme.Base.Size.Lg} * 0.75);
       position: relative;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        height: auto;
+        padding-bottom: calc(${Theme.Base.Size.Lg});
+        margin-left: 0;
+        padding-left: calc(${Theme.Base.Size.Lg} / 2);
+      }
+
+      .mobile-image {
+        display: none;
+        max-width: calc(${Theme.Base.Size.Lg} * 7);
+        height: 0;
+        padding-top: calc(${Theme.Base.Size.Lg} * 4);
+        margin-bottom: calc(${Theme.Base.Size.Lg} / 2);
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          display: block;
+        }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          padding-top: 57%;
+        }
+      }
 
       &:after {
         position: absolute;
@@ -207,6 +267,12 @@ const Timeline = styled.div`
           ${Theme.Color.Sunset} 3px,
           ${Theme.Color.Background} 4px
         );
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          top: 25%;
+        }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          top: 15%;
+        }
       }
 
       &:first-of-type {
@@ -214,12 +280,24 @@ const Timeline = styled.div`
           height: 50%;
           top: auto;
           bottom: 0;
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            height: 75%;
+          }
+          @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+            height: 85%;
+          }
         }
       }
 
       &:last-of-type {
         &:after {
           height: 50%;
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            height: 25%;
+          }
+          @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+            height: 15%;
+          }
         }
       }
     }
@@ -233,8 +311,15 @@ const Timeline = styled.div`
   .time {
     font-size: 100px;
     color: ${Theme.Color.Blush};
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      font-size: 72px;
+    }
+
     span {
       font-size: 41px;
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        font-size: 35px;
+      }
     }
   }
 
@@ -371,6 +456,13 @@ export const AbsoluteDecor = styled.div`
   }
 `;
 
+const Centered = styled(CenteredTitle)`
+  .mobile-left {
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      text-align: left;
+    }
+  }
+`;
 
 
 // Render Page
@@ -399,37 +491,39 @@ const Parties = () => {
         </AbsoluteDecor>
       </BasicSection>
 
-      <BasicSection noPaddingBottom BgColor={Theme.Color.Ocean}>
-        <BasicInner>
-          <DeepseaTextBlock>
-            <div className="h2">Well Supplied Fun</div>
-            <p>
-              At a Play-Well party, you provide the kids and we bring over
-              20,000 pieces of LEGO and awesome project ideas!
-            </p>
-          </DeepseaTextBlock>
-        </BasicInner>
+      <OverflowHidden>
+        <BasicSection noPaddingBottom BgColor={Theme.Color.Ocean}>
+          <BasicInner>
+            <DeepseaTextBlock>
+              <div className="h2">Well Supplied Fun</div>
+              <p>
+                At a Play-Well party, you provide the kids and we bring over
+                20,000 pieces of LEGO and awesome project ideas!
+              </p>
+            </DeepseaTextBlock>
+          </BasicInner>
           <CurveAndAngle
             AngleColor={Theme.Color.Background}
-            CurveColor={Theme.Color.Deepsea}
+            CurveColor={Theme.Color.Galaxy}
             Clouds="1"
           >
-          <AbsoluteDecor>
-            <div className="decor-container absolute-gears">
-              <ImgMatch src="plant-gears.png" />
-            </div>
-            <div className="decor-container absolute-sailboat">
-              <ImgMatch src="sailboat.png" />
-            </div>
-            <div className="decor-container absolute-plant-1">
-              <ImgMatch src="plant-wavy-1.png" />
-            </div>
-            <div className="decor-container absolute-plant-2">
-              <ImgMatch src="plant-wavy-2.png" />
-            </div>
-          </AbsoluteDecor>
-        </CurveAndAngle>
-      </BasicSection>
+            <AbsoluteDecor>
+              <div className="decor-container absolute-gears">
+                <ImgMatch src="plant-gears.png" />
+              </div>
+              <div className="decor-container absolute-sailboat">
+                <ImgMatch src="sailboat.png" />
+              </div>
+              <div className="decor-container absolute-plant-1">
+                <ImgMatch src="plant-wavy-1.png" />
+              </div>
+              <div className="decor-container absolute-plant-2">
+                <ImgMatch src="plant-wavy-2.png" />
+              </div>
+            </AbsoluteDecor>
+          </CurveAndAngle>
+        </BasicSection>
+      </OverflowHidden>
 
       <BasicSection
         BgColor={Theme.Color.Background}
@@ -463,7 +557,7 @@ const Parties = () => {
 
       <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino}>
         <BasicInner wideWidth>
-          <CenteredTitle Title="How We Party" Class="headline" />
+          <Centered Title="How We Party" Class="headline mobile-left" />
           <Timeline>
             <div className="images">
               <ImgMatch src="random-1.jpg" />
@@ -473,6 +567,7 @@ const Parties = () => {
             </div>
             <div className="text">
               <div className="container">
+                <ImgMatch className="mobile-image" src="random-1.jpg" />
                 <div className="time">
                   15<span>min</span>
                 </div>
@@ -483,6 +578,7 @@ const Parties = () => {
                 </p>
               </div>
               <div className="container">
+                <ImgMatch className="mobile-image" src="random-2.jpg" />
                 <div className="time">
                   1<span>hr</span> 15<span>min</span>
                 </div>
@@ -493,6 +589,7 @@ const Parties = () => {
                 </p>
               </div>
               <div className="container">
+                <ImgMatch className="mobile-image" src="random-3.jpg" />
                 <div className="time">
                   15<span>min</span>
                 </div>
@@ -503,6 +600,7 @@ const Parties = () => {
                 </p>
               </div>
               <div className="container">
+                <ImgMatch className="mobile-image" src="random-4.jpg" />
                 <div className="time">
                   15<span>min</span>
                 </div>
