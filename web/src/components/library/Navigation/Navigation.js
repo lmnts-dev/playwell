@@ -181,12 +181,12 @@ class NavigationBar extends PureComponent {
                 IconFas
               />
               <NavFilter />
-              <Btn
+              {/*<Btn
                 Label="Let's Play"
                 Destination="/"
                 BgColor={Theme.Color.Nova}
                 TextColor={Theme.Color.White}
-              />
+              /> */}
             </NavigationStyle.Secondary>
             <NavigationStyle.Mobile>
               <button

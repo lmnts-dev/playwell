@@ -49,7 +49,7 @@ Container.Inner = styled.div`
   max-width: ${props => (props.fullWidth ? '100%' : Theme.Base.Grid.SiteWidth)};
   margin: 0 auto;
   position: relative;
-  padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 4);
+  padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 1);
   padding-bottom: calc(${Theme.Root.Size} * 1);
 
   @media (min-width: ${Base.Media.Width.Md + 'px'}) {

@@ -36,6 +36,7 @@ const HeroProps = {
   bgMatch: 'kid-machine.jpg',
   reversed: true,
   navColor: Theme.Color.White,
+  wideImage: false,
 };
 
 const SummeCampsHero = () => {

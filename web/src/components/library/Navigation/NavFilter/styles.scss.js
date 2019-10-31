@@ -244,7 +244,7 @@ SearchBarStyle.Button = styled.div`
 
 SearchBarStyle.FilterList = styled.div`
   position: absolute;
-  top: 115%;
+  top: 120%;
   /* left: 0; */
   right: 0;
   width: 260px;
@@ -288,7 +288,7 @@ SearchBarStyle.FilterList = styled.div`
   ul {
     background: ${Theme.Color.White};
     width: 100%;
-    height: 210px;
+    height: 170px;
     overflow: auto;
     margin-top: calc(${Root.Size} / 4);
     box-shadow: inset -12px -10px 15px ${Theme.Color.White};

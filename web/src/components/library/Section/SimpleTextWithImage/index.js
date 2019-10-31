@@ -31,8 +31,8 @@ export const SimpleTextWithImage = ({
 }) => (
   <SimpleTextWithImageStyle className={className}>
     <div className="text">
-      <div className="h6">{Caption}</div>
-      <div className="h2">{Header}</div>
+      <div className="h6 heading-padding">{Caption}</div>
+      <div className="h2 heading-padding">{Header}</div>
       <p className="p-lg">
         {Paragraph}
       </p>

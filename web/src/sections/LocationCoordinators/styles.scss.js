@@ -29,6 +29,7 @@ export const Title = styled(Box)`
 `;
 
 export const Article = styled.div`
+  border-radius: calc(${Root.Radius} / 2);
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

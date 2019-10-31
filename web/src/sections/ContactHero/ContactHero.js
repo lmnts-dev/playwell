@@ -52,23 +52,27 @@ const ContactHero = ({ data }) => {
       </Decorator>
       <HeroContainer {...HeroProps}>
         <Hero>
-          <Hero.Title>
+          <div className="title">
             <Box width={[1 / 2]}>
               <h1>Let's Talk</h1>
             </Box>
-            <Box width={[1 / 2]} textAlign="right">
-              <Hero.Faq>
+
+            {/* Dead Link */}
+            {/* <Box width={[1 / 2]}>
+              <div className="faq">
                 <span className="faq" />
                 <span className="arrow">
                   <Icon Name="carat" />
                 </span>
-              </Hero.Faq>
-            </Box>
-          </Hero.Title>
+              </div>
+            </Box> */}
+          </div>
+
           <Text as="h6" pr={[0, 0, 8]}>
             If you have specific qustions about Play-Well programs in your
             geographic area, please contact the manager for your area below.
           </Text>
+
           <ContactManager data={data} />
         </Hero>
       </HeroContainer>

@@ -195,49 +195,6 @@
               }
             ]
           }
-        },
-        {
-          "route": "/community",
-          "label": "Community",
-          "theme": {
-            "primaryColor": "Sky",
-            "activeColor": "Nightsky"
-          },
-          "subNav": {
-            "focusLinkList": [
-              {
-                "route": "/",
-                "label": "Community Link",
-                "focus": true
-              },
-              {
-                "route": "/",
-                "label": "Community Link",
-                "focus": false
-              },
-              {
-                "route": "/",
-                "label": "Community Link",
-                "focus": false
-              }
-            ],
-            "minorLinkList": [
-              {
-                "label": "Subhead",
-                "subhead": true
-              },
-              {
-                "route": "/",
-                "label": "Community Link",
-                "subhead": false
-              },
-              {
-                "route": "/",
-                "label": "Community Link",
-                "subhead": false
-              }
-            ]
-          }
         }
       ]
     },
@@ -248,12 +205,8 @@
           "route": "/programs"
         },
         {
-          "label": "Locations",
-          "route": "/locations"
-        },
-        {
           "label": "Special Events",
-          "route": "/"
+          "route": "/parties/special-events"
         },
         {
           "label": "Who We Are",
@@ -264,24 +217,12 @@
           "route": "/parties"
         },
         {
-          "label": "Community",
-          "route": "/community"
-        },
-        {
           "label": "Contact",
           "route": "/contact"
         },
         {
           "label": "Careers",
           "route": "/careers"
-        },
-        {
-          "label": "Partnerships",
-          "route": "/partnerships"
-        },
-        {
-          "label": "Play Zone",
-          "route": "/play"
         }
       ]
     }

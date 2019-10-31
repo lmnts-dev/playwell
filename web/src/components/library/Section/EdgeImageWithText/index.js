@@ -35,8 +35,8 @@ export const EdgeImageWithText = ({
   <EdgeImageWithTextStyle Reversed={Reversed} LightText={LightText}>
     <Icon Name="swoop" />
     <div className="text">
-      <div className="h6">{Caption}</div>
-      <div className="h2 txt-clr-sunset">{Header}</div>
+      <div className="h6 heading-padding">{Caption}</div>
+      <div className="h2 txt-clr-sunset heading-padding">{Header}</div>
       <p className="p-lg">{Paragraph}</p>
       {Paragraph2 && 
         <p className="p-lg">{Paragraph2}</p>
