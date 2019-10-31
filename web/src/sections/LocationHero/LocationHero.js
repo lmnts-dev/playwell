@@ -79,7 +79,7 @@ const LocationHero = ({ cities, pageContext }) => {
         </div>
       </Decorator>
       <Hero.Inner>
-        <Box width={1} px={Root.Grid.Indent.X}>
+        {/* <Box width={1} px={Root.Grid.Indent.X}>
           <Hero.Tags>
             <li>
               <Link to={'/'}>Robotics</Link>
@@ -97,7 +97,7 @@ const LocationHero = ({ cities, pageContext }) => {
               <Link to={'/'}>Engineering Themes</Link>
             </li>
           </Hero.Tags>
-        </Box>
+        </Box> */}
         <Box width={1} px={Root.Grid.Indent.X}>
           <Hero.Heading>
             STEM Education &amp;

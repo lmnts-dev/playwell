@@ -45,12 +45,12 @@ const LocationPrograms = () => (
           STEM terms or concepts, ability to generalize information, and
           increasing positve feeling towards STEM subjects.
         </Text>
-        <Btn
+        {/* <Btn
           Label="Explore Programs"
           Destination="/menu"
           BgColor={Theme.Color.Nova}
           TextColor={Theme.Color.White}
-        />
+        /> */}
       </Block>
       <Block
         Padding={[4, 2, 4, 2]}
@@ -68,12 +68,12 @@ const LocationPrograms = () => (
           experience boosts their confidence, creativity and ability to
           collaborate.
         </Text>
-        <Btn
+        {/* <Btn
           Label="Learn How"
           Destination="/menu"
           BgColor={Theme.Color.Nova}
           TextColor={Theme.Color.White}
-        />
+        /> */}
       </Block>
     </SplitSection>
   </>
