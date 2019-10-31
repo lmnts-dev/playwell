@@ -86,7 +86,7 @@ Container.Line = styled.div`
   }
 
   &:after {
-    content: "\\2023";
+    content: '\\2023';
     position: absolute;
     bottom: 0;
     left: calc(50% - 9px);

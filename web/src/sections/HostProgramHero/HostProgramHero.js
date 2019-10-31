@@ -44,15 +44,31 @@ const HostProgramHero = ({ cities, pageContext }) => {
     <SplitHero
       {...HeroProps}
       subNav={[
-        { label: 'after school programs', active: true, link: '/host-a-program' },
-        { label: 'recreation centers', link: '/recreation-centers' },
-        { label: 'homeschool classes', link: '/homeschool-classes' },
+        {
+          label: 'after school programs',
+          active: true,
+          link: '/host-a-program',
+        },
+        {
+          label: 'recreation centers',
+          link: '/recreation-centers',
+        },
+        {
+          label: 'homeschool classes',
+          link: '/homeschool-classes',
+        },
+        {
+          label: 'workshops',
+          link: '/workshops',
+        },
       ]}
     >
       <h2>Hosting a Play-Well Program</h2>
       <h6>
-        We offer many options for hosting your programs at your location or at
-        one of our activity centers.
+        Our LEGO-inspired STEM programs are customizable and can be tailored to
+        your needs. We'd love to work with you to provide a memorable hands-on
+        learning experience. Contact us today to discuss options for enrichment,
+        workshops, team building, special events and more.
       </h6>
       <Btn
         BgColor={Theme.Color.Nova}

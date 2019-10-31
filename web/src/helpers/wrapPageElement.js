@@ -20,7 +20,7 @@ import { navDataTransformer } from 'components/library/Navigation/Data/';
 //////////////////////////////////////////////////////////////////////
 
 const Main = styled.div`
-  overflow: hidden;
+
 `;
 
 const wrapPageElement = ({ element, props }) => {

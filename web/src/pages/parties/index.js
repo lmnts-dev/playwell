@@ -15,6 +15,8 @@ import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import ImgMatch from 'components/core/ImgMatch';
+import Section from 'components/library/Elements/Section';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import CurveAndAngle from 'components/library/Section/CurveAndAngle';
 import GiantTextBlock from 'components/library/Section/GiantTextBlock';
 import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
@@ -41,7 +43,7 @@ import hexToRGB from 'helpers/hexToRGB';
 
 // Props
 const ThemeProps = {
-  BgColor: Theme.Color.Cream,
+  BgColor: Theme.Color.Ocean,
   PrimaryColor: Theme.Color.White,
   SecondaryColor: Theme.Color.Primary,
   TertiaryColor: Theme.Color.Primary,
@@ -50,13 +52,11 @@ const ThemeProps = {
 const HeroProps = {
   bg: Theme.Color.Background,
   color: Theme.Color.Eggplant,
-  flexDirection: 'row',
-  BgAlt: 'Placeholder Image Alt',
+  playButton: true,
   playButtonBg: Theme.Color.Nova,
+  arrowColor: Theme.Color.Nova,
   gear: false,
-  textAlign: 'left',
-  withMask: false,
-  heroHeight: 'auto',
+  arrow: true,
 };
 
 // Begin Component
@@ -80,7 +80,8 @@ const DeepseaTextBlock = styled.div`
     }
 
     p {
-      padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0 calc(${Root.Size} * 1.5);
+      padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0
+        calc(${Root.Size} * 1.5);
       line-height: 1.2;
     }
   }
@@ -140,6 +141,91 @@ const Projects = styled.div`
   }
 `;
 const Timeline = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-top: calc(${Theme.Base.Size.Lg});
+
+  .images,
+  .text {
+    flex: 1;
+    min-width: 50%;
+  }
+
+  .images {
+    height: calc(${Theme.Base.Size.Lg} * 6);
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: calc(${Theme.Base.Size.Lg} * 2);
+
+    .gatsby-image-wrapper {
+      position: absolute !important;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .text {
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: calc(${Theme.Base.Size.Lg} * 6);
+      padding-left: calc(${Theme.Base.Size.Lg} * 0.75);
+      margin-left: calc(${Theme.Base.Size.Lg} * 0.75);
+      position: relative;
+
+      &:after {
+        position: absolute;
+        content: '';
+        width: 1px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background-image: linear-gradient(
+          ${Theme.Color.Sunset} 40%,
+          rgba(255, 255, 255, 0) 0%
+        );
+        background-position: right;
+        background-size: 1px 10px;
+        background-repeat: repeat-y;
+      }
+
+      &:before {
+        left: calc(${Theme.Base.Size.Lg} / -10);
+        position: absolute;
+        content: '';
+        z-index: 2;
+        top: 50%;
+        border-radius: 50%;
+        width: calc(${Theme.Base.Size.Lg} / 5);
+        height: calc(${Theme.Base.Size.Lg} / 5);
+        border: 1px solid ${Theme.Color.Sunset};
+        background: radial-gradient(
+          ${Theme.Color.Sunset} 3px,
+          ${Theme.Color.Background} 4px
+        );
+      }
+
+      &:first-of-type {
+        &:after {
+          height: 50%;
+          top: auto;
+          bottom: 0;
+        }
+      }
+
+      &:last-of-type {
+        &:after {
+          height: 50%;
+        }
+      }
+    }
+  }
+
   .h3,
   .time {
     font-weight: 700;
@@ -203,9 +289,15 @@ const Questions = styled.div`
   }
 `;
 
-const PartyForm = styled.div`
+const CTA = styled.div`
   max-width: calc(${Root.Size} * 11);
   margin: 0 auto;
+  text-align: center;
+
+  .h3 {
+    color: ${Theme.Color.Dino};
+    padding-bottom: calc(${Theme.Base.Size.Lg} / 2);
+  }
 
   .centered {
     text-align: center;
@@ -230,6 +322,12 @@ const Parties = () => {
           Some of the most memorable and fun experiences kid's have together are
           at birthday parties.
         </h6>
+        <Btn
+          Label="Request a Party"
+          BgColor={Theme.Color.Nova}
+          TextColor={Theme.Color.White}
+          Destination="/"
+        />
       </SplitHero>
 
       <BasicSection
@@ -282,17 +380,58 @@ const Parties = () => {
       </BasicSection>
 
       <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino}>
-        <BasicInner>
+        <BasicInner wideWidth>
           <CenteredTitle Title="How We Party" Class="headline" />
           <Timeline>
-            <div className="time">
-              15<span>min</span>
+            <div className="images">
+              <ImgMatch src="random-1.jpg" />
+              <ImgMatch src="random-2.jpg" />
+              <ImgMatch src="random-3.jpg" />
+              <ImgMatch src="random-4.jpg" />
             </div>
-            <div className="h3">Before Party</div>
-            <p className="p-lg">
-              A Play-Well instructor will arrive before the party is scheduled
-              to start to set up.
-            </p>
+            <div className="text">
+              <div className="container">
+                <div className="time">
+                  15<span>min</span>
+                </div>
+                <div className="h3">Before Party</div>
+                <p className="p-lg">
+                  A Play-Well instructor will arrive before the party is
+                  scheduled to start to set up.
+                </p>
+              </div>
+              <div className="container">
+                <div className="time">
+                  1<span>hr</span> 15<span>min</span>
+                </div>
+                <div className="h3">Play Time</div>
+                <p className="p-lg">
+                  The real fun begins! Guests build an engaging project, guided
+                  by the instructor.
+                </p>
+              </div>
+              <div className="container">
+                <div className="time">
+                  15<span>min</span>
+                </div>
+                <div className="h3">Cleanup</div>
+                <p className="p-lg">
+                  Queue the 'Cleanup Song'. Everyone helps take apart the
+                  projects and cleanup together.
+                </p>
+              </div>
+              <div className="container">
+                <div className="time">
+                  15<span>min</span>
+                </div>
+                <div className="h3">Over and Out</div>
+                <p className="p-lg">
+                  It may take us 15 minutes to remove our materials. This is a
+                  great ime to transition your guests to food or another
+                  activity.
+                </p>
+              </div>
+            </div>
           </Timeline>
         </BasicInner>
       </BasicSection>
@@ -321,41 +460,42 @@ const Parties = () => {
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
-        noPaddingTop
       >
         <BasicInner>
-          <PartyForm>
-            <div className="centered">
-              <div className="h3">
-                Thank you for your interest in Play-Well parties!
-              </div>
-              <p className="p-lg">
-                Please provide us with information about your preferred party
-                date and location. We will let you know if we can do a party at
-                your location on the date requested. To view pricing for your
-                area, please choose your location.
-              </p>
-            </div>
-            <form>
-              {/*<input type="text" placeholder="First Name"/>
-                        <input type="text" placeholder="Last Name"/>
-                        <select></select>
-                        <input type="text" placeholder="City"/>
-                        <textarea placeholder="Comments, questions, etc."/>
-                        <input type="email" placeholder="Your email address"/>
-                        <input />
-                        <label>How did you hear about us?</label>
-                        <input type="radio">From a Play-Well Instuctor</input> */}
-              <button type="submit">Submit Request</button>
-            </form>
-            <p className="centered p-lg">
-              Once you've submitted your request, you should receive an email
-              with more information in 1-2 minutes. If you don't see it in your
-              inbox, please check your promotions or spam folder.
-            </p>
-          </PartyForm>
+          <CTA>
+            <CenteredTitle
+              Title="Are you ready to plan a Party with Play-Well?"
+              Class="h3"
+            />
+            <Btn
+              Label="Request a Party"
+              BgColor={Theme.Color.Nova}
+              TextColor={Theme.Color.White}
+              Destination="/"
+            />
+          </CTA>
         </BasicInner>
       </BasicSection>
+
+      <Section bg={ThemeProps.BgColor} pb={0}>
+        <SplitLinks>
+          <SplitLink
+            title="Adults need purposeful play too."
+            message="View our team building opportunities"
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/"
+            themeProps={ThemeProps}
+            first
+          />
+          <SplitLink
+            title="Need help with a special Event?"
+            message="Learn about our partnerships"
+            to="/"
+            themeProps={ThemeProps}
+            last
+          />
+        </SplitLinks>
+      </Section>
     </Layout>
   );
 };
@@ -365,46 +505,40 @@ export default Parties;
 //////////////////////////////////////////////////////////////////////
 // End Component
 
-
 const ProjectsList = [
   {
     title: 'Race Car',
     image: 'project-1.jpg',
     link: '/',
-    description:
-      'Competitive racing',
-    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
+    description: 'Competitive racing',
+    tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
   },
   {
     title: 'Off Roader',
     image: 'project-2.jpg',
     link: '/',
-    description:
-      'Traverse obstacle course',
-    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
-  },    
+    description: 'Traverse obstacle course',
+    tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
+  },
   {
     title: 'Parade Float',
     image: 'project-3.jpg',
     link: '/',
-    description:
-      'Creative build and play',
-    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
+    description: 'Creative build and play',
+    tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
   },
   {
     title: 'Merry Go Round',
     image: 'project-1.jpg',
     link: '/',
-    description:
-      'Creative build and play',
-    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
-  },  
+    description: 'Creative build and play',
+    tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
+  },
   {
     title: 'Battlerack',
     image: 'project-2.jpg',
     link: '/',
-    description:
-      'Competitive jousting',
-    tags: [ 'Ages 5+', 'Vehicles', 'Mechanics' ],
-  }
+    description: 'Competitive jousting',
+    tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
+  },
 ];

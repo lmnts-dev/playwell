@@ -226,10 +226,9 @@ const SearchBarResults = ({ results }) => {
       {results.length > 0 ? (
         results.map((result, idx) => {
           return (
-            <li>
+            <li key={idx}>
               <Link
                 to={'/locations/' + slugify(result.node.name.toLowerCase())}
-                key={idx}
               >
                 <span>{result.node.name}</span>
               </Link>

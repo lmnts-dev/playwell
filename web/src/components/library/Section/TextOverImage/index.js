@@ -21,26 +21,21 @@ import { TextOverImageStyle, BlockNumber } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const TextOverImage = ({
-  Image,
-  ButtonText,
-  ButtonDest,
-  Header,
-}) => (
+export const TextOverImage = ({ Image, ButtonText, ButtonDest, Header }) => (
   <TextOverImageStyle>
     <div className="background-image">
       <ImgMatch src={Image} />
     </div>
     <BasicInner>
       <div className="h3">{Header}</div>
-      {(ButtonText && ButtonDest) &&
+      {ButtonText && ButtonDest && (
         <Btn
           Label={ButtonText}
           BgColor={Theme.Color.Sky}
           TextColor={Theme.Color.White}
           Destination={ButtonDest}
         />
-      }
+      )}
     </BasicInner>
   </TextOverImageStyle>
 );

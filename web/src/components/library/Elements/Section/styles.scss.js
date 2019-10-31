@@ -66,13 +66,9 @@ Container.Inner = styled(Box)`
 
   @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
     padding-right: ${p =>
-      p.fullWidth
-        ? '0'
-        : `calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 1)`};
+      p.fullWidth ? '0' : `calc(${Root.Grid.Gutter.Right} + ${Root.Size} * 1)`};
     padding-left: ${p =>
-      p.fullWidth
-        ? '0'
-        : `calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 1)`};
+      p.fullWidth ? '0' : `calc(${Root.Grid.Gutter.Left} + ${Root.Size} * 1)`};
   }
 `;
 

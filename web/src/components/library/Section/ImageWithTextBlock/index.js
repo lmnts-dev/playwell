@@ -28,7 +28,7 @@ export const ImageWithTextBlock = ({
   Paragraph,
   children,
   ButtonText,
-  ButtonDest
+  ButtonDest,
 }) => (
   <ImageWithTextBlockStyles reversedOrder={reversedOrder}>
     {children}

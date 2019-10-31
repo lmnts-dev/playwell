@@ -21,7 +21,6 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-
 export const SliderContainer = styled.div`
   text-align: center;
 
@@ -55,11 +54,12 @@ export const SliderContainer = styled.div`
       .text {
         display: block;
         width: 100%;
-        padding: calc(${Theme.Base.Size.Lg} / 4) calc(${Theme.Base.Size.Lg} / 3) calc(${Theme.Base.Size.Lg} / 2) calc(${Theme.Base.Size.Lg} / 3);
+        padding: calc(${Theme.Base.Size.Lg} / 4) calc(${Theme.Base.Size.Lg} / 3)
+          calc(${Theme.Base.Size.Lg} / 2) calc(${Theme.Base.Size.Lg} / 3);
         border-bottom-left-radius: calc(${Theme.Base.Size.Lg} / 8);
         border-bottom-right-radius: calc(${Theme.Base.Size.Lg} / 8);
-        margin-bottom: calc(${Theme.Base.Size.Lg} * .75);
-        transition-duration: .25s;
+        margin-bottom: calc(${Theme.Base.Size.Lg} * 0.75);
+        transition-duration: 0.25s;
 
         &:hover {
           text-decoration: none !important;
@@ -80,7 +80,7 @@ export const SliderContainer = styled.div`
           flex-direction: row;
           flex-wrap: row;
           margin-bottom: calc(${Theme.Base.Size.Lg} / 4);
-      
+
           li {
             color: ${Theme.Color.Nova};
             font-size: 0.8rem;
@@ -106,7 +106,6 @@ export const SliderContainer = styled.div`
   .btn-inner {
     margin-top: calc(${Theme.Base.Size.Lg} / 2);
   }
-
 
   .slick-dots {
     li {

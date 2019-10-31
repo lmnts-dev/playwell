@@ -29,8 +29,8 @@ export const Container = styled(Box)`
   position: absolute;
   z-index: 2;
   top: 20%;
-  ${props => props.reversed ? 'right: ' : 'left: '} 0;
-  transform: translateX(${props => props.reversed ? '50%' : '-50%'});
+  ${props => (props.reversed ? 'right: ' : 'left: ')} 0;
+  transform: translateX(${props => (props.reversed ? '50%' : '-50%')});
   filter: drop-shadow(0px 8px 34px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     right: 0;

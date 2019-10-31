@@ -42,7 +42,10 @@ const AfterSchoolHero = () => {
   return (
     <SplitHero {...HeroProps}>
       <h2>Play-Well After School Enrichment</h2>
-      <h6 className="txt-clr-dino">In our Engineering with LEGO® enrichment program, take on real-life engineering challenges</h6>
+      <h6 className="txt-clr-dino">
+        In our Engineering with LEGO® enrichment program, take on real-life
+        engineering challenges
+      </h6>
       <Btn
         BgColor={Theme.Color.Nova}
         Label="Request Info"

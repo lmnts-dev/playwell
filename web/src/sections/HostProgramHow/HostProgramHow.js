@@ -38,16 +38,20 @@ const HostProgramHow = () => (
         TextColor={Theme.Color.Nightsky}
       >
         <Text as="h6" color="Galaxy">
-          How can I bring a Play-Well<br />Enrichment Class to my school?
+          How can I bring a Play-Well
+          <br />
+          Enrichment Class to my school?
         </Text>
         <Text className="h2" color="Sunset">
-          After School<br />Programs
+          After School
+          <br />
+          Programs
         </Text>{' '}
         <Text as="p" className="p-lg" color="Galaxy">
-          Mention our Engineering FUNdamentals classes to your PTA/PTO
-          president, after-school coordinator or principal. Contact a Play-Well
-          area manager to get a class proposal summary outlining our curriculum,
-          teaching methodology and class fees.
+          To bring Play-Well STEM enrichment to your school, connect us with
+          your school staff, after-school coordinator or parent group president.
+          Click here to download our enrichment brochure or follow the link
+          below to contact your local manager.
         </Text>
         <Btn
           Label="Learn More"

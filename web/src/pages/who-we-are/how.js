@@ -17,6 +17,8 @@ import ImageWithTextBlock from 'components/library/Section/ImageWithTextBlock';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 import EdgeSlider from 'components/library/Section/EdgeSlider';
 import Marquee from 'components/library/Section/Marquee';
+import Section from 'components/library/Elements/Section';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import ImageAccordianFeature from 'components/library/Section/ImageAccordianFeature';
 import CurveAndAngle from 'components/library/Section/CurveAndAngle';
 import SplitTextBoxes from 'components/library/Section/SplitTextBoxes';
@@ -55,20 +57,16 @@ const HeroProps = {
   playButtonBg: Theme.Color.Nova,
   gear: true,
   gearStroke: Theme.Color.White,
-  subNavColor: Theme.Color.White,
   arrowColor: Theme.Color.White,
 };
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-
-
 const OverflowHidden = styled.div`
   width: 100vw;
   overflow: hidden;
-`
-
+`;
 
 // Render Page
 const WhoHowPage = () => {
@@ -189,19 +187,19 @@ const WhoHowPage = () => {
             {
               header: 'Worshops',
               paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'Play-Well LEGO@-inspired programs can be tailored to your needs. We offer workshops for Girl Scouts, Homeschool Groups, Boy Scouts, In-school field trips and more.',
               image: 'girl-3.jpg',
             },
             {
               header: 'Classes',
               paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'What can you do with over 20,000 pieces of LEGO®? In our Engineering with LEGO® enrichment programs kids take on real-life engineering challenges allowing them to see STEM in action. Your child will explore concepts in physics, architecture, and mechanical engineering. Our students find inventive solutions in a fun-filled context that supports the growth of young minds through hands-on, minds-on learning.',
               image: 'girl-2.jpg',
             },
             {
               header: 'Camps',
               paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                "We'll help unleash your child's inner engineer in our STEM summer camps. They'll have so much fun in our LEGO-inspired summer camps that they won't even realize how much they're learning!",
               image: 'girl-1.jpg',
             },
           ]}
@@ -360,7 +358,7 @@ const WhoHowPage = () => {
             buttonDest: '/',
             buttonText: 'Expore Programs',
             paragraph:
-              "Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.",
+              "Our assessments measured three goals including: student's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.",
           }}
           SecondBlock={{
             caption: 'Do it Yourself',
@@ -368,10 +366,30 @@ const WhoHowPage = () => {
             buttonDest: '/',
             buttonText: 'Learn How',
             paragraph:
-              "Our assessments measured three goals including: students's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.",
+              "Our assessments measured three goals including: student's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects.",
           }}
         />
       </BasicSection>
+
+      <Section bg={ThemeProps.BgColor} pb={0}>
+        <SplitLinks>
+          <SplitLink
+            title="Keep reading."
+            message="Learn about Our Values &amp; why we do what we do."
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/"
+            themeProps={ThemeProps}
+            first
+          />
+          <SplitLink
+            title="Here ye, here ye."
+            message="Check out our News &amp; Press page."
+            to="/"
+            themeProps={ThemeProps}
+            last
+          />
+        </SplitLinks>
+      </Section>
     </Layout>
   );
 };

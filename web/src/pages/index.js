@@ -69,7 +69,7 @@ const HomePage = () => (
           <SimpleTextWithImage
             Caption="Taking our imagination up a level"
             Header="Creativity, Confidence &amp; Collaboration."
-            Paragraph="Through LEGO® inspired classes sparking “Aha!” moments, we help kids grasp fundamental principles of engineering and physics. The experience boosts their confidence, creativity and ability to collaborate."
+            Paragraph='Play-Well LEGO®-inspired programs spark "Aha" moments as kids begin to grasp the fundamental principles of engineering and physics. The ability boosts their confidence, creativity and ability to collaborate.'
             Image="intro-smiles.png"
             ButtonText="What We Do"
             ButtonDest="/"
@@ -165,19 +165,19 @@ const HomePage = () => (
             {
               header: 'Worshops',
               paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'Play-Well LEGO@-inspired programs can be tailored to your needs. We offer workshops for Girl Scouts, Homeschool Groups, Boy Scouts, In-school field trips and more.',
               image: 'girl-3.jpg',
             },
             {
               header: 'Classes',
               paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'What can you do with over 20,000 pieces of LEGO®? In our Engineering with LEGO® enrichment programs kids take on real-life engineering challenges allowing them to see STEM in action. Your child will explore concepts in physics, architecture, and mechanical engineering. Our students find inventive solutions in a fun-filled context that supports the growth of young minds through hands-on, minds-on learning.',
               image: 'girl-2.jpg',
             },
             {
               header: 'Camps',
               paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                "We'll help unleash your child's inner engineer in our STEM summer camps. They'll have so much fun in our LEGO-inspired summer camps that they won't even realize how much they're learning!",
               image: 'girl-1.jpg',
             },
           ]}
@@ -192,7 +192,7 @@ const HomePage = () => (
           <SpecialSimpleTextWithImage
             Caption="It starts with play"
             Header="Build Your Own World of Opportunity"
-            Paragraph="Bring your kid over or bring out your inner kid with some of our online activities to feed your imagination."
+            Paragraph="Activate your child's imagination with our on-line play zone or awaken your own inner kid with out LEGO-inspired games &amp; activities."
             Image="lego-ladder.png"
             ButtonText="Play Zone"
             ButtonDest="/"
@@ -205,9 +205,7 @@ const HomePage = () => (
 );
 
 // Styles
-const Main = styled.main`
-
-`;
+const Main = styled.main``;
 
 const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
   &.overflow-image {
@@ -228,7 +226,7 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
         height: 100vw;
         position: static;
       }
-      
+
       .gatsby-image-wrapper {
         position: absolute !important;
         left: 0;

@@ -46,9 +46,11 @@ class NavigationBar extends PureComponent {
     // collapsing menu hero on scroll.
     this.handleScroll = this.handleScroll.bind(this);
 
-
     // Bind our click event to open up Navigation Overlays.
     this.navOverlayToggle = this.navOverlayToggle.bind(this);
+
+    // Bind our click event to switch to the unfocosed half of the Navigation Overlay.
+    this.navOverlayBack = this.navOverlayBack.bind(this);
 
     // Bind our navContextUpdate function.
     this.navContextUpdate = this.navContextUpdate.bind(this);
@@ -90,7 +92,6 @@ class NavigationBar extends PureComponent {
     }
   }
 
-
   // Function to toggle NavigationOverlay.
   navOverlayToggle(idx) {
     // If currently hidden...
@@ -103,7 +104,6 @@ class NavigationBar extends PureComponent {
       // Set state for NavigationOverlay to fade out.
       this.setState({
         navFadingOut: true,
-        navFocused: false,
       });
 
       // Timer to remove NavigationOverlay from the DOM.
@@ -112,8 +112,17 @@ class NavigationBar extends PureComponent {
           navContext: this.props.navQuery.primaryNav.linkList[idx],
           navOverlayVisible: false,
           navFadingOut: false,
+          navFocused: false,
         });
       }, navFadeOutDuration);
+    }
+  }
+
+  navOverlayBack(){
+    if (this.state.navFocused == true) {
+      this.setState({
+        navFocused: false,
+      });
     }
   }
 
@@ -122,7 +131,7 @@ class NavigationBar extends PureComponent {
     this.setState({
       navContext: this.props.navQuery.primaryNav.linkList[idx],
     });
-    if ( this.state.navFocused == false ){
+    if (this.state.navFocused == false) {
       this.setState({
         navFocused: true,
       });
@@ -193,8 +202,7 @@ class NavigationBar extends PureComponent {
                 onClick={() => this.navOverlayToggle(0)}
                 onKeyDown={() => this.navOverlayToggle(0)}
                 className="hamburger"
-              >
-              </button>
+              ><div /></button>
             </NavigationStyle.Mobile>
           </NavigationStyle.Inner>
         </NavigationStyle>
@@ -206,6 +214,7 @@ class NavigationBar extends PureComponent {
           navFocused={this.state.navFocused}
           navOverlayVisible={this.state.navOverlayVisible}
           navOverlayToggle={this.navOverlayToggle.bind(this)}
+          navOverlayBack={this.navOverlayBack.bind(this)}
           navContextUpdate={this.navContextUpdate.bind(this)}
           navFadingOut={this.state.navFadingOut}
         />

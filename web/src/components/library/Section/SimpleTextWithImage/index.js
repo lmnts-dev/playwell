@@ -43,10 +43,10 @@ export const SimpleTextWithImage = ({
           TextColor={Theme.Color.White}
           Destination={ButtonDest}
         />
-      }
+      )}
     </div>
     <div className="image">
-      <ImgMatch src={Image} objectFit="contain"/>
+      <ImgMatch src={Image} objectFit="contain" />
     </div>
   </SimpleTextWithImageStyle>
 );

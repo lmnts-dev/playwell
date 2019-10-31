@@ -52,17 +52,19 @@ class EdgeSliderSlider extends React.Component {
           },
         },
         {
-          breakpoint: (Base.Media.Width.Sm + ((Base.Media.Width.Md - Base.Media.Width.Sm) / 2)),
+          breakpoint:
+            Base.Media.Width.Sm +
+            (Base.Media.Width.Md - Base.Media.Width.Sm) / 2,
           settings: {
             slidesToShow: 2.6,
-          }
+          },
         },
         {
           breakpoint: Base.Media.Width.Sm,
           settings: {
             slidesToShow: 2,
-          }
-        }
+          },
+        },
       ],
     };
 

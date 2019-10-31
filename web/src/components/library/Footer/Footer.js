@@ -30,6 +30,7 @@ import {
   BasicInner,
 } from 'components/library/Section/BasicSection';
 import { Icon } from 'components/library/Icons';
+import ImgMatch from 'components/core/ImgMatch';
 import { Brandmark } from 'components/core/Branding/Brandmark';
 
 // Begin Component
@@ -48,18 +49,20 @@ export const Footer = ({ navQuery }) => {
         noPaddingBottom
         BgColor={'transparent'}
         className={
-         typeof window !== 'undefined' && location.pathname === '/contact'
-           ? 'hide'
-           : null
-       }
+          typeof window !== 'undefined' && location.pathname === '/contact'
+            ? 'hide'
+            : null
+        }
       >
         <CurveAndAngleWithPadding
           Tall
-          CurveColor={hexToRGB(Theme.Color.Black, 0.1)}
+          CurveColor={Theme.Color.Blush}
           AngleColor={Theme.Color.White}
           bgColor="transparent"
           className="curve-and-angle"
-        />
+        >
+          <ImgMatch className="volcano" src="volcano.png" />
+        </CurveAndAngleWithPadding>
 
         <FooterStyle>
           <BasicInner wideWidth>

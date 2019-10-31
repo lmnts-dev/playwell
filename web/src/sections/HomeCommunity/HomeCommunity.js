@@ -45,32 +45,32 @@ const settings = {
 // Render Page
 const HomeCommunity = ({ slides }) => {
   return (
-      <SliderContainer>
-        <Slider {...settings}>
-          {slides.map(slide => (
-            <div className="item" key={slide.index}>
-              <a className="image" href={slide.link} aria-label="View Project">
-                <ImgMatch src="boy-4.jpg"/>
-              </a>
-              <a href={slide.link} aria-label="View Project" className="text">
-                <ul>
-                  {slide.tags.map(tags => (
-                    <li key={tags.id}>{tags.tag}</li>
-                  ))}
-                </ul>
-                <div className="h6">{slide.header}</div>
-                <p>{slide.detail}</p>
-              </a>
-            </div>
-          ))}
-        </Slider>
-        <Btn
-          External
-          Label="Our Community"
-          BgColor={Theme.Color.Primary}
-          TextColor={Theme.Color.White}
-        />
-      </SliderContainer>
+    <SliderContainer>
+      <Slider {...settings}>
+        {slides.map(slide => (
+          <div className="item" key={slide.index}>
+            <a className="image" href={slide.link} aria-label="View Project">
+              <ImgMatch src="boy-4.jpg" />
+            </a>
+            <a href={slide.link} aria-label="View Project" className="text">
+              <ul>
+                {slide.tags.map(tags => (
+                  <li key={tags.id}>{tags.tag}</li>
+                ))}
+              </ul>
+              <div className="h6">{slide.header}</div>
+              <p>{slide.detail}</p>
+            </a>
+          </div>
+        ))}
+      </Slider>
+      <Btn
+        External
+        Label="Our Community"
+        BgColor={Theme.Color.Primary}
+        TextColor={Theme.Color.White}
+      />
+    </SliderContainer>
   );
 };
 

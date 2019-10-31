@@ -50,44 +50,60 @@ const SplitHero = ({
 }) => (
   <BasicSection BgColor={bg} TextColor={color}>
     <BasicInner noPaddingRight={!reversed} noPaddingLeft={reversed}>
-      <SplitHeroStyle subNavColor={subNavColor} arrowColor={arrowColor} reversed={reversed} wideImage={wideImage}>
+      <SplitHeroStyle
+        subNavColor={subNavColor}
+        arrowColor={arrowColor}
+        reversed={reversed}
+        wideImage={wideImage}
+      >
         <div className="text">
           <div className="flex-spacer"></div>
           <div className="children">{children}</div>
           {arrow && <div className="arrow"></div>}
-          {(subNav && !reversed) &&
+          {subNav && !reversed && (
             <div className="sub-nav">
               {subNav.map((nav, index) => {
                 return (
-                  <a className={"h5 " + (nav.active ? 'link-active' : '')} href={nav.link} key={index}>
+                  <a
+                    className={'h5 ' + (nav.active ? 'link-active' : '')}
+                    href={nav.link}
+                    key={index}
+                  >
                     {nav.label}
                   </a>
                 );
               })}
             </div>
-          }
+          )}
         </div>
         <div className="imagery">
           <ImgMatch src={bgMatch} />
           {gear ? (
             <GearContainer>
-              <GearRotator strokeColor={gearStroke ? gearStroke : 'transparent'} fill={gearFill}/>
+              <GearRotator
+                strokeColor={gearStroke ? gearStroke : 'transparent'}
+                fill={gearFill}
+              />
             </GearContainer>
           ) : null}
-          {playButton && <PlayButton bg={playButtonBg} reversed={reversed}/>}
+          {playButton && <PlayButton bg={playButtonBg} reversed={reversed} />}
         </div>
       </SplitHeroStyle>
-        {(subNav && reversed) &&
-          <div className="sub-nav padding-left">
-            {subNav.map((nav, index) => {
-              return (
-                <a className={"h5 " + (nav.active ? 'link-active' : '')} href={nav.link} key={index}>
-                  {nav.label}
-                </a>
-              );
-            })}
-          </div>
-        }
+      {subNav && reversed && (
+        <div className="sub-nav padding-left">
+          {subNav.map((nav, index) => {
+            return (
+              <a
+                className={'h5 ' + (nav.active ? 'link-active' : '')}
+                href={nav.link}
+                key={index}
+              >
+                {nav.label}
+              </a>
+            );
+          })}
+        </div>
+      )}
     </BasicInner>
   </BasicSection>
 );

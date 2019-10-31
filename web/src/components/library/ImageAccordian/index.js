@@ -13,19 +13,13 @@ import ImgMatch from 'components/core/ImgMatch';
 // Styles
 import ImageAccordianStyle from './styles.scss';
 
-const ImageAccordian = ({ 
-    Header, 
-    Paragraph,
-    Image 
-}) => (
+const ImageAccordian = ({ Header, Paragraph, Image }) => (
   <ImageAccordianStyle className="image-accordian">
     <div className="text">
       <input type="checkbox" />
-      <Icon Name="carat" className="ico ico-carat"/>
+      <Icon Name="carat" className="ico ico-carat" />
       <div className="h5">{Header}</div>
-      <p>
-          {Paragraph}
-      </p>
+      <p>{Paragraph}</p>
     </div>
     <div className="image">
       <ImgMatch src={Image} />

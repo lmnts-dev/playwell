@@ -38,14 +38,14 @@ export const ImageWithTextCard = ({
       <div className="h6">{Caption}</div>
       <div className="h2">{Header}</div>
       <p className="p-lg">{Paragraph}</p>
-      {(ButtonText && ButtonDest) &&
+      {ButtonText && ButtonDest && (
         <Btn
           Label={ButtonText}
           BgColor={Theme.Color.Nova}
           TextColor={Theme.Color.White}
           Destination={ButtonDest}
         />
-      }
+      )}
     </div>
   </ImageWithTextCardStyle>
 );

@@ -13,6 +13,8 @@ import styled from 'styled-components';
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import ImgMatch from 'components/core/ImgMatch';
+import Section from 'components/library/Elements/Section';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 import Marquee from 'components/library/Section/Marquee';
 import TextOverImage from 'components/library/Section/TextOverImage';
@@ -238,6 +240,26 @@ const WhoWhyPage = () => {
           />
         </BasicInner>
       </BasicSection>
+
+      <Section bg={ThemeProps.BgColor} pb={0}>
+        <SplitLinks>
+          <SplitLink
+            title="Here ye, here ye."
+            message="Learn about Our Story &amp; where it all began."
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/"
+            themeProps={ThemeProps}
+            first
+          />
+          <SplitLink
+            title="Keep reading."
+            message="Learn about how we utilize STEM Enrichment."
+            to="/"
+            themeProps={ThemeProps}
+            last
+          />
+        </SplitLinks>
+      </Section>
     </Layout>
   );
 };
