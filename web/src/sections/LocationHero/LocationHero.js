@@ -114,7 +114,7 @@ const LocationHero = ({ cities, pageContext }) => {
           </Box>
           <Box display="inline-block">
             <Btn
-              Destination="/#coordinators"
+              Destination={'/locations/' + programsSlug + '#coordinators'}
               Label="Contact Manager"
               BgColor={Theme.Color.Blush}
               TextColor={Theme.Color.Primary}
