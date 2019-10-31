@@ -105,7 +105,7 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
                     Explore Courses
                   </HeroBtn>
                 </Link>
-                <NavFilter />
+                <NavFilter hero={true} />
               </Actions>
             </div>
           </BasicInner>

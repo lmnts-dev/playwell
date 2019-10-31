@@ -171,15 +171,21 @@ class SearchBar extends PureComponent {
               IconPosition="left"
               IconFas
             /> */}
-            <div className="btn-inner btn-border">
-              <span className="ico-pin">
-                <Icon className="ico-pin" Name="map-marker-alt" fas />
+            {this.props.hero ? (
+              <span className="filter-inner">
+                <Icon Name="pin" />
+                <span>Brooklyn, NYC</span>
+                <Icon Name="carat" className="ico-carat" />
               </span>
-              <span className="location">Brooklyn, NYC</span>
-              <span className="ico-carat">
-                <Icon Name="carat" />
-              </span>
-            </div>
+            ) : (
+              <div className="btn-inner btn-border">
+                <Icon Name="map-marker-alt" fas />
+                <span className="location">Brooklyn, NYC</span>
+                <span className="ico-carat">
+                  <Icon Name="carat" />
+                </span>
+              </div>
+            )}
             <SearchBarStyle.FilterList className="list">
               <div className="carat">
                 <div className="arrow-up" />
@@ -244,18 +250,18 @@ const SearchBarResults = ({ results }) => {
 };
 
 // Simple Course Hero Display Component
-const NavFilterSearchBar = ({ data }) => {
-  return <SearchBar data={data} />;
+const NavFilterSearchBar = ({ data, hero }) => {
+  return <SearchBar data={data} hero={hero} />;
 };
 
 // Full Wrapper
-export const NavFilter = ({ bg }) => {
+export const NavFilter = ({ bg, hero }) => {
   // Use our hook's data as source
   const fetchedData = DataFetch();
 
   return (
     <NavFilterStyle bg={bg}>
-      <NavFilterSearchBar data={fetchedData} />
+      <NavFilterSearchBar data={fetchedData} hero={hero} />
     </NavFilterStyle>
   );
 };

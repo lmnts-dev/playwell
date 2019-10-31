@@ -51,8 +51,14 @@ export const PageThemeStyle = createGlobalStyle`
         .nav-secondary {
           .btn {
             .btn-inner {
-              span, .ico, i, .fas {
+              span, .ico, i, .fas, svg {
                 color: ${props =>
+                  props.PrimaryColor
+                    ? props.PrimaryColor != 'unset'
+                      ? props.PrimaryColor
+                      : false
+                    : false};
+                fill: ${props =>
                   props.PrimaryColor
                     ? props.PrimaryColor != 'unset'
                       ? props.PrimaryColor

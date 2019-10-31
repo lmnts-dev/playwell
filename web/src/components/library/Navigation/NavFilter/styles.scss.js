@@ -203,21 +203,19 @@ SearchBarStyle.Button = styled.div`
     transform: rotate(90deg) scale(0.5);
     transform-origin: center center;
     margin-left: calc(${Root.Size} / 6);
-
-    polygon,
-    svg,
-    g {
-      fill: ${Theme.Color.White};
-    }
   }
 
-  .ico-pin {
+  .ico {
     margin-right: calc(${Root.Size} / 6);
     transform: scale(0.7);
     position: relative;
     top: 1px;
 
     span {
+      margin-right: calc(${Root.Size} / 6);
+    transform: scale(0.7);
+    position: relative;
+    top: 1px;
       color: ${Theme.Color.White};
     }
   }
@@ -236,6 +234,31 @@ SearchBarStyle.Button = styled.div`
   }
 
   .filter-inner {
+    span:nth-of-type(2) {
+      flex: 50;
+    }
+  }
+
+  .filter-inner {
+    border-bottom: 1px solid ${hexToRGB(Theme.Color.White, 0.4)};
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    top: 4px;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    height: calc(${Root.Button.Size} * 1.5);
+    outline: 0;
+
+    .ico-pin {
+      height: calc(${Theme.Base.Size.Lg} / 3);
+      width: calc(${Theme.Base.Size.Lg} / 3);
+      padding: 0;
+    }
+
     span:nth-of-type(2) {
       flex: 50;
     }

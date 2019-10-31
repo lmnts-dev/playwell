@@ -237,7 +237,7 @@ export class NavigationOverlay extends PureComponent {
                     </div>
                   </div>
 
-                  <div className="bottom">
+                  {/* <div className="bottom">
                     <ul>
                       <li>
                         <span className="nav-item">
@@ -250,7 +250,7 @@ export class NavigationOverlay extends PureComponent {
                         </span>
                       </li>
                     </ul>
-                  </div>
+                  </div> */}
                 </div>
               </NavigationOverlayStyle.Main>
             </NavigationOverlayStyle.Inner>
