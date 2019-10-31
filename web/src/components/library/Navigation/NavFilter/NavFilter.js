@@ -106,6 +106,7 @@ class SearchBar extends PureComponent {
     // Clean our queries
     const searchSafeQuery = this.state.query.toLowerCase();
     const stateEdges = this.props.data.allPlayWellStates.edges;
+    const hero = this.props.hero
 
     // Create our Results array
     const results = stateEdges.filter(location => {
@@ -171,10 +172,10 @@ class SearchBar extends PureComponent {
               IconPosition="left"
               IconFas
             /> */}
-            {this.props.hero ? (
+            {hero ? (
               <span className="filter-inner">
                 <Icon Name="pin" />
-                <span>Brooklyn, NYC</span>
+                <span className="label">Brooklyn, NYC</span>
                 <Icon Name="carat" className="ico-carat" />
               </span>
             ) : (

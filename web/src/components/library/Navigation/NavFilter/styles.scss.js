@@ -22,6 +22,7 @@ import hexToRGB from 'helpers/hexToRGB';
 export const NavFilterStyle = styled.div`
   position: relative;
   padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
+
   /* List fade gradient */
   /* background: linear-gradient(
     0deg,
@@ -213,9 +214,9 @@ SearchBarStyle.Button = styled.div`
 
     span {
       margin-right: calc(${Root.Size} / 6);
-    transform: scale(0.7);
-    position: relative;
-    top: 1px;
+      transform: scale(0.7);
+      position: relative;
+      top: 2px;
       color: ${Theme.Color.White};
     }
   }
@@ -253,14 +254,32 @@ SearchBarStyle.Button = styled.div`
     height: calc(${Root.Button.Size} * 1.5);
     outline: 0;
 
+    .ico-carat {
+      position: relative;
+      top: -2px;
+      right: -4px;
+      transform: rotate(90deg) scale(0.5);
+      transform-origin: center center;
+
+      polygon,
+      svg,
+      g {
+        fill: ${Theme.Color.White};
+      }
+    }
+
     .ico-pin {
       height: calc(${Theme.Base.Size.Lg} / 3);
       width: calc(${Theme.Base.Size.Lg} / 3);
       padding: 0;
+      position: relative;
+      top: -2px;
+      transform: scale(1);
     }
 
-    span:nth-of-type(2) {
-      flex: 50;
+    .label {
+      min-width: calc(${Root.Size});
+      padding: 0 calc(${Root.Size} * 1.5) 0 0;
     }
   }
 `;
