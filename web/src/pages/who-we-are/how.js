@@ -57,7 +57,6 @@ const HeroProps = {
   playButtonBg: Theme.Color.Nova,
   gear: true,
   gearStroke: Theme.Color.White,
-  subNavColor: Theme.Color.White,
   arrowColor: Theme.Color.White,
 };
 
