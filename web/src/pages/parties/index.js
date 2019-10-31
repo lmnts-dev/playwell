@@ -64,26 +64,25 @@ const HeroProps = {
 
 const DeepseaTextBlock = styled.div`
   position: relative;
+  text-align: center;
+  max-width: calc(${Root.Size} * 17);
+  margin: 0 auto;
 
-  .text-block {
-    text-align: center;
-    max-width: calc(${Root.Size} * 17);
-    margin: 0 auto;
+  .h2,
+  p {
+    font-weight: bold;
+  }
 
-    .txt-clr-deepsea {
-      color: ${Theme.Color.Deepsea};
-    }
+  .h2 {
+    font-size: 114px;
+    color: ${Theme.Color.Deepsea};
+  }
 
-    .h1,
-    p {
-      font-weight: bold;
-    }
-
-    p {
-      padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0
-        calc(${Root.Size} * 1.5);
-      line-height: 1.2;
-    }
+  p {
+    padding: calc(${Root.Size} / 6) calc(${Root.Size} * 1.5) 0
+      calc(${Root.Size} * 1.5);
+    line-height: 1.2;
+    font-size: 44px;
   }
 `;
 
@@ -136,7 +135,7 @@ const Projects = styled.div`
       padding-top: 100%;
       height: 0;
       border-radius: calc(${Root.Size} / 10);
-      filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.4)});
+      filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
     }
   }
 `;
@@ -311,6 +310,68 @@ const CTA = styled.div`
     padding: ${Root.Size};
   }
 `;
+export const AbsoluteDecor = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  height: 0 !important;
+  padding-top: 100%;
+  bottom: 0;
+  left: 0;
+  max-width: ${Root.Site.Width};
+  @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+    padding-top: ${Root.Site.Width};
+    margin: 0 calc(50vw - calc(${Root.Site.Width} / 2));
+  }
+
+  .decor-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    height: auto;
+    pointer-events: none;
+
+    .ico {
+      width: 100%;
+      height: auto;
+    }
+
+    &.absolute-clouds {
+      width: 35%;
+      left: -5%;
+      bottom: -9%;
+    }
+
+    &.absolute-gears {
+      width: 35%;
+      left: -15%;
+      bottom: 4%;
+      transform: scaleX(-1);
+    }
+
+    &.absolute-sailboat {
+      width: 45%;
+      left: auto;
+      right: -12%;
+      bottom: 3%;
+    }
+
+    &.absolute-plant-1 {
+      width: 10%;
+      left: 50%;
+      bottom: 7%;
+    }
+
+    &.absolute-plant-2 {
+      width: 12%;
+      left: 40%;
+      bottom: 10%;
+    }
+  }
+`;
+
+
 
 // Render Page
 const Parties = () => {
@@ -330,22 +391,43 @@ const Parties = () => {
         />
       </SplitHero>
 
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Dino}
-        noPaddingTop
-      >
-        <BasicInner>
-          <GiantTextBlock giantText="Well Supplied Fun" />
-        </BasicInner>
-      </BasicSection>
-      <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Ocean}>
-        <CurveAndAngle>
-          <FooterCurveSlice bgColor={Theme.Color.Deepsea} />
-          <FooterAngleSlice bgColor={Theme.Color.Background} />
-          <div className="absolute-image">
-            <ImgMatch src="sailboat.png" />
+      <BasicSection noPaddingTop noPaddingBottom>
+        <AbsoluteDecor>
+          <div className="decor-container absolute-clouds">
+            <ImgMatch src="clouds.png" />
           </div>
+        </AbsoluteDecor>
+      </BasicSection>
+
+      <BasicSection noPaddingBottom BgColor={Theme.Color.Ocean}>
+        <BasicInner>
+          <DeepseaTextBlock>
+            <div className="h2">Well Supplied Fun</div>
+            <p>
+              At a Play-Well party, you provide the kids and we bring over
+              20,000 pieces of LEGO and awesome project ideas!
+            </p>
+          </DeepseaTextBlock>
+        </BasicInner>
+          <CurveAndAngle
+            AngleColor={Theme.Color.Background}
+            CurveColor={Theme.Color.Deepsea}
+            Clouds="1"
+          >
+          <AbsoluteDecor>
+            <div className="decor-container absolute-gears">
+              <ImgMatch src="plant-gears.png" />
+            </div>
+            <div className="decor-container absolute-sailboat">
+              <ImgMatch src="sailboat.png" />
+            </div>
+            <div className="decor-container absolute-plant-1">
+              <ImgMatch src="plant-wavy-1.png" />
+            </div>
+            <div className="decor-container absolute-plant-2">
+              <ImgMatch src="plant-wavy-2.png" />
+            </div>
+          </AbsoluteDecor>
         </CurveAndAngle>
       </BasicSection>
 
@@ -460,6 +542,7 @@ const Parties = () => {
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
+        BorderTop={Theme.Color.Nova}
       >
         <BasicInner>
           <CTA>
