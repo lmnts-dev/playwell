@@ -54,6 +54,7 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/massachusetts/middlesex-county/jedi-master-engineering-with-lego-materials-80723</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/kansas/shawnee/engineering-challenge-with-lego-materials-81088</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/colorado/larimer/intro-to-stem-with-lego-materials-fall-81000</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/washington/king/girl-powered-intro-to-stem-with-lego-materials-82295</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/colorado/denver/intro-to-stem-with-lego-materials-winter-80738</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/colorado/denver/stem-challenge-with-lego-materials-spring-80739</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/ventura-county/simple-machines-79986</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -67,7 +68,6 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/minnesota/anoka/stem-challenge-with-lego-materials-spring-82419</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/jedi-engineering-with-lego-materials-82432</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego/minecraft-engineering-with-lego-materials-81852</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/virginia/loudoun-county/harry-potter-magical-engineering-using-lego-materials-81847</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/virginia/loudoun-county/harry-potter-master-engineering-using-lego-materials-81848</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/virginia/loudoun-county/jedi-engineering-with-lego-materials-81849</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/virginia/loudoun-county/jedi-master-engineering-with-lego-materials-81850</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -189,7 +189,6 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/utah/salt-lake/stem-challenge-with-lego-materials-winter-81447</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/connecticut/fairfield/stem-fundamentals-with-lego-materials-fall-82386</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/connecticut/fairfield/winter-wonderland-challenge-with-lego-82387</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/kansas/douglas/hauntedhouse-80201</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/colorado/douglas/jedi-engineering-with-lego-materials-81266</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/colorado/douglas/jedi-master-engineering-with-lego-materials-81855</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/washington/king/stem-fundamentals-with-lego-materials-winter-80169</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -204,7 +203,6 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego/stem-fundamentals-with-lego-materials-summer-82511</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego/intro-to-stem-with-lego-materials-summer-82512</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego/minecraft-engineering-with-lego-materials-82513</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/maryland/montgomery-county/jedi-engineering-with-lego-materials-81147</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/utah/salt-lake/stem-challenge-with-lego-materials-fall-81718</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/texas/harris/stem-fundamentals-with-lego-materials-winter-82540</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/colorado/boulder/harry-potter-magical-engineering-using-lego-materials-79867</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -225,13 +223,11 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/maryland/montgomery-county/intro-to-stem-with-lego-materials-fall-80906</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/maryland/montgomery-county/stem-challenge-with-lego-materials-fall-80907</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego/minecraft-engineering-with-lego-materials-80428</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/colorado/larimer/carnival-creations-79523</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/colorado/larimer/workshop-catapult-79522</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/maryland/montgomery-county/intro-to-stem-with-lego-materials-fall-82323</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/washington/snohomish/haunted-house-workshop-with-lego-80148</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/virginia/arlington-county/super-hero-engineering-with-lego-materials-81091</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/virginia/arlington-county/jedi-engineering-with-lego-materials-81102</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/washington/king/intro-to-stem-with-lego-materials-fall-82170</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/virginia/fairfax-county/intro-to-stem-with-lego-materials-winter-81095</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/missouri/jackson/hauntedhouse-81575</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/missouri/jackson/animal-architects-with-lego-materials-82498</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -347,7 +343,6 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/colorado/adams/intro-to-stem-with-lego-materials-fall-80024</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/colorado/adams/stem-challenge-with-lego-materials-fall-80025</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/virginia/fairfax-county/mine-craft-build-adventure-game-with-lego-materials-81104</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/minnesota/ramsey/harry-potter-master-engineering-using-lego-materials-79596</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/arizona/maricopa/intro-to-stem-with-lego-materials-fall-80350</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/arizona/pima/stem-challenge-with-lego-materials-fall-80946</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego/stem-fundamentals-with-lego-materials-fall-81146</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -968,9 +963,9 @@
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/new-york/nassau</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/westchester/new-york</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/westchester/orange</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/locations/new-york/westchester/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/lower-ct/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/lower-ct</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/locations/new-york/westchester/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/new-york/queens</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/new-york/richmond</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/westchester/rockland</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -1139,8 +1134,8 @@
 <url> <loc>https://play-well-staging.netlify.com/locations/washington/pw-northwest/play-well-northwest-activity-center</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/washington/pw-northwest</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/washington/seattle/san-juan</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/locations/washington/seattle/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/washington/seattle-east/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/locations/washington/seattle/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/west-virginia</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/wisconsin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/wisconsin/wisconsin/dane-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -1444,9 +1439,9 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/new-york/nassau</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/new-york</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/orange</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/lower-ct/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/lower-ct</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/new-york/queens</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/new-york/richmond</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/rockland</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -1615,8 +1610,8 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/washington/pw-northwest/play-well-northwest-activity-center</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/washington/pw-northwest</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/washington/seattle/san-juan</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/washington/seattle/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/washington/seattle-east/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/washington/seattle/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/west-virginia</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/wisconsin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/wisconsin/wisconsin/dane-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -1635,9 +1630,11 @@
 <url> <loc>https://play-well-staging.netlify.com/parties/birthday-parties/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/parties/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/parties/special-events/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/classes/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/host-a-program/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/summer-camps/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/workshops/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/team-building/after-school-enrichment/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/team-building/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/team-building/non-profits/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
