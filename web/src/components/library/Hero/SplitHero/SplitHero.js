@@ -47,8 +47,9 @@ const SplitHero = ({
   subNav,
   reversed,
   playButton,
+  noPaddingBottom,
 }) => (
-  <BasicSection BgColor={bg} TextColor={color}>
+  <BasicSection BgColor={bg} TextColor={color} noPaddingBottom={noPaddingBottom}>
     <BasicInner noPaddingRight={!reversed} noPaddingLeft={reversed}>
       <SplitHeroStyle
         subNavColor={subNavColor}
@@ -61,6 +62,22 @@ const SplitHero = ({
           <div className="children">{children}</div>
           {arrow && <div className="arrow"></div>}
           {subNav && !reversed && (
+            <div className="sub-nav">
+              {subNav.map((nav, index) => {
+                return (
+                  <a
+                    className={'h5 ' + (nav.active ? 'link-active' : '')}
+                    href={nav.link}
+                    key={index}
+                  >
+                    {nav.label}
+                  </a>
+                );
+              })}
+            </div>
+          )}
+          {/* THIS IS AN UGLY TEMPORARY DUPLICATION */}
+          {subNav && reversed && !wideImage && (
             <div className="sub-nav">
               {subNav.map((nav, index) => {
                 return (
@@ -89,7 +106,7 @@ const SplitHero = ({
           {playButton && <PlayButton bg={playButtonBg} reversed={reversed} />}
         </div>
       </SplitHeroStyle>
-      {subNav && reversed && (
+      {subNav && reversed && wideImage && (
         <div className="sub-nav padding-left">
           {subNav.map((nav, index) => {
             return (

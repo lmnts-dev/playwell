@@ -44,6 +44,7 @@ const HeroProps = {
   playButtonBg: Theme.Color.Ocean,
   gear: false,
   reversed: true,
+  wideImage: true,
   subNavColor: Theme.Color.Nova,
   arrowColor: Theme.Color.Nova,
 };
@@ -72,9 +73,13 @@ const SportsTeamsPage = () => {
       <SplitHero
         {...HeroProps}
         subNav={[
-          { label: 'team building', active: true, link: '/team-building' },
+          { label: 'team building', link: '/team-building' },
           { label: 'organizations', link: '/team-building/organizations' },
-          { label: 'sports teams', link: '/team-building/sports-teams' },
+          {
+            label: 'sports teams',
+            active: true,
+            link: '/team-building/sports-teams',
+          },
           { label: 'non-profits', link: '/team-building/non-profits' },
         ]}
       >

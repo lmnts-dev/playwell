@@ -25,7 +25,7 @@ export const SplitHeroStyle = styled.div`
   flex-direction: ${props => (props.reversed ? 'row-reverse' : 'row')};
   align-items: stretch;
   height: 50vh;
-  min-height: calc(${Theme.Base.Size.Lg} * 8);
+  min-height: calc(${Theme.Base.Size.Lg} * 10);
   max-height: calc(${Theme.Base.Size.Lg} * 18);
   padding-top: calc(${Theme.Base.Size.Lg} * 1.5);
   position: relative;
@@ -109,7 +109,13 @@ export const SplitHeroStyle = styled.div`
   }
 
   .imagery {
-    flex: ${props => (!props.reversed && props.wideImage ? '5' : '3')};
+    flex: ${props =>
+      !props.reversed && props.wideImage
+        ? '4.6'
+        : (props.reversed && props.wideImage) ||
+          (props.reversed && !props.wideImage)
+        ? '1.6'
+        : '2.8'};
     margin-right: calc(${Theme.Base.Size.Lg} * ${props =>
   props.reversed ? '1.5' : '1'});
     position: relative;
@@ -141,8 +147,14 @@ export const SplitHeroStyle = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: ${props => (props.reversed ? 'center' : 'space-between')};
-    margin-top: 10%;
+    justify-content: ${props =>
+      props.reversed && props.wideImage
+        ? 'center'
+        : props.reversed && !props.wideImage
+        ? 'space-between'
+        : 'space-between'};
+    margin-top: ${props => props.reversed && !props.wideImage ? '0' : '10%'};
+    ${props => props.reversed && !props.wideImage ? 'margin-bottom: 10%;' : null}
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       margin: calc(${Theme.Base.Size.Lg} / 4) 0;
     }
@@ -168,8 +180,8 @@ export const SplitHeroStyle = styled.div`
       text-transform: capitalize;
       opacity: .5;
       transition-duration: .5s;
-      ${props => props.reversed && 'padding: 0 20px'};
-      ${props => (props.subNavColor ? 'color: ' + props.subNavColor : '')};
+      ${props => props.reversed && props.wideImage && 'padding: 0 20px;'};
+      ${props => (props.subNavColor ? 'color: ' + props.subNavColor + ';' : '')};
 
       &.link-active {
         opacity: 1;

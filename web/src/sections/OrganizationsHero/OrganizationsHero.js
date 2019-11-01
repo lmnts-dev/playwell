@@ -34,6 +34,7 @@ const HeroProps = {
   playButtonBg: Theme.Color.Ocean,
   gear: false,
   reversed: true,
+  wideImage: true,
   subNavColor: Theme.Color.Nova,
   arrowColor: Theme.Color.Nova,
 };

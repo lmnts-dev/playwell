@@ -30,13 +30,14 @@ const HeroProps = {
   arrowColor: Theme.Color.Nova,
   bg: Theme.Color.Nova,
   color: Theme.Color.White,
-  playButton: false,
+  playButton: true,
   playButtonBg: Theme.Color.Primary,
   gear: false,
   bgMatch: 'kid-machine.jpg',
   reversed: true,
-  navColor: Theme.Color.White,
   wideImage: false,
+  subNavColor: Theme.Color.White,
+  noPaddingBottom: true,
 };
 
 const SummeCampsHero = () => {
@@ -57,7 +58,7 @@ const SummeCampsHero = () => {
       <Btn
         BgColor={Theme.Color.Primary}
         Label="Camps near you"
-        Destination="/contact"
+        Destination="/programs"
         TextColor={Theme.Color.White}
         Size="large"
       />

@@ -58,6 +58,7 @@ const HeroProps = {
   gear: true,
   gearStroke: Theme.Color.White,
   arrowColor: Theme.Color.White,
+  subNavColor: Theme.Color.White,
 };
 
 // Begin Component
