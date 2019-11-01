@@ -45,7 +45,7 @@ const OrganizationsCulture = () => {
           BgColor={Theme.Color.White}
           TextColor={Theme.Color.Nightsky}
         >
-          <Text className="h6" color="Galaxy">
+          <Text className="h6 heading-padding" color="Galaxy">
             Establishing a culture of play
           </Text>
           <Text className="h2" color="Sunset">

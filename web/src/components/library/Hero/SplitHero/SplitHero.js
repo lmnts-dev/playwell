@@ -49,7 +49,7 @@ const SplitHero = ({
   playButton,
   noPaddingBottom,
 }) => (
-  <BasicSection BgColor={bg} TextColor={color} noPaddingBottom={noPaddingBottom}>
+  <BasicSection BgColor={bg} TextColor={color} noPaddingBottom={noPaddingBottom} className="split-hero">
     <BasicInner noPaddingRight={!reversed} noPaddingLeft={reversed}>
       <SplitHeroStyle
         subNavColor={subNavColor}
