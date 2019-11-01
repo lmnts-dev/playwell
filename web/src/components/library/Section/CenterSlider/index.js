@@ -3,7 +3,7 @@
 // />
 
 // Core
-import React from 'react';
+import React, { Component } from 'react';
 import Slider from 'react-slick'; // For Slick Slider
 import { Helmet } from 'react-helmet'; // For Slick Styles
 import { Link } from 'gatsby';
@@ -21,73 +21,69 @@ import CenterSliderStyle from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-// The Section Slider:
-// For displaying widgets within a SlideSection.
-
-// The Slider itself.
-class CenterSliderSlider extends React.Component {
+class AsNavFor extends Component {
   constructor(props) {
-    // Make our props accessible through this.props
     super(props);
+    this.state = {
+      nav1: null,
+      nav2: null
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      nav1: this.slider1,
+      nav2: this.slider2
+    });
   }
 
   render() {
-    // React-Slick Settings
-    // Read more: https://react-slick.neostack.com/
-
-    // Pass into Slick Settings.
-    const settings = {
-      speed: 1000,
-      autoplay: false,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      fade: true,
-      variableWidth: false,
-      infinite: true,
-      arrows: true,
-      buttons: false,
-      responsive: [
-        {
-          breakpoint: Base.Media.Width.Lg + 'px',
-          settings: {
-            slidesToShow: 3,
-          },
-        },
-      ],
-    };
-
     return (
-      <>
-        <Helmet>
-          <link rel="stylesheet" type="text/css" href="/vendor/slick.min.css" />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/vendor/slick-theme.min.css"
-          />
-        </Helmet>
-        <Slider ref={h => (this.slider = h)} {...settings}>
-          {this.props.children}
+      <div>
+        <Slider
+          asNavFor={this.state.nav1}
+          ref={slider => (this.slider2 = slider)}
+          slidesToShow={5}
+          swipeToSlide={true}
+          focusOnSelect={false}
+          centerPadding={0}
+          centerMode={true}
+        >
+          {this.props.slides.map((testimonial, index) => {
+            return (
+              <div className="nav-item" key={index}>
+                <ImgMatch src={testimonial.image} />
+              </div>
+            );
+          })}
         </Slider>
-      </>
+        <Slider
+          asNavFor={this.state.nav2}
+          ref={slider => (this.slider1 = slider)}
+          arrows={false}
+          fade={true}
+        >
+          {this.props.slides.map((testimonial, index) => {
+            return (
+              <div className="item" key={index}>
+                <p className="p-lg quote">{testimonial.quote}</p>
+                <div className="p-lg">{testimonial.name}</div>
+                <p>{testimonial.title}</p>
+              </div>
+            );
+          })}
+        </Slider>
+      </div>
     );
   }
 }
 
+
+
 // The SubLevel Page Itself
 const CenterSlider = ({ testimonials, Color }) => (
   <CenterSliderStyle Color={Color}>
-    <CenterSliderSlider>
-      {testimonials.map((testimonial, index) => {
-        return (
-          <div className="item" key={index}>
-            <p className="p-lg quote">{testimonial.quote}</p>
-            <div className="p-lg">{testimonial.name}</div>
-            <p>{testimonial.title}</p>
-          </div>
-        );
-      })}
-    </CenterSliderSlider>
+    <AsNavFor slides={testimonials}/>
   </CenterSliderStyle>
 );
 
