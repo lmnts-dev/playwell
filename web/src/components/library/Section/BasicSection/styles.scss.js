@@ -35,6 +35,11 @@ export const BasicSectionStyle = styled.div`
     padding: calc(${Theme.Base.Size.Lg} / 1) 0 calc(${Theme.Base.Size.Lg} / 1) 0;
   }
 
+  &.split-hero {
+    padding: calc(${Theme.Base.Size.Lg} * 1.25) 0
+      calc(${Theme.Base.Size.Lg} * 0.9) 0;
+  }
+
   ${props =>
     props.BgLinear
       ? `
