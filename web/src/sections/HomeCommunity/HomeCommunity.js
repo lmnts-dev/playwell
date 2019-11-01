@@ -64,12 +64,12 @@ const HomeCommunity = ({ slides }) => {
           </div>
         ))}
       </Slider>
-      <Btn
+      {/* <Btn
         External
         Label="Our Community"
         BgColor={Theme.Color.Primary}
         TextColor={Theme.Color.White}
-      />
+      /> */}
     </SliderContainer>
   );
 };
