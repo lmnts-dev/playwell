@@ -1,4 +1,4 @@
-// <LocationCoordinators /> section:
+// Location Hero section:
 // Location detail template coordinator accordion
 
 // Imports

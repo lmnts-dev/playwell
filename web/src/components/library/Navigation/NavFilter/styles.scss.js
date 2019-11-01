@@ -1,4 +1,4 @@
-// <LocationFilter /> Styles:
+// Nav Filter Styles:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -370,6 +370,7 @@ SearchBarStyle.FilterList = styled.div`
         padding: calc(${Root.Size} / 9) 0;
         text-decoration: none;
         transition: ${Theme.Base.Transition.String};
+        width: 100%;
 
         &:hover {
           color: ${Theme.Color.Sunset};
