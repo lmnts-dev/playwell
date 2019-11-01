@@ -69,17 +69,17 @@ const SummerCampsSplitLinks = ({
         <Box textAlign="center">
           <SplitLinks>
             <SplitLink
-              title="Adults need purposeful play too"
-              message="View our tem building opportunites"
+              title="Keep exploring"
+              message="Explore more of our programs"
               // message={'Keep exploring programs in ' + countyStateString + '.'}
               to={'/'}
               themeProps={themeProps}
               first
             />
             <SplitLink
-              title="Need help with a special event?"
-              message="Learn about our partnerships"
-              to={'/'}
+              title="What do courses look like?"
+              message="Learn more about our curriculums"
+              to={'/programs/our-curriculum'}
               themeProps={themeProps}
               last
             />
