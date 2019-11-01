@@ -109,7 +109,7 @@ const HomePage = () => (
             Paragraph="STEM education creates critical thinkers, increases science literacy, and enables the next generation of innovators. Innovation leads to new products and processes that sustain our economy in an ever increasing technologically driven society."
             Paragraph2="Having activities that show real-life implication of STEM can pull together the ideas presented in school and help to show how they benefit our society and even our world as a whole"
             ButtonText="Programs"
-            ButtonDest="/"
+            ButtonDest="/programs"
           />
         </BasicInner>
       </BasicSection>
@@ -133,7 +133,7 @@ const HomePage = () => (
             Paragraph="Our assessments measured three goals including: student's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects. For example, the definition of gravity or friction, or that when two gears interlock their teeth its called meshing."
             Image="graph.png"
             ButtonText="How We Do It"
-            ButtonDest="/"
+            ButtonDest="/who-we-are/how"
           />
         </BasicInner>
       </BasicSection>
@@ -194,8 +194,6 @@ const HomePage = () => (
             Header="Build Your Own World of Opportunity"
             Paragraph="Activate your child's imagination with our on-line play zone or awaken your own inner kid with out LEGO-inspired games &amp; activities."
             Image="lego-ladder.png"
-            ButtonText="Play Zone"
-            ButtonDest="/"
             className="overflow-image"
           />
         </BasicInner>
@@ -205,7 +203,9 @@ const HomePage = () => (
 );
 
 // Styles
-const Main = styled.main``;
+const Main = styled.main`
+  overflow: hidden;
+`;
 
 const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
   &.overflow-image {

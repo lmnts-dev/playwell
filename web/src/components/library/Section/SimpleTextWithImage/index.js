@@ -33,10 +33,8 @@ export const SimpleTextWithImage = ({
     <div className="text">
       <div className="h6 heading-padding">{Caption}</div>
       <div className="h2 heading-padding">{Header}</div>
-      <p className="p-lg">
-        {Paragraph}
-      </p>
-      {(ButtonText && ButtonDest) &&
+      <p className="p-lg">{Paragraph}</p>
+      {ButtonText && ButtonDest && (
         <Btn
           Label={ButtonText}
           BgColor={Theme.Color.Eggplant}

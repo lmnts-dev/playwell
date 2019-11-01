@@ -26,13 +26,42 @@ const CenterSliderStyle = styled.div`
   color: ${p => p.Color};
 
   .slick-slider {
-    padding: 0 10%;
+    padding: 0 15%;
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
       padding: 0 ${Root.Size};
     }
 
     @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
       padding: calc(${Root.Size} * 1.5) 0 0 0;
+    }
+
+    &:first-of-type {
+      padding: 0 10%;
+      .slick-slide {
+        transition-duration: 0.25s;
+
+        &.slick-active {
+          opacity: 0.4;
+        }
+
+        &.slick-center {
+          opacity: 1;
+          filter: drop-shadow(0px 5px 12px ${hexToRGB(Theme.Color.Eggplant, 0.3)});
+        }
+      }
+    }
+
+    .nav-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: calc(${Theme.Base.Size.Lg} / 2) 15%;
+
+      .gatsby-image-wrapper {
+        border-radius: calc(${Root.Size} * 20);
+        height: 0;
+        padding-top: 100%;
+      }
     }
 
     .slick-arrow {

@@ -21,7 +21,7 @@ export const Hero = styled(Box)`
   padding-top: calc(${Theme.Root.Nav.Size} + ${Theme.Root.Size} * 2);
   padding-bottom: calc(${Theme.Root.Size} * 1.5);
   text-align: left;
-  /* overflow: hidden; */
+  overflow: hidden;
   position: relative;
 `;
 
