@@ -447,6 +447,8 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/north-carolina/mecklenburg-county/stem-challenge-with-lego-materials-fall-81741</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/minnesota/hennepin/intro-to-stem-with-lego-materials-fall-80165</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/north-carolina/orange-county/stem-challenge-with-lego-materials-fall-79823</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/north-carolina/orange-county/stem-fundamentals-with-lego-materials-winter-82186</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/north-carolina/orange-county/stem-challenge-with-lego-materials-winter-82187</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/riverside-county/mine-craft-build-adventure-game-with-lego-materials-79163</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/santa-clara/stem-challenge-with-lego-materials-winter-81695</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/santa-clara/stem-fundamentals-with-lego-materials-winter-81693</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -707,8 +709,8 @@
 <url> <loc>https://play-well-staging.netlify.com/locations/california/los-angeles/kern-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/los-angeles</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/los-angeles/los-angeles</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/locations/california/sacramento/marin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/north-bay/marin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/locations/california/sacramento/marin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/santa-clara/monterey</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/santa-clara</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/north-bay/napa</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -720,10 +722,10 @@
 <url> <loc>https://play-well-staging.netlify.com/locations/california/pw-marin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/pw-pleasanton/play-well-pleasanton-activity-center</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/pw-pleasanton</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/locations/california/san-diego/riverside-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/locations/california/san-diego</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/inland-empire/riverside-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/inland-empire</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/locations/california/san-diego/riverside-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/locations/california/san-diego</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/sacramento/sacramento</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/inland-empire/san-bernardino-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/california/san-diego/san-diego</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -966,9 +968,9 @@
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/new-york/nassau</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/westchester/new-york</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/westchester/orange</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/locations/new-york/westchester/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/lower-ct/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/lower-ct</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/locations/new-york/westchester/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/new-york/queens</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/new-york/richmond</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/new-york/westchester/rockland</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -1137,8 +1139,8 @@
 <url> <loc>https://play-well-staging.netlify.com/locations/washington/pw-northwest/play-well-northwest-activity-center</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/washington/pw-northwest</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/washington/seattle/san-juan</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/locations/washington/seattle-east/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/washington/seattle/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/locations/washington/seattle-east/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/west-virginia</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/wisconsin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/locations/wisconsin/wisconsin/dane-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -1183,8 +1185,8 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/california/los-angeles/kern-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/los-angeles</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/los-angeles/los-angeles</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/california/sacramento/marin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/north-bay/marin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/california/sacramento/marin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/santa-clara/monterey</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/santa-clara</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/north-bay/napa</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -1196,10 +1198,10 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/california/pw-marin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/pw-pleasanton/play-well-pleasanton-activity-center</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/pw-pleasanton</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego/riverside-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/inland-empire/riverside-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/inland-empire</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego/riverside-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/sacramento/sacramento</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/inland-empire/san-bernardino-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/california/san-diego/san-diego</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -1442,9 +1444,9 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/new-york/nassau</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/new-york</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/orange</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/lower-ct/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/lower-ct</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/putnam</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/new-york/queens</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/new-york/richmond</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/new-york/westchester/rockland</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -1613,8 +1615,8 @@
 <url> <loc>https://play-well-staging.netlify.com/programs/washington/pw-northwest/play-well-northwest-activity-center</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/washington/pw-northwest</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/washington/seattle/san-juan</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://play-well-staging.netlify.com/programs/washington/seattle-east/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/washington/seattle/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://play-well-staging.netlify.com/programs/washington/seattle-east/snohomish</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/west-virginia</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/wisconsin</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://play-well-staging.netlify.com/programs/wisconsin/wisconsin/dane-county</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
