@@ -17,6 +17,7 @@ import ImgMatch from 'components/core/ImgMatch';
 import Section from 'components/library/Elements/Section';
 import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import Marquee from 'components/library/Section/Marquee';
+import TeamMarquee from 'components/library/Section/TeamMarquee';
 import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 import Team from 'components/library/Elements/Team';
 import CenterSlider from 'components/library/Section/CenterSlider';
@@ -89,7 +90,7 @@ const WhoCareersPage = () => {
         noPaddingTop
         noPaddingBottom
       >
-        <Marquee
+        <TeamMarquee
           images={[
             'intro-smiles.jpg',
             'intro-smiles.jpg',
@@ -165,6 +166,13 @@ const WhoCareersPage = () => {
                   'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
                 image: 'random-5.jpg',
+              },
+              {
+                name: 'Meeko',
+                quote:
+                  'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                title: 'Recent Applicant',
+                image: 'random-6.jpg',
               },
             ]}
           />
