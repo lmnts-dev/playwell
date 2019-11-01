@@ -13,7 +13,6 @@ import styled from 'styled-components';
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
-import ImgMatch from 'components/core/ImgMatch';
 import Section from 'components/library/Elements/Section';
 import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import Marquee from 'components/library/Section/Marquee';
