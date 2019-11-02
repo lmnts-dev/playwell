@@ -56,7 +56,6 @@ const TeamStyle = styled.div`
       }
 
       .image-container {
-        border-radius: calc(${Root.Size} / 8);
         margin: 0 calc(${Root.Size} / 12) calc(${Root.Size} / 6)
           calc(${Root.Size} / 12);
         width: 100%;
@@ -66,6 +65,7 @@ const TeamStyle = styled.div`
 
         img {
           position: absolute;
+          border-radius: calc(${Root.Size} / 8);
           top: 0;
           left: 0;
           width: 100%;

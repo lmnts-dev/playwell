@@ -24,59 +24,48 @@ const TeamMarqueeStyle = styled.div`
   ${props =>
     props.BgLinear
       ? `
-    background: linear-gradient( to top, ` +
+    background: linear-gradient( to bottom, ` +
         props.BgLinear +
-        ` 75%, ${Theme.Color.Background} 75% );
+        ` 25%, ${Theme.Color.Background} 25% );
   `
       : null};
 
   .slick-slider {
-    ${props =>
-      props.Shadow
-        ? `
-      filter: drop-shadow(0px 8px 34px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        filter: drop-shadow(0px 8px 20px ${hexToRGB(
-          Theme.Color.Eggplant,
-          0.2
-        )});
-      }
-    `
-        : null};
-
     .item {
       padding: calc(${Root.Size} / 6);
+      color: ${Theme.Color.Dino};
+      text-align: center;
+
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         padding: 1vw;
       }
-
-      .gatsby-image-wrapper {
-        border-radius: calc(${Root.Size} / 8);
+      .image-container {
         height: 0 !important;
-        ${props =>
-          props.SquareFormat
-            ? `
-          background-color: ${Theme.Color.White};         
-          padding-top: 100%;
-        `
-            : `
-          padding-top: 140%;
-        `};
+        padding-top: 80%;
+        position: relative;
+        margin-bottom: calc(${Theme.Base.Size.Lg} / 4);
 
         img {
-          ${props =>
-            props.SquareFormat
-              ? `
-            position: relative;
-            width: 80% !important;
-            object-fit: contain !important;
-            height: 80% !important;
-            left: 10% !important;
-            top: 10% !important;
-          `
-              : `
-            border-radius: calc(${Root.Size} / 8);
-          `};
+          border-radius: calc(${Root.Size} / 8);
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          top: 0;
+          left: 0;
+          object-fit: cover;
+          object-position: 50% 50%;
+        }
+      }
+
+      p {
+        font-weight: 700;
+        padding-bottom: calc(${Theme.Base.Size.Lg} / 8);
+
+        &.p-small {
+          font-size: 15px;
+          color: ${Theme.Color.Gravel};
+          font-weight: 400;
+          padding-bottom: 0;
         }
       }
     }

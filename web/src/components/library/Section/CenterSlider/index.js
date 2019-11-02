@@ -40,27 +40,29 @@ class AsNavFor extends Component {
   render() {
     return (
       <div>
-        <Slider
-          asNavFor={this.state.nav1}
-          ref={slider => (this.slider2 = slider)}
-          slidesToShow={5}
-          swipeToSlide={true}
-          focusOnSelect={false}
-          centerPadding={0}
-          centerMode={true}
-        >
-          {this.props.slides.map((testimonial, index) => {
-            return (
-              <div className="nav-item" key={index}>
-                <ImgMatch src={testimonial.image} />
-              </div>
-            );
-          })}
-        </Slider>
+        {!this.props.noNavSlider && (
+          <Slider
+            asNavFor={this.state.nav1}
+            ref={slider => (this.slider2 = slider)}
+            slidesToShow={5}
+            swipeToSlide={true}
+            focusOnSelect={false}
+            centerPadding={0}
+            centerMode={true}
+          >
+            {this.props.slides.map((testimonial, index) => {
+              return (
+                <div className="nav-item" key={index}>
+                  <ImgMatch src={testimonial.image} />
+                </div>
+              );
+            })}
+          </Slider>
+        )}
         <Slider
           asNavFor={this.state.nav2}
           ref={slider => (this.slider1 = slider)}
-          arrows={false}
+          arrows={this.props.noNavSlider}
           fade={true}
         >
           {this.props.slides.map((testimonial, index) => {
@@ -81,9 +83,9 @@ class AsNavFor extends Component {
 
 
 // The SubLevel Page Itself
-const CenterSlider = ({ testimonials, Color }) => (
+const CenterSlider = ({ testimonials, Color, noNavSlider }) => (
   <CenterSliderStyle Color={Color}>
-    <AsNavFor slides={testimonials}/>
+    <AsNavFor slides={testimonials} noNavSlider={noNavSlider}/>
   </CenterSliderStyle>
 );
 

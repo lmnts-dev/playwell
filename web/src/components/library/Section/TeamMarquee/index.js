@@ -7,6 +7,7 @@ import React from 'react';
 import Slider from 'react-slick'; // For Slick Slider
 import { Helmet } from 'react-helmet'; // For Slick Styles
 import { Link } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 
 // Components
 import ImgMatch from 'components/core/ImgMatch';
@@ -105,18 +106,49 @@ class TeamMarqueeSlider extends React.Component {
 }
 
 // The SubLevel Page Itself
-const TeamMarquee = ({ images, SquareFormat, Shadow, BgLinear }) => (
-  <TeamMarqueeStyle SquareFormat={SquareFormat} Shadow={Shadow} BgLinear={BgLinear}>
-    <TeamMarqueeSlider>
-      {images.map((image, index) => {
-        return (
-          <div className="item" key={index}>
-            <ImgMatch src={image} />
-          </div>
-        );
-      })}
-    </TeamMarqueeSlider>
-  </TeamMarqueeStyle>
-);
+const TeamMarquee = ({ BgLinear }) => {
+  return (
+    <StaticQuery
+      query={graphql`
+        {
+          allDataJson {
+            edges {
+              node {
+                leadership {
+                  bio
+                  id
+                  img
+                  mgr_level
+                  name
+                  title
+                }
+              }
+            }
+          }
+        }
+      `}
+      render={data => (
+        <TeamMarqueeStyle
+          BgLinear={BgLinear}
+        >
+          <TeamMarqueeSlider>
+            {data.allDataJson.edges[1].node &&
+              data.allDataJson.edges[1].node.leadership.map((person, index) => {
+                return (
+                  <div className="item" key={index}>
+                    <div className="image-container">
+                      <img src={person.img} alt={'Picture of ' + person.name} />
+                    </div>
+                    <p>{person.name}</p>
+                    <p className="p-small">{person.bio}</p>
+                  </div>
+                );
+              })}
+          </TeamMarqueeSlider>
+        </TeamMarqueeStyle>
+      )}
+    />
+  );
+};
 
 export default TeamMarquee;

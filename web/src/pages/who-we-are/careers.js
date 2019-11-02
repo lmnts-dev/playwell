@@ -90,20 +90,11 @@ const WhoCareersPage = () => {
         noPaddingBottom
       >
         <TeamMarquee
-          images={[
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-          ]}
-          SquareFormat
+          BgLinear={Theme.Color.Sky}
         />
       </BasicSection>
 
-      <BasicSection BgColor={Theme.Color.Background}>
+      <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
         <BasicInner>
           <CenteredTitle
             Title="Our Team"

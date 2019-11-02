@@ -41,6 +41,7 @@ const AfterSchoolTestimonials = () => {
         </Box>
         <CenterSlider
           Color={Theme.Color.Primary}
+          noNavSlider
           testimonials={[
             {
               name: 'Alisha',
