@@ -265,6 +265,7 @@ export const Form = styled.form`
     padding-top: calc(${Root.Size} / 3);
     padding-bottom: 0;
     margin: 0;
+    transition: ${Theme.Base.Transition.String};
   }
 `;
 
