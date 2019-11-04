@@ -172,7 +172,7 @@ export const Form = styled.form`
     div,
     .form-group {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       flex-wrap: wrap;
       padding-bottom: calc(${Root.Size} / 3);
 
@@ -240,6 +240,31 @@ export const Form = styled.form`
         padding: 0 5%;
       }
     }
+  }
+
+  .btn {
+    color: ${Theme.Color.White};
+    font-size: 0.9rem;
+    line-height: 3.2;
+    background: ${Theme.Color.Nova};
+    transition: ${Theme.Base.Transition.String};
+    cursor: pointer;
+    padding: 0 calc(${Root.Size} / 1.5);
+    width: initial;
+
+    &:hover,
+    &:active {
+      background: ${hexToRGB(Theme.Color.Primary, 0.9)};
+    }
+  }
+
+  .errors {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: ${Theme.Color.Warning};
+    padding-top: calc(${Root.Size} / 3);
+    padding-bottom: 0;
+    margin: 0;
   }
 `;
 
