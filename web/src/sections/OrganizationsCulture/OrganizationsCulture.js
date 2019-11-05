@@ -9,7 +9,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby';
 import ImgMatch from 'components/core/ImgMatch';
 
 // Components
-import { Box, Flex, Text } from 'components/library/Elements';
+import { Box, Flex, Text, Heading } from 'components/library/Elements';
 import SplitSection from 'components/library/Section/SplitSection';
 import Btn from 'components/library/Btn';
 import Block from 'components/library/Block';
@@ -45,12 +45,12 @@ const OrganizationsCulture = () => {
           BgColor={Theme.Color.White}
           TextColor={Theme.Color.Nightsky}
         >
-          <Text className="h6 heading-padding" color="Galaxy">
+          <Heading className="h6 heading-padding" color="Galaxy">
             Establishing a culture of play
-          </Text>
-          <Text className="h2" color="Sunset">
+          </Heading>
+          <Heading className="h2" color="Sunset">
             Solve Problems and Explore
-          </Text>{' '}
+          </Heading>{' '}
           <Text as="p" className="p-lg" color="Galaxy">
             There was a time when our play was our work. Remember when you were
             a kid, and your imagination had no limits? Through play, you

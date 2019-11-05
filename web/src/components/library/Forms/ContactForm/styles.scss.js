@@ -118,7 +118,7 @@ export const Form = styled.form`
       padding: 0 calc(${Root.Size} / 2.5);
 
       &:focus {
-        box-shadow: 0 0 20px 3px ${Theme.Color.Sunset};
+        box-shadow: 0 0 15px 3px ${hexToRGB(Theme.Color.Sunset, 0.6)};
         box-shadow: 0 0 0 3px -moz-mac-focusring;
         outline: none;
       }

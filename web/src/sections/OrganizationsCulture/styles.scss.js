@@ -19,7 +19,7 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Container = styled.div`
+export const Container = styled.section`
   background-image: linear-gradient(
     to right,
     ${Theme.Color.Sunset} 50%,

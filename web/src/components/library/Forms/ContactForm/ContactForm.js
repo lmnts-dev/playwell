@@ -36,16 +36,20 @@ export const ContactForm = ({ formName, title, footnote }) => {
     >
       <input type="hidden" name="bot-field" />
       <input type="hidden" name={formName} value={formName} />
+
       <legend className="h3">{title}</legend>
+
       <fieldset>
         <div className="form-group">
           <Box width={[1, 1 / 2, 4 / 10]} className="form-group__box">
+
             <label htmlFor="firstName">
               First Name:{' '}
               <abbr title="required" aria-label="required">
                 *
               </abbr>
             </label>
+
             <input
               type="text"
               name="firstName"
@@ -55,6 +59,7 @@ export const ContactForm = ({ formName, title, footnote }) => {
                 required: 'First name is required',
               })}
             />
+
             {errors.firstName && (
               <div className="errors">
                 <span>{errors.firstName.message}</span>
@@ -69,6 +74,7 @@ export const ContactForm = ({ formName, title, footnote }) => {
                 *
               </abbr>
             </label>
+
             <input
               type="text"
               name="lastName"
@@ -78,6 +84,7 @@ export const ContactForm = ({ formName, title, footnote }) => {
                 required: 'Last name is required',
               })}
             />
+
             {errors.lastName && (
               <div className="errors">
                 <span>{errors.lastName.message}</span>
@@ -108,13 +115,14 @@ export const ContactForm = ({ formName, title, footnote }) => {
           />
         </div>
 
-        <Box width={1}>
+        <div>
           <label htmlFor="email">
             Email:
             <abbr title="required" aria-label="required">
               *
             </abbr>
           </label>
+
           <input
             name="email"
             placeholder="Your email"
@@ -127,16 +135,18 @@ export const ContactForm = ({ formName, title, footnote }) => {
               },
             })}
           />
+          
           {errors.email && (
             <div className="errors">
               <span>{errors.email.message}</span>
             </div>
           )}
-        </Box>
+        </div>
 
         <div className="form-group">
           <Box width={[1, 1 / 2, 4 / 10]} className="form-group__box">
             <label htmlFor="phone">Phone:</label>
+
             <input
               type="tel"
               name="phone"
@@ -151,6 +161,7 @@ export const ContactForm = ({ formName, title, footnote }) => {
                 },
               })}
             />
+
             {errors.phone && (
               <div className="errors">
                 <span>{errors.phone.message}</span>
@@ -163,12 +174,14 @@ export const ContactForm = ({ formName, title, footnote }) => {
             className="form-group__box form-group__box--select"
           >
             <label htmlFor="eventType">Type of Event:</label>
+
             <select name="eventType" id="eventType" ref={register}>
               <option value={null}>Type of Event</option>
               <option value="event">Event</option>
               <option value="event">Event</option>
               <option value="event">Event</option>
             </select>
+
             <span className="carat">
               <Icon Name="carat" className="ico-carat" />
             </span>
@@ -192,12 +205,14 @@ export const ContactForm = ({ formName, title, footnote }) => {
             className="form-group__box form-group__box--select"
           >
             <label htmlFor="state">State:</label>
+
             <select name="state" id="state" ref={register}>
               <option value={null}>State</option>
               <option value="state">State</option>
               <option value="state">State</option>
               <option value="state">State</option>
             </select>
+
             <span className="carat">
               <Icon Name="carat" className="ico-carat" />
             </span>

@@ -59,10 +59,11 @@ const OrganizationsHero = () => {
         We have partnered with boy scouts, girl scouts, and other organizations.
       </h6>
       <Btn
-        Label="Request Info"
+        Label="Contact Us"
         BgColor={Theme.Color.Nova}
         TextColor={Theme.Color.White}
         Size="large"
+        Destination="/contact"
       />
     </SplitHero>
   );
