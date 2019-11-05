@@ -8,13 +8,11 @@ import React from 'react';
 
 // Components
 import Layout from 'components/core/Layout';
-import { Box, Flex, Text } from 'components/library/Elements';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import Marquee from 'components/library/Section/Marquee';
 import PostCard from 'components/library/Section/PostCard';
 import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 import styled from 'styled-components';
-import ImgMatch from 'components/core/ImgMatch';
 
 import {
   BasicSection,
@@ -24,6 +22,7 @@ import {
 // Sections
 import OrganizationsHero from 'sections/OrganizationsHero';
 import OrganizationsCulture from 'sections/OrganizationsCulture';
+import OrganizationsSplitLinks from 'sections/OrganizationsSplitLinks';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -31,10 +30,10 @@ import { Base } from 'constants/styles/Base';
 
 // Props
 const ThemeProps = {
-  BgColor: Theme.Color.White,
+  BgColor: Theme.Color.Background,
   PrimaryColor: Theme.Color.Primary,
   SecondaryColor: Theme.Color.Dino,
-  TertiaryColor: Theme.Color.White,
+  TertiaryColor: Theme.Color.Sunset,
 };
 
 
@@ -70,7 +69,7 @@ const OrganizationsPage = () => {
       <OrganizationsHero />
       <OrganizationsCulture />
 
-      <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
+      {/* <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
         <BasicInner>
           <StoriesFeature>
             <div className="h3">Organization Stories</div>
@@ -87,7 +86,7 @@ const OrganizationsPage = () => {
             </div>
           </StoriesFeature>
         </BasicInner>
-      </BasicSection>
+      </BasicSection> */}
 
       <BasicSection BgColor={Theme.Color.White} BorderTop={Theme.Color.Clay}>
         <BasicInner>
@@ -116,7 +115,7 @@ const OrganizationsPage = () => {
         noPaddingTop
         noPaddingBottom
       >
-        <BasicInner noPaddingRight>
+        <BasicInner noPaddingLeft>
           <TextWithManyImages
             Reversed
             Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
@@ -124,6 +123,8 @@ const OrganizationsPage = () => {
           />
         </BasicInner>
       </BasicSection>
+
+      <OrganizationsSplitLinks themeProps={ThemeProps} />
     </Layout>
   );
 };
