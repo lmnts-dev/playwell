@@ -11,7 +11,10 @@ import Layout from 'components/core/Layout';
 import { Box, Flex, Text } from 'components/library/Elements';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import Marquee from 'components/library/Section/Marquee';
+import PostCard from 'components/library/Section/PostCard';
 import TextWithManyImages from 'components/library/Section/TextWithManyImages';
+import styled from 'styled-components';
+import ImgMatch from 'components/core/ImgMatch';
 
 import {
   BasicSection,
@@ -34,6 +37,29 @@ const ThemeProps = {
   TertiaryColor: Theme.Color.White,
 };
 
+
+const StoriesFeature = styled.div`
+  padding: calc(${Theme.Base.Size.Lg}) 0;
+
+  .h3 {
+    font-weight: 700;
+    padding-bottom: calc(${Theme.Base.Size.Lg} / 1.5);
+  }
+
+  .stories-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .post-card {
+      width: 47%;
+      padding: 0;
+    }
+  }
+`;
+
+
 // Render Page
 const OrganizationsPage = () => {
   // Use our hook's data as source
@@ -44,10 +70,26 @@ const OrganizationsPage = () => {
       <OrganizationsHero />
       <OrganizationsCulture />
 
-      <BasicSection
-        BgColor={Theme.Color.White}
-        BorderTop={Theme.Color.Clay}
-      >
+      <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
+        <BasicInner>
+          <StoriesFeature>
+            <div className="h3">Organization Stories</div>
+            <div className="stories-container">
+              {Stories.map(story => (
+                <PostCard 
+                  key={story.index}
+                  link={story.link}
+                  tags={story.tags}
+                  description={story.detail}
+                  title={story.header}
+                />
+              ))}
+            </div>
+          </StoriesFeature>
+        </BasicInner>
+      </BasicSection>
+
+      <BasicSection BgColor={Theme.Color.White} BorderTop={Theme.Color.Clay}>
         <BasicInner>
           <CenteredTitle
             Title={null}
@@ -76,6 +118,7 @@ const OrganizationsPage = () => {
       >
         <BasicInner noPaddingRight>
           <TextWithManyImages
+            Reversed
             Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
             Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
           />
@@ -89,3 +132,57 @@ export default OrganizationsPage;
 
 //////////////////////////////////////////////////////////////////////
 // End Component
+
+
+const Stories = [
+  {
+    index: 0,
+    header: 'Building a Coral Reef out of Lego® materials',
+    link: '/',
+    detail:
+      'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
+    tags: [
+      {
+        id: 0,
+        tag: 'Engineering',
+      },
+      {
+        id: 1,
+        tag: 'Camp',
+      },
+      {
+        id: 2,
+        tag: 'Mechanics',
+      },
+      {
+        id: 3,
+        tag: 'Robotics',
+      },
+    ],
+  },
+  {
+    index: 1,
+    header: 'Building a Coral Reef out of Lego® materials',
+    link: '/',
+    detail:
+      'We have run our LEGO-Inspired STEM Play Activations for companies around the country.',
+    tags: [
+      {
+        id: 0,
+        tag: 'Engineering',
+      },
+      {
+        id: 1,
+        tag: 'Camp',
+      },
+      {
+        id: 2,
+        tag: 'Mechanics',
+      },
+      {
+        id: 3,
+        tag: 'Robotics',
+      },
+    ],
+  },
+];

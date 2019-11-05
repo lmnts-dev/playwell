@@ -66,6 +66,48 @@ const ThemeProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+export const AbsoluteDecor = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  height: 0 !important;
+  padding-top: 100%;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  max-width: ${Root.Site.Width};
+  @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+    padding-top: ${Root.Site.Width};
+    margin: 0 calc(50vw - calc(${Root.Site.Width} / 2));
+  }
+
+  .decor-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    height: auto;
+    
+
+    .ico {
+      width: 100%;
+      height: auto;
+    }
+
+
+    &.absolute-sailboat {
+      width: 45%;
+      left: auto;
+      right: -12%;
+      bottom: 3%;
+    }
+  }
+`;
+
+export const OverflowHidden = styled.div`
+  overflow: hidden;
+`;
+
 // Render Page
 const TeamBuilding = () => {
   return (
@@ -158,41 +200,44 @@ const TeamBuilding = () => {
         />
       </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Primary}
-      >
-        <BasicInner>
-          <CenteredTitle Title="Well Supplied Fun" Class="headline" />
-          <Box textAlign="center" width={'80%'} m={'0 auto'}>
-            <h3>
-              We bring tens of thousands of pieces of LEGO&reg;, a customized
-              organizational play challenge that fits your organization's
-              experienced organizational play facilitators who are all about all
-              all about play.
-            </h3>
-            <Text as="p" className="h3" fontWeight={600}>
-              You bring the people. Together, we solve problems through play.
-            </Text>
-          </Box>
-        </BasicInner>
-      </BasicSection>
+      <OverflowHidden>
+        <BasicSection 
+          noPaddingBottom 
+          BgColor={Theme.Color.Background} 
+          TextColor={Theme.Color.Eggplant}
+        >
+          <BasicInner>
+            <CenteredTitle Title="Well Supplied Fun" Class="headline" />
+            <Box textAlign="center" width={'90%'} m={'0 auto'}>
+              <h3>
+                We bring tens of thousands of pieces of LEGO&reg;, a customized
+                organizational play challenge that fits your organization's
+                experienced organizational play facilitators who are all about all
+                all about play.
+              </h3>
+              <Text as="p" className="h3" fontWeight={600}>
+                You bring the people. Together, we solve problems through play.
+              </Text>
+            </Box>
+          </BasicInner>
+          <CurveAndAngle
+            AngleColor={Theme.Color.White}
+            CurveColor={Theme.Color.Ocean}
+          >
+            <AbsoluteDecor>
+              <div className="decor-container absolute-sailboat">
+                <ImgMatch src="sailboat.png" />
+              </div>
+            </AbsoluteDecor>
+          </CurveAndAngle>
+        </BasicSection>
+      </OverflowHidden>
 
-      {/* <BasicSection
+      <BasicSection 
         noPaddingTop
-        noPaddingBottom
-        BgColor={Theme.Color.Background}
+        BgColor={Theme.Color.White} 
+        TextColor={Theme.Color.Dino}
       >
-        <CurveAndAngle>
-          <FooterCurveSlice bgColor={Theme.Color.Ocean} />
-          <FooterAngleSlice bgColor={Theme.Color.Background} />
-          <div className="absolute-image">
-            <ImgMatch src="sailboat.png" />
-          </div>
-        </CurveAndAngle>
-      </BasicSection> */}
-
-      <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino}>
         <BasicInner>
           <CenteredTitle Title="The Outcome" Class="headline" />
           <Box pt={Root.Size}>
@@ -228,8 +273,9 @@ const TeamBuilding = () => {
         noPaddingTop
         noPaddingBottom
       >
-        <BasicInner noPaddingRight>
+        <BasicInner noPaddingLeft>
           <TextWithManyImages
+            Reversed
             Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
             Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
           />

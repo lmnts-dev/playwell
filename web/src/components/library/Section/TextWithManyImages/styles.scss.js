@@ -13,7 +13,7 @@ import { Base } from 'constants/styles/Base';
 
 export const TextWithManyImagesStyle = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: ${props => props.Reversed ? 'row-reverse' : 'row'};
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     display: block;
   }
@@ -24,31 +24,48 @@ export const TextWithManyImagesStyle = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: ${Root.Size} ${Root.Size} ${Root.Size} 0;
+    padding-top: ${Root.Size};
+    padding-bottom: ${Root.Size}; 
+    padding-right: calc(${Root.Size} * ${props => props.Reversed ? '0' : '1'});
+    padding-left: calc(${Root.Size} * ${props => props.Reversed ? '2' : '0'});
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      padding: calc(${Root.Size} / 2) calc(${Root.Size} / 2)
-        calc(${Root.Size} / 2) 0;
+      padding-top: calc(${Root.Size} / 2);
+      padding-bottom: calc(${Root.Size} / 2); 
+      padding-right: calc(${Root.Size} ${props => props.Reversed ? '* 0' : '/ 2'});
+      padding-left: calc(${Root.Size} ${props => props.Reversed ? '* 1' : '0'});
+
       &.h4 {
         font-size: 1.75rem;
       }
     }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      padding: calc(${Root.Size}) calc(${Root.Size}) calc(${Root.Size}) 0;
+      padding-top: calc(${Root.Size});
+      padding-bottom: calc(${Root.Size});
+      padding-right: calc(${Root.Size} ${props => props.Reversed ? '* 0' : '* 1'});
+      padding-left: calc(${Root.Size} ${props => props.Reversed ? '* 1' : '* 0'});
       max-width: calc(${Theme.Base.Size.Lg} * 10);
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      padding-right: calc(${Theme.Base.Size.Lg} ${props => props.Reversed ? '* 0' : '/ 2.4'});
+      padding-left: calc(${Theme.Base.Size.Lg} ${props => props.Reversed ? '/ 2.4' : '* 0'});
     }
   }
 
   .images {
-    flex: 3;
+    flex: ${props => props.Reversed ? '3.75' : '3'};
     display: flex;
     flex-direction: row;
+    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+      flex: 3;
+    }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      margin-right: calc(${Theme.Base.Size.Lg} * 0.75);
+      margin-${props => props.Reversed ? 'left' : 'right'}: calc(${Theme.Base.Size.Lg} * 0.75);
       height: 50vw;
     }
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      margin-right: calc(${Theme.Base.Size.Lg} / 2);
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      margin-${props => props.Reversed ? 'left' : 'right'}: calc(${Theme.Base.Size.Lg} / 2.4);
     }
+
 
     > .gatsby-image-wrapper {
       display: inline-block;

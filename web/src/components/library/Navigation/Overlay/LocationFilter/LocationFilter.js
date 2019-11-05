@@ -248,7 +248,7 @@ export const LocationFilter = ({
 
   return (
     <LocationFilterStyle bg={bg}>
-      <Link>
+      {/* <Link>
         <ArrowLink>
           <span>Play-Well County Activity Center</span>
           <span className="arrow">
@@ -256,7 +256,7 @@ export const LocationFilter = ({
           </span>
         </ArrowLink>
       </Link>
-      <figure className="line-break" />
+      <figure className="line-break" /> */}
       <LocationFilterSearchBar
         data={fetchedData}
         navOverlayToggle={navOverlayToggle}

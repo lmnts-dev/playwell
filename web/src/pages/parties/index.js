@@ -28,6 +28,7 @@ import {
 import SplitHero from 'components/library/Hero/SplitHero';
 import { Box, Flex } from 'components/library/Elements';
 import SubNav from 'components/library/SubNav';
+import ContactForm from 'components/library/Forms/ContactForm';
 
 // Styles
 
@@ -57,6 +58,7 @@ const HeroProps = {
   arrowColor: Theme.Color.Nova,
   gear: false,
   arrow: true,
+  subNavColor: Theme.Color.Nova,
 };
 
 // Begin Component
@@ -76,6 +78,10 @@ const DeepseaTextBlock = styled.div`
   .h2,
   p {
     font-weight: bold;
+  }
+
+  .btn-inner {
+    margin-top: calc(${Theme.Base.Size.Lg} / 2);
   }
 
   .h2 {
@@ -159,7 +165,7 @@ const Projects = styled.div`
     }
 
     &:nth-of-type(2n) {
-      @media (max-width: ${Base.Media.Width.Md + 'px'});
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         margin-right: 0;
       }
     }
@@ -395,6 +401,7 @@ const CTA = styled.div`
     padding: ${Root.Size};
   }
 `;
+
 export const AbsoluteDecor = styled.div`
   position: absolute;
   width: 100%;
@@ -403,6 +410,7 @@ export const AbsoluteDecor = styled.div`
   padding-top: 100%;
   bottom: 0;
   left: 0;
+  pointer-events: none;
   max-width: ${Root.Site.Width};
   @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
     padding-top: ${Root.Site.Width};
@@ -422,12 +430,6 @@ export const AbsoluteDecor = styled.div`
       height: auto;
     }
 
-    &.absolute-clouds {
-      width: 35%;
-      left: -5%;
-      bottom: -9%;
-    }
-
     &.absolute-gears {
       width: 35%;
       left: -15%;
@@ -438,7 +440,7 @@ export const AbsoluteDecor = styled.div`
     &.absolute-sailboat {
       width: 45%;
       left: auto;
-      right: -12%;
+      right: -18%;
       bottom: 3%;
     }
 
@@ -469,7 +471,19 @@ const Centered = styled(CenteredTitle)`
 const Parties = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero {...HeroProps} subNav={['birthday parties', 'special events']}>
+      <SplitHero 
+        {...HeroProps} 
+        subNav={[
+          { label: 'birthday parties', 
+            active: true,
+            link: '/parties/birthday-parties' 
+          },
+          {
+            label: 'special events',
+            link: '/parties/special-events',
+          },
+        ]}
+      >
         <h2>Let Us Engineer Your Child's Party</h2>
         <h6>
           Some of the most memorable and fun experiences kid's have together are
@@ -483,23 +497,21 @@ const Parties = () => {
         />
       </SplitHero>
 
-      <BasicSection noPaddingTop noPaddingBottom>
-        <AbsoluteDecor>
-          <div className="decor-container absolute-clouds">
-            <ImgMatch src="clouds.png" />
-          </div>
-        </AbsoluteDecor>
-      </BasicSection>
-
       <OverflowHidden>
         <BasicSection noPaddingBottom BgColor={Theme.Color.Ocean}>
-          <BasicInner>
+          <BasicInner wideWidth>
             <DeepseaTextBlock>
               <div className="h2">Well Supplied Fun</div>
               <p>
                 At a Play-Well party, you provide the kids and we bring over
                 20,000 pieces of LEGO and awesome project ideas!
               </p>
+              <Btn
+                Label="Party Info PDF"
+                BgColor={Theme.Color.Nova}
+                TextColor={Theme.Color.White}
+                Destination="/"
+              />
             </DeepseaTextBlock>
           </BasicInner>
           <CurveAndAngle
@@ -640,21 +652,15 @@ const Parties = () => {
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
-        BorderTop={Theme.Color.Nova}
       >
         <BasicInner>
-          <CTA>
-            <CenteredTitle
-              Title="Are you ready to plan a Party with Play-Well?"
-              Class="h3"
+          <Box textAlign="center">
+            <ContactForm
+              formName="birthday-parties-contact"
+              title="Thank you for your interest in Play-Well parties!"
+              footnote="Once you've submitted your request, you should receive an email with more info in 1-2 minutes. If you don't see it in your inbox, please check your spam promotions or spam folder."
             />
-            <Btn
-              Label="Request a Party"
-              BgColor={Theme.Color.Nova}
-              TextColor={Theme.Color.White}
-              Destination="/"
-            />
-          </CTA>
+          </Box>
         </BasicInner>
       </BasicSection>
 

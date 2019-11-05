@@ -139,11 +139,6 @@
                 "route": "/who-we-are/careers",
                 "label": "Careers",
                 "subhead": false
-              },
-              {
-                "route": "/who-we-are/news-press",
-                "label": "News & Press",
-                "subhead": false
               }
             ]
           }

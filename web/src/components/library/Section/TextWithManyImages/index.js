@@ -18,8 +18,8 @@ import { TextWithManyImagesStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const TextWithManyImages = ({ Images, Text }) => (
-  <TextWithManyImagesStyle>
+export const TextWithManyImages = ({ Images, Text, Reversed }) => (
+  <TextWithManyImagesStyle Reversed={Reversed}>
     <div className="text h4">{Text}</div>
     <div className="images">
       <ImgMatch src={Images[0]} />

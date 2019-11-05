@@ -13,6 +13,7 @@ import { Box, Flex, Text } from 'components/library/Elements';
 import Btn from 'components/library/Btn';
 import Slider from 'react-slick';
 import ImgMatch from 'components/core/ImgMatch';
+import PostCard from 'components/library/Section/PostCard';
 
 // Styles
 import { SliderContainer } from './styles.scss';
@@ -48,28 +49,21 @@ const HomeCommunity = ({ slides }) => {
     <SliderContainer>
       <Slider {...settings}>
         {slides.map(slide => (
-          <div className="item" key={slide.index}>
-            <a className="image" href={slide.link} aria-label="View Project">
-              <ImgMatch src="boy-4.jpg" />
-            </a>
-            <a href={slide.link} aria-label="View Project" className="text">
-              <ul>
-                {slide.tags.map(tags => (
-                  <li key={tags.id}>{tags.tag}</li>
-                ))}
-              </ul>
-              <div className="h6">{slide.header}</div>
-              <p>{slide.detail}</p>
-            </a>
-          </div>
+          <PostCard
+            key={slide.index}
+            link={slide.link}
+            title={slide.header}
+            description={slide.detail}
+            tags={slide.tags}
+          />
         ))}
       </Slider>
-      <Btn
+      {/* <Btn
         External
         Label="Our Community"
         BgColor={Theme.Color.Primary}
         TextColor={Theme.Color.White}
-      />
+      /> */}
     </SliderContainer>
   );
 };

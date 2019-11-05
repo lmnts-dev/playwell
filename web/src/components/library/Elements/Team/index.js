@@ -18,7 +18,7 @@ import TeamStyle from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const Team = ({ members, Justify }) => {
+export const Team = ({ Justify }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -53,7 +53,7 @@ export const Team = ({ members, Justify }) => {
                       ></img>
                     </div>
                     <p>{person.name}</p>
-                    <p>{person.mgr_level}</p>
+                    <p>{/*{person.title}*/}</p>
                     <div className="social">
                       {/* (member.socialIcon1 && member.socialLink1) &&
                           <a href={member.socialLink1} aria-label={member.socialIcon1}>
