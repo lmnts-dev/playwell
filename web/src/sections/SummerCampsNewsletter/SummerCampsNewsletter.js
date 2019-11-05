@@ -5,6 +5,7 @@
 
 // Core
 import React from 'react';
+import useForm from 'react-hook-form';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
@@ -25,11 +26,12 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 const SummerCampsNewsletter = () => {
+  const { register, errors, handleSubmit } = useForm({
+    mode: 'onChange',
+  });
+  const onSubmit = data => console.log(data);
   return (
-    <BasicSection
-      BgColor={Theme.Color.Background}
-      TextColor={Theme.Color.Dino}
-    >
+    <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
       <BasicInner wideWidth>
         <Box textAlign="center">
           <Text as="h6" color="Galaxy">
@@ -43,6 +45,7 @@ const SummerCampsNewsletter = () => {
             method="post"
             data-netlify="true"
             data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit(onSubmit)}
           >
             <input type="hidden" name="bot-field" />
             <input
@@ -60,23 +63,34 @@ const SummerCampsNewsletter = () => {
                     </abbr>
                   </label>
                   <input
-                    type="email"
                     name="email"
-                    id="email"
                     placeholder="Your email"
-                    required
+                    type="text"
+                    ref={register({
+                      required: 'Email is required',
+                      pattern: {
+                        value: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                        message: 'Invalid email address',
+                      },
+                    })}
                   />
                 </div>
                 <div>
-                  <Btn
+                  {/* <Btn
                     BgColor={Theme.Color.Nova}
                     TextColor={Theme.Color.White}
                     Label="Join"
                     Destination="/"
                     Size="large"
-                  />
+                  /> */}
+                  <input className="btn btn-submit" type="submit" value="Join" />
                 </div>
               </div>
+              {errors.email && (
+                <div className="errors">
+                  <span>{errors.email.message}</span>
+                </div>
+              )}
             </fieldset>
           </Form>
         </Box>

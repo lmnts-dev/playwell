@@ -56,7 +56,17 @@ export const Form = styled.form`
           }
 
           .btn {
-            box-shadow: 0px 22px 18px ${hexToRGB('#510689', 0.4)};
+            color: ${Theme.Color.White};
+            background: ${Theme.Color.Nova};
+            box-shadow: 0px 12px 22px ${hexToRGB('#510689', 0.4)};
+            transition: ${Theme.Base.Transition.String};
+            cursor: pointer;
+
+            &:hover,
+            &:active {
+              background: ${hexToRGB(Theme.Color.Primary, 0.9)};
+              box-shadow: 0px 10px 32px ${hexToRGB('#510689', 0.4)};
+            }
           }
 
           .btn-inner {
@@ -97,6 +107,12 @@ export const Form = styled.form`
     input {
       border-radius: 999px;
       border: none;
+    }
+
+    .errors {
+      font-weight: 500;
+      color: ${Theme.Color.Warning};
+      padding-top: calc(${Root.Size} / 2);
     }
   }
 `;

@@ -79,9 +79,26 @@ export const Button = styled('button')`
 
 Button.displayName = 'Button';
 
-export const Text = styled('div')`
+export const Heading = styled('div')`
   box-sizing: border-box;
   font-weight: 600;
+  display: block;
+  transition: all ${Theme.Base.Transition.Duration};
+  ${space}
+  ${color}
+  ${textAlign}
+  ${fontSize}
+  ${fontWeight}
+  ${lineHeight}
+  ${maxWidth}
+  ${width}
+`;
+
+Box.displayName = 'Heading';
+
+export const Text = styled('div')`
+  box-sizing: border-box;
+  font-weight: 500;
   display: block;
   transition: all ${Theme.Base.Transition.Duration};
   ${space}
