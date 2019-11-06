@@ -12,7 +12,8 @@ import { Box, Flex, Text } from 'components/library/Elements';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import Marquee from 'components/library/Section/Marquee';
 import TextWithManyImages from 'components/library/Section/TextWithManyImages';
-
+import Section from 'components/library/Elements/Section';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import {
   BasicSection,
   BasicInner,
@@ -72,15 +73,32 @@ const NonProfitsPage = () => {
         noPaddingBottom
         BorderTop
       >
-        <BasicInner noPaddingLeft>
-          <TextWithManyImages
-            Reversed
-            Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
-            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
-          />
-        </BasicInner>
+        <TextWithManyImages
+          Reversed
+          Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
+          Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+        />
       </BasicSection>
-      
+
+      <Section bg={ThemeProps.BgColor} pb={0}>
+        <SplitLinks>
+          <SplitLink
+            title="Keep reading."
+            message="Learn about Our Values &amp; why we do what we do."
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/"
+            themeProps={ThemeProps}
+            first
+          />
+          <SplitLink
+            title="Here ye, here ye."
+            message="Check out our News &amp; Press page."
+            to="/"
+            themeProps={ThemeProps}
+            last
+          />
+        </SplitLinks>
+      </Section>
     </Layout>
   );
 };

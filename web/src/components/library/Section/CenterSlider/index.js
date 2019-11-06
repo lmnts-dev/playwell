@@ -45,8 +45,8 @@ class AsNavFor extends Component {
             asNavFor={this.state.nav1}
             ref={slider => (this.slider2 = slider)}
             slidesToShow={5}
-            swipeToSlide={true}
-            focusOnSelect={false}
+            slidesToScroll={1}
+            focusOnSelect={true}
             centerPadding={0}
             centerMode={true}
           >
@@ -63,6 +63,8 @@ class AsNavFor extends Component {
           asNavFor={this.state.nav2}
           ref={slider => (this.slider1 = slider)}
           arrows={this.props.noNavSlider}
+          slidesToShow={1}
+          slidesToScroll={1}
           fade={true}
         >
           {this.props.slides.map((testimonial, index) => {

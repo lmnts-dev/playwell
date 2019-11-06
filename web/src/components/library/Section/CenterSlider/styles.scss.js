@@ -42,6 +42,12 @@ const CenterSliderStyle = styled.div`
 
         &.slick-active {
           opacity: 0.4;
+
+          &:hover {
+            opacity: 1;
+            filter: drop-shadow(0px 5px 12px ${hexToRGB(Theme.Color.Eggplant, 0.3)});
+            cursor: pointer;
+          }
         }
 
         &.slick-center {
@@ -66,7 +72,7 @@ const CenterSliderStyle = styled.div`
 
     .slick-arrow {
       position: absolute;
-      top: calc(${Root.Size});
+      top: 50%;
       left: auto;
       right: 0;
       border-radius: 50%;

@@ -29,6 +29,7 @@ export const GiantTextBlock = ({
   Number,
   className,
   children,
+  External,
 }) => (
   <GiantTextBlockStyle className={className}>
     {children}
@@ -43,6 +44,7 @@ export const GiantTextBlock = ({
         BgColor={Theme.Color.Dino}
         TextColor={Theme.Color.White}
         Destination={buttonDest}
+        External={External}
       />
     )}
   </GiantTextBlockStyle>

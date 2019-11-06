@@ -16,7 +16,7 @@ import ImgMatch from 'components/core/ImgMatch';
 import { Base } from 'constants/styles/Base';
 
 // Styles
-import TeamMarqueeStyle from './styles.scss';
+import { TeamMarqueeStyle, Title } from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -140,6 +140,7 @@ const TeamMarquee = ({ BgLinear }) => {
                       <img src={person.img} alt={'Picture of ' + person.name} />
                     </div>
                     <p>{person.name}</p>
+                    <Title lines={1} ellipsis={"..."}>{person.title}</Title>
                     <p className="p-small">{person.bio}</p>
                   </div>
                 );

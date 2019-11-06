@@ -20,6 +20,7 @@ const ImageAccordianStyle = styled.div`
     position: relative;
     border-top-left-radius: calc(${Root.Size} / 8);
     border-top-right-radius: calc(${Root.Size} / 8);
+    cursor: pointer;
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       padding: calc(${Root.Size} / 3);
     }
@@ -39,23 +40,34 @@ const ImageAccordianStyle = styled.div`
       transition-duration: 0.25s;
     }
 
+    .btn-inner {
+      margin-top: calc(${Root.Size} / 4);
+    }
+
     .ico,
     input {
       position: absolute;
+      cursor: pointer;
       top: 0;
       right: 0;
-      height: calc(${Root.Size} / 2);
-      width: calc(${Root.Size} / 2);
-      margin: calc(${Root.Size} / 3);
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         margin: calc(${Root.Size} / 4);
       }
+    }
+
+    input {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
     }
 
     .ico {
       pointer-events: none;
       background-color: ${Theme.Color.Nova};
       transition-duration: 0.25s;
+      height: calc(${Root.Size} / 2);
+      width: calc(${Root.Size} / 2);
+      margin: calc(${Root.Size} / 3);
 
       g {
         fill: ${Theme.Color.White};
@@ -68,6 +80,7 @@ const ImageAccordianStyle = styled.div`
 
     input:checked ~ p {
       max-height: 1000px;
+      overflow: visible;
       padding-top: calc(${Root.Size} / 5);
     }
   }

@@ -21,6 +21,7 @@ export const AbsoluteDecor = styled.div`
   padding-top: 100%;
   bottom: 0;
   left: 0;
+  z-index: 2;
   max-width: ${Root.Site.Width};
   @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
     padding-top: ${Root.Site.Width};
@@ -304,9 +305,13 @@ export const HeroContainer = styled.div`
     width: 100%;
     height: 40vw;
     max-height: 650px; //which is 40vw at sitewidth
-    bottom: 0;
+    bottom: -9vw;
     left: 0;
     pointer-events: none;
+    z-index: 3;
+    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+      bottom: -145.8px;
+    }
 
     svg {
       height: 100%;

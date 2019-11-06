@@ -92,6 +92,8 @@ const SportsTeamsPage = () => {
           Label="Get in Touch"
           BgColor={Theme.Color.Nova}
           TextColor={Theme.Color.White}
+          Destination="/contact"
+          Size="large"
         />
       </SplitHero>
 
@@ -220,15 +222,12 @@ const SportsTeamsPage = () => {
         noPaddingBottom
         BorderTop
       >
-        <BasicInner noPaddingLeft>
-          <TextWithManyImages
-            Reversed
-            Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
-            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
-          />
-        </BasicInner>
+        <TextWithManyImages
+          Reversed
+          Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
+          Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+        />
       </BasicSection>
-      
     </Layout>
   );
 };

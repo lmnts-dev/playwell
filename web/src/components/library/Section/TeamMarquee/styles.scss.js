@@ -16,11 +16,22 @@ import hexToRGB from 'helpers/hexToRGB';
 // Constants
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
+import Truncate from 'react-truncate';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
+export const Title = styled(Truncate)`
+  color: ${Theme.Color.Sunset};
+  font-weight: 700;
+  font-size: 1 rem;
 
-const TeamMarqueeStyle = styled.div`
+  span > span {
+    display: block;
+    padding-bottom: calc(${Theme.Base.Size.Lg} / 10);
+  }
+`;
+
+export const TeamMarqueeStyle = styled.div`
   ${props =>
     props.BgLinear
       ? `
@@ -59,12 +70,12 @@ const TeamMarqueeStyle = styled.div`
 
       p {
         font-weight: 700;
-        padding-bottom: calc(${Theme.Base.Size.Lg} / 8);
+        padding-bottom: 0;
 
         &.p-small {
           font-size: 15px;
-          color: ${Theme.Color.Gravel};
-          font-weight: 400;
+          color: #918479;
+          font-weight: 500;
           padding-bottom: 0;
         }
       }
@@ -72,7 +83,6 @@ const TeamMarqueeStyle = styled.div`
   }
 `;
 
-export default TeamMarqueeStyle;
 
 //////////////////////////////////////////////////////////////////////
 // End Styles

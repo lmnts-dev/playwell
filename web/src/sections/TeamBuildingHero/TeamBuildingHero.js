@@ -56,9 +56,11 @@ const TeamBuildingHero = () => {
         work.
       </h6>
       <Btn
-        Label="Request Team Building Info"
+        Label="Get in Touch"
         BgColor={Theme.Color.Nova}
         TextColor={Theme.Color.White}
+        Size="large"
+        Destination="/contact"
       />
     </SplitHero>
   );

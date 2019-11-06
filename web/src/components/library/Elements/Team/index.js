@@ -10,10 +10,11 @@ import ImgMatch from 'components/core/ImgMatch';
 import { Icon } from 'components/library/Icons';
 import { StaticQuery, graphql } from 'gatsby';
 
+
 // Constants
 
 // Styles
-import TeamStyle from './styles.scss';
+import { TeamStyle, Title }  from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -53,7 +54,9 @@ export const Team = ({ Justify }) => {
                       ></img>
                     </div>
                     <p>{person.name}</p>
-                    <p>{/*{person.title}*/}</p>
+                    <Title lines={1} ellipsis={"..."}>
+                      {person.title}
+                    </Title>
                     <div className="social">
                       {/* (member.socialIcon1 && member.socialLink1) &&
                           <a href={member.socialLink1} aria-label={member.socialIcon1}>

@@ -48,6 +48,8 @@ export const ImageAccordianFeature = ({ Links, Accordians }) => (
               Paragraph={accordian.paragraph}
               Image={accordian.image}
               key={index}
+              buttonText={accordian.buttonText}
+              buttonLink={accordian.buttonLink}
             />
           );
         })}

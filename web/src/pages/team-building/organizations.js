@@ -12,8 +12,10 @@ import { Box, Flex, Text } from 'components/library/Elements';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import Marquee from 'components/library/Section/Marquee';
 import PostCard from 'components/library/Section/PostCard';
+import Section from 'components/library/Elements/Section';
 import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 import styled from 'styled-components';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import ImgMatch from 'components/core/ImgMatch';
 
 import {
@@ -70,7 +72,7 @@ const OrganizationsPage = () => {
       <OrganizationsHero />
       <OrganizationsCulture />
 
-      <BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
+      {/*<BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
         <BasicInner>
           <StoriesFeature>
             <div className="h3">Organization Stories</div>
@@ -87,7 +89,7 @@ const OrganizationsPage = () => {
             </div>
           </StoriesFeature>
         </BasicInner>
-      </BasicSection>
+      </BasicSection>*/}
 
       <BasicSection BgColor={Theme.Color.White} BorderTop={Theme.Color.Clay}>
         <BasicInner>
@@ -116,14 +118,32 @@ const OrganizationsPage = () => {
         noPaddingTop
         noPaddingBottom
       >
-        <BasicInner noPaddingRight>
-          <TextWithManyImages
-            Reversed
-            Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
-            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
-          />
-        </BasicInner>
+        <TextWithManyImages
+          Reversed
+          Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
+          Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+        />
       </BasicSection>
+
+      <Section bg={ThemeProps.BgColor} pb={0}>
+        <SplitLinks>
+          <SplitLink
+            title="Here ye, here ye."
+            message="Learn about Our Story &amp; where it all began."
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/"
+            themeProps={ThemeProps}
+            first
+          />
+          <SplitLink
+            title="Keep reading."
+            message="Learn about how we utilize STEM Enrichment."
+            to="/"
+            themeProps={ThemeProps}
+            last
+          />
+        </SplitLinks>
+      </Section>
     </Layout>
   );
 };

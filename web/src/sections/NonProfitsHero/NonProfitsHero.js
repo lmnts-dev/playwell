@@ -47,12 +47,15 @@ const NonProfitsHero = () => {
       ]}
     >
       <h2>We partner with non-profits</h2>
-      <h6>Educational programs for underserved communities</h6>
+      <h6 className="txt-clr-dino">
+        Educational programs for underserved communities
+      </h6>
       <Btn
         Label="Get in Touch"
         BgColor={Theme.Color.Nova}
         TextColor={Theme.Color.White}
         Size="large"
+        Destination="/contact"
       />
     </SplitHero>
   );

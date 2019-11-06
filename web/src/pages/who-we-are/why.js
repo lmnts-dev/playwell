@@ -231,14 +231,12 @@ const WhoWhyPage = () => {
         noPaddingTop
         noPaddingBottom
       >
-        <BasicInner noPaddingRight>
-          <TextWithManyImages
-            Text="We do this in the context of fun-filled engineering and
-              architectural projects, activities that both the children and the
-              instructors enjoy."
-            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
-          />
-        </BasicInner>
+        <TextWithManyImages
+          Text="We do this in the context of fun-filled engineering and
+            architectural projects, activities that both the children and the
+            instructors enjoy."
+          Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+        />
       </BasicSection>
 
       <Section bg={ThemeProps.BgColor} pb={0}>

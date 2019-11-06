@@ -35,6 +35,10 @@ SplitSectionStyle.Inner = styled.div`
     padding-bottom: calc(${Root.Size} / 3.5);
   }
 
+  p {
+    font-weight: 500;
+  }
+
   .block {
     justify-content: center;
     align-items: center;

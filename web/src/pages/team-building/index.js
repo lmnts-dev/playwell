@@ -273,13 +273,11 @@ const TeamBuilding = () => {
         noPaddingTop
         noPaddingBottom
       >
-        <BasicInner noPaddingLeft>
           <TextWithManyImages
             Reversed
             Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
             Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
           />
-        </BasicInner>
       </BasicSection>
 
       <TeamBuildingSplitLinks themeProps={ThemeProps} />
