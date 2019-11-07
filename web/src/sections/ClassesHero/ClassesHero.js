@@ -57,7 +57,7 @@ const ClassesHero = () => {
       </h6>
       <Btn
         BgColor={Theme.Color.Primary}
-        Label="Classes near you"
+        Label="Browse Programs"
         Destination="/programs"
         TextColor={Theme.Color.White}
         Size="large"

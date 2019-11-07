@@ -435,6 +435,10 @@ export const AbsoluteDecor = styled.div`
       left: -15%;
       bottom: 4%;
       transform: scaleX(-1);
+      @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
+        left: 0;
+        transform: scaleX(-1) rotate(45deg);
+      }
     }
 
     &.absolute-sailboat {
@@ -442,6 +446,10 @@ export const AbsoluteDecor = styled.div`
       left: auto;
       right: -18%;
       bottom: 3%;
+      @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
+        width: 50%;
+        bottom: 0;
+      }
     }
 
     &.absolute-plant-1 {

@@ -57,10 +57,6 @@ const HostProgramHero = ({ cities, pageContext }) => {
           label: 'homeschool classes',
           link: '/homeschool-classes',
         },
-        {
-          label: 'workshops',
-          link: '/workshops',
-        },
       ]}
     >
       <h2>Hosting a Play-Well Program</h2>

@@ -69,7 +69,11 @@ export class NavigationOverlay extends PureComponent {
         // based on Top Level Pages vs Sub Level Pages
         <>
           <MobileNavigationOverlayStyle
-            className={navFadingOut && ' nav-fadeout '}
+            className={
+              (navFadingOut && ' nav-fadeout ') +
+              (navFocused && ' focused-menu ')
+            }
+
           >
             <div className="mobile-fixed mobile-fixed-top">
               <div

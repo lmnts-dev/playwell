@@ -57,7 +57,7 @@ const SummeCampsHero = () => {
       </h6>
       <Btn
         BgColor={Theme.Color.Primary}
-        Label="Camps near you"
+        Label="Browse Programs"
         Destination="/programs"
         TextColor={Theme.Color.White}
         Size="large"

@@ -43,17 +43,23 @@ export const MobileNavigationOverlayStyle = styled.div`
   flex-direction: column;
   justify-content: space-between;
   pointer-events: none;
-  padding: calc(${Theme.Base.Size.Lg} / 2);
+  padding: calc(${Theme.Base.Size.Lg});
   align-items: flex-end;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     display: flex;
   }
   @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-    padding: calc(${Theme.Base.Size.Lg} / 3);
+    padding: calc(${Theme.Base.Size.Lg} / 2);
   }
 
   &.nav-fadeout {
     animation: ${FadeOut} ${navFadeOutDurationString} ease 0s 1 normal forwards;
+  }
+
+  &.focused-menu {
+    .mobile-fixed-bottom {
+      display: none;
+    }
   }
 
   .mobile-fixed {
@@ -109,6 +115,13 @@ export const MobileNavigationOverlayStyle = styled.div`
     &.mobile-fixed-bottom {
       width: 100%;
       overflow: auto;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding-bottom: calc(${Theme.Base.Size.Lg} / 2);
+      }
+
+      .ico {
+        justify-content: flex-start;
+      }
 
       svg {
         height: calc(${Theme.Base.Size.Lg} / 2);
@@ -190,11 +203,16 @@ NavigationOverlayStyle.Sub = styled.div`
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     width: 50%;
     min-width: 0;
-    padding: calc(${Root.Size}) calc(${Root.Size} / 6) calc(${Root.Size} / 2)
+    padding: calc(${Root.Size} * 1.5) calc(${Root.Size} / 6) calc(${
+  Root.Size
+} / 2)
     calc(${Root.Size} / 2);
   }
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    padding-top: calc(${Root.Size} / 1.5); 
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        padding: calc(${Root.Size} * .9) calc(${Root.Size} / 6) calc(${
+  Root.Size
+} / 2)
+    calc(${Root.Size} / 4);
   }
 
     .inner {
@@ -277,10 +295,13 @@ NavigationOverlayStyle.Sub = styled.div`
             white-space: nowrap;
             pointer-events: none;
             @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-              font-size: 1rem !important;
+              font-size: 2vw !important;
               transform: none !important;
               left: 0 !important;
               text-align: center;
+            }
+            @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+              font-size: 1rem !important;
             }
             color: ${props =>
               props.theme.primaryColor
@@ -292,11 +313,30 @@ NavigationOverlayStyle.Sub = styled.div`
         .mobile-back {
           display: none;
           position: absolute;
-          top: calc(${Theme.Base.Size.Lg} / 3);
-          left 0:
+          top: calc(${Theme.Base.Size.Lg} / 2);
+          left: calc(${Theme.Base.Size.Lg} * 0.75);
           margin: calc(${Theme.Base.Size.Lg} / 2) 0;
           transform: rotate(180deg);
           cursor: pointer;
+          border-radius: 100%;
+          &:after {
+            content: "";
+            width: ${Theme.Base.Size.Lg};
+            height: ${Theme.Base.Size.Lg};
+            background-color: transparent;
+            transition-duration: .25s;
+            position: absolute;
+            top: -45%;
+            left: -60%;
+            border-radius: 50%;
+          }
+
+          &:hover {
+            
+            &:after {
+              background-color: ${hexToRGB(Theme.Color.Sunset, 0.2)};
+            }
+          }
 
           &:focus {
             outline: none;
@@ -316,6 +356,10 @@ NavigationOverlayStyle.Sub = styled.div`
           @media (max-width: ${Base.Media.Width.Md + 'px'}) {
             display: block;
           }
+          @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+            top: 0;
+            left: calc(${Theme.Base.Size.Lg} / 4);
+          }
         }
       }
 
@@ -327,7 +371,10 @@ NavigationOverlayStyle.Sub = styled.div`
         padding: calc(${Root.Size} / 2) 0 0 0;
         ${FadeIn};
         @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          padding-top: ${Root.Size};
+          padding-top: calc(${Root.Size} * 1.5);
+        }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          padding-top: calc(${Root.Size} / 2);
         }
 
         /* Large Focus Link List */
@@ -345,6 +392,12 @@ NavigationOverlayStyle.Sub = styled.div`
             justify-content: space-between;
             overflow: hidden;
             ${cascadeSlideToLeft(10)}
+            @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+              height: 8vw;
+            }
+            @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+              height: ${Root.Size};
+            }
 
             a {
               flex: 1;
@@ -358,6 +411,12 @@ NavigationOverlayStyle.Sub = styled.div`
               border-radius: 99px 8px 8px 99px;
               background: rgba(0, 0, 0, 0);
               overflow: hidden;
+              @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+                font-size: 5vw;
+              }
+              @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+                font-size: calc(${Root.Size} / 2);
+              }
 
               .nav-item {
                 display: flex;
@@ -427,6 +486,9 @@ NavigationOverlayStyle.Sub = styled.div`
           height: 1px;
           width: 100%;
           background: rgba(0, 0, 0, 0.04);
+          @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+            margin: 0;
+          }
         }
 
         /* Minor Link Lists */
@@ -467,6 +529,12 @@ NavigationOverlayStyle.Sub = styled.div`
               pointer-events: none;
               padding-top: calc(${Root.Size} / 2);
               padding-bottom: calc(${Root.Size} / 4);
+              @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+                font-size: 1.5vw;
+              }
+              @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+                font-size: calc(${Root.Size} / 4);
+              }
             }
 
             a {
@@ -480,6 +548,12 @@ NavigationOverlayStyle.Sub = styled.div`
               background: ${Theme.Color.White};
               padding: calc(${Root.Size} / 6) 0;
               border-radius: 999px 8px 8px 999px;
+              @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+                font-size: 3vw;
+              }
+              @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+                font-size: calc(${Root.Size} / 3.2);
+              }
 
               svg {
                 transition: ${Theme.Base.Transition.String};
@@ -544,7 +618,10 @@ NavigationOverlayStyle.Main = styled.div`
         display: block;
       }
       @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-        height: calc(${Theme.Base.Size.Lg});
+        position: absolute;
+        top: calc(${Theme.Base.Size.Lg} / 6);
+        left: calc(${Theme.Base.Size.Lg} / 5);
+        height: calc(${Theme.Base.Size.Lg} * 1.5);
         svg {
           height: 100%;
           width: auto;
@@ -555,11 +632,12 @@ NavigationOverlayStyle.Main = styled.div`
     .bottom {
       display: flex;
       justify-content: flex-end;
-      font-size: 5vw;
+      font-size: 4vw;
       font-weight: bold;
       color: ${Theme.Color.White};
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         justify-content: flex-start;
+        font-size: 10vw;
       }
 
       li {
@@ -581,7 +659,7 @@ NavigationOverlayStyle.Main = styled.div`
 
         .nav-item {
           display: block;
-        //  overflow: hidden;
+          //  overflow: hidden;
 
           &:focus {
             outline: none;
@@ -677,7 +755,9 @@ NavigationOverlayStyle.Main = styled.div`
     .top {
       flex-direction: column;
       align-items: flex-end;
+      padding-bottom: ${Root.Size};
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding-bottom: calc(${Theme.Base.Size.Lg} * 1);
         align-items: flex-start;
       }
 
@@ -714,13 +794,6 @@ NavigationOverlayStyle.Main = styled.div`
     .bottom {
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         flex: 10;
-      }
-    }
-
-    .top {
-      padding-bottom: ${Root.Size};
-      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-        padding-bottom: calc(${Theme.Base.Size.Lg} / 2);
       }
     }
   }
@@ -768,7 +841,7 @@ function cascadeSlideToLeft(n) {
   let anim = [];
 
   // Run the loop.
-  for (let i = 0; i < n; i += 1) {
+  for (let i = 0; i < n + 1; i += 1) {
     anim[i] = css`
       &:nth-child(${i + 1}) {
         .nav-item {
