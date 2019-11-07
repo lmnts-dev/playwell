@@ -231,6 +231,7 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
         max-height: calc(${Theme.Base.Size.Lg} * 5);
         height: 100vw;
         position: static;
+        display: none;
       }
 
       .gatsby-image-wrapper {

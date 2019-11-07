@@ -45,6 +45,10 @@ export const AbsoluteDecor = styled.div`
       right: -6%;
       left: auto;
       bottom: 40%;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 24%;
+        bottom: 44%;
+      }
     }
 
     &.absolute-cloud-small {
@@ -55,7 +59,8 @@ export const AbsoluteDecor = styled.div`
         left: -5%;
       }
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        bottom: 48%;
+        width: 15%;
+        bottom: 40%;
       }
     }
 
@@ -64,11 +69,20 @@ export const AbsoluteDecor = styled.div`
       left: auto;
       right: 1%;
       bottom: 6%;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 45%;
+        bottom: 2%;
+      }
     }
 
     &.absolute-volcano {
       width: 22%;
       left: 40%;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 30%;
+        left: 11%;
+        bottom: 12%;
+      }
     }
 
     &.absolute-ladder {
@@ -76,18 +90,33 @@ export const AbsoluteDecor = styled.div`
       left: auto;
       right: 10.5%;
       bottom: 31%;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        bottom: 34%;
+        right: 14%;
+        width: 5%;
+      }
     }
 
     &.absolute-legos {
       width: 13%;
       left: 61%;
       bottom: -2%;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 20%;
+        left: 33%;
+        bottom: 4%;
+      }
     }
 
     &.absolute-lego {
       width: 6%;
       left: 58%;
       bottom: 19%;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 10%;
+        left: 43%;
+        bottom: 27%;
+      }
     }
 
     &.absolute-gears {

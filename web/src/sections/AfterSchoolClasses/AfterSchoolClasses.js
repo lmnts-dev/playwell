@@ -29,10 +29,10 @@ const AfterSchoolClasses = () => {
         <span className="h3 lead">Explore concepts in</span>
         <ul>
           <li>
-            <Link to={'/'}>Physics Architecture</Link>
+            <div>Physics Architecture</div>
           </li>
           <li>
-            <Link to={'/'}>Mechanical &amp; Structural Engineering</Link>
+            <div>Mechanical &amp; Structural Engineering</div>
           </li>
         </ul>
         <span className="h3 lead">

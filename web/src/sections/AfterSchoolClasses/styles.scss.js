@@ -56,7 +56,7 @@ export const Container = styled.div`
     padding-bottom: calc(var(--Size) / 3.5);
     
     li {
-      a {
+      div {
         color: ${Theme.Color.Primary};
         transition: ${Theme.Base.Transition.String};
         /* text-decoration: none !important; */
@@ -69,10 +69,6 @@ export const Container = styled.div`
 
         @media (min-width: ${Base.Media.Width.Md + 'px'}) {
           font-size: 4.5rem;
-        }
-
-        &:hover {
-          /* color: ${hexToRGB(Theme.Color.Primary, 0.7)}; */
         }
       }
     }

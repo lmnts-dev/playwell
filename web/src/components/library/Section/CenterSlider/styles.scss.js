@@ -32,11 +32,16 @@ const CenterSliderStyle = styled.div`
     }
 
     @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-      padding: calc(${Root.Size} * 1.5) 0 0 0;
+      padding: 0 !important;
     }
 
     &:first-of-type {
       padding: 0 10%;
+
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        margin-top: calc(${Theme.Base.Size.Lg} / 2);
+      }
+
       .slick-slide {
         transition-duration: 0.25s;
 
@@ -45,14 +50,18 @@ const CenterSliderStyle = styled.div`
 
           &:hover {
             opacity: 1;
-            filter: drop-shadow(0px 5px 12px ${hexToRGB(Theme.Color.Eggplant, 0.3)});
+            filter: drop-shadow(
+              0px 5px 12px ${hexToRGB(Theme.Color.Eggplant, 0.3)}
+            );
             cursor: pointer;
           }
         }
 
         &.slick-center {
           opacity: 1;
-          filter: drop-shadow(0px 5px 12px ${hexToRGB(Theme.Color.Eggplant, 0.3)});
+          filter: drop-shadow(
+            0px 5px 12px ${hexToRGB(Theme.Color.Eggplant, 0.3)}
+          );
         }
       }
     }
@@ -80,7 +89,7 @@ const CenterSliderStyle = styled.div`
       width: calc(${Root.Size} / 1.1);
       transition-duration: 0.5s;
       @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-        top: calc(${Root.Size} / 4);
+        top: calc(${Root.Size} / -3.5);
       }
 
       &:hover {
@@ -105,6 +114,9 @@ const CenterSliderStyle = styled.div`
           border-right-color: transparent;
           border-top-color: transparent;
         }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          left: calc(50% - calc(${Root.Size} * 1.5));
+        }
       }
 
       &.slick-next {
@@ -112,6 +124,9 @@ const CenterSliderStyle = styled.div`
           left: calc(${Root.Size} / 4.5);
           border-left-color: transparent;
           border-bottom-color: transparent;
+        }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          left: calc(50% + (${Root.Size} / 2));
         }
       }
     }

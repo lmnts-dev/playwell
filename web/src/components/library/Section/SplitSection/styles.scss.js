@@ -48,6 +48,36 @@ SplitSectionStyle.Inner = styled.div`
       /* Change width of each block based on which 
       block is first depending on it's flex property: */
 
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        ${props =>
+          props.Flex
+            ? null
+            : `
+          padding-left: 95px;
+          padding-right: 95px;
+        `};
+      }
+
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        ${props =>
+          props.Flex
+            ? null
+            : `
+          padding-left: 45px;
+          padding-right: 45px;
+        `};
+      }
+
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        ${props =>
+          props.Flex
+            ? null
+            : `
+          padding-left: 25px;
+          padding-right: 25px;
+        `};
+      }
+
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         width: ${props =>
           props.Flex
@@ -55,7 +85,7 @@ SplitSectionStyle.Inner = styled.div`
             : 'calc(50% - (' + Root.Grid.Gutter.Left + '/ 2))'};
 
         /* Add left padding to first block if it's a text
-      block depending on it's flex property: */
+        block depending on it's flex property: */
         ${props =>
           props.Flex
             ? null
@@ -71,6 +101,36 @@ SplitSectionStyle.Inner = styled.div`
       width: 100%;
       /* Change width of each block based on which 
       block is first depending on it's flex property: */
+
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        ${props =>
+          !props.Flex
+            ? null
+            : `
+          padding-left: 95px;
+          padding-right: 95px;
+        `};
+      }
+
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        ${props =>
+          !props.Flex
+            ? null
+            : `
+          padding-left: 45px;
+          padding-right: 45px;
+        `};
+      }
+
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        ${props =>
+          !props.Flex
+            ? null
+            : `
+          padding-left: 25px;
+          padding-right: 25px;
+        `};
+      }
 
       @media (min-width: ${Base.Media.Width.Md + 'px'}) {
         width: ${props =>
@@ -94,6 +154,15 @@ SplitSectionStyle.Inner = styled.div`
     .block-content {
       max-width: calc(${Root.Site.Width} / 3);
       width: 100%;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        max-width: none;
+      }
+
+      p {
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          max-width: none;
+        }
+      }
     }
 
     .block-img-wrap {
