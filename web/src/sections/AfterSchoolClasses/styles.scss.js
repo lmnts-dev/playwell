@@ -56,22 +56,19 @@ export const Container = styled.div`
     padding-bottom: calc(var(--Size) / 3.5);
     
     li {
-      a {
+      div {
         color: ${Theme.Color.Primary};
         transition: ${Theme.Base.Transition.String};
         /* text-decoration: none !important; */
         font-size: 2.5rem;
+        line-height: 1.2;
 
-        @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
           font-size: 4rem;
         }
 
-        @media (min-width: ${Base.Media.Width.Lg + 'px'}) {
-          font-size: 5rem;
-        }
-
-        &:hover {
-          /* color: ${hexToRGB(Theme.Color.Primary, 0.7)}; */
+        @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+          font-size: 4.5rem;
         }
       }
     }

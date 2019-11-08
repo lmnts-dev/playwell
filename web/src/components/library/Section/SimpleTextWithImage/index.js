@@ -31,22 +31,20 @@ export const SimpleTextWithImage = ({
 }) => (
   <SimpleTextWithImageStyle className={className}>
     <div className="text">
-      <div className="h6">{Caption}</div>
-      <div className="h2">{Header}</div>
-      <p className="p-lg">
-        {Paragraph}
-      </p>
-      {(ButtonText && ButtonDest) &&
+      <div className="h6 heading-padding">{Caption}</div>
+      <div className="h2 heading-padding">{Header}</div>
+      <p className="p-lg">{Paragraph}</p>
+      {ButtonText && ButtonDest && (
         <Btn
           Label={ButtonText}
           BgColor={Theme.Color.Eggplant}
           TextColor={Theme.Color.White}
           Destination={ButtonDest}
         />
-      }
+      )}
     </div>
     <div className="image">
-      <ImgMatch src={Image} objectFit="contain"/>
+      <ImgMatch src={Image} objectFit="contain" />
     </div>
   </SimpleTextWithImageStyle>
 );

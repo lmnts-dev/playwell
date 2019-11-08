@@ -8,8 +8,13 @@
 import React from 'react';
 
 // Components
+import { Box, Flex, Text } from 'components/library/Elements';
 import Section from 'components/library/Elements/Section';
 import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
+import {
+  BasicSection,
+  BasicInner,
+} from 'components/library/Section/BasicSection';
 
 // Helpers
 import slugify from 'helpers/slugify';
@@ -54,25 +59,34 @@ const SummerCampsSplitLinks = ({
   //   : stateName;
 
   return (
-    <Section bg={themeProps.BgColor}>
-      <SplitLinks>
-        <SplitLink
-          title="Adults need purposeful play too"
-          message="View our tem building opportunites"
-          // message={'Keep exploring programs in ' + countyStateString + '.'}
-          to={'/'}
-          themeProps={themeProps}
-          first
-        />
-        <SplitLink
-          title="Need help with a special event?"
-          message="Learn about our partnerships"
-          to={'/'}
-          themeProps={themeProps}
-          last
-        />
-      </SplitLinks>
-    </Section>
+    <BasicSection
+      BgColor={Theme.Color.Background}
+      TextColor={Theme.Color.Dino}
+      BorderTop={Theme.Color.Sunset}
+      noPaddingBottom
+    >
+      <BasicInner wideWidth>
+        <Box textAlign="center">
+          <SplitLinks>
+            <SplitLink
+              title="Keep exploring"
+              message="Explore more of our programs"
+              // message={'Keep exploring programs in ' + countyStateString + '.'}
+              to={'/'}
+              themeProps={themeProps}
+              first
+            />
+            <SplitLink
+              title="What do courses look like?"
+              message="Learn more about our curriculums"
+              to={'/programs/our-curriculum'}
+              themeProps={themeProps}
+              last
+            />
+          </SplitLinks>
+        </Box>
+      </BasicInner>
+    </BasicSection>
   );
 };
 

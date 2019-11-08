@@ -26,7 +26,7 @@ const Section = ({
   pb,
   textAlign,
   indent,
-  overflow
+  overflow,
 }) => (
   <Container
     as="section"

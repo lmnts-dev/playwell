@@ -44,12 +44,13 @@ const HeroProps = {
   playButtonBg: Theme.Color.Ocean,
   gear: false,
   reversed: true,
+  wideImage: true,
   subNavColor: Theme.Color.Nova,
   arrowColor: Theme.Color.Nova,
 };
 
 const ThemeProps = {
-  BgColor: Theme.Color.Cream,
+  BgColor: Theme.Color.White,
   PrimaryColor: 'unset',
   SecondaryColor: Theme.Color.Primary,
   TertiaryColor: Theme.Color.Primary,
@@ -66,15 +67,19 @@ const OverflowHidden = styled.div`
 //////////////////////////////////////////////////////////////////////
 
 // Render Page
-const TeamBuilding = () => {
+const SportsTeamsPage = () => {
   return (
     <Layout {...ThemeProps}>
       <SplitHero
         {...HeroProps}
         subNav={[
-          { label: 'team building', active: true, link: '/team-building' },
+          { label: 'team building', link: '/team-building' },
           { label: 'organizations', link: '/team-building/organizations' },
-          { label: 'sports teams', link: '/team-building/sports-teams' },
+          {
+            label: 'sports teams',
+            active: true,
+            link: '/team-building/sports-teams',
+          },
           { label: 'non-profits', link: '/team-building/non-profits' },
         ]}
       >
@@ -87,6 +92,8 @@ const TeamBuilding = () => {
           Label="Get in Touch"
           BgColor={Theme.Color.Nova}
           TextColor={Theme.Color.White}
+          Destination="/contact"
+          Size="large"
         />
       </SplitHero>
 
@@ -108,35 +115,42 @@ const TeamBuilding = () => {
                 quote:
                   'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-1.jpg',
               },
               {
                 name: 'Binh',
                 quote:
                   'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-2.jpg',
               },
               {
                 name: 'Kylie',
                 quote:
                   'Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-3.jpg',
               },
               {
                 name: 'Matt',
                 quote:
                   'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-4.jpg',
               },
               {
                 name: 'Pete',
                 quote:
                   'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-5.jpg',
+              },
+              {
+                name: 'Meeko',
+                quote:
+                  'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                title: 'Recent Applicant',
+                image: 'random-6.jpg',
               },
             ]}
           />
@@ -173,7 +187,7 @@ const TeamBuilding = () => {
         <Block
           Style="centered"
           BgColor={Theme.Color.White}
-          BgMatch="do-it-yourself.jpg"
+          BgMatch="culture.jpg"
           BgAlt="Our Awesome Alt Tag"
           Width={0.5}
           JustifyContent="center"
@@ -185,7 +199,7 @@ const TeamBuilding = () => {
           noPaddingRight
           BgColor={Theme.Color.White}
           TextColor={Theme.Color.Dino}
-          BorderTop
+          BorderTop={Theme.Color.Nova}
         >
           <Marquee
             images={[
@@ -208,20 +222,17 @@ const TeamBuilding = () => {
         noPaddingBottom
         BorderTop
       >
-        <BasicInner noPaddingRight>
-          <TextWithManyImages
-            Text="We do this in the context of fun-filled engineering and
-              architectural projects, activities that both the children and the
-              instructors enjoy."
-            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
-          />
-        </BasicInner>
+        <TextWithManyImages
+          Reversed
+          Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
+          Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+        />
       </BasicSection>
     </Layout>
   );
 };
 
-export default TeamBuilding;
+export default SportsTeamsPage;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

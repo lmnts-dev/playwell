@@ -69,7 +69,7 @@ const HomePage = () => (
           <SimpleTextWithImage
             Caption="Taking our imagination up a level"
             Header="Creativity, Confidence &amp; Collaboration."
-            Paragraph="Through LEGO® inspired classes sparking “Aha!” moments, we help kids grasp fundamental principles of engineering and physics. The experience boosts their confidence, creativity and ability to collaborate."
+            Paragraph='Play-Well LEGO®-inspired programs spark "Aha" moments as kids begin to grasp the fundamental principles of engineering and physics. The ability boosts their confidence, creativity and ability to collaborate.'
             Image="intro-smiles.png"
             ButtonText="What We Do"
             ButtonDest="/"
@@ -77,7 +77,7 @@ const HomePage = () => (
         </BasicInner>
       </BasicSection>
 
-      <BasicSection
+      {/*<BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
       >
@@ -96,7 +96,7 @@ const HomePage = () => (
           />
         </BasicInner>
         <HomeCommunity slides={CommunitySlides} />
-      </BasicSection>
+      </BasicSection>*/}
 
       <BasicSection BgColor={Theme.Color.Ocean} TextColor={Theme.Color.White}>
         <BasicInner noPaddingLeft>
@@ -109,7 +109,7 @@ const HomePage = () => (
             Paragraph="STEM education creates critical thinkers, increases science literacy, and enables the next generation of innovators. Innovation leads to new products and processes that sustain our economy in an ever increasing technologically driven society."
             Paragraph2="Having activities that show real-life implication of STEM can pull together the ideas presented in school and help to show how they benefit our society and even our world as a whole"
             ButtonText="Programs"
-            ButtonDest="/"
+            ButtonDest="/programs"
           />
         </BasicInner>
       </BasicSection>
@@ -133,7 +133,7 @@ const HomePage = () => (
             Paragraph="Our assessments measured three goals including: student's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects. For example, the definition of gravity or friction, or that when two gears interlock their teeth its called meshing."
             Image="graph.png"
             ButtonText="How We Do It"
-            ButtonDest="/"
+            ButtonDest="/who-we-are/how"
           />
         </BasicInner>
       </BasicSection>
@@ -165,20 +165,26 @@ const HomePage = () => (
             {
               header: 'Worshops',
               paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'Play-Well LEGO@-inspired programs can be tailored to your needs. We offer workshops for Girl Scouts, Homeschool Groups, Boy Scouts, In-school field trips and more.',
               image: 'girl-3.jpg',
+              buttonText: 'View Workshops',
+              buttonLink: '/programs/workshops',
             },
             {
               header: 'Classes',
               paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                'What can you do with over 20,000 pieces of LEGO®? In our Engineering with LEGO® enrichment programs kids take on real-life engineering challenges allowing them to see STEM in action. Your child will explore concepts in physics, architecture, and mechanical engineering. Our students find inventive solutions in a fun-filled context that supports the growth of young minds through hands-on, minds-on learning.',
               image: 'girl-2.jpg',
+              buttonText: 'View Classes',
+              buttonLink: '/programs/classes',
             },
             {
               header: 'Camps',
               paragraph:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                "We'll help unleash your child's inner engineer in our STEM summer camps. They'll have so much fun in our LEGO-inspired summer camps that they won't even realize how much they're learning!",
               image: 'girl-1.jpg',
+              buttonText: 'View Camps',
+              buttonLink: '/programs/summer-camps',
             },
           ]}
         />
@@ -192,10 +198,8 @@ const HomePage = () => (
           <SpecialSimpleTextWithImage
             Caption="It starts with play"
             Header="Build Your Own World of Opportunity"
-            Paragraph="Bring your kid over or bring out your inner kid with some of our online activities to feed your imagination."
+            Paragraph="Activate your child's imagination with our on-line play zone or awaken your own inner kid with out LEGO-inspired games &amp; activities."
             Image="lego-ladder.png"
-            ButtonText="Play Zone"
-            ButtonDest="/"
             className="overflow-image"
           />
         </BasicInner>
@@ -206,7 +210,7 @@ const HomePage = () => (
 
 // Styles
 const Main = styled.main`
-
+  overflow: hidden;
 `;
 
 const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
@@ -227,8 +231,9 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
         max-height: calc(${Theme.Base.Size.Lg} * 5);
         height: 100vw;
         position: static;
+        display: none;
       }
-      
+
       .gatsby-image-wrapper {
         position: absolute !important;
         left: 0;

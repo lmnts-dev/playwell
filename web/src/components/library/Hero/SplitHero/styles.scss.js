@@ -22,10 +22,10 @@ export const GearContainer = styled.div`
 
 export const SplitHeroStyle = styled.div`
   display: flex;
-  flex-direction: ${props => props.reversed ? 'row-reverse' : 'row'};
+  flex-direction: ${props => (props.reversed ? 'row-reverse' : 'row')};
   align-items: stretch;
   height: 50vh;
-  min-height: calc(${Theme.Base.Size.Lg} * 8);
+  min-height: calc(${Theme.Base.Size.Lg} * 10);
   max-height: calc(${Theme.Base.Size.Lg} * 18);
   padding-top: calc(${Theme.Base.Size.Lg} * 1.5);
   position: relative;
@@ -41,15 +41,18 @@ export const SplitHeroStyle = styled.div`
   }
 
   .text {
-    flex: ${props => props.reversed ? '1' : '3'};
+    flex: ${props => (props.reversed ? '1' : '3')};
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-right: calc(${Theme.Base.Size.Lg} * ${props => props.reversed ? '0' : '1.5'});
+    margin-right: calc(${Theme.Base.Size.Lg} * ${props =>
+         props.reversed ? '0' : '1.5'});
     position: relative;
     z-index: 2;
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      margin-${props => props.reversed ? 'left' : 'right'}: calc(${Theme.Base.Size.Lg} * .75);
+      margin-${props => (props.reversed ? 'left' : 'right')}: calc(${
+         Theme.Base.Size.Lg
+       } * .75);
     }
     @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
       margin-right: 0;
@@ -83,7 +86,8 @@ export const SplitHeroStyle = styled.div`
       left: 0;
       transform: rotate(90deg) translateY(18%);
       transform-origin: 0% 100%;
-      color: ${props => props.arrowColor ? props.arrowColor : Theme.Color.Nova};
+      color: ${props =>
+        props.arrowColor ? props.arrowColor : Theme.Color.Nova};
       font-size: 30px;
     }
 
@@ -94,7 +98,8 @@ export const SplitHeroStyle = styled.div`
       width: 10px;
       content: '';
       background-image: linear-gradient(
-        ${props => props.arrowColor ? props.arrowColor : Theme.Color.Nova} 40%,
+        ${props =>
+          props.arrowColor ? props.arrowColor : Theme.Color.Nova} 40%,
         rgba(255, 255, 255, 0) 0%
       );
       background-position: right;
@@ -104,8 +109,15 @@ export const SplitHeroStyle = styled.div`
   }
 
   .imagery {
-    flex: ${props => (!props.reversed && props.wideImage) ? '5' : '3'};
-    margin-right: calc(${Theme.Base.Size.Lg} * ${props => props.reversed ? '1.5' : '1'});
+    flex: ${props =>
+      !props.reversed && props.wideImage
+        ? '4.6'
+        : (props.reversed && props.wideImage) ||
+          (props.reversed && !props.wideImage)
+        ? '1.6'
+        : '2.8'};
+    margin-right: calc(${Theme.Base.Size.Lg} * ${props =>
+         props.reversed ? '1.5' : '1'});
     position: relative;
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
       margin-right: calc(${Theme.Base.Size.Lg} * .75);
@@ -122,9 +134,12 @@ export const SplitHeroStyle = styled.div`
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: calc(${Theme.Base.Size.Lg} ${props => props.reversed ? '* 0' : '/ 10'});
-      border-top-left-radius: calc(${Theme.Base.Size.Lg} ${props => (props.reversed || props.wideImage) ? '* 0' : '* 0.75'});
-      border-top-right-radius: calc(${Theme.Base.Size.Lg} ${props => (props.reversed || props.wideImage) ? '* 0.75' : '* 0'});
+      border-radius: calc(${Theme.Base.Size.Lg} ${props =>
+         props.reversed ? '* 0' : '/ 10'});
+      border-top-left-radius: calc(${Theme.Base.Size.Lg} ${props =>
+         props.reversed || props.wideImage ? '* 0' : '* 0.75'});
+      border-top-right-radius: calc(${Theme.Base.Size.Lg} ${props =>
+         props.reversed || props.wideImage ? '* 0.75' : '* 0'});
     }
   }
 
@@ -132,8 +147,15 @@ export const SplitHeroStyle = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: ${props => props.reversed ? 'center' : 'space-between'};
-    margin-top: 10%;
+    justify-content: ${props =>
+      props.reversed && props.wideImage
+        ? 'center'
+        : props.reversed && !props.wideImage
+        ? 'flex-start'
+        : 'flex-start'};
+    margin-top: ${props => (props.reversed && !props.wideImage ? '0' : '10%')};
+    ${props =>
+      props.reversed && !props.wideImage ? 'margin-bottom: 10%;' : null}
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       margin: calc(${Theme.Base.Size.Lg} / 4) 0;
     }
@@ -159,22 +181,31 @@ export const SplitHeroStyle = styled.div`
       text-transform: capitalize;
       opacity: .5;
       transition-duration: .5s;
-      ${props => props.reversed && 'padding: 0 20px'};
-      ${props => props.subNavColor ? 'color: ' + props.subNavColor : ''};
+      ${props => props.reversed && props.wideImage && 'padding: 0 20px;'};
+      ${props =>
+        props.subNavColor ? 'color: ' + props.subNavColor + ';' : ''};
+      font-size: 1.25rem;
+      padding-right: calc(${Theme.Base.Size.Lg} / 2);
+
+      &:last-of-type {
+        padding-right: 0;
+      }
 
       &.link-active {
         opacity: 1;
-        color: ${Theme.Color.Nova};
+        /* color: ${Theme.Color.Nova}; */
       }
 
       &:hover {
         opacity: 1;
       }
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        font-size: 1.5rem;
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        font-size: 1.7vw;
+        padding-right: 2vw;
       }
-      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-        font-size: 1.2rem;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        font-size: 1.1rem;
+        padding-right: calc(${Theme.Base.Size.Lg} / 2);
       }
     }
   }

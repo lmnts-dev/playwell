@@ -228,132 +228,19 @@ export const SearchBarStyle = styled.div`
     }
 
     li {
-      padding-top: calc(${Root.Size} / 7);
-
       a {
         color: ${Theme.Color.Lilac};
+        display: block;
         font-size: 1rem;
         font-weight: 600;
         text-decoration: none;
+        padding: calc(${Root.Size} / 16) 0;
         transition: ${Theme.Base.Transition.String};
 
         &:hover {
           color: ${Theme.Color.Sunset};
         }
-
-        /* &:visited {
-          color: ${Theme.Color.Sunlight};
-        } */
       }
-    }
-  }
-`;
-
-export const Article = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  background: ${Theme.Color.White};
-  padding: calc(${Root.Size} / 2);
-  width: 100%;
-  border-radius: calc(${Root.Size} / 8);
-
-  @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
-    padding: calc(${Root.Size} / 3);
-  }
-`;
-
-Article.Info = styled.div`
-  display: flex;
-  padding-left: calc(${Root.Size} / 2);
-  width: 85%;
-  position: relative;
-  left: -40px;
-
-  @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
-    padding-left: calc(${Root.Size} / 3);
-    width: 75%;
-  }
-`;
-
-Article.Figure = styled.figure`
-  margin: 0;
-  width: 15%;
-  max-width: 140px;
-  height: 15%;
-  max-height: 140px;
-  position: relative;
-  left: -60px;
-
-  @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
-    width: 25%;
-    height: 25%;
-  }
-
-  .gatsby-image-wrapper {
-    border-radius: calc(${Root.Radius} * 10);
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-  }
-`;
-
-Article.Info.Details = styled.div`
-  color: ${Theme.Color.Nova};
-  display: block;
-  font-weight: 500;
-  margin-bottom: calc(${Root.Size} / 4);
-  width: 100%;
-  text-transform: capitalize;
-
-  span {
-    color: ${Theme.Color.Dino};
-    margin-left: calc(${Root.Size} / 2);
-  }
-`;
-
-Article.Info.Name = styled.div`
-  color: ${Theme.Color.Deepsea};
-  display: block;
-  font-size: 1.6rem;
-  font-weight: 600;
-  margin-top: calc(${Root.Size} / 1);
-  width: 100%;
-
-  @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
-    margin-top: 0;
-  }
-`;
-
-Article.Info.Contact = styled.div`
-  align-self: flex-end;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-between;
-  color: ${Theme.Color.Nova};
-  font-weight: 500;
-  margin-top: calc(${Root.Size} / 1);
-  width: 100%;
-
-  @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
-    flex-direction: row;
-  }
-
-  span {
-    margin-bottom: calc(${Root.Size} / 3);
-    display: block;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    @media (min-width: ${Base.Media.Width.Sm + 'px'}) {
-      margin-bottom: 0;
-    }
-
-    a {
-      color: ${Theme.Color.Nova};
     }
   }
 `;

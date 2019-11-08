@@ -13,8 +13,10 @@ import styled from 'styled-components';
 import Layout from 'components/core/Layout';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
-import ImgMatch from 'components/core/ImgMatch';
+import Section from 'components/library/Elements/Section';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import Marquee from 'components/library/Section/Marquee';
+import TeamMarquee from 'components/library/Section/TeamMarquee';
 import TextWithManyImages from 'components/library/Section/TextWithManyImages';
 import Team from 'components/library/Elements/Team';
 import CenterSlider from 'components/library/Section/CenterSlider';
@@ -78,7 +80,8 @@ const WhoCareersPage = () => {
           Label="View Listings"
           BgColor={Theme.Color.Dino}
           TextColor={Theme.Color.White}
-          Destination="/"
+          Destination="https://playwell.workbrightats.com/jobmap/"
+          External
         />
       </SplitHero>
 
@@ -87,21 +90,10 @@ const WhoCareersPage = () => {
         noPaddingTop
         noPaddingBottom
       >
-        <Marquee
-          images={[
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-            'intro-smiles.jpg',
-          ]}
-          SquareFormat
-        />
+        <TeamMarquee BgLinear={Theme.Color.Sky} />
       </BasicSection>
 
-      <BasicSection BgColor={Theme.Color.Background}>
+      <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
         <BasicInner>
           <CenteredTitle
             Title="Our Team"
@@ -134,35 +126,42 @@ const WhoCareersPage = () => {
                 quote:
                   'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-1.jpg',
               },
               {
                 name: 'Binh',
                 quote:
                   'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-2.jpg',
               },
               {
                 name: 'Kylie',
                 quote:
                   'Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-3.jpg',
               },
               {
                 name: 'Matt',
                 quote:
                   'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-4.jpg',
               },
               {
                 name: 'Pete',
                 quote:
                   'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-5.jpg',
+              },
+              {
+                name: 'Meeko',
+                quote:
+                  'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                title: 'Recent Applicant',
+                image: 'random-6.jpg',
               },
             ]}
           />
@@ -180,7 +179,8 @@ const WhoCareersPage = () => {
             giantText="Inquisitiveness Self Reliance &amp; Self Confidence"
             bottomText="in children &amp; in everybody."
             buttonText="View Listings"
-            buttonDest="/"
+            buttonDest="https://playwell.workbrightats.com/jobmap/"
+            External
           />
         </BasicInner>
       </BasicSection>
@@ -236,15 +236,33 @@ const WhoCareersPage = () => {
         noPaddingTop
         noPaddingBottom
       >
-        <BasicInner noPaddingRight>
-          <TextWithManyImages
-            Text="We do this in the context of fun-filled engineering and
-              architectural projects, activities that both the children and the
-              instructors enjoy."
-            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
-          />
-        </BasicInner>
+        <TextWithManyImages
+          Text="We do this in the context of fun-filled engineering and
+            architectural projects, activities that both the children and the
+            instructors enjoy."
+          Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+        />
       </BasicSection>
+
+      <Section bg={ThemeProps.BgColor} pb={0}>
+        <SplitLinks>
+          <SplitLink
+            title="Keep reading."
+            message="Learn about Our Values &amp; why we do what we do."
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/"
+            themeProps={ThemeProps}
+            first
+          />
+          <SplitLink
+            title="Here ye, here ye."
+            message="Check out our News &amp; Press page."
+            to="/"
+            themeProps={ThemeProps}
+            last
+          />
+        </SplitLinks>
+      </Section>
     </Layout>
   );
 };

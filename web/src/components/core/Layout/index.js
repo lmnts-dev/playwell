@@ -37,6 +37,7 @@ const Layout = ({
   PrimaryColor,
   SecondaryColor,
   TertiaryColor,
+  TransparentFooter,
 }) => (
   <ThemeProvider theme={Theme}>
     <SiteGrid>

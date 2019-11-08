@@ -66,6 +66,48 @@ const ThemeProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+export const AbsoluteDecor = styled.div`
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  height: 0 !important;
+  padding-top: 100%;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  max-width: ${Root.Site.Width};
+  @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+    padding-top: ${Root.Site.Width};
+    margin: 0 calc(50vw - calc(${Root.Site.Width} / 2));
+  }
+
+  .decor-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    height: auto;
+    
+
+    .ico {
+      width: 100%;
+      height: auto;
+    }
+
+
+    &.absolute-sailboat {
+      width: 45%;
+      left: auto;
+      right: -12%;
+      bottom: 3%;
+    }
+  }
+`;
+
+export const OverflowHidden = styled.div`
+  overflow: hidden;
+`;
+
 // Render Page
 const TeamBuilding = () => {
   return (
@@ -89,35 +131,42 @@ const TeamBuilding = () => {
                 quote:
                   'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-1.jpg',
               },
               {
                 name: 'Binh',
                 quote:
                   'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-2.jpg',
               },
               {
                 name: 'Kylie',
                 quote:
                   'Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-3.jpg',
               },
               {
                 name: 'Matt',
                 quote:
                   'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-4.jpg',
               },
               {
                 name: 'Pete',
                 quote:
                   'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
                 title: 'Recent Applicant',
-                image: 'intro-smiles.jpg',
+                image: 'random-5.jpg',
+              },
+              {
+                name: 'Meeko',
+                quote:
+                  'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                title: 'Recent Applicant',
+                image: 'random-6.jpg',
               },
             ]}
           />
@@ -126,41 +175,44 @@ const TeamBuilding = () => {
 
       <TeamBuildingCulture />
 
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Sunset}
-        >
-          <BasicInner>
-            <CenteredTitle
-              Title={null}
-              Class="h3"
-              TextColor={Theme.Color.Sunset}
-            />
-          </BasicInner>
-          <Marquee
-            images={[
-              'visa.png',
-              'microsoft.png',
-              'clorox.png',
-              'google.png',
-              'pixar.jpeg',
-            ]}
-            SquareFormat
-            Shadow
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Sunset}
+        BorderTop={Theme.Color.Clay}
+      >
+        <BasicInner>
+          <CenteredTitle
+            Title={null}
+            Class="h3"
+            TextColor={Theme.Color.Sunset}
           />
-        </BasicSection>
+        </BasicInner>
+        <Marquee
+          images={[
+            'visa.png',
+            'microsoft.png',
+            'clorox.png',
+            'google.png',
+            'pixar.jpeg',
+          ]}
+          SquareFormat
+          Shadow
+        />
+      </BasicSection>
 
-        <BasicSection
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Primary}
+      <OverflowHidden>
+        <BasicSection 
+          noPaddingBottom 
+          BgColor={Theme.Color.Background} 
+          TextColor={Theme.Color.Eggplant}
         >
           <BasicInner>
             <CenteredTitle Title="Well Supplied Fun" Class="headline" />
-            <Box textAlign="center" width={'80%'} m={'0 auto'}>
+            <Box textAlign="center" width={'90%'} m={'0 auto'}>
               <h3>
                 We bring tens of thousands of pieces of LEGO&reg;, a customized
                 organizational play challenge that fits your organization's
-                goals, and experienced organizational play facilitators who are
+                experienced organizational play facilitators who are all about all
                 all about play.
               </h3>
               <Text as="p" className="h3" fontWeight={600}>
@@ -168,67 +220,67 @@ const TeamBuilding = () => {
               </Text>
             </Box>
           </BasicInner>
-        </BasicSection>
-
-        <BasicSection
-          noPaddingTop
-          noPaddingBottom
-          BgColor={Theme.Color.Background}
-        >
-          <CurveAndAngle>
-            <FooterCurveSlice bgColor={Theme.Color.Ocean} />
-            <FooterAngleSlice bgColor={Theme.Color.Background} />
-            <div className="absolute-image">
-              <ImgMatch src="sailboat.png" />
-            </div>
+          <CurveAndAngle
+            AngleColor={Theme.Color.White}
+            CurveColor={Theme.Color.Ocean}
+          >
+            <AbsoluteDecor>
+              <div className="decor-container absolute-sailboat">
+                <ImgMatch src="sailboat.png" />
+              </div>
+            </AbsoluteDecor>
           </CurveAndAngle>
         </BasicSection>
+      </OverflowHidden>
 
-        <BasicSection BgColor={Theme.Color.White} TextColor={Theme.Color.Dino}>
-          <BasicInner>
-            <CenteredTitle Title="The Outcome" Class="headline" />
-            <Box pt={Root.Size}>
-              <LegoList
-                blocks={[
-                  {
-                    title: 'Creative Collaboration',
-                    text:
-                      'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
-                    legoColor: 'orange',
-                  },
-                  {
-                    title: 'New Perspectives',
-                    text:
-                      'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
-                    legoColor: 'purple',
-                  },
-                  {
-                    title: 'Staff Morale',
-                    text:
-                      'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
-                    legoColor: 'blue',
-                  },
-                ]}
-              />
-            </Box>
-          </BasicInner>
-        </BasicSection>
-
-        <BasicSection
-          BgColor={Theme.Color.Blush}
-          TextColor={Theme.Color.Dino}
-          noPaddingTop
-          noPaddingBottom
-        >
-          <BasicInner noPaddingRight>
-            <TextWithManyImages
-              Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
-              Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+      <BasicSection 
+        noPaddingTop
+        BgColor={Theme.Color.White} 
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner>
+          <CenteredTitle Title="The Outcome" Class="headline" />
+          <Box pt={Root.Size}>
+            <LegoList
+              blocks={[
+                {
+                  title: 'Creative Collaboration',
+                  text:
+                    'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                  legoColor: 'orange',
+                },
+                {
+                  title: 'New Perspectives',
+                  text:
+                    'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                  legoColor: 'purple',
+                },
+                {
+                  title: 'Staff Morale',
+                  text:
+                    'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                  legoColor: 'blue',
+                },
+              ]}
             />
-          </BasicInner>
-        </BasicSection>
+          </Box>
+        </BasicInner>
+      </BasicSection>
 
-        <TeamBuildingSplitLinks themeProps={ThemeProps} />
+      <BasicSection
+        BgColor={Theme.Color.Blush}
+        TextColor={Theme.Color.Dino}
+        noPaddingTop
+        noPaddingBottom
+      >
+          <TextWithManyImages
+            Reversed
+            Text="Our goal is to remind your staff that work can be fun and challenging at the same time."
+            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+          />
+      </BasicSection>
+
+      <TeamBuildingSplitLinks themeProps={ThemeProps} />
     </Layout>
   );
 };

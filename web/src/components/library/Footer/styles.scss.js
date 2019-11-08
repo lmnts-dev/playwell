@@ -29,7 +29,18 @@ export const CurveAndAngleWithPadding = styled(CurveAndAngle)`
     z-index: 19;
 
     .footer-curve-slice {
-      background-color: ${props => props.bgColor ? props.bgColor : Theme.Color.Background};
+      background-color: ${props =>
+        props.bgColor ? props.bgColor : Theme.Color.Background};
+    }
+
+    .volcano {
+      position: absolute !important;
+      width: 30%;
+      bottom: 90px;
+      right: 19%;
+      @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+        width: calc(${Theme.Base.Size.Lg} * 7.2);
+      }
     }
   }
 `;
@@ -67,7 +78,8 @@ export const FooterStyle = styled.footer`
         margin-bottom: calc(${Root.Size} / 2);
       }
 
-      a, svg {
+      a,
+      svg {
         width: 100%;
         height: 100%;
       }
@@ -83,14 +95,13 @@ export const FooterStyle = styled.footer`
       }
 
       .col {
-        padding: 0 calc(${Root.Size}) calc(${Root.Size} * 1.5) calc(${Root.Size} / 4);
-        
+        padding: 0 calc(${Root.Size}) calc(${Root.Size} * 1.5)
+          calc(${Root.Size} / 4);
+
         @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
           padding-right: calc(${Root.Size} / 2);
           padding-bottom: calc(${Root.Size} * 1.5);
         }
-        
-
 
         ul {
           display: flex;
@@ -132,7 +143,6 @@ export const FooterStyle = styled.footer`
           }
 
           &.social {
-
             li {
               margin-bottom: calc(${Theme.Base.Size.Lg} / 8);
               @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
@@ -154,7 +164,6 @@ export const FooterStyle = styled.footer`
                 width: calc(${Theme.Base.Size.Lg} / 2);
                 height: calc(${Theme.Base.Size.Lg} / 2);
 
-
                 span {
                   height: 100%;
                   width: 100%;
@@ -162,7 +171,6 @@ export const FooterStyle = styled.footer`
                   svg {
                     width: 100%;
                     height: auto;
-                    
                     path {
                       fill: ${Theme.Color.Eggplant};
                     }

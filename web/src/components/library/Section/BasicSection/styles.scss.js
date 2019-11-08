@@ -25,31 +25,44 @@ export const BasicSectionStyle = styled.div`
   position: relative;
   background: ${props => (props.BgColor ? props.BgColor : Theme.Color.Primary)};
   color: ${props => (props.TextColor ? props.TextColor : Theme.Color.White)};
-  padding: calc(${Theme.Base.Size.Lg} * 1.25) 0 calc(${Theme.Base.Size.Lg} * 1.25) 0;
+  padding: calc(${Theme.Base.Size.Lg} * 1.25) 0
+    calc(${Theme.Base.Size.Lg} * 1.25) 0;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    padding: calc(${Theme.Base.Size.Lg} * .75) 0 calc(${Theme.Base.Size.Lg} * .75) 0;
+    padding: calc(${Theme.Base.Size.Lg} * 0.75) 0
+      calc(${Theme.Base.Size.Lg} * 0.75) 0;
   }
   @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
     padding: calc(${Theme.Base.Size.Lg} / 1) 0 calc(${Theme.Base.Size.Lg} / 1) 0;
   }
 
-  ${props => props.BgLinear ? `
+  &.split-hero {
+    padding: calc(${Theme.Base.Size.Lg} * 1.25) 0
+      calc(${Theme.Base.Size.Lg} * 0.9) 0;
+  }
+
+  ${props =>
+    props.BgLinear
+      ? `
     .linear-background {
       position: absolute;
       top: 1px;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient( to bottom, ` + props.BgLinear + ` 75%, ` + props.BgColor + ` 75% );
+      background: linear-gradient( to bottom, ` +
+        props.BgLinear +
+        ' 75%, ' +
+        props.BgColor +
+        ` 75% );
     }
   `
-  : null};
+      : null};
 
   ${props =>
     props.BorderTop || props.BorderMiddle
       ? `
     background-image: linear-gradient(to right, ` +
-        Theme.Color.Clay +
+        props.BorderTop +
         ` 50%, rgba(255,255,255,0) 0%);
     background-position: top;
     background-size: 10px 1px;
@@ -101,10 +114,10 @@ export const BasicSectionStyle = styled.div`
       z-index: 10;
     }`
       : null};
-    
-    &.hide {
-      display: none;
-    }
+
+  &.hide {
+    display: none;
+  }
 `;
 
 export const BasicInnerStyle = styled.div`
@@ -125,9 +138,9 @@ export const BasicInnerStyle = styled.div`
     padding: 0 25px;
   }
 
-
-
-  ${props => props.wideWidth ? `
+  ${props =>
+    props.wideWidth
+      ? `
     padding: 0 60px;
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
       padding: 0 45px;
@@ -141,7 +154,7 @@ export const BasicInnerStyle = styled.div`
       padding: 0 15px;
     }
   `
-    : null};
+      : null};
   ${props => (props.noPaddingLeft ? 'padding-left: 0 !important;' : null)};
   ${props => (props.noPaddingRight ? 'padding-right: 0 !important;' : null)};
 `;

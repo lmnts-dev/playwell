@@ -14,27 +14,25 @@ import { Icon } from 'components/library/Icons';
 
 // Styles
 import { TextWithManyImagesStyle } from './styles.scss';
+import { BasicInner } from 'components/library/Section/BasicSection';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const TextWithManyImages = ({
-  Images,
-  Text,
-}) => (
-  <TextWithManyImagesStyle>
-    <div className="text h4">
-      {Text}
-    </div>
-    <div className="images">
-      <ImgMatch src={Images[0]} />
-      <div className="column">
-        <ImgMatch src={Images[1]} />
-        <ImgMatch src={Images[2]} />
-      </div>
-    </div>
-  </TextWithManyImagesStyle>
-);
+export const TextWithManyImages = ({ Images, Text, Reversed }) => (
+         <TextWithManyImagesStyle Reversed={Reversed}>
+           <BasicInner>
+             <div className="text h4">{Text}</div>
+           </BasicInner>
+           <div className="images">
+             <ImgMatch src={Images[0]} />
+             <div className="column">
+               <ImgMatch src={Images[1]} />
+               <ImgMatch src={Images[2]} />
+             </div>
+           </div>
+         </TextWithManyImagesStyle>
+       );
 
 export default TextWithManyImages;
 

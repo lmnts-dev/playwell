@@ -234,7 +234,7 @@ const SearchBarResults = ({ results }) => {
         results.map((result, idx) => {
           return (
             <Accordion
-              key={result.node.id}
+              key={idx}
               title={result.node.cost_code_name}
               chevronColor={Theme.Color.White}
               color={hexToRGB(Theme.Color.White, 0.7)}

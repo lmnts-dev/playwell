@@ -42,7 +42,7 @@ export const PageThemeStyle = createGlobalStyle`
                     ? props.PrimaryColor != 'unset'
                       ? props.PrimaryColor
                       : false
-                    : false}
+                    : false};
               }
             }
           }
@@ -51,13 +51,19 @@ export const PageThemeStyle = createGlobalStyle`
         .nav-secondary {
           .btn {
             .btn-inner {
-              span, .ico, i, .fas {
+              span, .ico, i, .fas, svg {
                 color: ${props =>
                   props.PrimaryColor
                     ? props.PrimaryColor != 'unset'
                       ? props.PrimaryColor
                       : false
-                    : false}
+                    : false};
+                fill: ${props =>
+                  props.PrimaryColor
+                    ? props.PrimaryColor != 'unset'
+                      ? props.PrimaryColor
+                      : false
+                    : false};
               }
 
               &.btn-border {
@@ -66,7 +72,7 @@ export const PageThemeStyle = createGlobalStyle`
                     ? props.PrimaryColor != 'unset'
                       ? props.PrimaryColor
                       : false
-                    : false}
+                    : false};
               }
             }
           }

@@ -106,6 +106,7 @@ class SearchBar extends PureComponent {
     // Clean our queries
     const searchSafeQuery = this.state.query.toLowerCase();
     const stateEdges = this.props.data.allPlayWellStates.edges;
+    const hero = this.props.hero
 
     // Create our Results array
     const results = stateEdges.filter(location => {
@@ -159,8 +160,8 @@ class SearchBar extends PureComponent {
               : 'search-bar'
           }
         >
-          <SearchBarStyle.Button>
-            <Btn
+          <SearchBarStyle.Button className="btn">
+            {/* <Btn
               Label="Brooklyn, NYC"
               Destination="/"
               BorderStyle="solid"
@@ -170,7 +171,22 @@ class SearchBar extends PureComponent {
               IconClass="map-marker-alt"
               IconPosition="left"
               IconFas
-            />
+            /> */}
+            {hero ? (
+              <span className="filter-inner">
+                <Icon Name="pin" />
+                <span className="label">Brooklyn, NYC</span>
+                <Icon Name="carat" className="ico-carat" />
+              </span>
+            ) : (
+              <div className="btn-inner btn-border">
+                <Icon Name="map-marker-alt" fas />
+                <span className="location">Brooklyn, NYC</span>
+                <span className="ico-carat">
+                  <Icon Name="carat" />
+                </span>
+              </div>
+            )}
             <SearchBarStyle.FilterList className="list">
               <div className="carat">
                 <div className="arrow-up" />
@@ -210,10 +226,9 @@ const SearchBarResults = ({ results }) => {
       {results.length > 0 ? (
         results.map((result, idx) => {
           return (
-            <li>
+            <li key={idx}>
               <Link
                 to={'/locations/' + slugify(result.node.name.toLowerCase())}
-                key={idx}
               >
                 <span>{result.node.name}</span>
               </Link>
@@ -235,18 +250,18 @@ const SearchBarResults = ({ results }) => {
 };
 
 // Simple Course Hero Display Component
-const NavFilterSearchBar = ({ data }) => {
-  return <SearchBar data={data} />;
+const NavFilterSearchBar = ({ data, hero }) => {
+  return <SearchBar data={data} hero={hero} />;
 };
 
 // Full Wrapper
-export const NavFilter = ({ bg }) => {
+export const NavFilter = ({ bg, hero }) => {
   // Use our hook's data as source
   const fetchedData = DataFetch();
 
   return (
     <NavFilterStyle bg={bg}>
-      <NavFilterSearchBar data={fetchedData} />
+      <NavFilterSearchBar data={fetchedData} hero={hero} />
     </NavFilterStyle>
   );
 };

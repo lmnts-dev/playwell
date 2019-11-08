@@ -12,91 +12,106 @@ import { Base } from 'constants/styles/Base';
 //////////////////////////////////////////////////////////////////////
 
 export const TextWithManyImagesStyle = styled.div`
-  display: flex;
-  flex-direction: row;
-  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    display: block;
-  }
+  position: relative;
 
-  .text {
-    font-weight: 700;
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: ${Root.Size} ${Root.Size} ${Root.Size} 0;
-    @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      padding: calc(${Root.Size} / 2) calc(${Root.Size} / 2)
-        calc(${Root.Size} / 2) 0;
-      &.h4 {
-        font-size: 1.75rem;
-      }
-    }
+  .images, .text {
+    width: 50%;
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      padding: calc(${Root.Size}) calc(${Root.Size}) calc(${Root.Size}) 0;
-      max-width: calc(${Theme.Base.Size.Lg} * 10);
+      width: 100%;
     }
   }
 
   .images {
-    flex: 3;
+    margin-left: ${props => (props.Reversed ? '0' : '50%')};
     display: flex;
     flex-direction: row;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      margin-right: calc(${Theme.Base.Size.Lg} * .75);
-      height: 50vw;
+    max-height: calc(${
+      Theme.Base.Grid.SiteWidth
+    } * .3333); //this is the height of the large image at site width
+    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+      align-items: stretch;
     }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      margin-right: calc(${Theme.Base.Size.Lg} / 2);
-    }
-
-    > .gatsby-image-wrapper {
-      display: inline-block;
-      padding-top: 66.66%;
-      width: 66.66%;
-      height: 100%;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding-top: 0;
-      }
-
-      > div {
-        position: absolute;
-        padding-bottom: 0 !important;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
+      margin-left: 0;
+      max-height: none;
     }
 
     .column {
-      width: 33.33%;
       padding-top: 66.66%;
-      margin-left: 4px;
-      height: 100%;
+      width: 33.33%;
       position: relative;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding-top: 0;
+      @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+        width: calc(${
+          Theme.Base.Grid.SiteWidth
+        } * .16666); //this is the width of the small images at site width
+        padding-top: calc(${Theme.Base.Grid.SiteWidth} * .3333);
       }
 
       .gatsby-image-wrapper {
-        width: 100%;
         position: absolute !important;
         top: 0;
-        left: 0;
+        left: 4px;
+        width: calc(100% - 4px);
         height: calc(50% - 2px);
 
-        &:first-of-type {
-          margin-bottom: 4px;
-        }
-
         &:last-of-type {
-          margin-top: 4px;
-          top: calc(50% - 2px);
+          top: calc(50% + 2px);
         }
       }
     }
+
+    > .gatsby-image-wrapper {
+      width: 66.66%;
+      padding-top: 66.66%;
+      height: 0 !important;
+      @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+        width: auto;
+        flex: 100;
+        padding-top: 0;
+        height: auto !important;
+      }
+    }
   }
+
+  .basic-inner {
+    height: 100%;
+    position: absolute;
+    @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
+      left: calc(50vw - (${Theme.Base.Grid.SiteWidth} / 2));
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      position: relative;
+    }
+
+    .text {
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      transform: translateX(${props => (props.Reversed ? '100%' : '0')});
+      padding-right: calc(${Root.Size} * ${props =>
+         props.Reversed ? '0' : '1'});
+      padding-left: calc(${Root.Size} * ${props =>
+         props.Reversed ? '1' : '0'});
+      @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
+        padding-right: calc(${Root.Size} ${props =>
+         props.Reversed ? '* 0' : '/ 2'});
+        padding-left: calc(${Root.Size} ${props =>
+         props.Reversed ? '/ 2' : '* 0'});
+
+        &.h4 {
+          font-size: 1.75rem;
+        }
+      }
+
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding: calc(${Root.Size} * 2) 0;
+        transform: translateX(0);
+      }
+    }
+  }
+
 `;
 
 //////////////////////////////////////////////////////////////////////

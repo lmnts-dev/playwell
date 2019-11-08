@@ -40,7 +40,7 @@ export const SplitLink = ({ title, message, first, last, to, themeProps }) => (
         as="span"
         className="h6"
         fontWeight="600"
-        lineHeight={[1.5]}
+        lineHeight={[1.2]}
         color={themeProps.SecondaryColor}
       >
         {title}
@@ -49,7 +49,8 @@ export const SplitLink = ({ title, message, first, last, to, themeProps }) => (
         as="span"
         className="h4"
         fontWeight="600"
-        lineHeight={[1.2, 1.4]}
+        lineHeight={[1.2]}
+        pt={`calc(${Root.Size} / 8)`}
         color={themeProps.TertiaryColor}
       >
         {message}

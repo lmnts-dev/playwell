@@ -17,6 +17,13 @@ import Gear from './SVG/Gear';
 import Pin from './SVG/Pin';
 import Facebook from './SVG/Facebook';
 import Instagram from './SVG/Instagram';
+import YouTube from './SVG/YouTube';
+import GooglePlus from './SVG/GooglePlus';
+import Glassdoor from './SVG/Glassdoor';
+import Wordpress from './SVG/Wordpress';
+import Snapchat from './SVG/Snapchat';
+import Pinterest from './SVG/Pinterest';
+import LinkedIn from './SVG/LinkedIn';
 import Twitter from './SVG/Twitter';
 import BasicLego from './SVG/BasicLego';
 import Intercom from './SVG/Intercom';
@@ -30,7 +37,9 @@ export const Icon = props => {
   switch (props.Name) {
     case 'carat':
       return (
-        <IconStyle className={'ico ' + props.className ? props.className : 'ico' }>
+        <IconStyle
+          className={'ico ' + props.className ? props.className : 'ico'}
+        >
           <Carat />
         </IconStyle>
       );
@@ -86,6 +95,48 @@ export const Icon = props => {
       return (
         <IconStyle className="ico ico-instagram">
           <Instagram />
+        </IconStyle>
+      );
+    case 'glassdoor':
+      return (
+        <IconStyle className="ico ico-glassdoor">
+          <Glassdoor />
+        </IconStyle>
+      );
+    case 'youTube':
+      return (
+        <IconStyle className="ico ico-youtube">
+          <YouTube />
+        </IconStyle>
+      );
+    case 'googlePlus':
+      return (
+        <IconStyle className="ico ico-google-plus">
+          <GooglePlus />
+        </IconStyle>
+      );
+    case 'wordpress':
+      return (
+        <IconStyle className="ico ico-wordpress">
+          <Wordpress />
+        </IconStyle>
+      );
+    case 'snapchat':
+      return (
+        <IconStyle className="ico ico-snapchat">
+          <Snapchat />
+        </IconStyle>
+      );
+    case 'pinterest':
+      return (
+        <IconStyle className="ico ico-pinterest">
+          <Pinterest />
+        </IconStyle>
+      );
+    case 'linkedIn':
+      return (
+        <IconStyle className="ico ico-linkedin">
+          <LinkedIn />
         </IconStyle>
       );
     default:

@@ -28,13 +28,13 @@ export const CurveAndAngle = ({
   Tall,
   className,
   AbsoluteImages,
-  children
+  children,
 }) => (
   <CurveAndAngleStyle Tall={Tall} className={className}>
     {children}
     <FooterCurveSlice bgColor={CurveColor} />
     <FooterAngleSlice bgColor={AngleColor} />
-    {AbsoluteImages && 
+    {AbsoluteImages &&
       AbsoluteImages.map((image, index) => {
         return (
           <AbsoluteImage
@@ -48,13 +48,12 @@ export const CurveAndAngle = ({
             <ImgMatch src={image.src} />
           </AbsoluteImage>
         );
-      })
-    }
-    {Clouds &&
+      })}
+    {Clouds && (
       <CloudStyle className="clouds" Clouds={Clouds}>
         <ImgMatch src="clouds.png" />
       </CloudStyle>
-    }
+    )}
   </CurveAndAngleStyle>
 );
 

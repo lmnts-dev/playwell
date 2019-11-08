@@ -109,10 +109,13 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
                     Explore Courses
                   </HeroBtn>
                 </Link>
-                <NavFilter />
+                <NavFilter hero={true} />
               </Actions>
             </div>
           </BasicInner>
+          <div className="absolute-angle">
+            <FooterAngleSlice bgColor={Theme.Color.Background} />
+          </div>
           <AbsoluteDecor>
             <div className="decor-container absolute-cloud-small">
               <ImgMatch src="cloud-small.png" />
@@ -164,6 +167,9 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
               </Link>
             </div>
           </BasicInner>
+          <div className="absolute-angle">
+            <FooterAngleSlice bgColor={Theme.Color.Background} />
+          </div>
           <AbsoluteDecor>
             <div className="decor-container absolute-gears">
               <ImgMatch src="gears.png" />
@@ -195,6 +201,9 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
               </Link>
             </div>
           </BasicInner>
+          <div className="absolute-angle">
+            <FooterAngleSlice bgColor={Theme.Color.Background} />
+          </div>
           <AbsoluteDecor>
             <div className="decor-container absolute-gears">
               <ImgMatch src="gears.png" />
@@ -208,9 +217,6 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
           </div>
         </Item>
       </Slider>
-      <div className="absolute-angle">
-        <FooterAngleSlice bgColor={Theme.Color.Background} />
-      </div>
     </HeroContainer>
   );
 };

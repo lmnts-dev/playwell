@@ -43,9 +43,23 @@ export const MobileNavigationOverlayStyle = styled.div`
   flex-direction: column;
   justify-content: space-between;
   pointer-events: none;
-  padding: calc(${Theme.Base.Size.Lg} / 2);
+  padding: calc(${Theme.Base.Size.Lg});
+  align-items: flex-end;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     display: flex;
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding: calc(${Theme.Base.Size.Lg} / 2);
+  }
+
+  &.nav-fadeout {
+    animation: ${FadeOut} ${navFadeOutDurationString} ease 0s 1 normal forwards;
+  }
+
+  &.focused-menu {
+    .mobile-fixed-bottom {
+      display: none;
+    }
   }
 
   .mobile-fixed {
@@ -54,20 +68,29 @@ export const MobileNavigationOverlayStyle = styled.div`
     pointer-events: all;
 
     &.mobile-fixed-top {
-      justify-content: flex-end;
+      display: block;
+      width: calc(${Theme.Base.Size.Lg} / 2);
+      height: calc(${Theme.Base.Size.Lg} / 2);
 
       .exit {
         width: calc(${Theme.Base.Size.Lg} / 2);
         height: calc(${Theme.Base.Size.Lg} / 2);
         position: relative;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
 
         &.dark-theme {
-          &:before, &:after {
+          &:before,
+          &:after {
             background-color: ${Theme.Color.Eggplant};
           }
         }
 
-        &:before, &:after {
+        &:before,
+        &:after {
           position: absolute;
           content: '';
           height: 1px;
@@ -90,10 +113,23 @@ export const MobileNavigationOverlayStyle = styled.div`
       }
     }
     &.mobile-fixed-bottom {
+      width: 100%;
+      overflow: auto;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding-bottom: calc(${Theme.Base.Size.Lg} / 2);
+      }
+
+      .ico {
+        justify-content: flex-start;
+      }
+
       svg {
         height: calc(${Theme.Base.Size.Lg} / 2);
         width: auto;
         fill: ${Theme.Color.White};
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          height: calc(${Theme.Base.Size.Lg} / 4);
+        }
       }
     }
   }
@@ -118,9 +154,7 @@ export const NavigationOverlayStyle = styled.nav`
   flex-direction: column;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     background: ${props =>
-      props.theme.primaryColor
-        ? props.theme.primaryColor
-        : Theme.Color.Ocean};
+      props.theme.primaryColor ? props.theme.primaryColor : Theme.Color.Ocean};
     width: 200vw;
     transform: translateX(-50%);
 
@@ -144,7 +178,6 @@ export const NavigationOverlayStyle = styled.nav`
   &.nav-fadeout {
     animation: ${FadeOut} ${navFadeOutDurationString} ease 0s 1 normal forwards;
   }
-
 `;
 
 NavigationOverlayStyle.Inner = styled.div`
@@ -169,10 +202,19 @@ NavigationOverlayStyle.Sub = styled.div`
   overflow-y: auto;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     width: 50%;
-    min-width: none;
-    padding: calc(${Root.Size}) calc(${Root.Size} / 6) calc(${Root.Size} / 2)
+    min-width: 0;
+    padding: calc(${Root.Size} * 1.5) calc(${Root.Size} / 6) calc(${
+  Root.Size
+} / 2)
     calc(${Root.Size} / 2);
   }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        padding: calc(${Root.Size} * .9) calc(${Root.Size} / 6) calc(${
+  Root.Size
+} / 2)
+    calc(${Root.Size} / 4);
+  }
+
     .inner {
       flex: 1;
       display: flex;
@@ -253,15 +295,70 @@ NavigationOverlayStyle.Sub = styled.div`
             white-space: nowrap;
             pointer-events: none;
             @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-              font-size: 1rem !important;
+              font-size: 2vw !important;
               transform: none !important;
               left: 0 !important;
               text-align: center;
+            }
+            @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+              font-size: 1rem !important;
             }
             color: ${props =>
               props.theme.primaryColor
                 ? hexToRGB(props.theme.primaryColor, 0.8)
                 : hexToRGB(Theme.Color.Ocean, 0.8)};
+          }
+        }
+
+        .mobile-back {
+          display: none;
+          position: absolute;
+          top: calc(${Theme.Base.Size.Lg} / 2);
+          left: calc(${Theme.Base.Size.Lg} * 0.75);
+          margin: calc(${Theme.Base.Size.Lg} / 2) 0;
+          transform: rotate(180deg);
+          cursor: pointer;
+          border-radius: 100%;
+          &:after {
+            content: "";
+            width: ${Theme.Base.Size.Lg};
+            height: ${Theme.Base.Size.Lg};
+            background-color: transparent;
+            transition-duration: .25s;
+            position: absolute;
+            top: -45%;
+            left: -60%;
+            border-radius: 50%;
+          }
+
+          &:hover {
+            
+            &:after {
+              background-color: ${hexToRGB(Theme.Color.Sunset, 0.2)};
+            }
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+          span {
+            justify-content: flex-end;
+            height: calc(${Theme.Base.Size.Lg} / 2);
+            width: calc(${Theme.Base.Size.Lg} / 2);
+
+            svg {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            display: block;
+          }
+          @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+            top: 0;
+            left: calc(${Theme.Base.Size.Lg} / 4);
           }
         }
       }
@@ -273,6 +370,12 @@ NavigationOverlayStyle.Sub = styled.div`
         border-radius: 5px;
         padding: calc(${Root.Size} / 2) 0 0 0;
         ${FadeIn};
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          padding-top: calc(${Root.Size} * 1.5);
+        }
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          padding-top: calc(${Root.Size} / 2);
+        }
 
         /* Large Focus Link List */
 
@@ -289,6 +392,12 @@ NavigationOverlayStyle.Sub = styled.div`
             justify-content: space-between;
             overflow: hidden;
             ${cascadeSlideToLeft(10)}
+            @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+              height: 8vw;
+            }
+            @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+              height: ${Root.Size};
+            }
 
             a {
               flex: 1;
@@ -302,6 +411,12 @@ NavigationOverlayStyle.Sub = styled.div`
               border-radius: 99px 8px 8px 99px;
               background: rgba(0, 0, 0, 0);
               overflow: hidden;
+              @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+                font-size: 5vw;
+              }
+              @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+                font-size: calc(${Root.Size} / 2);
+              }
 
               .nav-item {
                 display: flex;
@@ -310,6 +425,10 @@ NavigationOverlayStyle.Sub = styled.div`
                 align-items: center;
                 justify-content: space-between;
                 padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
+
+                &:focus {
+                  outline: none;
+                }
 
                 /* Stupid font repositioning to center it */
                 .label {
@@ -338,7 +457,7 @@ NavigationOverlayStyle.Sub = styled.div`
 
             a,
             svg {
-              color: ${Theme.Color.Sunlight};
+              color: ${Theme.Color.Sunset};
               fill: ${Theme.Color.Sunlight};
             }
 
@@ -367,6 +486,9 @@ NavigationOverlayStyle.Sub = styled.div`
           height: 1px;
           width: 100%;
           background: rgba(0, 0, 0, 0.04);
+          @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+            margin: 0;
+          }
         }
 
         /* Minor Link Lists */
@@ -376,7 +498,7 @@ NavigationOverlayStyle.Sub = styled.div`
           flex-direction: column;
 
           li {
-            margin-bottom: calc(${Root.Size} / 8);
+            /* margin-bottom: calc(${Root.Size} / 8); */
             display: flex;
             align-items: stretch;
             justify-content: space-between;
@@ -389,6 +511,9 @@ NavigationOverlayStyle.Sub = styled.div`
               align-items: center;
               justify-content: space-between;
               padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
+              &:focus {
+                outline: none;
+              }
 
               /* Stupid font repositioning to center it */
               .label {
@@ -399,9 +524,17 @@ NavigationOverlayStyle.Sub = styled.div`
 
             &.minor-link-subhead {
               font-size: calc(${Root.Size} / 4);
-              color: ${Theme.Color.Lilac};
+              color: ${Theme.Color.Sunlight};
               font-weight: bold;
               pointer-events: none;
+              padding-top: calc(${Root.Size} / 2);
+              padding-bottom: calc(${Root.Size} / 4);
+              @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+                font-size: 1.5vw;
+              }
+              @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+                font-size: calc(${Root.Size} / 4);
+              }
             }
 
             a {
@@ -410,11 +543,17 @@ NavigationOverlayStyle.Sub = styled.div`
               align-items: stretch;
               justify-content: space-between;
               font-weight: bold;
-              font-size: calc(${Root.Size} / 3);
+              font-size: calc(${Root.Size} / 3.2);
               text-decoration: none;
               background: ${Theme.Color.White};
               padding: calc(${Root.Size} / 6) 0;
               border-radius: 999px 8px 8px 999px;
+              @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+                font-size: 3vw;
+              }
+              @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+                font-size: calc(${Root.Size} / 3.2);
+              }
 
               svg {
                 transition: ${Theme.Base.Transition.String};
@@ -436,7 +575,7 @@ NavigationOverlayStyle.Sub = styled.div`
 
             a,
             svg {
-              color: ${Theme.Color.Galaxy};
+              color: ${Theme.Color.Primary};
               fill: ${Theme.Color.Galaxy};
             }
           }
@@ -456,7 +595,12 @@ NavigationOverlayStyle.Main = styled.div`
   flex-direction: column;
   padding: calc(${Root.Size} / 1.25) calc(${Root.Size} * 1.5);
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-    padding: calc(${Theme.Base.Size.Lg} * 2.5) calc(${Theme.Base.Size.Lg} * 1) calc(${Theme.Base.Size.Lg} * 2) calc(${Theme.Base.Size.Lg} * 1);
+    padding: ${Theme.Base.Size.Lg} ${Theme.Base.Size.Lg}
+      calc(${Theme.Base.Size.Lg} * 2) ${Theme.Base.Size.Lg};
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding: calc(${Theme.Base.Size.Lg} / 2) calc(${Theme.Base.Size.Lg} / 2)
+      calc(${Theme.Base.Size.Lg}) calc(${Theme.Base.Size.Lg} / 2);
   }
 
   .inner {
@@ -468,15 +612,32 @@ NavigationOverlayStyle.Main = styled.div`
       flex-direction: column-reverse;
     }
 
+    .mobile-brandmark {
+      display: none;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        display: block;
+      }
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        position: absolute;
+        top: calc(${Theme.Base.Size.Lg} / 6);
+        left: calc(${Theme.Base.Size.Lg} / 5);
+        height: calc(${Theme.Base.Size.Lg} * 1.5);
+        svg {
+          height: 100%;
+          width: auto;
+        }
+      }
+    }
     .top,
     .bottom {
       display: flex;
       justify-content: flex-end;
-      font-size: 5vw;
+      font-size: 4vw;
       font-weight: bold;
       color: ${Theme.Color.White};
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         justify-content: flex-start;
+        font-size: 10vw;
       }
 
       li {
@@ -498,13 +659,25 @@ NavigationOverlayStyle.Main = styled.div`
 
         .nav-item {
           display: block;
-          overflow: hidden;
+          //  overflow: hidden;
+
+          &:focus {
+            outline: none;
+          }
         }
 
         svg {
-          transform: scale(1.4) translateY(-5px);
+          transform: scale(1.4) translate(10px, -5px);
           transform-origin: center center;
           fill: ${Theme.Color.White};
+
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            transform: scale(1);
+          }
+          @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+            height: 4vw;
+            width: auto;
+          }
         }
 
         &:before {
@@ -526,10 +699,11 @@ NavigationOverlayStyle.Main = styled.div`
           transform: translateX(calc((${Root.Size} / 2) * -1));
           @media (max-width: ${Base.Media.Width.Md + 'px'}) {
             transform: none;
+            transition-duration: 0.25s !important;
             color: ${props =>
               props.theme.activeColor
                 ? props.theme.activeColor
-                : Theme.Color.Galaxy};
+                : Theme.Color.Galaxy} !important;
           }
         }
 
@@ -581,7 +755,9 @@ NavigationOverlayStyle.Main = styled.div`
     .top {
       flex-direction: column;
       align-items: flex-end;
+      padding-bottom: ${Root.Size};
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding-bottom: calc(${Theme.Base.Size.Lg} * 1);
         align-items: flex-start;
       }
 
@@ -615,8 +791,10 @@ NavigationOverlayStyle.Main = styled.div`
       }
     }
 
-    .top {
-      padding-bottom: ${Root.Size};
+    .bottom {
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        flex: 10;
+      }
     }
   }
 `;
@@ -663,7 +841,7 @@ function cascadeSlideToLeft(n) {
   let anim = [];
 
   // Run the loop.
-  for (let i = 0; i < n; i += 1) {
+  for (let i = 0; i < n + 1; i += 1) {
     anim[i] = css`
       &:nth-child(${i + 1}) {
         .nav-item {

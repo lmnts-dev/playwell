@@ -26,19 +26,6 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 // Props
-const HeroPropss = {
-  arrowColor: Theme.Color.Nova,
-  bg: Theme.Color.White,
-  color: Theme.Color.Eggplant,
-  playButton: true,
-  playButtonBg: Theme.Color.Ocean,
-  gear: false,
-  wideImage: true,
-  bgMatch: 'team-containers.jpg',
-  reversed: true,
-};
-
-// Props
 const HeroProps = {
   bg: Theme.Color.White,
   bgMatch: 'team-containers.jpg',
@@ -47,6 +34,7 @@ const HeroProps = {
   playButtonBg: Theme.Color.Ocean,
   gear: false,
   reversed: true,
+  wideImage: true,
   subNavColor: Theme.Color.Nova,
   arrowColor: Theme.Color.Nova,
 };
@@ -68,9 +56,11 @@ const TeamBuildingHero = () => {
         work.
       </h6>
       <Btn
-        Label="Request Team Building Info"
+        Label="Get in Touch"
         BgColor={Theme.Color.Nova}
         TextColor={Theme.Color.White}
+        Size="large"
+        Destination="/contact"
       />
     </SplitHero>
   );

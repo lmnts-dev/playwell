@@ -10,15 +10,16 @@ import ImgMatch from 'components/core/ImgMatch';
 import { Icon } from 'components/library/Icons';
 import { StaticQuery, graphql } from 'gatsby';
 
+
 // Constants
 
 // Styles
-import TeamStyle from './styles.scss';
+import { TeamStyle, Title }  from './styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const Team = ({ members, Justify }) => {
+export const Team = ({ Justify }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -42,8 +43,8 @@ export const Team = ({ members, Justify }) => {
       render={data => (
         <TeamStyle Justify={Justify}>
           <div className="team-container">
-            {data.allDataJson.edges[1].node && data.allDataJson.edges[1].node.leadership.map(
-              (person, index) => {
+            {data.allDataJson.edges[1].node &&
+              data.allDataJson.edges[1].node.leadership.map((person, index) => {
                 return (
                   <div className="member" key={index}>
                     <div className="image-container">
@@ -53,7 +54,9 @@ export const Team = ({ members, Justify }) => {
                       ></img>
                     </div>
                     <p>{person.name}</p>
-                    <p>{person.mgr_level}</p>
+                    <Title lines={1} ellipsis={"..."}>
+                      {person.title}
+                    </Title>
                     <div className="social">
                       {/* (member.socialIcon1 && member.socialLink1) &&
                           <a href={member.socialLink1} aria-label={member.socialIcon1}>
@@ -73,8 +76,7 @@ export const Team = ({ members, Justify }) => {
                     </div>
                   </div>
                 );
-              }
-            )}
+              })}
           </div>
         </TeamStyle>
       )}

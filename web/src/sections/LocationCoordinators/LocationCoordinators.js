@@ -38,13 +38,14 @@ const LocationCoordinators = ({ pageContext }) => {
           pr={[0, 0, 0, 'calc(var(--Size) * 2)']}
           pb={'var(--Size)'}
         >
-          <span className="h2">
-            Coordinators in {countyState}
-          </span>
+          <span className="h2">Coordinators in {countyState}</span>
         </Title>
         <Box width={[1, 1, 1 / 2, 6 / 10]}>
           {pageContext.managers.map(manager => (
-            <Accordion key={manager.node.id} title={manager.node.cost_code_name}>
+            <Accordion
+              key={manager.node.id}
+              title={manager.node.cost_code_name}
+            >
               <Article>
                 <Article.Figure>
                   <ImgMatch
@@ -63,7 +64,9 @@ const LocationCoordinators = ({ pageContext }) => {
                     </Article.Info.Name>
                     <Article.Info.Contact>
                       <span>
-                        <a href={'mailto:' + manager.node.email}>{manager.node.email}</a>
+                        <a href={'mailto:' + manager.node.email}>
+                          {manager.node.email}
+                        </a>
                       </span>
                       {/* <span>
                         <a href={'tel:' + manager.node.cell_number}>{manager.node.cell_number}</a>

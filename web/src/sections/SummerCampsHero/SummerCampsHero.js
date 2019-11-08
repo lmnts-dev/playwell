@@ -35,6 +35,9 @@ const HeroProps = {
   gear: false,
   bgMatch: 'kid-machine.jpg',
   reversed: true,
+  wideImage: false,
+  subNavColor: Theme.Color.White,
+  noPaddingBottom: true,
 };
 
 const SummeCampsHero = () => {
@@ -47,16 +50,17 @@ const SummeCampsHero = () => {
         { label: 'Classes', link: '/programs/classes' },
       ]}
     >
-      <h2>Teams Come Together by Playing Well</h2>
+      <h2>LEGO-Inspired Engineering Camps for Kids K-8</h2>
       <h6 className="txt-clr-dino">
         We believe that play reveals who you are, and who you are inpires your
         work.
       </h6>
       <Btn
         BgColor={Theme.Color.Primary}
-        Label="Camps near you"
-        Destination="/contact"
+        Label="Browse Programs"
+        Destination="/programs"
         TextColor={Theme.Color.White}
+        Size="large"
       />
     </SplitHero>
   );

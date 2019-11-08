@@ -41,7 +41,7 @@ export const BasicSection = ({
     noPaddingTop={noPaddingTop}
     className={className}
   >
-    { BgLinear && <span className="linear-background"/>}
+    {BgLinear && <span className="linear-background" />}
     {children}
   </BasicSectionStyle>
 );

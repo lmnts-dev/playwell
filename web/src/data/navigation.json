@@ -11,7 +11,7 @@
           "label": "Programs",
           "theme": {
             "primaryColor": "Deepsea",
-            "activeColor": "Nova"
+            "activeColor": "Ocean"
           },
           "subNav": {
             "focusLinkList": [
@@ -28,12 +28,11 @@
             ],
             "minorLinkList": [
               {
-                "route": "",
                 "label": "Learn more",
                 "subhead": true
               },
               {
-                "route": "/parties/birthday-parties",
+                "route": "/parties",
                 "label": "Birthday Parties",
                 "subhead": false
               },
@@ -58,7 +57,6 @@
                 "subhead": false
               },
               {
-                "route": "",
                 "label": "Play-Well isn't just for kids...",
                 "subhead": true
               },
@@ -101,7 +99,7 @@
           "route": "/who-we-are",
           "label": "Who We Are",
           "theme": {
-            "primaryColor": "Sunset",
+            "primaryColor": "Sunlight",
             "activeColor": "Nightsky"
           },
           "subNav": {
@@ -112,14 +110,13 @@
                 "focus": true
               },
               {
-                "route": "/",
+                "route": "/who-we-are/careers",
                 "label": "We're Hiring",
                 "focus": false
               }
             ],
             "minorLinkList": [
               {
-                "route": "",
                 "label": "Learn more",
                 "subhead": true
               },
@@ -142,11 +139,6 @@
                 "route": "/who-we-are/careers",
                 "label": "Careers",
                 "subhead": false
-              },
-              {
-                "route": "/who-we-are/news-press",
-                "label": "News & Press",
-                "subhead": false
               }
             ]
           }
@@ -155,51 +147,30 @@
           "route": "/parties",
           "label": "Parties",
           "theme": {
-            "primaryColor": "Sunlight",
-            "activeColor": "Nightsky"
+            "primaryColor": "Nova",
+            "activeColor": "Dino"
           },
           "subNav": {
             "focusLinkList": [
               {
-                "route": "/",
-                "label": "Projects",
+                "route": "/parties",
+                "label": "Birthday Parties",
                 "focus": true
               },
               {
-                "route": "/",
-                "label": "Find Materials",
+                "route": "/parties/special-events",
+                "label": "Special Events",
                 "focus": false
               }
             ],
             "minorLinkList": [
               {
-                "route": "",
-                "label": "Learn more",
-                "subhead": true
-              },
-              {
-                "route": "/parties/birthday-parties",
-                "label": "Birthday Parties",
-                "subhead": false
-              },
-              {
-                "route": "/team-building",
-                "label": "Team Building",
-                "subhead": false
-              },
-              {
-                "route": "/programs/host-a-program",
-                "label": "Host Your Own",
-                "subhead": false
-              },
-              {
-                "route": "",
                 "label": "Play-Well isn't just for kids...",
                 "subhead": true
               },
               {
-                "route": "/",
-                "label": "Partnerships",
+                "route": "/team-building",
+                "label": "Team Building",
                 "subhead": false
               },
               {
@@ -208,67 +179,13 @@
                 "subhead": false
               },
               {
-                "route": "/parties/special-events",
-                "label": "Special Events",
-                "subhead": false
-              },
-              {
-                "route": "/",
-                "label": "Employers",
+                "route": "/team-building/sports-teams",
+                "label": "Sports Teams",
                 "subhead": false
               },
               {
                 "route": "/team-building/non-profits",
                 "label": "Non-Profits",
-                "subhead": false
-              },
-              {
-                "route": "/team-building/sports-teams",
-                "label": "Sports Teams",
-                "subhead": false
-              }
-            ]
-          }
-        },
-        {
-          "route": "/community",
-          "label": "Community",
-          "theme": {
-            "primaryColor": "Sky",
-            "activeColor": "Nightsky"
-          },
-          "subNav": {
-            "focusLinkList": [
-              {
-                "route": "/",
-                "label": "Community Link",
-                "focus": true
-              },
-              {
-                "route": "/",
-                "label": "Community Link",
-                "focus": false
-              },
-              {
-                "route": "/",
-                "label": "Community Link",
-                "focus": false
-              }
-            ],
-            "minorLinkList": [
-              {
-                "route": "",
-                "label": "Subhead",
-                "subhead": true
-              },
-              {
-                "route": "/",
-                "label": "Community Link",
-                "subhead": false
-              },
-              {
-                "route": "/",
-                "label": "Community Link",
                 "subhead": false
               }
             ]
@@ -283,12 +200,8 @@
           "route": "/programs"
         },
         {
-          "label": "Locations",
-          "route": "/locations"
-        },
-        {
           "label": "Special Events",
-          "route": "/"
+          "route": "/parties/special-events"
         },
         {
           "label": "Who We Are",
@@ -299,24 +212,12 @@
           "route": "/parties"
         },
         {
-          "label": "Community",
-          "route": "/community"
-        },
-        {
           "label": "Contact",
           "route": "/contact"
         },
         {
           "label": "Careers",
           "route": "/careers"
-        },
-        {
-          "label": "Partnerships",
-          "route": "/partnerships"
-        },
-        {
-          "label": "Play Zone",
-          "route": "/play"
         }
       ]
     }

@@ -68,10 +68,16 @@ export class NavigationOverlay extends PureComponent {
         // Query our Navigation data so we can adjust our Navigation styles
         // based on Top Level Pages vs Sub Level Pages
         <>
-          <MobileNavigationOverlayStyle>
+          <MobileNavigationOverlayStyle
+            className={
+              (navFadingOut && ' nav-fadeout ') +
+              (navFocused && ' focused-menu ')
+            }
+
+          >
             <div className="mobile-fixed mobile-fixed-top">
               <div
-                className={" exit " + (navFocused && ' dark-theme ')}
+                className={' exit ' + (navFocused && ' dark-theme ')}
                 onClick={this.props.navOverlayToggle}
                 onKeyDown={this.props.navOverlayToggle}
                 role="button"
@@ -79,32 +85,35 @@ export class NavigationOverlay extends PureComponent {
               ></div>
             </div>
             <div className="mobile-fixed mobile-fixed-bottom">
-              <a href="/">
-                <Icon Name="facebook" />
+              <a href="https://www.linkedin.com/company/playwelltek/" target="_blank">
+                <Icon Name="linkedIn" />
               </a>
-              <a href="/">
+              <a href="https://twitter.com/intent/follow?original_referer=http%3A%2F%2Fplaywelltek.wordpress.com%2Flego%25c2%25ae-tips%2F&region=follow_link&screen_name=PlayWell_TEK&tw_p=followbutton&variant=2.0" target="_blank">
                 <Icon Name="twitter" />
               </a>
-              <a href="/">
-                <Icon Name="instagram" />
-              </a>
-              <a href="/">
+              <a href="https://www.facebook.com/PlayWellTEK" target="_blank">
                 <Icon Name="facebook" />
               </a>
-              <a href="/">
-                <Icon Name="twitter" />
+              <a href="https://blog.play-well.org/" target="_blank">
+                <Icon Name="wordpress" />
               </a>
-              <a href="/">
+              <a href="https://www.glassdoor.com/Overview/Working-at-Play-Well-TEKnologies-EI_IE568579.11,32.htm" target="_blank">
+                <Icon Name="glassdoor" />
+              </a>
+              <a href="https://www.pinterest.com/playwelltek/" target="_blank">
+                <Icon Name="pinterest" />
+              </a>
+              <a href="https://www.instagram.com/playwellteknologies/" target="_blank">
                 <Icon Name="instagram" />
               </a>
-              <a href="/">
-                <Icon Name="facebook" />
+              <a href="https://www.youtube.com/user/playwellteknologies" target="_blank">
+                <Icon Name="youTube" />
               </a>
-              <a href="/">
-                <Icon Name="twitter" />
+              <a href="https://plus.google.com/102973802127254470538" target="_blank">
+                <Icon Name="googlePlus" />
               </a>
-              <a href="/">
-                <Icon Name="instagram" />
+              <a href="https://www.snapchat.com/add/playwelltek" target="_blank">
+                <Icon Name="snapchat" />
               </a>
             </div>
           </MobileNavigationOverlayStyle>
@@ -166,6 +175,15 @@ export class NavigationOverlay extends PureComponent {
                   <div className="bottom">
                     <div className="col-heading">
                       <span>{navContext.label}</span>
+                    </div>
+                    <div
+                      className="mobile-back"
+                      onClick={this.props.navOverlayBack}
+                      onKeyDown={this.props.navOverlayBack}
+                      role="button"
+                      tabIndex="0"
+                    >
+                      <Icon Name="carat" />
                     </div>
 
                     <div className="col-list">
@@ -237,7 +255,7 @@ export class NavigationOverlay extends PureComponent {
                     </div>
                   </div>
 
-                  <div className="bottom">
+                  {/* <div className="bottom">
                     <ul>
                       <li>
                         <span className="nav-item">
@@ -250,6 +268,11 @@ export class NavigationOverlay extends PureComponent {
                         </span>
                       </li>
                     </ul>
+                  </div> */}
+                  <div className="mobile-brandmark">
+                    <Link to="/">
+                      <Brandmark />
+                    </Link>
                   </div>
                 </div>
               </NavigationOverlayStyle.Main>

@@ -49,7 +49,7 @@ const LegoListStyles = styled.div`
       max-width: calc(${Root.Size} * 3);
       svg {
         width: 100% !important;
-        height: auto !important
+        height: auto !important;
       }
     }
 

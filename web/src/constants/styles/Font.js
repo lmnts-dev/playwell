@@ -119,6 +119,7 @@ export const Typography = createGlobalStyle`
     font-weight: 500;
     line-height: 1.4;
     letter-spacing: -0.2px;
+    padding-bottom: calc(var(--Size) / 3.5);
 
     &.lead {
       font-size: 1.4rem;
@@ -195,5 +196,5 @@ export const Typography = createGlobalStyle`
     }
   }
 
-  h1, h2, h3, h4, h5, h6, p { padding-bottom: calc(var(--Size) / 3.5); }
+  h1, h2, h3, h4, h5, h6, p, .heading-padding { padding-bottom: calc(var(--Size) / 3.5); }
 `;

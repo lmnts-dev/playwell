@@ -19,8 +19,8 @@ import { navDataTransformer } from 'components/library/Navigation/Data/';
 // Begin Helper
 //////////////////////////////////////////////////////////////////////
 
-const Main = styled.main`
-  overflow: hidden;
+const Main = styled.div`
+
 `;
 
 const wrapPageElement = ({ element, props }) => {

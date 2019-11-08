@@ -1,4 +1,4 @@
-// <LocationFilter /> Styles:
+// Nav Filter Styles:
 
 // Imports
 //////////////////////////////////////////////////////////////////////
@@ -19,9 +19,10 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const NavFilterStyle = styled.section`
+export const NavFilterStyle = styled.div`
   position: relative;
   padding: 0 calc(${Root.Size} / 4) 0 calc(${Root.Size} / 2);
+
   /* List fade gradient */
   /* background: linear-gradient(
     0deg,
@@ -78,47 +79,6 @@ export const NavFilterStyle = styled.section`
         font-size: calc(${Root.Size} / 1.5);
         margin-right: calc(${Root.Size} / 4);
         color: ${Theme.Color.Nova};
-      }
-    }
-  }
-`;
-
-// Arrow Link
-
-export const ArrowLink = styled.span`
-  color: ${Theme.Color.Lilac};
-  font-size: 0.9rem;
-  line-height: 1.4;
-  font-weight: 600;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-
-  span {
-    height: 14px;
-  }
-
-  .arrow {
-    margin-left: calc(${Root.Size} / 6);
-
-    svg {
-      transform: translateX(0);
-      fill: ${Theme.Color.Lilac};
-      transition: ${Theme.Base.Transition.String};
-      height: 14px;
-    }
-
-    &:hover {
-      svg {
-        transform: translateX(20%);
-      }
-    }
-  }
-
-  &:hover {
-    .arrow {
-      svg {
-        transform: translateX(40%);
       }
     }
   }
@@ -214,11 +174,9 @@ export const SearchBarStyle = styled.div`
 `;
 
 SearchBarStyle.Button = styled.div`
-  /* position: relative;
-  color: ${Theme.Color.White};
+  position: relative;
+  /* color: ${Theme.Color.White}; */
   background: transparent;
-  border: 0;
-  border: 1px solid ${Theme.Color.White};
   outline: 0;
   font-weight: bold;
   text-align: center;
@@ -226,38 +184,44 @@ SearchBarStyle.Button = styled.div`
   display: flex;
   flex: 1;
   cursor: pointer;
-  border-radius: 999px; */
+
+  .btn-inner {
+    display: flex;
+    border-radius: 999px;
+    border: 1px solid;
+    padding: 1px calc(${Root.Size} / 8);
+  }
+
+  .location {
+    display: flex;
+    align-items: center;
+    top: 2px;
+    position: relative;
+  }
 
   .ico-carat {
     position: relative;
-    top: -2px;
-    right: -4px;
     transform: rotate(90deg) scale(0.5);
     transform-origin: center center;
-
-    polygon,
-    svg,
-    g {
-      fill: ${Theme.Color.White};
-    }
+    margin-left: calc(${Root.Size} / 6);
   }
 
-  .ico-pin {
-    margin-right: calc(${Theme.Base.Size.Lg} / 8);
+  .ico {
+    margin-right: calc(${Root.Size} / 6);
+    transform: scale(0.7);
     position: relative;
-    top: -3px;
+    top: 1px;
+
+    span {
+      margin-right: calc(${Root.Size} / 6);
+      transform: scale(0.7);
+      position: relative;
+      top: 2px;
+      color: ${Theme.Color.White};
+    }
   }
 
   &:hover {
-    .ico-pin {
-      svg,
-      path,
-      polygon,
-      g {
-        fill: ${Theme.Color.Ocean};
-      }
-    }
-
     .list {
       transform: translate(0%, 0%);
       opacity: 1;
@@ -275,11 +239,54 @@ SearchBarStyle.Button = styled.div`
       flex: 50;
     }
   }
+
+  .filter-inner {
+    border-bottom: 1px solid ${hexToRGB(Theme.Color.White, 0.4)};
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    top: 4px;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    height: calc(${Root.Button.Size} * 1.5);
+    outline: 0;
+
+    .ico-carat {
+      position: relative;
+      top: -2px;
+      right: -4px;
+      transform: rotate(90deg) scale(0.5);
+      transform-origin: center center;
+
+      polygon,
+      svg,
+      g {
+        fill: ${Theme.Color.White};
+      }
+    }
+
+    .ico-pin {
+      height: calc(${Theme.Base.Size.Lg} / 3);
+      width: calc(${Theme.Base.Size.Lg} / 3);
+      padding: 0;
+      position: relative;
+      top: -2px;
+      transform: scale(1);
+    }
+
+    .label {
+      min-width: calc(${Root.Size});
+      padding: 0 calc(${Root.Size} * 1.5) 0 0;
+    }
+  }
 `;
 
 SearchBarStyle.FilterList = styled.div`
   position: absolute;
-  top: 115%;
+  top: 120%;
   /* left: 0; */
   right: 0;
   width: 260px;
@@ -323,7 +330,7 @@ SearchBarStyle.FilterList = styled.div`
   ul {
     background: ${Theme.Color.White};
     width: 100%;
-    height: 210px;
+    height: 170px;
     overflow: auto;
     margin-top: calc(${Root.Size} / 4);
     box-shadow: inset -12px -10px 15px ${Theme.Color.White};
@@ -349,7 +356,6 @@ SearchBarStyle.FilterList = styled.div`
       align-items: center;
       text-align: left;
       cursor: pointer;
-      padding: calc(${Root.Size} / 9) 0;
       transition: ${Theme.Base.Transition.String};
 
       &:hover {
@@ -361,8 +367,10 @@ SearchBarStyle.FilterList = styled.div`
         color: ${Theme.Color.Lilac};
         font-size: 1rem;
         font-weight: 600;
+        padding: calc(${Root.Size} / 9) 0;
         text-decoration: none;
         transition: ${Theme.Base.Transition.String};
+        width: 100%;
 
         &:hover {
           color: ${Theme.Color.Sunset};

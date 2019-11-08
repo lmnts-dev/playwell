@@ -53,33 +53,37 @@ class MarqueeSlider extends React.Component {
           breakpoint: Base.Media.Width.Lg,
           settings: {
             slidesToShow: 3.5,
-          }
+          },
         },
         {
-          breakpoint: (Base.Media.Width.Md + ((Base.Media.Width.Lg - Base.Media.Width.Md) / 2)),
+          breakpoint:
+            Base.Media.Width.Md +
+            (Base.Media.Width.Lg - Base.Media.Width.Md) / 2,
           settings: {
             slidesToShow: 3,
-          }
+          },
         },
         {
           breakpoint: Base.Media.Width.Md,
           settings: {
             slidesToShow: 2.5,
-          }
+          },
         },
         {
-          breakpoint: (Base.Media.Width.Sm + ((Base.Media.Width.Md - Base.Media.Width.Sm) / 2)),
+          breakpoint:
+            Base.Media.Width.Sm +
+            (Base.Media.Width.Md - Base.Media.Width.Sm) / 2,
           settings: {
             slidesToShow: 2,
-          }
+          },
         },
         {
           breakpoint: Base.Media.Width.Sm,
           settings: {
             slidesToShow: 1.5,
-          }
-        }
-      ]
+          },
+        },
+      ],
     };
 
     return (
@@ -102,11 +106,7 @@ class MarqueeSlider extends React.Component {
 
 // The SubLevel Page Itself
 const Marquee = ({ images, SquareFormat, Shadow, BgLinear }) => (
-  <MarqueeStyle
-    SquareFormat={SquareFormat}
-    Shadow={Shadow}
-    BgLinear={BgLinear}
-  >
+  <MarqueeStyle SquareFormat={SquareFormat} Shadow={Shadow} BgLinear={BgLinear}>
     <MarqueeSlider>
       {images.map((image, index) => {
         return (

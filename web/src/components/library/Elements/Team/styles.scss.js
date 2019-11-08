@@ -13,10 +13,22 @@ import {
 // Constants
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
+import Truncate from 'react-truncate';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
-const TeamStyle = styled.div`
+export const Title = styled(Truncate)`
+  color: ${Theme.Color.Sunset};
+  font-weight: 700;
+  font-size: 1 rem;
+  
+  span > span {
+    display: block;
+    padding-top: calc(${Theme.Base.Size.Lg} / 10);
+  }
+`;
+
+export const TeamStyle = styled.div`
   .team-container {
     display: flex;
     flex-direction: row;
@@ -49,14 +61,9 @@ const TeamStyle = styled.div`
         color: ${Theme.Color.Dino};
         padding-bottom: 0;
         line-height: 1;
-
-        &:last-of-type {
-          color: ${Theme.Color.Sunset};
-        }
       }
 
       .image-container {
-        border-radius: calc(${Root.Size} / 8);
         margin: 0 calc(${Root.Size} / 12) calc(${Root.Size} / 6)
           calc(${Root.Size} / 12);
         width: 100%;
@@ -66,6 +73,7 @@ const TeamStyle = styled.div`
 
         img {
           position: absolute;
+          border-radius: calc(${Root.Size} / 8);
           top: 0;
           left: 0;
           width: 100%;
@@ -98,7 +106,6 @@ const TeamStyle = styled.div`
   }
 `;
 
-export default TeamStyle;
 
 //////////////////////////////////////////////////////////////////////
 // End Styles

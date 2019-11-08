@@ -38,12 +38,12 @@ const LocationPlayZone = () => (
         Bring your kid over or bring out your inner kid with some of our online
         activities to feed your imagination.
       </Text>
-      <Btn
+      {/* <Btn
         Label="Play Zone"
         Destination="/menu"
         BgColor={Theme.Color.Primary}
         TextColor={Theme.Color.White}
-      />
+      /> */}
     </Box>
   </Container>
 );

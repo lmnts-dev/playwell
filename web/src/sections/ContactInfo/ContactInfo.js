@@ -6,14 +6,15 @@
 
 // Core
 import React from 'react';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { Link } from 'gatsby';
 
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
+import Section from 'components/library/Elements/Section';
 import { Icon } from 'components/library/Icons';
 
 // Styles
-import { Container, ArrowLink, Offices, Team, Newsletter } from './styles.scss';
+import { Container, ArrowLink } from './styles.scss';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -23,33 +24,36 @@ import { Theme, Root } from 'constants/Theme';
 
 const ContactInfo = ({ pageContext }) => {
   return (
-    <Container
+    <Section
       bg={Theme.Color.Deepsea}
       color={Theme.Color.White}
       textAlign="left"
+      pt={[0, 0, 6]}
       pb={[2, 'calc((--Size) / 2)']}
       fullWidth
     >
-      <Container.Inner>
-        <Offices width={[1, 2 / 10]}>
-          <Text className="p-lg" fontWeight={400}>
+      <Container>
+        <div className="offices">
+          <Text as="p" className="p-lg" fontWeight={400}>
             Administrative Offices
           </Text>
-          <Text className="p-lg" fontWeight={500} mt={1}>
+          <Text as="p" className="p-lg" pb={0}>
             Homebase
           </Text>
           <p className="p-sm">
             224 Greenfield Avenue, Ste. B<br />
             San Anselmo, California 94960
           </p>
-        </Offices>
-        <Team width={[1, 3 / 10]}>
-          <ArrowLink>
-            <span>Meet Our Administration Team</span>
-            <span className="arrow">
-              <Icon Name="carat" />
-            </span>
-          </ArrowLink>
+        </div>
+        <div className="numbers">
+          <Link to="/who-we-are">
+            <ArrowLink>
+              <span>Meet Our Administration Team</span>
+              <span className="arrow">
+                <Icon Name="carat" />
+              </span>
+            </ArrowLink>
+          </Link>
           <Flex mt={1}>
             <Box width={1 / 3}>
               <Text className="p-lg">Phone</Text>
@@ -64,8 +68,8 @@ const ContactInfo = ({ pageContext }) => {
               <p className="p-sm">68-0415940</p>
             </Box>
           </Flex>
-        </Team>
-        <Newsletter width={[1, 5 / 10]}>
+        </div>
+        <div className="newsletter">
           <Text as="p" className="p-lg" fontWeight={600}>
             Let's be Pen Pals. Join Our Newsletter.
           </Text>
@@ -83,9 +87,9 @@ const ContactInfo = ({ pageContext }) => {
             />
             <button type="submit">Join</button>
           </form>
-        </Newsletter>
-      </Container.Inner>
-    </Container>
+        </div>
+      </Container>
+    </Section>
   );
 };
 

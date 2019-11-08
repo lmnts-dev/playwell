@@ -32,6 +32,7 @@ import HeroContainer from '../HeroContainer';
 //////////////////////////////////////////////////////////////////////
 
 const SplitHero = ({
+  arrow,
   arrowColor,
   bg,
   bgMatch,
@@ -46,47 +47,80 @@ const SplitHero = ({
   subNav,
   reversed,
   playButton,
+  noPaddingBottom,
 }) => (
-  <BasicSection BgColor={bg} TextColor={color}>
+  <BasicSection BgColor={bg} TextColor={color} noPaddingBottom={noPaddingBottom} className="split-hero">
     <BasicInner noPaddingRight={!reversed} noPaddingLeft={reversed}>
-      <SplitHeroStyle subNavColor={subNavColor} arrowColor={arrowColor} reversed={reversed} wideImage={wideImage}>
+      <SplitHeroStyle
+        subNavColor={subNavColor}
+        arrowColor={arrowColor}
+        reversed={reversed}
+        wideImage={wideImage}
+      >
         <div className="text">
           <div className="flex-spacer"></div>
           <div className="children">{children}</div>
-          <div className="arrow"></div>
-          {(subNav && !reversed) &&
+          {arrow && <div className="arrow"></div>}
+          {subNav && !reversed && (
             <div className="sub-nav">
               {subNav.map((nav, index) => {
                 return (
-                  <a className={"h5 " + (nav.active ? 'link-active' : '')} href={nav.link} key={index}>
+                  <a
+                    className={'h5 ' + (nav.active ? 'link-active' : '')}
+                    href={nav.link}
+                    key={index}
+                  >
                     {nav.label}
                   </a>
                 );
               })}
             </div>
-          }
+          )}
+          {/* THIS IS AN UGLY TEMPORARY DUPLICATION */}
+          {subNav && reversed && !wideImage && (
+            <div className="sub-nav">
+              {subNav.map((nav, index) => {
+                return (
+                  <a
+                    className={'h5 ' + (nav.active ? 'link-active' : '')}
+                    href={nav.link}
+                    key={index}
+                  >
+                    {nav.label}
+                  </a>
+                );
+              })}
+            </div>
+          )}
         </div>
         <div className="imagery">
           <ImgMatch src={bgMatch} />
           {gear ? (
             <GearContainer>
-              <GearRotator strokeColor={gearStroke ? gearStroke : 'transparent'} fill={gearFill}/>
+              <GearRotator
+                strokeColor={gearStroke ? gearStroke : 'transparent'}
+                fill={gearFill}
+              />
             </GearContainer>
           ) : null}
-          {playButton && <PlayButton bg={playButtonBg} reversed={reversed}/>}
+          {playButton && <PlayButton bg={playButtonBg} reversed={reversed} />}
         </div>
       </SplitHeroStyle>
-        {(subNav && reversed) &&
-          <div className="sub-nav padding-left">
-            {subNav.map((nav, index) => {
-              return (
-                <a className={"h5 " + (nav.active ? 'link-active' : '')} href={nav.link} key={index}>
-                  {nav.label}
-                </a>
-              );
-            })}
-          </div>
-        }
+      {subNav && reversed && wideImage && (
+        <div className="sub-nav padding-left">
+          {subNav.map((nav, index) => {
+            return (
+              <a
+                className={'h5 ' + (nav.active ? 'link-active' : '')}
+                href={nav.link}
+                key={index}
+              >
+                {nav.label}
+              </a>
+            );
+          })}
+        </div>
+      )}
     </BasicInner>
   </BasicSection>
 );
@@ -95,6 +129,7 @@ SplitHero.defaultProps = {
   flexDirection: 'row',
   playButtonBg: 'Nova',
   bgMatch: 'intro-smiles.jpg',
+  arrow: true,
   arrowColor: Theme.Color.White,
 };
 
