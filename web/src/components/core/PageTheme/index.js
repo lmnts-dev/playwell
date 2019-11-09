@@ -94,6 +94,12 @@ footer {
     }
   }
 
+  /* Footer Slice */
+  .curve-and-angle {
+    background-color:  ${props =>
+      props.BgColor ? props.BgColor : Theme.Color.Background};
+  }
+
 `;
 
 const PageTheme = ({

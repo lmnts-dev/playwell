@@ -94,7 +94,20 @@ export class ClientCard extends PureComponent {
     let reducedPrograms = programMap(clientData.node.courses);
     let reducedProgramsEntries = Object.entries(reducedPrograms);
 
+    // Check our County names if they contain 'County'
+    const countyClean = countyName => {
+      if (countyName.toLowerCase().includes('county')) {
+        return countyName;
+      } else {
+        return countyName + ' County';
+      }
+    };
+
+    /**
+     * For Debugging Purposes Only
+     */
     // console.log(reducedProgramsEntries);
+    // console.log(locationMetaResults);
 
     // Render Cards
     return (
@@ -104,7 +117,11 @@ export class ClientCard extends PureComponent {
       >
         <ClientCardStyle.ClientName cardExpanded={this.state.cardExpanded}>
           <div className="client-name">
-            {clientData.node.client_location_name}
+            <div className="subtitle-list">
+              <span>{locationMetaResults.county.cost_code_name}</span>
+              <span>{countyClean(locationMetaResults.county.name)}</span>
+            </div>
+            <span>{clientData.node.client_location_name}</span>
           </div>
 
           <div className="client-counts">

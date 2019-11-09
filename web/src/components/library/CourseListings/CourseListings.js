@@ -48,7 +48,7 @@ class FilteredResults extends PureComponent {
     let stateEdges = this.props.stateEdges;
 
     // For Debugging only
-    // console.log(stateEdges);
+    // console.log(stateEdges);ƒ
     // console.log(results);
 
     // Show our listings
@@ -61,10 +61,6 @@ class FilteredResults extends PureComponent {
             client.node.county_id,
             client.node.state_id
           );
-
-          {
-            console.log(locationMetaResults);
-          }
 
           // Build our slugified strings for pretty URLs.
           let stateSlug = slugify(locationMetaResults.state.name);
@@ -101,10 +97,12 @@ class ListingsResults extends PureComponent {
       lat: [],
       lng: [],
       zoom: [],
-      categoryFilter: '',
+      categoryFilter: [],
       ageMin: 0,
+      ageMax: 0,
       startDate: '',
-      courseType: '',
+      startDate: '',
+      courseTypes: [],
       results: [],
     };
 

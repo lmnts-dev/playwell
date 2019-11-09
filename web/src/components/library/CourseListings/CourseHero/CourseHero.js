@@ -522,7 +522,7 @@ const CourseHeroContent = ({ mapWidth, mapZedIndex, geoData, pageContext }) => {
     <CourseHeroContentStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
       <h1>
         <span className="h2">
-          <span className="inline">Explore LEGO® STEM Programs near</span>
+          <span className="inline">Explore LEGO® STEM Programs in</span>
         </span>
         <span className="location h2">
           <span className="inline">

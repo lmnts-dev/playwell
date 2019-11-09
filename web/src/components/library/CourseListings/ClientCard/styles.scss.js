@@ -64,6 +64,43 @@ ClientCardStyle.ClientName = styled.span`
     display: flex;
     align-items: center;
   }
+
+  .client-name {
+    display: flex;
+    flex-direction: column;
+
+    .subtitle-list {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
+      color: ${Theme.Color.Tan};
+      margin-bottom: calc(${Root.Size} / 4);
+
+      span {
+        margin-right: calc(${Root.Size} / 2);
+        position: relative;
+
+        &:after {
+          content: '';
+          position: absolute;
+          right: calc(((${Root.Size} / 2) / 2) * -1);
+          top: 50%;
+          transform: translateY(-50%);
+          width: 3px;
+          height: 3px;
+          border-radius: 50%;
+          background: ${Theme.Color.Tan};
+        }
+
+        &:last-child {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 `;
 
 ClientCardStyle.CourseCount = styled.span`

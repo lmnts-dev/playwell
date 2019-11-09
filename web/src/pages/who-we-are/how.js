@@ -186,11 +186,11 @@ const WhoHowPage = () => {
           ]}
           Accordians={[
             {
-              header: 'Worshops',
+              header: 'Workshops',
               paragraph:
                 'Play-Well LEGO@-inspired programs can be tailored to your needs. We offer workshops for Girl Scouts, Homeschool Groups, Boy Scouts, In-school field trips and more.',
               image: 'girl-3.jpg',
-              buttonText: 'View Workshops',
+              buttonText: 'Learn More',
               buttonLink: '/programs/workshops',
             },
             {
@@ -198,7 +198,7 @@ const WhoHowPage = () => {
               paragraph:
                 'What can you do with over 20,000 pieces of LEGO®? In our Engineering with LEGO® enrichment programs kids take on real-life engineering challenges allowing them to see STEM in action. Your child will explore concepts in physics, architecture, and mechanical engineering. Our students find inventive solutions in a fun-filled context that supports the growth of young minds through hands-on, minds-on learning.',
               image: 'girl-2.jpg',
-              buttonText: 'View Classes',
+              buttonText: 'Learn More',
               buttonLink: '/programs/classes',
             },
             {
@@ -206,7 +206,7 @@ const WhoHowPage = () => {
               paragraph:
                 "We'll help unleash your child's inner engineer in our STEM summer camps. They'll have so much fun in our LEGO-inspired summer camps that they won't even realize how much they're learning!",
               image: 'girl-1.jpg',
-              buttonText: 'View Camps',
+              buttonText: 'Learn More',
               buttonLink: '/programs/summer-camps',
             },
           ]}

@@ -6,6 +6,7 @@
 
 // Core
 import React from 'react';
+import { Link } from 'gatsby';
 
 // Styles
 import { GearContainer, SplitHeroStyle } from './styles.scss';
@@ -49,7 +50,12 @@ const SplitHero = ({
   playButton,
   noPaddingBottom,
 }) => (
-  <BasicSection BgColor={bg} TextColor={color} noPaddingBottom={noPaddingBottom} className="split-hero">
+  <BasicSection
+    BgColor={bg}
+    TextColor={color}
+    noPaddingBottom={noPaddingBottom}
+    className="split-hero"
+  >
     <BasicInner noPaddingRight={!reversed} noPaddingLeft={reversed}>
       <SplitHeroStyle
         subNavColor={subNavColor}
@@ -65,13 +71,13 @@ const SplitHero = ({
             <div className="sub-nav">
               {subNav.map((nav, index) => {
                 return (
-                  <a
+                  <Link
                     className={'h5 ' + (nav.active ? 'link-active' : '')}
-                    href={nav.link}
+                    to={nav.link}
                     key={index}
                   >
                     {nav.label}
-                  </a>
+                  </Link>
                 );
               })}
             </div>
@@ -81,13 +87,13 @@ const SplitHero = ({
             <div className="sub-nav">
               {subNav.map((nav, index) => {
                 return (
-                  <a
+                  <Link
                     className={'h5 ' + (nav.active ? 'link-active' : '')}
-                    href={nav.link}
+                    to={nav.link}
                     key={index}
                   >
                     {nav.label}
-                  </a>
+                  </Link>
                 );
               })}
             </div>
@@ -110,13 +116,13 @@ const SplitHero = ({
         <div className="sub-nav padding-left">
           {subNav.map((nav, index) => {
             return (
-              <a
+              <Link
                 className={'h5 ' + (nav.active ? 'link-active' : '')}
                 href={nav.link}
                 key={index}
               >
                 {nav.label}
-              </a>
+              </Link>
             );
           })}
         </div>
