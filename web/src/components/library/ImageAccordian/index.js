@@ -29,15 +29,15 @@ const ImageAccordian = ({
       <input type="checkbox" />
       <Icon Name="carat" className="ico ico-carat" />
       <div className="h5">{Header}</div>
-      <p>
-        <div>{Paragraph}</div>
+      <div className="content">
+        <p>{Paragraph}</p>
         <Btn
           Label={buttonText}
           BgColor={Theme.Color.White}
           TextColor={Theme.Color.Nova}
           Destination={buttonLink}
         />
-      </p>
+      </div>
     </div>
     <div className="image">
       <ImgMatch src={Image} />

@@ -6,9 +6,11 @@
 
 // Core
 import React from 'react';
+import { Location } from '@reach/router';
+import queryString from 'query-string';
+import { StaticQuery, graphql } from 'gatsby';
 
 // Vendor
-import { StaticQuery, graphql } from 'gatsby';
 import { ThemeProvider } from 'styled-components';
 
 //  Components
@@ -25,20 +27,28 @@ import SiteGrid from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+// Check for window to avoid breaking server
+// side rendering.
+
 if (typeof window !== 'undefined') {
   // eslint-disable-next-line global-require
   require('smooth-scroll')('a[href*="#"]');
 }
 
-const Layout = ({
-  data,
-  children,
-  BgColor,
-  PrimaryColor,
-  SecondaryColor,
-  TertiaryColor,
-  TransparentFooter,
-}) => (
+// Core Layout component structure.
+
+const Layout = (
+  {
+    data,
+    children,
+    BgColor,
+    PrimaryColor,
+    SecondaryColor,
+    TertiaryColor,
+    TransparentFooter,
+  },
+  props
+) => (
   <ThemeProvider theme={Theme}>
     <SiteGrid>
       <GlobalStyle />
@@ -56,22 +66,28 @@ const Layout = ({
   </ThemeProvider>
 );
 
-const LayoutWithQuery = props => (
-  <StaticQuery
-    query={graphql`
-      query LayoutQuery {
-        site {
-          siteMetadata {
-            siteTitle
+// This is our Layout component with
+// the site metadata query available.
+
+const LayoutWithMetadata = props => {
+  // Pass our data into our Layout component.
+  return (
+    <StaticQuery
+      query={graphql`
+        query LayoutQuery {
+          site {
+            siteMetadata {
+              siteTitle
+            }
           }
         }
-      }
-    `}
-    render={data => <Layout data={data} {...props} />}
-  />
-);
+      `}
+      render={data => <Layout data={data} {...props} />}
+    />
+  );
+};
 
-export default LayoutWithQuery;
+export default LayoutWithMetadata;
 
 //////////////////////////////////////////////////////////////////////
 // End Component

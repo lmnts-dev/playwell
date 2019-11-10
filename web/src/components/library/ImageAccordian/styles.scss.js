@@ -33,7 +33,7 @@ const ImageAccordianStyle = styled.div`
       }
     }
 
-    p {
+    .content {
       padding-bottom: 0;
       max-height: 0;
       overflow: hidden;
@@ -78,7 +78,7 @@ const ImageAccordianStyle = styled.div`
       transform: rotate(90deg);
     }
 
-    input:checked ~ p {
+    input:checked ~ .content {
       max-height: 1000px;
       overflow: visible;
       padding-top: calc(${Root.Size} / 5);

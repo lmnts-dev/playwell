@@ -271,6 +271,14 @@ export const SearchBarStyle = styled.div`
             .label {
               font-size: 2rem;
             }
+            .suggest-link {
+              background: none;
+              margin-top: calc(${Root.Size} / 4);
+
+              &:hover {
+                background: none;
+              }
+            }
           }
         }
 
