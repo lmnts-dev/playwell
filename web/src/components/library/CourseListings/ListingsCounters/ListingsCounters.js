@@ -71,6 +71,7 @@ export class ListingsCounters extends PureComponent {
 
   render() {
     const courseData = this.props.courseData;
+    const categoryFilter = this.props.categoryFilter;
     const toggleCategoryFilter = this.props.toggleCategoryFilter;
 
     // console.log('this.state.activeContext: ' + this.state.activeContext);
@@ -142,7 +143,17 @@ export class ListingsCounters extends PureComponent {
     const reducedProgramsEntries = Object.entries(reducedPrograms);
 
     // The Items
-    const ListingsCountersItem = ({ count, context, btnTheme }) => {
+    const ListingsCountersItem = ({
+      count,
+      context,
+      categoryFilter,
+      btnTheme,
+    }) => {
+      console.log('categoryFilter:');
+      console.log(categoryFilter);
+      console.log('context:');
+      console.log(context);
+
       return (
         <ListingsCountersStyle.Item
           btnTheme={btnTheme}
@@ -153,7 +164,7 @@ export class ListingsCounters extends PureComponent {
           role="button"
           tabIndex="0"
           className={
-            this.state.activeContext == context
+            categoryFilter == context
               ? 'filter-item active-item'
               : 'filter-item'
           }
@@ -168,7 +179,9 @@ export class ListingsCounters extends PureComponent {
 
     return (
       <ListingsCountersStyle
-        className={this.state.active ? 'active-filter' : false}
+        className={
+          categoryFilter != '' || this.state.active ? 'active-filter' : false
+        }
       >
         {/* Remap our entries into an array and spit out the counts and appropriate
         CategoryMetaMatch for their theme. */}
@@ -181,6 +194,7 @@ export class ListingsCounters extends PureComponent {
           return (
             <ListingsCountersItem
               count={count}
+              categoryFilter={categoryFilter}
               label={programContext}
               context={programContext}
               key={idx}

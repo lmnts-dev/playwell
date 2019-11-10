@@ -24,6 +24,7 @@ import { CourseMapNav } from 'components/library/CourseMapNav';
 // Helpers
 import slugify from 'helpers/slugify';
 import locationMatch from 'helpers/LocationMatch';
+import withLocation from 'helpers/withLocation';
 
 // Styles
 import { CourseListingsStyle, ListingsResultsStyle } from './styles.scss';
@@ -97,7 +98,6 @@ class ListingsResults extends PureComponent {
       lat: [],
       lng: [],
       zoom: [],
-      categoryFilter: [],
       ageMin: 0,
       ageMax: 0,
       startDate: '',
@@ -105,25 +105,13 @@ class ListingsResults extends PureComponent {
       courseTypes: [],
       results: [],
     };
-
-    // Bind search query function
-    this.toggleCategoryFilter = this.toggleCategoryFilter.bind(this);
-  }
-
-  // Our Function to Toggle Categories
-  toggleCategoryFilter(context) {
-    if (this.state.categoryFilter == context) {
-      this.setState({
-        categoryFilter: '',
-      });
-    } else {
-      this.setState({
-        categoryFilter: context,
-      });
-    }
   }
 
   render() {
+    // For debugging
+    // console.log('this.props.urlQuery.toLowerCase():');
+    // console.log(this.props.urlQuery.toLowerCase());
+
     // Source Data
     const courseData = this.props.courseData;
     const stateEdges = this.props.courseData.allPlayWellStates.edges;
@@ -135,7 +123,7 @@ class ListingsResults extends PureComponent {
     const costCodeId = this.props.costCodeId;
 
     // Filter Categories
-    const categoryFilter = this.state.categoryFilter;
+    const categoryFilter = this.props.categoryFilter;
     const geoFilteredCourseData = courseData.allPlayWellClient.edges
       .map((node, idx) => {
         return {
@@ -164,7 +152,7 @@ class ListingsResults extends PureComponent {
         }
       }, this);
 
-    const filteredCourseDataByToggle = queryString =>
+    const filteredCourseDataByToggle = d =>
       geoFilteredCourseData.map((node, idx) => {
         return {
           node: {
@@ -172,7 +160,7 @@ class ListingsResults extends PureComponent {
             client_location_name: node.node.client_location_name,
             courses: node.node.courses.filter((course, idxx) => {
               // Define our query
-              const filter = queryString;
+              const filter = d;
 
               // Set up the conditions
               return course.category_group_name.includes(filter);
@@ -202,9 +190,13 @@ class ListingsResults extends PureComponent {
       <>
         <CourseListingsStyle.Toolbar>
           <div className="toolbar-inner">
-            <ListingsFilters courseData={geoFilteredCourseData} />
+            <ListingsFilters
+              categoryFilter={categoryFilter}
+              courseData={geoFilteredCourseData}
+            />
             <ListingsCounters
-              toggleCategoryFilter={this.toggleCategoryFilter.bind(this)}
+              categoryFilter={categoryFilter}
+              toggleCategoryFilter={this.props.toggleCategoryFilter}
               courseData={geoFilteredCourseData}
             />
           </div>
@@ -218,7 +210,12 @@ class ListingsResults extends PureComponent {
   }
 }
 
-// The wrapper around our listings.
+/**
+ *
+ *  The wrapper around ourlistings
+ *
+ *  */
+
 const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
   return (
     <CourseListingsStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
@@ -229,51 +226,168 @@ const ListingsWrapper = ({ courseData, mapWidth, mapZedIndex, children }) => {
   );
 };
 
-// The page itself.
-export const CourseListings = ({
-  courseData,
-  mapWidth,
-  mapZedIndex,
-  geoData,
-  stateId,
-  countyId,
-  costCodeId,
-  pageContext,
-}) => {
-  /**
-   *  For Debugging Purposes Only:
-   * */
-  // console.log('stateId: ' + stateId);
-  // console.log('countyId: ' + countyId);
-  // console.log('costCodeId: ' + costCodeId);
+/**
+ *
+ * The Page Itself
+ *
+ **/
 
-  return (
-    <main>
-      <CourseHero
-        bg={Theme.Color.Galaxy}
-        color="White"
-        flexDirection="row"
-        mapWidth={mapWidth}
-        mapZedIndex={mapZedIndex}
-        geoData={geoData}
-        stateId={stateId}
-        countyId={countyId}
-        costCodeId={costCodeId}
-        pageContext={pageContext}
-      />
-      <CourseMapNav mapWidth={mapWidth} mapZedIndex={mapZedIndex} />
-      <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-        <ListingsResults
-          courseData={courseData}
+class CourseListings extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    // Initial State for a top level category
+    this.state = {
+      categoryFilter: '',
+    };
+
+    // Bind search query function
+    this.toggleCategoryFilter = this.toggleCategoryFilter.bind(this);
+    this.checkForUrlQuery = this.checkForUrlQuery.bind(this);
+    this.setParams = this.setParams.bind(this);
+    this.updateURL = this.updateURL.bind(this);
+  }
+
+  // Function to update our url query parameters when we change
+  // categories & filters to create sharable urls.
+  setParams({ show = '' }) {
+    const searchParams = new URLSearchParams();
+    searchParams.set('show', show);
+    return searchParams.toString();
+  }
+
+  // Functon to update our URL using history.push API
+  updateURL() {
+    // If we are indeed filtering:
+    if (this.state.categoryFilter != '') {
+      const url = this.setParams({
+        show: this.state.categoryFilter.toLowerCase() + 's',
+      });
+      //do not forget the "?" !
+      history.pushState({}, '', `?${url}`);
+    }
+
+    // If it is  displaying all programs:
+    else {
+      const url = this.setParams({
+        show: 'all',
+      });
+      history.pushState({}, '', `?${url}`);
+    }
+  }
+
+  // Our Function to Toggle Categories
+  toggleCategoryFilter(context) {
+    if (this.state.categoryFilter == context) {
+      this.setState(
+        {
+          categoryFilter: '',
+        },
+        // Use updateURL as a callback to confirm state.
+        this.updateURL
+      );
+    } else {
+      this.setState(
+        {
+          categoryFilter: context,
+        },
+        // Use updateURL as a callback to confirm state.
+        this.updateURL
+      );
+    }
+  }
+
+  // Check for url query
+  checkForUrlQuery() {
+    if (this.props.search.show != undefined) {
+      let safeUrlQuery = this.props.search.show.toLowerCase(); // Via Reach Router
+
+      if (safeUrlQuery === 'workshops') {
+        this.setState({
+          categoryFilter: 'Workshop',
+        });
+      }
+
+      if (safeUrlQuery === 'camps') {
+        this.setState({
+          categoryFilter: 'Camp',
+        });
+      }
+
+      if (safeUrlQuery === 'courses') {
+        this.setState({
+          categoryFilter: 'Course',
+        });
+      }
+    }
+    // For debugging
+    // console.log('this.state.categoryFilter:');
+    // console.log(this.state.categoryFilter);
+
+    return;
+  }
+
+  componentDidMount() {
+    this.checkForUrlQuery();
+  }
+
+  render() {
+    let courseData = this.props.courseData;
+    let mapWidth = this.props.mapWidth;
+    let mapZedIndex = this.props.mapZedIndex;
+    let geoData = this.props.geoData;
+    let stateId = this.props.stateId;
+    let countyId = this.props.countyId;
+    let costCodeId = this.props.costCodeId;
+    let pageContext = this.props.pageContext;
+    let search = this.props.search;
+
+    /**
+     *  For Debugging Purposes Only:
+     * */
+    // console.log('stateId: ' + stateId);
+    // console.log('countyId: ' + countyId);
+    // console.log('costCodeId: ' + costCodeId);
+    // console.log('search.show:');
+    // console.log(search.show);
+
+    console.log('this.state:');
+    console.log(this.state);
+
+    return (
+      <main>
+        <CourseHero
+          bg={Theme.Color.Galaxy}
+          color="White"
+          flexDirection="row"
+          mapWidth={mapWidth}
+          mapZedIndex={mapZedIndex}
+          geoData={geoData}
           stateId={stateId}
           countyId={countyId}
           costCodeId={costCodeId}
           pageContext={pageContext}
+          categoryFilter={this.state.categoryFilter}
         />
-      </ListingsWrapper>
-    </main>
-  );
-};
+        <CourseMapNav mapWidth={mapWidth} mapZedIndex={mapZedIndex} />
+        <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
+          <ListingsResults
+            courseData={courseData}
+            stateId={stateId}
+            countyId={countyId}
+            costCodeId={costCodeId}
+            pageContext={pageContext}
+            urlQuery={search.show} // Utilizes our withLocation(); function at the end of this document.
+            categoryFilter={this.state.categoryFilter}
+            toggleCategoryFilter={this.toggleCategoryFilter}
+          />
+        </ListingsWrapper>
+      </main>
+    );
+  }
+}
+
+export default withLocation(CourseListings);
 
 //////////////////////////////////////////////////////////////////////
 // End Component

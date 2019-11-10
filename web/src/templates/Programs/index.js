@@ -11,7 +11,7 @@ import styled from 'styled-components';
 
 // Components
 import Layout from 'components/core/Layout';
-import { CourseListings } from 'components/library/CourseListings';
+import CourseListings from 'components/library/CourseListings';
 import {
   BasicSection,
   BasicInner,

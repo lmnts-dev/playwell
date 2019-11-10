@@ -1,11 +1,12 @@
 // Core
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
+import queryString from 'query-string';
+import { Location } from '@reach/router';
 
 // Helpers
 import HeroContainer from '../../Hero/HeroContainer';
 import _ from 'lodash';
-import withLocation from 'helpers/withLocation';
 
 // Styles
 import {
@@ -497,7 +498,7 @@ const CourseHeroContent = ({
   mapZedIndex,
   geoData,
   pageContext,
-  search,
+  categoryFilter,
 }) => {
   // Check our County names if they contain 'County'
   const countyClean = countyName => {
@@ -525,14 +526,45 @@ const CourseHeroContent = ({
     }
   };
 
-  console.log("search:");
-  console.log(search);
+  // Create our listingContext name -- all programs / workshops / classes / etc.
+  const listingContext = context => {
+    if (context != undefined) {
+      let safeContext = context.toLowerCase();
+
+      if (safeContext === 'workshop') {
+        return 'Workshops';
+      }
+
+      if (safeContext === 'camp') {
+        return 'Camps';
+      }
+
+      if (safeContext === 'course') {
+        return 'Courses';
+      } else {
+        return 'Programs';
+      }
+    } else {
+      return 'Programs';
+    }
+  };
+
+  // console.log('listingContext()');
+  // console.log(queryString.parse(window.location.search));
+
+  console.log('listingContext(categoryFilter)');
+  console.log(listingContext(categoryFilter));
+
+  console.log('categoryFilter (courseHeroContent)');
+  console.log(categoryFilter);
 
   return (
     <CourseHeroContentStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
       <h1>
         <span className="h2">
-          <span className="inline">Explore LEGO® STEM Programs in</span>
+          <span className="inline">
+            Explore LEGO® STEM {listingContext(categoryFilter)} in
+          </span>
         </span>
         <span className="location h2">
           <span className="inline">
@@ -546,4 +578,4 @@ const CourseHeroContent = ({
   );
 };
 
-export default withLocation(CourseHeroContent);
+export default CourseHeroContent;

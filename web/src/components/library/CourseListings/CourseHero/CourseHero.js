@@ -43,6 +43,7 @@ export const CourseHero = ({
   mapZedIndex,
   geoData,
   pageContext,
+  categoryFilter,
 }) => (
   <CourseHeroStyle bg={bg}>
     <HeroContainer bg="none" px={px} color={color}>
@@ -67,6 +68,7 @@ export const CourseHero = ({
               mapZedIndex={mapZedIndex}
               mapWidth={mapWidth}
               pageContext={pageContext}
+              categoryFilter={categoryFilter}
             />
           }
         </Box>
