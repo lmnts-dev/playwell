@@ -22,6 +22,8 @@ import hexToRGB from 'helpers/hexToRGB';
 
 export const OverflowHidden = styled.div`
   overflow: hidden;
+  max-width: ${Theme.Base.Grid.SiteWidth};
+  margin: 0 auto;
 `;
 
 export const CurveAndAngleWithPadding = styled(CurveAndAngle)`

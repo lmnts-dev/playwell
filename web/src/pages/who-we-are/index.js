@@ -107,6 +107,7 @@ const TeamSection = styled.div`
 
 const ClayTextBlock = styled.div`
   position: relative;
+  overflow: hidden;
 
   .text-block {
     text-align: center;
@@ -192,7 +193,7 @@ const CenteredTitle = styled(Centered)`
 `;
 
 const OverflowHidden = styled.div`
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
 `;
 

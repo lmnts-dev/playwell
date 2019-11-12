@@ -70,7 +70,7 @@ const ProgramsPage = props => {
         </BasicSection>
       </div>
 
-      <div style={{ zIndex: Theme.mapZedIndex + 1 }}>
+      <div style={{ zIndex: Theme.mapZedIndex + 1, overflow: 'hidden' }}>
         <BasicSection
           BgColor={Theme.Color.Blush}
           TextColor={Theme.Color.Sunset}

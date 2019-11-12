@@ -17,6 +17,7 @@ import { createGlobalStyle } from 'styled-components';
 export const WrapperLock = createGlobalStyle`
   html, body {
     overflow: hidden;
+    transition: all .5s ease;
 
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       overflow-y: visible !important; 

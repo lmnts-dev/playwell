@@ -19,7 +19,7 @@ import { Base } from 'constants/styles/Base';
 
 export const CurveAndAngleStyle = styled.div`
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: ${props => (props.Tall ? '50vw' : '30vw')};
 
   .footer-angle-slice {
@@ -32,7 +32,7 @@ export const CurveAndAngleStyle = styled.div`
   }
 
   .footer-curve-slice {
-    width: 100vw;
+    width: 100%;
     height: ${props => (props.Tall ? '50vw' : '30vw')};
     z-index: 1;
     padding-bottom: 5vw;
@@ -41,8 +41,8 @@ export const CurveAndAngleStyle = styled.div`
 
 export const AbsoluteImage = styled.div`
   position: absolute;
-  width: ${props => (props.width ? props.width : '25vw')};
-  height: ${props => (props.width ? props.width : '25vw')};
+  width: ${props => (props.width ? props.width : '25%')};
+  height: ${props => (props.width ? props.width : '25%')};
   bottom: ${props => (props.bottom ? props.bottom : '0')};
   right: ${props => (props.right ? props.right : '2vw')};
   transform: rotate(${props => (props.rotate ? props.rotate : '0deg')})
@@ -50,7 +50,7 @@ export const AbsoluteImage = styled.div`
 `;
 
 export const CloudStyle = styled.div`
-  width: 30vw;
+  width: 30%;
   position: absolute !important;
   z-index: 3;
   bottom: 0;
@@ -60,7 +60,7 @@ export const CloudStyle = styled.div`
     left: calc(${Root.Size} * -1);
   }
   @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-    width: 40vw;
+    width: 30%;
     left: -5vw;
   }
 `;

@@ -50,7 +50,7 @@ const Layout = (
   props
 ) => (
   <ThemeProvider theme={Theme}>
-    <SiteGrid>
+    <SiteGrid className="site-grid">
       <GlobalStyle />
       <div id="content-overlay" />
       <div id="hamburger-overlay" />

@@ -21,6 +21,7 @@ import hexToRGB from 'helpers/hexToRGB';
 
 export const CourseHeroStyle = styled.section`
   position: relative;
+  background: ${Theme.Color.Galaxy};
 
   &:before {
     content: '';

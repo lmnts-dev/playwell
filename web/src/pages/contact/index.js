@@ -7,6 +7,7 @@
 // Core
 import React from 'react';
 import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 // Components
 import Layout from 'components/core/Layout';
@@ -26,6 +27,16 @@ import { DataFetch } from 'hooks/DataFetch';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+export const ContactStyleOverrides = createGlobalStyle`
+  body  {
+    background-color: ${Theme.Color.Deepsea} !important;
+  }
+
+  .site-grid {
+     max-width: 100% !important;
+  };
+`;
+
 // Props
 const ThemeProps = {
   BgColor: Theme.Color.Deepsea,
@@ -44,8 +55,17 @@ const ContactPage = () => {
 
   return (
     <Layout {...ThemeProps}>
-      <Main>
-        <ContactHero data={fetchedData} />
+      <ContactStyleOverrides />
+      <Main
+        style={{
+          minHeight: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'spaceBetween',
+          background: Theme.Color.Deepsea,
+        }}
+      >
+        <ContactHero data={fetchedData} style={{ flex: 1, height: 'auto' }} />
         <ContactInfo />
       </Main>
     </Layout>

@@ -25,7 +25,7 @@ export const AbsoluteDecor = styled.div`
   max-width: ${Root.Site.Width};
   @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
     padding-top: ${Root.Site.Width};
-    margin: 0 calc(50vw - calc(${Root.Site.Width} / 2));
+    margin: 0 calc(50% - calc(${Root.Site.Width} / 2));
   }
 
   .decor-container {
@@ -280,7 +280,7 @@ export const HeroContainer = styled.div`
       }
 
       &.slick-prev {
-        left: calc(calc(calc(100vw - ${Root.Site.Width}) / 2) + 130px);
+        left: calc(calc(calc(100% - ${Root.Site.Width}) / 2) + 130px);
         @media (max-width: ${Theme.Base.Grid.SiteWidth}) {
           left: 130px;
         }
@@ -300,7 +300,7 @@ export const HeroContainer = styled.div`
 
       &.slick-next {
         left: calc(
-          calc(calc(calc(100vw - ${Root.Site.Width}) / 2) + 240px) +
+          calc(calc(calc(100% - ${Root.Site.Width}) / 2) + 240px) +
             calc(${Theme.Base.Size.Lg} * 11)
         );
         @media (max-width: ${Theme.Base.Grid.SiteWidth}) {

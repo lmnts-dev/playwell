@@ -17,10 +17,13 @@ import InnerStyle from 'components/library/Inner/styles.scss';
 
 const SiteGrid = styled.div`
   width: 100%;
+  max-width: ${Theme.Base.Grid.SiteWidth};
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  background: ${Theme.Color.Background};
 `;
 
 SiteGrid.Inner = styled(InnerStyle)`
