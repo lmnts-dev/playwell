@@ -40,29 +40,29 @@ const HomePrograms = () => {
       <AccordianFeature>
         <ul>
           <li>
-            <a className="h6" href="/">
+            <Link className="h6" to="/">
               Robotics
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="h6" href="/">
+            <Link className="h6" to="/">
               Intro to STEM
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="h6" href="/">
+            <Link className="h6" to="/">
               Gaming
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="h6" href="/">
+            <Link className="h6" to="/">
               Advanced Engineering
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="h6" href="/">
+            <Link className="h6" to="/">
               Engineering Themes
-            </a>
+            </Link>
           </li>
         </ul>
         <div className="container">

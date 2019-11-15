@@ -12,7 +12,7 @@ import ImgMatch from 'components/core/ImgMatch';
 // Components
 import { Box, Flex, Text } from 'components/library/Elements';
 import Section from 'components/library/Elements/Section';
-import ContactForm from 'components/library/Forms/ContactForm';
+import SpecialEvents from 'components/library/Forms/SpecialEvents/SpecialEvents';
 
 // Styles
 // import {  } from './styles.scss';
@@ -26,7 +26,7 @@ import { Theme, Root } from 'constants/Theme';
 const AfterSchoolContact = () => {
   return (
     <Section bg={Theme.Color.Background}>
-      <ContactForm
+      <SpecialEvents
         formName="after-school-contact"
         title="Bring our programs to your school"
         footnote="Once you've submitted your request, we will respond to your inquiry by email."

@@ -54,7 +54,7 @@ const HeroProps = {
   playButtonBg: Theme.Color.Nova,
   gear: false,
   subNavColor: Theme.Color.Primary,
-  bgMatch: 'group-girls.jpg',
+  bgMatch: 'boys-2.jpg',
 };
 
 // Render Page
