@@ -48,6 +48,7 @@
     "react-helmet": "^5.2.0",
     "react-mapbox-gl": "^4.6.0",
     "react-pose": "^4.0.5",
+    "react-router-hash-link": "^1.2.2",
     "react-tilt": "^0.1.4",
     "react-truncate": "^2.4.0",
     "smooth-scroll": "^16.1.0",

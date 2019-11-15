@@ -72,6 +72,7 @@ const SplitHero = ({
               {subNav.map((nav, index) => {
                 return (
                   <Link
+                    smooth
                     className={'h5 ' + (nav.active ? 'link-active' : '')}
                     to={nav.link}
                     key={index}

@@ -25,27 +25,34 @@ export const Form = styled.form`
   max-width: calc(${Root.Size} * 12);
 
   .radio-group {
+    .option-or {
+      padding: 0 25px;
+      font-weight: 500;
+    }
+
     label {
       font-weight: 500;
       display: block;
+      line-height: 25px;
       position: relative;
       padding-left: 35px;
-      margin-bottom: 12px;
       cursor: pointer;
       user-select: none;
       transition: ${Theme.Base.Transition.String};
 
       /* On mouse-over, add a grey background color */
       &:hover input ~ .checkmark {
-        background-color: ${Theme.Color.Sunset};
+        background: radial-gradient(${Theme.Color.Sunset} 33%, ${Theme.Color.Blush} calc(33% + 1px));
       }
 
       input {
-        /* position: absolute;
+        position: absolute;
         opacity: 0;
         cursor: pointer;
-        height: 0;
-        width: 0; */
+        height: 25px;
+        width: 25px;
+        top: 0;
+        left: 0;
 
         &:checked ~ .checkmark {
           background-color: ${Theme.Color.Blush};
@@ -66,6 +73,7 @@ export const Form = styled.form`
         width: 25px;
         background-color: ${Theme.Color.Blush};
         border-radius: 50%;
+        pointer-events: none;
 
         /* Create the indicator (the dot/circle - hidden when not checked) */
         &:after {
@@ -118,7 +126,7 @@ export const Form = styled.form`
       padding: 0 calc(${Root.Size} / 2.5);
 
       &:focus {
-        box-shadow: 0 0 20px 3px ${Theme.Color.Sunset};
+        box-shadow: 0 0 15px 3px ${hexToRGB(Theme.Color.Eggplant, 0.2)};
         box-shadow: 0 0 0 3px -moz-mac-focusring;
         outline: none;
       }
@@ -159,7 +167,7 @@ export const Form = styled.form`
       }
 
       &:focus {
-        box-shadow: 0 0 20px 3px ${Theme.Color.Sunset};
+        box-shadow: 0 0 15px 3px ${hexToRGB(Theme.Color.Eggplant, 0.2)};
         box-shadow: 0 0 0 3px -moz-mac-focusring;
         outline: none;
       }

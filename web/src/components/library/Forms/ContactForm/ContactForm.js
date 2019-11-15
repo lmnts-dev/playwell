@@ -126,9 +126,9 @@ export const ContactForm = ({ formName, title, footnote }) => (
           <label htmlFor="eventType">Type of Event:</label>
           <select name="eventType" id="eventType">
             <option value={null}>Type of Event</option>
-            <option value="event">Event</option>
-            <option value="event">Event</option>
-            <option value="event">Event</option>
+            <option value="summer-camps">Summer Camps</option>
+            <option value="workshops">Workshops</option>
+            <option value="classes">Classes</option>
           </select>
           <span className="carat">
             <Icon Name="carat" className="ico-carat" />
@@ -149,9 +149,9 @@ export const ContactForm = ({ formName, title, footnote }) => (
           <label htmlFor="state">State:</label>
           <select name="state" id="state">
             <option value={null}>State</option>
-            <option value="state">State</option>
-            <option value="state">State</option>
-            <option value="state">State</option>
+            {States.map(state => (
+             <option value={state}>{state}</option>
+            ))}
           </select>
           <span className="carat">
             <Icon Name="carat" className="ico-carat" />
@@ -170,7 +170,7 @@ export const ContactForm = ({ formName, title, footnote }) => (
           <span className="checkmark" />
         </label>
 
-        <span>OR</span>
+        <span className="option-or">OR</span>
 
         <label htmlFor="email-or-phone">
           phone
@@ -197,6 +197,59 @@ export const ContactForm = ({ formName, title, footnote }) => (
 ContactForm.defaultProps = {};
 
 export default ContactForm;
+
+const States = [
+  'Alabama',
+  'Alaska',
+  'Arizona',
+  'Arkansas',
+  'California',
+  'Colorado',
+  'Connecticut',
+  'Delaware',
+  'Florida',
+  'Georgia',
+  'Hawaii',
+  'Idaho',
+  'Illinois',
+  'Indiana',
+  'Iowa',
+  'Kansas',
+  'Kentucky',
+  'Louisiana',
+  'Maine',
+  'Maryland',
+  'Massachusetts',
+  'Michigan',
+  'Minnesota',
+  'Mississippi',
+  'Missouri',
+  'Montana',
+  'Nebraska',
+  'Nevada',
+  'New Hampshire',
+  'New Jersey',
+  'New Mexico',
+  'New York',
+  'North Carolina',
+  'North Dakota',
+  'Ohio',
+  'Oklahoma',
+  'Oregon',
+  'Pennsylvania',
+  'Rhode Island',
+  'South Carolina',
+  'South Dakota',
+  'Tennessee',
+  'Texas',
+  'Utah',
+  'Vermont',
+  'Virginia',
+  'Washington',
+  'West Virginia',
+  'Wisconsin',
+  'Wyoming',
+];
 
 //////////////////////////////////////////////////////////////////////
 // End Component
