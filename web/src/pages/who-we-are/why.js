@@ -141,7 +141,7 @@ const WhoWhyPage = () => {
               reversedOrder
               Image="boy-1.jpg"
               Header="Provide an opportunity for creative expression"
-              Number="06"
+              Number="02"
               Paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Nulla viverra enim sed magna vestibulum, nec imperdiet orci
                 egestas. Sed in magna sapien."

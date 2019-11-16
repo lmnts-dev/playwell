@@ -25,15 +25,9 @@ export const BirthdayParties = ({ formName, title, footnote }) => (
 <form    
   name={formName}
   method="POST"
-  data-netlify="true"
-  data-netlify-honeypot="bot-field">
+  netlify
+>
   <Form>
-    <input type="hidden" name="bot-field" />
-    <input
-      type="hidden"
-      name={formName}
-      value={formName}
-    />
     <legend>
       <div className="h3">{title}</div>
       <p>
