@@ -65,7 +65,31 @@ const HostProgramPage = () => {
   return (
     <Layout {...ThemeProps}>
       <Main>
-        <SplitHero {...HeroProps}>
+        <SplitHero
+          {...HeroProps}
+          subNav={[
+            {
+              label: 'After School Programs',
+              active: true,
+              link: '/programs/host-a-program#after-school-programs',
+            },
+            {
+              label: 'Recreation Centers',
+              active: true,
+              link: '/programs/host-a-program#recreation-centers',
+            },
+            {
+              label: 'Homeschool Classes',
+              active: true,
+              link: '/programs/host-a-program#homeschool-classes',
+            },
+            {
+              label: 'Workshops',
+              active: true,
+              link: '/programs/host-a-program#workshops',
+            },
+          ]}
+        >
           <h2>Hosting a Play-Well Program</h2>
           <h6>
             Our LEGO-inspired STEM programs are customizable and can be tailored
@@ -81,7 +105,8 @@ const HostProgramPage = () => {
             Size="large"
           />
         </SplitHero>
-        <SplitSection Flex="row" id="after-school-programs">
+        <div id="after-school-programs" />
+        <SplitSection Flex="row">
           <Block
             Style="centered"
             BgColor={Theme.Color.White}
@@ -105,8 +130,8 @@ const HostProgramPage = () => {
             <Text as="p" className="p-lg" color="Galaxy">
               To bring Play-Well STEM enrichment to your school, connect us with
               your school staff, after-school coordinator or parent group
-              president. Click here to download our enrichment brochure or
-              follow the link below to contact your local manager.
+              president. Follow the link below to contact your local Play-Well
+              manager and set up a new enrichment program today.
             </Text>
             <Btn
               Label="Contact Us"
@@ -118,7 +143,8 @@ const HostProgramPage = () => {
             />
           </Block>
         </SplitSection>
-        <SplitSection Flex="row-reverse" id="recreation-centers">
+        <div id="recreation-centers" />
+        <SplitSection Flex="row-reverse">
           <Block
             Style="centered"
             BgColor={Theme.Color.White}
@@ -154,7 +180,8 @@ const HostProgramPage = () => {
             />
           </Block>
         </SplitSection>
-        <SplitSection Flex="row" id="homeschool-classes">
+        <div id="homeschool-classes" />
+        <SplitSection Flex="row">
           <Block
             Style="centered"
             BgColor={Theme.Color.White}
@@ -190,6 +217,7 @@ const HostProgramPage = () => {
             />
           </Block>
         </SplitSection>
+        <div id="workshops" />
         <SplitSection Flex="row-reverse" id="workshops">
           <Block
             Style="centered"

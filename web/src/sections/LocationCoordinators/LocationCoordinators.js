@@ -31,7 +31,6 @@ const LocationCoordinators = ({ pageContext }) => {
 
   return (
     <Section textAlign="left">
-      {/* todo: make styled components */}
       <Flex flexWrap="wrap">
         <Title
           width={[1, 1, 1 / 2, 4 / 10]}

@@ -171,7 +171,7 @@ export class ListingsCounters extends PureComponent {
         >
           <span className="counter-inner">
             <span>{count + ' '}</span>
-            <span>{context + 's'}</span>
+            <span>{context == 'Course' ? 'Classes' : context + 's'}</span>
           </span>
         </ListingsCountersStyle.Item>
       );

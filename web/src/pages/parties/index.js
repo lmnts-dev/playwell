@@ -54,6 +54,7 @@ const HeroProps = {
   bg: Theme.Color.Background,
   color: Theme.Color.Eggplant,
   playButton: true,
+  video: "https://www.youtube.com/watch?v=mN26kaFk_YM&t=",
   playButtonBg: Theme.Color.Nova,
   arrowColor: Theme.Color.Nova,
   gear: false,

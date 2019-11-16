@@ -24,7 +24,7 @@ import { Theme, Root } from 'constants/Theme';
 export const BirthdayParties = ({ formName, title, footnote }) => (
   <Form
     name={formName}
-    method="post"
+    method="POST"
     data-netlify="true"
     data-netlify-honeypot="bot-field"
   >
@@ -152,8 +152,8 @@ export const BirthdayParties = ({ formName, title, footnote }) => (
           type="tel"
           name="phone"
           id="phone"
-          placeholder="(___) ___-____"
-          pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
+          placeholder="___ ___-____"
+          pattern="[0-9]{3} [0-9]{3}-[0-9]{4}"
           maxLength="12"
         />
       </Box>
@@ -198,14 +198,11 @@ export const BirthdayParties = ({ formName, title, footnote }) => (
         </div>
       </div>
 
-
-      <Btn
-        BgColor={Theme.Color.Nova}
-        TextColor={Theme.Color.White}
-        Label="Submit Request"
-        Destination="/"
-        Size="large"
-      />
+      <button classname="btn" type="submit">
+        <span className="btn-inner">
+          Submit Request
+        </span>
+      </button>
 
       <div className="footnote">
         <p className="p-lg">{footnote}</p>
