@@ -19,7 +19,7 @@ import hexToRGB from 'helpers/hexToRGB';
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
-export const Form = styled.div`
+export const Form = styled.form`
   margin: 0 auto;
   width: 100%;
   max-width: calc(${Root.Size} * 12);
