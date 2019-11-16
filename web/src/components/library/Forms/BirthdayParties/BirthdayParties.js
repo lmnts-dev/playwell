@@ -22,12 +22,12 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 export const BirthdayParties = ({ formName, title, footnote }) => (
-  <Form
-    name={formName}
-    method="POST"
-    data-netlify="true"
-    data-netlify-honeypot="bot-field"
-  >
+<form    
+  name={formName}
+  method="POST"
+  data-netlify="true"
+  data-netlify-honeypot="bot-field">
+  <Form>
     <input type="hidden" name="bot-field" />
     <input
       type="hidden"
@@ -209,6 +209,7 @@ export const BirthdayParties = ({ formName, title, footnote }) => (
       </div>
     </fieldset>
   </Form>
+</form>
 );
 
 BirthdayParties.defaultProps = {};
