@@ -22,6 +22,9 @@ import { Icon } from 'components/library/Icons';
 // Helpers
 import slugify from 'helpers/slugify';
 
+// Data
+import { DataFetch } from 'hooks/DataFetch';
+
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
@@ -492,7 +495,10 @@ class ResultRow extends PureComponent {
   }
 }
 
-// Simple Course Hero Display Component
+/**
+ * Simple Course Hero Display Component
+ */
+
 const CourseHeroContent = ({
   mapWidth,
   mapZedIndex,
@@ -500,7 +506,9 @@ const CourseHeroContent = ({
   pageContext,
   categoryFilter,
 }) => {
-  // Check our County names if they contain 'County'
+  /**
+   * Check our County names if they contain 'County'
+   */
   const countyClean = countyName => {
     if (countyName.toLowerCase().includes('county')) {
       return countyName;
@@ -509,7 +517,9 @@ const CourseHeroContent = ({
     }
   };
 
-  // Create page name
+  /**
+   * Create page name
+   */
   const contextualPageName = () => {
     if (pageContext != false) {
       if (pageContext.isCounty == true) {
@@ -526,7 +536,10 @@ const CourseHeroContent = ({
     }
   };
 
-  // Create our listingContext name -- all programs / workshops / classes / etc.
+  /**
+   * Create our listingContext name -- all programs / workshops / classes / etc.
+   */
+
   const listingContext = context => {
     if (context != undefined) {
       let safeContext = context.toLowerCase();
@@ -549,14 +562,106 @@ const CourseHeroContent = ({
     }
   };
 
+  /**
+   * Clean our geoData for States & Counties that don't have courses
+   */
+
+  const geoDataVerify = () => {
+    // Use our hook's data as source for all Courses
+    let fetchedCourses = DataFetch().allPlayWellClient.edges;
+
+    // Clean our data if courses don't exist in the respective States or Counties
+    const cleanedStates = geoData.edges
+      .map((state, idx) => {
+        // Function to check if Courses exist in this State
+        const courseStateVerify = currentStateId => {
+          // Map our Clients and compare State Ids
+          let checkState = fetchedCourses.map((client, idx) => {
+            if (client.node.state_id == currentStateId) {
+              return true;
+            } else {
+              return false;
+            }
+          });
+
+          // Return truthy or falsy if so.
+          if (checkState.includes(true)) {
+            return true;
+          } else {
+            return false;
+          }
+        };
+
+        //  Return our State nodes if Courses exist in this State
+        if (courseStateVerify(state.node.playwell_state_id) == true) {
+          // Create our cleaned Counties array
+          let cleanedCounties = state.node.counties
+            .map((county, idxx) => {
+              // Function to check if Courses exist in this County
+              const courseCountyVerify = currentCountyId => {
+                // Map our Clients and compare State Ids
+                let checkCounty = fetchedCourses.map((client, idx) => {
+                  if (client.node.county_id == currentCountyId) {
+                    return true;
+                  } else {
+                    return false;
+                  }
+                });
+
+                // Return truthy or falsy if so.
+                if (checkCounty.includes(true)) {
+                  return true;
+                } else {
+                  return false;
+                }
+              };
+
+              if (courseCountyVerify(county.county_id) == true) {
+                return county;
+              }
+            })
+            .filter(state => state != undefined);
+
+          // Return our new rebuilt array
+          return {
+            node: {
+              abbrev: state.node.abbrev,
+              counties: cleanedCounties,
+              id: state.node.id,
+              name: state.node.name,
+              playwell_state_id: state.node.playwell_state_id,
+            },
+          };
+        }
+      })
+      .filter(state => state != undefined);
+
+    // Return our cleaned Geo Variable
+    return { edges: cleanedStates };
+  };
+
+  /**
+   * For Debugging only
+   */
+
+  console.log('geoDataVerify():');
+  console.log(geoDataVerify());
+
   // console.log('listingContext()');
   // console.log(queryString.parse(window.location.search));
 
-  console.log('listingContext(categoryFilter)');
-  console.log(listingContext(categoryFilter));
+  // console.log('listingContext(categoryFilter)');
+  // console.log(listingContext(categoryFilter));
 
-  console.log('categoryFilter (courseHeroContent)');
-  console.log(categoryFilter);
+  // console.log('categoryFilter (courseHeroContent)');
+  // console.log(categoryFilter);
+
+  console.log('geoData:');
+  console.log(geoData);
+
+  /**
+   * Return component
+   */
 
   return (
     <CourseHeroContentStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
@@ -573,7 +678,7 @@ const CourseHeroContent = ({
           </span>
         </span>
       </h1>
-      <SearchBar geoData={geoData} />
+      <SearchBar geoData={geoDataVerify()} />
     </CourseHeroContentStyle>
   );
 };
