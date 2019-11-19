@@ -22,7 +22,7 @@ import CourseSplitLinks from 'sections/CourseSplitLinks';
 
 // Helpers
 import slugify from 'helpers/slugify';
-import locationMatch from 'helpers/locationMatch';
+import { CategoryMetaMatch } from 'components/library/CategoryMetaMatch';
 
 // Styles
 import { Hero, Toggle, Drawer, CourseFooter } from './styles.scss';
@@ -34,23 +34,33 @@ import { Theme, Root } from 'constants/Theme';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-// Props
-const ThemeProps = {
-  BgColor: Theme.Color.Sky,
-  PrimaryColor: Theme.Color.White,
-  SecondaryColor: Theme.Color.Deepsea,
-  TertiaryColor: Theme.Color.White,
-};
-
-const HeroProps = {
-  bg: ThemeProps.BgColor,
-  color: ThemeProps.PrimaryColor,
-  textAlign: 'center',
-};
-
 // Render Page
 const Course = ({ pageContext }) => {
+  // Create States
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Get Category Meta
+  const categoryMeta = CategoryMetaMatch(pageContext.category_group_name);
+
+  // Props
+  const themeProps = {
+    BgColor: categoryMeta ? categoryMeta.theme.bgColor : Theme.Color.Nova,
+    PrimaryColor: categoryMeta
+      ? categoryMeta.theme.primaryColor
+      : Theme.Color.White,
+    SecondaryColor: categoryMeta
+      ? categoryMeta.theme.secondaryColor
+      : Theme.Color.Deepsea,
+    TertiaryColor: categoryMeta
+      ? categoryMeta.theme.tertiaryColor
+      : Theme.Color.White,
+  };
+
+  const heroProps = {
+    bg: themeProps.BgColor,
+    color: themeProps.PrimaryColor,
+    textAlign: 'center',
+  };
 
   // Create our slugs
   const pageSlug =
@@ -58,9 +68,7 @@ const Course = ({ pageContext }) => {
     '/' +
     slugify(pageContext.locationMeta.county.cost_code_name) +
     '/' +
-    slugify(pageContext.locationMeta.county.name) +
-    '/';
-
+    slugify(pageContext.locationMeta.county.name);
   // Check our County names if they contain 'County'
   const countyClean = countyName => {
     if (
@@ -80,8 +88,8 @@ const Course = ({ pageContext }) => {
   // console.log(locationMatch(pageContext.county_id, pageContext.state_id, pageContext.locationMeta.state.name));
 
   return (
-    <Layout {...ThemeProps}>
-      <HeroContainer {...HeroProps}>
+    <Layout {...themeProps}>
+      <HeroContainer {...heroProps}>
         <Hero as="article">
           <Hero.Avatar>
             <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
@@ -128,7 +136,13 @@ const Course = ({ pageContext }) => {
 
             <li>
               <Link
-                to={'/' + pageSlug + slugify(pageContext.category_group_name)}
+                to={
+                  '/programs/' +
+                  pageSlug +
+                  '?show=' +
+                  slugify(pageContext.category_group_name) +
+                  's'
+                }
               >
                 {pageContext.category_group_name}
               </Link>
@@ -136,7 +150,12 @@ const Course = ({ pageContext }) => {
 
             <li>
               <Link
-                to={'/' + pageSlug + slugify(pageContext.course_type_group)}
+                to={
+                  '/programs/' +
+                  pageSlug +
+                  '?show=' +
+                  slugify(pageContext.course_type_group)
+                }
               >
                 {pageContext.course_type_group}
               </Link>
@@ -147,7 +166,7 @@ const Course = ({ pageContext }) => {
                 to={
                   '/' +
                   pageSlug +
-                  'ages-' +
+                  '/ages-' +
                   pageContext.age_range_start +
                   '-' +
                   pageContext.age_range_end
@@ -159,7 +178,9 @@ const Course = ({ pageContext }) => {
             {pageContext.room && <li>{pageContext.room}</li>}
           </ul>
           <Hero.Headline className="h3">
-            {pageContext.course_type_name}
+            {pageContext.category_group_name +
+              ': ' +
+              pageContext.course_type_name}
           </Hero.Headline>
           <Hero.Date className="h5">{pageContext.date_time_display}</Hero.Date>
           {/* Content Overlay Modal Toggle */}
@@ -327,7 +348,7 @@ const Course = ({ pageContext }) => {
         stateName={pageContext.locationMeta.state.name}
         costCodeName={pageContext.locationMeta.county.cost_code_name}
         pageContext={pageContext}
-        themeProps={ThemeProps}
+        themeProps={themeProps}
       />
     </Layout>
   );
