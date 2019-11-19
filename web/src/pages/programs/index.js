@@ -48,9 +48,9 @@ const ProgramsPage = props => {
   return (
     <Layout {...ThemeProps}>
       <CourseListings
-        stateId={'37'}
-        countyId={'81'}
-        costCodeId={'10'}
+        stateId={false}
+        countyId={false}
+        costCodeId={false}
         pageContext={false}
         courseData={fetchedData}
         geoData={fetchedData.allPlayWellStates}

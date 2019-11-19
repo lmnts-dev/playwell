@@ -10,7 +10,6 @@ import { Link } from 'gatsby';
 
 // Helpers
 import _ from 'lodash';
-import locationMatch from 'helpers/LocationMatch';
 
 // Styles
 import {

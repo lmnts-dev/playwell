@@ -50,7 +50,11 @@ export const CourseHero = ({
     <div className="absolute-image">
       <ImgMatch src="lego-bin.jpg"/>
     </div>
-    <HeroContainer bg="none" px={px} color={color}>
+    <HeroContainer
+      bg="none"
+      px={px}
+      color={color}
+    >
       <Flex
         width={1}
         flexWrap="wrap"

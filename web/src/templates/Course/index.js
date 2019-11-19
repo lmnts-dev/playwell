@@ -22,7 +22,7 @@ import CourseSplitLinks from 'sections/CourseSplitLinks';
 
 // Helpers
 import slugify from 'helpers/slugify';
-import locationMatch from 'helpers/LocationMatch';
+import locationMatch from 'helpers/locationMatch';
 
 // Styles
 import { Hero, Toggle, Drawer, CourseFooter } from './styles.scss';
