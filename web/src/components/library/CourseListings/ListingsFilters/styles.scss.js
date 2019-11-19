@@ -51,6 +51,10 @@ ListingsFiltersStyle.Item = styled.button`
   display: flex;
   flex: 1;
   cursor: pointer;
+  @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 
   &:first-child {
     &:before {
@@ -61,6 +65,29 @@ ListingsFiltersStyle.Item = styled.button`
       bottom: 10px;
       width: 1px;
       background: ${Theme.Color.Blush};
+      @media (max-width: ${Theme.Base.Media.Width.Md}) {
+        content: none;
+      }
+    }
+
+    @media (max-width: ${Theme.Base.Media.Width.Md}) {
+      padding-left: 0;
+
+      .filter-inner {
+        padding-left: calc(${Root.Size} / 3);
+      }
+    }
+  }
+
+  &:last-child {
+    @media (max-width: ${Theme.Base.Media.Width.Md}) {
+      padding-right: 0;
+      .filter-inner {
+        padding-right: calc(${Root.Size} / 3);
+      }
+      &:after {
+        content: none;
+      }
     }
   }
 
@@ -110,6 +137,28 @@ ListingsFiltersStyle.Item = styled.button`
     width: 100%;
     text-align: center;
     padding: 0 calc(${Root.Size} / 3);
+    @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+      padding: 0 calc(${Root.Size} / 6);
+    }
+
+    span {
+      white-space: nowrap;
+      @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+        font-size: 12px;
+        svg {
+          width: 8px;
+          margin-left: 8px;
+        }
+      }
+    }
+
+    @media (max-width: ${Theme.Base.Media.Width.Md}) {
+      > div,
+      span {
+        height: auto;
+        width: auto;
+      }
+    }
   }
 `;
 

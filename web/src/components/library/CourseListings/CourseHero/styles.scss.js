@@ -34,6 +34,28 @@ export const CourseHeroStyle = styled.section`
     background: ${props => (props.bg ? props.bg : Theme.Color.Black)};
   }
 
+  .absolute-image, .gatsby-image-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      &.img {
+        
+        &:before {
+          content: "";
+          background-color: ${hexToRGB(Theme.Color.Dino, 0.6)};
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          position: absolute;
+          z-index: 5;
+        }
+      }
+  }
+
   h1 {
     .h1,
     .location {
@@ -79,7 +101,7 @@ export const CourseHeroStyle = styled.section`
 export const CourseHeroContentStyle = styled.div`
   position: relative;
   width: ${props =>
-    props.mapWidth ? 'calc(100% - ' + props.mapWidth + ')' : '100%'};
+    props.mapWidth ? 'calc(calc(100% - ' + props.mapWidth + ') - 40px)' : '100%'};
   z-index: ${props => (props.mapZedIndex ? props.mapZedIndex + 1 : 5)};
   overflow: visible;
   z-index: 500;

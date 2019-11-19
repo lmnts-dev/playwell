@@ -12,6 +12,7 @@ import { Link } from 'gatsby';
 import HeroContainer from '../../Hero/HeroContainer';
 import _ from 'lodash';
 import withLocation from 'helpers/withLocation';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Styles
 import {
@@ -46,6 +47,9 @@ export const CourseHero = ({
   categoryFilter,
 }) => (
   <CourseHeroStyle bg={bg}>
+    <div className="absolute-image">
+      <ImgMatch src="lego-bin.jpg"/>
+    </div>
     <HeroContainer
       bg="none"
       px={px}

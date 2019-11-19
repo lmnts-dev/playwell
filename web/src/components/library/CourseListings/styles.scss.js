@@ -42,9 +42,14 @@ export const CourseListingsStyle = styled.section`
     width: 100%;
     max-width: ${Root.Site.Width};
 
+    @media (max-width: ${Theme.Base.Media.Width.Lg}) {
+      padding-right: calc(${props => props.mapWidth} + ${Root.Rem} * 3);
+      padding-left: calc(${Root.Rem} * 2);
+    }
+
     @media (max-width: ${Theme.Base.Media.Width.Md}) {
-      padding-right: 0;
-      padding-left: 0;
+      padding-left: calc(${Root.Rem});
+      padding-right: calc(${Root.Rem});
     }
   }
     /* width: ${props =>
@@ -67,6 +72,9 @@ CourseListingsStyle.Toolbar = styled.div`
 
   .toolbar-inner {
     position: relative;
+    @media (max-width: ${Theme.Base.Media.Width.Md}) {
+      padding-bottom: calc(${Root.Size} / 3);
+    }
 
     &:after {
       content: '';

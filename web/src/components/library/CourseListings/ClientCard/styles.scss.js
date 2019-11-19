@@ -30,11 +30,14 @@ export const ClientCardStyle = styled.div`
   background: ${props =>
     props.cardExpanded == true ? bgGradient : Theme.Color.Cream};
   border-radius: 35.5px;
-  padding: 0 calc(${Root.Size} / 2) 0 calc(${Root.Size} / 2);
+  padding: 0 calc(${Root.Size} / 2);
   margin: 0 0 calc(${Root.Size} / 4) 0;
   border-radius: calc(${Root.Size} / 2);
   border: 1px solid ${hexToRGB(Theme.Color.Cream, 0)};
   cursor: pointer;
+  @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+    padding: 0 calc(${Root.Size} / 3);
+  }
 
   &:hover {
     background: ${hexToRGB(Theme.Color.Cream, 0.2)};
@@ -54,6 +57,11 @@ ClientCardStyle.ClientName = styled.span`
   font-weight: bold;
   font-size: 1.5rem;
   padding: calc(${Root.Size} / 2) 0;
+  @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+    padding: calc(${Root.Size} / 3) 0;
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
   .ico {
     transform: ${props =>
@@ -63,6 +71,13 @@ ClientCardStyle.ClientName = styled.span`
   .client-counts {
     display: flex;
     align-items: center;
+    @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+      span:last-of-type {
+        position: absolute;
+        right: 0;
+        top: 50%;
+      }
+    }
   }
 
   .client-name {
@@ -80,6 +95,10 @@ ClientCardStyle.ClientName = styled.span`
       span {
         margin-right: calc(${Root.Size} / 2);
         position: relative;
+        @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+          margin-right: 0;
+          display: block;
+        }
 
         &:after {
           content: '';
@@ -91,6 +110,9 @@ ClientCardStyle.ClientName = styled.span`
           height: 3px;
           border-radius: 50%;
           background: ${Theme.Color.Tan};
+          @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+            content: none;
+          }
         }
 
         &:last-child {
