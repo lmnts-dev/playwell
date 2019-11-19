@@ -28,7 +28,7 @@ import {
 import SplitHero from 'components/library/Hero/SplitHero';
 import { Box, Flex } from 'components/library/Elements';
 import SubNav from 'components/library/SubNav';
-import ContactForm from 'components/library/Forms/ContactForm';
+import BirthdayPartiesForm from 'components/library/Forms/BirthdayParties/BirthdayParties';
 
 // Styles
 
@@ -54,6 +54,7 @@ const HeroProps = {
   bg: Theme.Color.Background,
   color: Theme.Color.Eggplant,
   playButton: true,
+  video: "https://www.youtube.com/watch?v=mN26kaFk_YM&t=",
   playButtonBg: Theme.Color.Nova,
   arrowColor: Theme.Color.Nova,
   gear: false,
@@ -135,11 +136,11 @@ const Projects = styled.div`
     }
 
     .h6 {
-      padding: calc(${Root.Size} / 2) 0 calc(${Root.Size} / 3) 0;
+      padding: calc(${Root.Size} / 2) 0 calc(${Root.Size} / 10) 0;
     }
 
     p {
-      padding-bottom: calc(${Root.Size} / 7);
+      padding-bottom: calc(${Root.Size} / 20);
     }
 
     .tags {
@@ -580,14 +581,14 @@ const Parties = () => {
           <Centered Title="How We Party" Class="headline mobile-left" />
           <Timeline>
             <div className="images">
-              <ImgMatch src="random-1.jpg" />
-              <ImgMatch src="random-2.jpg" />
-              <ImgMatch src="random-3.jpg" />
-              <ImgMatch src="random-4.jpg" />
+              <ImgMatch src="party.jpg" />
+              <ImgMatch src="party.jpg" />
+              <ImgMatch src="party.jpg" />
+              <ImgMatch src="party.jpg" />
             </div>
             <div className="text">
               <div className="container">
-                <ImgMatch className="mobile-image" src="random-1.jpg" />
+                <ImgMatch className="mobile-image" src="party.jpg" />
                 <div className="time">
                   15<span>min</span>
                 </div>
@@ -598,7 +599,7 @@ const Parties = () => {
                 </p>
               </div>
               <div className="container">
-                <ImgMatch className="mobile-image" src="random-2.jpg" />
+                <ImgMatch className="mobile-image" src="party.jpg" />
                 <div className="time">
                   1<span>hr</span> 15<span>min</span>
                 </div>
@@ -609,7 +610,7 @@ const Parties = () => {
                 </p>
               </div>
               <div className="container">
-                <ImgMatch className="mobile-image" src="random-3.jpg" />
+                <ImgMatch className="mobile-image" src="party.jpg" />
                 <div className="time">
                   15<span>min</span>
                 </div>
@@ -620,7 +621,7 @@ const Parties = () => {
                 </p>
               </div>
               <div className="container">
-                <ImgMatch className="mobile-image" src="random-4.jpg" />
+                <ImgMatch className="mobile-image" src="party.jpg" />
                 <div className="time">
                   15<span>min</span>
                 </div>
@@ -647,9 +648,9 @@ const Parties = () => {
             <div className="container">
               {Array.from(Array(8), (e, i) => {
                 return (
-                  <a className="h4" href="/">
+                  <Link className="h4" to="/">
                     What is the process for booking a party?
-                  </a>
+                  </Link>
                 );
               })}
             </div>
@@ -663,7 +664,7 @@ const Parties = () => {
       >
         <BasicInner>
           <Box textAlign="center">
-            <ContactForm
+            <BirthdayPartiesForm
               formName="birthday-parties-contact"
               title="Thank you for your interest in Play-Well parties!"
               footnote="Once you've submitted your request, you should receive an email with more info in 1-2 minutes. If you don't see it in your inbox, please check your spam promotions or spam folder."

@@ -67,7 +67,8 @@ const LocationDetail = ({ pageContext }) => {
 
       <LocationIntro pageContext={pageContext} />
       <LocationSplitSection />
-      <LocationCoordinators pageContext={pageContext} id="coordinators" />
+      <div id="coordinators" />
+      <LocationCoordinators pageContext={pageContext} />
 
       {/* <LocationEvents /> */}
 

@@ -7,6 +7,10 @@
 // Core
 import React from 'react';
 import { Link } from 'gatsby';
+import ReactDOM from 'react-dom';
+import ModalVideo from 'react-modal-video';
+
+
 
 // Styles
 import { GearContainer, SplitHeroStyle } from './styles.scss';
@@ -31,6 +35,35 @@ import HeroContainer from '../HeroContainer';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isOpen: false,
+    };
+    this.openModal = this.openModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({ isOpen: true });
+  }
+
+  render() {
+    return (
+      <div>
+        <ModalVideo
+          channel="youtube"
+          isOpen={this.state.isOpen}
+          videoId="L61p2uyiMSo"
+          onClose={() => this.setState({ isOpen: false })}
+        />
+        <button onClick={this.openModal}>Open</button>
+      </div>
+    );
+  }
+}
+
 
 const SplitHero = ({
   arrow,
@@ -72,6 +105,7 @@ const SplitHero = ({
               {subNav.map((nav, index) => {
                 return (
                   <Link
+                    smooth
                     className={'h5 ' + (nav.active ? 'link-active' : '')}
                     to={nav.link}
                     key={index}
@@ -100,6 +134,7 @@ const SplitHero = ({
           )}
         </div>
         <div className="imagery">
+          {/*<App/>*/}
           <ImgMatch src={bgMatch} />
           {gear ? (
             <GearContainer>

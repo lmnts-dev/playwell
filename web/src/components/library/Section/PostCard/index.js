@@ -24,10 +24,10 @@ import PostCardStyle from './styles.scss';
 // The SubLevel Page Itself
 const PostCard = ({ title, tags, description, image, link }) => (
   <PostCardStyle className="post-card">
-    <a className="image" href={link} aria-label="View More">
+    <Link className="image" to={link} aria-label="View More">
       <ImgMatch src="boy-4.jpg" />
-    </a>
-    <a href={link} aria-label="View More" className="text">
+    </Link>
+    <Link to={link} aria-label="View More" className="text">
       {tags &&
         <ul>
           {tags.map(tags => (
@@ -37,7 +37,7 @@ const PostCard = ({ title, tags, description, image, link }) => (
       }
       <div className="h6">{title}</div>
       <p>{description}</p>
-    </a>
+    </Link>
   </PostCardStyle>
 );
 

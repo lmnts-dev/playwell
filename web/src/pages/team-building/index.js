@@ -211,9 +211,8 @@ const TeamBuilding = () => {
             <Box textAlign="center" width={'90%'} m={'0 auto'}>
               <h3>
                 We bring tens of thousands of pieces of LEGO&reg;, a customized
-                organizational play challenge that fits your organization's
-                experienced organizational play facilitators who are all about all
-                all about play.
+                organizational play challenge that fits your organization's goals, and
+                experienced organizational play facilitators who are all about play.
               </h3>
               <Text as="p" className="h3" fontWeight={600}>
                 You bring the people. Together, we solve problems through play.

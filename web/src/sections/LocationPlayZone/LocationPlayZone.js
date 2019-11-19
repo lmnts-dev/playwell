@@ -29,21 +29,21 @@ const LocationPlayZone = () => (
     </Container.Image>
     <Box width={[1, 6 / 10, 1 / 2, 4 / 10]}>
       <Text className="h6" as="span" color="Galaxy" fontWeight={700} mb={1}>
-        Do it yourself
+        Well Supplied Fun
       </Text>
       <Text as="h2" color="Sunset">
-        Build Your Own World of Opportunity
+        Let Us Engineer Your Child's Party
       </Text>
       <Text as="p" color="Galaxy" fontSize={[0, 1, 1]} mt={[1, 1, 0]} mb={1}>
-        Bring your kid over or bring out your inner kid with some of our online
-        activities to feed your imagination.
+        Some of the most memorable and fun experiences kid's have together are
+        at birthday parties.
       </Text>
-      {/* <Btn
-        Label="Play Zone"
-        Destination="/menu"
+      <Btn
+        Label="Learn More"
+        Destination="/parties"
         BgColor={Theme.Color.Primary}
         TextColor={Theme.Color.White}
-      /> */}
+      />
     </Box>
   </Container>
 );

@@ -48,7 +48,7 @@ const AfterSchoolHero = () => {
       </h6>
       <Btn
         BgColor={Theme.Color.Nova}
-        Label="Request Info"
+        Label="Contact Us"
         Destination="/contact"
         TextColor={Theme.Color.White}
         Size="large"

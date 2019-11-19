@@ -21,7 +21,7 @@ import {
 } from 'components/library/Section/BasicSection';
 import { Box, Text } from 'components/library/Elements';
 import SplitHero from 'components/library/Hero/SplitHero';
-import ContactForm from 'components/library/Forms/ContactForm';
+import SpecialEventsForm from 'components/library/Forms/SpecialEvents/SpecialEvents';
 
 // Sections
 import SpecialEventsSplitLinks from 'sections/SpecialEventsSplitLinks';
@@ -80,6 +80,7 @@ const SpecialEventsPage = () => {
             BgColor={Theme.Color.Nova}
             TextColor={Theme.Color.White}
             Size="large"
+            Destination="/"
           />
         </Box>
       </SplitHero>
@@ -147,7 +148,7 @@ const SpecialEventsPage = () => {
       >
         <BasicInner>
           <Box textAlign="center">
-            <ContactForm
+            <SpecialEventsForm
               formName="special-events-contact"
               title="Want us to participate in your next special event?"
               footnote="Once you've submitted your request, you should receive an email with more info in 1-2 minutes. If you don't see it in your inbox, please check your spam promotions or spam folder."

@@ -10,6 +10,7 @@ import React from 'react';
 import ImgMatch from 'components/core/ImgMatch';
 import { Icon } from 'components/library/Icons';
 import Btn from 'components/library/Btn';
+import { Link } from 'gatsby';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -33,9 +34,9 @@ export const ImageAccordianFeature = ({ Links, Accordians }) => (
         {Links.map((link, index) => {
           return (
             <li key={index}>
-              <a className="h6" href={link.dest}>
+              <Link className="h6" to={link.dest}>
                 {link.label}
-              </a>
+              </Link>
             </li>
           );
         })}

@@ -106,7 +106,7 @@ const HomeHero = ({ bgColor, textColor, slides }) => {
                     bgColor={Theme.Color.Nova}
                     textColor={Theme.Color.White}
                   >
-                    Explore Courses
+                    Explore Classes
                   </HeroBtn>
                 </Link>
                 <NavFilter hero={true} />
