@@ -406,7 +406,12 @@ exports.createPages = ({ graphql, actions }) => {
     // Define Our Programs Template
     const programsTemplate = path.resolve(`src/templates/Programs/index.js`);
 
-    // Create Pages
+    /**
+     *
+     * Create State Pages
+     *
+     */
+
     _.each(result.data.allPlayWellStates.edges, state => {
       // Build our slugified strings for pretty URLs.
       let stateSlug = slugify(state.node.name);
@@ -420,20 +425,49 @@ exports.createPages = ({ graphql, actions }) => {
         return filteredManagers;
       };
 
-      //  Create our State Pages
-      createPage({
-        path: `/programs/${stateSlug}`,
-        component: slash(programsTemplate),
-        context: {
-          isCounty: false,
-          isCostCode: false,
-          abbrev: state.node.abbrev,
-          name: state.node.name,
-          playwell_state_id: state.node.playwell_state_id,
-          counties: state.node.counties,
-          managers: filteredStateManagers(state.node.playwell_state_id),
-        },
-      });
+      // Function to check if Courses exist in this State
+      const courseStateVerify = currentStateId => {
+        // Map our Clients and compare State Id's
+        let checkState = result.data.allPlayWellClient.edges.map(
+          (client, idx) => {
+            if (client.node.state_id == currentStateId) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+        );
+
+        // Return truthy or falsy if so.
+        if (checkState.includes(true)) {
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      //  Create our State Pages if Courses exist in this State
+      if (courseStateVerify(state.node.playwell_state_id) == true) {
+        createPage({
+          path: `/programs/${stateSlug}`,
+          component: slash(programsTemplate),
+          context: {
+            isCounty: false,
+            isCostCode: false,
+            abbrev: state.node.abbrev,
+            name: state.node.name,
+            playwell_state_id: state.node.playwell_state_id,
+            counties: state.node.counties,
+            managers: filteredStateManagers(state.node.playwell_state_id),
+          },
+        });
+      }
+
+      /**
+       *
+       * Create County Pages
+       *
+       */
 
       // Loop through each state's respective Counties data
       _.each(state.node.counties, county => {
@@ -450,51 +484,80 @@ exports.createPages = ({ graphql, actions }) => {
           return filteredManagers;
         };
 
-        //  Create our Counties Pages
-        createPage({
-          path: `/programs/${stateSlug}/${costCodeSlug}/${countySlug}`,
-          component: slash(programsTemplate),
-          context: {
-            isCounty: true,
-            isCostCode: false,
-            cost_code: county.cost_code,
-            cost_code_name: county.cost_code_name,
-            county_id: county.county_id,
-            name: county.name,
-            managers: filteredCountyManagers(county.cost_code),
-            parentState: {
-              id: state.node.state_id,
-              abbrev: state.node.abbrev,
-              name: state.node.name,
-              playwell_state_id: state.node.playwell_state_id,
-              counties: state.node.counties,
-              managers: filteredStateManagers(state.node.playwell_state_id),
-            },
-          },
-        });
+        // Function to check if Courses exist in this County
+        const courseCountyVerify = currentCountyId => {
+          // Map our Clients and compare State Id's
+          let checkCounty = result.data.allPlayWellClient.edges.map(
+            (client, idx) => {
+              if (client.node.county_id == currentCountyId) {
+                return true;
+              } else {
+                return false;
+              }
+            }
+          );
 
-        //  Create our Cost Code Pages
-        createPage({
-          path: `/programs/${stateSlug}/${costCodeSlug}`,
-          component: slash(programsTemplate),
-          context: {
-            isCounty: false,
-            isCostCode: true,
-            cost_code: county.cost_code,
-            cost_code_name: county.cost_code_name,
-            county_id: county.county_id,
-            name: county.name,
-            managers: filteredCountyManagers(county.cost_code),
-            parentState: {
-              id: state.node.state_id,
-              abbrev: state.node.abbrev,
-              name: state.node.name,
-              playwell_state_id: state.node.playwell_state_id,
-              counties: state.node.counties,
-              managers: filteredStateManagers(state.node.playwell_state_id),
+          // Return truthy or falsy if so.
+          if (checkCounty.includes(true)) {
+            return true;
+          } else {
+            return false;
+          }
+        };
+
+        //  Create our Counties Pages if Courses exist in this County
+        if (courseCountyVerify(county.county_id) == true) {
+          createPage({
+            path: `/programs/${stateSlug}/${costCodeSlug}/${countySlug}`,
+            component: slash(programsTemplate),
+            context: {
+              isCounty: true,
+              isCostCode: false,
+              cost_code: county.cost_code,
+              cost_code_name: county.cost_code_name,
+              county_id: county.county_id,
+              name: county.name,
+              managers: filteredCountyManagers(county.cost_code),
+              parentState: {
+                id: state.node.state_id,
+                abbrev: state.node.abbrev,
+                name: state.node.name,
+                playwell_state_id: state.node.playwell_state_id,
+                counties: state.node.counties,
+                managers: filteredStateManagers(state.node.playwell_state_id),
+              },
             },
-          },
-        });
+          });
+
+          /**
+           *
+           * Create Cost Code Pages if County exists in Cost Code
+           *
+           */
+
+          //  Create our Cost Code Pages
+          createPage({
+            path: `/programs/${stateSlug}/${costCodeSlug}`,
+            component: slash(programsTemplate),
+            context: {
+              isCounty: false,
+              isCostCode: true,
+              cost_code: county.cost_code,
+              cost_code_name: county.cost_code_name,
+              county_id: county.county_id,
+              name: county.name,
+              managers: filteredCountyManagers(county.cost_code),
+              parentState: {
+                id: state.node.state_id,
+                abbrev: state.node.abbrev,
+                name: state.node.name,
+                playwell_state_id: state.node.playwell_state_id,
+                counties: state.node.counties,
+                managers: filteredStateManagers(state.node.playwell_state_id),
+              },
+            },
+          });
+        }
       });
     });
 

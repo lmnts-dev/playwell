@@ -49,7 +49,8 @@ class FilteredResults extends PureComponent {
     let stateEdges = this.props.stateEdges;
 
     // For Debugging only
-    // console.log(stateEdges);ƒ
+    console.log("stateEdges:");
+    console.log(stateEdges);
     // console.log(results);
 
     // Show our listings
@@ -83,6 +84,10 @@ class FilteredResults extends PureComponent {
             return;
           }
         }, this)}
+
+        <div class="nearby-results">
+          More in 
+        </div>
       </ListingsResultsStyle>
     );
   }
