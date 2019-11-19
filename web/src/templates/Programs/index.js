@@ -26,7 +26,7 @@ import { DataFetch } from 'hooks/DataFetch';
 import { Theme, Root } from 'constants/Theme';
 
 // Helpers
-import locationMatch from 'helpers/LocationMatch';
+import locationMatch from 'helpers/locationMatch';
 
 // Props
 const ThemeProps = {

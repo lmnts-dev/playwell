@@ -23,7 +23,7 @@ import { CourseMapNav } from 'components/library/CourseMapNav';
 
 // Helpers
 import slugify from 'helpers/slugify';
-import locationMatch from 'helpers/LocationMatch';
+import locationMatch from 'helpers/locationMatch';
 import withLocation from 'helpers/withLocation';
 
 // Styles
