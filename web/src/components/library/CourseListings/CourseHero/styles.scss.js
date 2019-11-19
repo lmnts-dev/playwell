@@ -53,6 +53,10 @@ export const CourseHeroStyle = styled.section`
       font-weight: 400;
       align-items: center;
 
+      &.alt {
+        font-family: ${Theme.Font.Header};
+      }
+
       .inline {
         display: flex;
         align-items: center;
