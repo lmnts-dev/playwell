@@ -6,6 +6,8 @@
 /web/node_modules
 /web/public
 /web/.cache
+*/public/*
+*/.cache/*
 /studio/node_modules
 
 # Lerna files
