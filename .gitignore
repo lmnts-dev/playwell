@@ -4,6 +4,8 @@
 # Dependency directories
 /node_modules
 /web/node_modules
+/web/public
+/web/.cache
 /studio/node_modules
 
 # Lerna files
