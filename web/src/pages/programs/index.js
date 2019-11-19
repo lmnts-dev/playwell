@@ -27,7 +27,7 @@ import { Theme, Root } from 'constants/Theme';
 
 // Props
 const ThemeProps = {
-  BgColor: Theme.Color.Galaxy,
+  BgColor: Theme.Color.Background,
   PrimaryColor: Theme.Color.White,
   SecondaryColor: Theme.Color.Primary,
   TertiaryColor: Theme.Color.Primary,
@@ -59,7 +59,7 @@ const ProgramsPage = props => {
       />
 
       <div style={{ zIndex: Theme.mapZedIndex + 1 }}>
-        <BasicSection BgColor={Theme.Color.Blush}>
+        <BasicSection BgColor={Theme.Color.Background}>
           <BasicInner>
             <Centered
               Title="Our Programs"
@@ -72,7 +72,7 @@ const ProgramsPage = props => {
 
       <div style={{ zIndex: Theme.mapZedIndex + 1, overflow: 'hidden' }}>
         <BasicSection
-          BgColor={Theme.Color.Blush}
+          BgColor={Theme.Color.Background}
           TextColor={Theme.Color.Sunset}
           noPaddingTop
         >
