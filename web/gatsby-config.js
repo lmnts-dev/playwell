@@ -7,14 +7,14 @@ const path = require(`path`);
 
 // Load variables from `.env` as soon as possible
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV || 'development'}`
-})
+  path: `.env.${process.env.NODE_ENV || 'development'}`,
+});
 
 // Sanity client config
-const clientConfig = require('./client-config')
+const clientConfig = require('./client-config');
 
 // Check if node environment is production or not.
-const isProd = process.env.NODE_ENV === 'production'
+const isProd = process.env.NODE_ENV === 'production';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -34,8 +34,8 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-webpack-size`,
-    `gatsby-transformer-playwell`,
-    
+    `gatsby-source-playwell`,
+
     // For SVG files in React
     {
       resolve: `gatsby-plugin-react-svg`,
