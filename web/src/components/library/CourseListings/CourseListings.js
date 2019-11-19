@@ -49,7 +49,7 @@ class FilteredResults extends PureComponent {
     let stateEdges = this.props.stateEdges;
 
     // For Debugging only
-    console.log("stateEdges:");
+    console.log('stateEdges:');
     console.log(stateEdges);
     // console.log(results);
 
@@ -85,9 +85,7 @@ class FilteredResults extends PureComponent {
           }
         }, this)}
 
-        <div class="nearby-results">
-          More in 
-        </div>
+        <div class="nearby-results">More in</div>
       </ListingsResultsStyle>
     );
   }
@@ -374,19 +372,23 @@ class CourseListings extends PureComponent {
           pageContext={pageContext}
           categoryFilter={this.state.categoryFilter}
         />
-        <CourseMapNav mapWidth={mapWidth} mapZedIndex={mapZedIndex} />
-        <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-          <ListingsResults
-            courseData={courseData}
-            stateId={stateId}
-            countyId={countyId}
-            costCodeId={costCodeId}
-            pageContext={pageContext}
-            urlQuery={search.show} // Utilizes our withLocation(); function at the end of this document.
-            categoryFilter={this.state.categoryFilter}
-            toggleCategoryFilter={this.toggleCategoryFilter}
-          />
-        </ListingsWrapper>
+        {this.props.pageContext !== false ? (
+          <>
+            <CourseMapNav mapWidth={mapWidth} mapZedIndex={mapZedIndex} />
+            <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
+              <ListingsResults
+                courseData={courseData}
+                stateId={stateId}
+                countyId={countyId}
+                costCodeId={costCodeId}
+                pageContext={pageContext}
+                urlQuery={search.show} // Utilizes our withLocation(); function at the end of this document.
+                categoryFilter={this.state.categoryFilter}
+                toggleCategoryFilter={this.toggleCategoryFilter}
+              />
+            </ListingsWrapper>
+          </>
+        ) : null}
       </main>
     );
   }

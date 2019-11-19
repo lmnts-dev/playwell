@@ -46,7 +46,11 @@ export const CourseHero = ({
   categoryFilter,
 }) => (
   <CourseHeroStyle bg={bg}>
-    <HeroContainer bg="none" px={px} color={color}>
+    <HeroContainer
+      bg="none"
+      px={px}
+      color={color}
+    >
       <Flex
         width={1}
         flexWrap="wrap"

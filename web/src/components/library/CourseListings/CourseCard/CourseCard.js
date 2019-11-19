@@ -15,6 +15,7 @@ import { Theme, Root } from 'constants/Theme';
 
 // Helpers
 import { CategoryMetaMatch } from 'components/library/CategoryMetaMatch';
+import dateFormat from 'helpers/dateFormat';
 
 // Components
 import { Icon } from 'components/library/Icons';
@@ -63,7 +64,8 @@ export const CourseCard = ({
         <CourseCardStyle.Details>
           <div className="details-major">
             <span>
-              {courseData.start_date} - {courseData.end_date}
+              {dateFormat(courseData.start_date)} -{' '}
+              {dateFormat(courseData.end_date)}
             </span>
             <span>{courseData.days_of_the_week}</span>
           </div>
