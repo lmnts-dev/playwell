@@ -57,17 +57,17 @@ const TeamBuildingSplitLinks = ({
     <Section bg={themeProps.BgColor} pb={0}>
       <SplitLinks>
         <SplitLink
-          title="Adults need purposeful play too"
-          message="View our team building opportunites"
+          title="Want to throw a Play-Well birthday?"
+          message="Learn about our birthday parties"
           // message={'Keep exploring programs in ' + countyStateString + '.'}
-          to={'/'}
+          to={'/parties/birthday-parties'}
           themeProps={themeProps}
           first
         />
         <SplitLink
           title="Need help with a special event?"
-          message="Learn about our partnerships"
-          to={'/'}
+          message="Learn about what we do and request an event"
+          to={'/parties/special-events'}
           themeProps={themeProps}
           last
         />

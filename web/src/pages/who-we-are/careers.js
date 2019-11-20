@@ -250,14 +250,14 @@ const WhoCareersPage = () => {
             title="Keep reading."
             message="Learn about Our Values &amp; why we do what we do."
             // message={'Keep exploring programs in ' + countyStateString + '.'}
-            to="/"
+            to="/who-we-are/why"
             themeProps={ThemeProps}
             first
           />
           <SplitLink
             title="Here ye, here ye."
-            message="Check out our News &amp; Press page."
-            to="/"
+            message="Check out our after school enrichment page."
+            to="/team-building/after-school-enrichment"
             themeProps={ThemeProps}
             last
           />

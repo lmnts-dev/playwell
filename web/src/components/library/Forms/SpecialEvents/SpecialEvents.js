@@ -24,16 +24,9 @@ import { Theme, Root } from 'constants/Theme';
 export const SpecialEvents = ({ formName, title, footnote }) => (
   <Form
     name={formName}
-    method="post"
-    data-netlify="true"
-    data-netlify-honeypot="bot-field"
+    netlify
+    action="/success"
   >
-    <input type="hidden" name="bot-field" />
-    <input
-      type="hidden"
-      name={formName}
-      value={formName}
-    />
     <legend>
       <div className="h3">{title}</div>
       <p>
@@ -120,8 +113,7 @@ export const SpecialEvents = ({ formName, title, footnote }) => (
             name="phone"
             id="phone"
             placeholder="(___) ___-____"
-            pattern="[0-9]{3} [0-9]{3} [0-9]{4}"
-            maxLength="12"
+            maxLength="14"
           />
         </Box>
 
@@ -185,13 +177,9 @@ export const SpecialEvents = ({ formName, title, footnote }) => (
         </label>
       </div>
 
-      <Btn
-        BgColor={Theme.Color.Nova}
-        TextColor={Theme.Color.White}
-        Label="Submit Request"
-        Destination="/"
-        Size="large"
-      />
+      <button type="submit">
+          Submit Request
+      </button>
 
       <div className="footnote">
         <p className="p-lg">{footnote}</p>

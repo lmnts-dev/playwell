@@ -34,9 +34,9 @@ import { Base } from 'constants/styles/Base';
 // Props
 const ThemeProps = {
   BgColor: Theme.Color.White,
-  PrimaryColor: Theme.Color.Primary,
+  PrimaryColor: Theme.Color.Eggplant,
   SecondaryColor: Theme.Color.Dino,
-  TertiaryColor: Theme.Color.White,
+  TertiaryColor: Theme.Color.Eggplant,
 };
 
 
@@ -131,17 +131,18 @@ const OrganizationsPage = () => {
             title="Here ye, here ye."
             message="Learn about Our Story &amp; where it all began."
             // message={'Keep exploring programs in ' + countyStateString + '.'}
-            to="/"
+            to="/who-we-are"
             themeProps={ThemeProps}
             first
           />
-          <SplitLink
-            title="Keep reading."
-            message="Learn about how we utilize STEM Enrichment."
-            to="/"
-            themeProps={ThemeProps}
-            last
-          />
+        <SplitLink
+          title="Want to throw a Play-Well birthday?"
+          message="Learn about our birthday parties"
+          // message={'Keep exploring programs in ' + countyStateString + '.'}
+          to={'/parties/birthday-parties'}
+          themeProps={ThemeProps}
+          last
+        />
         </SplitLinks>
       </Section>
     </Layout>

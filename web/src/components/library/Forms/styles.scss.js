@@ -149,6 +149,34 @@ export const Form = styled.div`
     }
   }
 
+  button {
+    background-color: ${Theme.Color.Nova};
+    height: ${Root.Button.Size};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 0 calc(${Theme.Base.Size.Sm} * 0.8);
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    color: ${Theme.Color.White};
+    margin: 0;
+    box-shadow: 0px 0px 0px 0px rgba(${Theme.Color.Nightysky}, 0);
+    transition: all 0s ease;
+    line-height: ${Root.Button.Size};
+    outline: 0;
+    position: relative;
+    text-transform: capitalize;
+    border: none;
+
+    &:hover {
+      text-decoration: none;
+      box-shadow: 0px 0px 0px 6px rgba(93,99,118, 0.2);
+    }
+  }
+
   fieldset {
     border: none;
     margin: 0 auto;

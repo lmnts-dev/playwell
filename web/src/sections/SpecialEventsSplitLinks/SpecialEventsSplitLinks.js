@@ -60,14 +60,14 @@ const HostProgramSplitLinks = ({
           title="Adults need purposeful play too"
           message="View our team building opportunities"
           // message={'Keep exploring programs in ' + countyStateString + '.'}
-          to="/"
+          to="/team-building"
           themeProps={themeProps}
           first
         />
         <SplitLink
           title="Want to plan birthday?"
           message="Learn about our birthday parties"
-          to="/"
+          to="/parties/birthday-parties"
           themeProps={themeProps}
           last
         />

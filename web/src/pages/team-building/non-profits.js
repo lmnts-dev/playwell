@@ -30,9 +30,9 @@ import { Base } from 'constants/styles/Base';
 // Props
 const ThemeProps = {
   BgColor: Theme.Color.White,
-  PrimaryColor: Theme.Color.Primary,
+  PrimaryColor: Theme.Color.Eggplant,
   SecondaryColor: Theme.Color.Dino,
-  TertiaryColor: Theme.Color.White,
+  TertiaryColor: Theme.Color.Eggplant,
 };
 
 // Render Page
@@ -86,14 +86,15 @@ const NonProfitsPage = () => {
             title="Keep reading."
             message="Learn about Our Values &amp; why we do what we do."
             // message={'Keep exploring programs in ' + countyStateString + '.'}
-            to="/"
+            to="/who-we-are/why"
             themeProps={ThemeProps}
             first
           />
           <SplitLink
             title="Here ye, here ye."
-            message="Check out our News &amp; Press page."
-            to="/"
+            message="Learn about Our Story &amp; where it all began."
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/who-we-are"
             themeProps={ThemeProps}
             last
           />

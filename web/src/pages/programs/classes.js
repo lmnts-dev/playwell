@@ -17,6 +17,11 @@ import WorkshopsCulture from 'sections/WorkshopsCulture';
 import SummerCampsSplitLinks from 'sections/SummerCampsSplitLinks';
 import WorkshopsTestimonials from 'sections/WorkshopsTestimonials';
 import SummerCampsNewsletter from 'sections/SummerCampsNewsletter';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
+import {
+  BasicSection,
+  BasicInner,
+} from 'components/library/Section/BasicSection';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -53,7 +58,34 @@ const ClassesPage = () => {
         <WorkshopsCulture />
         <WorkshopsTestimonials />
         <SummerCampsNewsletter />
-        <SummerCampsSplitLinks themeProps={ThemeProps} />
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Dino}
+          BorderTop={Theme.Color.Sunset}
+          noPaddingBottom
+        >
+          <BasicInner wideWidth>
+            <Box textAlign="center">
+              <SplitLinks>
+                <SplitLink
+                  title="Keep exploring"
+                  message="Learn about what our summer camps look like"
+                  // message={'Keep exploring programs in ' + countyStateString + '.'}
+                  to={'/programs/summer-camps'}
+                  themeProps={ThemeProps}
+                  first
+                />
+                <SplitLink
+                  title="What do workshops look like?"
+                  message="Learn more about our workshops"
+                  to={'/programs/workshops'}
+                  themeProps={ThemeProps}
+                  last
+                />
+              </SplitLinks>
+            </Box>
+          </BasicInner>
+        </BasicSection>
         {/* <AfterSchoolContact /> */}
       </Main>
     </Layout>

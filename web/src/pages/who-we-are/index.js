@@ -410,14 +410,14 @@ const WhoPage = ({ SliderSettings }) => {
             title="Looking to join our team?"
             message="Check out our Jobs &amp; Careers page."
             // message={'Keep exploring programs in ' + countyStateString + '.'}
-            to="/"
+            to="/who-we-are/careers"
             themeProps={ThemeProps}
             first
           />
           <SplitLink
             title="Keep reading."
             message="Learn about Our Values &amp; why we do what we do."
-            to="/"
+            to="/who-we-are/why"
             themeProps={ThemeProps}
             last
           />

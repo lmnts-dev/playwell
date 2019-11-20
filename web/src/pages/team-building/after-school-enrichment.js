@@ -31,7 +31,7 @@ import { Base } from 'constants/styles/Base';
 // Props
 const ThemeProps = {
   BgColor: Theme.Color.Background,
-  PrimaryColor: Theme.Color.Lilac,
+  PrimaryColor: Theme.Color.Eggplant,
   SecondaryColor: Theme.Color.Dino,
   TertiaryColor: Theme.Color.Nova,
 };
@@ -47,6 +47,7 @@ const AfterSchoolEnrichmentPage = () => {
       <Classes />
       <Testimonials />
       <Overview />
+      <span id="request"/>
       <Contact />
     </Layout>
   );

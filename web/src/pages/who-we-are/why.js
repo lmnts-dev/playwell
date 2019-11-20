@@ -245,14 +245,14 @@ const WhoWhyPage = () => {
             title="Here ye, here ye."
             message="Learn about Our Story &amp; where it all began."
             // message={'Keep exploring programs in ' + countyStateString + '.'}
-            to="/"
+            to="/who-we-are"
             themeProps={ThemeProps}
             first
           />
           <SplitLink
             title="Keep reading."
             message="Learn about how we utilize STEM Enrichment."
-            to="/"
+            to="/who-we-are/how"
             themeProps={ThemeProps}
             last
           />
