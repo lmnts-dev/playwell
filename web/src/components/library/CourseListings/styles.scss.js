@@ -92,6 +92,17 @@ CourseListingsStyle.Toolbar = styled.div`
 
 export const ListingsResultsStyle = styled.div`
   position: relative;
+
+  .nearby-results {
+    .nearby-results-header {
+      margin-top: calc(${Root.Size} * 2);
+      color: ${Theme.Color.Tan};
+
+      span {
+        color: ${Theme.Color.Nova};
+      }
+    }
+  }
 `;
 
 //////////////////////////////////////////////////////////////////////

@@ -17,16 +17,18 @@ import Btn from 'components/library/Btn';
 import { Hero } from './styles.scss';
 import { Decorator } from '../../templates/Location/styles.scss';
 
-// Helpers
-import slugify from 'helpers/slugify';
-
 // Constants
 import { Theme, Root } from 'constants/Theme';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const LocationHero = ({ cities, pageContext }) => {
+const LocationHero = ({
+  cities,
+  pageContext,
+  programsSlug,
+  contextualPageName,
+}) => {
   // Check our County names if they contain 'County'
   const countyClean = countyName => {
     if (countyName.toLowerCase().includes('county')) {
@@ -35,37 +37,6 @@ const LocationHero = ({ cities, pageContext }) => {
       return countyName + ' County';
     }
   };
-
-  // Create page name
-  const contextualPageName = () => {
-    if (pageContext != false) {
-      if (pageContext.isCounty == true) {
-        return (
-          countyClean(pageContext.name) + ', ' + pageContext.parentState.name
-        );
-      } else if (pageContext.isCostCode == true) {
-        return pageContext.cost_code_name + ', ' + pageContext.parentState.name;
-      } else {
-        return pageContext.name;
-      }
-    } else {
-      return 'a place near you';
-    }
-  };
-
-  // Create slugs
-  const programsSlug =
-    pageContext.isCounty == true
-      ? slugify(pageContext.parentState.name.toLowerCase()) +
-        '/' +
-        slugify(pageContext.cost_code_name.toLowerCase()) +
-        '/' +
-        slugify(pageContext.name.toLowerCase())
-      : pageContext.isCostCode == true
-      ? slugify(pageContext.parentState.name.toLowerCase()) +
-        '/' +
-        slugify(pageContext.cost_code_name.toLowerCase())
-      : slugify(pageContext.name.toLowerCase());
 
   return (
     <Hero>
@@ -102,7 +73,7 @@ const LocationHero = ({ cities, pageContext }) => {
           <Hero.Heading>
             STEM Education &amp;
             <br />
-            Engineering in <span>{contextualPageName()}</span>
+            Engineering in <span>{contextualPageName}</span>
           </Hero.Heading>
           <Box mr={1} mb={[1, 0]} display="inline-block">
             <Btn

@@ -651,8 +651,8 @@ const CourseHeroContent = ({
    * For Debugging only
    */
 
-  console.log('geoDataVerify():');
-  console.log(geoDataVerify());
+  // console.log('geoDataVerify():');
+  // console.log(geoDataVerify());
 
   // console.log('listingContext()');
   // console.log(queryString.parse(window.location.search));
@@ -663,8 +663,8 @@ const CourseHeroContent = ({
   // console.log('categoryFilter (courseHeroContent)');
   // console.log(categoryFilter);
 
-  console.log('geoData:');
-  console.log(geoData);
+  // console.log('geoData:');
+  // console.log(geoData);
 
   /**
    * Return component
@@ -688,10 +688,15 @@ const CourseHeroContent = ({
         </h1>
       ) : (
         <h1>
-          <span className="location h2 alt">
+          <span className="h2">
+            <span className="inline" style={{ fontWeight: 'bold' }}>
+              Find LEGO® STEM {listingContext(categoryFilter)} near you.
+            </span>
+          </span>
+          <span className="location h2">
             <span className="inline" style={{ fontWeight: 'bold' }}>
               <Icon Name="map-marker-alt" fas />
-              Find LEGO® STEM {listingContext(categoryFilter)} near you
+              Get started below.
             </span>
           </span>
         </h1>

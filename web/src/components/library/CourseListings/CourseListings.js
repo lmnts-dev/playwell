@@ -47,11 +47,38 @@ class FilteredResults extends PureComponent {
     // Define our data variables
     let results = this.props.results;
     let stateEdges = this.props.stateEdges;
+    let pageContext = this.props.pageContext;
+    let clientsData = this.props.courseData.allPlayWellClient.edges;
+
+    // Function to filter our courseData for related results
+    const relatedCourseData = (clients, context) => {
+      // Create empty related Courses array
+      let relatedCourses = [];
+
+      // Check if the pageContext is a county or a cost code
+      if (pageContext.isCounty == true) {
+        // Get County ID
+        let contextualCountyId = context.county_id;
+        let contextualStateId = context.parentState.playwell_state_id;
+
+        // First grab our clients from the correct State ID and then filter out the current County:
+        let relatedCourses = clients
+          .filter(client => client.node.state_id == contextualStateId)
+          .filter(client => client.node.county_id != contextualCountyId);
+
+        return relatedCourses;
+      } else {
+        return relatedCourses;
+      }
+    };
 
     // For Debugging only
-    console.log('stateEdges:');
-    console.log(stateEdges);
+    // console.log('stateEdges:');
+    // console.log(stateEdges);
     // console.log(results);
+    console.log(pageContext);
+    console.log('relatedCourseData(clientsData, pageContext):');
+    console.log(relatedCourseData(clientsData, pageContext));
 
     // Show our listings
     return (
@@ -85,7 +112,64 @@ class FilteredResults extends PureComponent {
           }
         }, this)}
 
-        <div class="nearby-results">More in</div>
+        {/**
+         *
+         * Related Programs
+         *
+         */}
+        {pageContext.isCounty == true || pageContext.isCostCode == true ? (
+          relatedCourseData(clientsData, pageContext).length > 0 ? (
+            <div className="nearby-results">
+              <div className="nearby-results-inner">
+                <h3 className="nearby-results-header">
+                  Find more Programs in{' '}
+                  <Link
+                    to={'programs/' + slugify(pageContext.parentState.name)}
+                  >
+                    {pageContext.parentState.name}
+                  </Link>
+                </h3>
+                <div className="nearby-results-listings">
+                  {relatedCourseData(clientsData, pageContext).map(
+                    (client, idx) => {
+                      // Get our Location Meta Data for this Client
+                      let locationMetaResults = locationMatch(
+                        stateEdges,
+                        client.node.county_id,
+                        client.node.state_id
+                      );
+
+                      // Build our slugified strings for pretty URLs.
+                      let stateSlug = slugify(locationMetaResults.state.name);
+                      let countySlug = slugify(locationMetaResults.county.name);
+
+                      // console.log(client);
+                      if (client.node.courses.length > 0) {
+                        // Return our cards
+                        return (
+                          <ClientCard
+                            key={idx}
+                            clientData={client}
+                            locationMetaResults={locationMetaResults}
+                            stateSlug={stateSlug}
+                            countySlug={countySlug}
+                          />
+                        );
+                      } else {
+                        return;
+                      }
+                    },
+                    this
+                  )}
+                </div>
+              </div>
+            </div>
+          ) : (
+            false
+          )
+        ) : (
+          false
+        )}
       </ListingsResultsStyle>
     );
   }
@@ -207,6 +291,8 @@ class ListingsResults extends PureComponent {
         <FilteredResults
           results={filteredCourseDataByToggle(categoryFilter)}
           stateEdges={stateEdges}
+          pageContext={pageContext}
+          courseData={courseData}
         />
       </>
     );

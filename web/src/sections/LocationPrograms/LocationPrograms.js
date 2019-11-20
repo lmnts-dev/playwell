@@ -27,7 +27,11 @@ import { Theme, Root } from 'constants/Theme';
 //////////////////////////////////////////////////////////////////////
 
 // Render Page
-const LocationPrograms = () => (
+const LocationPrograms = ({
+  contextualPageName,
+  programsSlug,
+  pageContext,
+}) => (
   <>
     <SplitSection Flex="row">
       <Block
@@ -39,7 +43,10 @@ const LocationPrograms = () => (
         <Text as="span" fontSize={[1, 2, 2]} fontWeight={700} mb={1}>
           Playing anywhere
         </Text>
-        <Text as="h2">Find a program near you</Text>{' '}
+        <Text as="h2">
+          Find a program{' '}
+          {contextualPageName ? 'in ' + contextualPageName : 'near you'}
+        </Text>{' '}
         <Text as="p" fontSize={[0, 1, 1]} mt={[1, 1, 0]} mb={1}>
           Our assessments measured three goals including: student's knowledge of
           STEM terms or concepts, ability to generalize information, and
@@ -47,7 +54,7 @@ const LocationPrograms = () => (
         </Text>
         <Btn
           Label="Explore Programs"
-          Destination="/programs"
+          Destination={'/programs/' + programsSlug}
           BgColor={Theme.Color.Nova}
           TextColor={Theme.Color.White}
         />
@@ -61,7 +68,10 @@ const LocationPrograms = () => (
         <Text as="span" fontSize={[1, 2, 2]} fontWeight={700} mb={1}>
           Do it yourself
         </Text>
-        <Text as="h2">Host Your Own Program</Text>{' '}
+        <Text as="h2">
+          Host your own program{' '}
+          {contextualPageName ? 'in ' + contextualPageName : 'near you'}
+        </Text>{' '}
         <Text as="p" fontSize={[0, 1, 1]} mt={[1, 1, 0]} mb={1}>
           Through LEGO® inspired classes sparking “Aha!” moments, we help kids
           grasp fundamental principles of engineering and physics. The

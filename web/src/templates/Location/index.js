@@ -23,13 +23,15 @@ import LocationHero from 'sections/LocationHero';
 import LocationCoordinators from 'sections/LocationCoordinators';
 import LocationSplitSection from 'sections/LocationSplitSection';
 import LocationPrograms from 'sections/LocationPrograms';
-import LocationEvents from 'sections/LocationEvents';
 import Quote from 'sections/Quote';
 import LocationIntro from 'sections/LocationIntro';
 import LocationPlayZone from 'sections/LocationPlayZone';
 
 // Styles
-import { Hero, Intro, Scroll, Decorator } from './styles.scss';
+import { Scroll, Decorator } from './styles.scss';
+
+// Helpers
+import slugify from 'helpers/slugify';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -51,10 +53,45 @@ const LocationDetail = ({ pageContext }) => {
   // console.log(pageContext);
   // console.log(pageContext.managers.manager);
 
+  // Create page name
+  const contextualPageName = () => {
+    if (pageContext != false) {
+      if (pageContext.isCounty == true) {
+        return (
+          countyClean(pageContext.name) + ', ' + pageContext.parentState.name
+        );
+      } else if (pageContext.isCostCode == true) {
+        return pageContext.cost_code_name + ', ' + pageContext.parentState.name;
+      } else {
+        return pageContext.name;
+      }
+    } else {
+      return 'a place near you';
+    }
+  };
+
+  // Create slugs
+  const programsSlug =
+    pageContext.isCounty == true
+      ? slugify(pageContext.parentState.name.toLowerCase()) +
+        '/' +
+        slugify(pageContext.cost_code_name.toLowerCase()) +
+        '/' +
+        slugify(pageContext.name.toLowerCase())
+      : pageContext.isCostCode == true
+      ? slugify(pageContext.parentState.name.toLowerCase()) +
+        '/' +
+        slugify(pageContext.cost_code_name.toLowerCase())
+      : slugify(pageContext.name.toLowerCase());
+
   // Build Page
   return (
     <Layout {...ThemeProps}>
-      <LocationHero pageContext={pageContext} />
+      <LocationHero
+        programsSlug={programsSlug}
+        contextualPageName={contextualPageName()}
+        pageContext={pageContext}
+      />
 
       <Section pt={0} pb={0} fullWidth>
         <ImgMatch
@@ -103,7 +140,11 @@ const LocationDetail = ({ pageContext }) => {
         sapien.
       </Quote>
 
-      <LocationPrograms />
+      <LocationPrograms
+        programsSlug={programsSlug}
+        contextualPageName={contextualPageName()}
+        pageContext={contextualPageName()}
+      />
 
       <Scroll>
         <Scroll.Positioner>

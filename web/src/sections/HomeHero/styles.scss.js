@@ -11,6 +11,9 @@ import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
 import { Box, Flex, Text } from 'components/library/Elements';
 
+// Helpers
+import hexToRGB from 'helpers/hexToRGB';
+
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
@@ -389,11 +392,15 @@ export const HeroBtn = styled.button`
   text-align: center;
   display: flex;
   position: relative;
+  box-shadow: 0px 5px 20px 5px ${hexToRGB(Theme.Color.Deepsea, 0.2)};
+  transition: all 0.25s ease;
   height: calc(${Root.Button.Size} * 1.5);
   line-height: 0;
   justify-content: center;
   align-items: center;
-  padding: 3px calc(${Theme.Base.Size.Lg} / 2) 0 calc(${Theme.Base.Size.Lg} / 2);
+  padding: 3px calc(${Theme.Base.Size.Lg} / 2) 0 calc(${
+  Theme.Base.Size.Lg
+} / 2);
   margin-right: 1rem;
 
   &:hover {
