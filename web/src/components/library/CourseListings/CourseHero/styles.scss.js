@@ -34,26 +34,26 @@ export const CourseHeroStyle = styled.section`
     background: ${props => (props.bg ? props.bg : Theme.Color.Black)};
   }
 
-  .absolute-image, .gatsby-image-wrapper {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+  .absolute-image,
+  .gatsby-image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 
-      &.img {
-        
-        &:before {
-          content: "";
-          background-color: ${hexToRGB(Theme.Color.Dino, 0.6)};
-          width: 100%;
-          height: 100%;
-          top: 0;
-          left: 0;
-          position: absolute;
-          z-index: 5;
-        }
+    &.img {
+      &:before {
+        content: '';
+        background-color: ${hexToRGB(Theme.Color.Dino, 0.6)};
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 5;
       }
+    }
   }
 
   h1 {
@@ -108,13 +108,53 @@ export const CourseHeroStyle = styled.section`
 export const CourseHeroContentStyle = styled.div`
   position: relative;
   width: ${props =>
-    props.mapWidth ? 'calc(calc(100% - ' + props.mapWidth + ') - 40px)' : '100%'};
+    props.mapWidth
+      ? 'calc(calc(100% - ' + props.mapWidth + ') - 40px)'
+      : '100%'};
   z-index: ${props => (props.mapZedIndex ? props.mapZedIndex + 1 : 5)};
   overflow: visible;
   z-index: 500;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
   @media (max-width: ${Theme.Base.Media.Width.Md}) {
     width: 100%;
+  }
+
+  .related-queries {
+    display: flex;
+    margin-top: calc(${Root.Size} / 4);
+    flex-wrap: wrap;
+    line-height: 1.5;
+    width: ${props =>
+      props.mapWidth
+        ? 'calc(calc(100% - ' + props.mapWidth + ') - 40px)'
+        : '100%'};
+
+    span {
+      font-weight: bold;
+    }
+
+    a {
+      color: ${Theme.Color.White};
+      margin-left: 5px;
+      position: relative;
+
+      &:after {
+        content: ', ';
+      }
+
+      &:first-child {
+        margin-left: 0px;
+      }
+
+      &:last-child {
+        &:after {
+          display: none;
+        }
+      }
+    }
   }
 `;
 
@@ -287,8 +327,8 @@ export const SearchBarStyle = styled.div`
 
           .no-results {
             padding: calc(${Root.Size} *  1.5) calc(${Root.Size} / 2)  ${
-         Root.Size
-       } calc(${Root.Size} / 2);
+  Root.Size
+} calc(${Root.Size} / 2);
 
             width: 100%;
             color: ${hexToRGB(Theme.Color.Ocean, 0.6)};

@@ -223,7 +223,7 @@ class SearchBar extends PureComponent {
               placeholder={
                 pageContext !== false
                   ? 'Or search by another location...'
-                  : 'Find a program...'
+                  : 'Enter your state...'
               }
               onChange={this.handleInputChange}
             />
@@ -651,8 +651,11 @@ const CourseHeroContent = ({
    * For Debugging only
    */
 
-  // console.log('geoDataVerify():');
-  // console.log(geoDataVerify());
+  console.log('geoDataVerify():');
+  console.log(geoDataVerify());
+
+  console.log('pageContext:');
+  console.log(pageContext);
 
   // console.log('listingContext()');
   // console.log(queryString.parse(window.location.search));
@@ -701,8 +704,79 @@ const CourseHeroContent = ({
           </span>
         </h1>
       )}
-
       <SearchBar pageContext={pageContext} geoData={geoDataVerify()} />
+
+      {/**
+       *
+       * Related queries
+       *
+       */}
+      {pageContext.isCounty == true || pageContext.isCostCode == true ? (
+        <div className="related-queries">
+          <span>Also see: </span>
+          {geoDataVerify()
+            .edges.filter(
+              state =>
+                state.node.playwell_state_id ==
+                pageContext.parentState.playwell_state_id
+            )
+            .map((state, idx) => {
+              let stateCounties = state.node.counties
+                .filter(county => county.county_id != pageContext.county_id)
+                .map((county, idxx) => {
+                  // Build our slugified strings for pretty URLs.
+                  let rootSlug = '/programs/';
+                  let countySlug = slugify(county.name);
+                  let costCodeSlug = slugify(county.cost_code_name);
+                  let stateSlug = slugify(state.node.name);
+                  let slugString =
+                    rootSlug +
+                    stateSlug +
+                    '/' +
+                    costCodeSlug +
+                    '/' +
+                    countySlug +
+                    '/';
+
+                  return <Link to={slugString}>{county.name}</Link>;
+                });
+
+              return stateCounties;
+            })}
+        </div>
+      ) : pageContext != false ? (
+        <span className="related-queries">
+          <span>Also see: </span>
+          {geoDataVerify()
+            .edges.filter(
+              state =>
+                state.node.playwell_state_id == pageContext.playwell_state_id
+            )
+            .map((state, idx) => {
+              let stateCounties = state.node.counties.map((county, idxx) => {
+                // Build our slugified strings for pretty URLs.
+                let rootSlug = '/programs/';
+                let countySlug = slugify(county.name);
+                let costCodeSlug = slugify(county.cost_code_name);
+                let stateSlug = slugify(state.node.name);
+                let slugString =
+                  rootSlug +
+                  stateSlug +
+                  '/' +
+                  costCodeSlug +
+                  '/' +
+                  countySlug +
+                  '/';
+
+                return <Link to={slugString}>{county.name}</Link>;
+              });
+
+              return stateCounties;
+            })}
+        </span>
+      ) : (
+        false
+      )}
     </CourseHeroContentStyle>
   );
 };

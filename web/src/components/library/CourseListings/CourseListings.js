@@ -72,15 +72,23 @@ class FilteredResults extends PureComponent {
       }
     };
 
-    // For Debugging only
+    /**
+     * 
+     * For Debugging only
+     * 
+     */
     // console.log('stateEdges:');
     // console.log(stateEdges);
     // console.log(results);
-    console.log(pageContext);
-    console.log('relatedCourseData(clientsData, pageContext):');
-    console.log(relatedCourseData(clientsData, pageContext));
+    // console.log(pageContext);
+    // console.log('relatedCourseData(clientsData, pageContext):');
+    // console.log(relatedCourseData(clientsData, pageContext));
 
-    // Show our listings
+    /**
+     * 
+     * Show our listings
+     * 
+     */
     return (
       <ListingsResultsStyle>
         {results.map((client, idx) => {
@@ -439,9 +447,8 @@ class CourseListings extends PureComponent {
     // console.log('costCodeId: ' + costCodeId);
     // console.log('search.show:');
     // console.log(search.show);
-
-    console.log('this.state:');
-    console.log(this.state);
+    // console.log('this.state:');
+    // console.log(this.state);
 
     return (
       <main>

@@ -149,11 +149,22 @@ export class ListingsCounters extends PureComponent {
       categoryFilter,
       btnTheme,
     }) => {
-      console.log('categoryFilter:');
-      console.log(categoryFilter);
-      console.log('context:');
-      console.log(context);
 
+      /**
+       * 
+       * For Debugging Only
+       * 
+       */
+      // console.log('categoryFilter:');
+      // console.log(categoryFilter);
+      // console.log('context:');
+      // console.log(context);
+
+      /**
+       * 
+       * Return counters
+       * 
+       */
       return (
         <ListingsCountersStyle.Item
           btnTheme={btnTheme}
