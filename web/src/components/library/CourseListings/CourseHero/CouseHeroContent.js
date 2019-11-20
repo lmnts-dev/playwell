@@ -113,6 +113,9 @@ class SearchBar extends PureComponent {
   };
 
   render() {
+    // Establish Page Context
+    const pageContext = this.props.pageContext;
+
     // Clean our queries
     const searchSafeQuery = this.state.query.toLowerCase();
 
@@ -217,7 +220,11 @@ class SearchBar extends PureComponent {
           <div className="inner">
             {/* <Icon Name="map-marker-alt" fas /> */}
             <input
-              placeholder="Or search by another location..."
+              placeholder={
+                pageContext !== false
+                  ? 'Or search by another location...'
+                  : 'Find a program...'
+              }
               onChange={this.handleInputChange}
             />
             <Icon Name="search" fas />
@@ -553,7 +560,7 @@ const CourseHeroContent = ({
       }
 
       if (safeContext === 'course') {
-        return 'Courses';
+        return 'Classes';
       } else {
         return 'Programs';
       }
@@ -665,20 +672,32 @@ const CourseHeroContent = ({
 
   return (
     <CourseHeroContentStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-      <h1>
-        <span className="h2">
-          <span className="inline">
-            Explore LEGO® STEM {listingContext(categoryFilter)} in
+      {pageContext !== false ? (
+        <h1>
+          <span className="h2">
+            <span className="inline">
+              Explore LEGO® STEM {listingContext(categoryFilter)} in
+            </span>
           </span>
-        </span>
-        <span className="location h2">
-          <span className="inline">
-            <Icon Name="map-marker-alt" fas />
-            {contextualPageName()}
+          <span className="location h2">
+            <span className="inline">
+              <Icon Name="map-marker-alt" fas />
+              {contextualPageName()}
+            </span>
           </span>
-        </span>
-      </h1>
-      <SearchBar geoData={geoDataVerify()} />
+        </h1>
+      ) : (
+        <h1>
+          <span className="location h2 alt">
+            <span className="inline" style={{ fontWeight: 'bold' }}>
+              <Icon Name="map-marker-alt" fas />
+              Find LEGO® STEM {listingContext(categoryFilter)} near you
+            </span>
+          </span>
+        </h1>
+      )}
+
+      <SearchBar pageContext={pageContext} geoData={geoDataVerify()} />
     </CourseHeroContentStyle>
   );
 };
