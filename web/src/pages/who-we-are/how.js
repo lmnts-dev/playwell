@@ -46,8 +46,8 @@ import hexToRGB from 'helpers/hexToRGB';
 const ThemeProps = {
   BgColor: Theme.Color.Cream,
   PrimaryColor: Theme.Color.White,
-  SecondaryColor: Theme.Color.Primary,
-  TertiaryColor: Theme.Color.Primary,
+  SecondaryColor: Theme.Color.Dino,
+  TertiaryColor: Theme.Color.Eggplant,
 };
 
 const HeroProps = {

@@ -25,7 +25,7 @@ export const CategoryMetaMatch = categoryName => {
         theme: {
           bgColor: Theme.Color.Sky,
           primaryColor: Theme.Color.White,
-          secondaryColor: Theme.Color.Nova,
+          secondaryColor: Theme.Color.Deepsea,
           tertiaryColor: Theme.Color.White,
         },
       },
@@ -34,7 +34,7 @@ export const CategoryMetaMatch = categoryName => {
         theme: {
           bgColor: Theme.Color.Nova,
           primaryColor: Theme.Color.White,
-          secondaryColor: Theme.Color.Eggplant,
+          secondaryColor: Theme.Color.Dino,
           tertiaryColor: Theme.Color.White,
         },
       },
@@ -43,7 +43,7 @@ export const CategoryMetaMatch = categoryName => {
         theme: {
           bgColor: Theme.Color.Sunlight,
           primaryColor: Theme.Color.White,
-          secondaryColor: Theme.Color.Nova,
+          secondaryColor: Theme.Color.Dino,
           tertiaryColor: Theme.Color.White,
         },
       },
