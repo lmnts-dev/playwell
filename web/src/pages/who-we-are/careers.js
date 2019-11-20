@@ -53,9 +53,9 @@ const HeroProps = {
 
 const ThemeProps = {
   BgColor: Theme.Color.Sky,
-  PrimaryColor: 'unset',
-  SecondaryColor: Theme.Color.Primary,
-  TertiaryColor: Theme.Color.Primary,
+  PrimaryColor: Theme.Color.White,
+  SecondaryColor: Theme.Color.Dino,
+  TertiaryColor: Theme.Color.White,
 };
 
 // Begin Component

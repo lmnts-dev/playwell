@@ -52,8 +52,8 @@ const HeroProps = {
 
 const ThemeProps = {
   BgColor: Theme.Color.Cream,
-  PrimaryColor: 'unset',
-  SecondaryColor: Theme.Color.Primary,
+  PrimaryColor: Theme.Color.Eggplant,
+  SecondaryColor: Theme.Color.Dino,
   TertiaryColor: Theme.Color.Primary,
 };
 

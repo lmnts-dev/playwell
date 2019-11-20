@@ -44,10 +44,10 @@ import hexToRGB from 'helpers/hexToRGB';
 
 // Props
 const ThemeProps = {
-  BgColor: Theme.Color.Ocean,
-  PrimaryColor: Theme.Color.White,
-  SecondaryColor: Theme.Color.Primary,
-  TertiaryColor: Theme.Color.Primary,
+  BgColor: Theme.Color.Cream,
+  PrimaryColor: Theme.Color.Eggplant,
+  SecondaryColor: Theme.Color.Dino,
+  TertiaryColor: Theme.Color.Eggplant,
 };
 
 const HeroProps = {
