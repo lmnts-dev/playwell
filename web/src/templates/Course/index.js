@@ -90,7 +90,7 @@ const Course = ({ pageContext }) => {
   return (
     <Layout {...themeProps}>
       <HeroContainer {...heroProps}>
-        <Hero as="article">
+        <Hero as="article" {...heroProps}>
           <Hero.Avatar>
             <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
           </Hero.Avatar>
@@ -325,8 +325,8 @@ const Course = ({ pageContext }) => {
 
       <QuestionsCallout />
 
-      <Section bg="Sky" color="White">
-        <CourseFooter>
+      <Section bg={themeProps.BgColor} color="White">
+        <CourseFooter bg={themeProps.BgColor}>
           <div className="course">
             <h5>Let's play!</h5>
             <h2>{pageContext.course_type_name}</h2>

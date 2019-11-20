@@ -41,7 +41,7 @@ export const CategoryMetaMatch = categoryName => {
       {
         name: 'Camp',
         theme: {
-          bgColor: Theme.Color.Deepsea,
+          bgColor: Theme.Color.Sunlight,
           primaryColor: Theme.Color.White,
           secondaryColor: Theme.Color.Nova,
           tertiaryColor: Theme.Color.White,

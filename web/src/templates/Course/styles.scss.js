@@ -32,9 +32,14 @@ export const Hero = styled(Flex)`
     flex-wrap: wrap;
     width: 100%;
     max-width: ${Theme.Base.Grid.ReadingWidth};
+    color: ${props =>
+      props.bg === Theme.Color.Nova && Theme.Color.Dino ||
+      props.bg === Theme.Color.Ocean && Theme.Color.Deepsea ||
+      props.bg === Theme.Color.Sunlight && Theme.Color.Dino ||
+      Theme.Color.White
+    };
 
     li {
-      color: ${Theme.Color.Deepsea};
       text-transform: uppercase;
       letter-spacing: calc(${Root.Size} * 0.05);
       font-weight: 600;
@@ -48,14 +53,32 @@ export const Hero = styled(Flex)`
       }
 
       a {
-        color: ${Theme.Color.Deepsea};
+        color: ${props =>
+          props.bg === Theme.Color.Nova && Theme.Color.Dino ||
+          props.bg === Theme.Color.Ocean && Theme.Color.Deepsea ||
+          props.bg === Theme.Color.Sunlight && Theme.Color.Dino ||
+          Theme.Color.White
+        };
       }
     }
   }
 
+  .h5 {
+    color: ${props =>
+      props.bg === Theme.Color.Nova && Theme.Color.Dino ||
+      props.bg === Theme.Color.Ocean && Theme.Color.Deepsea ||
+      props.bg === Theme.Color.Sunlight && Theme.Color.Dino ||
+      Theme.Color.White
+    };
+  }
+
   .btn {
     background-color: ${props =>
-      props.bgColor ? props.bgColor : Theme.Color.Nova};
+        props.bg === Theme.Color.Nova && Theme.Color.Eggplant ||
+        props.bg === Theme.Color.Ocean && Theme.Color.Nova ||
+        props.bg === Theme.Color.Sunlight && Theme.Color.Ocean ||
+      Theme.Color.Dino
+    };
     border: 0;
     border-radius: 999px;
     color: ${props => (props.textColor ? props.textColor : Theme.Color.White)};
@@ -210,14 +233,23 @@ export const CourseFooter = styled.div`
     }
 
     .h5 {
-      color: ${Theme.Color.Deepsea};
+      color: ${props =>
+        props.bg === Theme.Color.Nova && Theme.Color.Dino ||
+        props.bg === Theme.Color.Ocean && Theme.Color.Deepsea ||
+        props.bg === Theme.Color.Sunlight && Theme.Color.Dino ||
+        Theme.Color.White
+      };
       font-weight: 600;
       padding-bottom: calc(${Root.Size} / 2);
     }
 
     .btn {
       background-color: ${props =>
-        props.bgColor ? props.bgColor : Theme.Color.Nova};
+        props.bg === Theme.Color.Nova && Theme.Color.Eggplant ||
+        props.bg === Theme.Color.Ocean && Theme.Color.Nova ||
+        props.bg === Theme.Color.Sunlight && Theme.Color.Ocean ||
+        Theme.Color.Dino
+      };
       border: 0;
       border-radius: 999px;
       color: ${props =>
