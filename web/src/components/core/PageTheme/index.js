@@ -27,6 +27,59 @@ export const PageThemeStyle = createGlobalStyle`
   
   nav {
     &.nav-bar {
+
+      .brandmark {
+        .well-gear {
+          transition: all .25s ease;
+          fill: ${props =>
+            props.BgColor == Theme.Color.Nova
+              ? Theme.Color.White
+              : Theme.Color.Nova};
+        }
+        .well-text {
+          transition: all .25s ease;
+          fill: ${props =>
+            props.BgColor == Theme.Color.Nova
+              ? Theme.Color.Nova
+              : Theme.Color.White};
+        }
+        .bottom-arrow {
+          transition: all .25s ease;
+          fill: ${props =>
+            props.BgColor == Theme.Color.Nova
+              ? Theme.Color.White
+              : Theme.Color.Nova};
+        }
+
+        .play-gear {
+          transition: all .25s ease;
+          fill: ${props =>
+            props.BgColor == Theme.Color.Eggplant ||
+            Theme.Color.Primary ||
+            Theme.Color.Deepsea
+              ? Theme.Color.White
+              : Theme.Color.Primary};
+        }
+        .play-text {
+          transition: all .25s ease;
+          fill: ${props =>
+            props.BgColor == Theme.Color.Eggplant ||
+            Theme.Color.Primary ||
+            Theme.Color.Deepsea
+              ? Theme.Color.Primary
+              : Theme.Color.Primary};
+        }
+        .top-arrow {
+          transition: all .25s ease;
+          fill: ${props =>
+            props.BgColor == Theme.Color.Eggplant ||
+            Theme.Color.Primary ||
+            Theme.Color.Deepsea
+              ? Theme.Color.White
+              : Theme.Color.Primary};
+        }
+      }
+
       .nav-inner:not(.scroll) {
         .nav-primary {
           .linklist {
