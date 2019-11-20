@@ -61,6 +61,9 @@ export const CourseHeroStyle = styled.section`
     .location {
       display: block;
       overflow: hidden;
+      @media (max-width: ${Theme.Base.Media.Width.Md}) {
+        height: calc(${Theme.Base.Size.Lg} * 0.75);
+      }
     }
 
     .inline {
@@ -87,6 +90,10 @@ export const CourseHeroStyle = styled.section`
         font-size: calc(${Root.Size} / 1.5);
         margin-right: calc(${Root.Size} / 4);
         color: ${Theme.Color.Nova};
+        @media (max-width: ${Theme.Base.Media.Width.Md}) {
+          height: auto;
+          width: auto;
+        }
       }
     }
   }
@@ -126,6 +133,7 @@ export const SearchBarStyle = styled.div`
   .search-bar {
     display: flex;
     width: 100%;
+    max-width: calc(${Theme.Base.Size.Lg} * 10);
     background: ${Theme.Color.White};
     justify-content: space-between;
     border-radius: calc(${Root.Size} / 2);
@@ -189,6 +197,9 @@ export const SearchBarStyle = styled.div`
         position: relative;
         left: 5px;
         top: 3px;
+        @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+          font-size: .8rem;
+        }
       }
     }
   }
@@ -272,8 +283,8 @@ export const SearchBarStyle = styled.div`
 
           .no-results {
             padding: calc(${Root.Size} *  1.5) calc(${Root.Size} / 2)  ${
-  Root.Size
-} calc(${Root.Size} / 2);
+         Root.Size
+       } calc(${Root.Size} / 2);
 
             width: 100%;
             color: ${hexToRGB(Theme.Color.Ocean, 0.6)};

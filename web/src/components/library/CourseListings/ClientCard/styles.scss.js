@@ -35,6 +35,7 @@ export const ClientCardStyle = styled.div`
   border-radius: calc(${Root.Size} / 2);
   border: 1px solid ${hexToRGB(Theme.Color.Cream, 0)};
   cursor: pointer;
+  
   @media (max-width: ${Theme.Base.Media.Width.Sm}) {
     padding: 0 calc(${Root.Size} / 3);
   }
@@ -54,6 +55,7 @@ ClientCardStyle.ClientName = styled.span`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  position: relative;
   font-weight: bold;
   font-size: 1.5rem;
   padding: calc(${Root.Size} / 2) 0;
@@ -71,11 +73,22 @@ ClientCardStyle.ClientName = styled.span`
   .client-counts {
     display: flex;
     align-items: center;
+    @media (max-width: ${Theme.Base.Media.Width.Md}) {
+      span:first-of-type {
+        font-size: 16px;
+      }
+    }
     @media (max-width: ${Theme.Base.Media.Width.Sm}) {
       span:last-of-type {
         position: absolute;
-        right: 0;
-        top: 50%;
+        right: calc(${Root.Size} / -15);
+        top: calc(${Root.Size} / 5);
+      }
+      span:first-of-type {
+      //  margin-top: calc(${Root.Size} / 5);
+        position: absolute;
+        left: 0;
+        top: calc(${Root.Size} / 5);
       }
     }
   }
@@ -83,6 +96,10 @@ ClientCardStyle.ClientName = styled.span`
   .client-name {
     display: flex;
     flex-direction: column;
+    @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+    //  width: calc(100% - calc(${Root.Size} / 1.5));
+      margin-top: calc(${Root.Size} * .75);
+    }
 
     .subtitle-list {
       font-size: 0.8rem;
@@ -92,12 +109,12 @@ ClientCardStyle.ClientName = styled.span`
       color: ${Theme.Color.Tan};
       margin-bottom: calc(${Root.Size} / 4);
 
-      span {
+      span:first-of-type {
         margin-right: calc(${Root.Size} / 2);
         position: relative;
         @media (max-width: ${Theme.Base.Media.Width.Sm}) {
-          margin-right: 0;
-          display: block;
+          //  margin-right: 0;
+          //  display: block;
         }
 
         &:after {
@@ -111,7 +128,7 @@ ClientCardStyle.ClientName = styled.span`
           border-radius: 50%;
           background: ${Theme.Color.Tan};
           @media (max-width: ${Theme.Base.Media.Width.Sm}) {
-            content: none;
+            //  content: none;
           }
         }
 

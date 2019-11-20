@@ -95,10 +95,16 @@ CourseCardStyle.Details = styled.span`
     font-weight: 500;
     font-size: 1.2rem;
     color: ${Theme.Color.Tan};
+    @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+      display: block;
+    }
 
     span {
       margin-right: calc(${Root.Size} / 2);
       position: relative;
+      @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+        display: block;
+      }
 
       &:after {
         content: '';
@@ -110,6 +116,9 @@ CourseCardStyle.Details = styled.span`
         height: 3px;
         border-radius: 50%;
         background: ${Theme.Color.Tan};
+        @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+          content: none;
+        }
       }
 
       &:last-child {
@@ -127,11 +136,17 @@ CourseCardStyle.Details = styled.span`
     font-weight: 500;
     margin-top: calc(${Root.Size} / 4);
     color: ${Theme.Color.Galaxy};
+    @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+      display: block;
+    }
 
     span {
       margin-right: calc(${Root.Size} / 2);
       position: relative;
       font-size: 0.8rem;
+      @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+        display: block;
+      }
 
       &:after {
         content: '';
@@ -143,6 +158,9 @@ CourseCardStyle.Details = styled.span`
         height: 3px;
         border-radius: 50%;
         background: ${Theme.Color.Galaxy};
+        @media (max-width: ${Theme.Base.Media.Width.Sm}) {
+          content: none;
+        }
       }
 
       &:last-child {
