@@ -78,8 +78,6 @@ const Layout = ({
 // the site metadata query available.
 
 const LayoutWithMetadata = props => {
-  console.log('props:');
-  console.log(props);
   // Pass our data into our Layout component.
   return (
     <StaticQuery

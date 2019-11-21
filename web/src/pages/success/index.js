@@ -37,6 +37,7 @@ import TeamBuildingHero from 'sections/TeamBuildingHero';
 import TeamBuildingCulture from 'sections/TeamBuildingCulture';
 import TeamBuildingSplitLinks from 'sections/TeamBuildingSplitLinks';
 import AfterSchoolContact from 'sections/AfterSchoolContact';
+import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -113,8 +114,6 @@ const Success = () => {
   return (
     <Layout {...ThemeProps}>
 
-
-
       <OverflowHidden>
         <BasicSection 
           noPaddingBottom 
@@ -122,7 +121,6 @@ const Success = () => {
           TextColor={Theme.Color.Eggplant}
         >
           <BasicInner>
-            <CenteredTitle Title="Well Supplied Fun" Class="headline" />
             <Box textAlign="center" width={'90%'} m={'0 auto'}>
               <h3>
                 Thank you for submitting your request!
@@ -158,7 +156,7 @@ const Success = () => {
           />
       </BasicSection>
 
-      <SuccessSplitLinks themeProps={ThemeProps} />
+      <SplitLinks themeProps={ThemeProps} />
     </Layout>
   );
 };
