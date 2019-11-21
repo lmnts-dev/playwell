@@ -43,7 +43,7 @@ import { Base } from 'constants/styles/Base';
 const HeroProps = {
   bg: Theme.Color.Cream,
   color: Theme.Color.Primary,
-  playButton: true,
+  playButton: false,
   playButtonBg: Theme.Color.Nova,
   gear: false,
   subNavColor: Theme.Color.Nova,

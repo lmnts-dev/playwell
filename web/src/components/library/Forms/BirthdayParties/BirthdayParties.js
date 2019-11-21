@@ -24,7 +24,8 @@ import { Theme, Root } from 'constants/Theme';
 export const BirthdayParties = ({ formName, title, footnote }) => (
 <form    
   name={formName}
-  netlify
+  data-netlify="true"
+  data-netlify-honeypot="bot-field"
   action="/success"
 >
   <Form>

@@ -225,6 +225,11 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       flex-direction: column-reverse;
       display: flex;
+      padding-right: calc(${Theme.Base.Size.Lg} * 0.75);
+    }
+
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      padding-right: calc(${Theme.Base.Size.Lg} * 0.4);
     }
     .text {
       flex: 2;

@@ -40,10 +40,14 @@ export const CurveAndAngleWithPadding = styled(CurveAndAngle)`
     .volcano {
       position: absolute !important;
       width: 30%;
-      bottom: 90px;
+      bottom: 5%;
       right: 19%;
       @media (min-width: ${Theme.Base.Grid.SiteWidth}) {
         width: calc(${Theme.Base.Size.Lg} * 7.2);
+        bottom: 120px;
+      }
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        width: 40%;
       }
     }
   }

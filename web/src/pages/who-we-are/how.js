@@ -53,7 +53,7 @@ const ThemeProps = {
 const HeroProps = {
   bg: Theme.Color.Lilac,
   color: Theme.Color.White,
-  playButton: true,
+  playButton: false,
   playButtonBg: Theme.Color.Nova,
   gear: true,
   gearStroke: Theme.Color.White,
@@ -73,157 +73,157 @@ const OverflowHidden = styled.div`
 const WhoHowPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero
-        {...HeroProps}
-        subNav={[
-          { label: 'who', link: '/who-we-are/who' },
-          { label: 'why', link: '/who-we-are/why' },
-          { label: 'how', active: true, link: '/who-we-are/how' },
-          { label: 'careers', link: '/who-we-are/careers' },
-        ]}
-      >
-        <h2>How STEM Enrichment p aves the way for our beliefs</h2>
-        <h6>Lorem ipsum dolor sit amet, consectetur a.</h6>
-      </SplitHero>
+      <OverflowHidden>
+        <SplitHero
+          {...HeroProps}
+          subNav={[
+            { label: 'who', link: '/who-we-are/who' },
+            { label: 'why', link: '/who-we-are/why' },
+            { label: 'how', active: true, link: '/who-we-are/how' },
+            { label: 'careers', link: '/who-we-are/careers' },
+          ]}
+        >
+          <h2>How STEM Enrichment paves the way for our beliefs</h2>
+          <h6>Lorem ipsum dolor sit amet, consectetur a.</h6>
+        </SplitHero>
 
-      <BasicSection
-        BgColor={Theme.Color.Lilac}
-        TextColor={Theme.Color.White}
-        BorderTop={Theme.Color.White}
-      >
-        <BasicInner>
-          <CenteredTitle
-            MaxWidth="500px"
-            Title="Lorem ipsum dolar sit amet, consectetur a."
-            Class="h3"
-            TextColor={Theme.Color.White}
-          />
-        </BasicInner>
-      </BasicSection>
+        <BasicSection
+          BgColor={Theme.Color.Lilac}
+          TextColor={Theme.Color.White}
+          BorderTop={Theme.Color.White}
+        >
+          <BasicInner>
+            <CenteredTitle
+              MaxWidth="500px"
+              Title="Lorem ipsum dolar sit amet, consectetur a."
+              Class="h3"
+              TextColor={Theme.Color.White}
+            />
+          </BasicInner>
+        </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Lilac}
-        TextColor={Theme.Color.White}
-        noPaddingTop
-        noPaddingBottom
-      >
-        <BasicInner>
-          <LegoList
-            blocks={[
-              {
-                title: 'Creative Collaboration',
-                text:
-                  'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
-                legoColor: 'orange',
-              },
-              {
-                title: 'New Perspectives',
-                text:
-                  'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
-                legoColor: 'purple',
-              },
-              {
-                title: 'Staff Morale',
-                text:
-                  'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
-                legoColor: 'blue',
-              },
+        <BasicSection
+          BgColor={Theme.Color.Lilac}
+          TextColor={Theme.Color.White}
+          noPaddingTop
+          noPaddingBottom
+        >
+          <BasicInner>
+            <LegoList
+              blocks={[
+                {
+                  title: 'Creative Collaboration',
+                  text:
+                    'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                  legoColor: 'orange',
+                },
+                {
+                  title: 'New Perspectives',
+                  text:
+                    'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                  legoColor: 'purple',
+                },
+                {
+                  title: 'Staff Morale',
+                  text:
+                    'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                  legoColor: 'blue',
+                },
+              ]}
+            />
+          </BasicInner>
+        </BasicSection>
+        <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Lilac}>
+          <CurveAndAngle
+            CurveColor={Theme.Color.Dino}
+            AngleColor={Theme.Color.Background}
+            AbsoluteImages={[
+              { src: 'gears.png', width: '25vw', right: '2vw', bottom: '0' },
             ]}
           />
-        </BasicInner>
-      </BasicSection>
-      <BasicSection noPaddingTop noPaddingBottom BgColor={Theme.Color.Lilac}>
-        <CurveAndAngle
-          CurveColor={Theme.Color.Dino}
-          AngleColor={Theme.Color.Background}
-          AbsoluteImages={[
-            { src: 'gears.png', width: '25vw', right: '2vw', bottom: '0' },
-          ]}
-        />
-      </BasicSection>
+        </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Dino}
-        noPaddingTop
-      >
-        <BasicInner>
-          <SimpleTextWithImage
-            Caption="Our Impact on STEM Comprehension"
-            Header="Children Learn While Playing"
-            Paragraph="Our assessment measured three goals including: students
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Dino}
+          noPaddingTop
+        >
+          <BasicInner>
+            <SimpleTextWithImage
+              Caption="Our Impact on STEM Comprehension"
+              Header="Children Learn While Playing"
+              Paragraph="Our assessment measured three goals including: students
             knowledge of STEM terms or concepts, ability to generalize
             information, and increasing positive feelings towards STEM
             subjects. For example, the definition of gravity or friction, or
             that when two gears interlock their teeth its called meshing."
-            Image="graph.png"
+              Image="graph.png"
+            />
+          </BasicInner>
+        </BasicSection>
+
+        <BasicSection BgColor={Theme.Color.Blush} TextColor={Theme.Color.Nova}>
+          <BasicInner>
+            <CenteredTitle
+              Title="Our Programs"
+              Class="headline"
+              TextColor={Theme.Color.Nova}
+            />
+          </BasicInner>
+        </BasicSection>
+
+        <BasicSection
+          BgColor={Theme.Color.Blush}
+          TextColor={Theme.Color.Clay}
+          noPaddingTop
+        >
+          <ImageAccordianFeature
+            Links={[
+              { link: '/', label: 'Robotics' },
+              { link: '/', label: 'Intro to STEM' },
+              { link: '/', label: 'Gaming' },
+              { link: '/', label: 'Advanced Engineering' },
+              { link: '/', label: 'Engineering Themes' },
+            ]}
+            Accordians={[
+              {
+                header: 'Workshops',
+                paragraph:
+                  'Play-Well LEGO@-inspired programs can be tailored to your needs. We offer workshops for Girl Scouts, Homeschool Groups, Boy Scouts, In-school field trips and more.',
+                image: 'girl-3.jpg',
+                buttonText: 'Learn More',
+                buttonLink: '/programs/workshops',
+              },
+              {
+                header: 'Classes',
+                paragraph:
+                  'What can you do with over 20,000 pieces of LEGO®? In our Engineering with LEGO® enrichment programs kids take on real-life engineering challenges allowing them to see STEM in action. Your child will explore concepts in physics, architecture, and mechanical engineering. Our students find inventive solutions in a fun-filled context that supports the growth of young minds through hands-on, minds-on learning.',
+                image: 'girl-2.jpg',
+                buttonText: 'Learn More',
+                buttonLink: '/programs/classes',
+              },
+              {
+                header: 'Camps',
+                paragraph:
+                  "We'll help unleash your child's inner engineer in our STEM summer camps. They'll have so much fun in our LEGO-inspired summer camps that they won't even realize how much they're learning!",
+                image: 'girl-1.jpg',
+                buttonText: 'Learn More',
+                buttonLink: '/programs/summer-camps',
+              },
+            ]}
           />
-        </BasicInner>
-      </BasicSection>
+        </BasicSection>
 
-      <BasicSection BgColor={Theme.Color.Blush} TextColor={Theme.Color.Nova}>
-        <BasicInner>
-          <CenteredTitle
-            Title="Our Programs"
-            Class="headline"
-            TextColor={Theme.Color.Nova}
-          />
-        </BasicInner>
-      </BasicSection>
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Blush}
+          noPaddingTop
+        >
+          <BasicInner>
+            <CenteredTitle Title="Our Process" Class="headline" />
+          </BasicInner>
+        </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Blush}
-        TextColor={Theme.Color.Clay}
-        noPaddingTop
-      >
-        <ImageAccordianFeature
-          Links={[
-            { link: '/', label: 'Robotics' },
-            { link: '/', label: 'Intro to STEM' },
-            { link: '/', label: 'Gaming' },
-            { link: '/', label: 'Advanced Engineering' },
-            { link: '/', label: 'Engineering Themes' },
-          ]}
-          Accordians={[
-            {
-              header: 'Workshops',
-              paragraph:
-                'Play-Well LEGO@-inspired programs can be tailored to your needs. We offer workshops for Girl Scouts, Homeschool Groups, Boy Scouts, In-school field trips and more.',
-              image: 'girl-3.jpg',
-              buttonText: 'Learn More',
-              buttonLink: '/programs/workshops',
-            },
-            {
-              header: 'Classes',
-              paragraph:
-                'What can you do with over 20,000 pieces of LEGO®? In our Engineering with LEGO® enrichment programs kids take on real-life engineering challenges allowing them to see STEM in action. Your child will explore concepts in physics, architecture, and mechanical engineering. Our students find inventive solutions in a fun-filled context that supports the growth of young minds through hands-on, minds-on learning.',
-              image: 'girl-2.jpg',
-              buttonText: 'Learn More',
-              buttonLink: '/programs/classes',
-            },
-            {
-              header: 'Camps',
-              paragraph:
-                "We'll help unleash your child's inner engineer in our STEM summer camps. They'll have so much fun in our LEGO-inspired summer camps that they won't even realize how much they're learning!",
-              image: 'girl-1.jpg',
-              buttonText: 'Learn More',
-              buttonLink: '/programs/summer-camps',
-            },
-          ]}
-        />
-      </BasicSection>
-
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Blush}
-        noPaddingTop
-      >
-        <BasicInner>
-          <CenteredTitle Title="Our Process" Class="headline" />
-        </BasicInner>
-      </BasicSection>
-
-      <OverflowHidden>
         <BasicSection
           BgColor={Theme.Color.Background}
           TextColor={Theme.Color.Sunset}
@@ -259,40 +259,40 @@ const WhoHowPage = () => {
             />
           </BasicInner>
         </BasicSection>
+
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          BorderTop={Theme.Color.Clay}
+          noPaddingTop
+        />
+
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          BgLinear={Theme.Color.White}
+          TextColor={Theme.Color.Dino}
+        >
+          <BasicInner noPaddingRight>
+            <EdgeSlider
+              images={[
+                'random-1.jpg',
+                'random-2.jpg',
+                'random-3.jpg',
+                'random-4.jpg',
+                'random-5.jpg',
+              ]}
+              titles={[
+                'Intro Into STEM',
+                'Robotics',
+                'Engineering',
+                'Gaming',
+                'Building',
+              ]}
+              caption="It's not always one size fits all"
+              title="Our Curriculums"
+            />
+          </BasicInner>
+        </BasicSection>
       </OverflowHidden>
-
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        BorderTop={Theme.Color.Clay}
-        noPaddingTop
-      />
-
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        BgLinear={Theme.Color.White}
-        TextColor={Theme.Color.Dino}
-      >
-        <BasicInner noPaddingRight>
-          <EdgeSlider
-            images={[
-              'random-1.jpg',
-              'random-2.jpg',
-              'random-3.jpg',
-              'random-4.jpg',
-              'random-5.jpg',
-            ]}
-            titles={[
-              'Intro Into STEM',
-              'Robotics',
-              'Engineering',
-              'Gaming',
-              'Building',
-            ]}
-            caption="It's not always one size fits all"
-            title="Our Curriculums"
-          />
-        </BasicInner>
-      </BasicSection>
 
       <BasicSection
         BgColor={Theme.Color.Background}

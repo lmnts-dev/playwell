@@ -9,6 +9,7 @@ import styled from 'styled-components';
 // Constants
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
+import hexToRGB from 'helpers/hexToRGB';
 
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
@@ -18,6 +19,18 @@ export const GearContainer = styled.div`
   top: calc(${props => props.theme.Root.Size} * -1.5);
   left: calc(${props => props.theme.Root.Size} * -1.5);
   z-index: 0;
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    left: auto;
+    right: calc(${Theme.Base.Size.Lg} * -0.5);
+  }
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    top: auto;
+    bottom: 0;
+    .ico {
+      width: calc(${Theme.Base.Size.Lg} * 4);
+      height: calc(${Theme.Base.Size.Lg} * 4);
+    }
+  }
 `;
 
 export const SplitHeroStyle = styled.div`
@@ -211,6 +224,161 @@ export const SplitHeroStyle = styled.div`
   }
 `;
 
+export const VideoModal = styled.div`
+  height: 100%;
+  width: 120%;
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  right: 0;
+
+  &:hover {
+    ~ .play-button {
+      transform: scale(1.1) translateX(-50%);
+    }
+  }
+  
+  .open-button {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+  @keyframes modal-video {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes modal-video-inner {
+    from {
+      transform: translate(0, 100px);
+    }
+
+    to {
+      transform: translate(0, 0);
+    }
+  }
+
+  .modal-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${hexToRGB(Theme.Color.Dino, 0.5)};;
+    z-index: 999;
+    pointer-events: all;
+    cursor: pointer;
+    opacity: 1;
+    animation-timing-function: ease-out;
+    animation-duration: .3s;
+    animation-name: modal-video;
+    -webkit-transition: opacity .3s ease-out;
+    -moz-transition: opacity .3s ease-out;
+    -ms-transition: opacity .3s ease-out;
+    -o-transition: opacity .3s ease-out;
+    transition: opacity .3s ease-out;
+  }
+
+  .modal-video-effect-exit {
+    opacity: 0;
+
+    & .modal-video-movie-wrap {
+      -webkit-transform: translate(0, 100px);
+      -moz-transform: translate(0, 100px);
+      -ms-transform: translate(0, 100px);
+      -o-transform: translate(0, 100px);
+      transform: translate(0, 100px);
+    }
+  }
+
+  .modal-video-body {
+    max-width: 940px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: table;
+  }
+
+  .modal-video-inner {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal-video-movie-wrap {
+    width: 100%;
+    height: 0;
+    position: relative;
+    padding-bottom: 56.25%;
+    background-color: #333;
+    animation-timing-function: ease-out;
+    animation-duration: .3s;
+    animation-name: modal-video-inner;
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+    -webkit-transition: -webkit-transform .3s ease-out;
+    -moz-transition: -moz-transform .3s ease-out;
+    -ms-transition: -ms-transform .3s ease-out;
+    -o-transition: -o-transform .3s ease-out;
+    transition: transform .3s ease-out;
+
+    & iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .modal-video-close-btn {
+    position: absolute;
+    z-index: 2;
+    top: -35px;
+    right: -35px;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    border: none;
+    background: transparent;
+    display: none;
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      margin-top: -1px;
+      background: #fff;
+      border-radius: 5px;
+      margin-top: -6px;
+    }
+  }
+`;
 
 //////////////////////////////////////////////////////////////////////
 // End Styles

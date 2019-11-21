@@ -30,7 +30,7 @@ const HeroProps = {
   arrowColor: Theme.Color.Nova,
   bg: Theme.Color.Nova,
   color: Theme.Color.White,
-  playButton: true,
+  playButton: false,
   playButtonBg: Theme.Color.Primary,
   gear: false,
   bgMatch: 'kid-machine.jpg',
