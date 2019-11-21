@@ -514,6 +514,84 @@ const CourseHeroContent = ({
   categoryFilter,
 }) => {
   /**
+   *
+   * Use our React Hook to get our Data
+   */
+  let dataFetch = DataFetch();
+
+  /**
+   *
+   * Group our Cost Codes
+   *
+   */
+  let statesEdges = dataFetch.allPlayWellStates.edges;
+  let allCountiesArrays = statesEdges.map((state, idx) => {
+    // Create empty Counties Array
+    let countyArray = [];
+
+    // Push each County Array from all States into a new array of arrays.
+    // We don't want an array of arrays - so we'll flatten it below.
+    countyArray.push(state.node.counties);
+
+    // Return our flattened array.
+    return countyArray;
+  });
+
+  // Flatten our arrays.
+  // Thanks to https://www.freecodecamp.org/news/15-useful-javascript-examples-of-map-reduce-and-filter-74cbbb5e0a1f/
+  let allCountiesData = [].concat.apply([], allCountiesArrays);
+  let allCountiesFlattened = [].concat.apply([], allCountiesData);
+
+  // Utilize Set() & .map to return only unique values - which is all of our
+  // cost codes.
+  let costCodesSet = new Set(
+    allCountiesFlattened.map((county, idx) => {
+      return {
+        code: parseInt(county.cost_code),
+        name: county.cost_code_name,
+      };
+    })
+  );
+
+  let allCostCodes = [...costCodesSet];
+
+  // Get all of our Unique Cost Codes & remove duplicates
+  let uniqueCostCodes = {};
+  let allCostCodesFiltered = allCostCodes.filter(
+    costCode =>
+      !uniqueCostCodes[costCode.name] && (uniqueCostCodes[costCode.name] = true)
+  );
+
+  // Function to sort our cost codes by value
+  const sortCostCodes = (a, b) => {
+    if (a.code < b.code) {
+      return -1;
+    }
+    if (a.code > b.code) {
+      return 1;
+    }
+    return 0;
+  };
+
+  // Sort our cost codes
+  let allCostCodesSorted = allCostCodesFiltered.sort(sortCostCodes);
+
+  console.log('statesEdges:');
+  console.log(statesEdges);
+  console.log('allCountiesArrays:');
+  console.log(allCountiesArrays);
+  console.log('allCountiesFlattened:');
+  console.log(allCountiesFlattened);
+  console.log('costCodesSet:');
+  console.log(costCodesSet);
+  console.log('allCostCodes:');
+  console.log(allCostCodes);
+  console.log('allCostCodesFiltered:');
+  console.log(allCostCodesFiltered);
+  console.log('allCostCodesSorted:');
+  console.log(allCostCodesSorted);
+
+  /**
    * Check our County names if they contain 'County'
    */
   const countyClean = countyName => {
@@ -575,7 +653,7 @@ const CourseHeroContent = ({
 
   const geoDataVerify = () => {
     // Use our hook's data as source for all Courses
-    let fetchedCourses = DataFetch().allPlayWellClient.edges;
+    let fetchedCourses = dataFetch.allPlayWellClient.edges;
 
     // Clean our data if courses don't exist in the respective States or Counties
     const cleanedStates = geoData.edges
@@ -738,7 +816,11 @@ const CourseHeroContent = ({
                     countySlug +
                     '/';
 
-                  return <Link to={slugString}>{county.name}</Link>;
+                  return (
+                    <Link key={idxx} to={slugString}>
+                      {county.name}
+                    </Link>
+                  );
                 });
 
               return stateCounties;
@@ -768,7 +850,11 @@ const CourseHeroContent = ({
                   countySlug +
                   '/';
 
-                return <Link to={slugString}>{county.name}</Link>;
+                return (
+                  <Link key={idxx} to={slugString}>
+                    {county.name}
+                  </Link>
+                );
               });
 
               return stateCounties;

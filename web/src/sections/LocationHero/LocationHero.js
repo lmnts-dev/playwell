@@ -29,7 +29,6 @@ const LocationHero = ({
   programsSlug,
   contextualPageName,
 }) => {
-
   return (
     <Hero>
       <Decorator>

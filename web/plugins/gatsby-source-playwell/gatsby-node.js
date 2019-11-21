@@ -49,7 +49,7 @@ exports.sourceNodes = async ({ actions }) => {
   // First establish an empty array
   let countiesArray = [];
 
-  // Don't let any code below run until the Promises have been rsolved
+  // Don't let any code below run until the Promises have been resolved
   await Promise.all(locationsPromises).then(res => {
     countiesArray = res;
   });
