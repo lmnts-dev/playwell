@@ -32,12 +32,7 @@ export const Hero = styled(Flex)`
     flex-wrap: wrap;
     width: 100%;
     max-width: ${Theme.Base.Grid.ReadingWidth};
-    color: ${props =>
-      props.bg === Theme.Color.Nova && Theme.Color.Dino ||
-      props.bg === Theme.Color.Ocean && Theme.Color.Deepsea ||
-      props.bg === Theme.Color.Sunlight && Theme.Color.Dino ||
-      Theme.Color.White
-    };
+    color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
 
     li {
       text-transform: uppercase;
@@ -53,24 +48,13 @@ export const Hero = styled(Flex)`
       }
 
       a {
-        color: ${props =>
-          props.bg === Theme.Color.Nova && Theme.Color.Dino ||
-          props.bg === Theme.Color.Ocean && Theme.Color.Deepsea ||
-          props.bg === Theme.Color.Sunlight && Theme.Color.Dino ||
-          Theme.Color.White
-        };
+        color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
       }
     }
   }
 
   .h5 {
-    color: ${props =>
-      props.bg === Theme.Color.Nova && Theme.Color.Dino ||
-      props.bg === Theme.Color.Ocean && Theme.Color.Deepsea ||
-      props.bg === Theme.Color.Sunlight && Theme.Color.Dino ||
-      Theme.Color.White
-    };
-  }
+    color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
 
   .btn {
     background-color: ${props =>
@@ -233,12 +217,7 @@ export const CourseFooter = styled.div`
     }
 
     .h5 {
-      color: ${props =>
-        props.bg === Theme.Color.Nova && Theme.Color.Dino ||
-        props.bg === Theme.Color.Ocean && Theme.Color.Deepsea ||
-        props.bg === Theme.Color.Sunlight && Theme.Color.Dino ||
-        Theme.Color.White
-      };
+      color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
       font-weight: 600;
       padding-bottom: calc(${Root.Size} / 2);
     }

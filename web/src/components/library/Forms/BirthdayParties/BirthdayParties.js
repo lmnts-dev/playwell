@@ -24,8 +24,8 @@ import { Theme, Root } from 'constants/Theme';
 export const BirthdayParties = ({ formName, title, footnote }) => (
 <form    
   name={formName}
-  method="POST"
   netlify
+  action="/success"
 >
   <Form>
     <legend>

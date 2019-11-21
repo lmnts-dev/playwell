@@ -29,6 +29,7 @@ import {
 // Constants
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
+import { OverflowHidden } from '../components/library/Footer/styles.scss';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -98,45 +99,47 @@ const HomePage = () => (
         <HomeCommunity slides={CommunitySlides} />
       </BasicSection>*/}
 
-      <BasicSection BgColor={Theme.Color.Ocean} TextColor={Theme.Color.White}>
-        <BasicInner noPaddingLeft>
-          <EdgeImageWithText
-            Reversed
-            LightText
-            Caption="The Importance of STEM Education"
-            Header="Building a Better Future"
-            Image="sailboat.png"
-            Paragraph="STEM education creates critical thinkers, increases science literacy, and enables the next generation of innovators. Innovation leads to new products and processes that sustain our economy in an ever increasing technologically driven society."
-            Paragraph2="Having activities that show real-life implication of STEM can pull together the ideas presented in school and help to show how they benefit our society and even our world as a whole"
-            ButtonText="Programs"
-            ButtonDest="/programs"
-          />
-        </BasicInner>
-      </BasicSection>
+      <OverflowHidden>
+        <BasicSection BgColor={Theme.Color.Ocean} TextColor={Theme.Color.White} noOverflow>
+          <BasicInner noPaddingLeft>
+            <EdgeImageWithText
+              Reversed
+              LightText
+              Caption="The Importance of STEM Education"
+              Header="Building a Better Future"
+              Image="sailboat.png"
+              Paragraph="STEM education creates critical thinkers, increases science literacy, and enables the next generation of innovators. Innovation leads to new products and processes that sustain our economy in an ever increasing technologically driven society."
+              Paragraph2="Having activities that show real-life implication of STEM can pull together the ideas presented in school and help to show how they benefit our society and even our world as a whole"
+              ButtonText="Programs"
+              ButtonDest="/programs"
+            />
+          </BasicInner>
+        </BasicSection>
 
-      <Decorator>
-        <div className="decorator__better-future decorator__better-future--top">
-          <ImgMatch src="cloud-big.png" AltText="Cloud" />
-        </div>
-        <div className="decorator__better-future decorator__better-future--bottom">
-          <ImgMatch src="cloud-big.png" AltText="Cloud" />
-        </div>
-      </Decorator>
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Dino}
-      >
-        <BasicInner>
-          <SimpleTextWithImage
-            Caption="Our impact on STEM Education"
-            Header="Children Learn While Playing"
-            Paragraph="Our assessments measured three goals including: student's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects. For example, the definition of gravity or friction, or that when two gears interlock their teeth its called meshing."
-            Image="graph.png"
-            ButtonText="How We Do It"
-            ButtonDest="/who-we-are/how"
-          />
-        </BasicInner>
-      </BasicSection>
+        <Decorator>
+          <div className="decorator__better-future decorator__better-future--top">
+            <ImgMatch src="cloud-big.png" AltText="Cloud" />
+          </div>
+          <div className="decorator__better-future decorator__better-future--bottom">
+            <ImgMatch src="cloud-big.png" AltText="Cloud" />
+          </div>
+        </Decorator>
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Dino}
+        >
+          <BasicInner>
+            <SimpleTextWithImage
+              Caption="Our impact on STEM Education"
+              Header="Children Learn While Playing"
+              Paragraph="Our assessments measured three goals including: student's knowledge of STEM terms or concepts, ability to generalize information, and increasing positive feeling towards STEM subjects. For example, the definition of gravity or friction, or that when two gears interlock their teeth its called meshing."
+              Image="graph.png"
+              ButtonText="How We Do It"
+              ButtonDest="/who-we-are/how"
+            />
+          </BasicInner>
+        </BasicSection>
+      </OverflowHidden>
 
       <BasicSection BgColor={Theme.Color.Blush}>
         <BasicInner>
@@ -197,7 +200,7 @@ const HomePage = () => (
         TextColor={Theme.Color.Dino}
         noPaddingTop
       >
-        <BasicInner>
+        <BasicInner noPaddingRight>
           <SpecialSimpleTextWithImage
             Caption="It starts with play"
             Header="Build Your Own World of Opportunity"
@@ -213,7 +216,7 @@ const HomePage = () => (
 
 // Styles
 const Main = styled.main`
-  overflow: hidden;
+ // overflow: hidden;
 `;
 
 const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
@@ -227,7 +230,7 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
       flex: 2;
     }
     .image {
-      flex: 1;
+      flex: 2;
       position: relative;
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
         width: 100%;
@@ -241,9 +244,9 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
         position: absolute !important;
         left: 0;
         bottom: 0;
-        width: 50vw;
-        height: 200%;
-        bottom: -50%;
+        width: 100%;
+        height: 250%;
+        bottom: -75%;
         @media (max-width: ${Base.Media.Width.Md + 'px'}) {
           width: 100%;
           height: 120%;
@@ -251,6 +254,7 @@ const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
           bottom: 0;
         }
         img {
+          width: 120% !important;
           object-position: 0% 100% !important;
         }
       }

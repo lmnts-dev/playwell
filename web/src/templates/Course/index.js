@@ -90,7 +90,7 @@ const Course = ({ pageContext }) => {
   return (
     <Layout {...themeProps}>
       <HeroContainer {...heroProps}>
-        <Hero as="article" {...heroProps}>
+        <Hero as="article" {...heroProps} {...themeProps}>
           <Hero.Avatar>
             <ImgMatch src="avatar-yoda.jpg" AltText="Course avatar" />
           </Hero.Avatar>

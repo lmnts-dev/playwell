@@ -24,6 +24,8 @@ const SiteGrid = styled.div`
   align-items: center;
   justify-content: space-between;
   background: ${Theme.Color.Background};
+  z-index: 2;
+  position: relative;
 `;
 
 SiteGrid.Inner = styled(InnerStyle)`

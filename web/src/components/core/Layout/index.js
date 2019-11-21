@@ -16,6 +16,7 @@ import { ThemeProvider } from 'styled-components';
 //  Components
 import Head from 'components/core/Head';
 import PageTheme from 'components/core/PageTheme';
+import Footer from 'components/library/Footer';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -23,6 +24,10 @@ import { Theme, Root } from 'constants/Theme';
 // Styles
 import { GlobalStyle } from 'constants/styles/Global';
 import SiteGrid from './styles.scss';
+
+// Data
+import { NavQuery } from 'hooks/NavQuery/';
+import { navDataTransformer } from 'components/library/Navigation/Data/';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -37,39 +42,44 @@ if (typeof window !== 'undefined') {
 
 // Core Layout component structure.
 
-const Layout = (
-  {
-    data,
-    children,
-    BgColor,
-    PrimaryColor,
-    SecondaryColor,
-    TertiaryColor,
-    TransparentFooter,
-  },
-  props
-) => (
-  <ThemeProvider theme={Theme}>
-    <SiteGrid className="site-grid">
-      <GlobalStyle />
-      <div id="content-overlay" />
-      <div id="hamburger-overlay" />
-      <PageTheme
-        BgColor={BgColor}
-        PrimaryColor={PrimaryColor}
-        SecondaryColor={SecondaryColor}
-        TertiaryColor={TertiaryColor}
-      />
-      <Head />
-      <SiteGrid.Inner>{children}</SiteGrid.Inner>
-    </SiteGrid>
-  </ThemeProvider>
-);
+const Layout = ({
+  data,
+  children,
+  BgColor,
+  PrimaryColor,
+  SecondaryColor,
+  TertiaryColor,
+  TransparentFooter,
+}) => {
+  // Use our hook's data as source for Navigation
+  let navData = NavQuery();
+
+  return (
+    <ThemeProvider theme={Theme}>
+      <SiteGrid className="site-grid">
+        <GlobalStyle />
+        <div id="content-overlay" />
+        <div id="hamburger-overlay" />
+        <PageTheme
+          BgColor={BgColor}
+          PrimaryColor={PrimaryColor}
+          SecondaryColor={SecondaryColor}
+          TertiaryColor={TertiaryColor}
+        />
+        <Head />
+        <SiteGrid.Inner>{children}</SiteGrid.Inner>
+      </SiteGrid>
+      <Footer navQuery={navDataTransformer(navData)} />
+    </ThemeProvider>
+  );
+};
 
 // This is our Layout component with
 // the site metadata query available.
 
 const LayoutWithMetadata = props => {
+  console.log('props:');
+  console.log(props);
   // Pass our data into our Layout component.
   return (
     <StaticQuery

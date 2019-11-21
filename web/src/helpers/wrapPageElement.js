@@ -1,4 +1,4 @@
-// WrapPageElement.js:
+// wrapPageElement.js:
 // This helper is to wrap a full page transition around the site,
 // so we can do page transitions in / out. It also aids with SSR.
 
@@ -19,9 +19,7 @@ import { navDataTransformer } from 'components/library/Navigation/Data/';
 // Begin Helper
 //////////////////////////////////////////////////////////////////////
 
-const Main = styled.div`
-
-`;
+const Main = styled.div``;
 
 const wrapPageElement = ({ element, props }) => {
   return (
@@ -73,8 +71,9 @@ const wrapPageElement = ({ element, props }) => {
       render={data => (
         <Main>
           <Navigation navQuery={navDataTransformer(data)} {...props} />
-          <Transition {...props}>{element}</Transition>
-          <Footer navQuery={navDataTransformer(data)} {...props} />
+          <Transition navQuery={navDataTransformer(data)} {...props}>
+            {element}
+          </Transition>
         </Main>
       )}
     />

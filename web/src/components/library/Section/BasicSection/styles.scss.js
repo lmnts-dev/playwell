@@ -41,6 +41,10 @@ export const BasicSectionStyle = styled.div`
   }
 
   ${props =>
+    props.noOverflow
+      ? `overflow: hidden;` : ''};
+
+  ${props =>
     props.BgLinear
       ? `
     .linear-background {

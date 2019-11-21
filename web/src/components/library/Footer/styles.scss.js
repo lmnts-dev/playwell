@@ -24,6 +24,8 @@ export const OverflowHidden = styled.div`
   overflow: hidden;
   max-width: ${Theme.Base.Grid.SiteWidth};
   margin: 0 auto;
+  z-index: 1;
+  position: relative;
 `;
 
 export const CurveAndAngleWithPadding = styled(CurveAndAngle)`
