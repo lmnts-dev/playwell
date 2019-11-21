@@ -73,9 +73,9 @@ class FilteredResults extends PureComponent {
     };
 
     /**
-     * 
+     *
      * For Debugging only
-     * 
+     *
      */
     // console.log('stateEdges:');
     // console.log(stateEdges);
@@ -85,9 +85,9 @@ class FilteredResults extends PureComponent {
     // console.log(relatedCourseData(clientsData, pageContext));
 
     /**
-     * 
+     *
      * Show our listings
-     * 
+     *
      */
     return (
       <ListingsResultsStyle>
@@ -309,7 +309,7 @@ class ListingsResults extends PureComponent {
 
 /**
  *
- *  The wrapper around ourlistings
+ *  The wrapper around our listings
  *
  *  */
 
@@ -429,6 +429,7 @@ class CourseListings extends PureComponent {
   }
 
   render() {
+    // Define clean variables
     let courseData = this.props.courseData;
     let mapWidth = this.props.mapWidth;
     let mapZedIndex = this.props.mapZedIndex;

@@ -651,11 +651,11 @@ const CourseHeroContent = ({
    * For Debugging only
    */
 
-  console.log('geoDataVerify():');
-  console.log(geoDataVerify());
+  // console.log('geoDataVerify():');
+  // console.log(geoDataVerify());
 
-  console.log('pageContext:');
-  console.log(pageContext);
+  // console.log('pageContext:');
+  // console.log(pageContext);
 
   // console.log('listingContext()');
   // console.log(queryString.parse(window.location.search));
