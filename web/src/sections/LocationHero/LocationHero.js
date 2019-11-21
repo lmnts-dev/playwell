@@ -29,14 +29,6 @@ const LocationHero = ({
   programsSlug,
   contextualPageName,
 }) => {
-  // Check our County names if they contain 'County'
-  const countyClean = countyName => {
-    if (countyName.toLowerCase().includes('county')) {
-      return countyName;
-    } else {
-      return countyName + ' County';
-    }
-  };
 
   return (
     <Hero>

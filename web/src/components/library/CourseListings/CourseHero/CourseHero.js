@@ -45,16 +45,13 @@ export const CourseHero = ({
   geoData,
   pageContext,
   categoryFilter,
+  geoDataVerify,
 }) => (
   <CourseHeroStyle bg={bg}>
     <div className="absolute-image">
-      <ImgMatch src="lego-bin.jpg"/>
+      <ImgMatch src="lego-bin.jpg" />
     </div>
-    <HeroContainer
-      bg="none"
-      px={px}
-      color={color}
-    >
+    <HeroContainer bg="none" px={px} color={color}>
       <Flex
         width={1}
         flexWrap="wrap"
@@ -77,6 +74,7 @@ export const CourseHero = ({
               mapWidth={mapWidth}
               pageContext={pageContext}
               categoryFilter={categoryFilter}
+              geoDataVerify={geoDataVerify}
             />
           }
         </Box>

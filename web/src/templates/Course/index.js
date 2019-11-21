@@ -197,7 +197,15 @@ const Course = ({ pageContext }) => {
             <p>
               {pageContext.client_location_name}
               <br />
-              {pageContext.display_address}
+              <a
+                href={
+                  'https://www.google.com/maps/search/?api=1&query=' +
+                  encodeURIComponent(pageContext.display_address)
+                }
+                target="_blank"
+              >
+                {pageContext.display_address}
+              </a>
             </p>
           </Box>
           <ul className="hero-tags">
@@ -258,7 +266,15 @@ const Course = ({ pageContext }) => {
               {pageContext.client_location_name}
               <br />
               <Text as="span" color="Nova">
-                {pageContext.display_address}
+                <a
+                  href={
+                    'https://www.google.com/maps/search/?api=1&query=' +
+                    encodeURIComponent(pageContext.display_address)
+                  }
+                  target="_blank"
+                >
+                  {pageContext.display_address}
+                </a>
               </Text>
             </Text>
           </Box>

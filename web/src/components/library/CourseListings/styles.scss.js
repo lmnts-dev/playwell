@@ -98,7 +98,7 @@ export const ListingsResultsStyle = styled.div`
       margin-top: calc(${Root.Size} * 2);
       color: ${Theme.Color.Tan};
 
-      span {
+      a {
         color: ${Theme.Color.Nova};
       }
     }
