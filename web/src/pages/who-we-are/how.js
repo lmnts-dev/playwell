@@ -384,14 +384,15 @@ const WhoHowPage = () => {
             title="Keep reading."
             message="Learn about Our Values &amp; why we do what we do."
             // message={'Keep exploring programs in ' + countyStateString + '.'}
-            to="/"
+            to="/who-we-are/why"
             themeProps={ThemeProps}
             first
           />
           <SplitLink
-            title="Here ye, here ye."
-            message="Check out our News &amp; Press page."
-            to="/"
+            title="Looking to join our team?"
+            message="Check out our Jobs &amp; Careers page."
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to="/who-we-are/careers"
             themeProps={ThemeProps}
             last
           />

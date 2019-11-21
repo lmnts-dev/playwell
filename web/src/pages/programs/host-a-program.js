@@ -39,7 +39,7 @@ const Main = styled.main`
 // Props
 const ThemeProps = {
   BgColor: Theme.Color.Background,
-  PrimaryColor: Theme.Color.Primary,
+  PrimaryColor: Theme.Color.Eggplant,
   SecondaryColor: Theme.Color.Dino,
   TertiaryColor: Theme.Color.Lilac,
 };

@@ -80,7 +80,7 @@ const SpecialEventsPage = () => {
             BgColor={Theme.Color.Nova}
             TextColor={Theme.Color.White}
             Size="large"
-            Destination="/"
+            Destination="/parties/special-events#request"
           />
         </Box>
       </SplitHero>
@@ -142,6 +142,7 @@ const SpecialEventsPage = () => {
         />
       </BasicSection>
 
+      <span id="request" />
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}

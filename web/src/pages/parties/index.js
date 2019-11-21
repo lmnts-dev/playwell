@@ -502,7 +502,7 @@ const Parties = () => {
           Label="Request a Party"
           BgColor={Theme.Color.Nova}
           TextColor={Theme.Color.White}
-          Destination="/"
+          Destination="/parties#request"
         />
       </SplitHero>
 
@@ -658,6 +658,7 @@ const Parties = () => {
         </BasicInner>
       </BasicSection>*/}
 
+      <span id="request"/>
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
@@ -679,14 +680,14 @@ const Parties = () => {
             title="Adults need purposeful play too."
             message="View our team building opportunities"
             // message={'Keep exploring programs in ' + countyStateString + '.'}
-            to="/"
+            to="/team-building"
             themeProps={ThemeProps}
             first
           />
           <SplitLink
-            title="Need help with a special Event?"
-            message="Learn about our partnerships"
-            to="/"
+            title="Need help with another special event?"
+            message="Learn about how to throw a Play-Well special event"
+            to="/parties/special-events"
             themeProps={ThemeProps}
             last
           />

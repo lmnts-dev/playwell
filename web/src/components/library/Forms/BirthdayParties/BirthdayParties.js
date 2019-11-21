@@ -146,9 +146,8 @@ export const BirthdayParties = ({ formName, title, footnote }) => (
           type="tel"
           name="phone"
           id="phone"
-          placeholder="___ ___-____"
-          pattern="[0-9]{3} [0-9]{3}-[0-9]{4}"
-          maxLength="12"
+          placeholder="(___) ___-____"
+          maxLength="14"
         />
       </Box>
       
@@ -192,10 +191,8 @@ export const BirthdayParties = ({ formName, title, footnote }) => (
         </div>
       </div>
 
-      <button classname="btn" type="submit">
-        <span className="btn-inner">
+      <button type="submit">
           Submit Request
-        </span>
       </button>
 
       <div className="footnote">

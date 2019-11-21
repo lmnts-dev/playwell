@@ -70,16 +70,16 @@ const SummerCampsSplitLinks = ({
           <SplitLinks>
             <SplitLink
               title="Keep exploring"
-              message="Explore more of our programs"
+              message="Learn about what our classes look like"
               // message={'Keep exploring programs in ' + countyStateString + '.'}
-              to={'/'}
+              to={'/programs/classes'}
               themeProps={themeProps}
               first
             />
             <SplitLink
-              title="What do courses look like?"
-              message="Learn more about our curriculums"
-              to={'/programs/our-curriculum'}
+              title="What do workshops look like?"
+              message="Learn more about our workshops"
+              to={'/programs/workshops'}
               themeProps={themeProps}
               last
             />
