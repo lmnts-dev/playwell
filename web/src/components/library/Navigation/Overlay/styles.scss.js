@@ -219,6 +219,7 @@ NavigationOverlayStyle.Sub = styled.div`
       flex: 1;
       display: flex;
       flex-direction: column;
+      width: 100%;
 
       .top {
         display: flex;
@@ -273,6 +274,7 @@ NavigationOverlayStyle.Sub = styled.div`
         display: flex;
         flex-wrap: nowrap;
         flex: 1;
+        width: 100%;
         @media (max-width: ${Base.Media.Width.Md + 'px'}) {
           display: block;
         }
@@ -369,9 +371,11 @@ NavigationOverlayStyle.Sub = styled.div`
         flex-direction: column;
         border-radius: 5px;
         padding: calc(${Root.Size} / 2) 0 0 0;
+        width: calc(100% - 60px);
         ${FadeIn};
         @media (max-width: ${Base.Media.Width.Md + 'px'}) {
           padding-top: calc(${Root.Size} * 1.5);
+          width: 100%;
         }
         @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
           padding-top: calc(${Root.Size} / 2);
@@ -488,6 +492,101 @@ NavigationOverlayStyle.Sub = styled.div`
           background: rgba(0, 0, 0, 0.04);
           @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
             margin: 0;
+          }
+        }
+
+        .program-cards {
+          width: 100%;
+          position: relative;
+
+          &:after {
+            content: "";
+            background: linear-gradient( to left, ${
+              Theme.Color.White
+            }, transparent);
+            width: calc(${Theme.Base.Size.Lg} * 1);
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+          }
+
+          .program-cards-inner {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            overflow: auto;
+          }
+
+          .card {
+            border-radius: 8px;
+            min-width: calc(${Theme.Base.Size.Lg} * 2.5);
+            height: calc(${Theme.Base.Size.Lg} * 3.5);
+            background-color: ${Theme.Color.Sunlight};
+            position: relative;
+            margin: calc(${Theme.Base.Size.Lg} / 12);
+            transition-duration: 0.25s;
+            display: block;
+            cursor: pointer;
+
+            &:hover {
+              text-decoration: none;
+              box-shadow: 0px 0px 0px 6px rgba(93,99,118, 0.2)
+            }
+
+            .card-inner {
+              font-weight: 600;
+              color: ${Theme.Color.White};
+              overflow: hidden;
+              position: relative;
+              height: 100%;
+              width: 100%;
+              border-radius: 8px;
+              padding: calc(${Theme.Base.Size.Lg} / 3) calc(${
+  Theme.Base.Size.Lg
+} / 5);
+
+              .gatsby-image-wrapper {
+                position: absolute !important;
+                width: 100%;
+                bottom: -35%;
+                right: -30%;
+                transform: scaleX(-1);
+              }
+            }
+
+            &:nth-of-type(2) {
+              background-color: ${Theme.Color.Nova};
+
+              .gatsby-image-wrapper {
+                transform: none;
+                width: 180%;
+                right: -95%;
+                bottom: 0;
+              }
+            }
+
+            &:nth-of-type(3) {
+              background-color: ${Theme.Color.Ocean};
+
+              .gatsby-image-wrapper {
+                width: 60%;
+                bottom: -5%;
+                right: -5%;
+              }
+            }
+
+            &:last-of-type {
+              &:after {
+                content: "";
+                right: calc( ${Theme.Base.Size.Lg} * -1);
+                width: ${Theme.Base.Size.Lg};
+                position: absolute;
+                top: 0;
+                height: 100%;
+              }
+            }
           }
         }
 
