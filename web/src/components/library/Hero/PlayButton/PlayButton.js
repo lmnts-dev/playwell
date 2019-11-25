@@ -14,8 +14,8 @@ import { Container, Inner, Tilter } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-const PlayButton = ({ bg, reversed }) => (
-  <Container reversed={reversed}>
+const PlayButton = ({ bg, reversed, children }) => (
+  <Container reversed={reversed} className="play-button">
     <Tilter
       className="Tilt"
       options={{

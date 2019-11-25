@@ -47,6 +47,7 @@ export const ImageWithTextBlockStyles = styled.div`
       bottom: calc(${Root.Size} * -1.5);
     }
 
+
     svg {
       height: 100%;
       width: auto;

@@ -146,6 +146,9 @@ const CenterSliderStyle = styled.div`
       .quote {
         position: relative;
         padding: calc(${Root.Size} / 3);
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          padding: calc(${Root.Size} / 2) 0;
+        }
 
         &:before,
         &:after {

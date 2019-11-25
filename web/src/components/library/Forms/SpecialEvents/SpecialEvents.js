@@ -24,7 +24,8 @@ import { Theme, Root } from 'constants/Theme';
 export const SpecialEvents = ({ formName, title, footnote }) => (
   <Form
     name={formName}
-    netlify
+    data-netlify="true"
+    data-netlify-honeypot="bot-field"
     action="/success"
   >
     <legend>

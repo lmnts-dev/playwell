@@ -30,7 +30,7 @@ const HeroProps = {
   arrowColor: Theme.Color.Lilac,
   bg: Theme.Color.Lilac,
   color: Theme.Color.White,
-  playButton: true,
+  playButton: false,
   playButtonBg: Theme.Color.Primary,
   gear: false,
   bgMatch: 'team-containers.jpg',

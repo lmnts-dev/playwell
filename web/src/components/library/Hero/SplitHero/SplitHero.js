@@ -13,7 +13,7 @@ import ModalVideo from 'react-modal-video';
 
 
 // Styles
-import { GearContainer, SplitHeroStyle } from './styles.scss';
+import { GearContainer, SplitHeroStyle, VideoModal } from './styles.scss';
 
 // Components
 import GearRotator from 'components/library/GearRotator';
@@ -55,10 +55,10 @@ class App extends React.Component {
         <ModalVideo
           channel="youtube"
           isOpen={this.state.isOpen}
-          videoId="L61p2uyiMSo"
+          videoId="mN26kaFk_YM"
           onClose={() => this.setState({ isOpen: false })}
         />
-        <button onClick={this.openModal}>Open</button>
+        <button className="open-button" onClick={this.openModal} />
       </div>
     );
   }
@@ -134,7 +134,11 @@ const SplitHero = ({
           )}
         </div>
         <div className="imagery">
-          {/*<App/>*/}
+          {playButton && (
+            <VideoModal>
+              <App />
+            </VideoModal>
+          )}
           <ImgMatch src={bgMatch} />
           {gear ? (
             <GearContainer>
@@ -144,7 +148,9 @@ const SplitHero = ({
               />
             </GearContainer>
           ) : null}
-          {playButton && <PlayButton bg={playButtonBg} reversed={reversed} />}
+          {playButton && (
+            <PlayButton bg={playButtonBg} reversed={reversed}></PlayButton>
+          )}
         </div>
       </SplitHeroStyle>
       {subNav && reversed && wideImage && (

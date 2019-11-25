@@ -36,6 +36,7 @@ export const Form = styled.div`
       flex: 1;
       color: ${Theme.Color.Sunset};
       font-weight: 700;
+      padding-right: calc(${Theme.Base.Size.Lg} / 4);
     }
     span:last-of-type {
       flex: 2;
@@ -182,6 +183,9 @@ export const Form = styled.div`
     margin: 0 auto;
     width: 100%;
     max-width: calc(${Root.Size} * 11);
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      padding: 0;
+    }
 
     label {
       display: none;

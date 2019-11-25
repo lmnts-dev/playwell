@@ -60,16 +60,15 @@ export const CourseHeroStyle = styled.section`
     .h1,
     .location {
       display: block;
-      overflow: hidden;
-      @media (max-width: ${Theme.Base.Media.Width.Md}) {
-        height: calc(${Theme.Base.Size.Lg} * 0.75);
-      }
+    //  overflow: hidden;
+      height: auto;
     }
 
     .inline {
       display: flex;
       animation: ${SlideUp} 2s ease 0s 1 normal forwards;
       text-align: left !important;
+      height: auto;
     }
 
     .location {
@@ -248,6 +247,7 @@ export const SearchBarStyle = styled.div`
   .search-results {
     position: absolute;
     top: ${searchBarHeight};
+    max-width: calc(${Theme.Base.Size.Lg} * 10);
     right: 0;
     left: 0;
     display: flex;
@@ -324,8 +324,8 @@ export const SearchBarStyle = styled.div`
 
           .no-results {
             padding: calc(${Root.Size} *  1.5) calc(${Root.Size} / 2)  ${
-  Root.Size
-} calc(${Root.Size} / 2);
+         Root.Size
+       } calc(${Root.Size} / 2);
 
             width: 100%;
             color: ${hexToRGB(Theme.Color.Ocean, 0.6)};

@@ -197,12 +197,14 @@ class NavigationBar extends PureComponent {
                 TextColor={Theme.Color.White}
               /> */}
             </NavigationStyle.Secondary>
-            <NavigationStyle.Mobile>
+            <NavigationStyle.Mobile IconColor={Theme.Color.Primary} className="mobile-nav">
               <button
                 onClick={() => this.navOverlayToggle(0)}
                 onKeyDown={() => this.navOverlayToggle(0)}
                 className="hamburger"
-              ><div /></button>
+              >
+                <div />
+              </button>
             </NavigationStyle.Mobile>
           </NavigationStyle.Inner>
         </NavigationStyle>

@@ -37,7 +37,7 @@ export const TeamMarqueeStyle = styled.div`
       ? `
     background: linear-gradient( to bottom, ` +
         props.BgLinear +
-        ` 25%, ${Theme.Color.Background} 25% );
+        ` 100px, ${Theme.Color.Background} 100px );
   `
       : null};
 

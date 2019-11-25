@@ -39,6 +39,10 @@ const ThemeProps = {
   TertiaryColor: Theme.Color.Eggplant,
 };
 
+export const OverflowHidden = styled.div`
+  overflow: hidden;
+`;
+
 
 const StoriesFeature = styled.div`
   padding: calc(${Theme.Base.Size.Lg}) 0;
@@ -69,9 +73,9 @@ const OrganizationsPage = () => {
 
   return (
     <Layout {...ThemeProps}>
+      <OverflowHidden>
       <OrganizationsHero />
       <OrganizationsCulture />
-
       {/*<BasicSection BgColor={Theme.Color.Background} TextColor={Theme.Color.Dino}>
         <BasicInner>
           <StoriesFeature>
@@ -90,7 +94,6 @@ const OrganizationsPage = () => {
           </StoriesFeature>
         </BasicInner>
       </BasicSection>*/}
-
       <BasicSection BgColor={Theme.Color.White} BorderTop={Theme.Color.Clay}>
         <BasicInner>
           <CenteredTitle
@@ -111,7 +114,6 @@ const OrganizationsPage = () => {
           Shadow
         />
       </BasicSection>
-
       <BasicSection
         BgColor={Theme.Color.Blush}
         TextColor={Theme.Color.Dino}
@@ -124,7 +126,6 @@ const OrganizationsPage = () => {
           Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
         />
       </BasicSection>
-
       <Section bg={ThemeProps.BgColor} pb={0}>
         <SplitLinks>
           <SplitLink
@@ -135,16 +136,17 @@ const OrganizationsPage = () => {
             themeProps={ThemeProps}
             first
           />
-        <SplitLink
-          title="Want to throw a Play-Well birthday?"
-          message="Learn about our birthday parties"
-          // message={'Keep exploring programs in ' + countyStateString + '.'}
-          to={'/parties/birthday-parties'}
-          themeProps={ThemeProps}
-          last
-        />
+          <SplitLink
+            title="Want to throw a Play-Well birthday?"
+            message="Learn about our birthday parties"
+            // message={'Keep exploring programs in ' + countyStateString + '.'}
+            to={'/parties/birthday-parties'}
+            themeProps={ThemeProps}
+            last
+          />
         </SplitLinks>
       </Section>
+      </OverflowHidden>
     </Layout>
   );
 };

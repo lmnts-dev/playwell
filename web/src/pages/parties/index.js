@@ -54,11 +54,12 @@ const HeroProps = {
   bg: Theme.Color.Background,
   color: Theme.Color.Eggplant,
   playButton: true,
-  video: "https://www.youtube.com/watch?v=mN26kaFk_YM&t=",
+  video: 'https://www.youtube.com/watch?v=mN26kaFk_YM&t=',
   playButtonBg: Theme.Color.Nova,
   arrowColor: Theme.Color.Nova,
   gear: false,
   arrow: true,
+  bgMatch: 'birthday-video-preview.png',
   subNavColor: Theme.Color.Nova,
 };
 
@@ -75,6 +76,9 @@ const DeepseaTextBlock = styled.div`
   text-align: center;
   max-width: calc(${Root.Size} * 17);
   margin: 0 auto;
+  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+    padding-bottom: calc(${Root.Size});
+  }
 
   .h2,
   p {
@@ -106,7 +110,7 @@ const DeepseaTextBlock = styled.div`
       font-size: 24px;
     }
     @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-      padding: calc(${Root.Size} / 6) 0 calc(${Root.Size} * 1.5) 0;
+      padding: calc(${Root.Size} / 6) 0 0 0;
     }
   }
 `;

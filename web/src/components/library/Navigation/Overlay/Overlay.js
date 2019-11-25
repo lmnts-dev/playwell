@@ -17,6 +17,7 @@ import {
 // Constants
 import { Base } from 'constants/styles/Base';
 import { Theme, Root } from 'constants/Theme';
+import ImgMatch from 'components/core/ImgMatch';
 
 // Components
 import { Brandmark } from 'components/core/Branding/Brandmark';
@@ -197,6 +198,31 @@ export class NavigationOverlay extends PureComponent {
 
                       {navContext.label !== 'Locations' && (
                         <figure className="line-break" />
+                      )}
+
+                      {navContext.label == 'Programs' && (
+                        <div className="program-cards">
+                          <div className="program-cards-inner">
+                            <a href="/programs/summer-camps" className="card">
+                              <div className="card-inner">
+                                Summer Camps
+                                <ImgMatch src="plant-gears.png"/>
+                              </div>
+                            </a>
+                            <a href="/programs/workshops" className="card">
+                              <div className="card-inner">
+                                Workshops
+                                <ImgMatch src="clouds.png"/>
+                              </div>
+                            </a>
+                            <a href="/programs/classes" className="card">
+                              <div className="card-inner">
+                                Classes
+                                <ImgMatch src="plant-wavy-1.png"/>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
                       )}
 
                       <MinorLinkList

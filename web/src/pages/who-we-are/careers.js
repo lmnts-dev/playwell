@@ -44,7 +44,7 @@ import { Base } from 'constants/styles/Base';
 const HeroProps = {
   bg: Theme.Color.Sky,
   color: Theme.Color.White,
-  playButton: true,
+  playButton: false,
   gear: true,
   gearFill: Theme.Color.Dino,
   subNavColor: Theme.Color.White,
@@ -61,188 +61,201 @@ const ThemeProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+const OverflowHidden = styled.div`
+  width: 100vw;
+  overflow: hidden;
+`;
+
+const GiantText = styled(GiantTextBlock)`
+  &.giant-text-block {
+    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+      .headline {
+        font-size: 10vw !important;
+      }
+    }
+  }
+`;
+
 // Render Page
 const WhoCareersPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero
-        {...HeroProps}
-        subNav={[
-          { label: 'who', link: '/who-we-are/who' },
-          { label: 'why', link: '/who-we-are/why' },
-          { label: 'how', link: '/who-we-are/how' },
-          { label: 'careers', active: true, link: '/who-we-are/careers' },
-        ]}
-      >
-        <h2>Join a Team of creative problem solvers &amp; creators</h2>
-        <h6>We are passionate specialists in STEM Education.</h6>
-        <Btn
-          Label="View Listings"
-          BgColor={Theme.Color.Dino}
-          TextColor={Theme.Color.White}
-          Destination="https://playwell.workbrightats.com/jobmap/"
-          External
-        />
-      </SplitHero>
-
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        noPaddingTop
-        noPaddingBottom
-      >
-        <TeamMarquee BgLinear={Theme.Color.Sky} />
-      </BasicSection>
-
-      <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
-        <BasicInner>
-          <CenteredTitle
-            Title="Our Team"
-            Class="headline"
-            TextColor={Theme.Color.Blush}
-          />
-        </BasicInner>
-      </BasicSection>
-
-      <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
-        <BasicInner>
-          <Team />
-        </BasicInner>
-      </BasicSection>
-
-      <BasicSection
-        BgColor={Theme.Color.Blush}
-        TextColor={Theme.Color.Eggplant}
-      >
-        <BasicInner>
-          <CenteredTitle
-            Title="Testimonials"
-            Class="h2"
-            TextColor={Theme.Color.Eggplant}
-          />
-          <CenterSlider
-            testimonials={[
-              {
-                name: 'Alisha',
-                quote:
-                  'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                title: 'Recent Applicant',
-                image: 'random-1.jpg',
-              },
-              {
-                name: 'Binh',
-                quote:
-                  'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                title: 'Recent Applicant',
-                image: 'random-2.jpg',
-              },
-              {
-                name: 'Kylie',
-                quote:
-                  'Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                title: 'Recent Applicant',
-                image: 'random-3.jpg',
-              },
-              {
-                name: 'Matt',
-                quote:
-                  'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                title: 'Recent Applicant',
-                image: 'random-4.jpg',
-              },
-              {
-                name: 'Pete',
-                quote:
-                  'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                title: 'Recent Applicant',
-                image: 'random-5.jpg',
-              },
-              {
-                name: 'Meeko',
-                quote:
-                  'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
-                title: 'Recent Applicant',
-                image: 'random-6.jpg',
-              },
-            ]}
-          />
-        </BasicInner>
-      </BasicSection>
-
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Sunset}
-      >
-        <BasicInner wideWidth>
-          <GiantTextBlock
-            headerText="Core Values"
-            topText="We believe in a culture of"
-            giantText="Inquisitiveness Self Reliance &amp; Self Confidence"
-            bottomText="in children &amp; in everybody."
-            buttonText="View Listings"
-            buttonDest="https://playwell.workbrightats.com/jobmap/"
+      <OverflowHidden>
+        <SplitHero
+          {...HeroProps}
+          subNav={[
+            { label: 'who', link: '/who-we-are/who' },
+            { label: 'why', link: '/who-we-are/why' },
+            { label: 'how', link: '/who-we-are/how' },
+            { label: 'careers', active: true, link: '/who-we-are/careers' },
+          ]}
+        >
+          <h2>Join a Team of creative problem solvers &amp; creators</h2>
+          <h6>We are passionate specialists in STEM Education.</h6>
+          <Btn
+            Label="View Listings"
+            BgColor={Theme.Color.Dino}
+            TextColor={Theme.Color.White}
+            Destination="https://playwell.workbrightats.com/jobmap/"
             External
           />
-        </BasicInner>
-      </BasicSection>
+        </SplitHero>
 
-      <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
-        <Marquee
-          images={[
-            'random-1.jpg',
-            'random-2.jpg',
-            'random-3.jpg',
-            'random-4.jpg',
-            'random-5.jpg',
-            'random-6.jpg',
-          ]}
-          Shadow
-        />
-      </BasicSection>
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          noPaddingTop
+          noPaddingBottom
+        >
+          <TeamMarquee BgLinear={Theme.Color.Sky} />
+        </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.Dino}
-        BorderTop={Theme.Color.Clay}
-      >
-        <BasicInner>
-          <LegoList
-            blocks={[
-              {
-                title: 'Creative Collaboration',
-                text:
-                  'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
-                legoColor: 'orange',
-              },
-              {
-                title: 'New Perspectives',
-                text:
-                  'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
-                legoColor: 'purple',
-              },
-              {
-                title: 'Staff Morale',
-                text:
-                  'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
-                legoColor: 'blue',
-              },
+        <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
+          <BasicInner>
+            <CenteredTitle
+              Title="Our Team"
+              Class="headline"
+              TextColor={Theme.Color.Blush}
+            />
+            <Team />
+          </BasicInner>
+        </BasicSection>
+
+        <BasicSection
+          BgColor={Theme.Color.Blush}
+          TextColor={Theme.Color.Eggplant}
+        >
+          <BasicInner>
+            <CenteredTitle
+              Title="Testimonials"
+              Class="h2"
+              TextColor={Theme.Color.Eggplant}
+            />
+            <CenterSlider
+              testimonials={[
+                {
+                  name: 'Alisha',
+                  quote:
+                    'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                  title: 'Recent Applicant',
+                  image: 'random-1.jpg',
+                },
+                {
+                  name: 'Binh',
+                  quote:
+                    'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                  title: 'Recent Applicant',
+                  image: 'random-2.jpg',
+                },
+                {
+                  name: 'Kylie',
+                  quote:
+                    'Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                  title: 'Recent Applicant',
+                  image: 'random-3.jpg',
+                },
+                {
+                  name: 'Matt',
+                  quote:
+                    'I like Play-Well’s core belief in personal authenticity. There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                  title: 'Recent Applicant',
+                  image: 'random-4.jpg',
+                },
+                {
+                  name: 'Pete',
+                  quote:
+                    'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                  title: 'Recent Applicant',
+                  image: 'random-5.jpg',
+                },
+                {
+                  name: 'Meeko',
+                  quote:
+                    'There is a serious nature to education that can be overwhelming sometimes, causing students to lose track of their childhood and their ability to truly play. Opportunities for unstructured play are being taken away at an alarming rate, so it’s nice to see companies like Play-Well redirect their focus to this critical component of learning and development. I appreciate Tim Bowen’s assertion that working for a good company results in amazing experiences for students. This philosophy leads to successful organizations with each member truly giving their all and their best. I want to be part of such an organization.',
+                  title: 'Recent Applicant',
+                  image: 'random-6.jpg',
+                },
+              ]}
+            />
+          </BasicInner>
+        </BasicSection>
+
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Sunset}
+        >
+          <BasicInner wideWidth>
+            <GiantText
+              headerText="Core Values"
+              topText="We believe in a culture of"
+              className="giant-text-block"
+              giantText="Inquisitiveness Self Reliance &amp; Self Confidence"
+              bottomText="in children &amp; in everybody."
+              buttonText="View Listings"
+              buttonDest="https://playwell.workbrightats.com/jobmap/"
+              External
+            />
+          </BasicInner>
+        </BasicSection>
+
+        <BasicSection BgColor={Theme.Color.Background} noPaddingTop>
+          <Marquee
+            images={[
+              'random-1.jpg',
+              'random-2.jpg',
+              'random-3.jpg',
+              'random-4.jpg',
+              'random-5.jpg',
+              'random-6.jpg',
             ]}
+            Shadow
           />
-        </BasicInner>
-      </BasicSection>
+        </BasicSection>
 
-      <BasicSection
-        BgColor={Theme.Color.Blush}
-        TextColor={Theme.Color.Dino}
-        noPaddingTop
-        noPaddingBottom
-      >
-        <TextWithManyImages
-          Text="We do this in the context of fun-filled engineering and
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.Dino}
+          BorderTop={Theme.Color.Clay}
+        >
+          <BasicInner>
+            <LegoList
+              blocks={[
+                {
+                  title: 'Creative Collaboration',
+                  text:
+                    'A greater sense of understanding and connection between your staff, as they will now know how others play, and in turn, how they work best.',
+                  legoColor: 'orange',
+                },
+                {
+                  title: 'New Perspectives',
+                  text:
+                    'A willingness to tackle problems from a play perspective, embracing failure as part of the process of finding the solution.',
+                  legoColor: 'purple',
+                },
+                {
+                  title: 'Staff Morale',
+                  text:
+                    'A rejuvenated staff who rediscovers what they find fun about their job and their organization.',
+                  legoColor: 'blue',
+                },
+              ]}
+            />
+          </BasicInner>
+        </BasicSection>
+
+        <BasicSection
+          BgColor={Theme.Color.Blush}
+          TextColor={Theme.Color.Dino}
+          noPaddingTop
+          noPaddingBottom
+        >
+          <TextWithManyImages
+            Text="We do this in the context of fun-filled engineering and
             architectural projects, activities that both the children and the
             instructors enjoy."
-          Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
-        />
-      </BasicSection>
+            Images={['kids-1.jpg', 'lego-head.png', 'boy-3.png']}
+          />
+        </BasicSection>
+      </OverflowHidden>
 
       <Section bg={ThemeProps.BgColor} pb={0}>
         <SplitLinks>

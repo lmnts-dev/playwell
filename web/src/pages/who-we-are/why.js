@@ -45,7 +45,7 @@ import { Base } from 'constants/styles/Base';
 const HeroProps = {
   bg: Theme.Color.Cream,
   color: Theme.Color.Primary,
-  playButton: true,
+  playButton: false,
   playButtonBg: Theme.Color.Ocean,
   gear: true,
   gearFill: Theme.Color.Sunset,
@@ -82,46 +82,46 @@ const GiantTextBlock = styled(GiantText)`
 const WhoWhyPage = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero
-        {...HeroProps}
-        subNav={[
-          { label: 'who', link: '/who-we-are/who' },
-          { label: 'why', active: true, link: '/who-we-are/why' },
-          { label: 'how', link: '/who-we-are/how' },
-          { label: 'careers', link: '/who-we-are/careers' },
-        ]}
-      >
-        <h2>We provide opportunities for creative expression</h2>
-        <h6>We are passionate specialists in STEM Education.</h6>
-      </SplitHero>
-
-      <BasicSection
-        BgColor={Theme.Color.Background}
-        TextColor={Theme.Color.White}
-        noPaddingTop
-        noPaddingBottom
-        BorderBottomVertical
-      >
-        <TextOverImage
-          Image="lego-bin.jpg"
-          Header="Combining the elements of fun, challenge, and learning since 1997"
-          ButtonText="Our Story"
-          ButtonDest="/"
-        />
-      </BasicSection>
-
-      <BasicSection BgColor={Theme.Color.Background} BorderTopVertical>
-        <BasicInner>
-          <CenteredTitle Title="Our Values" Class="headline">
-            <div className="absolute-image">
-              <Icon Name="swoop" />
-              <ImgMatch src="gears.png" />
-            </div>
-          </CenteredTitle>
-        </BasicInner>
-      </BasicSection>
-
       <OverflowHidden>
+        <SplitHero
+          {...HeroProps}
+          subNav={[
+            { label: 'who', link: '/who-we-are/who' },
+            { label: 'why', active: true, link: '/who-we-are/why' },
+            { label: 'how', link: '/who-we-are/how' },
+            { label: 'careers', link: '/who-we-are/careers' },
+          ]}
+        >
+          <h2>We provide opportunities for creative expression</h2>
+          <h6>We are passionate specialists in STEM Education.</h6>
+        </SplitHero>
+
+        <BasicSection
+          BgColor={Theme.Color.Background}
+          TextColor={Theme.Color.White}
+          noPaddingTop
+          noPaddingBottom
+          BorderBottomVertical
+        >
+          <TextOverImage
+            Image="lego-bin.jpg"
+            Header="Combining the elements of fun, challenge, and learning since 1997"
+            ButtonText="Our Story"
+            ButtonDest="/"
+          />
+        </BasicSection>
+
+        <BasicSection BgColor={Theme.Color.Background} BorderTopVertical>
+          <BasicInner>
+            <CenteredTitle Title="Our Values" Class="headline">
+              <div className="absolute-image">
+                <Icon Name="swoop" />
+                <ImgMatch src="gears.png" />
+              </div>
+            </CenteredTitle>
+          </BasicInner>
+        </BasicSection>
+
         <BasicSection
           BgColor={Theme.Color.Background}
           TextColor={Theme.Color.Sunset}
@@ -178,21 +178,21 @@ const WhoWhyPage = () => {
             </div>
           </BasicInner>
         </BasicSection>
-      </OverflowHidden>
 
-      <BasicSection BgColor={Theme.Color.Background} BorderMiddle>
-        <Marquee
-          images={[
-            'random-1.jpg',
-            'random-2.jpg',
-            'random-3.jpg',
-            'random-4.jpg',
-            'random-5.jpg',
-            'random-6.jpg',
-          ]}
-          Shadow
-        />
-      </BasicSection>
+        <BasicSection BgColor={Theme.Color.Background} BorderMiddle>
+          <Marquee
+            images={[
+              'random-1.jpg',
+              'random-2.jpg',
+              'random-3.jpg',
+              'random-4.jpg',
+              'random-5.jpg',
+              'random-6.jpg',
+            ]}
+            Shadow
+          />
+        </BasicSection>
+      </OverflowHidden>
 
       <BasicSection
         BgColor={Theme.Color.Background}

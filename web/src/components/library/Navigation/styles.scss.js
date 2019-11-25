@@ -206,7 +206,7 @@ NavigationStyle.Mobile = styled.div`
       width: calc(${Theme.Base.Size.Lg} / 3);
       height: 1px;
       padding: 0;
-      background-color: ${Theme.Color.Eggplant};
+      background-color: ${Theme.Color.Text};
       position: relative;
       margin: calc(${Theme.Base.Size.Lg} / 4) 0 calc(${
   Theme.Base.Size.Lg
@@ -218,7 +218,7 @@ NavigationStyle.Mobile = styled.div`
         height: 1px;
         width: 100%;
         left: 0;
-        background-color: ${Theme.Color.Eggplant};
+        background-color: ${Theme.Color.Text};
       }
 
       &:before {

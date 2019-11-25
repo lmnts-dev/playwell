@@ -45,6 +45,19 @@ export const PageThemeStyle = createGlobalStyle`
           }
         }
 
+        .mobile-nav {
+          .hamburger {
+            div, div:before, div:after { {
+              background-color: ${props =>
+                props.PrimaryColor
+                  ? props.PrimaryColor != 'unset'
+                    ? props.PrimaryColor
+                    : false
+                  : false};
+            }
+          }
+        }
+
         .nav-secondary {
           .btn {
             .btn-inner {

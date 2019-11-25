@@ -42,7 +42,7 @@ const HeroProps = {
   bg: Theme.Color.White,
   bgMatch: 'kids-lake.jpg',
   color: Theme.Color.Primary,
-  playButton: true,
+  playButton: false,
   playButtonBg: Theme.Color.Ocean,
   gear: false,
   reversed: true,
