@@ -549,7 +549,7 @@ class CourseListings extends PureComponent {
     let costCodeId = this.props.costCodeId;
     let pageContext = this.props.pageContext;
     let search = this.props.search;
-    let allCostCodes = allCostCodes;
+    let allCostCodes = this.props.allCostCodes;
 
     /**
      *  For Debugging Purposes Only:
