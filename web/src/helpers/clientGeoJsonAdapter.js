@@ -21,7 +21,7 @@ export const clientGeoJsonAdapter = data => {
       type: 'Feature',
       geometry: {
         type: 'Point',
-        coordinates: [client.node.location_lat, client.node.location_lng],
+        coordinates: [client.node.location_lng, client.node.location_lat],
       },
       properties: {
         title: client.node.client_location_name,

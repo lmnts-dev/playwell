@@ -88,28 +88,28 @@ export class CourseMapNav extends PureComponent {
 
     const clientsData = this.props.courseData.allPlayWellClient.edges;
 
-    clientsData.map((client, idx) => {
-      const location = [client.node.location_lng, client.node.location_lat];
-
-      // Create the popup
-      const popup = new mapboxgl.Popup({
-        offset: 25,
-        closeButton: false,
-        closeOnClick: false,
-      }).setText(client.node.client_location_name);
-
-      // Create DOM element for the marker
-      const el = document.createElement('div');
-      el.id = 'marker';
-
-      // el.addEventListener('mouseenter', () => el.togglePopup());
-      // el.addEventListener('mouseleave', () => el.togglePopup());
-
-      // Create the marker
-      new mapboxgl.Marker(el)
-        .setLngLat(location)
-        .setPopup(popup) // sets a popup on this marker
-        .addTo(map);
+    // Once  our map is loaded - add data layers.
+    map.on('load', () => {
+      map.addLayer({
+        id: 'points',
+        type: 'circle',
+        source: {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: clientGeoJsonAdapter(
+              this.props.courseData.allPlayWellClient.edges
+            ),
+          },
+        },
+        paint: {
+          'circle-radius': 5,
+          'circle-color': Theme.Color.Nova,
+          'circle-stroke-color': Theme.Color.White,
+          'circle-stroke-width': 1,
+          'circle-opacity': 1,
+        },
+      });
     });
   }
 
