@@ -9,6 +9,7 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
 import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -19,6 +20,7 @@ import { Icon } from 'components/library/Icons';
 
 // Styles
 import { CourseMapNavStyle, ToggleMapBtnStyle } from './styles.scss';
+import { clientGeoJsonAdapter } from 'helpers/clientGeoJsonAdapter';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -47,10 +49,17 @@ export class CourseMapNav extends PureComponent {
     };
   }
 
-  // Initialiize Our Map
+  /**
+   *
+   * Initialize Our Map
+   *
+   */
+
   componentDidMount() {
+    // Initial position
     const { lng, lat, zoom } = this.state;
 
+    // Our map object
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v9',
@@ -58,6 +67,7 @@ export class CourseMapNav extends PureComponent {
       zoom,
     });
 
+    // Updating state depending on map position & zoom
     map.on('move', () => {
       const { lng, lat } = map.getCenter();
 
@@ -67,9 +77,48 @@ export class CourseMapNav extends PureComponent {
         zoom: map.getZoom().toFixed(2),
       });
     });
+
+    /**
+     *
+     * Generate our map markers
+     *
+     */
+
+    // Our data
+
+    const clientsData = this.props.courseData.allPlayWellClient.edges;
+
+    clientsData.map((client, idx) => {
+      const location = [client.node.location_lng, client.node.location_lat];
+
+      // Create the popup
+      const popup = new mapboxgl.Popup({
+        offset: 25,
+        closeButton: false,
+        closeOnClick: false,
+      }).setText(client.node.client_location_name);
+
+      // Create DOM element for the marker
+      const el = document.createElement('div');
+      el.id = 'marker';
+
+      // el.addEventListener('mouseenter', () => el.togglePopup());
+      // el.addEventListener('mouseleave', () => el.togglePopup());
+
+      // Create the marker
+      new mapboxgl.Marker(el)
+        .setLngLat(location)
+        .setPopup(popup) // sets a popup on this marker
+        .addTo(map);
+    });
   }
 
-  // Unmounted state
+  /**
+   *
+   * Unmounted state
+   *
+   */
+
   componentWillUnmount() {
     this.state = {
       lat: 40.7088,
@@ -82,6 +131,16 @@ export class CourseMapNav extends PureComponent {
     const mapWidth = this.props.mapWidth;
     const mapZedIndex = this.props.mapZedIndex;
     const { lng, lat, zoom } = this.state;
+
+    /**
+     *
+     * For Debugging Only
+     *
+     */
+    // console.log(
+    //   'clientGeoJsonAdapter(this.props.courseData.allPlayWellClient.edges)',
+    //   clientGeoJsonAdapter(this.props.courseData.allPlayWellClient.edges)
+    // );
     // console.log('lat: ' + lat);
     // console.log('lng: ' + lng);
     // console.log('zoom: ' + zoom);

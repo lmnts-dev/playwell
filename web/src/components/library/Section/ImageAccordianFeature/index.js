@@ -34,7 +34,7 @@ export const ImageAccordianFeature = ({ Links, Accordians }) => (
         {Links.map((link, index) => {
           return (
             <li key={index}>
-              <Link className="h6" to={link.dest}>
+              <Link className="h6" to={link.dest ? link.dest : '/'}>
                 {link.label}
               </Link>
             </li>

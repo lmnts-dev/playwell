@@ -100,7 +100,11 @@ const HomePage = () => (
       </BasicSection>*/}
 
       <OverflowHidden>
-        <BasicSection BgColor={Theme.Color.Ocean} TextColor={Theme.Color.White} noOverflow>
+        <BasicSection
+          BgColor={Theme.Color.Ocean}
+          TextColor={Theme.Color.White}
+          noOverflow
+        >
           <BasicInner noPaddingLeft>
             <EdgeImageWithText
               Reversed
@@ -216,7 +220,7 @@ const HomePage = () => (
 
 // Styles
 const Main = styled.main`
- // overflow: hidden;
+  // overflow: hidden;
 `;
 
 const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`

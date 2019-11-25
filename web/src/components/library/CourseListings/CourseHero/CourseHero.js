@@ -46,6 +46,7 @@ export const CourseHero = ({
   pageContext,
   categoryFilter,
   geoDataVerify,
+  allCostCodes,
 }) => (
   <CourseHeroStyle bg={bg}>
     <div className="absolute-image">
@@ -75,6 +76,7 @@ export const CourseHero = ({
               pageContext={pageContext}
               categoryFilter={categoryFilter}
               geoDataVerify={geoDataVerify}
+              allCostCodes={allCostCodes}
             />
           }
         </Box>

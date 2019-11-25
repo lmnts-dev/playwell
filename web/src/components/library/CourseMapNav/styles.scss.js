@@ -35,6 +35,25 @@ export const CourseMapNavStyle = styled.div`
     display: none;
   }
 
+  #marker {
+    background: ${Theme.Color.Nova};
+    border: 1px solid ${Theme.Color.White};
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    /* transform: scale(1);
+    transition: all 0.5s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    } */
+  }
+
+  .mapboxgl-popup {
+    max-width: 200px;
+  }
+
   .inner {
     max-width: ${Root.Site.Width};
     width: 100%;

@@ -127,10 +127,7 @@ export const CourseHeroContentStyle = styled.div`
     margin-top: calc(${Root.Size} / 4);
     flex-wrap: wrap;
     line-height: 1.5;
-    width: ${props =>
-      props.mapWidth
-        ? 'calc(calc(100% - ' + props.mapWidth + ') - 40px)'
-        : '100%'};
+    width: 100%;
 
     span {
       font-weight: bold;

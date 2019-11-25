@@ -25,6 +25,10 @@ import { CourseMapNav } from 'components/library/CourseMapNav';
 import slugify from 'helpers/slugify';
 import locationMatch from 'helpers/locationMatch';
 import withLocation from 'helpers/withLocation';
+import { costCodesAdapter } from 'helpers/costCodesAdapter';
+
+// Data
+import { DataFetch } from 'hooks/DataFetch';
 
 // Styles
 import { CourseListingsStyle, ListingsResultsStyle } from './styles.scss';
@@ -57,14 +61,47 @@ class FilteredResults extends PureComponent {
 
       // Check if the pageContext is a county or a cost code
       if (pageContext.isCounty == true) {
-        // Get County ID
+        let statesWithEdges = { edges: this.props.stateEdges };
         let contextualCountyId = context.county_id;
         let contextualStateId = context.parentState.playwell_state_id;
+        let contextualCostCode = parseInt(context.cost_code);
 
-        // First grab our clients from the correct State ID and then filter out the current County:
-        let relatedCourses = clients
-          .filter(client => client.node.state_id == contextualStateId)
-          .filter(client => client.node.county_id != contextualCountyId);
+        // Match & get our Cost Code's array of States & Counties
+        let allCostCodes = costCodesAdapter(statesWithEdges, true);
+        let matchedCostCode = allCostCodes.filter(
+          costCode => costCode.code == contextualCostCode
+        )[0];
+
+        console.log('allCostCodes', allCostCodes);
+        console.log('matchedCostCode', matchedCostCode);
+
+        // First grab our Cost Code's courses:
+        let costCodeCourses = matchedCostCode.states.map((state, idx) => {
+          let filteredClients = state.counties.map(county => {
+            let filteredByCounty = clientsData.filter(
+              client =>
+                parseInt(client.node.county_id) == parseInt(county.county_id)
+            );
+
+            return filteredByCounty;
+          });
+
+          return filteredClients;
+        });
+
+        console.log('costCodeCourses', costCodeCourses);
+
+        // Filter out the current County:
+        let relatedCourses = [];
+
+        // Next match our related clients to the current Cost Code:
+        // let relatedClientsWithinCostCode = relatedClientsWithoutCurrentCounty.filter(client => {
+        //   let clientCoursesWithCostCode = client.courses.map((course, idx) => {
+        //     let matchedCostCodeMeta = matchedCostCode.states.map((state, idxx) => {
+
+        //     })
+        //   })
+        // });
 
         return relatedCourses;
       } else {
@@ -122,19 +159,28 @@ class FilteredResults extends PureComponent {
 
         {/**
          *
-         * Related Programs
+         * Related Programs By County
          *
          */}
-        {pageContext.isCounty == true || pageContext.isCostCode == true ? (
+        {pageContext.isCounty == true ? (
           relatedCourseData(clientsData, pageContext).length > 0 ? (
             <div className="nearby-results">
               <div className="nearby-results-inner">
                 <h3 className="nearby-results-header">
-                  Find more Programs in{' '}
+                  {relatedCourseData(clientsData, pageContext).length +
+                    ' more LEGO® STEM ' +
+                    (relatedCourseData(clientsData, pageContext).length > 1
+                      ? 'Programs near '
+                      : 'Program near ')}
                   <Link
-                    to={'programs/' + slugify(pageContext.parentState.name)}
+                    to={
+                      '/programs/' +
+                      slugify(pageContext.parentState.name) +
+                      '/' +
+                      slugify(pageContext.cost_code_name)
+                    }
                   >
-                    {pageContext.parentState.name}
+                    {pageContext.cost_code_name}
                   </Link>
                 </h3>
                 <div className="nearby-results-listings">
@@ -170,6 +216,70 @@ class FilteredResults extends PureComponent {
                     this
                   )}
                 </div>
+              </div>
+            </div>
+          ) : (
+            false
+          )
+        ) : (
+          false
+        )}
+
+        {/**
+         *
+         * Related Programs By State
+         *
+         */}
+        {pageContext.isCounty == true || pageContext.isCostCode == true ? (
+          relatedCourseData(clientsData, pageContext).length > 0 ? (
+            <div className="nearby-results">
+              <div className="nearby-results-inner">
+                <h3 className="nearby-results-header">
+                  <Link
+                    to={'/programs/' + slugify(pageContext.parentState.name)}
+                  >
+                    {'View ' +
+                      relatedCourseData(clientsData, pageContext).length +
+                      ' more LEGO® STEM ' +
+                      (relatedCourseData(clientsData, pageContext).length > 1
+                        ? 'Programs in '
+                        : 'Program in ') +
+                      pageContext.parentState.name}
+                  </Link>
+                </h3>
+                {/* <div className="nearby-results-listings">
+                  {relatedCourseData(clientsData, pageContext).map(
+                    (client, idx) => {
+                      // Get our Location Meta Data for this Client
+                      let locationMetaResults = locationMatch(
+                        stateEdges,
+                        client.node.county_id,
+                        client.node.state_id
+                      );
+
+                      // Build our slugified strings for pretty URLs.
+                      let stateSlug = slugify(locationMetaResults.state.name);
+                      let countySlug = slugify(locationMetaResults.county.name);
+
+                      // console.log(client);
+                      if (client.node.courses.length > 0) {
+                        // Return our cards
+                        return (
+                          <ClientCard
+                            key={idx}
+                            clientData={client}
+                            locationMetaResults={locationMetaResults}
+                            stateSlug={stateSlug}
+                            countySlug={countySlug}
+                          />
+                        );
+                      } else {
+                        return;
+                      }
+                    },
+                    this
+                  )}
+                </div> */}
               </div>
             </div>
           ) : (
@@ -276,8 +386,8 @@ class ListingsResults extends PureComponent {
     /**
      * For Debugging Purposes Only:
      * */
-    // console.log('pageContext:');
-    // console.log(pageContext);
+    console.log('pageContext:');
+    console.log(pageContext);
     // console.log('filteredCourseDataByToggle():');
     // console.log(filteredCourseDataByToggle());
 
@@ -439,6 +549,7 @@ class CourseListings extends PureComponent {
     let costCodeId = this.props.costCodeId;
     let pageContext = this.props.pageContext;
     let search = this.props.search;
+    let allCostCodes = allCostCodes;
 
     /**
      *  For Debugging Purposes Only:
@@ -450,6 +561,7 @@ class CourseListings extends PureComponent {
     // console.log(search.show);
     // console.log('this.state:');
     // console.log(this.state);
+    console.log('courseData:', courseData);
 
     return (
       <main>
@@ -465,10 +577,15 @@ class CourseListings extends PureComponent {
           costCodeId={costCodeId}
           pageContext={pageContext}
           categoryFilter={this.state.categoryFilter}
+          allCostCodes={allCostCodes}
         />
         {this.props.pageContext !== false ? (
           <>
-            <CourseMapNav mapWidth={mapWidth} mapZedIndex={mapZedIndex} />
+            <CourseMapNav
+              courseData={courseData}
+              mapWidth={mapWidth}
+              mapZedIndex={mapZedIndex}
+            />
             <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
               <ListingsResults
                 courseData={courseData}
@@ -479,6 +596,7 @@ class CourseListings extends PureComponent {
                 urlQuery={search.show} // Utilizes our withLocation(); function at the end of this document.
                 categoryFilter={this.state.categoryFilter}
                 toggleCategoryFilter={this.toggleCategoryFilter}
+                allCostCodes={allCostCodes}
               />
             </ListingsWrapper>
           </>

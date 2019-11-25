@@ -26,6 +26,7 @@ import { DataFetch } from 'hooks/DataFetch';
 import { Theme, Root } from 'constants/Theme';
 
 // Helpers
+import { costCodesAdapter } from 'helpers/costCodesAdapter';
 import locationMatch from 'helpers/locationMatch';
 
 // Props
@@ -42,7 +43,8 @@ const ThemeProps = {
 // Render Page
 const ProgramsPage = ({ pageContext }) => {
   // Use our hook's data as source
-  const fetchedData = DataFetch();
+  let fetchedData = DataFetch();
+  let allCostCodes = costCodesAdapter(fetchedData);
 
   // For debugging only.
   // console.log(fetchedData);
@@ -58,6 +60,7 @@ const ProgramsPage = ({ pageContext }) => {
         geoData={fetchedData.allPlayWellStates}
         mapWidth={Theme.mapWidth}
         mapZedIndex={Theme.mapZedIndex}
+        allCostCodes={allCostCodes}
       />
 
       <div style={{ zIndex: Theme.mapZedIndex + 1 }}>

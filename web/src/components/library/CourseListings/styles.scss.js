@@ -97,6 +97,7 @@ export const ListingsResultsStyle = styled.div`
     .nearby-results-header {
       margin-top: calc(${Root.Size} * 2);
       color: ${Theme.Color.Tan};
+      font-size: 2rem;
 
       a {
         color: ${Theme.Color.Nova};
