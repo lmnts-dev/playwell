@@ -22,6 +22,12 @@ import { Icon } from 'components/library/Icons';
 import { CourseMapNavStyle, ToggleMapBtnStyle } from './styles.scss';
 import { clientGeoJsonAdapter } from 'helpers/clientGeoJsonAdapter';
 
+// Helpers
+import {
+  getCenterFromDegrees,
+  clientsByLatLong,
+} from 'helpers/getCenterFromDegrees';
+
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
@@ -45,7 +51,7 @@ export class CourseMapNav extends PureComponent {
     this.state = {
       lat: 40.7088,
       lng: -73.9888,
-      zoom: 10.6,
+      zoom: 2,
     };
   }
 
@@ -56,6 +62,23 @@ export class CourseMapNav extends PureComponent {
    */
 
   componentDidMount() {
+    const clientEdges = this.props.courseData.allPlayWellClient.edges;
+
+    /**
+     *
+     * For Debugging Only
+     *
+     */
+    // console.log('clientEdges:', clientEdges);
+    // console.log(
+    //   'clientsByLatLong(7, clientEdges):',
+    //   clientsByLatLong(7, clientEdges)
+    // );
+    // console.log(
+    //   'getCenterFromDegrees(clientsByLatLong(7, clientEdges)):',
+    //   getCenterFromDegrees(clientsByLatLong(7, clientEdges))
+    // );
+
     // Initial position
     const { lng, lat, zoom } = this.state;
 
@@ -63,8 +86,6 @@ export class CourseMapNav extends PureComponent {
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v9',
-      center: [lng, lat],
-      zoom,
     });
 
     // Updating state depending on map position & zoom
@@ -85,7 +106,6 @@ export class CourseMapNav extends PureComponent {
      */
 
     // Our data
-
     const clientsGeoJson = clientGeoJsonAdapter(
       this.props.courseData.allPlayWellClient.edges
     );
@@ -93,8 +113,40 @@ export class CourseMapNav extends PureComponent {
     // Map Id
     const mapId = 'clients';
 
-    // Once  our map is loaded - add data layers.
+    /**
+     *
+     * Once  our map is loaded:
+     *
+     */
     map.on('load', () => {
+      // Add zoom and rotation controls to the map.
+      map.addControl(new mapboxgl.NavigationControl());
+
+      /**
+       *
+       * Fit to our respective initial bounds provided by pageContext
+       *
+       */
+
+      // First establish an empty set of bounds.
+      const initialBounds = new mapboxgl.LngLatBounds();
+
+      // Create raw markers with our helper function.
+      const initialMarkers = clientsByLatLong(7, clientEdges);
+
+      // Extend our bounds to include our raw markers
+      initialMarkers.forEach(coordinates => {
+        initialBounds.extend(coordinates);
+      });
+
+      // Fit our map to said bounds.
+      map.fitBounds(initialBounds);
+
+      /**
+       *
+       * Add data layers.
+       *
+       */
       map.addLayer({
         id: mapId,
         type: 'circle',

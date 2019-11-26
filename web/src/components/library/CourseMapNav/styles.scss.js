@@ -35,7 +35,7 @@ export const CourseMapNavStyle = styled.div`
     display: none;
   }
 
-  #marker {
+  /* #marker {
     background: ${Theme.Color.Nova};
     border: 1px solid ${Theme.Color.White};
     width: 10px;
@@ -48,7 +48,7 @@ export const CourseMapNavStyle = styled.div`
     &:hover {
       transform: scale(1.1);
     } */
-  }
+  } */
 
   .mapboxgl-popup {
     max-width: 200px;
@@ -110,7 +110,7 @@ export const ToggleMapBtnStyle = styled.button`
   border-radius: 4px;
   color: ${Theme.Color.Galaxy};
   position: absolute;
-  right: calc(${Root.Size} / 6);
+  left: calc(${Root.Size} / 6);
   top: calc(${Root.Size} / 6);
   font-weight: bold;
   height: ${Root.Button.Size};

@@ -471,7 +471,10 @@ class ResultRow extends PureComponent {
                 <li key={idxx}>
                   <div className="results-row">
                     <Link to={costCodeSlugString}>
-                      <span>{costCode.cost_code_name}</span>
+                      <span>
+                        <span className="nearby">Near </span>
+                        {costCode.cost_code_name}
+                      </span>
                     </Link>
                   </div>
                   <ul className="results-sub">
@@ -690,7 +693,8 @@ const CourseHeroContent = ({
         <h1>
           <span className="h2">
             <span className="inline">
-              Explore LEGO® STEM {listingContext(categoryFilter)} in
+              Explore LEGO® STEM {listingContext(categoryFilter)}
+              {pageContext.isCostCode == true ? ' near' : ' in'}
             </span>
           </span>
           <span className="location h2">

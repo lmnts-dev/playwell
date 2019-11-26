@@ -60,7 +60,7 @@ export const CourseHeroStyle = styled.section`
     .h1,
     .location {
       display: block;
-    //  overflow: hidden;
+      //  overflow: hidden;
       height: auto;
     }
 
@@ -322,10 +322,21 @@ export const SearchBarStyle = styled.div`
             }
           }
 
+
+          a {
+            span {
+              .nearby {
+                color: ${Theme.Color.Slate};
+                top: 0px;
+                opacity: .6;
+              }
+            }
+          }
+
           .no-results {
             padding: calc(${Root.Size} *  1.5) calc(${Root.Size} / 2)  ${
-         Root.Size
-       } calc(${Root.Size} / 2);
+  Root.Size
+} calc(${Root.Size} / 2);
 
             width: 100%;
             color: ${hexToRGB(Theme.Color.Ocean, 0.6)};

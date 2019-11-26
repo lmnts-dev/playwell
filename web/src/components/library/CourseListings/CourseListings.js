@@ -25,6 +25,10 @@ import { CourseMapNav } from 'components/library/CourseMapNav';
 import slugify from 'helpers/slugify';
 import locationMatch from 'helpers/locationMatch';
 import withLocation from 'helpers/withLocation';
+import {
+  getCenterFromDegrees,
+  clientsByLatLong,
+} from 'helpers/getCenterFromDegrees';
 import { costCodesAdapter } from 'helpers/costCodesAdapter';
 
 // Data
@@ -386,8 +390,8 @@ class ListingsResults extends PureComponent {
     /**
      * For Debugging Purposes Only:
      * */
-    console.log('pageContext:');
-    console.log(pageContext);
+    // console.log('pageContext:');
+    // console.log(pageContext);
     // console.log('filteredCourseDataByToggle():');
     // console.log(filteredCourseDataByToggle());
 
@@ -554,6 +558,20 @@ class CourseListings extends PureComponent {
     /**
      *  For Debugging Purposes Only:
      * */
+    // console.log(
+    //   'courseData.allPlayWellClient.edges:',
+    //   courseData.allPlayWellClient.edges
+    // );
+    // console.log(
+    //   'clientsByLatLong(6, courseData.allPlayWellClient.edges):',
+    //   clientsByLatLong(6, courseData.allPlayWellClient.edges)
+    // );
+    // console.log(
+    //   'getCenterFromDegrees(clientsByLatLong(6, courseData.allPlayWellClient.edges)):',
+    //   getCenterFromDegrees(
+    //     clientsByLatLong(6, courseData.allPlayWellClient.edges)
+    //   )
+    // );
     // console.log('stateId: ' + stateId);
     // console.log('countyId: ' + countyId);
     // console.log('costCodeId: ' + costCodeId);
@@ -561,7 +579,7 @@ class CourseListings extends PureComponent {
     // console.log(search.show);
     // console.log('this.state:');
     // console.log(this.state);
-    console.log('courseData:', courseData);
+    // console.log('courseData:', courseData);
 
     return (
       <main>
