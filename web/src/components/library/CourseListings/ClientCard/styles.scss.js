@@ -56,8 +56,8 @@ export const ClientCardStyle = styled.div`
 
   .anchor {
     display: block;
-    height: 50vh; /*same height as header*/
-    margin-top: -50vh; /*same height as header*/
+    height: 30vh; /*same height as header*/
+    margin-top: -30vh; /*same height as header*/
     visibility: hidden;
   }
 `;

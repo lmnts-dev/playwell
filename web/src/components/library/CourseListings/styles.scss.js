@@ -85,6 +85,16 @@ CourseListingsStyle.Toolbar = styled.div`
       height: 1px;
       background: ${Theme.Color.Blush};
     }
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: calc((${Root.Size} / 2) * -1);
+      right: calc((${Root.Size} / 2) * -1);
+      bottom: 0;
+      top: 0;
+      background: ${Theme.Color.White};
+    }
   }
 `;
 

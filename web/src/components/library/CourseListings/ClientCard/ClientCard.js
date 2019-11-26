@@ -38,6 +38,7 @@ export class ClientCard extends PureComponent {
 
     // Bind expanding function
     this.toggleCard = this.toggleCard.bind(this);
+    this.focusCard = this.focusCard.bind(this);
   }
 
   // Mounted State
@@ -57,6 +58,26 @@ export class ClientCard extends PureComponent {
       this.setState({
         cardExpanded: false,
       });
+    }
+  }
+
+  // Check if we are focusing the card from courseMapNav via location.hash
+  focusCard(currentClient) {
+    if (typeof window !== 'undefined') {
+      if (
+        window.location.hash ===
+        slugify(currentClient.node.client_location_name)
+      ) {
+        this.setState({
+          cardExpanded: true,
+        });
+        console.log('expanded');
+        return;
+      } else {
+        return;
+      }
+    } else {
+      return;
     }
   }
 
@@ -113,7 +134,12 @@ export class ClientCard extends PureComponent {
     return (
       <ClientCardStyle
         onClick={this.toggleCard}
-        cardExpanded={this.state.cardExpanded}
+        cardExpanded={
+          window.location.hash ===
+          `#${slugify(clientData.node.client_location_name)}`
+            ? true
+            : this.state.cardExpanded
+        }
         className={
           typeof window !== 'undefined'
             ? window.location.hash ===
