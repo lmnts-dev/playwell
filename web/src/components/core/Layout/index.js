@@ -35,10 +35,10 @@ import { navDataTransformer } from 'components/library/Navigation/Data/';
 // Check for window to avoid breaking server
 // side rendering.
 
-if (typeof window !== 'undefined') {
-  // eslint-disable-next-line global-require
-  require('smooth-scroll')('a[href*="#"]');
-}
+// if (typeof window !== 'undefined') {
+//   // eslint-disable-next-line global-require
+//   require('smooth-scroll')('a[href*="#"]');
+// }
 
 // Core Layout component structure.
 

@@ -11,6 +11,9 @@
 
 import React, { PureComponent } from 'react';
 
+// Helpers
+import slugify from 'helpers/slugify';
+
 // Begin Helper
 //////////////////////////////////////////////////////////////////////
 
@@ -25,7 +28,7 @@ export const clientGeoJsonAdapter = data => {
       },
       properties: {
         title: client.node.client_location_name,
-        icon: 'monument',
+        locationHash: slugify(client.node.client_location_name),
       },
     };
   });

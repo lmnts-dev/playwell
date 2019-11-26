@@ -35,7 +35,7 @@ export const ClientCardStyle = styled.div`
   border-radius: calc(${Root.Size} / 2);
   border: 1px solid ${hexToRGB(Theme.Color.Cream, 0)};
   cursor: pointer;
-  
+
   @media (max-width: ${Theme.Base.Media.Width.Sm}) {
     padding: 0 calc(${Root.Size} / 3);
   }
@@ -47,6 +47,18 @@ export const ClientCardStyle = styled.div`
 
   .row {
     display: ${props => (props.cardExpanded == true ? 'flex' : 'none')};
+  }
+
+  &.focus {
+    border: 1px solid ${Theme.Color.Ocean};
+    box-shadow: 0 0 10px 10px ${hexToRGB(Theme.Color.Ocean, 0.2)};
+  }
+
+  .anchor {
+    display: block;
+    height: 50vh; /*same height as header*/
+    margin-top: -50vh; /*same height as header*/
+    visibility: hidden;
   }
 `;
 

@@ -86,20 +86,23 @@ export class CourseMapNav extends PureComponent {
 
     // Our data
 
-    const clientsData = this.props.courseData.allPlayWellClient.edges;
+    const clientsGeoJson = clientGeoJsonAdapter(
+      this.props.courseData.allPlayWellClient.edges
+    );
+
+    // Map Id
+    const mapId = 'clients';
 
     // Once  our map is loaded - add data layers.
     map.on('load', () => {
       map.addLayer({
-        id: 'points',
+        id: mapId,
         type: 'circle',
         source: {
           type: 'geojson',
           data: {
             type: 'FeatureCollection',
-            features: clientGeoJsonAdapter(
-              this.props.courseData.allPlayWellClient.edges
-            ),
+            features: clientsGeoJson,
           },
         },
         paint: {
@@ -109,6 +112,58 @@ export class CourseMapNav extends PureComponent {
           'circle-stroke-width': 1,
           'circle-opacity': 1,
         },
+      });
+
+      // When a click event occurs on a feature in the places layer, open a popup at the
+      // location of the feature, with description HTML from its properties.
+      map.on('click', mapId, function(e) {
+        var coordinates = e.features[0].geometry.coordinates.slice();
+        var description = e.features[0].properties.title;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(description)
+          .addTo(map);
+      });
+
+      // Change the cursor to a pointer when the mouse is over the places layer.
+      map.on('mouseenter', mapId, function() {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      // Change it back to a pointer when it leaves.
+      map.on('mouseleave', mapId, function() {
+        map.getCanvas().style.cursor = '';
+      });
+
+      // // Remove popup after hover
+      // map.on('mouseleave', mapId, () => {
+      //   map.getCanvas().style.cursor = '';
+      //   popup.remove();
+      // });
+
+      // Functions to run on click.
+      map.on('click', mapId, function(e) {
+        // Fly to point
+        map.flyTo({ center: e.features[0].geometry.coordinates, zoom: 9 });
+
+        // Update pushState with correct hash to show corresponding card.
+        // history.pushState(
+        //   {},
+        //   null,
+        //   `#${e.features[0].properties.locationHash}`
+        // );
+
+        if (typeof window !== 'undefined') {
+          window.location.hash = `#${e.features[0].properties.locationHash}`;
+        }
       });
     });
   }

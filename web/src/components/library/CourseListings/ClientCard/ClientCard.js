@@ -114,7 +114,19 @@ export class ClientCard extends PureComponent {
       <ClientCardStyle
         onClick={this.toggleCard}
         cardExpanded={this.state.cardExpanded}
+        className={
+          typeof window !== 'undefined'
+            ? window.location.hash ===
+              `#${slugify(clientData.node.client_location_name)}`
+              ? 'focus'
+              : false
+            : false
+        }
       >
+        <span
+          className="anchor"
+          id={slugify(clientData.node.client_location_name)}
+        ></span>
         <ClientCardStyle.ClientName cardExpanded={this.state.cardExpanded}>
           <div className="client-name">
             <div className="subtitle-list">
