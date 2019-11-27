@@ -52,21 +52,3 @@ export const getCenterFromDegrees = data => {
   return new Array(newY.toFixed(4), newX.toFixed(4));
 };
 
-/**
- *
- * Return Client Lat / Long Listings based on State ID
- * @param state_id = A number correlating to the allPlayWellState playwell_state_id
- * @param clientEdges = All the client edges from allPlayWellClients.edges
- *
- */
-
-export const clientsByLatLong = (state_id, clientEdges) => {
-  const clientEdgesByGeo = clientEdges
-    .filter(client => parseInt(client.node.state_id) === parseInt(state_id))
-    .map((client, idx) => {
-      return new Array(client.node.location_lng, client.node.location_lat);
-    });
-
-  console.log('clientEdgesByGeo', clientEdgesByGeo);
-  return clientEdgesByGeo;
-};

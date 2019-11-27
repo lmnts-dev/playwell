@@ -41,3 +41,40 @@ export const clientGeoJsonAdapter = data => {
    *
    */
 };
+
+/**
+ *
+ * Return Client Lat / Long Listings based on State ID
+ * @param state_id = A number correlating to the allPlayWellState playwell_state_id
+ * @param clientEdges = All the client edges from allPlayWellClients.edges
+ *
+ */
+
+export const clientsByLatLong = (state_id, clientEdges) => {
+  const clientEdgesByGeo = clientEdges
+    .filter(client => parseInt(client.node.state_id) === parseInt(state_id))
+    .map((client, idx) => {
+      return new Array(client.node.location_lng, client.node.location_lat);
+    });
+
+  /**
+   *
+   * Return Client Edges if > 0. Else return all edges
+   *
+   */
+  console.log('clientEdgesByGeo', clientEdgesByGeo);
+  if (clientEdgesByGeo.length > 0) {
+    return clientEdgesByGeo;
+  } else {
+    const clientEdgesByGeo = clientEdges.map((client, idx) => {
+      return new Array(client.node.location_lng, client.node.location_lat);
+    });
+    return clientEdgesByGeo;
+  }
+
+  /**
+   *
+   * For Debugging only.
+   *
+   */
+};

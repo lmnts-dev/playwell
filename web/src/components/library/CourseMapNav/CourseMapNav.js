@@ -10,6 +10,7 @@ import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import { navigate } from '@reach/router';
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -20,13 +21,13 @@ import { Icon } from 'components/library/Icons';
 
 // Styles
 import { CourseMapNavStyle, ToggleMapBtnStyle } from './styles.scss';
-import { clientGeoJsonAdapter } from 'helpers/clientGeoJsonAdapter';
+import {
+  clientGeoJsonAdapter,
+  clientsByLatLong,
+} from 'helpers/clientGeoJsonAdapter';
 
 // Helpers
-import {
-  getCenterFromDegrees,
-  clientsByLatLong,
-} from 'helpers/getCenterFromDegrees';
+import { getCenterFromDegrees } from 'helpers/getCenterFromDegrees';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -63,6 +64,21 @@ export class CourseMapNav extends PureComponent {
 
   componentDidMount() {
     const clientEdges = this.props.courseData.allPlayWellClient.edges;
+    const stateId = this.props.pageContext.isCostCode // If CostCode:
+      ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
+      : this.props.pageContext.isCounty // If County:
+      ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
+      : this.props.pageContext.playwell_state_id; // else it's a State and remove parentState and use it's Id.
+    const costCodeId = this.props.pageContext.isCostCode // If CostCode:
+      ? this.props.pageContext.cost_code // Display Cost Code.
+      : this.props.pageContext.isCounty // If County:
+      ? this.props.pageContext.cost_code // Display Cost Code.
+      : null; // else it's a State and CostCode is no longer needed.
+    const countyId = this.props.pageContext.isCostCode // If CostCode:
+      ? this.props.pageContext.county_id // Display County Id.
+      : this.props.pageContext.isCounty // If County:
+      ? this.props.pageContext.county_id // Display County Id.
+      : null; // else it's a State and County Id is no longer needed.
 
     /**
      *
@@ -81,6 +97,9 @@ export class CourseMapNav extends PureComponent {
 
     // Initial position
     const { lng, lat, zoom } = this.state;
+
+    const intialLng = 0;
+    const initialLat = 0;
 
     // Our map object
     const map = new mapboxgl.Map({
@@ -131,8 +150,8 @@ export class CourseMapNav extends PureComponent {
       // First establish an empty set of bounds.
       const initialBounds = new mapboxgl.LngLatBounds();
 
-      // Create raw markers with our helper function.
-      const initialMarkers = clientsByLatLong(7, clientEdges);
+      // Create raw markers with our helper function and utilize our State Id from CourseListings / PageContext.
+      const initialMarkers = clientsByLatLong(stateId, clientEdges);
 
       // Extend our bounds to include our raw markers
       initialMarkers.forEach(coordinates => {
@@ -140,7 +159,7 @@ export class CourseMapNav extends PureComponent {
       });
 
       // Fit our map to said bounds.
-      map.fitBounds(initialBounds);
+      map.fitBounds(initialBounds, { padding: 50 });
 
       /**
        *
@@ -206,16 +225,8 @@ export class CourseMapNav extends PureComponent {
         // Fly to point
         map.flyTo({ center: e.features[0].geometry.coordinates, zoom: 9 });
 
-        // Update pushState with correct hash to show corresponding card.
-        // history.pushState(
-        //   {},
-        //   null,
-        //   `#${e.features[0].properties.locationHash}`
-        // );
-
-        if (typeof window !== 'undefined') {
-          window.location.hash = `#${e.features[0].properties.locationHash}`;
-        }
+        // Use Reach Router to update route.
+        navigate(`?location=${e.features[0].properties.locationHash}`);
       });
     });
   }

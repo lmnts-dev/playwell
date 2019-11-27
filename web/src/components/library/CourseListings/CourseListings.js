@@ -14,7 +14,6 @@ import { Theme, Root } from 'constants/Theme';
 
 // Components
 import { Icon } from 'components/library/Icons';
-import { Box, Flex } from 'components/library/Elements';
 import { ListingsCounters } from './ListingsCounters';
 import { ListingsFilters } from './ListingsFilters';
 import { ClientCard } from './ClientCard';
@@ -450,11 +449,14 @@ class CourseListings extends PureComponent {
     // Initial State for a top level category
     this.state = {
       categoryFilter: '',
+      currentlyViewing: '',
     };
 
     // Bind search query function
+
     this.toggleCategoryFilter = this.toggleCategoryFilter.bind(this);
-    this.checkForUrlQuery = this.checkForUrlQuery.bind(this);
+    this.checkforFilterUrlParam = this.checkforFilterUrlParam.bind(this);
+    this.checkforLocationUrlParam = this.checkforLocationUrlParam.bind(this);
     this.setParams = this.setParams.bind(this);
     this.updateURL = this.updateURL.bind(this);
   }
@@ -508,8 +510,8 @@ class CourseListings extends PureComponent {
     }
   }
 
-  // Check for url query
-  checkForUrlQuery() {
+  // Check for url query for showing/hiding results.
+  checkforFilterUrlParam() {
     if (this.props.search.show != undefined) {
       let safeUrlQuery = this.props.search.show.toLowerCase(); // Via Reach Router
 
@@ -538,8 +540,28 @@ class CourseListings extends PureComponent {
     return;
   }
 
+  checkforLocationUrlParam() {
+    if (this.props.search.location != undefined) {
+      let safeUrlLocationQuery = this.props.search.location.toLowerCase(); // Via Reach Router
+
+      this.setState({
+        currentlyViewing: safeUrlLocationQuery,
+      });
+
+      console.log('TRUE this.state.currentlyViewing:', this.state.currentlyViewing);
+    } else {
+      console.log('FALSE this.state.currentlyViewing:', 'no query');
+    }
+    // For debugging
+    // console.log('this.state.categoryFilter:');
+    // console.log(this.state.categoryFilter);
+
+    // this.checkforLocationUrlParam(); // Run recursively.
+  }
+
   componentDidMount() {
-    this.checkForUrlQuery();
+    this.checkforFilterUrlParam();
+    this.checkforLocationUrlParam();
   }
 
   render() {
@@ -575,6 +597,7 @@ class CourseListings extends PureComponent {
     // console.log('stateId: ' + stateId);
     // console.log('countyId: ' + countyId);
     // console.log('costCodeId: ' + costCodeId);
+    console.log('pageContext:', pageContext);
     // console.log('search.show:');
     // console.log(search.show);
     // console.log('this.state:');
@@ -603,6 +626,10 @@ class CourseListings extends PureComponent {
               courseData={courseData}
               mapWidth={mapWidth}
               mapZedIndex={mapZedIndex}
+              stateId={stateId}
+              countyId={countyId}
+              costCodeId={costCodeId}
+              pageContext={pageContext}
             />
             <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
               <ListingsResults

@@ -7,7 +7,6 @@
 // Core
 import React from 'react';
 import { Location } from '@reach/router';
-import queryString from 'query-string';
 import { StaticQuery, graphql } from 'gatsby';
 
 // Vendor

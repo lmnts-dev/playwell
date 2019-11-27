@@ -1,7 +1,6 @@
 // Core
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
-import queryString from 'query-string';
 import { Location } from '@reach/router';
 
 // Helpers
@@ -754,7 +753,7 @@ const CourseHeroContent = ({
                     '/';
 
                   return (
-                    <Link key={idxx} to={slugString}>
+                    <Link key={idxx} to={slugString} state={{ test: true }}>
                       {county.name}
                     </Link>
                   );

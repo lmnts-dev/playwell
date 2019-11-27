@@ -41,12 +41,25 @@ const ThemeProps = {
 //////////////////////////////////////////////////////////////////////
 
 // Render Page
-const ProgramsPage = ({ pageContext }) => {
+const ProgramsPage = ({ pageContext, location }) => {
   // Use our hook's data as source
-  let fetchedData = DataFetch();
-  let allCostCodes = costCodesAdapter(fetchedData);
+  const fetchedData = DataFetch();
+  const allCostCodes = costCodesAdapter(fetchedData);
 
-  // For debugging only.
+  // Utilize previous page location state
+  // const { state = {} } = location;
+  // const { test } = state;
+
+  /**
+   *
+   * For debugging only.
+   *
+   */
+  // console.log(
+  //   test === true
+  //     ? `received previous page props: ${test}`
+  //     : `did not received previous page props: ${test}`
+  // );
   // console.log(fetchedData);
 
   return (
