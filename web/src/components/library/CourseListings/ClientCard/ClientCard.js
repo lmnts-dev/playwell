@@ -63,22 +63,22 @@ export class ClientCard extends PureComponent {
 
   // Check if we are focusing the card from courseMapNav via location.hash
   focusCard(currentClient) {
-    if (typeof window !== 'undefined') {
-      if (
-        window.location.hash ===
-        slugify(currentClient.node.client_location_name)
-      ) {
-        this.setState({
-          cardExpanded: true,
-        });
-        console.log('expanded');
-        return;
-      } else {
-        return;
-      }
-    } else {
-      return;
-    }
+    // if (typeof window !== 'undefined') {
+    //   if (
+    //     window.location.hash ===
+    //     slugify(currentClient.node.client_location_name)
+    //   ) {
+    //     this.setState({
+    //       cardExpanded: true,
+    //     });
+    //     console.log('expanded');
+    //     return;
+    //   } else {
+    //     return;
+    //   }
+    // } else {
+    //   return;
+    // }
   }
 
   render() {
@@ -134,20 +134,15 @@ export class ClientCard extends PureComponent {
     return (
       <ClientCardStyle
         onClick={this.toggleCard}
-        cardExpanded={
-          window.location.hash ===
-          `#${slugify(clientData.node.client_location_name)}`
-            ? true
-            : this.state.cardExpanded
-        }
-        className={
-          typeof window !== 'undefined'
-            ? window.location.hash ===
-              `#${slugify(clientData.node.client_location_name)}`
-              ? 'focus'
-              : false
-            : false
-        }
+        cardExpanded={this.state.cardExpanded}
+        // className={
+        //   typeof window !== 'undefined'
+        //     ? window.location.hash ===
+        //       `#${slugify(clientData.node.client_location_name)}`
+        //       ? 'focus'
+        //       : false
+        //     : false
+        // }
       >
         <span
           className="anchor"
