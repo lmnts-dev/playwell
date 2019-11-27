@@ -69,16 +69,18 @@ export class CourseMapNav extends PureComponent {
       : this.props.pageContext.isCounty // If County:
       ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
       : this.props.pageContext.playwell_state_id; // else it's a State and remove parentState and use it's Id.
-    const costCodeId = this.props.pageContext.isCostCode // If CostCode:
-      ? this.props.pageContext.cost_code // Display Cost Code.
-      : this.props.pageContext.isCounty // If County:
-      ? this.props.pageContext.cost_code // Display Cost Code.
-      : null; // else it's a State and CostCode is no longer needed.
+
     const countyId = this.props.pageContext.isCostCode // If CostCode:
       ? this.props.pageContext.county_id // Display County Id.
       : this.props.pageContext.isCounty // If County:
       ? this.props.pageContext.county_id // Display County Id.
       : null; // else it's a State and County Id is no longer needed.
+
+    const costCodeId = this.props.pageContext.isCostCode // If CostCode:
+      ? this.props.pageContext.cost_code // Display Cost Code.
+      : this.props.pageContext.isCounty // If County:
+      ? this.props.pageContext.cost_code // Display Cost Code.
+      : null; // else it's a State and CostCode is no longer needed.
 
     /**
      *
@@ -105,6 +107,7 @@ export class CourseMapNav extends PureComponent {
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/streets-v9',
+      maxZoom: 11,
     });
 
     // Updating state depending on map position & zoom
@@ -151,7 +154,12 @@ export class CourseMapNav extends PureComponent {
       const initialBounds = new mapboxgl.LngLatBounds();
 
       // Create raw markers with our helper function and utilize our State Id from CourseListings / PageContext.
-      const initialMarkers = clientsByLatLong(stateId, clientEdges);
+      const initialMarkers = clientsByLatLong(
+        stateId,
+        countyId,
+        costCodeId,
+        clientEdges
+      );
 
       // Extend our bounds to include our raw markers
       initialMarkers.forEach(coordinates => {
