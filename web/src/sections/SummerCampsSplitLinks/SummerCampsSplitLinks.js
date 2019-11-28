@@ -32,32 +32,6 @@ const SummerCampsSplitLinks = ({
   countyName,
   costCodeName,
 }) => {
-  // // Build our slugified strings for pretty URLs.
-  // let stateSlug = slugify(stateName);
-  // let countySlug = slugify(countyName);
-  // let costCodeSlug = slugify(costCodeName);
-  // let programSlug = slugify(pageContext.course_type_name);
-
-  // // Our pretty URL
-  // let programsLink = `/programs/${stateSlug}/${costCodeSlug}/${countySlug}`;
-  // let locationLink = `/locations/${stateSlug}/${costCodeSlug}/${countySlug}`;
-
-  // // Check our County names if they contain 'County'
-  // const countyClean = countyName => {
-  //   if (
-  //     countyName.toLowerCase().includes('county') ||
-  //     countyName.toLowerCase().includes('district')
-  //   ) {
-  //     return countyName;
-  //   } else {
-  //     return countyName + ' County';
-  //   }
-  // };
-
-  // const countyStateString = costCodeName
-  //   ? costCodeName + ', ' + pageContext.locationMeta.state.name
-  //   : stateName;
-
   return (
     <BasicSection
       BgColor={Theme.Color.Background}

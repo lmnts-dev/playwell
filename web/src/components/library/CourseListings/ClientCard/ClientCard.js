@@ -23,6 +23,7 @@ import { ClientCardStyle } from './styles.scss';
 
 // Helpers
 import slugify from 'helpers/slugify';
+import { countyClean } from 'helpers/countyClean';
 
 // Begin Component
 //////////////////////////////////////////////////////////////////////
@@ -114,15 +115,6 @@ export class ClientCard extends PureComponent {
 
     let reducedPrograms = programMap(clientData.node.courses);
     let reducedProgramsEntries = Object.entries(reducedPrograms);
-
-    // Check our County names if they contain 'County'
-    const countyClean = countyName => {
-      if (countyName.toLowerCase().includes('county')) {
-        return countyName;
-      } else {
-        return countyName + ' County';
-      }
-    };
 
     /**
      * For Debugging Purposes Only

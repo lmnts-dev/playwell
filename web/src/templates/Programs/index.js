@@ -47,19 +47,19 @@ const ProgramsPage = ({ pageContext, location }) => {
   const allCostCodes = costCodesAdapter(fetchedData);
 
   // Utilize previous page location state
-  // const { state = {} } = location;
-  // const { test } = state;
+  const { state = {} } = location;
+  const { test } = state;
 
   /**
    *
    * For debugging only.
    *
    */
-  // console.log(
-  //   test === true
-  //     ? `received previous page props: ${test}`
-  //     : `did not received previous page props: ${test}`
-  // );
+  console.log(
+    test === true
+      ? `received previous page props: ${test}`
+      : `did not receive previous page props: ${test}`
+  );
   // console.log(fetchedData);
 
   return (
@@ -74,6 +74,7 @@ const ProgramsPage = ({ pageContext, location }) => {
         mapWidth={Theme.mapWidth}
         mapZedIndex={Theme.mapZedIndex}
         allCostCodes={allCostCodes}
+        location={location}
       />
 
       <div style={{ zIndex: Theme.mapZedIndex + 1 }}>

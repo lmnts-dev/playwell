@@ -21,6 +21,7 @@ import { Icon } from 'components/library/Icons';
 // Helpers
 import slugify from 'helpers/slugify';
 import { costCodesAdapter } from 'helpers/costCodesAdapter';
+import { countyClean } from 'helpers/countyClean';
 
 // Data
 import { DataFetch } from 'hooks/DataFetch';
@@ -522,17 +523,6 @@ const CourseHeroContent = ({
    * Use our React Hook to get our Data
    */
   let dataFetch = DataFetch();
-
-  /**
-   * Check our County names if they contain 'County'
-   */
-  const countyClean = countyName => {
-    if (countyName.toLowerCase().includes('county')) {
-      return countyName;
-    } else {
-      return countyName + ' County';
-    }
-  };
 
   /**
    * Create page name

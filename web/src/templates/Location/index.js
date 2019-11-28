@@ -32,6 +32,7 @@ import { Scroll, Decorator } from './styles.scss';
 
 // Helpers
 import slugify from 'helpers/slugify';
+import { countyClean } from 'helpers/countyClean';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -52,15 +53,6 @@ const LocationDetail = ({ pageContext }) => {
   // For Debugging Purposes only
   // console.log(pageContext);
   // console.log(pageContext.managers.manager);
-
-  // Check our County names if they contain 'County'
-  const countyClean = countyName => {
-    if (countyName.toLowerCase().includes('county')) {
-      return countyName;
-    } else {
-      return countyName + ' County';
-    }
-  };
 
   // Create page name
   const contextualPageName = () => {

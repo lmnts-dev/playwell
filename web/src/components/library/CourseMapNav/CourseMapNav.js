@@ -31,19 +31,7 @@ const ToggleMapBtn = () => {
   );
 };
 
-export const CourseMapNavContainer = ({
-  lat,
-  lng,
-  zoom,
-  courseData,
-  mapWidth,
-  mapZedIndex,
-  stateId,
-  countyId,
-  costCodeId,
-  pageContext,
-  mapBoxRef,
-}) => {
+export const CourseMapNavContainer = ({ mapWidth, mapZedIndex, mapBoxRef }) => {
   return (
     <CourseMapNavStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
       <div className="inner">

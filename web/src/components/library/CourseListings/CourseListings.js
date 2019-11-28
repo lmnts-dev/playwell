@@ -7,9 +7,13 @@
 // Core
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
+import { navigate } from '@reach/router';
+
+// MapboxGL
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { navigate } from '@reach/router';
+mapboxgl.accessToken =
+  'pk.eyJ1IjoicGV0ZXJsYXhhbHQiLCJhIjoiY2p6cTExcmw5MHZpNTNubW1wc25veXJseiJ9.3nFjkPOZM2kbHYQCdkqU7g';
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -53,294 +57,208 @@ import {
  *
  */
 
-mapboxgl.accessToken =
-  'pk.eyJ1IjoicGV0ZXJsYXhhbHQiLCJhIjoiY2p6cTExcmw5MHZpNTNubW1wc25veXJseiJ9.3nFjkPOZM2kbHYQCdkqU7g';
+// class CourseMapNav extends PureComponent {
+//   constructor(props) {
+//     super(props);
 
-const ToggleMapBtn = () => {
-  return (
-    <ToggleMapBtnStyle>
-      <Icon Name="expand" fas />
-      <span>Expand Map</span>
-    </ToggleMapBtnStyle>
-  );
-};
+//     // Initial State
+//     this.state = {
+//       lat: 40.7088,
+//       lng: -73.9888,
+//       zoom: 2,
+//     };
 
-class CourseMapNav extends PureComponent {
-  constructor(props) {
-    super(props);
+//     // Create our Map Ref
+//     this.mapBoxRef = React.createRef();
+//   }
 
-    // Initial State
-    this.state = {
-      lat: 40.7088,
-      lng: -73.9888,
-      zoom: 2,
-    };
+//   /**
+//    *
+//    * Initialize Our Map
+//    *
+//    */
 
-    // Create our Map Ref
-    this.mapBoxRef = React.createRef();
-  }
+//   componentDidMount() {
+//     const clientEdges = this.props.courseData.allPlayWellClient.edges;
+//     const stateId = this.props.pageContext.isCostCode // If CostCode:
+//       ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
+//       : this.props.pageContext.isCounty // If County:
+//       ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
+//       : this.props.pageContext.playwell_state_id; // else it's a State and remove parentState and use it's Id.
 
-  /**
-   *
-   * Initialize Our Map
-   *
-   */
+//     const countyId = this.props.pageContext.isCostCode // If CostCode:
+//       ? this.props.pageContext.county_id // Display County Id.
+//       : this.props.pageContext.isCounty // If County:
+//       ? this.props.pageContext.county_id // Display County Id.
+//       : null; // else it's a State and County Id is no longer needed.
 
-  componentDidMount() {
-    const clientEdges = this.props.courseData.allPlayWellClient.edges;
-    const stateId = this.props.pageContext.isCostCode // If CostCode:
-      ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
-      : this.props.pageContext.isCounty // If County:
-      ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
-      : this.props.pageContext.playwell_state_id; // else it's a State and remove parentState and use it's Id.
+//     const costCodeId = this.props.pageContext.isCostCode // If CostCode:
+//       ? this.props.pageContext.cost_code // Display Cost Code.
+//       : this.props.pageContext.isCounty // If County:
+//       ? this.props.pageContext.cost_code // Display Cost Code.
+//       : null; // else it's a State and CostCode is no longer needed.
 
-    const countyId = this.props.pageContext.isCostCode // If CostCode:
-      ? this.props.pageContext.county_id // Display County Id.
-      : this.props.pageContext.isCounty // If County:
-      ? this.props.pageContext.county_id // Display County Id.
-      : null; // else it's a State and County Id is no longer needed.
+//     // Initial position
+//     const { lng, lat, zoom } = this.state;
 
-    const costCodeId = this.props.pageContext.isCostCode // If CostCode:
-      ? this.props.pageContext.cost_code // Display Cost Code.
-      : this.props.pageContext.isCounty // If County:
-      ? this.props.pageContext.cost_code // Display Cost Code.
-      : null; // else it's a State and CostCode is no longer needed.
+//     // Our map object
+//     const map = new mapboxgl.Map({
+//       container: this.mapBoxRef,
+//       style: 'mapbox://styles/mapbox/streets-v9',
+//       maxZoom: 11,
+//     });
 
-    /**
-     *
-     * For Debugging Only
-     *
-     */
-    // console.log('clientEdges:', clientEdges);
-    // console.log(
-    //   'clientsByLatLong(7, clientEdges):',
-    //   clientsByLatLong(7, clientEdges)
-    // );
-    // console.log(
-    //   'getCenterFromDegrees(clientsByLatLong(7, clientEdges)):',
-    //   getCenterFromDegrees(clientsByLatLong(7, clientEdges))
-    // );
+//     // Updating state depending on map position & zoom
+//     map.on('move', () => {
+//       const { lng, lat } = map.getCenter();
 
-    // Initial position
-    const { lng, lat, zoom } = this.state;
+//       this.setState({
+//         lng: lng.toFixed(4),
+//         lat: lat.toFixed(4),
+//         zoom: map.getZoom().toFixed(2),
+//       });
+//     });
 
-    // Our map object
-    const map = new mapboxgl.Map({
-      container: this.mapBoxRef,
-      style: 'mapbox://styles/mapbox/streets-v9',
-      maxZoom: 11,
-    });
+//     /**
+//      *
+//      * Generate our map markers
+//      *
+//      */
 
-    // Updating state depending on map position & zoom
-    map.on('move', () => {
-      const { lng, lat } = map.getCenter();
+//     // Our data
+//     const clientsGeoJson = clientGeoJsonAdapter(
+//       this.props.courseData.allPlayWellClient.edges
+//     );
 
-      this.setState({
-        lng: lng.toFixed(4),
-        lat: lat.toFixed(4),
-        zoom: map.getZoom().toFixed(2),
-      });
-    });
+//     // Map Id
+//     const mapId = 'clients';
 
-    /**
-     *
-     * Generate our map markers
-     *
-     */
+//     /**
+//      *
+//      * Once  our map is loaded:
+//      *
+//      */
+//     map.on('load', () => {
+//       // Add zoom and rotation controls to the map.
+//       map.addControl(new mapboxgl.NavigationControl());
 
-    // Our data
-    const clientsGeoJson = clientGeoJsonAdapter(
-      this.props.courseData.allPlayWellClient.edges
-    );
+//       /**
+//        *
+//        * Fit to our respective initial bounds provided by pageContext
+//        *
+//        */
 
-    // Map Id
-    const mapId = 'clients';
+//       // First establish an empty set of bounds.
+//       const initialBounds = new mapboxgl.LngLatBounds();
 
-    /**
-     *
-     * Once  our map is loaded:
-     *
-     */
-    map.on('load', () => {
-      // Add zoom and rotation controls to the map.
-      map.addControl(new mapboxgl.NavigationControl());
+//       // Create raw markers with our helper function and utilize our State Id from CourseListings / PageContext.
+//       const initialMarkers = clientsByLatLong(
+//         stateId,
+//         countyId,
+//         costCodeId,
+//         clientEdges
+//       );
 
-      /**
-       *
-       * Fit to our respective initial bounds provided by pageContext
-       *
-       */
+//       // Extend our bounds to include our raw markers
+//       initialMarkers.forEach(coordinates => {
+//         initialBounds.extend(coordinates);
+//       });
 
-      // First establish an empty set of bounds.
-      const initialBounds = new mapboxgl.LngLatBounds();
+//       // Fit our map to said bounds.
+//       map.fitBounds(initialBounds, { padding: 50 });
 
-      // Create raw markers with our helper function and utilize our State Id from CourseListings / PageContext.
-      const initialMarkers = clientsByLatLong(
-        stateId,
-        countyId,
-        costCodeId,
-        clientEdges
-      );
+//       /**
+//        *
+//        * Add data layers.
+//        *
+//        */
+//       map.addLayer({
+//         id: mapId,
+//         type: 'circle',
+//         source: {
+//           type: 'geojson',
+//           data: {
+//             type: 'FeatureCollection',
+//             features: clientsGeoJson,
+//           },
+//         },
+//         paint: {
+//           'circle-radius': 5,
+//           'circle-color': Theme.Color.Nova,
+//           'circle-stroke-color': Theme.Color.White,
+//           'circle-stroke-width': 1,
+//           'circle-opacity': 1,
+//         },
+//       });
 
-      // Extend our bounds to include our raw markers
-      initialMarkers.forEach(coordinates => {
-        initialBounds.extend(coordinates);
-      });
+//       // When a click event occurs on a feature in the places layer, open a popup at the
+//       // location of the feature, with description HTML from its properties.
+//       map.on('click', mapId, function(e) {
+//         var coordinates = e.features[0].geometry.coordinates.slice();
+//         var description = e.features[0].properties.title;
 
-      // Fit our map to said bounds.
-      map.fitBounds(initialBounds, { padding: 50 });
+//         // Ensure that if the map is zoomed out such that multiple
+//         // copies of the feature are visible, the popup appears
+//         // over the copy being pointed to.
+//         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+//           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+//         }
 
-      /**
-       *
-       * Add data layers.
-       *
-       */
-      map.addLayer({
-        id: mapId,
-        type: 'circle',
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: clientsGeoJson,
-          },
-        },
-        paint: {
-          'circle-radius': 5,
-          'circle-color': Theme.Color.Nova,
-          'circle-stroke-color': Theme.Color.White,
-          'circle-stroke-width': 1,
-          'circle-opacity': 1,
-        },
-      });
+//         new mapboxgl.Popup()
+//           .setLngLat(coordinates)
+//           .setHTML(description)
+//           .addTo(map);
+//       });
 
-      // When a click event occurs on a feature in the places layer, open a popup at the
-      // location of the feature, with description HTML from its properties.
-      map.on('click', mapId, function(e) {
-        var coordinates = e.features[0].geometry.coordinates.slice();
-        var description = e.features[0].properties.title;
+//       // Change the cursor to a pointer when the mouse is over the places layer.
+//       map.on('mouseenter', mapId, function() {
+//         map.getCanvas().style.cursor = 'pointer';
+//       });
 
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
+//       // Change it back to a pointer when it leaves.
+//       map.on('mouseleave', mapId, function() {
+//         map.getCanvas().style.cursor = '';
+//       });
 
-        new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(description)
-          .addTo(map);
-      });
+//       // Functions to run on click.
+//       map.on('click', mapId, function(e) {
+//         // Fly to point
+//         map.flyTo({ center: e.features[0].geometry.coordinates, zoom: 9 });
 
-      // Change the cursor to a pointer when the mouse is over the places layer.
-      map.on('mouseenter', mapId, function() {
-        map.getCanvas().style.cursor = 'pointer';
-      });
+//         // Use Reach Router to update route.
+//         navigate(`?location=${e.features[0].properties.locationHash}`);
+//       });
+//     });
+//   }
 
-      // Change it back to a pointer when it leaves.
-      map.on('mouseleave', mapId, function() {
-        map.getCanvas().style.cursor = '';
-      });
+//   /**
+//    *
+//    * Unmounted state
+//    *
+//    */
 
-      // // Remove popup after hover
-      // map.on('mouseleave', mapId, () => {
-      //   map.getCanvas().style.cursor = '';
-      //   popup.remove();
-      // });
+//   componentWillUnmount() {
+//     this.state = {
+//       lat: 40.7088,
+//       lng: -73.9888,
+//       zoom: 10.6,
+//     };
+//   }
 
-      // Functions to run on click.
-      map.on('click', mapId, function(e) {
-        // Fly to point
-        map.flyTo({ center: e.features[0].geometry.coordinates, zoom: 9 });
+//   render() {
+//     const mapWidth = this.props.mapWidth;
+//     const mapZedIndex = this.props.mapZedIndex;
+//     const { lng, lat, zoom } = this.state;
 
-        // Use Reach Router to update route.
-        navigate(`?location=${e.features[0].properties.locationHash}`);
-      });
-    });
-  }
-
-  /**
-   *
-   * Unmounted state
-   *
-   */
-
-  componentWillUnmount() {
-    this.state = {
-      lat: 40.7088,
-      lng: -73.9888,
-      zoom: 10.6,
-    };
-  }
-
-  render() {
-    const mapWidth = this.props.mapWidth;
-    const mapZedIndex = this.props.mapZedIndex;
-    const { lng, lat, zoom } = this.state;
-
-    /**
-     *
-     * For Debugging Only
-     *
-     */
-    // console.log(
-    //   'clientGeoJsonAdapter(this.props.courseData.allPlayWellClient.edges)',
-    //   clientGeoJsonAdapter(this.props.courseData.allPlayWellClient.edges)
-    // );
-    // console.log('lat: ' + lat);
-    // console.log('lng: ' + lng);
-    // console.log('zoom: ' + zoom);
-
-    return (
-      <CourseMapNavContainer
-        mapZedIndex={mapZedIndex}
-        mapWidth={mapWidth}
-        mapBoxRef={el => (this.mapBoxRef = el)}
-      />
-    );
-  }
-}
-
-// this.mapBoxRef
-
-// const CourseMapNavContainer = ({
-//   lat,
-//   lng,
-//   zoom,
-//   courseData,
-//   mapWidth,
-//   mapZedIndex,
-//   stateId,
-//   countyId,
-//   costCodeId,
-//   pageContext,
-//   mapBoxRef,
-// }) => {
-//   return (
-//     <CourseMapNavStyle mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
-//       <div className="inner">
-//         <div className="map-col">
-//           <div className="map-container">
-//             <ToggleMapBtn />
-//             <div className="map-container-inner">
-//               <div
-//                 ref={mapBoxRef}
-//                 style={{
-//                   position: 'absolute',
-//                   left: '0',
-//                   right: '0',
-//                   bottom: '0',
-//                   top: '0',
-//                 }}
-//               />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </CourseMapNavStyle>
-//   );
-// };
+//     return (
+//       <CourseMapNavContainer
+//         mapZedIndex={mapZedIndex}
+//         mapWidth={mapWidth}
+//         mapBoxRef={el => (this.mapBoxRef = el)}
+//       />
+//     );
+//   }
+// }
 
 /**
  *
@@ -383,8 +301,8 @@ class FilteredResults extends PureComponent {
           costCode => costCode.code == contextualCostCode
         )[0];
 
-        console.log('allCostCodes', allCostCodes);
-        console.log('matchedCostCode', matchedCostCode);
+        // console.log('allCostCodes', allCostCodes);
+        // console.log('matchedCostCode', matchedCostCode);
 
         // First grab our Cost Code's courses:
         let costCodeCourses = matchedCostCode.states.map((state, idx) => {
@@ -400,7 +318,7 @@ class FilteredResults extends PureComponent {
           return filteredClients;
         });
 
-        console.log('costCodeCourses', costCodeCourses);
+        // console.log('costCodeCourses', costCodeCourses);
 
         // Filter out the current County:
         let relatedCourses = [];
@@ -419,18 +337,6 @@ class FilteredResults extends PureComponent {
         return relatedCourses;
       }
     };
-
-    /**
-     *
-     * For Debugging only
-     *
-     */
-    // console.log('stateEdges:');
-    // console.log(stateEdges);
-    // console.log(results);
-    // console.log(pageContext);
-    // console.log('relatedCourseData(clientsData, pageContext):');
-    // console.log(relatedCourseData(clientsData, pageContext));
 
     /**
      *
@@ -628,10 +534,6 @@ class ListingsResults extends PureComponent {
   }
 
   render() {
-    // For debugging
-    // console.log('this.props.urlQuery.toLowerCase():');
-    // console.log(this.props.urlQuery.toLowerCase());
-
     // Source Data
     const courseData = this.props.courseData;
     const stateEdges = this.props.courseData.allPlayWellStates.edges;
@@ -698,14 +600,6 @@ class ListingsResults extends PureComponent {
         };
       }, this);
 
-    /**
-     * For Debugging Purposes Only:
-     * */
-    // console.log('pageContext:');
-    // console.log(pageContext);
-    // console.log('filteredCourseDataByToggle():');
-    // console.log(filteredCourseDataByToggle());
-
     return (
       <>
         <CourseListingsStyle.Toolbar>
@@ -758,12 +652,24 @@ class CourseListings extends PureComponent {
 
     // Initial State for a top level category
     this.state = {
+      // Filtering
       categoryFilter: '',
       currentlyViewing: '',
+
+      /**
+       *
+       * Mapbox settings
+       *
+       */
+      lat: 40.7088,
+      lng: -73.9888,
+      zoom: 2,
     };
 
-    // Bind search query function
+    // Create our Map Ref
+    this.mapBoxRef = React.createRef();
 
+    // Bind our functions
     this.toggleCategoryFilter = this.toggleCategoryFilter.bind(this);
     this.checkforFilterUrlParam = this.checkforFilterUrlParam.bind(this);
     this.checkforLocationUrlParam = this.checkforLocationUrlParam.bind(this);
@@ -843,9 +749,6 @@ class CourseListings extends PureComponent {
         });
       }
     }
-    // For debugging
-    // console.log('this.state.categoryFilter:');
-    // console.log(this.state.categoryFilter);
 
     return;
   }
@@ -865,57 +768,181 @@ class CourseListings extends PureComponent {
     } else {
       console.log('FALSE this.state.currentlyViewing:', 'no query');
     }
-    // For debugging
-    // console.log('this.state.categoryFilter:');
-    // console.log(this.state.categoryFilter);
-
-    // this.checkforLocationUrlParam(); // Run recursively.
   }
 
   componentDidMount() {
+    /**
+     *
+     * Check for Url Parameters
+     *
+     */
+
     this.checkforFilterUrlParam();
     this.checkforLocationUrlParam();
+
+    /**
+     *
+     * Initialize MapboxGL
+     *
+     */
+
+    const clientEdges = this.props.courseData.allPlayWellClient.edges;
+    const stateId = this.props.pageContext.isCostCode // If CostCode:
+      ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
+      : this.props.pageContext.isCounty // If County:
+      ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
+      : this.props.pageContext.playwell_state_id; // else it's a State and remove parentState and use it's Id.
+
+    const countyId = this.props.pageContext.isCostCode // If CostCode:
+      ? this.props.pageContext.county_id // Display County Id.
+      : this.props.pageContext.isCounty // If County:
+      ? this.props.pageContext.county_id // Display County Id.
+      : null; // else it's a State and County Id is no longer needed.
+
+    const costCodeId = this.props.pageContext.isCostCode // If CostCode:
+      ? this.props.pageContext.cost_code // Display Cost Code.
+      : this.props.pageContext.isCounty // If County:
+      ? this.props.pageContext.cost_code // Display Cost Code.
+      : null; // else it's a State and CostCode is no longer needed.
+
+    // Initial position
+    const { lng, lat, zoom } = this.state;
+
+    // Our map object
+    const map = new mapboxgl.Map({
+      container: this.mapBoxRef,
+      style: 'mapbox://styles/mapbox/streets-v9',
+      maxZoom: 11,
+    });
+
+    // Updating state depending on map position & zoom
+    map.on('move', () => {
+      const { lng, lat } = map.getCenter();
+
+      this.setState({
+        lng: lng.toFixed(4),
+        lat: lat.toFixed(4),
+        zoom: map.getZoom().toFixed(2),
+      });
+    });
+
+    /**
+     * Generate our map markers
+     */
+
+    // Our data
+    const clientsGeoJson = clientGeoJsonAdapter(
+      this.props.courseData.allPlayWellClient.edges
+    );
+
+    // Map Id
+    const mapId = 'clients';
+
+    /**
+     * Once  our map is loaded:
+     */
+    map.on('load', () => {
+      // Add zoom and rotation controls to the map.
+      map.addControl(new mapboxgl.NavigationControl());
+
+      /**
+       * Fit to our respective initial bounds provided by pageContext
+       */
+
+      // First establish an empty set of bounds.
+      const initialBounds = new mapboxgl.LngLatBounds();
+
+      // Create raw markers with our helper function and utilize our State Id from CourseListings / PageContext.
+      const initialMarkers = clientsByLatLong(
+        stateId,
+        countyId,
+        costCodeId,
+        clientEdges
+      );
+
+      // Extend our bounds to include our raw markers
+      initialMarkers.forEach(coordinates => {
+        initialBounds.extend(coordinates);
+      });
+
+      // Fit our map to said bounds.
+      map.fitBounds(initialBounds, { padding: 50 });
+
+      /**
+       * Add data layers.
+       */
+      map.addLayer({
+        id: mapId,
+        type: 'circle',
+        source: {
+          type: 'geojson',
+          data: {
+            type: 'FeatureCollection',
+            features: clientsGeoJson,
+          },
+        },
+        paint: {
+          'circle-radius': 5,
+          'circle-color': Theme.Color.Nova,
+          'circle-stroke-color': Theme.Color.White,
+          'circle-stroke-width': 1,
+          'circle-opacity': 1,
+        },
+      });
+
+      // When a click event occurs on a feature in the places layer, open a popup at the
+      // location of the feature, with description HTML from its properties.
+      map.on('click', mapId, function(e) {
+        var coordinates = e.features[0].geometry.coordinates.slice();
+        var description = e.features[0].properties.title;
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        new mapboxgl.Popup()
+          .setLngLat(coordinates)
+          .setHTML(description)
+          .addTo(map);
+      });
+
+      // Change the cursor to a pointer when the mouse is over the places layer.
+      map.on('mouseenter', mapId, function() {
+        map.getCanvas().style.cursor = 'pointer';
+      });
+
+      // Change it back to a pointer when it leaves.
+      map.on('mouseleave', mapId, function() {
+        map.getCanvas().style.cursor = '';
+      });
+
+      // Functions to run on click.
+      map.on('click', mapId, function(e) {
+        // Fly to point
+        map.flyTo({ center: e.features[0].geometry.coordinates, zoom: 9 });
+
+        // Use Reach Router to update route.
+        navigate(`?location=${e.features[0].properties.locationHash}`);
+      });
+    });
   }
 
   render() {
     // Define clean variables
-    let courseData = this.props.courseData;
-    let mapWidth = this.props.mapWidth;
-    let mapZedIndex = this.props.mapZedIndex;
-    let geoData = this.props.geoData;
-    let stateId = this.props.stateId;
-    let countyId = this.props.countyId;
-    let costCodeId = this.props.costCodeId;
-    let pageContext = this.props.pageContext;
-    let search = this.props.search;
-    let allCostCodes = this.props.allCostCodes;
-
-    /**
-     *  For Debugging Purposes Only:
-     * */
-    // console.log(
-    //   'courseData.allPlayWellClient.edges:',
-    //   courseData.allPlayWellClient.edges
-    // );
-    // console.log(
-    //   'clientsByLatLong(6, courseData.allPlayWellClient.edges):',
-    //   clientsByLatLong(6, courseData.allPlayWellClient.edges)
-    // );
-    // console.log(
-    //   'getCenterFromDegrees(clientsByLatLong(6, courseData.allPlayWellClient.edges)):',
-    //   getCenterFromDegrees(
-    //     clientsByLatLong(6, courseData.allPlayWellClient.edges)
-    //   )
-    // );
-    // console.log('stateId: ' + stateId);
-    // console.log('countyId: ' + countyId);
-    // console.log('costCodeId: ' + costCodeId);
-    console.log('pageContext:', pageContext);
-    // console.log('search.show:');
-    // console.log(search.show);
-    // console.log('this.state:');
-    // console.log(this.state);
-    // console.log('courseData:', courseData);
+    const courseData = this.props.courseData;
+    const mapWidth = this.props.mapWidth;
+    const mapZedIndex = this.props.mapZedIndex;
+    const geoData = this.props.geoData;
+    const stateId = this.props.stateId;
+    const countyId = this.props.countyId;
+    const costCodeId = this.props.costCodeId;
+    const pageContext = this.props.pageContext;
+    const search = this.props.search;
+    const allCostCodes = this.props.allCostCodes;
+    const { lng, lat, zoom } = this.state;
 
     return (
       <main>
@@ -935,14 +962,10 @@ class CourseListings extends PureComponent {
         />
         {this.props.pageContext !== false ? (
           <>
-            <CourseMapNav
-              courseData={courseData}
-              mapWidth={mapWidth}
+            <CourseMapNavContainer
               mapZedIndex={mapZedIndex}
-              stateId={stateId}
-              countyId={countyId}
-              costCodeId={costCodeId}
-              pageContext={pageContext}
+              mapWidth={mapWidth}
+              mapBoxRef={el => (this.mapBoxRef = el)}
             />
             <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
               <ListingsResults

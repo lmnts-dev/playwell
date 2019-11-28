@@ -26,7 +26,7 @@ export const CourseMapNavStyle = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-  animation: ${FadeIn} 1s ease 0s 1 normal forwards;
+  /* animation: ${FadeIn} 1s ease 0s 1 normal forwards; */
   z-index: ${props => (props.mapZedIndex ? props.mapZedIndex : 4)};
   display: flex;
   flex-direction: column;

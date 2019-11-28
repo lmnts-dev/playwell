@@ -22,6 +22,7 @@ import CourseSplitLinks from 'sections/CourseSplitLinks';
 
 // Helpers
 import slugify from 'helpers/slugify';
+import { countyClean } from 'helpers/countyClean';
 import { CategoryMetaMatch } from 'components/library/CategoryMetaMatch';
 
 // Styles
@@ -69,17 +70,6 @@ const Course = ({ pageContext }) => {
     slugify(pageContext.locationMeta.county.cost_code_name) +
     '/' +
     slugify(pageContext.locationMeta.county.name);
-  // Check our County names if they contain 'County'
-  const countyClean = countyName => {
-    if (
-      countyName.toLowerCase().includes('county') ||
-      countyName.toLowerCase().includes('district')
-    ) {
-      return countyName;
-    } else {
-      return countyName + ' County';
-    }
-  };
 
   // console.log('pageContext:');
   // console.log(pageContext);

@@ -13,6 +13,7 @@ import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 
 // Helpers
 import slugify from 'helpers/slugify';
+import { countyClean } from 'helpers/countyClean';
 
 // Constants
 import { Theme, Root } from 'constants/Theme';
@@ -36,18 +37,6 @@ const CourseSplitLinks = ({
   // Our pretty URL
   let programsLink = `/programs/${stateSlug}/${costCodeSlug}/${countySlug}`;
   let locationLink = `/locations/${stateSlug}/${costCodeSlug}/${countySlug}`;
-
-  // Check our County names if they contain 'County'
-  const countyClean = countyName => {
-    if (
-      countyName.toLowerCase().includes('county') ||
-      countyName.toLowerCase().includes('district')
-    ) {
-      return countyName;
-    } else {
-      return countyName + ' County';
-    }
-  };
 
   const countyStateString = costCodeName
     ? costCodeName + ', ' + pageContext.locationMeta.state.name
