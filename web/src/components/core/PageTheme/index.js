@@ -47,7 +47,7 @@ export const PageThemeStyle = createGlobalStyle`
 
         .mobile-nav {
           .hamburger {
-            div, div:before, div:after { {
+            div, div:before, div:after {
               background-color: ${props =>
                 props.PrimaryColor
                   ? props.PrimaryColor != 'unset'
