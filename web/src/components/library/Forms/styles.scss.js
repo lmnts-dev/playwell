@@ -57,12 +57,21 @@ export const Form = styled.div`
     }
 
     &.vertical {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
 
       label {
+        width: 47%;
         margin: calc(${Theme.Base.Size.Lg} / 8) 0 calc(${Theme.Base.Size.Lg} / 8) calc(${Theme.Base.Size.Lg} / 6);
-        &:first-of-type {
+        @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+          width: 100%;
+        }
+
+        &:first-of-type, &:nth-of-type(2) {
           margin-top: 0;
         }
+
         &:last-of-type {
           margin-bottom: calc(${Theme.Base.Size.Lg} / 4);
         }

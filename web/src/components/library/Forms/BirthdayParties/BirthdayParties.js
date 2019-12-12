@@ -110,7 +110,7 @@ export const BirthdayParties = ({ formName, title, footnote }) => (
           </div>
           <div class="pricing-row">
             <span className="h6">24+ kids</span>
-            <span>Availability varies;please call for details</span>
+            <span>Availability varies; please call for details</span>
           </div>
 
       </div>
