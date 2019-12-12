@@ -134,6 +134,13 @@ const Projects = styled.div`
       margin-right: 0 !important;
     }
 
+    &:hover {
+      text-decoration: none;
+      .gatsby-image-wrapper {
+        filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.4)});
+      }
+    }
+
     .h6,
     .tag {
       font-weight: 700;
@@ -184,6 +191,7 @@ const Projects = styled.div`
       height: 0;
       border-radius: calc(${Root.Size} / 10);
       filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
+      transition-duration: .25s;
     }
   }
 `;
@@ -560,20 +568,24 @@ const Parties = () => {
           <Projects>
             {ProjectsList.map((project, index) => {
               return (
-                <div className="project" key={index}>
-                  <ImgMatch src={project.image} />
-                  <div className="h6">{project.title}</div>
-                  <p>{project.description}</p>
-                  <div className="tags">
-                    {project.tags.map((tag, index) => {
-                      return (
-                        <div className="tag" key={index + '-tag'}>
-                          {tag}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                <a  href={project.link} className="project" key={index} download target="_blank">
+           
+                    <ImgMatch src={project.image} />
+                
+                
+                    <div className="h6">{project.title}</div>
+                    <p>{project.description}</p>
+                    <div className="tags">
+                      {project.tags.map((tag, index) => {
+                        return (
+                          <div className="tag" key={index + '-tag'}>
+                            {tag}
+                          </div>
+                        );
+                      })}
+                    </div>
+               
+                </a>
               );
             })}
           </Projects>
@@ -710,35 +722,35 @@ const ProjectsList = [
   {
     title: 'Race Car',
     image: 'project-1.jpg',
-    link: '/',
+    link: 'https://pwpublic.s3.amazonaws.com/files/project_instructions/snowman_build.pdf',
     description: 'Competitive racing',
     tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
   },
   {
     title: 'Off Roader',
     image: 'project-2.jpg',
-    link: '/',
+    link: 'https://pwpublic.s3.amazonaws.com/files/project_instructions/snowman_build.pdf',
     description: 'Traverse obstacle course',
     tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
   },
   {
     title: 'Parade Float',
     image: 'project-3.jpg',
-    link: '/',
+    link: 'https://pwpublic.s3.amazonaws.com/files/project_instructions/snowman_build.pdf',
     description: 'Creative build and play',
     tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
   },
   {
     title: 'Merry Go Round',
     image: 'project-1.jpg',
-    link: '/',
+    link: 'https://pwpublic.s3.amazonaws.com/files/project_instructions/snowman_build.pdf',
     description: 'Creative build and play',
     tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
   },
   {
     title: 'Battlerack',
     image: 'project-2.jpg',
-    link: '/',
+    link: 'https://pwpublic.s3.amazonaws.com/files/project_instructions/snowman_build.pdf',
     description: 'Competitive jousting',
     tags: ['Ages 5+', 'Vehicles', 'Mechanics'],
   },
