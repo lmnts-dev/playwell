@@ -332,7 +332,7 @@ const Course = ({ pageContext }) => {
       <QuestionsCallout />
 
       <Section bg={themeProps.BgColor} color="White">
-        <CourseFooter bg={themeProps.BgColor}>
+        <CourseFooter bg={themeProps.BgColor} {...themeProps} >
           <div className="course">
             <h5>Let's play!</h5>
             <h2>{pageContext.course_type_name}</h2>

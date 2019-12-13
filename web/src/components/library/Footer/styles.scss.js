@@ -101,6 +101,9 @@ export const FooterStyle = styled.footer`
       @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
         margin-left: 0;
       }
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        justify-content: space-between;
+      }
 
       .col {
         padding: 0 calc(${Root.Size}) calc(${Root.Size} * 1.5)
@@ -109,6 +112,11 @@ export const FooterStyle = styled.footer`
         @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
           padding-right: calc(${Root.Size} / 2);
           padding-bottom: calc(${Root.Size} * 1.5);
+        }
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          &:last-of-type {
+            padding-right: 0;
+          }
         }
 
         ul {

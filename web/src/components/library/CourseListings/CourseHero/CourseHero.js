@@ -50,7 +50,7 @@ export const CourseHero = ({
 }) => (
   <CourseHeroStyle bg={bg}>
     <div className="absolute-image">
-      <ImgMatch src="lego-bin.jpg" />
+      <ImgMatch src="mixed-legos.jpg" />
     </div>
     <HeroContainer bg="none" px={px} color={color}>
       <Flex

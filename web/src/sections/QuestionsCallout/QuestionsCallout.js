@@ -55,7 +55,7 @@ const QuestionsCallout = () => {
           </Text>
           <Btn
             Label="Get in touch"
-            Destination="/"
+            Destination="/contact"
             BgColor={'rgba(250, 250, 250, 0.4)'}
             TextColor={props => props.theme.Color.Galaxy}
           />

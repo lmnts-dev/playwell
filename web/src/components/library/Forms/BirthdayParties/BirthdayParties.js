@@ -125,32 +125,34 @@ export const BirthdayParties = ({ formName, title, footnote }) => (
         />
       </div>
 
-      <Box width={1}>
-        <label htmlFor="email">
-          Email:
-          <abbr title="required" aria-label="required">
-            *
-          </abbr>
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Your email"
-          required
-        />
-      </Box>
+      <div className="form-group">
+        <Box width={[1, 1 / 2, 6 / 10]} className="form-group__box">
+          <label htmlFor="email">
+            Email:
+            <abbr title="required" aria-label="required">
+              *
+            </abbr>
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Your email"
+            required
+          />
+        </Box>
 
-      <Box width={[1, 1 / 2, 4 / 10]}>
-        <label htmlFor="phone">Phone:</label>
-        <input
-          type="tel"
-          name="phone"
-          id="phone"
-          placeholder="(___) ___-____"
-          maxLength="14"
-        />
-      </Box>
+        <Box width={[1, 1 / 2, 4 / 10]} className="form-group__box">
+          <label htmlFor="phone">Phone:</label>
+          <input
+            type="tel"
+            name="phone"
+            id="phone"
+            placeholder="(___) ___-____"
+            maxLength="14"
+          />
+        </Box>
+      </div>
       
 
       <div className="radio-group vertical txt-clr-eggplant">

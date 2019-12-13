@@ -26,40 +26,10 @@ export const Hero = styled(Flex)`
   margin: 0 auto;
   max-width: ${Base.Grid.SiteWidth};
 
-  .hero-tags {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: ${Theme.Base.Grid.ReadingWidth};
-    color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
-
-    li {
-      text-transform: uppercase;
-      letter-spacing: calc(${Root.Size} * 0.05);
-      font-weight: 600;
-      font-size: 0.8rem;
-      padding: 0 calc(${Root.Size} / 6) calc(${Root.Size} / 3);
-      text-align: center;
-
-      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
-        font-size: 0.9rem;
-        padding: 0 calc(${Root.Size} / 6) calc(${Root.Size} * 0);
-      }
-
-      a {
-        color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
-      }
-    }
-  }
-
-  .h5 {
-    color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
-
   .btn {
     background-color: ${props =>
         props.bg === Theme.Color.Nova && Theme.Color.Eggplant ||
-        props.bg === Theme.Color.Ocean && Theme.Color.Nova ||
+        props.bg === Theme.Color.Sky && Theme.Color.Nova ||
         props.bg === Theme.Color.Sunlight && Theme.Color.Ocean ||
       Theme.Color.Dino
     };
@@ -94,6 +64,41 @@ export const Hero = styled(Flex)`
       width: 100%;
       text-align: center;
     }
+  }
+
+  .hero-tags {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: ${Theme.Base.Grid.ReadingWidth};
+    color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
+
+    li {
+      text-transform: uppercase;
+      letter-spacing: calc(${Root.Size} * 0.05);
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0 calc(${Root.Size} / 6) calc(${Root.Size} / 3);
+      text-align: center;
+
+      @media (min-width: ${Base.Media.Width.Md + 'px'}) {
+        font-size: 0.9rem;
+        padding: 0 calc(${Root.Size} / 6) calc(${Root.Size} * 0);
+      }
+
+      a {
+        color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
+      }
+    }
+  }
+
+  .h5 {
+    color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
+  }
+
+  a {
+    color: ${props =>  props.PrimaryColor ? props.PrimaryColor : Theme.Color.White };
   }
 `;
 
@@ -225,7 +230,7 @@ export const CourseFooter = styled.div`
     .btn {
       background-color: ${props =>
         props.bg === Theme.Color.Nova && Theme.Color.Eggplant ||
-        props.bg === Theme.Color.Ocean && Theme.Color.Nova ||
+        props.bg === Theme.Color.Sky && Theme.Color.Nova ||
         props.bg === Theme.Color.Sunlight && Theme.Color.Ocean ||
         Theme.Color.Dino
       };
