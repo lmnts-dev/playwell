@@ -8,6 +8,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import ReactDOM from 'react-dom';
 
 // Components
 import Layout from 'components/core/Layout';
@@ -125,6 +126,7 @@ const Projects = styled.div`
     width: 30%;
     margin-right: 5%;
     text-align: center;
+    color: ${Theme.Color.Dino};
     margin-top: calc(${Root.Size} / 1.5);
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       width: 47.5%;
@@ -137,7 +139,9 @@ const Projects = styled.div`
     &:hover {
       text-decoration: none;
       .gatsby-image-wrapper {
-        filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.4)});
+        filter: drop-shadow(
+          0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.4)}
+        );
       }
     }
 
@@ -191,7 +195,7 @@ const Projects = styled.div`
       height: 0;
       border-radius: calc(${Root.Size} / 10);
       filter: drop-shadow(0px 8px 20px ${hexToRGB(Theme.Color.Eggplant, 0.2)});
-      transition-duration: .25s;
+      transition-duration: 0.25s;
     }
   }
 `;

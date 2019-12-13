@@ -332,8 +332,10 @@ export const Form = styled.div`
       padding-bottom: 0;
 
       p {
-        color: ${Theme.Color.Dino};
+        color: ${Theme.Color.Tan};
         padding: 0 5%;
+        font-size: 14px;
+
       }
     }
   }

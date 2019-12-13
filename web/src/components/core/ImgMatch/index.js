@@ -5,7 +5,7 @@ import React, { useMemo } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Img from 'gatsby-image/withIEPolyfill';
 
-const Image = ({ AltText, objectFit, objectPosition, src, ...props }) => {
+const Image = ({ AltText, objectFit, objectPosition, src, maxWidth, ...props }) => {
   const data = useStaticQuery(graphql`
     query {
       allFile(filter: { internal: { mediaType: { regex: "images/" } } }) {
@@ -13,7 +13,7 @@ const Image = ({ AltText, objectFit, objectPosition, src, ...props }) => {
           node {
             relativePath
             childImageSharp {
-              fluid(maxWidth: 650) {
+              fluid(maxWidth: 1440) {
                 ...GatsbyImageSharpFluid
               }
             }

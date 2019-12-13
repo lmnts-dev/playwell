@@ -183,15 +183,14 @@ export const BirthdayParties = ({ formName, title, footnote }) => (
           <input type="radio" name="reference" value="friend" />
           <span className="checkmark" />
         </label>
-
-        <div>
-          <input
-            type="text"
-            name="other-reference"
-            id="other-reference"
-            placeholder="Other"
-          />
-        </div>
+        
+        <input
+          type="text"
+          name="other-reference"
+          id="other-reference"
+          placeholder="Other"
+        />
+        
       </div>
 
       <button type="submit">

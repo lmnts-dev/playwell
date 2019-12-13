@@ -88,6 +88,7 @@ NavigationStyle.Inner = styled.div`
 
     .brandmark {
       transform: scale(0.6);
+      transform-origin: center left;
     }
   }
 
@@ -115,6 +116,10 @@ NavigationStyle.Primary = styled.div`
     transition: ${Theme.Base.Transition.String};
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       height: calc(${Theme.Base.Size.Lg} * 1.25);
+      width: calc(${Theme.Base.Size.Lg} * 1.58);
+    }
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      padding-top: 2px;
     }
   }
 

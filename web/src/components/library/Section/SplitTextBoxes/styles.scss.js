@@ -43,7 +43,7 @@ export const SplitTextBoxesStyle = styled.div`
       flex: 1;
       padding: calc(${Root.Size} * 2) 0;
       @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        padding: calc(${Root.Size}) 0;
+        padding: calc(${Root.Size} * 2) 0;
       }
 
       &:first-of-type {

@@ -64,6 +64,12 @@ const HeroProps = {
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
+const MobilePaddingSection = styled(BasicSection)`
+  @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+    padding-top: calc(${Theme.Base.Size.Lg}) !important;
+  }
+`;
+
 const OverflowHidden = styled.div`
   width: 100vw;
   overflow: hidden;
@@ -143,7 +149,7 @@ const WhoHowPage = () => {
           />
         </BasicSection>
 
-        <BasicSection
+        <MobilePaddingSection
           BgColor={Theme.Color.Background}
           TextColor={Theme.Color.Dino}
           noPaddingTop
@@ -160,7 +166,7 @@ const WhoHowPage = () => {
               Image="graph.png"
             />
           </BasicInner>
-        </BasicSection>
+        </MobilePaddingSection>
 
         <BasicSection BgColor={Theme.Color.Blush} TextColor={Theme.Color.Nova}>
           <BasicInner>
@@ -357,6 +363,7 @@ const WhoHowPage = () => {
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.White}
+        noPaddingBottom
       >
         <SplitTextBoxes
           FirstBlock={{

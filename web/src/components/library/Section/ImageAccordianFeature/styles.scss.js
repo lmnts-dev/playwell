@@ -21,20 +21,19 @@ export const ImageAccordianFeatureStyle = styled.div`
   ul {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: space-between;
     padding-bottom: calc(${Root.Size} / 3);
-    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-      display: block;
-      text-align: center;
+    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+      overflow: scroll;
     }
 
     li {
       font-weight: 700;
       padding: calc(${Root.Size} / 6);
       white-space: nowrap;
-      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-        padding: calc(${Root.Size} / 6) 0;
+      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+        padding-left: 0;
+        padding-right: 0;
       }
 
       &:first-of-type {
@@ -49,6 +48,12 @@ export const ImageAccordianFeatureStyle = styled.div`
         color: ${Theme.Color.Clay};
         @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
           font-size: 1rem;
+        }
+        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
+          padding: calc(${Root.Size} / 6) calc(${Root.Size} / 3);
+          background-color: ${Theme.Color.Background};
+          border-radius: calc(${Root.Size} / 3);
+          margin-right: calc(${Root.Size} / 6)
         }
 
         &:visited {

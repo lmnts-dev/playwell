@@ -44,13 +44,10 @@ export const SplitHeroStyle = styled.div`
   position: relative;
   @media (max-width: ${Base.Media.Width.Md + 'px'}) {
     display: block;
-    padding-right: calc(${Theme.Base.Size.Lg} * .75);
+    padding-right: 0;
     height: auto;
     min-height: 0;
     max-height: none;
-  }
-  @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-    padding-right: calc(${Theme.Base.Size.Lg} / 2);
   }
 
   .text {
@@ -59,16 +56,17 @@ export const SplitHeroStyle = styled.div`
     flex-direction: column;
     justify-content: space-between;
     margin-right: calc(${Theme.Base.Size.Lg} * ${props =>
-  props.reversed ? '0' : '1.5'});
+         props.reversed ? '0' : '1.5'});
     position: relative;
     z-index: 2;
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       margin-${props => (props.reversed ? 'left' : 'right')}: calc(${
-  Theme.Base.Size.Lg
-} * .75);
+         Theme.Base.Size.Lg
+       } * .75);
     }
     @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
       margin-right: 0;
+      padding-right: calc(${Theme.Base.Size.Lg} / 2);
     }
   }
   .arrow, .flex-spacer {
@@ -130,10 +128,10 @@ export const SplitHeroStyle = styled.div`
         ? '1.6'
         : '2.8'};
     margin-right: calc(${Theme.Base.Size.Lg} * ${props =>
-  props.reversed ? '1.5' : '1'});
+         props.reversed ? '1.5' : '1'});
     position: relative;
     @media (max-width: ${Base.Media.Width.Lg + 'px'}) {
-      margin-right: calc(${Theme.Base.Size.Lg} * .75);
+      margin-right: 0;
     }
     @media (max-width: ${Base.Media.Width.Md + 'px'}) {
       height: calc(${Theme.Base.Size.Lg} * 6);
@@ -148,11 +146,11 @@ export const SplitHeroStyle = styled.div`
       width: 100%;
       height: 100%;
       border-radius: calc(${Theme.Base.Size.Lg} ${props =>
-  props.reversed ? '* 0' : '/ 10'});
+         props.reversed ? '* 0' : '/ 10'});
       border-top-left-radius: calc(${Theme.Base.Size.Lg} ${props =>
-  props.reversed || props.wideImage ? '* 0' : '* 0.75'});
+         props.reversed || props.wideImage ? '* 0' : '* 0.75'});
       border-top-right-radius: calc(${Theme.Base.Size.Lg} ${props =>
-  props.reversed || props.wideImage ? '* 0.75' : '* 0'});
+         props.reversed || props.wideImage ? '* 0.75' : '* 0'});
     }
   }
 
