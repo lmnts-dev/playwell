@@ -85,8 +85,8 @@ class AsNavFor extends Component {
 
 
 // The SubLevel Page Itself
-const CenterSlider = ({ testimonials, Color, noNavSlider }) => (
-  <CenterSliderStyle Color={Color}>
+const CenterSlider = ({ testimonials, Color, noNavSlider, BgColor }) => (
+  <CenterSliderStyle Color={Color} BgColor={BgColor}>
     <AsNavFor slides={testimonials} noNavSlider={noNavSlider}/>
   </CenterSliderStyle>
 );

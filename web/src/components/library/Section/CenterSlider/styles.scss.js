@@ -42,6 +42,34 @@ const CenterSliderStyle = styled.div`
         margin-top: calc(${Theme.Base.Size.Lg} / 2);
       }
 
+      .slick-list {
+        position: relative;
+        &:after,
+        &:before {
+          position: absolute;
+          top: 0;
+          content: '';
+          height: 100%;
+          width: calc(${Theme.Base.Size.Lg} / 2);
+          background: linear-gradient(
+            to left,
+            ${props => (props.BgColor ? props.BgColor : Theme.Color.Blush)},
+            transparent
+          );
+          z-index: 1;
+          pointer-events: none;
+        }
+
+        &:after {
+          right: 0;
+        }
+
+        &:before {
+          left: 0;
+          transform: scale(-1);
+        }
+      }
+
       .slick-slide {
         transition-duration: 0.25s;
 

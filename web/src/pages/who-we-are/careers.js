@@ -131,6 +131,7 @@ const WhoCareersPage = () => {
               TextColor={Theme.Color.Eggplant}
             />
             <CenterSlider
+              BgColor={Theme.Color.Blush}
               testimonials={[
                 {
                   name: 'Alisha',
