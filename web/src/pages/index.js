@@ -17,6 +17,7 @@ import { Box } from 'components/library/Elements';
 // Sections
 import HomeHero from 'sections/HomeHero';
 import SimpleTextWithImage from 'components/library/Section/SimpleTextWithImage';
+import TextWithLgLegos from 'components/library/Section/TextWithLgLegos/styles.scss';
 import EdgeImageWithText from 'components/library/Section/EdgeImageWithText';
 import ImageAccordianFeature from 'components/library/Section/ImageAccordianFeature';
 import HomeCommunity from 'sections/HomeCommunity';
@@ -205,7 +206,7 @@ const HomePage = () => (
         noPaddingTop
       >
         <BasicInner noPaddingRight>
-          <SpecialSimpleTextWithImage
+          <TextWithLgLegos
             Caption="It starts with play"
             Header="Build Your Own World of Opportunity"
             Paragraph="Activate your child's imagination with our on-line play zone or awaken your own inner kid with out LEGO-inspired games &amp; activities."
@@ -221,54 +222,6 @@ const HomePage = () => (
 // Styles
 const Main = styled.main`
   // overflow: hidden;
-`;
-
-const SpecialSimpleTextWithImage = styled(SimpleTextWithImage)`
-  &.overflow-image {
-    align-items: stretch;
-    @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-      flex-direction: column-reverse;
-      display: flex;
-      padding-right: calc(${Theme.Base.Size.Lg} * 0.75);
-    }
-
-    @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-      padding-right: calc(${Theme.Base.Size.Lg} * 0.4);
-    }
-    .text {
-      flex: 2;
-    }
-    .image {
-      flex: 2;
-      position: relative;
-      @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-        width: 100%;
-        max-height: calc(${Theme.Base.Size.Lg} * 5);
-        height: 100vw;
-        position: static;
-        display: none;
-      }
-
-      .gatsby-image-wrapper {
-        position: absolute !important;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 250%;
-        bottom: -75%;
-        @media (max-width: ${Base.Media.Width.Md + 'px'}) {
-          width: 100%;
-          height: 120%;
-          top: -120%;
-          bottom: 0;
-        }
-        img {
-          width: 120% !important;
-          object-position: 0% 100% !important;
-        }
-      }
-    }
-  }
 `;
 
 const Decorator = styled(Box)`

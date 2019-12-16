@@ -26,6 +26,11 @@ import LocationPrograms from 'sections/LocationPrograms';
 import Quote from 'sections/Quote';
 import LocationIntro from 'sections/LocationIntro';
 import LocationPlayZone from 'sections/LocationPlayZone';
+import {
+  BasicSection,
+  BasicInner,
+} from 'components/library/Section/BasicSection';
+import TextWithLgLegos from 'components/library/Section/TextWithLgLegos/styles.scss';
 
 // Styles
 import { Scroll, Decorator } from './styles.scss';
@@ -164,7 +169,20 @@ const LocationDetail = ({ pageContext }) => {
         </div>
       </Decorator>
 
-      <LocationPlayZone />
+      <BasicSection
+        BgColor={Theme.Color.Background}
+        TextColor={Theme.Color.Dino}
+      >
+        <BasicInner noPaddingRight>
+          <TextWithLgLegos
+            Caption="It starts with play"
+            Header="Build Your Own World of Opportunity"
+            Paragraph="Activate your child's imagination with our on-line play zone or awaken your own inner kid with out LEGO-inspired games &amp; activities."
+            Image="lego-ladder.png"
+            className="overflow-image"
+          />
+        </BasicInner>
+      </BasicSection>
 
       {/* <Decorator>
       <div className="decorator__footer decorator__footer--bottom">
