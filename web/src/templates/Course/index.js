@@ -233,16 +233,20 @@ const Course = ({ pageContext }) => {
         pt={[6, 6, 8, 8]}
         pb={[2, 2, 3, 3]}
       >
-        <Flex
+        <Drawer
           as="article"
           mx="auto"
           width={1}
           maxWidth={Theme.Base.Grid.SiteWidth}
           alignItems="flex-start"
-          justifyContent="space-between"
+          justifyContent="space-around"
           flexWrap="wrap"
         >
-          <Box width={[1, 1, 1 / 3, 1 / 3]} mb={[1, 1, 0]}>
+          <Box
+            width={[1, 1, 1 / 3, 1 / 3]}
+            mb={[1, 1, 0]}
+            className="detail-container"
+          >
             <Text as="p" color="Galaxy">
               Time
               <br />
@@ -251,7 +255,11 @@ const Course = ({ pageContext }) => {
               </Text>
             </Text>
           </Box>
-          <Box width={[1, 1, 1 / 3, 1 / 3]} mb={[1, 1, 0]}>
+          <Box
+            width={[1, 1, 1 / 3, 1 / 3]}
+            mb={[1, 1, 0]}
+            className="detail-container"
+          >
             <Text as="p" color="Galaxy">
               {pageContext.client_location_name}
               <br />
@@ -268,7 +276,7 @@ const Course = ({ pageContext }) => {
               </Text>
             </Text>
           </Box>
-          <Box width={[1, 1, 1 / 3, 1 / 3]}>
+          <Box width={[1, 1, 1 / 3, 1 / 3]} className="detail-container">
             <Text as="p" color="Galaxy">
               Day(s)
               <br />
@@ -277,7 +285,7 @@ const Course = ({ pageContext }) => {
               </Text>
             </Text>
           </Box>
-        </Flex>
+        </Drawer>
       </Section>
 
       <Section
@@ -293,13 +301,17 @@ const Course = ({ pageContext }) => {
           width={1}
           maxWidth={Theme.Base.Grid.SiteWidth}
           alignItems="flex-start"
-          justifyContent="space-between"
+          justifyContent="space-around"
           flexWrap="wrap"
           mx="auto"
           className={isExpanded ? 'expanded' : 'collapsed'}
         >
           {pageContext.room && (
-            <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[2, 2, 6]}>
+            <Box
+              width={[1, 1, 1 / 2, 1 / 2]}
+              mb={[2, 2, 6]}
+              className="detail-container"
+            >
               <Text as="p" color="Galaxy" textAlign="center" pb={0}>
                 Room
                 <br />
@@ -310,7 +322,11 @@ const Course = ({ pageContext }) => {
             </Box>
           )}
           {pageContext.age_range_display && (
-            <Box width={[1, 1, 1 / 2, 1 / 2]} mb={[3, 3, 6]}>
+            <Box
+              width={[1, 1, 1 / 2, 1 / 2]}
+              mb={[3, 3, 6]}
+              className="detail-container"
+            >
               <Text as="p" color="Galaxy" textAlign="center" pb={0}>
                 Level
                 <br />
@@ -332,7 +348,7 @@ const Course = ({ pageContext }) => {
       <QuestionsCallout />
 
       <Section bg={themeProps.BgColor} color="White">
-        <CourseFooter bg={themeProps.BgColor} {...themeProps} >
+        <CourseFooter bg={themeProps.BgColor} {...themeProps}>
           <div className="course">
             <h5>Let's play!</h5>
             <h2>{pageContext.course_type_name}</h2>

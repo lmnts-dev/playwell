@@ -27,7 +27,7 @@ export const Hero = styled(Flex)`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-  max-width: ${Base.Grid.SiteWidth};
+  max-width: ${Base.Grid.SiteWidth + 'px'};
 
   .btn {
     background-color: ${props =>
@@ -82,6 +82,8 @@ export const Hero = styled(Flex)`
         flex-wrap: nowrap;
         overflow: auto;
         justify-content: flex-start;
+        width: 100vw;
+        align-self: flex-start;
 
         li {
           background-color: ${hexToRGB(Theme.Color.White, 0.2)};
@@ -91,7 +93,9 @@ export const Hero = styled(Flex)`
           margin-right: calc(${Root.Size} / 10);
           a {
             display: block;
-            padding: calc(${Root.Size} / 5) calc(${Root.Size} / 2) calc(${Root.Size} / 6) calc(${Root.Size} / 2);
+            padding: calc(${Root.Size} / 5) calc(${Root.Size} / 2) calc(${
+         Root.Size
+       } / 6) calc(${Root.Size} / 2);
           }
         }
       }
@@ -222,8 +226,16 @@ export const Drawer = styled(Flex)`
   height: auto;
   max-height: 600px;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
+
+  a {
+    color: ${Theme.Color.Nova};
+  }
+
+  .detail-container {
+    padding: 0 calc(${Root.Size} / 3);
+  }
 
   &.collapsed {
     max-height: 0;
