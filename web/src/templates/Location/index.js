@@ -175,11 +175,13 @@ const LocationDetail = ({ pageContext }) => {
       >
         <BasicInner noPaddingRight>
           <TextWithLgLegos
-            Caption="It starts with play"
-            Header="Build Your Own World of Opportunity"
-            Paragraph="Activate your child's imagination with our on-line play zone or awaken your own inner kid with out LEGO-inspired games &amp; activities."
+            Caption="Well Supplied Fun"
+            Header="Let Us Engineer Your Child's Party"
+            Paragraph="Some of the most memorable and fun experiences kid's have together are at birthday parties."
             Image="lego-ladder.png"
             className="overflow-image"
+            ButtonText="Learn More"
+            ButtonDest="/parties/birthday-parties"
           />
         </BasicInner>
       </BasicSection>

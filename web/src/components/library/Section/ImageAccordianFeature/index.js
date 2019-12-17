@@ -31,7 +31,7 @@ export const ImageAccordianFeature = ({ Links, Accordians }) => (
   <ImageAccordianFeatureStyle>
     <BasicInner wideWidth>
       <ul>
-        {Links.map((link, index) => {
+        { Links && Links.map((link, index) => {
           return (
             <li key={index}>
               <Link className="h6" to={link.dest ? link.dest : '/'}>
