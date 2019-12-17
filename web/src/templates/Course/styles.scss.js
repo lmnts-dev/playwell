@@ -15,6 +15,9 @@ import Btn from 'components/library/Btn';
 import { Theme, Root } from 'constants/Theme';
 import { Base } from 'constants/styles/Base';
 
+// Helpers
+import hexToRGB from 'helpers/hexToRGB';
+
 // Begin Styles
 //////////////////////////////////////////////////////////////////////
 
@@ -28,11 +31,10 @@ export const Hero = styled(Flex)`
 
   .btn {
     background-color: ${props =>
-        props.bg === Theme.Color.Nova && Theme.Color.Eggplant ||
-        props.bg === Theme.Color.Sky && Theme.Color.Nova ||
-        props.bg === Theme.Color.Sunlight && Theme.Color.Ocean ||
-      Theme.Color.Dino
-    };
+      (props.bg === Theme.Color.Nova && Theme.Color.Eggplant) ||
+      (props.bg === Theme.Color.Sky && Theme.Color.Nova) ||
+      (props.bg === Theme.Color.Sunlight && Theme.Color.Ocean) ||
+      Theme.Color.Dino};
     border: 0;
     border-radius: 999px;
     color: ${props => (props.textColor ? props.textColor : Theme.Color.White)};
@@ -72,7 +74,28 @@ export const Hero = styled(Flex)`
     flex-wrap: wrap;
     width: 100%;
     max-width: ${Theme.Base.Grid.ReadingWidth};
-    color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
+    color: ${props =>
+      props.SecondaryColor ? props.SecondaryColor : Theme.Color.White};
+
+    &:first-of-type {
+      @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
+        flex-wrap: nowrap;
+        overflow: auto;
+        justify-content: flex-start;
+
+        li {
+          background-color: ${hexToRGB(Theme.Color.White, 0.2)};
+          white-space: nowrap;
+          border-radius: calc(${Root.Size});
+          padding: 0; 
+          margin-right: calc(${Root.Size} / 10);
+          a {
+            display: block;
+            padding: calc(${Root.Size} / 5) calc(${Root.Size} / 2) calc(${Root.Size} / 6) calc(${Root.Size} / 2);
+          }
+        }
+      }
+    }
 
     li {
       text-transform: uppercase;
@@ -88,17 +111,20 @@ export const Hero = styled(Flex)`
       }
 
       a {
-        color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
+        color: ${props =>
+          props.SecondaryColor ? props.SecondaryColor : Theme.Color.White};
       }
     }
   }
 
   .h5 {
-    color: ${props =>  props.SecondaryColor ? props.SecondaryColor : Theme.Color.White };
+    color: ${props =>
+      props.SecondaryColor ? props.SecondaryColor : Theme.Color.White};
   }
 
   a {
-    color: ${props =>  props.PrimaryColor ? props.PrimaryColor : Theme.Color.White };
+    color: ${props =>
+      props.PrimaryColor ? props.PrimaryColor : Theme.Color.White};
   }
 `;
 
