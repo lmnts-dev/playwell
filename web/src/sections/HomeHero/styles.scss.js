@@ -358,7 +358,14 @@ export const Actions = styled.div`
   align-items: stretch;
   padding-top: calc(${Theme.Base.Size.Lg} / 2);
   @media (max-width: ${Base.Media.Width.Sm + 'px'}) {
-    flex-direction: column;
+    flex-direction: column-reverse;
+    a {
+      margin-top: calc(${Theme.Base.Size.Lg} / 4);
+
+      button {
+        width: 100%;
+      }
+    }
   }
 
   .hero-btn {
