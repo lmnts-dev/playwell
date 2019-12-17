@@ -62,7 +62,7 @@ const ThemeProps = {
 //////////////////////////////////////////////////////////////////////
 
 const OverflowHidden = styled.div`
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
 `;
 
