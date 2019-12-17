@@ -580,151 +580,156 @@ class CourseListings extends PureComponent {
     // Initial position
     const { lng, lat, zoom } = this.state;
 
-    // Our map object
-    const map = new mapboxgl.Map({
-      container: this.mapBoxRef,
-      style: 'mapbox://styles/mapbox/streets-v9',
-      maxZoom: 11,
-    });
-
-    this.map = map;
-
-    const clientEdges = this.props.courseData.allPlayWellClient.edges;
-    const stateId = this.props.pageContext.isCostCode // If CostCode:
-      ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
-      : this.props.pageContext.isCounty // If County:
-      ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
-      : this.props.pageContext.playwell_state_id; // else it's a State and remove parentState and use it's Id.
-
-    const countyId = this.props.pageContext.isCostCode // If CostCode:
-      ? this.props.pageContext.county_id // Display County Id.
-      : this.props.pageContext.isCounty // If County:
-      ? this.props.pageContext.county_id // Display County Id.
-      : null; // else it's a State and County Id is no longer needed.
-
-    const costCodeId = this.props.pageContext.isCostCode // If CostCode:
-      ? this.props.pageContext.cost_code // Display Cost Code.
-      : this.props.pageContext.isCounty // If County:
-      ? this.props.pageContext.cost_code // Display Cost Code.
-      : null; // else it's a State and CostCode is no longer needed.
-
-    // Updating state depending on map position & zoom
-    map.on('move', () => {
-      const { lng, lat } = map.getCenter();
-
-      this.setState({
-        lng: lng.toFixed(4),
-        lat: lat.toFixed(4),
-        zoom: map.getZoom().toFixed(2),
+    if (this.props.pageContext !== false) {
+      // Our map object
+      const map = new mapboxgl.Map({
+        container: this.mapBoxRef,
+        style: 'mapbox://styles/mapbox/streets-v9',
+        maxZoom: 11,
       });
-    });
+    
 
-    /**
-     * Generate our map markers
-     */
+      this.map = map;
 
-    // Our data
-    const clientsGeoJson = clientGeoJsonAdapter(
-      this.props.courseData.allPlayWellClient.edges
-    );
+      const clientEdges = this.props.courseData.allPlayWellClient.edges;
+      const stateId = this.props.pageContext.isCostCode // If CostCode:
+        ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
+        : this.props.pageContext.isCounty // If County:
+        ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
+        : this.props.pageContext.playwell_state_id; // else it's a State and remove parentState and use it's Id.
 
-    // Map Id
-    const mapId = 'clients';
+      const countyId = this.props.pageContext.isCostCode // If CostCode:
+        ? this.props.pageContext.county_id // Display County Id.
+        : this.props.pageContext.isCounty // If County:
+        ? this.props.pageContext.county_id // Display County Id.
+        : null; // else it's a State and County Id is no longer needed.
 
-    /**
-     * Once  our map is loaded:
-     */
-    map.on('load', () => {
-      // Add zoom and rotation controls to the map.
-      map.addControl(new mapboxgl.NavigationControl());
+      const costCodeId = this.props.pageContext.isCostCode // If CostCode:
+        ? this.props.pageContext.cost_code // Display Cost Code.
+        : this.props.pageContext.isCounty // If County:
+        ? this.props.pageContext.cost_code // Display Cost Code.
+        : null; // else it's a State and CostCode is no longer needed.
+
+      // Updating state depending on map position & zoom
+      map.on('move', () => {
+        const { lng, lat } = map.getCenter();
+
+        this.setState({
+          lng: lng.toFixed(4),
+          lat: lat.toFixed(4),
+          zoom: map.getZoom().toFixed(2),
+        });
+      });
 
       /**
-       * Fit to our respective initial bounds provided by pageContext
+       * Generate our map markers
        */
 
-      // First establish an empty set of bounds.
-      const initialBounds = new mapboxgl.LngLatBounds();
-
-      // Create raw markers with our helper function and utilize our State Id from CourseListings / PageContext.
-      const initialMarkers = clientsByLatLong(
-        stateId,
-        countyId,
-        costCodeId,
-        clientEdges
+      // Our data
+      const clientsGeoJson = clientGeoJsonAdapter(
+        this.props.courseData.allPlayWellClient.edges
       );
 
-      // Extend our bounds to include our raw markers
-      initialMarkers.forEach(coordinates => {
-        initialBounds.extend(coordinates);
-      });
-
-      // Fit our map to said bounds.
-      map.fitBounds(initialBounds, { padding: 50 });
+      // Map Id
+      const mapId = 'clients';
 
       /**
-       * Add data layers.
+       * Once  our map is loaded:
        */
-      map.addLayer({
-        id: mapId,
-        type: 'circle',
-        source: {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: clientsGeoJson,
+      map.on('load', () => {
+        // Add zoom and rotation controls to the map.
+        map.addControl(new mapboxgl.NavigationControl());
+
+        /**
+         * Fit to our respective initial bounds provided by pageContext
+         */
+
+        // First establish an empty set of bounds.
+        const initialBounds = new mapboxgl.LngLatBounds();
+
+        // Create raw markers with our helper function and utilize our State Id from CourseListings / PageContext.
+        const initialMarkers = clientsByLatLong(
+          stateId,
+          countyId,
+          costCodeId,
+          clientEdges
+        );
+
+        // Extend our bounds to include our raw markers
+        initialMarkers.forEach(coordinates => {
+          initialBounds.extend(coordinates);
+        });
+
+        // Fit our map to said bounds.
+        map.fitBounds(initialBounds, { padding: 50 });
+
+        /**
+         * Add data layers.
+         */
+        map.addLayer({
+          id: mapId,
+          type: 'circle',
+          source: {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: clientsGeoJson,
+            },
           },
-        },
-        paint: {
-          'circle-radius': 5,
-          'circle-color': Theme.Color.Nova,
-          'circle-stroke-color': Theme.Color.White,
-          'circle-stroke-width': 1,
-          'circle-opacity': 1,
-        },
+          paint: {
+            'circle-radius': 5,
+            'circle-color': Theme.Color.Nova,
+            'circle-stroke-color': Theme.Color.White,
+            'circle-stroke-width': 1,
+            'circle-opacity': 1,
+          },
+        });
+
+        // When a click event occurs on a feature in the places layer, open a popup at the
+        // location of the feature, with description HTML from its properties.
+        map.on('click', mapId, function(e) {
+          var coordinates = e.features[0].geometry.coordinates.slice();
+          var description = e.features[0].properties.title;
+
+          // Ensure that if the map is zoomed out such that multiple
+          // copies of the feature are visible, the popup appears
+          // over the copy being pointed to.
+          while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+          }
+
+          new mapboxgl.Popup()
+            .setLngLat(coordinates)
+            .setHTML(description)
+            .addTo(map);
+        });
+
+        // Change the cursor to a pointer when the mouse is over the places layer.
+        map.on('mouseenter', mapId, function() {
+          map.getCanvas().style.cursor = 'pointer';
+        });
+
+        // Change it back to a pointer when it leaves.
+        map.on('mouseleave', mapId, function() {
+          map.getCanvas().style.cursor = '';
+        });
+
+        // Functions to run on click.
+        map.on('click', mapId, function(e) {
+          // Fly to point
+          map.flyTo({ center: e.features[0].geometry.coordinates, zoom: 9 });
+
+          // Use Reach Router to update route.
+          navigate(`?location=${e.features[0].properties.locationHash}`);
+        });
       });
-
-      // When a click event occurs on a feature in the places layer, open a popup at the
-      // location of the feature, with description HTML from its properties.
-      map.on('click', mapId, function(e) {
-        var coordinates = e.features[0].geometry.coordinates.slice();
-        var description = e.features[0].properties.title;
-
-        // Ensure that if the map is zoomed out such that multiple
-        // copies of the feature are visible, the popup appears
-        // over the copy being pointed to.
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-
-        new mapboxgl.Popup()
-          .setLngLat(coordinates)
-          .setHTML(description)
-          .addTo(map);
-      });
-
-      // Change the cursor to a pointer when the mouse is over the places layer.
-      map.on('mouseenter', mapId, function() {
-        map.getCanvas().style.cursor = 'pointer';
-      });
-
-      // Change it back to a pointer when it leaves.
-      map.on('mouseleave', mapId, function() {
-        map.getCanvas().style.cursor = '';
-      });
-
-      // Functions to run on click.
-      map.on('click', mapId, function(e) {
-        // Fly to point
-        map.flyTo({ center: e.features[0].geometry.coordinates, zoom: 9 });
-
-        // Use Reach Router to update route.
-        navigate(`?location=${e.features[0].properties.locationHash}`);
-      });
-    });
+    }
   }
 
   componentWillUnmount() {
-    this.map.remove();
+    if (this.props.pageContext !== false) {
+      this.map.remove();
+    }
   }
 
   render() {
