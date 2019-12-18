@@ -17,11 +17,10 @@ import Btn from 'components/library/Btn';
 import CenteredTitle from 'components/library/Elements/CenteredTitle';
 import ImgMatch from 'components/core/ImgMatch';
 import Section from 'components/library/Elements/Section';
+import ArticleCard from 'components/library/Section/ArticleCard';
+import ArticleCardLayout from 'components/library/Section/ArticleCardLayout';
 import SplitLinks, { SplitLink } from 'components/library/SplitLinks';
 import CurveAndAngle from 'components/library/Section/CurveAndAngle';
-import GiantTextBlock from 'components/library/Section/GiantTextBlock';
-import { FooterCurveSlice } from 'components/library/BackgroundSlice/FooterCurveSlice';
-import { FooterAngleSlice } from 'components/library/BackgroundSlice/FooterAngleSlice';
 import {
   BasicSection,
   BasicInner,
@@ -496,12 +495,13 @@ const Centered = styled(CenteredTitle)`
 const Parties = () => {
   return (
     <Layout {...ThemeProps}>
-      <SplitHero 
-        {...HeroProps} 
+      <SplitHero
+        {...HeroProps}
         subNav={[
-          { label: 'birthday parties', 
+          {
+            label: 'birthday parties',
             active: true,
-            link: '/parties/birthday-parties' 
+            link: '/parties/birthday-parties',
           },
           {
             label: 'special events',
@@ -572,23 +572,26 @@ const Parties = () => {
           <Projects>
             {ProjectsList.map((project, index) => {
               return (
-                <a  href={project.link} className="project" key={index} download target="_blank">
-           
-                    <ImgMatch src={project.image} />
-                
-                
-                    <div className="h6">{project.title}</div>
-                    <p>{project.description}</p>
-                    <div className="tags">
-                      {project.tags.map((tag, index) => {
-                        return (
-                          <div className="tag" key={index + '-tag'}>
-                            {tag}
-                          </div>
-                        );
-                      })}
-                    </div>
-               
+                <a
+                  href={project.link}
+                  className="project"
+                  key={index}
+                  download
+                  target="_blank"
+                >
+                  <ImgMatch src={project.image} />
+
+                  <div className="h6">{project.title}</div>
+                  <p>{project.description}</p>
+                  <div className="tags">
+                    {project.tags.map((tag, index) => {
+                      return (
+                        <div className="tag" key={index + '-tag'}>
+                          {tag}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </a>
               );
             })}
@@ -678,7 +681,7 @@ const Parties = () => {
         </BasicInner>
       </BasicSection>*/}
 
-      <span id="request"/>
+      <span id="request" />
       <BasicSection
         BgColor={Theme.Color.Background}
         TextColor={Theme.Color.Dino}
