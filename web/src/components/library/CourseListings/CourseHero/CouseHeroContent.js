@@ -17,6 +17,7 @@ import {
 // Components
 import { Box, Flex } from 'components/library/Elements';
 import { Icon } from 'components/library/Icons';
+import Results from 'components/library/Section/Results';
 
 // Helpers
 import slugify from 'helpers/slugify';
@@ -273,18 +274,14 @@ const SearchBarResults = ({ results, queryActive, searchSafeQuery }) => {
           })
         ) : (
           <li>
-            <div className="results-row">
-              <div className="no-results">
-                <Icon Name="sad-cry" fas />
-                <span className="label">No results found.</span>
-                <Link
-                  to={'/programs/host-a-program?location=' + searchSafeQuery}
-                  className="suggest-link"
-                >
-                  Interested in hosting your own program in '{searchSafeQuery}'?
-                </Link>
-              </div>
-            </div>
+            <Results>
+              <Link
+                to={'/programs/host-a-program?location=' + searchSafeQuery}
+                className="suggest-link"
+              >
+                Interested in hosting your own program in '{searchSafeQuery}'?
+              </Link>
+            </Results>
           </li>
         )}
       </ul>

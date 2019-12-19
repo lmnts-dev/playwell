@@ -75,6 +75,22 @@ const OverflowHidden = styled.div`
   overflow: hidden;
 `;
 
+const MobileOverrides = styled.div`
+  width: 100%;
+  .basic-inner ~ div {
+    position: relative;
+    z-index: 2;
+  }
+  @media (max-width: ${Base.Media.Width.Sm  / 1.5 + 'px'}) {
+    .basic-inner ~ div {
+      height: 0;
+      .slick-slider {
+        transform: translateY(-100%);
+      }
+    }
+  }
+`;
+
 // Render Page
 const WhoHowPage = () => {
   return (
@@ -331,33 +347,35 @@ const WhoHowPage = () => {
       </BasicSection>
 
       <OverflowHidden>
-        <BasicSection
-          noPaddingRight
-          BgColor={Theme.Color.Background}
-          TextColor={Theme.Color.Dino}
-          noPaddingBottom
-        >
-          <BasicInner noPaddingRight>
-            <EdgeImageWithText
-              Caption="Would you like to Play with us?"
-              Header="Purposeful Play is for Adults too"
-              Image="gears.png"
-              Paragraph="Partnering with Play-Well for your company could bring new waves of innovation and problem solving to your team an opportunity to bring educational activities to your event, or any way you need to play."
-              ButtonText="Get In Touch"
-              ButtonDest="/"
+        <MobileOverrides>
+          <BasicSection
+            noPaddingRight
+            BgColor={Theme.Color.Background}
+            TextColor={Theme.Color.Dino}
+            noPaddingBottom
+          >
+            <BasicInner noPaddingRight>
+              <EdgeImageWithText
+                Caption="Would you like to Play with us?"
+                Header="Purposeful Play is for Adults too"
+                Image="gears.png"
+                Paragraph="Partnering with Play-Well for your company could bring new waves of innovation and problem solving to your team an opportunity to bring educational activities to your event, or any way you need to play."
+                ButtonText="Get In Touch"
+                ButtonDest="/"
+              />
+            </BasicInner>
+            <Marquee
+              images={[
+                'google.png',
+                'clorox.png',
+                'pixar.jpeg',
+                'microsoft.png',
+                'visa.png',
+              ]}
+              SquareFormat
             />
-          </BasicInner>
-          <Marquee
-            images={[
-              'google.png',
-              'clorox.png',
-              'pixar.jpeg',
-              'microsoft.png',
-              'visa.png',
-            ]}
-            SquareFormat
-          />
-        </BasicSection>
+          </BasicSection>
+        </MobileOverrides>
       </OverflowHidden>
 
       <BasicSection

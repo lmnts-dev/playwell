@@ -22,6 +22,7 @@ import {
 // Components
 import { Box, Flex } from 'components/library/Elements';
 import { Icon } from 'components/library/Icons';
+import Results from 'components/library/Section/Results';
 import Accordion from 'components/library/Accordion';
 import ImgMatch from 'components/core/ImgMatch';
 
@@ -280,12 +281,7 @@ const SearchBarResults = ({ results }) => {
         })
       ) : (
         <li>
-          <div className="results-row">
-            <div className="no-results">
-              <Icon Name="sad-cry" fas />
-              <span className="label">No results found.</span>
-            </div>
-          </div>
+          <Results/>
         </li>
       )}
     </>

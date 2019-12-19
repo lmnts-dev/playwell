@@ -100,6 +100,11 @@ export const SearchBarStyle = styled.div`
     width: 100;
   }
 
+  .no-results {
+    background-color: ${Theme.Color.White};
+    width: 100%;
+  }
+
   .search-bar {
     display: flex;
     width: 100%;
@@ -233,46 +238,6 @@ export const SearchBarStyle = styled.div`
         font-weight: bold;
         display: flex;
         flex-direction: column;
-
-        .results-row {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-
-          &.results-sub-visible {
-            .result-action {
-              .result-action-icon {
-                transform: rotate(45deg);
-              }
-            }
-          }
-
-          .no-results {
-            padding: calc(${Root.Size} *  1.5) calc(${Root.Size} / 2)  ${
-  Root.Size
-} calc(${Root.Size} / 2);
-
-            width: 100%;
-            color: ${hexToRGB(Theme.Color.Ocean, 0.6)};
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            .ico {
-              margin-bottom: ${Root.Size};
-              i {
-                font-size: 4rem;
-                color: ${Theme.Color.Ocean};
-                border-radius: 50%;
-                background: ${hexToRGB(Theme.Color.Ocean, 0.18)};
-                padding: calc(${Root.Size} / 4);
-              }
-            }
-            .label {
-              font-size: 2rem;
-            }
-          }
-        }
 
         a {
           text-decoration: none;
