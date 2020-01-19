@@ -1,6 +1,6 @@
 export default {
-    name: 'primaryNavItem',
-    title: 'Primary Navigation Item',
+    title: 'Focus Link List Item',
+    name: 'linkListItem',
     type: 'object',
     fields: [
         {
@@ -14,14 +14,9 @@ export default {
             type: 'string'
         },
         {
-            title: 'Theme',
-            name: 'theme',
-            type: 'theme',
-        },
-        {
-            title: 'Sub Nav Item',
-            name: 'subNav',
-            type: 'subNav',
+            title: 'Focus',
+            name: 'focus',
+            type: 'boolean'
         }
     ]
 }
