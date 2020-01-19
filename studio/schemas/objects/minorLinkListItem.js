@@ -1,6 +1,6 @@
 export default {
     title: 'Minor Link List Item',
-    name: 'linkListItem',
+    name: 'minorLinkListItem',
     type: 'object',
     fields: [
         {

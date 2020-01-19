@@ -1,6 +1,6 @@
 export default {
     title: 'Focus Link List Item',
-    name: 'linkListItem',
+    name: 'focusLinkListItem',
     type: 'object',
     fields: [
         {
