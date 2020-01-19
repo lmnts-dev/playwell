@@ -13,5 +13,10 @@ export default {
             name: 'siteMetadata',
             type: 'siteMetadata'
         }
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'siteMetadata.siteTitle'
+        }
+    }
 }
