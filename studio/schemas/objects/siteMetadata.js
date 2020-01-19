@@ -55,17 +55,17 @@ export default {
         {
             title: 'Logo',
             name: 'logo',
-            type: 'string'
+            type: 'image'
         },
         {
             title: 'Logo Light',
             name: 'logoLight',
-            type: 'string'
+            type: 'image'
         },
         {
             title: 'Logo Dark',
             name: 'logoDark',
-            type: 'string'
+            type: 'image'
         },
         {
             title: 'Social',
