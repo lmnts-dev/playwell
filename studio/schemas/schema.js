@@ -14,6 +14,8 @@ import minorLinkListItem from './objects/minorLinkListItem'
 import nav from './objects/nav'
 import primaryNav from './objects/primaryNav'
 import primaryNavItem from './objects/primaryNavItem'
+import siteMetadata from './objects/siteMetadata'
+import social from './objects/social'
 import subNav from './objects/subNav'
 import theme from './objects/theme'
 import category from './documents/category'
@@ -45,6 +47,8 @@ export default createSchema({
     nav,
     primaryNav,
     primaryNavItem,
+    siteMetadata,
+    social,
     subNav,
     theme
   ])

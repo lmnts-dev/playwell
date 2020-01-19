@@ -7,6 +7,11 @@ export default {
             title: 'Site Navigation',
             name: 'nav',
             type: 'nav'
+        },
+        {
+            title: 'Site Metadata',
+            name: 'siteMetadata',
+            type: 'siteMetadata'
         }
     ]
 }
