@@ -6,10 +6,20 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // We import object and document schemas
 import blockContent from './objects/blockContent'
+import focusLinkItem from './objects/focusLinkListItem'
+import focusNav from './objects/focusNav'
+import footerNav from './objects/footerNav'
+import footerNavItem from './objects/footerNavItem'
+import minorLinkListItem from './objects/minorLinkListItem'
+import nav from './objects/nav'
+import primaryNav from './objects/primaryNav'
 import primaryNavItem from './objects/primaryNavItem'
+import subNav from './objects/subNav'
+import theme from './objects/theme'
 import category from './documents/category'
 import post from './documents/post'
 import author from './documents/author'
+import siteSettings from './documents/siteSettings'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -23,9 +33,19 @@ export default createSchema({
     post,
     author,
     category,
+    siteSettings,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
-    primaryNavItem
+    focusLinkItem,
+    focusNav,
+    footerNav,
+    footerNavItem,
+    minorLinkListItem,
+    nav,
+    primaryNav,
+    primaryNavItem,
+    subNav,
+    theme
   ])
 })
