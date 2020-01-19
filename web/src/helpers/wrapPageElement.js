@@ -26,7 +26,7 @@ const wrapPageElement = ({ element, props }) => {
     <StaticQuery
       query={graphql`
         query navDataQuery {
-          allDataJson {
+          allSanitySiteSettings {
             edges {
               node {
                 nav {

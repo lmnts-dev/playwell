@@ -16,7 +16,7 @@ import { ColorMatch } from 'constants/styles/Color';
 
 export const navDataTransformer = sourceData => {
   // Our Source Node
-  let sourceNode = sourceData.allDataJson.edges[0].node.nav;
+  let sourceNode = sourceData.allSanitySiteSettings.edges[0].node.nav;
 
   // Primary navigation map
   let primaryNavMap = sourceNode.primaryNav.linkList.map((link, idx) => {
@@ -30,10 +30,10 @@ export const navDataTransformer = sourceData => {
       // Sidebar
       subNav: {
         // Focus Link List
-        focusLinkList: link.subNav.focusLinkList,
+        focusLinkList: link.subNav ? link.subNav.focusLinkList : [],
 
         // Minor Link List
-        minorLinkList: link.subNav.minorLinkList,
+        minorLinkList: link.subNav ? link.subNav.minorLinkList : [],
       },
     };
   });

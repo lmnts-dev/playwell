@@ -14,7 +14,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 export const NavQuery = () => {
   const data = useStaticQuery(graphql`
     {
-      allDataJson {
+      allSanitySiteSettings {
         edges {
           node {
             nav {
