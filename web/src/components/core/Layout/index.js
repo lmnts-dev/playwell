@@ -82,7 +82,7 @@ const LayoutWithMetadata = props => {
     <StaticQuery
       query={graphql`
         query LayoutQuery {
-          site {
+          sanitySiteSettings {
             siteMetadata {
               siteTitle
             }
