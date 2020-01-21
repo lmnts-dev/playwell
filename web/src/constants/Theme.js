@@ -11,14 +11,11 @@
 // import { Theme } from '../../../path/to/Theme'
 // 2. Use it in your SC: 'color: ${Theme.Color.Primary}; or simply refer to the object and key when used in functions.'
 
-import { Settings } from './site/Settings';
 import { Font, Typography } from './styles/Font';
 import { Base } from './styles/Base';
 import { Color } from './styles/Color';
 
 export const Theme = {
-  // General Site Information & Keywords
-  Site: Settings,
 
   // For Programs Pages
   mapWidth: '400px',

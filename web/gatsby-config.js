@@ -1,8 +1,6 @@
 // gatsby-config.js:
 // This is the core settings to Gatsby.
 
-// Our Sitewide variables
-const siteConfig = require('./site-config');
 const path = require(`path`);
 
 // Load variables from `.env` as soon as possible
@@ -20,9 +18,6 @@ const isProd = process.env.NODE_ENV === 'production';
 //////////////////////////////////////////////////////////////////////
 
 module.exports = {
-  siteMetadata: {
-    ...siteConfig,
-  },
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
