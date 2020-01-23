@@ -21,9 +21,9 @@ import { ListingsFiltersStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const ListingsFilters = ({ courseData }) => {
+export const ListingsFilters = ({ courseData, setListingFilter }) => {
   // The Items
-  const ListingsFiltersItem = ({ label, items }) => {
+  const ListingsFiltersItem = ({ label, items, filterName }) => {
     return (
       <ListingsFiltersStyle.Item>
         <span className="filter-inner">
@@ -32,9 +32,11 @@ export const ListingsFilters = ({ courseData }) => {
         </span>
         <ListingsFiltersStyle.FilterList className="list">
           <ul>
-            {items.map((item, idx) => {
-              return <li key={idx}>{item.name}</li>;
-            })}
+            {items.map((item, idx) => (
+              <div key={idx} onClick={() => setListingFilter(filterName, item.value)} onKeyDown={() => setListingFilter(filterName, item.value)} role="presentation">
+                <li>{item.name}</li>
+              </div>
+            ))}
           </ul>
         </ListingsFiltersStyle.FilterList>
       </ListingsFiltersStyle.Item>
@@ -55,6 +57,8 @@ export const ListingsFilters = ({ courseData }) => {
           { name: 'Age 9', value: 9 },
           { name: '10 and over', value: 10 },
         ]}
+        filterName="ageFilter"
+        setListingFilter={setListingFilter}
       />
 
       <ListingsFiltersItem

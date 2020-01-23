@@ -321,6 +321,7 @@ class ListingsResults extends PureComponent {
       startDate: '',
       courseTypes: [],
       results: [],
+      ageFilter: null,
     };
   }
 
@@ -365,19 +366,15 @@ class ListingsResults extends PureComponent {
         }
       }, this);
 
-    const filteredCourseDataByToggle = d =>
+    const filteredCourseDataByToggle = filter =>
       geoFilteredCourseData.map((node, idx) => {
         return {
           node: {
             client_id: node.node.id,
             client_location_name: node.node.client_location_name,
-            courses: node.node.courses.filter((course, idxx) => {
-              // Define our query
-              const filter = d;
-
-              // Set up the conditions
-              return course.category_group_name.includes(filter);
-            }, this),
+            courses: node.node.courses
+              .filter(course => course.category_group_name.includes(filter))
+              .filter(course  => course.age_range_start <= this.state.ageFilter && course.age_range_end >= this.state.ageFilter),
             display_address: node.node.display_address,
             county_id: node.node.county_id,
             state_id: node.node.state_id,
@@ -391,11 +388,16 @@ class ListingsResults extends PureComponent {
         };
       }, this);
 
+      const setListingFilter = (name, value) => {
+        this.setState({ [name]: value })
+      }
+
     return (
       <>
         <CourseListingsStyle.Toolbar>
           <div className="toolbar-inner">
             <ListingsFilters
+              setListingFilter={setListingFilter}
               categoryFilter={categoryFilter}
               courseData={geoFilteredCourseData}
             />
@@ -587,7 +589,7 @@ class CourseListings extends PureComponent {
         style: 'mapbox://styles/mapbox/streets-v9',
         maxZoom: 11,
       });
-    
+
 
       this.map = map;
 
