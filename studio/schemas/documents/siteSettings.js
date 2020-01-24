@@ -2,6 +2,10 @@ export default {
     title: 'Site Settings',
     name: 'siteSettings',
     type: 'document',
+    __experimental_actions: [
+        'update',
+        'publish'
+    ],
     fields: [
         {
             title: 'Site Navigation',
