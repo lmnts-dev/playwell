@@ -7,6 +7,7 @@
 // Core
 import React from 'react';
 import { Link } from 'gatsby';
+import { range, uniqWith } from 'lodash.get'
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -43,20 +44,33 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
     );
   };
 
+  const getAgeList = (courses => {
+    const ageList = courses.map(course => (
+      range(course.age_range_start, course.age_range_end + 1)
+    )).flat().sort((a,b) => (a-b));
+    return ageList
+  })
+
+  const createAgeFilterItems = courses => {
+    const ageList = getAgeList(courses)
+    const ageFilterItems = uniqWith(ageList
+      .map(age => {
+        if (age < 5) {
+          return { name: `Under 5`, value: { ageMin: 0, ageMax: 5} }
+        } else if ( age >= 10) {
+          return { name: `10 and over`, value: { ageMin: 10, ageMax: null } }
+        } else {
+          return { name: `Age ${age}`, value: { ageMin: age, ageMax: age} }
+        }
+      }))
+      return ageFilterItems
+  }
   // Show the bar
   return (
     <ListingsFiltersStyle>
       <ListingsFiltersItem
         label="Any Age"
-        items={[
-          { name: 'Under 5', value: 5 },
-          { name: 'Age 5', value: 5 },
-          { name: 'Age 6', value: 6 },
-          { name: 'Age 7', value: 7 },
-          { name: 'Age 8', value: 8 },
-          { name: 'Age 9', value: 9 },
-          { name: '10 and over', value: 10 },
-        ]}
+        items={createAgeFilterItems(courseData)}
         filterName="ageFilter"
         setListingFilter={setListingFilter}
       />
