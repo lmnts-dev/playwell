@@ -375,7 +375,7 @@ class ListingsResults extends PureComponent {
             client_location_name: node.node.client_location_name,
             courses: node.node.courses
               .filter(course => course.category_group_name.includes(filter))
-              .filter(course  => course.age_range_start <= this.state.ageFilter && course.age_range_end >= this.state.ageFilter),
+              .filter(course  => course.age_range_start <= this.state.ageFilter.ageMin && course.age_range_end >= this.state.ageFilter.ageMax),
             display_address: node.node.display_address,
             county_id: node.node.county_id,
             state_id: node.node.state_id,
@@ -405,7 +405,7 @@ class ListingsResults extends PureComponent {
             <ListingsCounters
               categoryFilter={categoryFilter}
               toggleCategoryFilter={this.props.toggleCategoryFilter}
-              courseData={geoFilteredCourseData}
+              courseData={filteredCourseDataByToggle(categoryFilter)}
             />
           </div>
         </CourseListingsStyle.Toolbar>
