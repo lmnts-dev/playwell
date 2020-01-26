@@ -7,7 +7,7 @@
 // Core
 import React from 'react';
 import { Link } from 'gatsby';
-import { range, uniqWith } from 'lodash.get'
+import { range, uniqWith, isEqual } from 'lodash'
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -62,15 +62,18 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
         } else {
           return { name: `Age ${age}`, value: { ageMin: age, ageMax: age} }
         }
-      }))
+      }), isEqual)
       return ageFilterItems
   }
+
+  const courses = courseData.map(data => data.node.courses).flat()
+
   // Show the bar
   return (
     <ListingsFiltersStyle>
       <ListingsFiltersItem
         label="Any Age"
-        items={createAgeFilterItems(courseData)}
+        items={createAgeFilterItems(courses)}
         filterName="ageFilter"
         setListingFilter={setListingFilter}
       />
