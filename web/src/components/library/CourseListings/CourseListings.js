@@ -315,13 +315,14 @@ class ListingsResults extends PureComponent {
       lat: [],
       lng: [],
       zoom: [],
-      ageMin: 0,
-      ageMax: 0,
       startDate: '',
       startDate: '',
       courseTypes: [],
       results: [],
-      ageFilter: null,
+      ageFilter: {
+        ageMin: 0,
+        ageMax: 0
+      },
     };
   }
 
