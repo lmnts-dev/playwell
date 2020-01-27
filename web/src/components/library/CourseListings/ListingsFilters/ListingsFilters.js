@@ -32,6 +32,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
           <Icon Name="carat" />
         </span>
         <ListingsFiltersStyle.FilterList className="list">
+          {items.length > 1 &&
           <ul>
             {items.map((item, idx) => (
               <div key={idx} onClick={() => setListingFilter(filterName, item.value)} onKeyDown={() => setListingFilter(filterName, item.value)} role="presentation">
@@ -39,6 +40,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
               </div>
             ))}
           </ul>
+         }
         </ListingsFiltersStyle.FilterList>
       </ListingsFiltersStyle.Item>
     );
