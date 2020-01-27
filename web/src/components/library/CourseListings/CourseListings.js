@@ -375,7 +375,22 @@ class ListingsResults extends PureComponent {
             client_location_name: node.node.client_location_name,
             courses: node.node.courses
               .filter(course => course.category_group_name.includes(filter))
-              .filter(course  => course.age_range_start <= this.state.ageFilter.ageMin && course.age_range_end >= this.state.ageFilter.ageMax),
+              .filter(course  => {
+                // Return all courses on page load
+                if (this.state.ageFilter.ageMin === 0 && this.state.ageFilter.ageMax === 0) return course
+                // Return courses for ages < 5
+                if (this.state.ageFilter.ageMin === 0 && course.age_range_end < this.state.ageFilter.ageMax) {
+                  return course
+                }
+                // Return course for ages over 10
+                if (this.state.ageFilter.ageMax === null && course.age_range_start <= this.state.ageFilter.ageMin && course.age_range_end >= this.state.ageFilter.ageMin) {
+                  return course
+                }
+                // Return courses for a specific age (5-9)
+                if (course.age_range_start <= this.state.ageFilter.ageMin &&
+                    course.age_range_end >= this.state.ageFilter.ageMax) {
+                  return course
+                }}),
             display_address: node.node.display_address,
             county_id: node.node.county_id,
             state_id: node.node.state_id,

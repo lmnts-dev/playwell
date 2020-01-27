@@ -58,7 +58,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
         if (age < 5) {
           return { name: `Under 5`, value: { ageMin: 0, ageMax: 5} }
         } else if ( age >= 10) {
-          return { name: `10 and over`, value: { ageMin: 10, ageMax: null } }
+          return { name: `10 and over`, value: { ageMin: 10, ageMax: 10 } }
         } else {
           return { name: `Age ${age}`, value: { ageMin: age, ageMax: age} }
         }
