@@ -492,11 +492,13 @@ class CourseListings extends PureComponent {
 
   // Function to update our url query parameters when we change
   // categories & filters to create sharable urls.
-  setParams({ show = '', age_min = '', age_max = '' }) {
+  setParams({ show = '', age_min, age_max }) {
     const searchParams = new URLSearchParams();
     searchParams.set('show', show);
-    searchParams.set('age_min', age_min);
-    searchParams.set('age_max', age_max);
+    if (age_min !== undefined && age_max !== undefined) {
+      searchParams.set('age_min', age_min);
+      searchParams.set('age_max', age_max);
+    }
     return searchParams.toString();
   }
 
@@ -513,6 +515,7 @@ class CourseListings extends PureComponent {
       history.pushState({}, '', `?${url}`);
     } else if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
       const url = this.setParams({
+        show: 'all',
         age_min: this.state.ageFilter.ageMin,
         age_max: this.state.ageFilter.ageMax
       });
