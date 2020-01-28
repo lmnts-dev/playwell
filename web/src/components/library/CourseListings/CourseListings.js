@@ -368,6 +368,24 @@ class ListingsResults extends PureComponent {
         }
       }, this);
 
+    const filteredCourseByAge = course => {
+      // Return all courses on page load
+      if (ageFilter.ageMin === 0 && ageFilter.ageMax === 0) return course
+      // Return courses for ages < 5
+      else if (ageFilter.ageMin === 0 && course.age_range_start <= ageFilter.ageMax && course.age_range_end <= ageFilter.ageMax) {
+        return course
+      }
+      // Return course for ages over 10
+      else if (course.age_range_start <= ageFilter.ageMin && course.age_range_end >= ageFilter.ageMin) {
+        return course
+      }
+      // Return courses for a specific age (5-9)
+      else if (course.age_range_start <= ageFilter.ageMin &&
+          course.age_range_end >= ageFilter.ageMax) {
+        return course
+      }
+    }
+
     const filteredCourseDataByToggle = filter =>
       geoFilteredCourseData.map((node, idx) => {
         return {
@@ -376,22 +394,7 @@ class ListingsResults extends PureComponent {
             client_location_name: node.node.client_location_name,
             courses: node.node.courses
               .filter(course => course.category_group_name.includes(filter))
-              .filter(course  => {
-                // Return all courses on page load
-                if (ageFilter.ageMin === 0 && ageFilter.ageMax === 0) return course
-                // Return courses for ages < 5
-                if (ageFilter.ageMin === 0 && course.age_range_end < ageFilter.ageMax) {
-                  return course
-                }
-                // Return course for ages over 10
-                if (ageFilter.ageMax === null && course.age_range_start <= ageFilter.ageMin && course.age_range_end >= ageFilter.ageMin) {
-                  return course
-                }
-                // Return courses for a specific age (5-9)
-                if (course.age_range_start <= ageFilter.ageMin &&
-                    course.age_range_end >= ageFilter.ageMax) {
-                  return course
-                }}),
+              .filter(course  => filteredCourseByAge(course)),
             display_address: node.node.display_address,
             county_id: node.node.county_id,
             state_id: node.node.state_id,
@@ -489,9 +492,11 @@ class CourseListings extends PureComponent {
 
   // Function to update our url query parameters when we change
   // categories & filters to create sharable urls.
-  setParams({ show = '' }) {
+  setParams({ show = '', age_min = '', age_max = '' }) {
     const searchParams = new URLSearchParams();
     searchParams.set('show', show);
+    searchParams.set('age_min', age_min);
+    searchParams.set('age_max', age_max);
     return searchParams.toString();
   }
 
@@ -499,12 +504,18 @@ class CourseListings extends PureComponent {
   updateURL() {
     // If we are indeed filtering:
     if (this.state.categoryFilter != '') {
-      // Are we also filtering on age?
-      //if (this.state.ageFilter)
       const url = this.setParams({
         show: this.state.categoryFilter.toLowerCase() + 's',
+        age_min: this.state.ageFilter.ageMin,
+        age_max: this.state.ageFilter.ageMax
       });
       //do not forget the "?" !
+      history.pushState({}, '', `?${url}`);
+    } else if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
+      const url = this.setParams({
+        age_min: this.state.ageFilter.ageMin,
+        age_max: this.state.ageFilter.ageMax
+      });
       history.pushState({}, '', `?${url}`);
     }
 
@@ -515,6 +526,7 @@ class CourseListings extends PureComponent {
       });
       history.pushState({}, '', `?${url}`);
     }
+
   }
 
   // Our Function to Toggle Categories
@@ -541,6 +553,7 @@ class CourseListings extends PureComponent {
   // Our function to update the listing filters for age, date, and course type
   setListingFilter(name, value) {
     this.setState({ [name]: value })
+    this.updateURL()
   }
 
   // Check for url query for showing/hiding results.
