@@ -600,6 +600,10 @@ class CourseListings extends PureComponent {
     }
   }
 
+  componentDidUpdate() {
+    this.updateURL();
+  }
+
   componentDidMount() {
     /**
      *
