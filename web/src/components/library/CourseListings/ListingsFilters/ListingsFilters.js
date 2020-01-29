@@ -7,7 +7,7 @@
 // Core
 import React from 'react';
 import { Link } from 'gatsby';
-import { range, uniqWith, isEqual } from 'lodash'
+import { range, uniqWith, isEqual, flatten } from 'lodash'
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -46,15 +46,17 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
     );
   };
 
-  const getAgeList = (courses => {
+  const getAllAges = (courses => {
     const ageList = courses.map(course => (
       range(course.age_range_start, course.age_range_end + 1)
-    )).flat().sort((a,b) => (a-b));
-    return ageList
+    ));
+    const mergedAgeList = flatten(ageList);
+    const sortedAges = mergedAgeList.sort((a,b) => (a-b));
+    return sortedAges
   })
 
   const createAgeFilterItems = courses => {
-    const ageList = getAgeList(courses)
+    const ageList = getAllAges(courses)
     const ageFilterItems = uniqWith(ageList
       .map(age => {
         if (age < 5) {
@@ -68,7 +70,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
       return ageFilterItems
   }
 
-  const courses = courseData.map(data => data.node.courses).flat()
+  const courses = flatten(courseData.map(data => data.node.courses))
 
   // Show the bar
   return (
