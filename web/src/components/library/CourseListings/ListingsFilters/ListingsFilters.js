@@ -7,10 +7,8 @@
 // Core
 import React from 'react';
 import { Link } from 'gatsby';
-import range from 'lodash/range'
-import flatten from 'lodash/flatten'
-import isEqual from 'lodash/isEqual'
-import uniqWith from 'lodash/uniqWith'
+import { range, uniqWith, isEqual, flatten } from 'lodash'
+import {getMonth, getYear, addMonths, addYears, endOfMonth, startOfMonth, startOfYear, endOfYear} from 'date-fns'
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -49,6 +47,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
     );
   };
 
+  // Function to get the list of all ages for the given array of courses
   const getAllAges = (courses => {
     const ageList = courses.map(course => (
       range(course.age_range_start, course.age_range_end + 1)
@@ -58,6 +57,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
     return sortedAges
   })
 
+  // Function to generate the drop down list for age filter
   const createAgeFilterItems = courses => {
     const ageList = getAllAges(courses)
     const ageFilterItems = uniqWith(ageList
@@ -71,6 +71,32 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
         }
       }), isEqual)
       return ageFilterItems
+  }
+
+  const createDateFilterItems = courses => {
+    const today = new Date()
+    const currentMonth = getMonth(today)
+    const nextMonth = getMonth(addMonths(today, 1))
+    const sixMonths = getMonth(addMonths(today, 6))
+    const nextYear = getYear(addYears(today, 1))
+    const dateFilterItems = uniqWith(courses
+      .map(course => {
+
+        const startMonth = getMonth(new Date(course.start_date))
+        const startYear = getYear(new Date(course.start_date))
+
+        if (startMonth === currentMonth) {
+          return { name: 'This Month', value: { startDate: today, endDate: endOfMonth(today)} }
+        } else if (startMonth === nextMonth) {
+          return { name: 'Next Month', value: { startDate: startOfMonth(addMonths(today, 1)), endDate: endOfMonth(addMonths(today, 1))} }
+        } else if (startMonth > nextMonth && startMonth <= sixMonths) {
+          return { name: 'Next 6 Months', value: { startDate: startOfMonth(addMonths(today, 2)), endDate: endOfMonth(addMonths(today, 6))} }
+        } else if (startYear === nextYear) {
+          return { name: 'Next Year', value: { startDate: startOfYear(addYears(today, 1)), endDate: endOfYear(addYears(today, 1))}}
+        }
+      }), isEqual).filter(item => item !== undefined)
+
+      return dateFilterItems.filter(item => item !== undefined)
   }
 
   const courses = flatten(courseData.map(data => data.node.courses))
@@ -87,12 +113,9 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
 
       <ListingsFiltersItem
         label="Any Date"
-        items={[
-          { name: 'This Month', value: 10 },
-          { name: 'Next Month', value: 10 },
-          { name: 'Next 6 Months', value: 10 },
-          { name: 'Next Year', value: 10 },
-        ]}
+        filterName="dateFilter"
+        setListingFilter={setListingFilter}
+        items={createDateFilterItems(courses)}
       />
       <ListingsFiltersItem
         label="Course Type"
