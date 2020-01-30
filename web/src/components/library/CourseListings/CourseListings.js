@@ -336,6 +336,7 @@ class ListingsResults extends PureComponent {
     // Filter Categories
     const categoryFilter = this.props.categoryFilter;
     const ageFilter = this.props.ageFilter;
+    const dateFilter = this.props.dateFilter;
 
     // Filter update function
     const setListingFilter = this.props.setListingFilter
@@ -467,6 +468,10 @@ class CourseListings extends PureComponent {
       ageFilter: {
         ageMin: 0,
         ageMax: 0
+      },
+      dateFilter: {
+        startDate: '',
+        endDate: ''
       },
       /**
        *
@@ -829,6 +834,7 @@ class CourseListings extends PureComponent {
                 urlQuery={search.show} // Utilizes our withLocation(); function at the end of this document.
                 categoryFilter={this.state.categoryFilter}
                 ageFilter={this.state.ageFilter}
+                dateFilter={this.state.dateFilter}
                 setListingFilter={this.setListingFilter}
                 toggleCategoryFilter={this.toggleCategoryFilter}
                 allCostCodes={allCostCodes}
