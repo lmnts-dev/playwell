@@ -8,7 +8,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { range, uniqWith, isEqual, flatten } from 'lodash'
-import {getMonth, getYear, addMonths, addYears, endOfMonth, startOfMonth, startOfYear, endOfYear} from 'date-fns'
+import { getMonth, getYear, addMonths, addYears, startOfMonth, endOfMonth, endOfYear, isWithinInterval } from 'date-fns'
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -33,7 +33,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
           <Icon Name="carat" />
         </span>
         <ListingsFiltersStyle.FilterList className="list">
-          {items.length > 1 &&
+          {items.length >= 1 &&
           <ul>
             {items.map((item, idx) => (
               <div key={idx} onClick={() => setListingFilter(filterName, item.value)} onKeyDown={() => setListingFilter(filterName, item.value)} role="presentation">
@@ -51,7 +51,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
   const getAllAges = (courses => {
     const ageList = courses.map(course => (
       range(course.age_range_start, course.age_range_end + 1)
-    ));
+  ));
     const mergedAgeList = flatten(ageList);
     const sortedAges = mergedAgeList.sort((a,b) => (a-b));
     return sortedAges
@@ -75,28 +75,26 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
 
   const createDateFilterItems = courses => {
     const today = new Date()
-    const currentMonth = getMonth(today)
-    const nextMonth = getMonth(addMonths(today, 1))
-    const sixMonths = getMonth(addMonths(today, 6))
-    const nextYear = getYear(addYears(today, 1))
+
     const dateFilterItems = uniqWith(courses
       .map(course => {
+        const startDate = new Date(course.start_date)
 
-        const startMonth = getMonth(new Date(course.start_date))
-        const startYear = getYear(new Date(course.start_date))
-
-        if (startMonth === currentMonth) {
+        if (isWithinInterval(startDate, { start: today, end: endOfMonth(today)})) {
           return { name: 'This Month', value: { startDate: today, endDate: endOfMonth(today)} }
-        } else if (startMonth === nextMonth) {
+        }
+        if (isWithinInterval(startDate, { start: startOfMonth(addMonths(today, 1)), end: endOfMonth(addMonths(today, 1))})) {
           return { name: 'Next Month', value: { startDate: startOfMonth(addMonths(today, 1)), endDate: endOfMonth(addMonths(today, 1))} }
-        } else if (startMonth > nextMonth && startMonth <= sixMonths) {
-          return { name: 'Next 6 Months', value: { startDate: startOfMonth(addMonths(today, 2)), endDate: endOfMonth(addMonths(today, 6))} }
-        } else if (startYear === nextYear) {
-          return { name: 'Next Year', value: { startDate: startOfYear(addYears(today, 1)), endDate: endOfYear(addYears(today, 1))}}
+        }
+        if (isWithinInterval(startDate, { start: today, end: endOfMonth(addMonths(today, 6))})) {
+          return { name: 'Next 6 Months', value: { startDate: today, endDate: endOfMonth(addMonths(today, 6))} }
+        }
+        if (isWithinInterval(startDate, { start: today, end: endOfMonth(addYears(today, 1))})) {
+          return { name: 'Next Year', value: { startDate: today, endDate: endOfMonth(addYears(today, 1))}}
         }
       }), isEqual).filter(item => item !== undefined)
 
-      return dateFilterItems.filter(item => item !== undefined)
+      return dateFilterItems
   }
 
   const courses = flatten(courseData.map(data => data.node.courses))
