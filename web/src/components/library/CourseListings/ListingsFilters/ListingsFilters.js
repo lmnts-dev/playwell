@@ -5,10 +5,10 @@
 //////////////////////////////////////////////////////////////////////
 
 // Core
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'gatsby';
 import { range, uniqWith, isEqual, flatten } from 'lodash'
-import { getMonth, getYear, addMonths, addYears, startOfMonth, endOfMonth, endOfYear, isWithinInterval } from 'date-fns'
+import { addMonths, addYears, startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -24,8 +24,19 @@ import { ListingsFiltersStyle } from './styles.scss';
 //////////////////////////////////////////////////////////////////////
 
 export const ListingsFilters = ({ courseData, setListingFilter }) => {
+  const [state, setState] = useState({
+    ageFilterLabel: 'Any Age',
+    dateFilterLabel: 'Any Date',
+    courseFilterLabel: 'Course Type'
+  })
+
+  // Function to update the label based on selected drop down item
+  const updateLabel = (name, value) => {
+    setState({...state, [`${name}Label`]: value})
+  }
+
   // The Items
-  const ListingsFiltersItem = ({ label, items, filterName }) => {
+  const ListingsFiltersItem = ({ label, items, filterName, updateLabel, setListingFilter }) => {
     return (
       <ListingsFiltersStyle.Item>
         <span className="filter-inner">
@@ -33,15 +44,21 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
           <Icon Name="carat" />
         </span>
         <ListingsFiltersStyle.FilterList className="list">
-          {items.length >= 1 &&
           <ul>
             {items.map((item, idx) => (
-              <div key={idx} onClick={() => setListingFilter(filterName, item.value)} onKeyDown={() => setListingFilter(filterName, item.value)} role="presentation">
+              <div key={idx} onClick={() => {
+                  updateLabel(filterName, item.name)
+                  setListingFilter(filterName, item.value)
+                }}
+                onKeyDown={() => {
+                  updateLabel(filterName, item.name)
+                  setListingFilter(filterName, item.value)
+                }}
+                role="presentation">
                 <li>{item.name}</li>
               </div>
             ))}
           </ul>
-         }
         </ListingsFiltersStyle.FilterList>
       </ListingsFiltersStyle.Item>
     );
@@ -73,6 +90,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
       return ageFilterItems
   }
 
+  // Function to generate date filter drop down items
   const createDateFilterItems = courses => {
     const today = new Date()
 
@@ -103,20 +121,24 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
   return (
     <ListingsFiltersStyle>
       <ListingsFiltersItem
-        label="Any Age"
+        label={state.ageFilterLabel}
         items={createAgeFilterItems(courses)}
         filterName="ageFilter"
         setListingFilter={setListingFilter}
+        updateLabel={updateLabel}
       />
 
       <ListingsFiltersItem
-        label="Any Date"
+        label={state.dateFilterLabel}
         filterName="dateFilter"
         setListingFilter={setListingFilter}
         items={createDateFilterItems(courses)}
+        updateLabel={updateLabel}
       />
       <ListingsFiltersItem
         label="Course Type"
+        filterName="courseFilter"
+        updateLabel={updateLabel}
         items={[
           { name: 'LEGO®: Basic', value: 'Basic Lego' },
           { name: 'LEGO®: Advanced', value: 'Advanced' },
