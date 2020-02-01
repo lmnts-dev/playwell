@@ -81,18 +81,18 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
         const startDate = new Date(course.start_date)
 
         if (isWithinInterval(startDate, { start: today, end: endOfMonth(today)})) {
-          return { name: 'This Month', value: { startDate: today, endDate: endOfMonth(today)} }
+          return { order: 1, name: 'This Month', value: { startDate: today, endDate: endOfMonth(today)} }
         }
         else if (isWithinInterval(startDate, { start: startOfMonth(addMonths(today, 1)), end: endOfMonth(addMonths(today, 1))})) {
-          return { name: 'Next Month', value: { startDate: startOfMonth(addMonths(today, 1)), endDate: endOfMonth(addMonths(today, 1))} }
+          return { order: 2, name: 'Next Month', value: { startDate: startOfMonth(addMonths(today, 1)), endDate: endOfMonth(addMonths(today, 1))} }
         }
         else if (startDate <= endOfMonth(addMonths(today, 6))) {
-          return { name: 'Next 6 Months', value: { startDate: today, endDate: endOfMonth(addMonths(today, 6))} }
+          return { order: 3, name: 'Next 6 Months', value: { startDate: today, endDate: endOfMonth(addMonths(today, 6))} }
         }
         else if (startDate <= endOfMonth(addYears(today, 1))) {
-          return { name: 'Next Year', value: { startDate: today, endDate: endOfMonth(addYears(today, 1))}}
+          return { order: 4, name: 'Next Year', value: { startDate: today, endDate: endOfMonth(addYears(today, 1))}}
         }
-      }), isEqual).filter(item => item !== undefined)
+      }), isEqual).filter(item => item !== undefined).sort((a,b) => (a.order - b.order))
 
       return dateFilterItems
   }
