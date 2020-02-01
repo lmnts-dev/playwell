@@ -8,6 +8,7 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
 import { navigate } from '@reach/router';
+import { isWithinInterval } from 'date-fns'
 
 // MapboxGL
 import mapboxgl from 'mapbox-gl';
@@ -385,8 +386,11 @@ class ListingsResults extends PureComponent {
       else if (course.age_range_start <= ageFilter.ageMin && course.age_range_end >= ageFilter.ageMin) {
         return course
       }
-      }
+    }
 
+    const filterCourseByDate = course => {
+      if (dateFilter.startDate === '' && dateFilter.endDate === '') {return course}
+     else if (isWithinInterval(new Date(course.start_date), { start: dateFilter.startDate, end: dateFilter.endDate })) {return course}
     }
 
     const filteredCourseDataByCategory = filter =>
