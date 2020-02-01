@@ -373,18 +373,20 @@ class ListingsResults extends PureComponent {
       // Return all courses on page load
       if (ageFilter.ageMin === 0 && ageFilter.ageMax === 0) return course
       // Return courses for ages < 5
-      else if (ageFilter.ageMin === 0 && course.age_range_start <= ageFilter.ageMax && course.age_range_end <= ageFilter.ageMax) {
+      else if (ageFilter.ageMin === 0 && (course.age_range_start < ageFilter.ageMax ||course.age_range_end < ageFilter.ageMax)) {
         return course
+      }
+      // Return courses for a specific age (5-9)
+      else if (ageFilter.ageMin === ageFilter.ageMax && (ageFilter.ageMin >= course.age_range_start &&
+        ageFilter.ageMin <= course.age_range_end)) {
+          return course
       }
       // Return course for ages over 10
       else if (course.age_range_start <= ageFilter.ageMin && course.age_range_end >= ageFilter.ageMin) {
         return course
       }
-      // Return courses for a specific age (5-9)
-      else if (course.age_range_start <= ageFilter.ageMin &&
-          course.age_range_end >= ageFilter.ageMax) {
-        return course
       }
+
     }
 
     const filteredCourseDataByToggle = filter =>
