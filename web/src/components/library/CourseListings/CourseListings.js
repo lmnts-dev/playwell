@@ -389,24 +389,26 @@ class ListingsResults extends PureComponent {
 
     }
 
-    const filteredCourseDataByToggle = filter =>
-      geoFilteredCourseData.map((node, idx) => {
+    const filteredCourseDataByCategory = filter =>
+      geoFilteredCourseData.map(node => {
         return {
           node: {
-            client_id: node.node.id,
-            client_location_name: node.node.client_location_name,
+            ...node.node,
             courses: node.node.courses
               .filter(course => course.category_group_name.includes(filter))
-              .filter(course  => filteredCourseByAge(course)),
-            display_address: node.node.display_address,
-            county_id: node.node.county_id,
-            state_id: node.node.state_id,
-            geocode_address: node.node.geocode_address,
-            id: node.node.location_id,
-            location_lat: node.node.location_lat,
-            location_lng: node.node.location_lng,
-            public_note: node.node.public_note,
-            key: idx,
+          },
+        };
+      }, this);
+
+    const filteredCourseDataBySelection = filter =>
+      geoFilteredCourseData.map(node => {
+        return {
+          node: {
+            ...node.node,
+            courses: node.node.courses
+              .filter(course => course.category_group_name.includes(filter))
+              .filter(course  => filteredCourseByAge(course))
+              .filter(course => filterCourseByDate(course)),
           },
         };
       }, this);
@@ -418,17 +420,17 @@ class ListingsResults extends PureComponent {
             <ListingsFilters
               setListingFilter={setListingFilter}
               categoryFilter={categoryFilter}
-              courseData={geoFilteredCourseData}
+              courseData={filteredCourseDataByCategory(categoryFilter)}
             />
             <ListingsCounters
               categoryFilter={categoryFilter}
               toggleCategoryFilter={this.props.toggleCategoryFilter}
-              courseData={filteredCourseDataByToggle(categoryFilter)}
+              courseData={filteredCourseDataBySelection(categoryFilter)}
             />
           </div>
         </CourseListingsStyle.Toolbar>
         <FilteredResults
-          results={filteredCourseDataByToggle(categoryFilter)}
+          results={filteredCourseDataBySelection(categoryFilter)}
           stateEdges={stateEdges}
           pageContext={pageContext}
           courseData={courseData}
