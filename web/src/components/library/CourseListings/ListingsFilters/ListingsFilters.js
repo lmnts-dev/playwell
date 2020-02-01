@@ -83,13 +83,13 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
         if (isWithinInterval(startDate, { start: today, end: endOfMonth(today)})) {
           return { name: 'This Month', value: { startDate: today, endDate: endOfMonth(today)} }
         }
-        if (isWithinInterval(startDate, { start: startOfMonth(addMonths(today, 1)), end: endOfMonth(addMonths(today, 1))})) {
+        else if (isWithinInterval(startDate, { start: startOfMonth(addMonths(today, 1)), end: endOfMonth(addMonths(today, 1))})) {
           return { name: 'Next Month', value: { startDate: startOfMonth(addMonths(today, 1)), endDate: endOfMonth(addMonths(today, 1))} }
         }
-        if (isWithinInterval(startDate, { start: today, end: endOfMonth(addMonths(today, 6))})) {
+        else if (startDate <= endOfMonth(addMonths(today, 6))) {
           return { name: 'Next 6 Months', value: { startDate: today, endDate: endOfMonth(addMonths(today, 6))} }
         }
-        if (isWithinInterval(startDate, { start: today, end: endOfMonth(addYears(today, 1))})) {
+        else if (startDate <= endOfMonth(addYears(today, 1))) {
           return { name: 'Next Year', value: { startDate: today, endDate: endOfMonth(addYears(today, 1))}}
         }
       }), isEqual).filter(item => item !== undefined)
