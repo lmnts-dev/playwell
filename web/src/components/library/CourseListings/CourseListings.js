@@ -8,7 +8,8 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
 import { navigate } from '@reach/router';
-import { isWithinInterval } from 'date-fns'
+import { isWithinInterval, format } from 'date-fns'
+import setQuery from 'set-query-string'
 
 // MapboxGL
 import mapboxgl from 'mapbox-gl';
@@ -517,30 +518,22 @@ class CourseListings extends PureComponent {
 
   // Functon to update our URL using history.push API
   updateURL() {
-    // If we are indeed filtering:
-    if (this.state.categoryFilter != '') {
-      const url = this.setParams({
-        show: this.state.categoryFilter.toLowerCase() + 's',
-        age_min: this.state.ageFilter.ageMin,
-        age_max: this.state.ageFilter.ageMax
-      });
-      //do not forget the "?" !
-      history.pushState({}, '', `?${url}`);
-    } else if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
-      const url = this.setParams({
-        show: 'all',
-        age_min: this.state.ageFilter.ageMin,
-        age_max: this.state.ageFilter.ageMax
-      });
-      history.pushState({}, '', `?${url}`);
-    }
-
-    // If it is  displaying all programs:
-    else {
-      const url = this.setParams({
-        show: 'all',
-      });
-      history.pushState({}, '', `?${url}`);
+    if (this.state.categoryFilter !== '') {
+      setQuery({show: this.state.categoryFilter.toLowerCase() + 's'}, {pushState: true})
+      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
+        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
+      }
+      if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
+        setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
+      }
+    } else {
+      setQuery({show: 'all'}, {pushState: true})
+      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
+        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
+      }
+      if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
+        setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
+      }
     }
 
   }
