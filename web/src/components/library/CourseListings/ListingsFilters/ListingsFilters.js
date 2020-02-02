@@ -27,7 +27,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
   const [state, setState] = useState({
     ageFilterLabel: 'Any Age',
     dateFilterLabel: 'Any Date',
-    courseFilterLabel: 'Course Type'
+    courseTypeFilterLabel: 'Course Type'
   })
 
   // Function to update the label based on selected drop down item
@@ -170,7 +170,7 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
         updateLabel={updateLabel}
       />
       <ListingsFiltersItem
-        label="Course Type"
+        label={state.courseTypeFilterLabel}
         filterName="courseTypeFilter"
         updateLabel={updateLabel}
         setListingFilter={setListingFilter}
