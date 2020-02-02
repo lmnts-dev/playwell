@@ -119,24 +119,33 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
     const courseTypeFilterItems = uniqWith(courses
       .map(course => {
         if (course.course_type_group === 'Basic Lego') {
-          return { name: 'LEGO®: Basic', value: course.course_type_group }
+          return { order: 1, name: 'LEGO®: Basic', value: course.course_type_group }
         }
         else if (course.course_type_group === 'Advanced') {
-          return { name: 'LEGO®: Advanced', value: course.course_type_group }
+          return { order: 2, name: 'LEGO®: Advanced', value: course.course_type_group }
         }
-        else if (course.course_type_group === 'Ninjago' || course.course_type_group === 'Star Wars' || course.course_type_group === 'Super Heroes' || course.course_type_group === 'Other') {
-          return { name: course.course_type_group, value: course.course_type_group }
+        else if (course.course_type_group === 'Ninjago') {
+          return { order: 3, name: course.course_type_group, value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Star Wars') {
+          return { order: 4, name: course.course_type_group, value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Super Heroes') {
+          return { order: 5, name: course.course_type_group, value: course.course_type_group }
         }
         else if (course.course_type_group === 'Lego Robotics') {
-          return { name: 'LEGO® Robotics', value: course.course_type_group }
+          return { order: 6, name: 'LEGO® Robotics', value: course.course_type_group }
         }
         else if (course.course_type_group === 'Pre School') {
-          return { name: 'Pre-School', value: course.course_type_group }
+          return { order: 7, name: 'Pre-School', value: course.course_type_group }
         }
         else if (course.course_type_group === 'Minecraft') {
-          return { name: 'Minecraft Theme', value: course.course_type_group }
+          return { order: 8, name: 'Minecraft Theme', value: course.course_type_group }
         }
-      }), isEqual)
+        else if (course.course_type_group === 'Other') {
+          return { order: 9, name: course.course_type_group, value: course.course_type_group }
+        }
+      }), isEqual).sort((a,b) => (a.order - b.order))
       return courseTypeFilterItems
   }
 
