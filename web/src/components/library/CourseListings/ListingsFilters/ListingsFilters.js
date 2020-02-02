@@ -115,6 +115,31 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
       return dateFilterItems
   }
 
+  const createCourseTypeFilterItems = courses => {
+    const courseTypeFilterItems = uniqWith(courses
+      .map(course => {
+        if (course.course_type_group === 'Basic Lego') {
+          return { name: 'LEGO®: Basic', value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Advanced') {
+          return { name: 'LEGO®: Advanced', value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Ninjago' || course.course_type_group === 'Star Wars' || course.course_type_group === 'Super Heroes' || course.course_type_group === 'Other') {
+          return { name: course.course_type_group, value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Lego Robotics') {
+          return { name: 'LEGO® Robotics', value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Pre School') {
+          return { name: 'Pre-School', value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Minecraft') {
+          return { name: 'Minecraft Theme', value: course.course_type_group }
+        }
+      }), isEqual)
+      return courseTypeFilterItems
+  }
+
   const courses = flatten(courseData.map(data => data.node.courses))
 
   // Show the bar
@@ -137,19 +162,10 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
       />
       <ListingsFiltersItem
         label="Course Type"
-        filterName="courseFilter"
+        filterName="courseTypeFilter"
         updateLabel={updateLabel}
-        items={[
-          { name: 'LEGO®: Basic', value: 'Basic Lego' },
-          { name: 'LEGO®: Advanced', value: 'Advanced' },
-          { name: 'Ninjago', value: 'Ninjago' },
-          { name: 'Star Wars', value: 'Star Wars' },
-          { name: 'Super Heroes', value: 'Super Heroes' },
-          { name: 'LEGO® Robotics', value: 'Lego Robotics' },
-          { name: 'Pre-School', value: 'Pre School' },
-          { name: 'Minecraft Theme', value: 'Minecraft' },
-          { name: 'Other', value: 'Other' },
-        ]}
+        setListingFilter={setListingFilter}
+        items={createCourseTypeFilterItems(courses)}
       />
     </ListingsFiltersStyle>
   );
