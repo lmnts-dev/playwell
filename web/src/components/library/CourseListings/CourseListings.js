@@ -527,21 +527,27 @@ class CourseListings extends PureComponent {
   // Functon to update our URL using history.push API
   updateURL() {
     if (this.state.categoryFilter !== '') {
+      if (this.state.courseTypeFilter !== '') {
+        setQuery({course_type: this.state.courseTypeFilter})
+      }
+      if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
+        setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
+      }
+      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
+        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
+      }
       setQuery({show: this.state.categoryFilter.toLowerCase() + 's'}, {pushState: true})
-      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
-        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
-      }
-      if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
-        setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
-      }
     } else {
-      setQuery({show: 'all'}, {pushState: true})
-      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
-        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
+      if (this.state.courseTypeFilter !== '') {
+        setQuery({course_type: this.state.courseTypeFilter})
       }
       if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
         setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
       }
+      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
+        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
+      }
+      setQuery({show: 'all'}, {pushState: true})
     }
 
   }
