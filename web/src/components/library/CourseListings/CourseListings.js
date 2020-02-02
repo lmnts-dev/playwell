@@ -339,6 +339,7 @@ class ListingsResults extends PureComponent {
     const categoryFilter = this.props.categoryFilter;
     const ageFilter = this.props.ageFilter;
     const dateFilter = this.props.dateFilter;
+    const courseTypeFilter = this.props.courseTypeFilter;
 
     // Filter update function
     const setListingFilter = this.props.setListingFilter
@@ -394,6 +395,11 @@ class ListingsResults extends PureComponent {
      else if (isWithinInterval(new Date(course.start_date), { start: dateFilter.startDate, end: dateFilter.endDate })) {return course}
     }
 
+    const filterCourseByType = course => {
+      if (courseTypeFilter === '') {return course}
+      else if (course.course_type_group === courseTypeFilter) {return course}
+    }
+
     const filteredCourseDataByCategory = filter =>
       geoFilteredCourseData.map(node => {
         return {
@@ -413,7 +419,8 @@ class ListingsResults extends PureComponent {
             courses: node.node.courses
               .filter(course => course.category_group_name.includes(filter))
               .filter(course  => filteredCourseByAge(course))
-              .filter(course => filterCourseByDate(course)),
+              .filter(course => filterCourseByDate(course))
+              .filter(course => filterCourseByType(course))
           },
         };
       }, this);
@@ -482,6 +489,7 @@ class CourseListings extends PureComponent {
         startDate: '',
         endDate: ''
       },
+      courseTypeFilter: '',
       /**
        *
        * Mapbox settings
@@ -836,6 +844,7 @@ class CourseListings extends PureComponent {
                 categoryFilter={this.state.categoryFilter}
                 ageFilter={this.state.ageFilter}
                 dateFilter={this.state.dateFilter}
+                courseTypeFilter={this.state.courseTypeFilter}
                 setListingFilter={this.setListingFilter}
                 toggleCategoryFilter={this.toggleCategoryFilter}
                 allCostCodes={allCostCodes}
