@@ -48,8 +48,8 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
             ? updateLabel(filterName, item.name)
             : <ul>
                 {items.map((item, idx) => (
-                  <li>
-                    <div key={idx} onClick={() => {
+                  <li key={idx}>
+                    <div onClick={() => {
                         updateLabel(filterName, item.name)
                         setListingFilter(filterName, item.value)
                       }}
