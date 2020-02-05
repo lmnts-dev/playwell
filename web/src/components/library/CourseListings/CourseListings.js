@@ -505,7 +505,8 @@ class CourseListings extends PureComponent {
       lng: -73.9888,
       zoom: 2,
     };
-
+    const location = this.props.location;
+    console.log(location);
     // Create our Map Ref
     this.mapBoxRef = React.createRef();
 
@@ -607,6 +608,33 @@ class CourseListings extends PureComponent {
           categoryFilter: 'Course',
         });
       }
+    }
+
+    // Set the ageFilter state based on query params
+    if (this.props.search.age_min !== undefined && this.props.search.age_max !== undefined) {
+      this.setState({
+        ageFilter: {
+          ageMin: this.props.search.age_min,
+          ageMax: this.props.search.age_max
+        }
+      })
+    }
+
+    // Set the dateFilter state based on query params
+    if (this.props.search.date_min !== undefined && this.props.search.date_max !== undefined) {
+      this.setState({
+        dateFilter: {
+          startDate: new Date(this.props.search.date_min),
+          endDate: new Date(this.props.search.date_max)
+        }
+      })
+    }
+
+    // Set the courseTypeFilter state based on query params
+    if (this.props.search.course_type !== undefined) {
+      this.setState({
+        courseTypeFilter: this.props.search.course_type
+      })
     }
 
     return;
