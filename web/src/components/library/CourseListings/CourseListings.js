@@ -442,7 +442,7 @@ class ListingsResults extends PureComponent {
             />
             <ListingsCounters
               categoryFilter={categoryFilter}
-              toggleCategoryFilter={this.props.toggleCategoryFilter}
+              setListingFilter={setListingFilter}
               courseData={filteredCourseDataBySelection(categoryFilter)}
             />
           </div>
@@ -505,85 +505,40 @@ class CourseListings extends PureComponent {
       lng: -73.9888,
       zoom: 2,
     };
-    const location = this.props.location;
-    console.log(location);
+
     // Create our Map Ref
     this.mapBoxRef = React.createRef();
 
     // Bind our functions
     this.setListingFilter = this.setListingFilter.bind(this);
-    this.toggleCategoryFilter = this.toggleCategoryFilter.bind(this);
     this.checkforFilterUrlParam = this.checkforFilterUrlParam.bind(this);
     this.checkforLocationUrlParam = this.checkforLocationUrlParam.bind(this);
-    this.setParams = this.setParams.bind(this);
     this.updateURL = this.updateURL.bind(this);
-  }
-
-  // Function to update our url query parameters when we change
-  // categories & filters to create sharable urls.
-  setParams({ show = '', age_min, age_max }) {
-    const searchParams = new URLSearchParams();
-    searchParams.set('show', show);
-    if (age_min !== undefined && age_max !== undefined) {
-      searchParams.set('age_min', age_min);
-      searchParams.set('age_max', age_max);
-    }
-    return searchParams.toString();
   }
 
   // Functon to update our URL using history.push API
   updateURL() {
     if (this.state.categoryFilter !== '') {
-      if (this.state.courseTypeFilter !== '') {
-        setQuery({course_type: this.state.courseTypeFilter})
-      }
-      if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
-        setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
-      }
-      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
-        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
-      }
-      setQuery({show: this.state.categoryFilter.toLowerCase() + 's'}, {pushState: true})
-    } else {
-      if (this.state.courseTypeFilter !== '') {
-        setQuery({course_type: this.state.courseTypeFilter})
-      }
-      if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
-        setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
-      }
-      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
-        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
-      }
+      setQuery({show: this.state.categoryFilter}, {pushState: true})
+    }
+    if (this.state.categoryFilter === '') {
       setQuery({show: 'all'}, {pushState: true})
     }
-
-  }
-
-  // Our Function to Toggle Categories
-  toggleCategoryFilter(context) {
-    if (this.state.categoryFilter == context) {
-      this.setState(
-        {
-          categoryFilter: '',
-        },
-        // Use updateURL as a callback to confirm state.
-        this.updateURL
-      );
-    } else {
-      this.setState(
-        {
-          categoryFilter: context,
-        },
-        // Use updateURL as a callback to confirm state.
-        this.updateURL
-      );
+    if (this.state.courseTypeFilter !== '') {
+      setQuery({course_type: this.state.courseTypeFilter}, {pushState: true})
     }
+    if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
+      setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
+    }
+    if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
+      setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
+    }
+
   }
 
-  // Our function to update the listing filters for age, date, and course type
+  // Our function to update the listing filters for category, age, date, and course type
   setListingFilter(name, value) {
-    this.setState({ [name]: value })
-    this.updateURL()
+    this.setState({ [name]: value }, this.updateURL)
   }
 
   // Check for url query for showing/hiding results.
@@ -622,6 +577,7 @@ class CourseListings extends PureComponent {
 
     // Set the dateFilter state based on query params
     if (this.props.search.date_min !== undefined && this.props.search.date_max !== undefined) {
+      console.log('Date!!')
       this.setState({
         dateFilter: {
           startDate: new Date(this.props.search.date_min),
@@ -657,20 +613,14 @@ class CourseListings extends PureComponent {
     }
   }
 
-  componentDidUpdate() {
-    this.updateURL();
-  }
-
   componentDidMount() {
     /**
      *
      * Check for Url Parameters
      *
      */
-
-    this.checkforFilterUrlParam();
     this.checkforLocationUrlParam();
-
+    this.checkforFilterUrlParam();
     /**
      *
      * Initialize MapboxGL
@@ -886,7 +836,6 @@ class CourseListings extends PureComponent {
                 dateFilter={this.state.dateFilter}
                 courseTypeFilter={this.state.courseTypeFilter}
                 setListingFilter={this.setListingFilter}
-                toggleCategoryFilter={this.toggleCategoryFilter}
                 allCostCodes={allCostCodes}
               />
             </ListingsWrapper>
