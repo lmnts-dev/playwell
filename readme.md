@@ -156,6 +156,50 @@ We follow the guidelines below for typical generation and nesting of Elements:
 
 <i>TODO: Pete will write this...</i>
 
+## Developer Setup (Docker) 🐳
+
+1. Clone this repo
+1. Install Docker for your operating system
+1. Create .env for environment variables
+    * `touch .env`
+1. Copy .env for local changes
+    * `cp .env .env.local`
+1. Install dependencies for the Gatsby site (`app` service)
+    * `docker-compose run app install`
+1. Install dependencies for Sanity Studio (`studio` service)
+    * `docker-compose run studio install`
+1. Start the Gatsby site and Sanity Studio
+    * `docker-compose up app studio`
+
+
+### Local TLS Development
+
+TLS certificates has been generated for local development at hosts `lvh.me` and `studio.lvh.me`.
+
+A Root certificate has also been generated and added to 1Password, which can be added to the local OS trust store for full HTTPS support. See the following article for more information: _[Guide to add self-generated root certificate authorities for 8 operating systems and browsers](https://www.bounca.org/tutorials/install_root_certificate.html)_.
+
+### Helpful Commands
+
+* Run the Gatsby development server
+    * `docker-compose run app`
+* Run Sanity Studio
+    * `docker-compose run studio`
+* Run a yarn command for the Gatsby app
+    * `docker-compose run app $COMMAND`
+* Run a yarn command for Sanity Studio
+    * `docker-compose run studio $COMMAND`
+
+### Docker Services
+
+We use Docker Compose to configure and build services. See `docker-compose.yml` for configuration details.
+
+The services provided are:
+
+* `app` - Service configured to run Gatsby development server on startup and mount the project directory to `/app`, so host file changes are visible to the container. Used in: [development]
+* `studio` - Service configured to run Sanity start on startup and mount the `/studio` directory to `/app`, so host file changes are visible to the container. Used in: [development]
+* `proxy` - Caddy reverse proxy to provide a deployment-like environment in development. Used .
+* `shell` - Shell access for container. Used in: [development]
+
 ## Author
 
 * Peter Laxalt ([@peterlaxalt](https://dribbble.com/peterlaxalt)) - [Laxalt & McIver](https://laxaltandmciver.co)

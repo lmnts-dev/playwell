@@ -1,0 +1,6 @@
+.cache
+.DS_Store
+.git
+node_modules
+public
+tmp

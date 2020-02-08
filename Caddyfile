@@ -1,0 +1,25 @@
+(shared-config) {
+  gzip
+  import .caddy/log.conf
+  push
+  request_id
+}
+
+# `lvh.me` virtual host
+lvh.me {
+  import shared-config
+  proxy / http://app:8000 {
+    transparent
+    websocket
+  }
+  tls /root/certs/lvh.me.pem /root/certs/lvh.me-key.pem
+}
+
+studio.lvh.me {
+  import shared-config
+  proxy / http://studio:3333 {
+    transparent
+    websocket
+  }
+  tls /root/certs/studio.lvh.me.pem /root/certs/studio.lvh.me-key.pem
+}

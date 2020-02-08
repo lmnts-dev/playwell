@@ -11,6 +11,7 @@
 
 ## Environment tokens
 .env
+.env.local
 
 # Logs
 logs
@@ -27,3 +28,6 @@ public/
 */public/*
 */.cache/*
 /studio/dist
+
+## Local development certs
+certs/rootCA*
