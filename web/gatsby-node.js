@@ -337,6 +337,7 @@ exports.createPages = ({ graphql, actions }) => {
       let sanityStateDescription = ''
       let sanityStateSubheadline = ''
 
+      // If this state location exists in Sanity use that data instead
       _.each(result.data.allSanityLocation.edges, location => {
         if (location.node.name === state.node.name) {
           sanityState = location.node.name
@@ -377,9 +378,22 @@ exports.createPages = ({ graphql, actions }) => {
 
       // Loop through each state's respective Counties data
       _.each(state.node.counties, county => {
+        let sanityCostCode = ''
+        let sanityCostCodeDescription = ''
+        let sanityCostCodeSubheadline = ''
+
+        // If this cost code location exists in Sanity use that data instead
+        _.each(result.data.allSanityLocation.edges, location => {
+          if (location.node.name === county.cost_code_name) {
+            sanityCostCode = location.node.name
+            sanityCostCodeDescription = location.node.description
+            sanityCostCodeSubheadline = location.node.subheadline
+          }
+        })
+
         // Build our slugified strings for pretty URLs.
         let countySlug = slugify(county.name);
-        let costCodeSlug = slugify(county.cost_code_name);
+        let costCodeSlug = slugify(sanityCostCode === '' ? county.cost_code_name : sanityCostCode);
 
         // Pass Filtered County Manager Array
         const filteredCountyManagers = cost_code => {
@@ -420,8 +434,10 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: false,
             isCostCode: true,
+            description: sanityCostCodeDescription !== '' ? sanityCostCodeDescription : null,
+            subheadline: sanityCostCodeSubheadline !== '' ? sanityCostCodeSubheadline : null,
             cost_code: county.cost_code,
-            cost_code_name: county.cost_code_name,
+            cost_code_name: sanityCostCode !== '' ? sanityCostCode : county.cost_code_name,
             county_id: county.county_id,
             name: county.name,
             managers: filteredCountyManagers(county.cost_code),
