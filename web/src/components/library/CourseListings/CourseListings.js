@@ -438,6 +438,9 @@ class ListingsResults extends PureComponent {
             <ListingsFilters
               setListingFilter={setListingFilter}
               categoryFilter={categoryFilter}
+              ageFilter={ageFilter}
+              dateFilter={dateFilter}
+              courseTypeFilter={courseTypeFilter}
               courseData={filteredCourseDataByCategory(categoryFilter)}
             />
             <ListingsCounters
