@@ -25,14 +25,18 @@ const LocationIntro = ({ pageContext }) => {
     <Intro bg="Cream" textAlign="center">
       <Intro.Inner pt={[2, 2, 4, 4]} pb={[1, 1, 2, 2]}>
         <Text as="p" color="Nova" className="lead">
-          {countyState} Leading STEM Education &amp; Engineering Programs
+          {pageContext.subheadline ? pageContext.subheadline :
+          `${countyState} Leading STEM Education & Engineering Programs`
+          }
         </Text>
         <Text as="p" color="Galaxy" className="lead">
-          Ut vehicula dictum tristique. Cras at sem nec risus sollicitudin
-          varius. Proin ultrices metus arcu, ut lacinia libero ornare eget.
-          Morbi orci mi, scelerisque a justo quis, euismod sollicitudin dui.
-          Duis convallis magna eget eleifend tempor. Ut non lobortis metus.
-          Donec sit amet vulputate risus. Vivamus et lacinia ante.
+          {pageContext.description ? pageContext.description :
+            `Ut vehicula dictum tristique. Cras at sem nec risus sollicitudin
+            varius. Proin ultrices metus arcu, ut lacinia libero ornare eget.
+            Morbi orci mi, scelerisque a justo quis, euismod sollicitudin dui.
+            Duis convallis magna eget eleifend tempor. Ut non lobortis metus.
+            Donec sit amet vulputate risus. Vivamus et lacinia ante.`
+          }
         </Text>
       </Intro.Inner>
     </Intro>
