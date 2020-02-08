@@ -22,6 +22,7 @@ import category from './documents/category'
 import post from './documents/post'
 import author from './documents/author'
 import siteSettings from './documents/siteSettings'
+import location from './documents/location'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -36,6 +37,7 @@ export default createSchema({
     author,
     category,
     siteSettings,
+    location,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
