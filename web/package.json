@@ -4,8 +4,8 @@
   "author": "Peter Laxalt <pete@laxaltandmciver.co>",
   "scripts": {
     "start": "npm run develop",
-    "clean": "rimraf .cache public",
-    "dev": "npm run clean && NODE_TLS_REJECT_UNAUTHORIZED=0 gatsby develop --https",
+    "clean": "gatsby clean",
+    "dev": "npm run clean && gatsby develop",
     "push": "npm run build && git add . && gitmoji -c && git push",
     "serve": "gatsby serve",
     "ssr": "npm run build && npm run serve",
