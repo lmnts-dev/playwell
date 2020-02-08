@@ -194,6 +194,21 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+
+        allSanityLocation {
+          edges {
+            node {
+              name
+              description
+              subheadline
+              coverImage {
+                asset {
+                  url
+                }
+              }
+            }
+          }
+        }
       }
     `
   ).then(result => {
@@ -318,8 +333,20 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create Pages
     _.each(result.data.allPlayWellStates.edges, state => {
+      let sanityState = ''
+      let sanityStateDescription = ''
+      let sanityStateSubheadline = ''
+
+      _.each(result.data.allSanityLocation.edges, location => {
+        if (location.node.name === state.node.name) {
+          sanityState = location.node.name
+          sanityStateDescription = location.node.description
+          sanityStateSubheadline = location.node.subheadline
+        }
+
+      })
       // Build our slugified strings for pretty URLs.
-      let stateSlug = slugify(state.node.name);
+      let stateSlug = slugify(sanityState === '' ? state.node.name : sanityState);
 
       // Pass Filtered State Manager Array
       const filteredStateManagers = state_id => {
@@ -337,9 +364,11 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           isCounty: false,
           isCostCode: false,
+          description: sanityStateDescription !== '' ? sanityStateDescription : null,
+          subheadline: sanityStateSubheadline !== '' ? sanityStateSubheadline : null,
           id: state.node.state_id,
           abbrev: state.node.abbrev,
-          name: state.node.name,
+          name: sanityState === '' ? state.node.name : sanityState,
           playwell_state_id: state.node.playwell_state_id,
           counties: state.node.counties,
           managers: filteredStateManagers(state.node.playwell_state_id),
