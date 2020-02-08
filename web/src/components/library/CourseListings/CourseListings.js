@@ -517,9 +517,20 @@ class CourseListings extends PureComponent {
   }
 
   // Functon to update our URL using history.push API
-  updateURL() {
-    if (this.state.categoryFilter !== '') {
-      setQuery({show: this.state.categoryFilter}, {pushState: true})
+  updateURL(name, value) {
+    switch (name) {
+      case 'categoryFilter':
+        setQuery({show: value}, {pushState: true})
+        break
+      case 'courseTypeFilter':
+        setQuery({course_type: value}, {pushState: true})
+        break
+      case 'dateFilter':
+        setQuery({date_min: format(value.startDate, 'yyyy-MM-dd'), date_max: format(value.endDate, 'yyyy-MM-dd')}, {pushState: true})
+        break
+      case 'ageFilter':
+        setQuery({age_min: value.ageMin, age_max: value.ageMax}, {pushState: true})
+        break
     }
     if (this.state.categoryFilter === '') {
       setQuery({show: 'all'}, {pushState: true})
@@ -538,7 +549,8 @@ class CourseListings extends PureComponent {
 
   // Our function to update the listing filters for category, age, date, and course type
   setListingFilter(name, value) {
-    this.setState({ [name]: value }, this.updateURL)
+    this.setState({ [name]: value })
+    this.updateURL(name, value)
   }
 
   // Check for url query for showing/hiding results.
