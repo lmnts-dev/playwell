@@ -8,7 +8,7 @@
 import React, {useState} from 'react';
 import { Link } from 'gatsby';
 import { range, uniqWith, isEqual, flatten } from 'lodash'
-import { addMonths, addYears, startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
+import { addMonths, addYears, startOfMonth, endOfMonth, isWithinInterval, isSameMonth } from 'date-fns'
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -23,17 +23,7 @@ import { ListingsFiltersStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const ListingsFilters = ({ courseData, setListingFilter }) => {
-  const [state, setState] = useState({
-    ageFilterLabel: 'Any Age',
-    dateFilterLabel: 'Any Date',
-    courseTypeFilterLabel: 'Course Type'
-  })
-
-  // Function to update the label based on selected drop down item
-  const updateLabel = (name, value) => {
-    setState({...state, [`${name}Label`]: value})
-  }
+export const ListingsFilters = ({ courseData, setListingFilter, ageFilter, dateFilter, courseTypeFilter }) => {
 
   // The Items
   const ListingsFiltersItem = ({ label, items, filterName, updateLabel, setListingFilter }) => {
@@ -44,27 +34,22 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
           <Icon Name="carat" />
         </span>
         <ListingsFiltersStyle.FilterList className="list">
-          {items.length === 1
-            ? updateLabel(filterName, item.name)
-            : <ul>
-                {items.map((item, idx) => (
-                  <li key={idx}>
-                    <div onClick={() => {
-                        updateLabel(filterName, item.name)
-                        setListingFilter(filterName, item.value)
-                      }}
-                      onKeyDown={() => {
-                        updateLabel(filterName, item.name)
-                        setListingFilter(filterName, item.value)
-                      }}
-                      role="button"
-                      tabIndex="0">
-                      {item.name}
-                    </div>
-                  </li>
-                ))}
-            </ul>
-          }
+            <ul>
+              {items.map((item, idx) => (
+                <li key={idx}>
+                  <div onClick={() => {
+                      setListingFilter(filterName, item.value)
+                    }}
+                    onKeyDown={() => {
+                      setListingFilter(filterName, item.value)
+                    }}
+                    role="button"
+                    tabIndex="0">
+                    {item.name}
+                  </div>
+                </li>
+              ))}
+          </ul>
         </ListingsFiltersStyle.FilterList>
       </ListingsFiltersStyle.Item>
     );
@@ -155,30 +140,62 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
       return courseTypeFilterItems
   }
 
+  const createLabel = (filterName) => {
+    switch (filterName) {
+      case 'ageFilter':
+        if (ageFilter.ageMin === 0 && ageFilter.ageMax === 0) {
+          return 'Any Age'
+        } else if (ageFilter.ageMin === 0) {
+          return 'Under 5'
+        } else if (ageFilter.ageMin === 10) {
+          return '10 and over'
+        } else {
+          return `Age ${ageFilter.ageMin}`
+        }
+      case 'dateFilter':
+        const today = new Date()
+        if (dateFilter.startDate === '' && dateFilter.endDate === '') {
+          return 'Any Date'
+        } else if (isSameMonth(dateFilter.endDate, endOfMonth(today))) {
+          return 'This Month'
+        } else if (isSameMonth(dateFilter.endDate, endOfMonth(addMonths(today, 1)))) {
+          return 'Next Month'
+        } else if (isSameMonth(dateFilter.endDate, endOfMonth(addMonths(today, 6)))) {
+          return 'Next 6 Months'
+        } else if (isSameMonth(dateFilter.endDate, endOfMonth(addYears(today, 1)))) {
+          return 'Next Year'
+        }
+        break
+      case 'courseTypeFilter':
+        if (courseTypeFilter === '') {
+          return 'Course Type'
+        } else {
+          return courseTypeFilter
+        }
+    }
+  }
+
   const courses = flatten(courseData.map(data => data.node.courses))
 
   // Show the bar
   return (
     <ListingsFiltersStyle>
       <ListingsFiltersItem
-        label={state.ageFilterLabel}
+        label={createLabel('ageFilter')}
         items={createAgeFilterItems(courses)}
         filterName="ageFilter"
         setListingFilter={setListingFilter}
-        updateLabel={updateLabel}
       />
 
       <ListingsFiltersItem
-        label={state.dateFilterLabel}
+        label={createLabel('dateFilter')}
         filterName="dateFilter"
         setListingFilter={setListingFilter}
         items={createDateFilterItems(courses)}
-        updateLabel={updateLabel}
       />
       <ListingsFiltersItem
-        label={state.courseTypeFilterLabel}
+        label={createLabel('courseTypeFilter')}
         filterName="courseTypeFilter"
-        updateLabel={updateLabel}
         setListingFilter={setListingFilter}
         items={createCourseTypeFilterItems(courses)}
       />
