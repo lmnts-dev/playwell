@@ -18,11 +18,13 @@ import siteMetadata from './objects/siteMetadata'
 import social from './objects/social'
 import subNav from './objects/navigation/subNav'
 import theme from './objects/navigation/theme'
+import county from './objects/county'
+import costCode from './objects/costCode'
 import category from './documents/category'
 import post from './documents/post'
 import author from './documents/author'
 import siteSettings from './documents/siteSettings'
-import location from './documents/location'
+import state from './documents/state'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -37,7 +39,7 @@ export default createSchema({
     author,
     category,
     siteSettings,
-    location,
+    state,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
@@ -52,6 +54,8 @@ export default createSchema({
     siteMetadata,
     social,
     subNav,
-    theme
+    theme,
+    county,
+    costCode
   ])
 })
