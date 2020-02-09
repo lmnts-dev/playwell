@@ -195,15 +195,25 @@ exports.createPages = ({ graphql, actions }) => {
           }
         }
 
-        allSanityLocation {
+        allSanityState {
           edges {
             node {
               name
-              description
               subheadline
+              description
               coverImage {
                 asset {
                   url
+                }
+              }
+              counties {
+                name
+                subheadline
+                description
+                costCode {
+                  name
+                  subheadline
+                  description
                 }
               }
             }
@@ -333,21 +343,18 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create Pages
     _.each(result.data.allPlayWellStates.edges, state => {
-      let sanityState = ''
-      let sanityStateDescription = ''
-      let sanityStateSubheadline = ''
+      // Object to hold Sanity location data
+      let sanityState = {}
 
       // If this state location exists in Sanity use that data instead
-      _.each(result.data.allSanityLocation.edges, location => {
-        if (location.node.name === state.node.name) {
-          sanityState = location.node.name
-          sanityStateDescription = location.node.description
-          sanityStateSubheadline = location.node.subheadline
+      _.each(result.data.allSanityState.edges, stateEdge => {
+        if (stateEdge.node.name === state.node.name) {
+          sanityState = stateEdge.node
         }
+      });
 
-      })
       // Build our slugified strings for pretty URLs.
-      let stateSlug = slugify(sanityState === '' ? state.node.name : sanityState);
+      let stateSlug = slugify(sanityState.name === undefined ? state.node.name : sanityState.name);
 
       // Pass Filtered State Manager Array
       const filteredStateManagers = state_id => {
@@ -365,11 +372,11 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           isCounty: false,
           isCostCode: false,
-          description: sanityStateDescription !== '' ? sanityStateDescription : null,
-          subheadline: sanityStateSubheadline !== '' ? sanityStateSubheadline : null,
+          description: sanityState.description !== undefined ? sanityState.description : null,
+          subheadline: sanityState.subheadline !== undefined ? sanityState.subheadline : null,
           id: state.node.state_id,
           abbrev: state.node.abbrev,
-          name: sanityState === '' ? state.node.name : sanityState,
+          name: sanityState.name === undefined ? state.node.name : sanityState.name,
           playwell_state_id: state.node.playwell_state_id,
           counties: state.node.counties,
           managers: filteredStateManagers(state.node.playwell_state_id),
@@ -378,22 +385,22 @@ exports.createPages = ({ graphql, actions }) => {
 
       // Loop through each state's respective Counties data
       _.each(state.node.counties, county => {
-        let sanityCostCode = ''
-        let sanityCostCodeDescription = ''
-        let sanityCostCodeSubheadline = ''
+        let sanityCounty = {}
+        let sanityCostCode = {}
 
-        // If this cost code location exists in Sanity use that data instead
-        _.each(result.data.allSanityLocation.edges, location => {
-          if (location.node.name === county.cost_code_name) {
-            sanityCostCode = location.node.name
-            sanityCostCodeDescription = location.node.description
-            sanityCostCodeSubheadline = location.node.subheadline
+        // If this cost code or county location exists in the sanityState object, use that data instead
+        _.each(sanityState.counties, countyEdge => {
+          if (countyEdge.costCode.name === county.cost_code_name) {
+            sanityCostCode = countyEdge.costCode
+          }
+          if (countyEdge.name === county.name) {
+            sanityCounty = countyEdge
           }
         })
 
         // Build our slugified strings for pretty URLs.
-        let countySlug = slugify(county.name);
-        let costCodeSlug = slugify(sanityCostCode === '' ? county.cost_code_name : sanityCostCode);
+        let countySlug = slugify(sanityCounty.name === undefined ? county.name : sanityCounty.name);
+        let costCodeSlug = slugify(sanityCostCode.name === undefined ? county.cost_code_name : sanityCostCode.name);
 
         // Pass Filtered County Manager Array
         const filteredCountyManagers = cost_code => {
@@ -411,10 +418,12 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: true,
             isCostCode: false,
+            description: sanityCounty.description !== undefined ? sanityCounty.description : null,
+            subheadline: sanityCounty.subheadline !== undefined ? sanityCounty.subheadline : null,
             cost_code: county.cost_code,
-            cost_code_name: county.cost_code_name,
+            cost_code_name: sanityCostCode.name === undefined ? county.cost_code_name : sanityCostCode.name,
             county_id: county.county_id,
-            name: county.name,
+            name: sanityCounty.name === undefined ? county.name : sanityCounty.name,
             managers: filteredCountyManagers(county.cost_code),
             parentState: {
               id: state.node.state_id,
@@ -434,10 +443,10 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: false,
             isCostCode: true,
-            description: sanityCostCodeDescription !== '' ? sanityCostCodeDescription : null,
-            subheadline: sanityCostCodeSubheadline !== '' ? sanityCostCodeSubheadline : null,
+            description: sanityCostCode.description !== undefined ? sanityCostCode.description : null,
+            subheadline: sanityCostCode.subheadline !== undefined ? sanityCostCode.subheadline : null,
             cost_code: county.cost_code,
-            cost_code_name: sanityCostCode !== '' ? sanityCostCode : county.cost_code_name,
+            cost_code_name: sanityCostCode.name !== undefined ? sanityCostCode.name : county.cost_code_name,
             county_id: county.county_id,
             name: county.name,
             managers: filteredCountyManagers(county.cost_code),
