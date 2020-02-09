@@ -4,6 +4,13 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'playwellStateId',
+      title: 'Playwell State ID',
+      description: 'State ID used to map to Playwell API data.',
+      type: 'string',
+      hidden: true
+    },
+    {
       title: 'Name',
       name: 'name',
       type: 'string'
