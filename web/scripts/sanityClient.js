@@ -1,13 +1,14 @@
 const sanityClient = require('@sanity/client')
+const clientConfig = require('../client-config')
 
 const client = sanityClient({
-  projectId: 'on977l64',
-  dataset: 'production',
+  projectId: clientConfig.sanity.projectId,
+  dataset: clientConfig.sanity.dataset,
   useCdn: true
 })
 
 const getSiteSettings = async () => {
-  const siteSettings = await client.getDocument('f7eab51d-96c0-495a-a2cb-364c9a6d7295')
+  const siteSettings = await client.getDocument(clientConfig.sanity.siteSettingsId)
   return siteSettings
 }
 
