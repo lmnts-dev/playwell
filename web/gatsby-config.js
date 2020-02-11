@@ -21,7 +21,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
-    //`gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
     `gatsby-transformer-json`,
     `gatsby-transformer-remark`,
@@ -57,6 +56,28 @@ module.exports = {
         watchMode: !isProd,
         overlayDrafts: !isProd,
       },
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        query: `
+          {
+            site: sanitySiteSettings {
+              siteMetadata {
+                siteUrl
+              }
+            }
+
+            allSitePage {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+          }
+        `
+      }
     },
 
     // gatsby-source-filesystem
