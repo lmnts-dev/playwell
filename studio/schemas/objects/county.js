@@ -6,7 +6,8 @@ export default {
     {
       title: 'Name',
       name: 'name',
-      type: 'string'
+      type: 'string',
+      hidden: true
     },
     {
       title: 'Description',
@@ -26,7 +27,13 @@ export default {
     {
       title: 'Cost Code',
       name: 'costCode',
-      type: 'costCode'
+      type: 'reference',
+      to: [{type: 'costCode'}]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'name'
+    }
+  }
 }

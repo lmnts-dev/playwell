@@ -1,12 +1,13 @@
 export default {
   name: 'costCode',
   title: 'Cost Code',
-  type: 'object',
+  type: 'document',
   fields: [
     {
       title: 'Name',
       name: 'name',
-      type: 'string'
+      type: 'string',
+      hidden: true
     },
     {
       title: 'Description',
@@ -23,5 +24,10 @@ export default {
       name: 'coverImage',
       type: 'image'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'name'
+    }
+  }
 }
