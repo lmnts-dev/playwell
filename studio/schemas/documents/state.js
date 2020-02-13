@@ -4,16 +4,10 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'playwellStateId',
-      title: 'Playwell State ID',
-      description: 'State ID used to map to Playwell API data.',
-      type: 'string',
-      hidden: true
-    },
-    {
       title: 'Name',
       name: 'name',
-      type: 'string'
+      type: 'string',
+      hidden: true
     },
     {
       title: 'Description',
@@ -36,5 +30,10 @@ export default {
       type: 'array',
       of: [{type: 'county'}]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'name'
+    }
+  }
 }
