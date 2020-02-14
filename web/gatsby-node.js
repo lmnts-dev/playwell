@@ -198,7 +198,7 @@ exports.createPages = ({ graphql, actions }) => {
         allSanityState {
           edges {
             node {
-              name
+              stateId
               subheadline
               description
               coverImage {
@@ -207,11 +207,11 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
               counties {
-                name
+                countyId
                 subheadline
                 description
                 costCode {
-                  name
+                  costCodeId
                   subheadline
                   description
                 }
@@ -348,13 +348,13 @@ exports.createPages = ({ graphql, actions }) => {
 
       // If this state location exists in Sanity use that data instead
       _.each(result.data.allSanityState.edges, stateEdge => {
-        if (stateEdge.node.name === state.node.name) {
+        if (stateEdge.node.stateId === state.node.playwell_state_id) {
           sanityState = stateEdge.node
         }
       });
 
       // Build our slugified strings for pretty URLs.
-      let stateSlug = slugify(sanityState.name === undefined ? state.node.name : sanityState.name);
+      let stateSlug = slugify(state.node.name);
 
       // Pass Filtered State Manager Array
       const filteredStateManagers = state_id => {
@@ -372,11 +372,11 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           isCounty: false,
           isCostCode: false,
-          description: sanityState.description !== undefined ? sanityState.description : null,
-          subheadline: sanityState.subheadline !== undefined ? sanityState.subheadline : null,
+          description: !sanityState.description ? null : sanityState.description,
+          subheadline: !sanityState.subheadline ? null : sanityState.subheadline,
           id: state.node.state_id,
           abbrev: state.node.abbrev,
-          name: sanityState.name === undefined ? state.node.name : sanityState.name,
+          name: state.node.name,
           playwell_state_id: state.node.playwell_state_id,
           counties: state.node.counties,
           managers: filteredStateManagers(state.node.playwell_state_id),
@@ -390,17 +390,17 @@ exports.createPages = ({ graphql, actions }) => {
 
         // If this cost code or county location exists in the sanityState object, use that data instead
         _.each(sanityState.counties, countyEdge => {
-          if (countyEdge.costCode.name === county.cost_code_name) {
+          if (countyEdge.costCode.costCodeId === county.cost_code) {
             sanityCostCode = countyEdge.costCode
           }
-          if (countyEdge.name === county.name) {
+          if (countyEdge.countyId === county.county_id) {
             sanityCounty = countyEdge
           }
         })
 
         // Build our slugified strings for pretty URLs.
-        let countySlug = slugify(sanityCounty.name === undefined ? county.name : sanityCounty.name);
-        let costCodeSlug = slugify(sanityCostCode.name === undefined ? county.cost_code_name : sanityCostCode.name);
+        let countySlug = slugify(county.name);
+        let costCodeSlug = slugify(county.cost_code_name);
 
         // Pass Filtered County Manager Array
         const filteredCountyManagers = cost_code => {
@@ -418,12 +418,12 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: true,
             isCostCode: false,
-            description: sanityCounty.description !== undefined ? sanityCounty.description : null,
-            subheadline: sanityCounty.subheadline !== undefined ? sanityCounty.subheadline : null,
+            description: !sanityCounty.description ? null : sanityCounty.description,
+            subheadline: !sanityCounty.subheadline ? null : sanityCounty.subheadline,
             cost_code: county.cost_code,
-            cost_code_name: sanityCostCode.name === undefined ? county.cost_code_name : sanityCostCode.name,
+            cost_code_name: county.cost_code_name,
             county_id: county.county_id,
-            name: sanityCounty.name === undefined ? county.name : sanityCounty.name,
+            name: county.name,
             managers: filteredCountyManagers(county.cost_code),
             parentState: {
               id: state.node.state_id,
@@ -443,10 +443,10 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: false,
             isCostCode: true,
-            description: sanityCostCode.description !== undefined ? sanityCostCode.description : null,
-            subheadline: sanityCostCode.subheadline !== undefined ? sanityCostCode.subheadline : null,
+            description: !sanityCostCode.description ? null : sanityCostCode.description,
+            subheadline: !sanityCostCode.subheadline ? null : sanityCostCode.subheadline,
             cost_code: county.cost_code,
-            cost_code_name: sanityCostCode.name !== undefined ? sanityCostCode.name : county.cost_code_name,
+            cost_code_name: county.cost_code_name,
             county_id: county.county_id,
             name: county.name,
             managers: filteredCountyManagers(county.cost_code),
