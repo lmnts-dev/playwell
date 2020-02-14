@@ -8,13 +8,13 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import author from './documents/author'
 import category from './documents/category'
 import costCode from './documents/costCode'
+import county from './documents/county'
 import post from './documents/post'
 import siteSettings from './documents/siteSettings'
 import state from './documents/state'
 
 // Import object schemas
 import blockContent from './objects/blockContent'
-import county from './objects/county'
 import focusLinkItem from './objects/navigation/focusLinkListItem'
 import focusNav from './objects/navigation/focusNav'
 import footerNav from './objects/navigation/footerNav'
@@ -40,13 +40,13 @@ export default createSchema({
     author,
     category,
     costCode,
+    county,
     post,
     siteSettings,
     state,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
-    county,
     focusLinkItem,
     focusNav,
     footerNav,
