@@ -16,6 +16,14 @@ const getSiteSettings = async () => {
   return siteSettings
 }
 
+const createDocuments = async (documents) => {
+  let transaction = client.transaction()
+  documents.forEach(document => {
+    transaction.createIfNotExists(document).patch(document._id, p => p.set(document))
+  })
+  return transaction.commit()
+}
+
 const transformPlaywellStates = (state, counties) => {
   const countiesRef = counties.map(county => {
     return {
@@ -52,5 +60,6 @@ const transformPlaywellCounties = (county) => {
 }
 
 module.exports.getSiteSettings = getSiteSettings
+module.exports.createDocuments = createDocuments
 module.exports.transformPlaywellStates = transformPlaywellStates
 module.exports.transformPlaywellCounties = transformPlaywellCounties
