@@ -1,8 +1,14 @@
 export default {
   name: 'county',
   title: 'County',
-  type: 'object',
+  type: 'document',
   fields: [
+    {
+      title: 'County ID',
+      name: 'countyId',
+      type: 'string',
+      hidden: true
+    },
     {
       title: 'Name',
       name: 'name',
@@ -12,7 +18,7 @@ export default {
     {
       title: 'Description',
       name: 'description',
-      type: 'string'
+      type: 'text'
     },
     {
       title: 'Subheadline',
