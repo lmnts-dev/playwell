@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "PlayWell"
+    "name": "lam-playwell-dev"
   },
   "api": {
-    "projectId": "uin6lq3v",
+    "projectId": "on977l64",
     "dataset": "production"
   },
   "plugins": [

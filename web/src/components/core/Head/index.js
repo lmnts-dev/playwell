@@ -198,7 +198,7 @@ const HeadWithQuery = props => (
   <StaticQuery
     query={graphql`
       query {
-        site {
+        sanitySiteSettings {
           siteMetadata {
             siteTitle
             siteTitleShort
@@ -216,7 +216,7 @@ const HeadWithQuery = props => (
     render={data => (
       <Location>
         {({ location }) => (
-          <Head {...data.site.siteMetadata} {...props} location={location} />
+          <Head {...data.sanitySiteSettings.siteMetadata} {...props} location={location} />
         )}
       </Location>
     )}

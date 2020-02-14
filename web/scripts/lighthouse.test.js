@@ -1,7 +1,6 @@
 const chromeLauncher = require('chrome-launcher');
 const { test } = require('ava');
 const lighthouse = require('lighthouse');
-const { siteUrl } = require('../site-config');
 
 const launchChromeAndRunLighthouse = (
   url,
@@ -17,7 +16,6 @@ const launchChromeAndRunLighthouse = (
 
 let scores;
 test.before(async t => {
-  console.log(`Auditing ${siteUrl}.\n`);
   scores = await launchChromeAndRunLighthouse(siteUrl).then(
     ({ categories }) => categories
   );

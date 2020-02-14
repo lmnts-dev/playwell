@@ -132,8 +132,8 @@ const TeamMarquee = ({ BgLinear }) => {
           BgLinear={BgLinear}
         >
           <TeamMarqueeSlider>
-            {data.allDataJson.edges[1].node &&
-              data.allDataJson.edges[1].node.leadership.map((person, index) => {
+            {data.allDataJson.edges[0].node &&
+              data.allDataJson.edges[0].node.leadership.map((person, index) => {
                 return (
                   <div className="item" key={index}>
                     <div className="image-container">

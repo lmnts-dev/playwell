@@ -43,8 +43,8 @@ export const Team = ({ Justify }) => {
       render={data => (
         <TeamStyle Justify={Justify}>
           <div className="team-container">
-            {data.allDataJson.edges[1].node &&
-              data.allDataJson.edges[1].node.leadership.map((person, index) => {
+            {data.allDataJson.edges[0].node &&
+              data.allDataJson.edges[0].node.leadership.map((person, index) => {
                 return (
                   <div className="member" key={index}>
                     <div className="image-container">
