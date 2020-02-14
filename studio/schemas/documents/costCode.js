@@ -4,6 +4,12 @@ export default {
   type: 'document',
   fields: [
     {
+      title: 'Cost Code ID',
+      name: 'costCodeId',
+      type: 'string',
+      hidden: true
+    },
+    {
       title: 'Name',
       name: 'name',
       type: 'string',
@@ -12,7 +18,7 @@ export default {
     {
       title: 'Description',
       name: 'description',
-      type: 'string'
+      type: 'text'
     },
     {
       title: 'Subheadline',

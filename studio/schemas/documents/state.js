@@ -4,6 +4,12 @@ export default {
   type: 'document',
   fields: [
     {
+      title: 'State ID',
+      name: 'stateId',
+      type: 'string',
+      hidden: true
+    },
+    {
       title: 'Name',
       name: 'name',
       type: 'string',
@@ -12,7 +18,7 @@ export default {
     {
       title: 'Description',
       name: 'description',
-      type: 'string'
+      type: 'text'
     },
     {
       title: 'Subheadline',
@@ -28,7 +34,12 @@ export default {
       title: 'Counties',
       name: 'counties',
       type: 'array',
-      of: [{type: 'county'}]
+      of: [
+        {
+          type: 'reference',
+          to: [{type: 'county'}]
+        }
+      ]
     }
   ],
   preview: {
