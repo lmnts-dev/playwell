@@ -394,7 +394,7 @@ class ListingsResults extends PureComponent {
             client_location_name: node.node.client_location_name,
             courses: node.node.courses
               .filter(course => course.category_group_name.includes(filter))
-              .filter(course  => filteredCourseByAge(course)),
+              .filter(filteredCourseByAge),
             display_address: node.node.display_address,
             county_id: node.node.county_id,
             state_id: node.node.state_id,
