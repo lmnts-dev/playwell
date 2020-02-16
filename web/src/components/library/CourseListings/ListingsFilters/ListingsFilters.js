@@ -7,7 +7,10 @@
 // Core
 import React from 'react';
 import { Link } from 'gatsby';
-import { range, uniqWith, isEqual, flatten } from 'lodash'
+import range from 'lodash/range'
+import flatten from 'lodash/flatten'
+import isEqual from 'lodash/isEqual'
+import uniqWith from 'lodash/uniqWith'
 
 // Constants
 import { Base } from 'constants/styles/Base';
