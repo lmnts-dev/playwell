@@ -1,25 +1,13 @@
 // Dynamic query variables in GraphQl queries for Gatsby-Image
 // Learn more: https://github.com/gatsbyjs/gatsby/issues/10482#issuecomment-485349612
 
-import React, { useMemo } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import React, { useContext } from 'react';
 import Img from 'gatsby-image/withIEPolyfill';
+import useImages from './use-images'
+import ImgMatchContext from './context'
 
 const Image = ({ AltText, objectFit, objectPosition, src, maxWidth, ...props }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      allFile(filter: { internal: { mediaType: { regex: "images/" } } }) {
-        edges {
-          node {
-            relativePath
-            childImageSharp {
-              fluid(maxWidth: 1440) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
+  const data = useContext(ImgMatchContext)
     }
   `);
 
@@ -41,3 +29,4 @@ const Image = ({ AltText, objectFit, objectPosition, src, maxWidth, ...props }) 
 };
 
 export default Image;
+export {useImages, ImgMatchContext}
