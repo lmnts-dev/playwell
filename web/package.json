@@ -82,7 +82,6 @@
     "gatsby-plugin-intercom": "^0.1.4",
     "gatsby-plugin-sass": "^2.1.14",
     "gatsby-source-filesystem": "^2.1.22",
-    "gatsby-source-prismic": "^3.0.0-alpha.3",
     "gatsby-transformer-json": "^2.2.8",
     "jquery": "^3.4.1",
     "lighthouse": "^5.2.0",
