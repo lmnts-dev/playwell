@@ -5,6 +5,8 @@
 
 const axios = require('axios');
 const crypto = require('crypto');
+const sanityClient = require('../../scripts/sanityClient')
+const _ = require('lodash')
 
 // Our Client API Route:
 const CLIENT_API_URI = 'https://course-finder.play-well.org/webservice/courses';
@@ -53,6 +55,14 @@ exports.sourceNodes = async ({ actions }) => {
   await Promise.all(locationsPromises).then(res => {
     countiesArray = res;
   });
+
+  // Tranform data to use in populating Sanity CMS for location pages
+  const sanityStates = location_states_results.data.map((state, i) => sanityClient.transformPlaywellStates(state, countiesArray[i].data))
+  const sanityCounties = _.flatten(location_states_results.data.map((state, i) =>  countiesArray[i].data.map(county => sanityClient.transformPlaywellCounties(county))))
+  const sanityDocuments = _.concat(_.flatten(sanityCounties), sanityStates)
+
+  // Populate Sanity CMS with data
+  await sanityClient.createDocuments(sanityDocuments)
 
   // Create our GraphQL index of states & their respective counties.
   location_states_results.data.forEach(async (state, idx) => {
