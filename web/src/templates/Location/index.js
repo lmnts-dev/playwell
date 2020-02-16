@@ -101,7 +101,7 @@ const LocationDetail = ({ pageContext }) => {
 
       <Section pt={0} pb={0} fullWidth>
         <ImgMatch
-          src="locations-hero.jpg"
+          src={pageContext.coverImage || "locations-hero.jpg"}
           AltText="STEM Education &amp; Engineering in"
         />
       </Section>
