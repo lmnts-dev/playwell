@@ -212,8 +212,8 @@ exports.createPages = ({ graphql, actions }) => {
                     srcWebp
                     srcSetWebp
                     sizes
+                  }
                 }
-              }
               }
               counties {
                 countyId
@@ -409,6 +409,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           isCounty: false,
           isCostCode: false,
+          coverImage: !sanityState.coverImage ? null : sanityState.coverImage,
           description: !sanityState.description ? null : sanityState.description,
           subheadline: !sanityState.subheadline ? null : sanityState.subheadline,
           id: state.node.state_id,
@@ -455,6 +456,7 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: true,
             isCostCode: false,
+            coverImage: !sanityCounty.coverImage ? null : sanityCounty.coverImage,
             description: !sanityCounty.description ? null : sanityCounty.description,
             subheadline: !sanityCounty.subheadline ? null : sanityCounty.subheadline,
             cost_code: county.cost_code,
@@ -480,6 +482,7 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: false,
             isCostCode: true,
+            coverImage: !sanityCostCode.coverImage ? null : sanityCostCode.coverImage,
             description: !sanityCostCode.description ? null : sanityCostCode.description,
             subheadline: !sanityCostCode.subheadline ? null : sanityCostCode.subheadline,
             cost_code: county.cost_code,
