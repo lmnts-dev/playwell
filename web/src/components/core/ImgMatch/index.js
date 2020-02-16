@@ -8,13 +8,16 @@ import ImgMatchContext from './context'
 
 const Image = ({ AltText, objectFit, objectPosition, src, maxWidth, ...props }) => {
   const data = useContext(ImgMatchContext)
-    }
-  `);
 
-  const match = useMemo(
-    () => data.allFile.edges.find(({ node }) => src === node.relativePath),
-    [data, src]
-  );
+  let fluid = null
+
+  // Logic to handle assets in local file system vs those coming from Sanity CMS
+  if (src.asset && src.asset._id) {
+    fluid = src.asset.fluid
+  } else {
+    const found = data.allFile.edges.find(({ node }) => src === node.relativePath)
+    fluid = found.node.childImageSharp.fluid
+  }
 
   return (
     <Img
@@ -22,7 +25,7 @@ const Image = ({ AltText, objectFit, objectPosition, src, maxWidth, ...props }) 
       objectFit={objectFit ? objectFit : 'cover'}
       objectPosition={objectPosition ? objectPosition : '50% 50%'}
       alt={AltText ? AltText : null}
-      fluid={match.node.childImageSharp.fluid}
+      fluid={fluid}
       {...props}
     />
   );
