@@ -8,6 +8,7 @@
 import React from 'react';
 import { Location } from '@reach/router';
 import { StaticQuery, graphql } from 'gatsby';
+import {ImgMatchContext, useImages} from 'components/core/ImgMatch'
 
 // Vendor
 import { ThemeProvider } from 'styled-components';
@@ -53,22 +54,26 @@ const Layout = ({
   // Use our hook's data as source for Navigation
   let navData = NavQuery();
 
+  const images = useImages();
+
   return (
     <ThemeProvider theme={Theme}>
-      <SiteGrid className="site-grid">
-        <GlobalStyle />
-        <div id="content-overlay" />
-        <div id="hamburger-overlay" />
-        <PageTheme
-          BgColor={BgColor}
-          PrimaryColor={PrimaryColor}
-          SecondaryColor={SecondaryColor}
-          TertiaryColor={TertiaryColor}
-        />
-        <Head />
-        <SiteGrid.Inner>{children}</SiteGrid.Inner>
-      </SiteGrid>
-      <Footer navQuery={navDataTransformer(navData)} />
+      <ImgMatchContext.Provider value={images}>
+        <SiteGrid className="site-grid">
+          <GlobalStyle />
+          <div id="content-overlay" />
+          <div id="hamburger-overlay" />
+          <PageTheme
+            BgColor={BgColor}
+            PrimaryColor={PrimaryColor}
+            SecondaryColor={SecondaryColor}
+            TertiaryColor={TertiaryColor}
+            />
+          <Head />
+          <SiteGrid.Inner>{children}</SiteGrid.Inner>
+        </SiteGrid>
+        <Footer navQuery={navDataTransformer(navData)} />
+      </ImgMatchContext.Provider>
     </ThemeProvider>
   );
 };
