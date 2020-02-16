@@ -203,17 +203,54 @@ exports.createPages = ({ graphql, actions }) => {
               description
               coverImage {
                 asset {
-                  url
+                  _id
+                  fluid(maxWidth: 1440) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
                 }
+              }
               }
               counties {
                 countyId
                 subheadline
                 description
+                coverImage {
+                  asset {
+                    _id
+                    fluid(maxWidth: 1440) {
+                      base64
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
+                }
                 costCode {
                   costCodeId
                   subheadline
                   description
+                  coverImage {
+                    asset {
+                      _id
+                      fluid(maxWidth: 1440) {
+                        base64
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                      }
+                    }
+                  }
                 }
               }
             }
