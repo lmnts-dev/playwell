@@ -37,7 +37,8 @@ export default {
   ],
   preview: {
     select: {
-      title: 'name'
+      title: 'name',
+      media: 'coverImage'
     }
   }
 }
