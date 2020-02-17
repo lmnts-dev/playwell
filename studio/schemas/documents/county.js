@@ -2,6 +2,10 @@ export default {
   name: 'county',
   title: 'County',
   type: 'document',
+  __experimental_actions: [
+    'update',
+    'publish'
+  ],
   fields: [
     {
       title: 'County ID',
