@@ -2,6 +2,10 @@ export default {
   name: 'state',
   title: 'State',
   type: 'document',
+  __experimental_actions: [
+    'update',
+    'publish'
+  ],
   fields: [
     {
       title: 'State ID',

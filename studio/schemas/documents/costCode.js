@@ -2,6 +2,10 @@ export default {
   name: 'costCode',
   title: 'Cost Code',
   type: 'document',
+  __experimental_actions: [
+    'update',
+    'publish'
+  ],
   fields: [
     {
       title: 'Cost Code ID',
