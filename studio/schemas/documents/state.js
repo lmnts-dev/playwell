@@ -43,7 +43,8 @@ export default {
           type: 'reference',
           to: [{type: 'county'}]
         }
-      ]
+      ],
+      hidden: true
     }
   ],
   preview: {

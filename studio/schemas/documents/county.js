@@ -38,7 +38,8 @@ export default {
       title: 'Cost Code',
       name: 'costCode',
       type: 'reference',
-      to: [{type: 'costCode'}]
+      to: [{type: 'costCode'}],
+      hidden: true
     }
   ],
   preview: {
