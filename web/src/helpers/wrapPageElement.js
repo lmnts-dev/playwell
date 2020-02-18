@@ -26,41 +26,37 @@ const wrapPageElement = ({ element, props }) => {
     <StaticQuery
       query={graphql`
         query navDataQuery {
-          allSanitySiteSettings {
-            edges {
-              node {
-                nav {
-                  focusNav {
-                    label
-                    route
-                  }
-                  footerNav {
-                    linkList {
+          sanitySiteSettings {
+            nav {
+              focusNav {
+                label
+                route
+              }
+              footerNav {
+                linkList {
+                  label
+                  route
+                }
+              }
+              primaryNav {
+                linkList {
+                  label
+                  route
+                  subNav {
+                    focusLinkList {
+                      focus
                       label
                       route
                     }
-                  }
-                  primaryNav {
-                    linkList {
-                      label
+                    minorLinkList {
                       route
-                      subNav {
-                        focusLinkList {
-                          focus
-                          label
-                          route
-                        }
-                        minorLinkList {
-                          route
-                          label
-                          subhead
-                        }
-                      }
-                      theme {
-                        activeColor
-                        primaryColor
-                      }
+                      label
+                      subhead
                     }
+                  }
+                  theme {
+                    activeColor
+                    primaryColor
                   }
                 }
               }

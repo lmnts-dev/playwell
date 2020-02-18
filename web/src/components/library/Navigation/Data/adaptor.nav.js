@@ -16,7 +16,7 @@ import { ColorMatch } from 'constants/styles/Color';
 
 export const navDataTransformer = sourceData => {
   // Our Source Node
-  let sourceNode = sourceData.allSanitySiteSettings.edges[0].node.nav;
+  let sourceNode = sourceData.sanitySiteSettings.nav;
 
   // Primary navigation map
   let primaryNavMap = sourceNode.primaryNav.linkList.map((link, idx) => {
