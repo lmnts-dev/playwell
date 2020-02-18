@@ -24,18 +24,14 @@ export const Team = ({ Justify }) => {
     <StaticQuery
       query={graphql`
         {
-          allDataJson {
-            edges {
-              node {
-                leadership {
-                  bio
-                  id
-                  img
-                  mgr_level
-                  name
-                  title
-                }
-              }
+          dataJson {
+            leadership {
+              bio
+              id
+              img
+              mgr_level
+              name
+              title
             }
           }
         }
@@ -43,8 +39,8 @@ export const Team = ({ Justify }) => {
       render={data => (
         <TeamStyle Justify={Justify}>
           <div className="team-container">
-            {data.allDataJson.edges[0].node &&
-              data.allDataJson.edges[0].node.leadership.map((person, index) => {
+            {data.dataJson.leadership &&
+              data.dataJson.leadership.map((person, index) => {
                 return (
                   <div className="member" key={index}>
                     <div className="image-container">
