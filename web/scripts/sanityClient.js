@@ -1,13 +1,19 @@
+// Get access to env vars
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV || 'development'}`,
+});
+
 const sanityClient = require('@sanity/client')
 
 const client = sanityClient({
-  projectId: 'on977l64',
-  dataset: 'production',
-  useCdn: true
+  projectId: process.env.GATSBY_SANITY_PROJECT_ID,
+  dataset: process.env.GATSBY_SANITY_DATASET,
+  token: process.env.SANITY_WRITE_TOKEN,
+  useCdn: false
 })
 
 const getSiteSettings = async () => {
-  const siteSettings = await client.getDocument('f7eab51d-96c0-495a-a2cb-364c9a6d7295')
+  const siteSettings = await client.getDocument(process.env.GATSBY_SANITY_SITE_SETTINGS_DOCUMENT_ID)
   return siteSettings
 }
 
