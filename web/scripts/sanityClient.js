@@ -8,7 +8,8 @@ const sanityClient = require('@sanity/client')
 const client = sanityClient({
   projectId: process.env.GATSBY_SANITY_PROJECT_ID,
   dataset: process.env.GATSBY_SANITY_DATASET,
-  useCdn: true
+  token: process.env.SANITY_WRITE_TOKEN,
+  useCdn: false
 })
 
 const getSiteSettings = async () => {
