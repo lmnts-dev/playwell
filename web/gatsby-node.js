@@ -2,7 +2,7 @@
 // Universal Helpers
 ////////////////////////////////////////////////////////////////////////////////////
 
-const _ = require(`lodash`);
+const each = require(`lodash/each`);
 const path = require(`path`);
 const slash = require(`slash`);
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
@@ -10,7 +10,7 @@ const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
 // Gatsby uses Redux to manage its internal state.
 // Plugins and sites can use functions like "createPage"
 // to interact with Gatsby.
-// We are using 'lodash' above for the _.each function. Read more:
+// We are using 'lodash' above for the each function. Read more:
 // https://lodash.com/docs/4.17.11#forEach
 
 // Use Gatsby's createPage() function. Read more:
@@ -300,7 +300,7 @@ exports.createPages = ({ graphql, actions }) => {
     const courseTemplate = path.resolve(`src/templates/Course/index.js`);
 
     // Create Pages
-    _.each(result.data.allPlayWellClient.edges, client => {
+    each(result.data.allPlayWellClient.edges, client => {
       // Get our Location Meta Data
       let locationMetaResults = locationMatch(
         result.data.allPlayWellStates.edges,
@@ -313,7 +313,7 @@ exports.createPages = ({ graphql, actions }) => {
       let countySlug = slugify(locationMetaResults.county.name);
 
       //  Create our Course Pages
-      _.each(client.node.courses, course => {
+      each(client.node.courses, course => {
         // Build our slugified strings for pretty URLs.
         let programSlug = slugify(course.course_type_name);
 
@@ -379,12 +379,12 @@ exports.createPages = ({ graphql, actions }) => {
     const locationsTemplate = path.resolve(`src/templates/Location/index.js`);
 
     // Create Pages
-    _.each(result.data.allPlayWellStates.edges, state => {
+    each(result.data.allPlayWellStates.edges, state => {
       // Object to hold Sanity location data
       let sanityState = {}
 
       // If this state location exists in Sanity use that data instead
-      _.each(result.data.allSanityState.edges, stateEdge => {
+      each(result.data.allSanityState.edges, stateEdge => {
         if (stateEdge.node.stateId === state.node.playwell_state_id) {
           sanityState = stateEdge.node
         }
@@ -422,12 +422,12 @@ exports.createPages = ({ graphql, actions }) => {
       });
 
       // Loop through each state's respective Counties data
-      _.each(state.node.counties, county => {
+      each(state.node.counties, county => {
         let sanityCounty = {}
         let sanityCostCode = {}
 
         // If this cost code or county location exists in the sanityState object, use that data instead
-        _.each(sanityState.counties, countyEdge => {
+        each(sanityState.counties, countyEdge => {
           if (countyEdge.costCode.costCodeId === county.cost_code) {
             sanityCostCode = countyEdge.costCode
           }
@@ -516,7 +516,7 @@ exports.createPages = ({ graphql, actions }) => {
      *
      */
 
-    _.each(result.data.allPlayWellStates.edges, state => {
+    each(result.data.allPlayWellStates.edges, state => {
       // Build our slugified strings for pretty URLs.
       let stateSlug = slugify(state.node.name);
 
@@ -574,7 +574,7 @@ exports.createPages = ({ graphql, actions }) => {
        */
 
       // Loop through each state's respective Counties data
-      _.each(state.node.counties, county => {
+      each(state.node.counties, county => {
         // Build our slugified strings for pretty URLs.
         let countySlug = slugify(county.name);
         let costCodeSlug = slugify(county.cost_code_name);

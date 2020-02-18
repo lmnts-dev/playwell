@@ -10,7 +10,6 @@ import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
 
 // Helpers
-import _ from 'lodash';
 import slugify from 'helpers/slugify';
 import hexToRGB from 'helpers/hexToRGB';
 

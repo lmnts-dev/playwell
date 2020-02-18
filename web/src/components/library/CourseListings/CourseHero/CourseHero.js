@@ -10,7 +10,6 @@ import { Link } from 'gatsby';
 
 // Helpers
 import HeroContainer from '../../Hero/HeroContainer';
-import _ from 'lodash';
 import withLocation from 'helpers/withLocation';
 import ImgMatch from 'components/core/ImgMatch';
 
