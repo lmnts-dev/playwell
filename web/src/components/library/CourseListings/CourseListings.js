@@ -315,8 +315,6 @@ class ListingsResults extends PureComponent {
       lat: [],
       lng: [],
       zoom: [],
-      ageMin: 0,
-      ageMax: 0,
       startDate: '',
       startDate: '',
       courseTypes: [],
@@ -337,6 +335,11 @@ class ListingsResults extends PureComponent {
 
     // Filter Categories
     const categoryFilter = this.props.categoryFilter;
+    const ageFilter = this.props.ageFilter;
+
+    // Filter update function
+    const setListingFilter = this.props.setListingFilter
+
     const geoFilteredCourseData = courseData.allPlayWellClient.edges
       .map((node, idx) => {
         return {
@@ -365,19 +368,39 @@ class ListingsResults extends PureComponent {
         }
       }, this);
 
-    const filteredCourseDataByToggle = d =>
+    const filteredCourseByAge = course => {
+      // Return all courses on page load
+      if (ageFilter.ageMin === 0 &&
+          ageFilter.ageMax === 0) {
+        return course
+      }
+      // Return courses for ages < 5
+      else if (ageFilter.ageMin === 0 &&
+              course.age_range_start <= ageFilter.ageMax &&
+              course.age_range_end <= ageFilter.ageMax) {
+        return course
+      }
+      // Return course for ages over 10
+      else if (course.age_range_start <= ageFilter.ageMin &&
+              course.age_range_end >= ageFilter.ageMin) {
+        return course
+      }
+      // Return courses for a specific age (5-9)
+      else if (course.age_range_start <= ageFilter.ageMin &&
+              course.age_range_end >= ageFilter.ageMax) {
+        return course
+      }
+    }
+
+    const filteredCourseDataByToggle = filter =>
       geoFilteredCourseData.map((node, idx) => {
         return {
           node: {
             client_id: node.node.id,
             client_location_name: node.node.client_location_name,
-            courses: node.node.courses.filter((course, idxx) => {
-              // Define our query
-              const filter = d;
-
-              // Set up the conditions
-              return course.category_group_name.includes(filter);
-            }, this),
+            courses: node.node.courses
+              .filter(course => course.category_group_name.includes(filter))
+              .filter(filteredCourseByAge),
             display_address: node.node.display_address,
             county_id: node.node.county_id,
             state_id: node.node.state_id,
@@ -396,13 +419,14 @@ class ListingsResults extends PureComponent {
         <CourseListingsStyle.Toolbar>
           <div className="toolbar-inner">
             <ListingsFilters
+              setListingFilter={setListingFilter}
               categoryFilter={categoryFilter}
               courseData={geoFilteredCourseData}
             />
             <ListingsCounters
               categoryFilter={categoryFilter}
               toggleCategoryFilter={this.props.toggleCategoryFilter}
-              courseData={geoFilteredCourseData}
+              courseData={filteredCourseDataByToggle(categoryFilter)}
             />
           </div>
         </CourseListingsStyle.Toolbar>
@@ -446,7 +470,10 @@ class CourseListings extends PureComponent {
       // Filtering
       categoryFilter: '',
       currentlyViewing: '',
-
+      ageFilter: {
+        ageMin: 0,
+        ageMax: 0
+      },
       /**
        *
        * Mapbox settings
@@ -461,6 +488,7 @@ class CourseListings extends PureComponent {
     this.mapBoxRef = React.createRef();
 
     // Bind our functions
+    this.setListingFilter = this.setListingFilter.bind(this);
     this.toggleCategoryFilter = this.toggleCategoryFilter.bind(this);
     this.checkforFilterUrlParam = this.checkforFilterUrlParam.bind(this);
     this.checkforLocationUrlParam = this.checkforLocationUrlParam.bind(this);
@@ -470,9 +498,13 @@ class CourseListings extends PureComponent {
 
   // Function to update our url query parameters when we change
   // categories & filters to create sharable urls.
-  setParams({ show = '' }) {
+  setParams({ show = '', age_min, age_max }) {
     const searchParams = new URLSearchParams();
     searchParams.set('show', show);
+    if (age_min !== undefined && age_max !== undefined) {
+      searchParams.set('age_min', age_min);
+      searchParams.set('age_max', age_max);
+    }
     return searchParams.toString();
   }
 
@@ -482,8 +514,17 @@ class CourseListings extends PureComponent {
     if (this.state.categoryFilter != '') {
       const url = this.setParams({
         show: this.state.categoryFilter.toLowerCase() + 's',
+        age_min: this.state.ageFilter.ageMin,
+        age_max: this.state.ageFilter.ageMax
       });
       //do not forget the "?" !
+      history.pushState({}, '', `?${url}`);
+    } else if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
+      const url = this.setParams({
+        show: 'all',
+        age_min: this.state.ageFilter.ageMin,
+        age_max: this.state.ageFilter.ageMax
+      });
       history.pushState({}, '', `?${url}`);
     }
 
@@ -494,6 +535,7 @@ class CourseListings extends PureComponent {
       });
       history.pushState({}, '', `?${url}`);
     }
+
   }
 
   // Our Function to Toggle Categories
@@ -515,6 +557,12 @@ class CourseListings extends PureComponent {
         this.updateURL
       );
     }
+  }
+
+  // Our function to update the listing filters for age, date, and course type
+  setListingFilter(name, value) {
+    this.setState({ [name]: value })
+    this.updateURL()
   }
 
   // Check for url query for showing/hiding results.
@@ -561,6 +609,10 @@ class CourseListings extends PureComponent {
     }
   }
 
+  componentDidUpdate() {
+    this.updateURL();
+  }
+
   componentDidMount() {
     /**
      *
@@ -587,7 +639,7 @@ class CourseListings extends PureComponent {
         style: 'mapbox://styles/mapbox/streets-v9',
         maxZoom: 11,
       });
-    
+
 
       this.map = map;
 
@@ -782,6 +834,8 @@ class CourseListings extends PureComponent {
                 pageContext={pageContext}
                 urlQuery={search.show} // Utilizes our withLocation(); function at the end of this document.
                 categoryFilter={this.state.categoryFilter}
+                ageFilter={this.state.ageFilter}
+                setListingFilter={this.setListingFilter}
                 toggleCategoryFilter={this.toggleCategoryFilter}
                 allCostCodes={allCostCodes}
               />
