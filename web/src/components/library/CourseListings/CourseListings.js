@@ -8,6 +8,8 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
 import { navigate } from '@reach/router';
+import { isWithinInterval, format } from 'date-fns'
+import setQuery from 'set-query-string'
 
 // MapboxGL
 import mapboxgl from 'mapbox-gl';
@@ -336,6 +338,7 @@ class ListingsResults extends PureComponent {
     // Filter Categories
     const categoryFilter = this.props.categoryFilter;
     const ageFilter = this.props.ageFilter;
+    const dateFilter = this.props.dateFilter;
 
     // Filter update function
     const setListingFilter = this.props.setListingFilter
@@ -376,40 +379,47 @@ class ListingsResults extends PureComponent {
       }
       // Return courses for ages < 5
       else if (ageFilter.ageMin === 0 &&
-              course.age_range_start <= ageFilter.ageMax &&
-              course.age_range_end <= ageFilter.ageMax) {
+              (course.age_range_start < ageFilter.ageMax ||
+              course.age_range_end < ageFilter.ageMax)) {
         return course
+      }
+      // Return courses for a specific age (5-9)
+      else if (ageFilter.ageMin === ageFilter.ageMax && (ageFilter.ageMin >= course.age_range_start &&
+        ageFilter.ageMin <= course.age_range_end)) {
+          return course
       }
       // Return course for ages over 10
       else if (course.age_range_start <= ageFilter.ageMin &&
               course.age_range_end >= ageFilter.ageMin) {
         return course
       }
-      // Return courses for a specific age (5-9)
-      else if (course.age_range_start <= ageFilter.ageMin &&
-              course.age_range_end >= ageFilter.ageMax) {
-        return course
-      }
     }
 
-    const filteredCourseDataByToggle = filter =>
-      geoFilteredCourseData.map((node, idx) => {
+    const filterCourseByDate = course => {
+      if (dateFilter.startDate === '' && dateFilter.endDate === '') {return course}
+     else if (isWithinInterval(new Date(course.start_date), { start: dateFilter.startDate, end: dateFilter.endDate })) {return course}
+    }
+
+    const filteredCourseDataByCategory = filter =>
+      geoFilteredCourseData.map(node => {
         return {
           node: {
-            client_id: node.node.id,
-            client_location_name: node.node.client_location_name,
+            ...node.node,
             courses: node.node.courses
               .filter(course => course.category_group_name.includes(filter))
-              .filter(filteredCourseByAge),
-            display_address: node.node.display_address,
-            county_id: node.node.county_id,
-            state_id: node.node.state_id,
-            geocode_address: node.node.geocode_address,
-            id: node.node.location_id,
-            location_lat: node.node.location_lat,
-            location_lng: node.node.location_lng,
-            public_note: node.node.public_note,
-            key: idx,
+          },
+        };
+      }, this);
+
+    const filteredCourseDataBySelection = filter =>
+      geoFilteredCourseData.map(node => {
+        return {
+          node: {
+            ...node.node,
+            courses: node.node.courses
+              .filter(course => course.category_group_name.includes(filter))
+              .filter(course  => filteredCourseByAge(course))
+              .filter(course => filterCourseByDate(course)),
           },
         };
       }, this);
@@ -421,17 +431,17 @@ class ListingsResults extends PureComponent {
             <ListingsFilters
               setListingFilter={setListingFilter}
               categoryFilter={categoryFilter}
-              courseData={geoFilteredCourseData}
+              courseData={filteredCourseDataByCategory(categoryFilter)}
             />
             <ListingsCounters
               categoryFilter={categoryFilter}
               toggleCategoryFilter={this.props.toggleCategoryFilter}
-              courseData={filteredCourseDataByToggle(categoryFilter)}
+              courseData={filteredCourseDataBySelection(categoryFilter)}
             />
           </div>
         </CourseListingsStyle.Toolbar>
         <FilteredResults
-          results={filteredCourseDataByToggle(categoryFilter)}
+          results={filteredCourseDataBySelection(categoryFilter)}
           stateEdges={stateEdges}
           pageContext={pageContext}
           courseData={courseData}
@@ -474,6 +484,10 @@ class CourseListings extends PureComponent {
         ageMin: 0,
         ageMax: 0
       },
+      dateFilter: {
+        startDate: '',
+        endDate: ''
+      },
       /**
        *
        * Mapbox settings
@@ -510,30 +524,22 @@ class CourseListings extends PureComponent {
 
   // Functon to update our URL using history.push API
   updateURL() {
-    // If we are indeed filtering:
-    if (this.state.categoryFilter != '') {
-      const url = this.setParams({
-        show: this.state.categoryFilter.toLowerCase() + 's',
-        age_min: this.state.ageFilter.ageMin,
-        age_max: this.state.ageFilter.ageMax
-      });
-      //do not forget the "?" !
-      history.pushState({}, '', `?${url}`);
-    } else if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
-      const url = this.setParams({
-        show: 'all',
-        age_min: this.state.ageFilter.ageMin,
-        age_max: this.state.ageFilter.ageMax
-      });
-      history.pushState({}, '', `?${url}`);
-    }
-
-    // If it is  displaying all programs:
-    else {
-      const url = this.setParams({
-        show: 'all',
-      });
-      history.pushState({}, '', `?${url}`);
+    if (this.state.categoryFilter !== '') {
+      setQuery({show: this.state.categoryFilter.toLowerCase() + 's'}, {pushState: true})
+      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
+        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
+      }
+      if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
+        setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
+      }
+    } else {
+      setQuery({show: 'all'}, {pushState: true})
+      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
+        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
+      }
+      if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
+        setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
+      }
     }
 
   }
@@ -835,6 +841,7 @@ class CourseListings extends PureComponent {
                 urlQuery={search.show} // Utilizes our withLocation(); function at the end of this document.
                 categoryFilter={this.state.categoryFilter}
                 ageFilter={this.state.ageFilter}
+                dateFilter={this.state.dateFilter}
                 setListingFilter={this.setListingFilter}
                 toggleCategoryFilter={this.toggleCategoryFilter}
                 allCostCodes={allCostCodes}

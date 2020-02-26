@@ -5,12 +5,10 @@
 //////////////////////////////////////////////////////////////////////
 
 // Core
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'gatsby';
-import range from 'lodash/range'
-import flatten from 'lodash/flatten'
-import isEqual from 'lodash/isEqual'
-import uniqWith from 'lodash/uniqWith'
+import { range, uniqWith, isEqual, flatten } from 'lodash'
+import { addMonths, addYears, startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -26,8 +24,19 @@ import { ListingsFiltersStyle } from './styles.scss';
 //////////////////////////////////////////////////////////////////////
 
 export const ListingsFilters = ({ courseData, setListingFilter }) => {
+  const [state, setState] = useState({
+    ageFilterLabel: 'Any Age',
+    dateFilterLabel: 'Any Date',
+    courseFilterLabel: 'Course Type'
+  })
+
+  // Function to update the label based on selected drop down item
+  const updateLabel = (name, value) => {
+    setState({...state, [`${name}Label`]: value})
+  }
+
   // The Items
-  const ListingsFiltersItem = ({ label, items, filterName }) => {
+  const ListingsFiltersItem = ({ label, items, filterName, updateLabel, setListingFilter }) => {
     return (
       <ListingsFiltersStyle.Item>
         <span className="filter-inner">
@@ -35,29 +44,37 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
           <Icon Name="carat" />
         </span>
         <ListingsFiltersStyle.FilterList className="list">
-          {items.length > 1 &&
           <ul>
             {items.map((item, idx) => (
-              <div key={idx} onClick={() => setListingFilter(filterName, item.value)} onKeyDown={() => setListingFilter(filterName, item.value)} role="presentation">
+              <div key={idx} onClick={() => {
+                  updateLabel(filterName, item.name)
+                  setListingFilter(filterName, item.value)
+                }}
+                onKeyDown={() => {
+                  updateLabel(filterName, item.name)
+                  setListingFilter(filterName, item.value)
+                }}
+                role="presentation">
                 <li>{item.name}</li>
               </div>
             ))}
           </ul>
-         }
         </ListingsFiltersStyle.FilterList>
       </ListingsFiltersStyle.Item>
     );
   };
 
+  // Function to get the list of all ages for the given array of courses
   const getAllAges = (courses => {
     const ageList = courses.map(course => (
       range(course.age_range_start, course.age_range_end + 1)
-    ));
+  ));
     const mergedAgeList = flatten(ageList);
     const sortedAges = mergedAgeList.sort((a,b) => (a-b));
     return sortedAges
   })
 
+  // Function to generate the drop down list for age filter
   const createAgeFilterItems = courses => {
     const ageList = getAllAges(courses)
     const ageFilterItems = uniqWith(ageList
@@ -73,29 +90,55 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
       return ageFilterItems
   }
 
+  // Function to generate date filter drop down items
+  const createDateFilterItems = courses => {
+    const today = new Date()
+
+    const dateFilterItems = uniqWith(courses
+      .map(course => {
+        const startDate = new Date(course.start_date)
+
+        if (isWithinInterval(startDate, { start: today, end: endOfMonth(today)})) {
+          return { order: 1, name: 'This Month', value: { startDate: today, endDate: endOfMonth(today)} }
+        }
+        else if (isWithinInterval(startDate, { start: startOfMonth(addMonths(today, 1)), end: endOfMonth(addMonths(today, 1))})) {
+          return { order: 2, name: 'Next Month', value: { startDate: startOfMonth(addMonths(today, 1)), endDate: endOfMonth(addMonths(today, 1))} }
+        }
+        else if (startDate <= endOfMonth(addMonths(today, 6))) {
+          return { order: 3, name: 'Next 6 Months', value: { startDate: today, endDate: endOfMonth(addMonths(today, 6))} }
+        }
+        else if (startDate <= endOfMonth(addYears(today, 1))) {
+          return { order: 4, name: 'Next Year', value: { startDate: today, endDate: endOfMonth(addYears(today, 1))}}
+        }
+      }), isEqual).filter(item => item !== undefined).sort((a,b) => (a.order - b.order))
+
+      return dateFilterItems
+  }
+
   const courses = flatten(courseData.map(data => data.node.courses))
 
   // Show the bar
   return (
     <ListingsFiltersStyle>
       <ListingsFiltersItem
-        label="Any Age"
+        label={state.ageFilterLabel}
         items={createAgeFilterItems(courses)}
         filterName="ageFilter"
         setListingFilter={setListingFilter}
+        updateLabel={updateLabel}
       />
 
       <ListingsFiltersItem
-        label="Any Date"
-        items={[
-          { name: 'This Month', value: 10 },
-          { name: 'Next Month', value: 10 },
-          { name: 'Next 6 Months', value: 10 },
-          { name: 'Next Year', value: 10 },
-        ]}
+        label={state.dateFilterLabel}
+        filterName="dateFilter"
+        setListingFilter={setListingFilter}
+        items={createDateFilterItems(courses)}
+        updateLabel={updateLabel}
       />
       <ListingsFiltersItem
         label="Course Type"
+        filterName="courseFilter"
+        updateLabel={updateLabel}
         items={[
           { name: 'LEGO®: Basic', value: 'Basic Lego' },
           { name: 'LEGO®: Advanced', value: 'Advanced' },
