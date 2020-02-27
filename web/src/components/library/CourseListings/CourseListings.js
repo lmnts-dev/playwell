@@ -549,71 +549,81 @@ class CourseListings extends PureComponent {
       let safeUrlQuery = this.props.search.show.toLowerCase(); // Via Reach Router
 
       if (safeUrlQuery === 'workshops') {
-        this.setState({
+        this.setState(prevState => ({
+          ...prevState,
           categoryFilter: 'Workshop',
-        });
+        }));
       }
 
       if (safeUrlQuery === 'camps') {
-        this.setState({
+        this.setState(prevState => ({
+          ...prevState,
           categoryFilter: 'Camp',
-        });
+        }));
       }
 
       if (safeUrlQuery === 'courses') {
-        this.setState({
+        this.setState(prevState => ({
+          ...prevState,
           categoryFilter: 'Course',
-        });
+        }));
       }
     } else {
-      this.setState({
-        categoryFilter: ''
-      })
+      this.setState(prevState => ({
+        ...prevState,
+        categoryFilter: '',
+      }))
     }
 
     // Set the ageFilter state based on query params
     if (this.props.search.age_min !== undefined && this.props.search.age_max !== undefined) {
-      this.setState({
+      this.setState(prevState => ({
+        ...prevState,
         ageFilter: {
           ageMin: this.props.search.age_min,
           ageMax: this.props.search.age_max
         }
-      })
+      }))
     } else {
-      this.setState({
+      this.setState(prevState => ({
+        ...prevState,
         ageFilter: {
           ageMin: 0,
           ageMax: 0
         }
-      })
+      }))
     }
 
     // Set the dateFilter state based on query params
     if (this.props.search.date_min !== undefined && this.props.search.date_max !== undefined) {
-      this.setState({
+      this.setState(prevState => ({
+        ...prevState,
         dateFilter: {
           startDate: new Date(this.props.search.date_min),
           endDate: new Date(this.props.search.date_max)
         }
-      })
+      }))
     } else {
-      this.setState({
+      this.setState(prevState => ({
+        ...prevState,
         dateFilter: {
           startDate: '',
           endDate: ''
         }
-      })
+      }))
     }
 
     // Set the courseTypeFilter state based on query params
     if (this.props.search.course_type !== undefined) {
-      this.setState({
+      this.setState(prevState => ({
+        ...prevState,
         courseTypeFilter: this.props.search.course_type
-      })
+      }))
     } else {
-      this.setState({
+      this.setState(prevState => ({
+        ...prevState,
         courseTypeFilter: ''
-      })
+      }))
     }
 
     return;
