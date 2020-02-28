@@ -3,7 +3,6 @@
 
 import React, { useContext } from 'react';
 import Img from 'gatsby-image/withIEPolyfill';
-import useImages from './use-images'
 import ImgMatchContext from './context'
 
 const Image = ({ AltText, objectFit, objectPosition, src, maxWidth, ...props }) => {
@@ -32,4 +31,3 @@ const Image = ({ AltText, objectFit, objectPosition, src, maxWidth, ...props }) 
 };
 
 export default Image;
-export {useImages, ImgMatchContext}
