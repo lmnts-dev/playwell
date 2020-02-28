@@ -2,6 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 import AppProvider from 'store/provider';
+import ImgMatchProvider from 'components/core/ImgMatch/provider';
 import WrapPageElementWithTransition from 'helpers/wrapPageElement';
 
 export const replaceRenderer = ({
@@ -10,7 +11,7 @@ export const replaceRenderer = ({
   setHeadComponents,
 }) => {
   // React Context in SSR/build
-  const ConnectedBody = () => <AppProvider>{bodyComponent}</AppProvider>;
+  const ConnectedBody = () => <ImgMatchProvider><AppProvider>{bodyComponent}</AppProvider></ImgMatchProvider>;
   replaceBodyHTMLString(renderToString(<ConnectedBody />));
 
   // Add styled-components in SSR/build

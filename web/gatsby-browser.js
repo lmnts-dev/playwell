@@ -1,5 +1,6 @@
 import React from 'react';
 import AppProvider from 'store/provider';
+import ImgMatchProvider from 'components/core/ImgMatch/provider';
 import WrapPageElementWithTransition from 'helpers/wrapPageElement';
 import { UserAgentProvider, UserAgent } from '@quentin-sommer/react-useragent';
 
@@ -22,11 +23,17 @@ export const wrapRootElement = ({ element }) => {
   if (typeof window !== 'undefined') {
     return (
       <UserAgentProvider ua={userAgentCheck()}>
-        <AppProvider>{element}</AppProvider>
+        <ImgMatchProvider>
+          <AppProvider>{element}</AppProvider>
+        </ImgMatchProvider>
       </UserAgentProvider>
     );
   } else {
-    return <AppProvider>{element}</AppProvider>;
+    return (
+      <ImgMatchProvider>
+        <AppProvider>{element}</AppProvider>
+      </ImgMatchProvider>
+    );
   }
 };
 
