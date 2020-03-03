@@ -501,6 +501,7 @@ class CourseListings extends PureComponent {
       lat: 40.7088,
       lng: -73.9888,
       zoom: 2,
+      clientsInView: null,
     };
 
     // Create our Map Ref
@@ -701,6 +702,17 @@ class CourseListings extends PureComponent {
         });
       });
 
+      // Update the clients that are currently being viewed on map
+      const setClientsInView = () => {
+        const features = map.queryRenderedFeatures()
+        const playwellClients = features.filter(feature => feature.source === 'clients')
+        const clientsInView = playwellClients.map(client => client.properties.id)
+        this.setState(prevState => ({
+          ...prevState,
+          clientsInView,
+        }))
+      }
+
       /**
        * Generate our map markers
        */
@@ -802,6 +814,10 @@ class CourseListings extends PureComponent {
           // Use Reach Router to update route.
           navigate(`?location=${e.features[0].properties.locationHash}`);
         });
+
+            // Event handlers to update clientsInView when map is moved
+            map.on('mouseup', setClientsInView)
+            map.on('dragend', setClientsInView)
       });
     }
   }
