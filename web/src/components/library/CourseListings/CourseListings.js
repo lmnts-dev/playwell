@@ -671,6 +671,7 @@ class CourseListings extends PureComponent {
         container: this.mapBoxRef,
         style: 'mapbox://styles/mapbox/streets-v9',
         maxZoom: 11,
+        minZoom: 4,
       });
 
 
