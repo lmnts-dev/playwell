@@ -29,6 +29,7 @@ export const clientGeoJsonAdapter = data => {
       properties: {
         title: client.node.client_location_name,
         locationHash: slugify(client.node.client_location_name),
+        id: client.node.id,
       },
     };
   });
