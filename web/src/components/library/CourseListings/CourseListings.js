@@ -327,6 +327,7 @@ class ListingsResults extends PureComponent {
   render() {
     // Source Data
     const courseData = this.props.courseData;
+    const clientsInView = this.props.clientsInView;
     const stateEdges = this.props.courseData.allPlayWellStates.edges;
     const pageContext = this.props.pageContext;
 
@@ -364,6 +365,9 @@ class ListingsResults extends PureComponent {
         };
       }, this)
       .filter(client => {
+        if (clientsInView) {
+          return clientsInView.includes(client.node.client_id)
+        }
         if (
           client.node.state_id == stateId ||
           client.node.county_id == countyId
@@ -830,17 +834,20 @@ class CourseListings extends PureComponent {
 
   render() {
     // Define clean variables
-    const courseData = this.props.courseData;
-    const mapWidth = this.props.mapWidth;
-    const mapZedIndex = this.props.mapZedIndex;
-    const geoData = this.props.geoData;
-    const stateId = this.props.stateId;
-    const countyId = this.props.countyId;
-    const costCodeId = this.props.costCodeId;
-    const pageContext = this.props.pageContext;
-    const search = this.props.search;
-    const allCostCodes = this.props.allCostCodes;
-    const { lng, lat, zoom } = this.state;
+    const {
+      courseData,
+      mapWidth,
+      mapZedIndex,
+      geoData,
+      stateId,
+      countyId,
+      costCodeId,
+      pageContext,
+      search,
+      allCostCodes,
+    } = this.props
+
+    const { lng, lat, zoom, clientsInView } = this.state;
 
     return (
       <main>
@@ -872,6 +879,7 @@ class CourseListings extends PureComponent {
             <ListingsWrapper mapZedIndex={mapZedIndex} mapWidth={mapWidth}>
               <ListingsResults
                 courseData={courseData}
+                clientsInView={clientsInView}
                 stateId={stateId}
                 countyId={countyId}
                 costCodeId={costCodeId}
