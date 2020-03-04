@@ -533,6 +533,9 @@ class CourseListings extends PureComponent {
       case 'ageFilter':
         setQuery({age_min: value.ageMin, age_max: value.ageMax}, {pushState: true})
         break
+      case 'mapFilter':
+        setQuery({lat: value.lat, lng: value.lng, zoom: value.zoom})
+        break
     }
   }
 
@@ -544,8 +547,10 @@ class CourseListings extends PureComponent {
 
   // Check for url query for showing/hiding results.
   checkforFilterUrlParams() {
-    if (this.props.search.show != undefined) {
-      let safeUrlQuery = this.props.search.show.toLowerCase(); // Via Reach Router
+    const { search } = this.props;
+
+    if (search.show != undefined) {
+      let safeUrlQuery = search.show.toLowerCase(); // Via Reach Router
 
       if (safeUrlQuery === 'workshops') {
         this.setState({
@@ -571,11 +576,11 @@ class CourseListings extends PureComponent {
     }
 
     // Set the ageFilter state based on query params
-    if (this.props.search.age_min !== undefined && this.props.search.age_max !== undefined) {
+    if (search.age_min !== undefined && search.age_max !== undefined) {
       this.setState({
         ageFilter: {
-          ageMin: this.props.search.age_min,
-          ageMax: this.props.search.age_max
+          ageMin: search.age_min,
+          ageMax: search.age_max
         }
       })
     } else {
@@ -588,11 +593,11 @@ class CourseListings extends PureComponent {
     }
 
     // Set the dateFilter state based on query params
-    if (this.props.search.date_min !== undefined && this.props.search.date_max !== undefined) {
+    if (search.date_min !== undefined && search.date_max !== undefined) {
       this.setState({
         dateFilter: {
-          startDate: new Date(this.props.search.date_min),
-          endDate: new Date(this.props.search.date_max)
+          startDate: new Date(search.date_min),
+          endDate: new Date(search.date_max)
         }
       })
     } else {
@@ -605,14 +610,31 @@ class CourseListings extends PureComponent {
     }
 
     // Set the courseTypeFilter state based on query params
-    if (this.props.search.course_type !== undefined) {
+    if (search.course_type !== undefined) {
       this.setState({
-        courseTypeFilter: this.props.search.course_type
+        courseTypeFilter: search.course_type
       })
     } else {
       this.setState({
         courseTypeFilter: ''
       })
+    }
+
+    // Set the map's lat, lng, and zoom from query params
+    if (search.lat && search.lng && search.zoom) {
+      this.setState(prevState => ({
+        ...prevState,
+        lat: search.lat,
+        lng: search.lng,
+        zoom: search.zoom,
+      }))
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        lat: 40.7088,
+        lng: -73.9888,
+        zoom: 2,
+      }))
     }
 
     return;
@@ -697,21 +719,25 @@ class CourseListings extends PureComponent {
         : null; // else it's a State and CostCode is no longer needed.
 
       // Updating state depending on map position & zoom
-      map.on('move', () => {
+      const setMapState = () => {
         const { lng, lat } = map.getCenter();
+        const zoom = map.getZoom();
 
         this.setState({
           lng: lng.toFixed(4),
           lat: lat.toFixed(4),
-          zoom: map.getZoom().toFixed(2),
+          zoom: zoom.toFixed(2),
         });
-      });
+
+        this.updateURL('mapFilter', {lat, lng, zoom})
+      }
 
       // Update the clients that are currently being viewed on map
       const setClientsInView = () => {
         const features = map.queryRenderedFeatures()
-        const playwellClients = features.filter(feature => feature.source === 'clients')
-        const clientsInView = playwellClients.map(client => client.properties.id)
+        const clientsInView = features
+          .filter(feature => feature.source === 'clients')
+          .map(client => client.properties.id)
         this.setState(prevState => ({
           ...prevState,
           clientsInView,
@@ -758,7 +784,7 @@ class CourseListings extends PureComponent {
         });
 
         // Fit our map to said bounds.
-            map.fitBounds(initialBounds, { padding: 50, duration: 0 });
+        map.fitBounds(initialBounds, { padding: 50, duration: 0 });
 
         /**
          * Add data layers.
@@ -820,9 +846,15 @@ class CourseListings extends PureComponent {
           navigate(`?location=${e.features[0].properties.locationHash}`);
         });
 
-            // Event handlers to update clientsInView when map is moved
-            map.on('mouseup', setClientsInView)
-            map.on('dragend', setClientsInView)
+        // Event handlers to update clientsInView when map is moved
+        map.on('mouseup', () => {
+          setClientsInView()
+          setMapState()
+        })
+        map.on('dragend', () => {
+          setClientsInView()
+          setMapState()
+        })
       });
     }
   }
@@ -848,7 +880,7 @@ class CourseListings extends PureComponent {
       allCostCodes,
     } = this.props
 
-    const { lng, lat, zoom, clientsInView } = this.state;
+    const { clientsInView } = this.state;
 
     return (
       <main>
