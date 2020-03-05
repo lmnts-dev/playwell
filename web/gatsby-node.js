@@ -384,19 +384,6 @@ exports.createPages = ({ graphql, actions }) => {
           },
         });
 
-        const allCostCodeCounties = cost_code => {
-          const costCodeCounties = result.data.allPlayWellStates.edges.reduce((relatedCounties, node) => {
-            node.node.counties.forEach(stateCounty => {
-              if (stateCounty.cost_code === cost_code) {
-                relatedCounties.push(stateCounty)
-              }
-            })
-            return relatedCounties
-          }, [])
-
-          return costCodeCounties
-        }
-
         //  Create our Cost Code Pages
         createPage({
           path: `/locations/${stateSlug}/${costCodeSlug}`,
@@ -407,7 +394,6 @@ exports.createPages = ({ graphql, actions }) => {
             cost_code: county.cost_code,
             cost_code_name: county.cost_code_name,
             county_id: county.county_id,
-            counties: allCostCodeCounties(county.cost_code),
             name: county.name,
             managers: filteredCountyManagers(county.cost_code),
             parentState: {
@@ -557,7 +543,21 @@ exports.createPages = ({ graphql, actions }) => {
            *
            * Create Cost Code Pages if County exists in Cost Code
            *
-           */
+          */
+
+          // Function to get all counties for a given cost code
+          const allCostCodeCounties = cost_code => {
+            const costCodeCounties = result.data.allPlayWellStates.edges.reduce((relatedCounties, node) => {
+              node.node.counties.forEach(stateCounty => {
+                if (stateCounty.cost_code === cost_code) {
+                  relatedCounties.push(stateCounty)
+                }
+              })
+              return relatedCounties
+            }, [])
+
+            return costCodeCounties
+          }
 
           //  Create our Cost Code Pages
           createPage({
@@ -569,6 +569,7 @@ exports.createPages = ({ graphql, actions }) => {
               cost_code: county.cost_code,
               cost_code_name: county.cost_code_name,
               county_id: county.county_id,
+              counties: allCostCodeCounties(county.cost_code),
               name: county.name,
               managers: filteredCountyManagers(county.cost_code),
               parentState: {
