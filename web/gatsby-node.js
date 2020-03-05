@@ -384,6 +384,19 @@ exports.createPages = ({ graphql, actions }) => {
           },
         });
 
+        const allCostCodeCounties = cost_code => {
+          const costCodeCounties = result.data.allPlayWellStates.edges.reduce((relatedCounties, node) => {
+            node.node.counties.forEach(stateCounty => {
+              if (stateCounty.cost_code === cost_code) {
+                relatedCounties.push(stateCounty)
+              }
+            })
+            return relatedCounties
+          }, [])
+
+          return costCodeCounties
+        }
+
         //  Create our Cost Code Pages
         createPage({
           path: `/locations/${stateSlug}/${costCodeSlug}`,
