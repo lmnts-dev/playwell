@@ -762,7 +762,7 @@ class CourseListings extends PureComponent {
 
           new mapboxgl.Popup()
             .setLngLat(coordinates)
-            .setHTML(description)
+            .setHTML(`<strong>${description}</strong>`)
             .addTo(map);
         });
 
