@@ -656,15 +656,15 @@ class CourseListings extends PureComponent {
         ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
         : this.props.pageContext.playwell_state_id; // else it's a State and remove parentState and use it's Id.
 
-      const countyId = this.props.pageContext.isCostCode // If CostCode:
-        ? this.props.pageContext.county_id // Display County Id.
-        : this.props.pageContext.isCounty // If County:
+      const countyId = this.props.pageContext.isCounty // If County:
         ? this.props.pageContext.county_id // Display County Id.
         : null; // else it's a State and County Id is no longer needed.
 
+      const counties = this.props.pageContext.isCostCode // If CostCode
+        ? this.props.pageContext.counties // Display all Counties
+        : null;
+
       const costCodeId = this.props.pageContext.isCostCode // If CostCode:
-        ? this.props.pageContext.cost_code // Display Cost Code.
-        : this.props.pageContext.isCounty // If County:
         ? this.props.pageContext.cost_code // Display Cost Code.
         : null; // else it's a State and CostCode is no longer needed.
 
@@ -709,6 +709,7 @@ class CourseListings extends PureComponent {
         const initialMarkers = clientsByLatLong(
           stateId,
           countyId,
+          counties,
           costCodeId,
           clientEdges
         );
