@@ -333,7 +333,7 @@ class ListingsResults extends PureComponent {
     // Our Filters
     const stateId = this.props.stateId;
     const countyId = this.props.countyId;
-    const costCodeId = this.props.costCodeId;
+    const counties = this.props.counties;
 
     // Filter Categories
     const categoryFilter = this.props.categoryFilter;
@@ -363,6 +363,9 @@ class ListingsResults extends PureComponent {
         };
       }, this)
       .filter(client => {
+        if (counties && counties.some(e => e.county_id === client.node.county_id)) {
+          return client
+        }
         if (
           client.node.state_id == stateId ||
           client.node.county_id == countyId
@@ -799,6 +802,7 @@ class CourseListings extends PureComponent {
     const geoData = this.props.geoData;
     const stateId = this.props.stateId;
     const countyId = this.props.countyId;
+    const counties = this.props.pageContext.counties;
     const costCodeId = this.props.costCodeId;
     const pageContext = this.props.pageContext;
     const search = this.props.search;
@@ -837,6 +841,7 @@ class CourseListings extends PureComponent {
                 courseData={courseData}
                 stateId={stateId}
                 countyId={countyId}
+                counties={counties}
                 costCodeId={costCodeId}
                 pageContext={pageContext}
                 urlQuery={search.show} // Utilizes our withLocation(); function at the end of this document.
