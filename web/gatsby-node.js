@@ -568,9 +568,7 @@ exports.createPages = ({ graphql, actions }) => {
               isCostCode: true,
               cost_code: county.cost_code,
               cost_code_name: county.cost_code_name,
-              county_id: county.county_id,
               counties: allCostCodeCounties(county.cost_code),
-              name: county.name,
               managers: filteredCountyManagers(county.cost_code),
               parentState: {
                 id: state.node.state_id,
