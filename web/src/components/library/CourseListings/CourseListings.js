@@ -339,6 +339,7 @@ class ListingsResults extends PureComponent {
     const categoryFilter = this.props.categoryFilter;
     const ageFilter = this.props.ageFilter;
     const dateFilter = this.props.dateFilter;
+    const courseTypeFilter = this.props.courseTypeFilter;
 
     // Filter update function
     const setListingFilter = this.props.setListingFilter
@@ -400,6 +401,11 @@ class ListingsResults extends PureComponent {
      else if (isWithinInterval(new Date(course.start_date), { start: dateFilter.startDate, end: dateFilter.endDate })) {return course}
     }
 
+    const filterCourseByType = course => {
+      if (courseTypeFilter === '') {return course}
+      else if (course.course_type_group === courseTypeFilter) {return course}
+    }
+
     const filteredCourseDataByCategory = filter =>
       geoFilteredCourseData.map(node => {
         return {
@@ -419,7 +425,8 @@ class ListingsResults extends PureComponent {
             courses: node.node.courses
               .filter(course => course.category_group_name.includes(filter))
               .filter(course  => filteredCourseByAge(course))
-              .filter(course => filterCourseByDate(course)),
+              .filter(course => filterCourseByDate(course))
+              .filter(course => filterCourseByType(course))
           },
         };
       }, this);
@@ -431,11 +438,14 @@ class ListingsResults extends PureComponent {
             <ListingsFilters
               setListingFilter={setListingFilter}
               categoryFilter={categoryFilter}
+              ageFilter={ageFilter}
+              dateFilter={dateFilter}
+              courseTypeFilter={courseTypeFilter}
               courseData={filteredCourseDataByCategory(categoryFilter)}
             />
             <ListingsCounters
               categoryFilter={categoryFilter}
-              toggleCategoryFilter={this.props.toggleCategoryFilter}
+              setListingFilter={setListingFilter}
               courseData={filteredCourseDataBySelection(categoryFilter)}
             />
           </div>
@@ -488,6 +498,7 @@ class CourseListings extends PureComponent {
         startDate: '',
         endDate: ''
       },
+      courseTypeFilter: '',
       /**
        *
        * Mapbox settings
@@ -503,96 +514,116 @@ class CourseListings extends PureComponent {
 
     // Bind our functions
     this.setListingFilter = this.setListingFilter.bind(this);
-    this.toggleCategoryFilter = this.toggleCategoryFilter.bind(this);
-    this.checkforFilterUrlParam = this.checkforFilterUrlParam.bind(this);
+    this.checkforFilterUrlParams = this.checkforFilterUrlParams.bind(this);
     this.checkforLocationUrlParam = this.checkforLocationUrlParam.bind(this);
-    this.setParams = this.setParams.bind(this);
     this.updateURL = this.updateURL.bind(this);
   }
 
-  // Function to update our url query parameters when we change
-  // categories & filters to create sharable urls.
-  setParams({ show = '', age_min, age_max }) {
-    const searchParams = new URLSearchParams();
-    searchParams.set('show', show);
-    if (age_min !== undefined && age_max !== undefined) {
-      searchParams.set('age_min', age_min);
-      searchParams.set('age_max', age_max);
-    }
-    return searchParams.toString();
-  }
-
   // Functon to update our URL using history.push API
-  updateURL() {
-    if (this.state.categoryFilter !== '') {
-      setQuery({show: this.state.categoryFilter.toLowerCase() + 's'}, {pushState: true})
-      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
-        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
-      }
-      if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
-        setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
-      }
-    } else {
-      setQuery({show: 'all'}, {pushState: true})
-      if (this.state.ageFilter.ageMin !== 0 && this.state.ageFilter.ageMax !== 0) {
-        setQuery({age_min: this.state.ageFilter.ageMin, age_max: this.state.ageFilter.ageMax}, {pushState: true})
-      }
-      if (this.state.dateFilter.startDate !== '' && this.state.dateFilter.endDate !== '') {
-        setQuery({date_min: format(this.state.dateFilter.startDate, 'yyyy-MM-dd'), date_max: format(this.state.dateFilter.endDate, 'yyyy-MM-dd')}, {pushState: true})
-      }
-    }
-
-  }
-
-  // Our Function to Toggle Categories
-  toggleCategoryFilter(context) {
-    if (this.state.categoryFilter == context) {
-      this.setState(
-        {
-          categoryFilter: '',
-        },
-        // Use updateURL as a callback to confirm state.
-        this.updateURL
-      );
-    } else {
-      this.setState(
-        {
-          categoryFilter: context,
-        },
-        // Use updateURL as a callback to confirm state.
-        this.updateURL
-      );
+  updateURL(name, value) {
+    switch (name) {
+      case 'categoryFilter':
+        setQuery({show: value}, {pushState: true})
+        break
+      case 'courseTypeFilter':
+        setQuery({course_type: value}, {pushState: true})
+        break
+      case 'dateFilter':
+        setQuery({date_min: format(value.startDate, 'yyyy-MM-dd'), date_max: format(value.endDate, 'yyyy-MM-dd')}, {pushState: true})
+        break
+      case 'ageFilter':
+        setQuery({age_min: value.ageMin, age_max: value.ageMax}, {pushState: true})
+        break
     }
   }
 
-  // Our function to update the listing filters for age, date, and course type
+  // Our function to update the listing filters for category, age, date, and course type
   setListingFilter(name, value) {
     this.setState({ [name]: value })
-    this.updateURL()
+    this.updateURL(name, value)
   }
 
   // Check for url query for showing/hiding results.
-  checkforFilterUrlParam() {
+  checkforFilterUrlParams() {
     if (this.props.search.show != undefined) {
       let safeUrlQuery = this.props.search.show.toLowerCase(); // Via Reach Router
 
       if (safeUrlQuery === 'workshops') {
-        this.setState({
+        this.setState(prevState => ({
+          ...prevState,
           categoryFilter: 'Workshop',
-        });
+        }));
       }
 
       if (safeUrlQuery === 'camps') {
-        this.setState({
+        this.setState(prevState => ({
+          ...prevState,
           categoryFilter: 'Camp',
-        });
+        }));
       }
 
       if (safeUrlQuery === 'courses') {
-        this.setState({
+        this.setState(prevState => ({
+          ...prevState,
           categoryFilter: 'Course',
-        });
+        }));
       }
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        categoryFilter: '',
+      }))
+    }
+
+    // Set the ageFilter state based on query params
+    if (this.props.search.age_min !== undefined && this.props.search.age_max !== undefined) {
+      this.setState(prevState => ({
+        ...prevState,
+        ageFilter: {
+          ageMin: this.props.search.age_min,
+          ageMax: this.props.search.age_max
+        }
+      }))
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        ageFilter: {
+          ageMin: 0,
+          ageMax: 0
+        }
+      }))
+    }
+
+    // Set the dateFilter state based on query params
+    if (this.props.search.date_min !== undefined && this.props.search.date_max !== undefined) {
+      this.setState(prevState => ({
+        ...prevState,
+        dateFilter: {
+          startDate: new Date(this.props.search.date_min),
+          endDate: new Date(this.props.search.date_max)
+        }
+      }))
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        dateFilter: {
+          startDate: '',
+          endDate: ''
+        }
+      }))
+    }
+
+    // Set the courseTypeFilter state based on query params
+    if (this.props.search.course_type !== undefined) {
+      this.setState(prevState => ({
+        ...prevState,
+        courseTypeFilter: this.props.search.course_type
+      }))
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        courseTypeFilter: ''
+      }))
     }
 
     return;
@@ -615,8 +646,11 @@ class CourseListings extends PureComponent {
     }
   }
 
-  componentDidUpdate() {
-    this.updateURL();
+  // Reset state if back button is hit in browser
+  componentDidUpdate(prevProps) {
+    if (prevProps.search != this.props.search) {
+      this.checkforFilterUrlParams();
+    }
   }
 
   componentDidMount() {
@@ -626,9 +660,13 @@ class CourseListings extends PureComponent {
      *
      */
 
-    this.checkforFilterUrlParam();
-    this.checkforLocationUrlParam();
+    // Set the default query to show all
+    if (this.props.search.show === undefined) {
+      setQuery({show: 'all'}, {pushState: true})
+    }
 
+    this.checkforLocationUrlParam();
+    this.checkforFilterUrlParams();
     /**
      *
      * Initialize MapboxGL
@@ -842,8 +880,8 @@ class CourseListings extends PureComponent {
                 categoryFilter={this.state.categoryFilter}
                 ageFilter={this.state.ageFilter}
                 dateFilter={this.state.dateFilter}
+                courseTypeFilter={this.state.courseTypeFilter}
                 setListingFilter={this.setListingFilter}
-                toggleCategoryFilter={this.toggleCategoryFilter}
                 allCostCodes={allCostCodes}
               />
             </ListingsWrapper>

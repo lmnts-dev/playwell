@@ -8,7 +8,7 @@
 import React, {useState} from 'react';
 import { Link } from 'gatsby';
 import { range, uniqWith, isEqual, flatten } from 'lodash'
-import { addMonths, addYears, startOfMonth, endOfMonth, isWithinInterval } from 'date-fns'
+import { addMonths, addYears, startOfMonth, endOfMonth, isWithinInterval, isSameMonth } from 'date-fns'
 
 // Constants
 import { Base } from 'constants/styles/Base';
@@ -23,17 +23,7 @@ import { ListingsFiltersStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-export const ListingsFilters = ({ courseData, setListingFilter }) => {
-  const [state, setState] = useState({
-    ageFilterLabel: 'Any Age',
-    dateFilterLabel: 'Any Date',
-    courseFilterLabel: 'Course Type'
-  })
-
-  // Function to update the label based on selected drop down item
-  const updateLabel = (name, value) => {
-    setState({...state, [`${name}Label`]: value})
-  }
+export const ListingsFilters = ({ courseData, setListingFilter, ageFilter, dateFilter, courseTypeFilter }) => {
 
   // The Items
   const ListingsFiltersItem = ({ label, items, filterName, updateLabel, setListingFilter }) => {
@@ -44,20 +34,21 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
           <Icon Name="carat" />
         </span>
         <ListingsFiltersStyle.FilterList className="list">
-          <ul>
-            {items.map((item, idx) => (
-              <div key={idx} onClick={() => {
-                  updateLabel(filterName, item.name)
-                  setListingFilter(filterName, item.value)
-                }}
-                onKeyDown={() => {
-                  updateLabel(filterName, item.name)
-                  setListingFilter(filterName, item.value)
-                }}
-                role="presentation">
-                <li>{item.name}</li>
-              </div>
-            ))}
+            <ul>
+              {items.map((item, idx) => (
+                <li key={idx}>
+                  <div onClick={() => {
+                      setListingFilter(filterName, item.value)
+                    }}
+                    onKeyDown={() => {
+                      setListingFilter(filterName, item.value)
+                    }}
+                    role="button"
+                    tabIndex="0">
+                    {item.name}
+                  </div>
+                </li>
+              ))}
           </ul>
         </ListingsFiltersStyle.FilterList>
       </ListingsFiltersStyle.Item>
@@ -115,41 +106,98 @@ export const ListingsFilters = ({ courseData, setListingFilter }) => {
       return dateFilterItems
   }
 
+  const createCourseTypeFilterItems = courses => {
+    const courseTypeFilterItems = uniqWith(courses
+      .map(course => {
+        if (course.course_type_group === 'Basic Lego') {
+          return { order: 1, name: 'LEGO®: Basic', value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Advanced') {
+          return { order: 2, name: 'LEGO®: Advanced', value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Ninjago') {
+          return { order: 3, name: course.course_type_group, value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Star Wars') {
+          return { order: 4, name: course.course_type_group, value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Super Heroes') {
+          return { order: 5, name: course.course_type_group, value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Lego Robotics') {
+          return { order: 6, name: 'LEGO® Robotics', value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Pre School') {
+          return { order: 7, name: 'Pre-School', value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Minecraft') {
+          return { order: 8, name: 'Minecraft Theme', value: course.course_type_group }
+        }
+        else if (course.course_type_group === 'Other') {
+          return { order: 9, name: course.course_type_group, value: course.course_type_group }
+        }
+      }), isEqual).sort((a,b) => (a.order - b.order))
+      return courseTypeFilterItems
+  }
+
+  const createLabel = (filterName) => {
+    switch (filterName) {
+      case 'ageFilter':
+        if (ageFilter.ageMin === 0 && ageFilter.ageMax === 0) {
+          return 'Any Age'
+        } else if (ageFilter.ageMin === 0) {
+          return 'Under 5'
+        } else if (ageFilter.ageMin === 10) {
+          return '10 and over'
+        } else {
+          return `Age ${ageFilter.ageMin}`
+        }
+      case 'dateFilter':
+        const today = new Date()
+        if (dateFilter.startDate === '' && dateFilter.endDate === '') {
+          return 'Any Date'
+        } else if (isSameMonth(dateFilter.endDate, endOfMonth(today))) {
+          return 'This Month'
+        } else if (isSameMonth(dateFilter.endDate, endOfMonth(addMonths(today, 1)))) {
+          return 'Next Month'
+        } else if (isSameMonth(dateFilter.endDate, endOfMonth(addMonths(today, 6)))) {
+          return 'Next 6 Months'
+        } else if (isSameMonth(dateFilter.endDate, endOfMonth(addYears(today, 1)))) {
+          return 'Next Year'
+        }
+        break
+      case 'courseTypeFilter':
+        if (courseTypeFilter === '') {
+          return 'Course Type'
+        } else {
+          return courseTypeFilter
+        }
+    }
+  }
+
   const courses = flatten(courseData.map(data => data.node.courses))
 
   // Show the bar
   return (
     <ListingsFiltersStyle>
       <ListingsFiltersItem
-        label={state.ageFilterLabel}
+        label={createLabel('ageFilter')}
         items={createAgeFilterItems(courses)}
         filterName="ageFilter"
         setListingFilter={setListingFilter}
-        updateLabel={updateLabel}
       />
 
       <ListingsFiltersItem
-        label={state.dateFilterLabel}
+        label={createLabel('dateFilter')}
         filterName="dateFilter"
         setListingFilter={setListingFilter}
         items={createDateFilterItems(courses)}
-        updateLabel={updateLabel}
       />
       <ListingsFiltersItem
-        label="Course Type"
-        filterName="courseFilter"
-        updateLabel={updateLabel}
-        items={[
-          { name: 'LEGO®: Basic', value: 'Basic Lego' },
-          { name: 'LEGO®: Advanced', value: 'Advanced' },
-          { name: 'Ninjago', value: 'Ninjago' },
-          { name: 'Star Wars', value: 'Star Wars' },
-          { name: 'Super Heroes', value: 'Super Heroes' },
-          { name: 'LEGO® Robotics', value: 'Lego Robotics' },
-          { name: 'Pre-School', value: 'Pre School' },
-          { name: 'Minecraft Theme', value: 'Minecraft' },
-          { name: 'Other', value: 'Other' },
-        ]}
+        label={createLabel('courseTypeFilter')}
+        filterName="courseTypeFilter"
+        setListingFilter={setListingFilter}
+        items={createCourseTypeFilterItems(courses)}
       />
     </ListingsFiltersStyle>
   );

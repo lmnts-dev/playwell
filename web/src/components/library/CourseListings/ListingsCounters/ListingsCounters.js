@@ -26,7 +26,7 @@ import { ListingsCountersStyle } from './styles.scss';
 // Begin Component
 //////////////////////////////////////////////////////////////////////
 
-// { courseData, toggleCategoryFilter }
+// { courseData, setListingFilter }
 
 export class ListingsCounters extends PureComponent {
   constructor(props) {
@@ -51,7 +51,7 @@ export class ListingsCounters extends PureComponent {
       });
 
       // Run our parent function from CourseListings.js to filter categories.
-      this.props.toggleCategoryFilter(context);
+      this.props.setListingFilter('categoryFilter', context);
 
       // console.log('this.state.activeContext: ' + this.state.activeContext);
       // console.log('this.state.active: ' + this.state.active);
@@ -62,7 +62,7 @@ export class ListingsCounters extends PureComponent {
       });
 
       // Run our parent function from CourseListings.js to filter categories.
-      this.props.toggleCategoryFilter(context);
+      this.props.setListingFilter('categoryFilter', context);
 
       // console.log('this.state.activeContext: ' + this.state.activeContext);
       // console.log('this.state.active: ' + this.state.active);
@@ -72,7 +72,6 @@ export class ListingsCounters extends PureComponent {
   render() {
     const courseData = this.props.courseData;
     const categoryFilter = this.props.categoryFilter;
-    const toggleCategoryFilter = this.props.toggleCategoryFilter;
 
     // console.log('this.state.activeContext: ' + this.state.activeContext);
     // console.log('this.state.active: ' + this.state.active);
@@ -151,9 +150,9 @@ export class ListingsCounters extends PureComponent {
     }) => {
 
       /**
-       * 
+       *
        * For Debugging Only
-       * 
+       *
        */
       // console.log('categoryFilter:');
       // console.log(categoryFilter);
@@ -161,9 +160,9 @@ export class ListingsCounters extends PureComponent {
       // console.log(context);
 
       /**
-       * 
+       *
        * Return counters
-       * 
+       *
        */
       return (
         <ListingsCountersStyle.Item
