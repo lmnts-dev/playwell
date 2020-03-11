@@ -17,26 +17,15 @@ import { Intro } from './styles.scss';
 //////////////////////////////////////////////////////////////////////
 
 const LocationIntro = ({ pageContext }) => {
-  const countyState = pageContext.isCounty
-    ? pageContext.name + ', ' + pageContext.parentState.name + "'s"
-    : pageContext.name + "'s";
 
   return (
     <Intro bg="Cream" textAlign="center">
       <Intro.Inner pt={[2, 2, 4, 4]} pb={[1, 1, 2, 2]}>
         <Text as="p" color="Nova" className="lead">
-          {pageContext.subheadline ? pageContext.subheadline :
-          `${countyState} Leading STEM Education & Engineering Programs`
-          }
+          {pageContext.subheadline}
         </Text>
         <Text as="p" color="Galaxy" className="lead">
-          {pageContext.description ? pageContext.description :
-            `Ut vehicula dictum tristique. Cras at sem nec risus sollicitudin
-            varius. Proin ultrices metus arcu, ut lacinia libero ornare eget.
-            Morbi orci mi, scelerisque a justo quis, euismod sollicitudin dui.
-            Duis convallis magna eget eleifend tempor. Ut non lobortis metus.
-            Donec sit amet vulputate risus. Vivamus et lacinia ante.`
-          }
+          {pageContext.description}
         </Text>
       </Intro.Inner>
     </Intro>

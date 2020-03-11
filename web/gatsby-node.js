@@ -3,6 +3,7 @@
 ////////////////////////////////////////////////////////////////////////////////////
 
 const each = require(`lodash/each`);
+const isEmpty = require(`lodash/isEmpty`)
 const path = require(`path`);
 const slash = require(`slash`);
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
@@ -385,7 +386,10 @@ exports.createPages = ({ graphql, actions }) => {
 
       // If this state location exists in Sanity use that data instead
       each(result.data.allSanityState.edges, stateEdge => {
-        if (stateEdge.node.stateId === state.node.playwell_state_id) {
+        if (stateEdge.node.stateId === state.node.playwell_state_id &&
+            stateEdge.node.coverImage &&
+            stateEdge.node.description &&
+            stateEdge.node.subheadline) {
           sanityState = stateEdge.node
         }
       });
@@ -409,9 +413,10 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           isCounty: false,
           isCostCode: false,
-          coverImage: !sanityState.coverImage ? null : sanityState.coverImage,
-          description: !sanityState.description ? null : sanityState.description,
-          subheadline: !sanityState.subheadline ? null : sanityState.subheadline,
+          isCustomPage: !isEmpty(sanityState),
+          coverImage: !isEmpty(sanityState) && sanityState.coverImage,
+          description: !isEmpty(sanityState) && sanityState.description,
+          subheadline: !isEmpty(sanityState) && sanityState.subheadline,
           id: state.node.state_id,
           abbrev: state.node.abbrev,
           name: state.node.name,
@@ -428,10 +433,16 @@ exports.createPages = ({ graphql, actions }) => {
 
         // If this cost code or county location exists in the sanityState object, use that data instead
         each(sanityState.counties, countyEdge => {
-          if (countyEdge.costCode.costCodeId === county.cost_code) {
+          if (countyEdge.costCode.costCodeId === county.cost_code &&
+              countyEdge.costCode.coverImage &&
+              countyEdge.costCode.description &&
+              countyEdge.costCode.subheadline) {
             sanityCostCode = countyEdge.costCode
           }
-          if (countyEdge.countyId === county.county_id) {
+          if (countyEdge.countyId === county.county_id &&
+              countyEdge.coverImage &&
+              countyEdge.description &&
+              countyEdge.subheadline) {
             sanityCounty = countyEdge
           }
         })
@@ -456,9 +467,10 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: true,
             isCostCode: false,
-            coverImage: !sanityCounty.coverImage ? null : sanityCounty.coverImage,
-            description: !sanityCounty.description ? null : sanityCounty.description,
-            subheadline: !sanityCounty.subheadline ? null : sanityCounty.subheadline,
+            isCustomPage: !isEmpty(sanityCounty),
+            coverImage: !isEmpty(sanityCounty) && sanityCounty.coverImage,
+            description: !isEmpty(sanityCounty) && sanityCounty.description,
+            subheadline: !isEmpty(sanityCounty) && sanityCounty.subheadline,
             cost_code: county.cost_code,
             cost_code_name: county.cost_code_name,
             county_id: county.county_id,
@@ -482,9 +494,10 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: false,
             isCostCode: true,
-            coverImage: !sanityCostCode.coverImage ? null : sanityCostCode.coverImage,
-            description: !sanityCostCode.description ? null : sanityCostCode.description,
-            subheadline: !sanityCostCode.subheadline ? null : sanityCostCode.subheadline,
+            isCustomPage: !isEmpty(sanityCostCode),
+            coverImage: !isEmpty(sanityCostCode) && sanityCostCode.coverImage,
+            description: !isEmpty(sanityCostCode) && sanityCostCode.description,
+            subheadline: !isEmpty(sanityCostCode) && sanityCostCode.subheadline,
             cost_code: county.cost_code,
             cost_code_name: county.cost_code_name,
             county_id: county.county_id,

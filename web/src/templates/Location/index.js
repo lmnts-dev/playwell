@@ -6,7 +6,7 @@
 //////////////////////////////////////////////////////////////////////
 
 // Core
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'gatsby';
 
 // Components
@@ -90,6 +90,8 @@ const LocationDetail = ({ pageContext }) => {
         slugify(pageContext.cost_code_name.toLowerCase())
       : slugify(pageContext.name.toLowerCase());
 
+  const { isCustomPage } = pageContext;
+
   // Build Page
   return (
     <Layout {...ThemeProps}>
@@ -98,21 +100,24 @@ const LocationDetail = ({ pageContext }) => {
         contextualPageName={contextualPageName()}
         pageContext={pageContext}
       />
+      {isCustomPage && (
+        <Fragment>
+          <Section pt={0} pb={0} fullWidth>
+            <ImgMatch
+              src={pageContext.coverImage}
+              AltText="STEM Education &amp; Engineering in"
+            />
+          </Section>
 
-      <Section pt={0} pb={0} fullWidth>
-        <ImgMatch
-          src={pageContext.coverImage || "locations-hero.jpg"}
-          AltText="STEM Education &amp; Engineering in"
-        />
-      </Section>
+          <SpacerCentered />
 
-      <SpacerCentered />
+          <LocationIntro pageContext={pageContext} />
+          <LocationSplitSection />
+        </Fragment>
+      )}
 
-      <LocationIntro pageContext={pageContext} />
-      <LocationSplitSection />
       <div id="coordinators" />
       <LocationCoordinators pageContext={pageContext} />
-
       {/* <LocationEvents /> */}
 
       <Section bg="White">
