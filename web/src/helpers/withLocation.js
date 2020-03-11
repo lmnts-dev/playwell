@@ -28,7 +28,6 @@ const withLocation = ComponentToWrap => props => (
         location={location}
         navigate={navigate}
         search={location.search ? queryString.parse(location.search) : {}}
-        location={location.location ? queryString.parse(location.location) : {}}
       />
     )}
   </Location>

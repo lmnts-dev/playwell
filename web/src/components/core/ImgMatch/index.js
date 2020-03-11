@@ -1,32 +1,22 @@
 // Dynamic query variables in GraphQl queries for Gatsby-Image
 // Learn more: https://github.com/gatsbyjs/gatsby/issues/10482#issuecomment-485349612
 
-import React, { useMemo } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import React, { useContext } from 'react';
 import Img from 'gatsby-image/withIEPolyfill';
+import ImgMatchContext from './context'
 
 const Image = ({ AltText, objectFit, objectPosition, src, maxWidth, ...props }) => {
-  const data = useStaticQuery(graphql`
-    query {
-      allFile(filter: { internal: { mediaType: { regex: "images/" } } }) {
-        edges {
-          node {
-            relativePath
-            childImageSharp {
-              fluid(maxWidth: 1440) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
-    }
-  `);
+  const data = useContext(ImgMatchContext)
 
-  const match = useMemo(
-    () => data.allFile.edges.find(({ node }) => src === node.relativePath),
-    [data, src]
-  );
+  let fluid = null
+
+  // Logic to handle assets in local file system vs those coming from Sanity CMS
+  if (src.asset && src.asset._id) {
+    fluid = src.asset.fluid
+  } else {
+    const found = data.allFile.edges.find(({ node }) => src === node.relativePath)
+    fluid = found.node.childImageSharp.fluid
+  }
 
   return (
     <Img
@@ -34,7 +24,7 @@ const Image = ({ AltText, objectFit, objectPosition, src, maxWidth, ...props }) 
       objectFit={objectFit ? objectFit : 'cover'}
       objectPosition={objectPosition ? objectPosition : '50% 50%'}
       alt={AltText ? AltText : null}
-      fluid={match.node.childImageSharp.fluid}
+      fluid={fluid}
       {...props}
     />
   );

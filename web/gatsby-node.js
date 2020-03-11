@@ -2,7 +2,8 @@
 // Universal Helpers
 ////////////////////////////////////////////////////////////////////////////////////
 
-const _ = require(`lodash`);
+const each = require(`lodash/each`);
+const isEmpty = require(`lodash/isEmpty`)
 const path = require(`path`);
 const slash = require(`slash`);
 const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
@@ -10,7 +11,7 @@ const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin');
 // Gatsby uses Redux to manage its internal state.
 // Plugins and sites can use functions like "createPage"
 // to interact with Gatsby.
-// We are using 'lodash' above for the _.each function. Read more:
+// We are using 'lodash' above for the each function. Read more:
 // https://lodash.com/docs/4.17.11#forEach
 
 // Use Gatsby's createPage() function. Read more:
@@ -194,6 +195,68 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+
+        allSanityState {
+          edges {
+            node {
+              stateId
+              subheadline
+              description
+              coverImage {
+                asset {
+                  _id
+                  fluid(maxWidth: 1440) {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
+                  }
+                }
+              }
+              counties {
+                countyId
+                subheadline
+                description
+                coverImage {
+                  asset {
+                    _id
+                    fluid(maxWidth: 1440) {
+                      base64
+                      aspectRatio
+                      src
+                      srcSet
+                      srcWebp
+                      srcSetWebp
+                      sizes
+                    }
+                  }
+                }
+                costCode {
+                  costCodeId
+                  subheadline
+                  description
+                  coverImage {
+                    asset {
+                      _id
+                      fluid(maxWidth: 1440) {
+                        base64
+                        aspectRatio
+                        src
+                        srcSet
+                        srcWebp
+                        srcSetWebp
+                        sizes
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     `
   ).then(result => {
@@ -238,7 +301,7 @@ exports.createPages = ({ graphql, actions }) => {
     const courseTemplate = path.resolve(`src/templates/Course/index.js`);
 
     // Create Pages
-    _.each(result.data.allPlayWellClient.edges, client => {
+    each(result.data.allPlayWellClient.edges, client => {
       // Get our Location Meta Data
       let locationMetaResults = locationMatch(
         result.data.allPlayWellStates.edges,
@@ -251,7 +314,7 @@ exports.createPages = ({ graphql, actions }) => {
       let countySlug = slugify(locationMetaResults.county.name);
 
       //  Create our Course Pages
-      _.each(client.node.courses, course => {
+      each(client.node.courses, course => {
         // Build our slugified strings for pretty URLs.
         let programSlug = slugify(course.course_type_name);
 
@@ -317,7 +380,20 @@ exports.createPages = ({ graphql, actions }) => {
     const locationsTemplate = path.resolve(`src/templates/Location/index.js`);
 
     // Create Pages
-    _.each(result.data.allPlayWellStates.edges, state => {
+    each(result.data.allPlayWellStates.edges, state => {
+      // Object to hold Sanity location data
+      let sanityState = {}
+
+      // If this state location exists in Sanity use that data instead
+      each(result.data.allSanityState.edges, stateEdge => {
+        if (stateEdge.node.stateId === state.node.playwell_state_id &&
+            stateEdge.node.coverImage &&
+            stateEdge.node.description &&
+            stateEdge.node.subheadline) {
+          sanityState = stateEdge.node
+        }
+      });
+
       // Build our slugified strings for pretty URLs.
       let stateSlug = slugify(state.node.name);
 
@@ -337,6 +413,10 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           isCounty: false,
           isCostCode: false,
+          isCustomPage: !isEmpty(sanityState),
+          coverImage: !isEmpty(sanityState) && sanityState.coverImage,
+          description: !isEmpty(sanityState) && sanityState.description,
+          subheadline: !isEmpty(sanityState) && sanityState.subheadline,
           id: state.node.state_id,
           abbrev: state.node.abbrev,
           name: state.node.name,
@@ -347,7 +427,26 @@ exports.createPages = ({ graphql, actions }) => {
       });
 
       // Loop through each state's respective Counties data
-      _.each(state.node.counties, county => {
+      each(state.node.counties, county => {
+        let sanityCounty = {}
+        let sanityCostCode = {}
+
+        // If this cost code or county location exists in the sanityState object, use that data instead
+        each(sanityState.counties, countyEdge => {
+          if (countyEdge.costCode.costCodeId === county.cost_code &&
+              countyEdge.costCode.coverImage &&
+              countyEdge.costCode.description &&
+              countyEdge.costCode.subheadline) {
+            sanityCostCode = countyEdge.costCode
+          }
+          if (countyEdge.countyId === county.county_id &&
+              countyEdge.coverImage &&
+              countyEdge.description &&
+              countyEdge.subheadline) {
+            sanityCounty = countyEdge
+          }
+        })
+
         // Build our slugified strings for pretty URLs.
         let countySlug = slugify(county.name);
         let costCodeSlug = slugify(county.cost_code_name);
@@ -368,6 +467,10 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: true,
             isCostCode: false,
+            isCustomPage: !isEmpty(sanityCounty),
+            coverImage: !isEmpty(sanityCounty) && sanityCounty.coverImage,
+            description: !isEmpty(sanityCounty) && sanityCounty.description,
+            subheadline: !isEmpty(sanityCounty) && sanityCounty.subheadline,
             cost_code: county.cost_code,
             cost_code_name: county.cost_code_name,
             county_id: county.county_id,
@@ -391,6 +494,10 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             isCounty: false,
             isCostCode: true,
+            isCustomPage: !isEmpty(sanityCostCode),
+            coverImage: !isEmpty(sanityCostCode) && sanityCostCode.coverImage,
+            description: !isEmpty(sanityCostCode) && sanityCostCode.description,
+            subheadline: !isEmpty(sanityCostCode) && sanityCostCode.subheadline,
             cost_code: county.cost_code,
             cost_code_name: county.cost_code_name,
             county_id: county.county_id,
@@ -422,7 +529,7 @@ exports.createPages = ({ graphql, actions }) => {
      *
      */
 
-    _.each(result.data.allPlayWellStates.edges, state => {
+    each(result.data.allPlayWellStates.edges, state => {
       // Build our slugified strings for pretty URLs.
       let stateSlug = slugify(state.node.name);
 
@@ -480,7 +587,7 @@ exports.createPages = ({ graphql, actions }) => {
        */
 
       // Loop through each state's respective Counties data
-      _.each(state.node.counties, county => {
+      each(state.node.counties, county => {
         // Build our slugified strings for pretty URLs.
         let countySlug = slugify(county.name);
         let costCodeSlug = slugify(county.cost_code_name);

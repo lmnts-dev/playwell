@@ -111,18 +111,14 @@ const TeamMarquee = ({ BgLinear }) => {
     <StaticQuery
       query={graphql`
         {
-          allDataJson {
-            edges {
-              node {
-                leadership {
-                  bio
-                  id
-                  img
-                  mgr_level
-                  name
-                  title
-                }
-              }
+          dataJson {
+            leadership {
+              bio
+              id
+              img
+              mgr_level
+              name
+              title
             }
           }
         }
@@ -132,8 +128,8 @@ const TeamMarquee = ({ BgLinear }) => {
           BgLinear={BgLinear}
         >
           <TeamMarqueeSlider>
-            {data.allDataJson.edges[0].node &&
-              data.allDataJson.edges[0].node.leadership.map((person, index) => {
+            {data.dataJson.leadership &&
+              data.dataJson.leadership.map((person, index) => {
                 return (
                   <div className="item" key={index}>
                     <div className="image-container">

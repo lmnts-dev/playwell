@@ -26,7 +26,9 @@ export const wrapRootElement = ({ element }) => {
       </UserAgentProvider>
     );
   } else {
-    return <AppProvider>{element}</AppProvider>;
+    return (
+      <AppProvider>{element}</AppProvider>
+    );
   }
 };
 

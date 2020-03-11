@@ -5,7 +5,6 @@ import { Location } from '@reach/router';
 
 // Helpers
 import HeroContainer from '../../Hero/HeroContainer';
-import _ from 'lodash';
 
 // Styles
 import {

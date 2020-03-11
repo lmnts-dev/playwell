@@ -64,7 +64,7 @@ const Layout = ({
           PrimaryColor={PrimaryColor}
           SecondaryColor={SecondaryColor}
           TertiaryColor={TertiaryColor}
-        />
+          />
         <Head />
         <SiteGrid.Inner>{children}</SiteGrid.Inner>
       </SiteGrid>

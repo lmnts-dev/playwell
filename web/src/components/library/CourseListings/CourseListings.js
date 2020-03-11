@@ -661,7 +661,7 @@ class CourseListings extends PureComponent {
      */
 
     // Set the default query to show all
-    if (this.props.search.show === undefined) {
+    if (this.props.search.show === undefined && this.props.location.pathname !== '/programs') {
       setQuery({show: 'all'}, {pushState: true})
     }
 

@@ -8,9 +8,6 @@
 import React, { PureComponent } from 'react';
 import { Link } from 'gatsby';
 
-// Helpers
-import _ from 'lodash';
-
 // Styles
 import {
   CourseHeroStyle,

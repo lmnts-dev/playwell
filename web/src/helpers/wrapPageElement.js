@@ -7,6 +7,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Transition from 'components/core/Transition';
 import { StaticQuery, graphql } from 'gatsby';
+import ImgMatchProvider from 'components/core/ImgMatch/provider'
 
 // Components
 import ScrollWrapper from 'components/core/ScrollWrapper';
@@ -26,41 +27,37 @@ const wrapPageElement = ({ element, props }) => {
     <StaticQuery
       query={graphql`
         query navDataQuery {
-          allSanitySiteSettings {
-            edges {
-              node {
-                nav {
-                  focusNav {
-                    label
-                    route
-                  }
-                  footerNav {
-                    linkList {
+          sanitySiteSettings {
+            nav {
+              focusNav {
+                label
+                route
+              }
+              footerNav {
+                linkList {
+                  label
+                  route
+                }
+              }
+              primaryNav {
+                linkList {
+                  label
+                  route
+                  subNav {
+                    focusLinkList {
+                      focus
                       label
                       route
                     }
-                  }
-                  primaryNav {
-                    linkList {
-                      label
+                    minorLinkList {
                       route
-                      subNav {
-                        focusLinkList {
-                          focus
-                          label
-                          route
-                        }
-                        minorLinkList {
-                          route
-                          label
-                          subhead
-                        }
-                      }
-                      theme {
-                        activeColor
-                        primaryColor
-                      }
+                      label
+                      subhead
                     }
+                  }
+                  theme {
+                    activeColor
+                    primaryColor
                   }
                 }
               }
@@ -70,10 +67,12 @@ const wrapPageElement = ({ element, props }) => {
       `}
       render={data => (
         <Main>
+          <ImgMatchProvider>
           <Navigation navQuery={navDataTransformer(data)} {...props} />
           <Transition navQuery={navDataTransformer(data)} {...props}>
             {element}
           </Transition>
+          </ImgMatchProvider>
         </Main>
       )}
     />

@@ -10,7 +10,11 @@ export const replaceRenderer = ({
   setHeadComponents,
 }) => {
   // React Context in SSR/build
-  const ConnectedBody = () => <AppProvider>{bodyComponent}</AppProvider>;
+  const ConnectedBody = () => (
+      <AppProvider>
+        {bodyComponent}
+      </AppProvider>
+  );
   replaceBodyHTMLString(renderToString(<ConnectedBody />));
 
   // Add styled-components in SSR/build

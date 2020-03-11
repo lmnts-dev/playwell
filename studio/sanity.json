@@ -7,6 +7,18 @@
     "projectId": "on977l64",
     "dataset": "production"
   },
+  "env": {
+    "development": {
+      "plugins": [
+        "@sanity/base",
+        "@sanity/components",
+        "@sanity/default-layout",
+        "@sanity/default-login",
+        "@sanity/desk-tool",
+        "@sanity/vision"
+      ]
+    }
+  },
   "plugins": [
     "@sanity/base",
     "@sanity/components",
@@ -18,6 +30,10 @@
     {
       "name": "part:@sanity/base/schema",
       "path": "./schemas/schema.js"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./deskStructure.js"
     }
   ]
 }
