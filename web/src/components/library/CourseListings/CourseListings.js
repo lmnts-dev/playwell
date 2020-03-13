@@ -723,7 +723,7 @@ class CourseListings extends PureComponent {
         });
 
         // Fit our map to said bounds.
-        map.fitBounds(initialBounds, { padding: 50 });
+        map.fitBounds(initialBounds, {padding: 0});
 
         /**
          * Add data layers.
