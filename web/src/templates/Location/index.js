@@ -83,12 +83,12 @@ const LocationDetail = ({ pageContext }) => {
         '/' +
         slugify(pageContext.cost_code_name.toLowerCase()) +
         '/' +
-        slugify(pageContext.name.toLowerCase())
+        slugify(pageContext.name.toLowerCase()) + '/'
       : pageContext.isCostCode == true
       ? slugify(pageContext.parentState.name.toLowerCase()) +
         '/' +
-        slugify(pageContext.cost_code_name.toLowerCase())
-      : slugify(pageContext.name.toLowerCase());
+        slugify(pageContext.cost_code_name.toLowerCase()) + '/'
+      : slugify(pageContext.name.toLowerCase()) + '/';
 
   // Build Page
   return (

@@ -67,7 +67,7 @@ const ProgramsPage = ({ pageContext, location }) => {
       <CourseListings
         stateId={pageContext.playwell_state_id}
         countyId={pageContext.county_id}
-        costCodeId={pageContext.cost_code_id}
+        costCodeId={pageContext.cost_code}
         pageContext={pageContext}
         courseData={fetchedData}
         geoData={fetchedData.allPlayWellStates}

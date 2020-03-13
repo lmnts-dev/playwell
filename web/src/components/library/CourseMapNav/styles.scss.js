@@ -54,6 +54,10 @@ export const CourseMapNavStyle = styled.div`
     max-width: 200px;
   }
 
+  .mapboxgl-popup-content {
+    color: black;
+  }
+
   .inner {
     max-width: ${Root.Site.Width};
     width: 100%;

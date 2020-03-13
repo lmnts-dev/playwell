@@ -333,7 +333,7 @@ class ListingsResults extends PureComponent {
     // Our Filters
     const stateId = this.props.stateId;
     const countyId = this.props.countyId;
-    const costCodeId = this.props.costCodeId;
+    const counties = this.props.counties;
 
     // Filter Categories
     const categoryFilter = this.props.categoryFilter;
@@ -364,6 +364,9 @@ class ListingsResults extends PureComponent {
         };
       }, this)
       .filter(client => {
+        if (counties && counties.some(e => e.county_id === client.node.county_id)) {
+          return client
+        }
         if (
           client.node.state_id == stateId ||
           client.node.county_id == countyId
@@ -694,15 +697,15 @@ class CourseListings extends PureComponent {
         ? this.props.pageContext.parentState.playwell_state_id // Display State Id.
         : this.props.pageContext.playwell_state_id; // else it's a State and remove parentState and use it's Id.
 
-      const countyId = this.props.pageContext.isCostCode // If CostCode:
-        ? this.props.pageContext.county_id // Display County Id.
-        : this.props.pageContext.isCounty // If County:
+      const countyId = this.props.pageContext.isCounty // If County:
         ? this.props.pageContext.county_id // Display County Id.
         : null; // else it's a State and County Id is no longer needed.
 
+      const counties = this.props.pageContext.isCostCode // If CostCode
+        ? this.props.pageContext.counties // Display all Counties
+        : null;
+
       const costCodeId = this.props.pageContext.isCostCode // If CostCode:
-        ? this.props.pageContext.cost_code // Display Cost Code.
-        : this.props.pageContext.isCounty // If County:
         ? this.props.pageContext.cost_code // Display Cost Code.
         : null; // else it's a State and CostCode is no longer needed.
 
@@ -747,6 +750,7 @@ class CourseListings extends PureComponent {
         const initialMarkers = clientsByLatLong(
           stateId,
           countyId,
+          counties,
           costCodeId,
           clientEdges
         );
@@ -757,7 +761,7 @@ class CourseListings extends PureComponent {
         });
 
         // Fit our map to said bounds.
-        map.fitBounds(initialBounds, { padding: 50 });
+        map.fitBounds(initialBounds, {padding: 0});
 
         /**
          * Add data layers.
@@ -796,7 +800,7 @@ class CourseListings extends PureComponent {
 
           new mapboxgl.Popup()
             .setLngLat(coordinates)
-            .setHTML(description)
+            .setHTML(`<strong>${description}</strong>`)
             .addTo(map);
         });
 
@@ -836,6 +840,7 @@ class CourseListings extends PureComponent {
     const geoData = this.props.geoData;
     const stateId = this.props.stateId;
     const countyId = this.props.countyId;
+    const counties = this.props.pageContext.counties;
     const costCodeId = this.props.costCodeId;
     const pageContext = this.props.pageContext;
     const search = this.props.search;
@@ -874,6 +879,7 @@ class CourseListings extends PureComponent {
                 courseData={courseData}
                 stateId={stateId}
                 countyId={countyId}
+                counties={counties}
                 costCodeId={costCodeId}
                 pageContext={pageContext}
                 urlQuery={search.show} // Utilizes our withLocation(); function at the end of this document.

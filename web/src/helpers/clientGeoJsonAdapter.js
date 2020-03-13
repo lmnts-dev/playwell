@@ -53,6 +53,7 @@ export const clientGeoJsonAdapter = data => {
 export const clientsByLatLong = (
   state_id,
   county_id,
+  counties,
   cost_code,
   clientEdges
 ) => {
@@ -84,8 +85,9 @@ export const clientsByLatLong = (
    * Check for Cost Code
    */
   if (cost_code != null || cost_code != undefined) {
+    const countyIds = counties.map(county => county.county_id)
     filteredClients = filteredClients.filter(
-      client => parseInt(client.node.state_id) === parseInt(state_id)
+      client => countyIds.includes(client.node.county_id)
     );
   }
 
