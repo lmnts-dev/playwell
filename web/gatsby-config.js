@@ -81,6 +81,16 @@ module.exports = {
         path: path.join(__dirname, `src`, `data`),
       },
     },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `#E24809`,
+        showSpinner: true,
+        minimum: 0.1,
+        easing: `ease-in-out`,
+        speed: 500,
+      }
+    },
 
     // // Load files from /content/ folder
     // {
