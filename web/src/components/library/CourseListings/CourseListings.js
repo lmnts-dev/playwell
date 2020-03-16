@@ -855,7 +855,8 @@ class CourseListings extends PureComponent {
           setClientsInView()
           setMapState()
         })
-        map.on('dragend', () => {
+
+        map.on('zoomend', mapId, () => {
           setClientsInView()
           setMapState()
         })
