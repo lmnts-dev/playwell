@@ -866,6 +866,11 @@ class CourseListings extends PureComponent {
         map.on('render', () => {
           NProgress.start()
         })
+
+        // Set progress bar to end
+        map.on('idle', () => {
+          console.log('idle')
+          NProgress.done()
         })
       });
     }
