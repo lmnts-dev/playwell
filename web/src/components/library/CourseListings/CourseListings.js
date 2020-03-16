@@ -10,6 +10,7 @@ import { Link } from 'gatsby';
 import { navigate } from '@reach/router';
 import { isWithinInterval, format } from 'date-fns'
 import setQuery from 'set-query-string'
+import NProgress from 'nprogress'
 
 // MapboxGL
 import mapboxgl from 'mapbox-gl';
@@ -860,9 +861,11 @@ class CourseListings extends PureComponent {
           setClientsInView()
           setMapState()
         })
-        map.on('zoomend', () => {
-          setClientsInView()
-          setMapState()
+
+        // Set progress bar to start
+        map.on('render', () => {
+          NProgress.start()
+        })
         })
       });
     }
