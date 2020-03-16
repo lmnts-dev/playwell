@@ -835,6 +835,10 @@ class CourseListings extends PureComponent {
         // Change it back to a pointer when it leaves.
         map.on('mouseleave', mapId, function() {
           map.getCanvas().style.cursor = '';
+          map.on('dragend', () => {
+            setClientsInView()
+            setMapState()
+          })
         });
 
         // Functions to run on click.
